@@ -4,20 +4,17 @@
 	<groupId>cybersource-rest-samples-java</groupId>
 	<artifactId>cybersource-rest-samples-java</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-
+	<name>cybersource-rest-samples-java</name>
 	<dependencies>
+
+		<!-- rest client dependency -->
 		<dependency>
-			<groupId>com.cybersource</groupId>
-			<artifactId>flex-server-sdk</artifactId>
-			<version>0.3.1</version>
+			<groupId>io.swagger</groupId>
+			<artifactId>cybersource-rest-client-java</artifactId>
+			<version>1.0.0</version>
 		</dependency>
-		<dependency>
-			<groupId>com.fasterxml.jackson.core</groupId>
-			<artifactId>jackson-databind</artifactId>
-			<version>2.6.3</version>
-		</dependency>
-	
+
 	</dependencies>
 
-	<name>cybersource-rest-samples-java</name>
+
 </project>

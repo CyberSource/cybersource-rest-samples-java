@@ -1,0 +1,411 @@
+2018-10-10 10:34:21.267 [main] FATAL  - File not found, Entered path/file name :: null
+2018-10-10 10:34:21.277 [main] ERROR  - java.lang.NullPointerException
+	at com.cybersource.authsdk.core.MerchantConfig.getRequestData(MerchantConfig.java:94)
+	at com.cybersource.authsdk.payloaddigest.PayloadDigest.payloadGeneration(PayloadDigest.java:69)
+	at com.cybersource.authsdk.payloaddigest.PayloadDigest.digestGeneration(PayloadDigest.java:45)
+	at com.cybersource.authsdk.payloaddigest.PayloadDigest.getDigest(PayloadDigest.java:90)
+	at com.cybersource.authsdk.http.SignatureGenerator.signatureGeneration(SignatureGenerator.java:77)
+	at com.cybersource.authsdk.http.HttpSignatureToken.signatureHeader(HttpSignatureToken.java:80)
+	at com.cybersource.authsdk.http.HttpSignatureToken.getToken(HttpSignatureToken.java:50)
+	at com.cybersource.authsdk.core.Authorization.getToken(Authorization.java:34)
+	at Invokers.ApiClient.callAuthenticationHeader(ApiClient.java:1221)
+	at Invokers.ApiClient.buildCall(ApiClient.java:1187)
+	at Api.PaymentApi.createPaymentCall(PaymentApi.java:106)
+	at Api.PaymentApi.createPaymentValidateBeforeCall(PaymentApi.java:118)
+	at Api.PaymentApi.createPaymentWithHttpInfo(PaymentApi.java:147)
+	at Api.PaymentApi.createPayment(PaymentApi.java:135)
+	at sample.payments.coreServices.ProcessAPayment.process(ProcessAPayment.java:81)
+	at sample.payments.coreServices.ProcessAPayment.<init>(ProcessAPayment.java:72)
+	at sample.payments.coreServices.ProcessAPayment.main(ProcessAPayment.java:68)
+
+2018-10-10 10:35:25.521 [main] FATAL  - File not found, Entered path/file name :: null
+2018-10-10 10:35:25.541 [main] ERROR  - java.lang.NullPointerException
+	at com.cybersource.authsdk.core.MerchantConfig.getRequestData(MerchantConfig.java:94)
+	at com.cybersource.authsdk.payloaddigest.PayloadDigest.payloadGeneration(PayloadDigest.java:69)
+	at com.cybersource.authsdk.payloaddigest.PayloadDigest.digestGeneration(PayloadDigest.java:45)
+	at com.cybersource.authsdk.payloaddigest.PayloadDigest.getDigest(PayloadDigest.java:90)
+	at com.cybersource.authsdk.http.SignatureGenerator.signatureGeneration(SignatureGenerator.java:77)
+	at com.cybersource.authsdk.http.HttpSignatureToken.signatureHeader(HttpSignatureToken.java:80)
+	at com.cybersource.authsdk.http.HttpSignatureToken.getToken(HttpSignatureToken.java:50)
+	at com.cybersource.authsdk.core.Authorization.getToken(Authorization.java:34)
+	at Invokers.ApiClient.callAuthenticationHeader(ApiClient.java:1221)
+	at Invokers.ApiClient.buildCall(ApiClient.java:1187)
+	at Api.PaymentApi.createPaymentCall(PaymentApi.java:106)
+	at Api.PaymentApi.createPaymentValidateBeforeCall(PaymentApi.java:118)
+	at Api.PaymentApi.createPaymentWithHttpInfo(PaymentApi.java:147)
+	at Api.PaymentApi.createPayment(PaymentApi.java:135)
+	at sample.payments.coreServices.ProcessAPayment.process(ProcessAPayment.java:81)
+	at sample.payments.coreServices.ProcessAPayment.<init>(ProcessAPayment.java:72)
+	at sample.payments.coreServices.ProcessAPayment.main(ProcessAPayment.java:68)
+
+2018-10-10 10:42:13.194 [main] FATAL  - File not found, Entered path/file name :: null
+2018-10-10 10:42:13.205 [main] ERROR  - java.lang.NullPointerException
+	at com.cybersource.authsdk.core.MerchantConfig.getRequestData(MerchantConfig.java:94)
+	at com.cybersource.authsdk.payloaddigest.PayloadDigest.payloadGeneration(PayloadDigest.java:69)
+	at com.cybersource.authsdk.payloaddigest.PayloadDigest.digestGeneration(PayloadDigest.java:45)
+	at com.cybersource.authsdk.payloaddigest.PayloadDigest.getDigest(PayloadDigest.java:90)
+	at com.cybersource.authsdk.http.SignatureGenerator.signatureGeneration(SignatureGenerator.java:77)
+	at com.cybersource.authsdk.http.HttpSignatureToken.signatureHeader(HttpSignatureToken.java:80)
+	at com.cybersource.authsdk.http.HttpSignatureToken.getToken(HttpSignatureToken.java:50)
+	at com.cybersource.authsdk.core.Authorization.getToken(Authorization.java:34)
+	at Invokers.ApiClient.callAuthenticationHeader(ApiClient.java:1221)
+	at Invokers.ApiClient.buildCall(ApiClient.java:1187)
+	at Api.PaymentApi.createPaymentCall(PaymentApi.java:106)
+	at Api.PaymentApi.createPaymentValidateBeforeCall(PaymentApi.java:118)
+	at Api.PaymentApi.createPaymentWithHttpInfo(PaymentApi.java:147)
+	at Api.PaymentApi.createPayment(PaymentApi.java:135)
+	at sample.payments.coreServices.ProcessAPayment.process(ProcessAPayment.java:81)
+	at sample.payments.coreServices.ProcessAPayment.<init>(ProcessAPayment.java:72)
+	at sample.payments.coreServices.ProcessAPayment.main(ProcessAPayment.java:68)
+
+2018-10-10 10:46:14.792 [main] FATAL  - File not found, Entered path/file name :: null
+2018-10-10 10:46:14.799 [main] ERROR  - java.lang.NullPointerException
+	at com.cybersource.authsdk.core.MerchantConfig.getRequestData(MerchantConfig.java:94)
+	at com.cybersource.authsdk.payloaddigest.PayloadDigest.payloadGeneration(PayloadDigest.java:69)
+	at com.cybersource.authsdk.payloaddigest.PayloadDigest.digestGeneration(PayloadDigest.java:45)
+	at com.cybersource.authsdk.payloaddigest.PayloadDigest.getDigest(PayloadDigest.java:90)
+	at com.cybersource.authsdk.http.SignatureGenerator.signatureGeneration(SignatureGenerator.java:77)
+	at com.cybersource.authsdk.http.HttpSignatureToken.signatureHeader(HttpSignatureToken.java:80)
+	at com.cybersource.authsdk.http.HttpSignatureToken.getToken(HttpSignatureToken.java:50)
+	at com.cybersource.authsdk.core.Authorization.getToken(Authorization.java:34)
+	at Invokers.ApiClient.callAuthenticationHeader(ApiClient.java:1221)
+	at Invokers.ApiClient.buildCall(ApiClient.java:1187)
+	at Api.PaymentApi.createPaymentCall(PaymentApi.java:106)
+	at Api.PaymentApi.createPaymentValidateBeforeCall(PaymentApi.java:118)
+	at Api.PaymentApi.createPaymentWithHttpInfo(PaymentApi.java:147)
+	at Api.PaymentApi.createPayment(PaymentApi.java:135)
+	at sample.payments.coreServices.ProcessAPayment.process(ProcessAPayment.java:81)
+	at sample.payments.coreServices.ProcessAPayment.<init>(ProcessAPayment.java:72)
+	at sample.payments.coreServices.ProcessAPayment.main(ProcessAPayment.java:68)
+
+2018-10-10 10:49:06.389 [main] FATAL  - File not found, Entered path/file name :: null
+2018-10-10 10:49:06.399 [main] ERROR  - java.lang.NullPointerException
+	at com.cybersource.authsdk.core.MerchantConfig.getRequestData(MerchantConfig.java:94)
+	at com.cybersource.authsdk.payloaddigest.PayloadDigest.payloadGeneration(PayloadDigest.java:69)
+	at com.cybersource.authsdk.payloaddigest.PayloadDigest.digestGeneration(PayloadDigest.java:45)
+	at com.cybersource.authsdk.payloaddigest.PayloadDigest.getDigest(PayloadDigest.java:90)
+	at com.cybersource.authsdk.http.SignatureGenerator.signatureGeneration(SignatureGenerator.java:77)
+	at com.cybersource.authsdk.http.HttpSignatureToken.signatureHeader(HttpSignatureToken.java:80)
+	at com.cybersource.authsdk.http.HttpSignatureToken.getToken(HttpSignatureToken.java:50)
+	at com.cybersource.authsdk.core.Authorization.getToken(Authorization.java:34)
+	at Invokers.ApiClient.callAuthenticationHeader(ApiClient.java:1221)
+	at Invokers.ApiClient.buildCall(ApiClient.java:1187)
+	at Api.PaymentApi.createPaymentCall(PaymentApi.java:106)
+	at Api.PaymentApi.createPaymentValidateBeforeCall(PaymentApi.java:118)
+	at Api.PaymentApi.createPaymentWithHttpInfo(PaymentApi.java:147)
+	at Api.PaymentApi.createPayment(PaymentApi.java:135)
+	at sample.payments.coreServices.ProcessAPayment.process(ProcessAPayment.java:81)
+	at sample.payments.coreServices.ProcessAPayment.<init>(ProcessAPayment.java:72)
+	at sample.payments.coreServices.ProcessAPayment.main(ProcessAPayment.java:68)
+
+2018-10-10 10:53:10.712 [main] FATAL  - File not found, Entered path/file name :: null
+2018-10-10 10:53:10.719 [main] ERROR  - java.lang.NullPointerException
+	at com.cybersource.authsdk.core.MerchantConfig.getRequestData(MerchantConfig.java:94)
+	at com.cybersource.authsdk.payloaddigest.PayloadDigest.payloadGeneration(PayloadDigest.java:69)
+	at com.cybersource.authsdk.payloaddigest.PayloadDigest.digestGeneration(PayloadDigest.java:45)
+	at com.cybersource.authsdk.payloaddigest.PayloadDigest.getDigest(PayloadDigest.java:90)
+	at com.cybersource.authsdk.http.SignatureGenerator.signatureGeneration(SignatureGenerator.java:77)
+	at com.cybersource.authsdk.http.HttpSignatureToken.signatureHeader(HttpSignatureToken.java:80)
+	at com.cybersource.authsdk.http.HttpSignatureToken.getToken(HttpSignatureToken.java:50)
+	at com.cybersource.authsdk.core.Authorization.getToken(Authorization.java:34)
+	at Invokers.ApiClient.callAuthenticationHeader(ApiClient.java:1221)
+	at Invokers.ApiClient.buildCall(ApiClient.java:1187)
+	at Api.PaymentApi.createPaymentCall(PaymentApi.java:106)
+	at Api.PaymentApi.createPaymentValidateBeforeCall(PaymentApi.java:118)
+	at Api.PaymentApi.createPaymentWithHttpInfo(PaymentApi.java:147)
+	at Api.PaymentApi.createPayment(PaymentApi.java:135)
+	at sample.payments.coreServices.ProcessAPayment.process(ProcessAPayment.java:81)
+	at sample.payments.coreServices.ProcessAPayment.<init>(ProcessAPayment.java:72)
+	at sample.payments.coreServices.ProcessAPayment.main(ProcessAPayment.java:68)
+
+2018-10-10 10:56:57.189 [main] FATAL  - File not found, Entered path/file name :: null
+2018-10-10 10:56:57.196 [main] ERROR  - java.lang.NullPointerException
+	at com.cybersource.authsdk.core.MerchantConfig.getRequestData(MerchantConfig.java:94)
+	at com.cybersource.authsdk.payloaddigest.PayloadDigest.payloadGeneration(PayloadDigest.java:69)
+	at com.cybersource.authsdk.payloaddigest.PayloadDigest.digestGeneration(PayloadDigest.java:45)
+	at com.cybersource.authsdk.payloaddigest.PayloadDigest.getDigest(PayloadDigest.java:90)
+	at com.cybersource.authsdk.http.SignatureGenerator.signatureGeneration(SignatureGenerator.java:77)
+	at com.cybersource.authsdk.http.HttpSignatureToken.signatureHeader(HttpSignatureToken.java:80)
+	at com.cybersource.authsdk.http.HttpSignatureToken.getToken(HttpSignatureToken.java:50)
+	at com.cybersource.authsdk.core.Authorization.getToken(Authorization.java:34)
+	at Invokers.ApiClient.callAuthenticationHeader(ApiClient.java:1222)
+	at Invokers.ApiClient.buildCall(ApiClient.java:1187)
+	at Api.PaymentApi.createPaymentCall(PaymentApi.java:106)
+	at Api.PaymentApi.createPaymentValidateBeforeCall(PaymentApi.java:118)
+	at Api.PaymentApi.createPaymentWithHttpInfo(PaymentApi.java:147)
+	at Api.PaymentApi.createPayment(PaymentApi.java:135)
+	at sample.payments.coreServices.ProcessAPayment.process(ProcessAPayment.java:81)
+	at sample.payments.coreServices.ProcessAPayment.<init>(ProcessAPayment.java:72)
+	at sample.payments.coreServices.ProcessAPayment.main(ProcessAPayment.java:68)
+
+2018-10-10 10:58:52.327 [main] ERROR  - Request Json File missing. File Path :: C:\pts\v2\payments
+2018-10-10 11:54:35.287 [main] FATAL  - File not found, Entered path/file name :: null
+2018-10-10 11:54:35.293 [main] ERROR  - java.lang.NullPointerException
+	at com.cybersource.authsdk.core.MerchantConfig.getRequestData(MerchantConfig.java:94)
+	at com.cybersource.authsdk.payloaddigest.PayloadDigest.payloadGeneration(PayloadDigest.java:69)
+	at com.cybersource.authsdk.payloaddigest.PayloadDigest.digestGeneration(PayloadDigest.java:45)
+	at com.cybersource.authsdk.payloaddigest.PayloadDigest.getDigest(PayloadDigest.java:90)
+	at com.cybersource.authsdk.http.SignatureGenerator.signatureGeneration(SignatureGenerator.java:77)
+	at com.cybersource.authsdk.http.HttpSignatureToken.signatureHeader(HttpSignatureToken.java:80)
+	at com.cybersource.authsdk.http.HttpSignatureToken.getToken(HttpSignatureToken.java:50)
+	at com.cybersource.authsdk.core.Authorization.getToken(Authorization.java:34)
+	at Invokers.ApiClient.callAuthenticationHeader(ApiClient.java:1221)
+	at Invokers.ApiClient.buildCall(ApiClient.java:1187)
+	at Api.PaymentApi.createPaymentCall(PaymentApi.java:106)
+	at Api.PaymentApi.createPaymentValidateBeforeCall(PaymentApi.java:118)
+	at Api.PaymentApi.createPaymentWithHttpInfo(PaymentApi.java:147)
+	at Api.PaymentApi.createPayment(PaymentApi.java:135)
+	at sample.payments.coreServices.ProcessAPayment.process(ProcessAPayment.java:81)
+	at sample.payments.coreServices.ProcessAPayment.<init>(ProcessAPayment.java:72)
+	at sample.payments.coreServices.ProcessAPayment.main(ProcessAPayment.java:68)
+
+2018-10-10 11:55:06.709 [main] FATAL  - File not found, Entered path/file name :: null
+2018-10-10 11:55:06.725 [main] ERROR  - java.lang.NullPointerException
+	at com.cybersource.authsdk.core.MerchantConfig.getRequestData(MerchantConfig.java:94)
+	at com.cybersource.authsdk.payloaddigest.PayloadDigest.payloadGeneration(PayloadDigest.java:69)
+	at com.cybersource.authsdk.payloaddigest.PayloadDigest.digestGeneration(PayloadDigest.java:45)
+	at com.cybersource.authsdk.payloaddigest.PayloadDigest.getDigest(PayloadDigest.java:90)
+	at com.cybersource.authsdk.http.SignatureGenerator.signatureGeneration(SignatureGenerator.java:77)
+	at com.cybersource.authsdk.http.HttpSignatureToken.signatureHeader(HttpSignatureToken.java:80)
+	at com.cybersource.authsdk.http.HttpSignatureToken.getToken(HttpSignatureToken.java:50)
+	at com.cybersource.authsdk.core.Authorization.getToken(Authorization.java:34)
+	at Invokers.ApiClient.callAuthenticationHeader(ApiClient.java:1221)
+	at Invokers.ApiClient.buildCall(ApiClient.java:1187)
+	at Api.PaymentApi.createPaymentCall(PaymentApi.java:106)
+	at Api.PaymentApi.createPaymentValidateBeforeCall(PaymentApi.java:118)
+	at Api.PaymentApi.createPaymentWithHttpInfo(PaymentApi.java:147)
+	at Api.PaymentApi.createPayment(PaymentApi.java:135)
+	at sample.payments.coreServices.ProcessAPayment.process(ProcessAPayment.java:81)
+	at sample.payments.coreServices.ProcessAPayment.<init>(ProcessAPayment.java:72)
+	at sample.payments.coreServices.ProcessAPayment.main(ProcessAPayment.java:68)
+
+2018-10-10 11:56:01.144 [main] ERROR  - Request Json File Missing/Null
+2018-10-10 12:02:03.811 [main] FATAL  - File not found, Entered path/file name :: null
+2018-10-10 12:02:03.828 [main] ERROR  - java.lang.NullPointerException
+	at com.cybersource.authsdk.core.MerchantConfig.getRequestData(MerchantConfig.java:94)
+	at com.cybersource.authsdk.payloaddigest.PayloadDigest.payloadGeneration(PayloadDigest.java:69)
+	at com.cybersource.authsdk.payloaddigest.PayloadDigest.digestGeneration(PayloadDigest.java:45)
+	at com.cybersource.authsdk.payloaddigest.PayloadDigest.getDigest(PayloadDigest.java:90)
+	at com.cybersource.authsdk.http.SignatureGenerator.signatureGeneration(SignatureGenerator.java:77)
+	at com.cybersource.authsdk.http.HttpSignatureToken.signatureHeader(HttpSignatureToken.java:80)
+	at com.cybersource.authsdk.http.HttpSignatureToken.getToken(HttpSignatureToken.java:50)
+	at com.cybersource.authsdk.core.Authorization.getToken(Authorization.java:34)
+	at Invokers.ApiClient.callAuthenticationHeader(ApiClient.java:1221)
+	at Invokers.ApiClient.buildCall(ApiClient.java:1187)
+	at Api.PaymentApi.createPaymentCall(PaymentApi.java:106)
+	at Api.PaymentApi.createPaymentValidateBeforeCall(PaymentApi.java:118)
+	at Api.PaymentApi.createPaymentWithHttpInfo(PaymentApi.java:147)
+	at Api.PaymentApi.createPayment(PaymentApi.java:135)
+	at sample.payments.coreServices.ProcessAPayment.process(ProcessAPayment.java:81)
+	at sample.payments.coreServices.ProcessAPayment.<init>(ProcessAPayment.java:72)
+	at sample.payments.coreServices.ProcessAPayment.main(ProcessAPayment.java:68)
+
+2018-10-10 12:06:22.647 [main] FATAL  - File not found, Entered path/file name :: null
+2018-10-10 12:06:22.667 [main] ERROR  - java.lang.NullPointerException
+	at com.cybersource.authsdk.core.MerchantConfig.getRequestData(MerchantConfig.java:94)
+	at com.cybersource.authsdk.payloaddigest.PayloadDigest.payloadGeneration(PayloadDigest.java:69)
+	at com.cybersource.authsdk.payloaddigest.PayloadDigest.digestGeneration(PayloadDigest.java:45)
+	at com.cybersource.authsdk.payloaddigest.PayloadDigest.getDigest(PayloadDigest.java:90)
+	at com.cybersource.authsdk.http.SignatureGenerator.signatureGeneration(SignatureGenerator.java:77)
+	at com.cybersource.authsdk.http.HttpSignatureToken.signatureHeader(HttpSignatureToken.java:80)
+	at com.cybersource.authsdk.http.HttpSignatureToken.getToken(HttpSignatureToken.java:50)
+	at com.cybersource.authsdk.core.Authorization.getToken(Authorization.java:34)
+	at Invokers.ApiClient.callAuthenticationHeader(ApiClient.java:1221)
+	at Invokers.ApiClient.buildCall(ApiClient.java:1187)
+	at Api.PaymentApi.createPaymentCall(PaymentApi.java:106)
+	at Api.PaymentApi.createPaymentValidateBeforeCall(PaymentApi.java:118)
+	at Api.PaymentApi.createPaymentWithHttpInfo(PaymentApi.java:147)
+	at Api.PaymentApi.createPayment(PaymentApi.java:135)
+	at sample.payments.coreServices.ProcessAPayment.process(ProcessAPayment.java:81)
+	at sample.payments.coreServices.ProcessAPayment.<init>(ProcessAPayment.java:72)
+	at sample.payments.coreServices.ProcessAPayment.main(ProcessAPayment.java:68)
+
+2018-10-10 12:07:25.843 [main] FATAL  - File not found, Entered path/file name :: null
+2018-10-10 12:07:25.860 [main] ERROR  - java.lang.NullPointerException
+	at com.cybersource.authsdk.core.MerchantConfig.getRequestData(MerchantConfig.java:94)
+	at com.cybersource.authsdk.payloaddigest.PayloadDigest.payloadGeneration(PayloadDigest.java:69)
+	at com.cybersource.authsdk.payloaddigest.PayloadDigest.digestGeneration(PayloadDigest.java:45)
+	at com.cybersource.authsdk.payloaddigest.PayloadDigest.getDigest(PayloadDigest.java:90)
+	at com.cybersource.authsdk.http.SignatureGenerator.signatureGeneration(SignatureGenerator.java:77)
+	at com.cybersource.authsdk.http.HttpSignatureToken.signatureHeader(HttpSignatureToken.java:80)
+	at com.cybersource.authsdk.http.HttpSignatureToken.getToken(HttpSignatureToken.java:50)
+	at com.cybersource.authsdk.core.Authorization.getToken(Authorization.java:34)
+	at Invokers.ApiClient.callAuthenticationHeader(ApiClient.java:1221)
+	at Invokers.ApiClient.buildCall(ApiClient.java:1187)
+	at Api.PaymentApi.createPaymentCall(PaymentApi.java:106)
+	at Api.PaymentApi.createPaymentValidateBeforeCall(PaymentApi.java:118)
+	at Api.PaymentApi.createPaymentWithHttpInfo(PaymentApi.java:147)
+	at Api.PaymentApi.createPayment(PaymentApi.java:135)
+	at sample.payments.coreServices.ProcessAPayment.process(ProcessAPayment.java:81)
+	at sample.payments.coreServices.ProcessAPayment.<init>(ProcessAPayment.java:72)
+	at sample.payments.coreServices.ProcessAPayment.main(ProcessAPayment.java:68)
+
+2018-10-10 12:08:11.350 [main] FATAL  - File not found, Entered path/file name :: null
+2018-10-10 12:08:11.364 [main] ERROR  - java.lang.NullPointerException
+	at com.cybersource.authsdk.core.MerchantConfig.getRequestData(MerchantConfig.java:94)
+	at com.cybersource.authsdk.payloaddigest.PayloadDigest.payloadGeneration(PayloadDigest.java:69)
+	at com.cybersource.authsdk.payloaddigest.PayloadDigest.digestGeneration(PayloadDigest.java:45)
+	at com.cybersource.authsdk.payloaddigest.PayloadDigest.getDigest(PayloadDigest.java:90)
+	at com.cybersource.authsdk.http.SignatureGenerator.signatureGeneration(SignatureGenerator.java:77)
+	at com.cybersource.authsdk.http.HttpSignatureToken.signatureHeader(HttpSignatureToken.java:80)
+	at com.cybersource.authsdk.http.HttpSignatureToken.getToken(HttpSignatureToken.java:50)
+	at com.cybersource.authsdk.core.Authorization.getToken(Authorization.java:34)
+	at Invokers.ApiClient.callAuthenticationHeader(ApiClient.java:1221)
+	at Invokers.ApiClient.buildCall(ApiClient.java:1187)
+	at Api.PaymentApi.createPaymentCall(PaymentApi.java:106)
+	at Api.PaymentApi.createPaymentValidateBeforeCall(PaymentApi.java:118)
+	at Api.PaymentApi.createPaymentWithHttpInfo(PaymentApi.java:147)
+	at Api.PaymentApi.createPayment(PaymentApi.java:135)
+	at sample.payments.coreServices.ProcessAPayment.process(ProcessAPayment.java:81)
+	at sample.payments.coreServices.ProcessAPayment.<init>(ProcessAPayment.java:72)
+	at sample.payments.coreServices.ProcessAPayment.main(ProcessAPayment.java:68)
+
+2018-10-10 12:09:04.237 [main] FATAL  - File not found, Entered path/file name :: null
+2018-10-10 12:09:04.251 [main] ERROR  - java.lang.NullPointerException
+	at com.cybersource.authsdk.core.MerchantConfig.getRequestData(MerchantConfig.java:94)
+	at com.cybersource.authsdk.payloaddigest.PayloadDigest.payloadGeneration(PayloadDigest.java:69)
+	at com.cybersource.authsdk.payloaddigest.PayloadDigest.digestGeneration(PayloadDigest.java:45)
+	at com.cybersource.authsdk.payloaddigest.PayloadDigest.getDigest(PayloadDigest.java:90)
+	at com.cybersource.authsdk.http.SignatureGenerator.signatureGeneration(SignatureGenerator.java:77)
+	at com.cybersource.authsdk.http.HttpSignatureToken.signatureHeader(HttpSignatureToken.java:80)
+	at com.cybersource.authsdk.http.HttpSignatureToken.getToken(HttpSignatureToken.java:50)
+	at com.cybersource.authsdk.core.Authorization.getToken(Authorization.java:34)
+	at Invokers.ApiClient.callAuthenticationHeader(ApiClient.java:1223)
+	at Invokers.ApiClient.buildCall(Unknown Source)
+	at Api.PaymentApi.createPaymentCall(PaymentApi.java:106)
+	at Api.PaymentApi.createPaymentValidateBeforeCall(PaymentApi.java:118)
+	at Api.PaymentApi.createPaymentWithHttpInfo(PaymentApi.java:147)
+	at Api.PaymentApi.createPayment(PaymentApi.java:135)
+	at sample.payments.coreServices.ProcessAPayment.process(ProcessAPayment.java:81)
+	at sample.payments.coreServices.ProcessAPayment.<init>(ProcessAPayment.java:72)
+	at sample.payments.coreServices.ProcessAPayment.main(ProcessAPayment.java:68)
+
+2018-10-10 13:01:55.013 [main] FATAL  - File not found, Entered path/file name :: null
+2018-10-10 13:01:55.026 [main] ERROR  - java.lang.NullPointerException
+	at com.cybersource.authsdk.core.MerchantConfig.getRequestData(MerchantConfig.java:94)
+	at com.cybersource.authsdk.http.HttpSignatureToken.<init>(HttpSignatureToken.java:44)
+	at com.cybersource.authsdk.core.TokenGeneratorFactory.getAuthToken(TokenGeneratorFactory.java:22)
+	at com.cybersource.authsdk.core.Authorization.getToken(Authorization.java:34)
+	at Invokers.ApiClient.callAuthenticationHeader(ApiClient.java:1221)
+	at Invokers.ApiClient.buildCall(ApiClient.java:1187)
+	at Api.PaymentApi.createPaymentCall(PaymentApi.java:106)
+	at Api.PaymentApi.createPaymentValidateBeforeCall(PaymentApi.java:118)
+	at Api.PaymentApi.createPaymentWithHttpInfo(PaymentApi.java:147)
+	at Api.PaymentApi.createPayment(PaymentApi.java:135)
+	at sample.payments.coreServices.ProcessAPayment.process(ProcessAPayment.java:81)
+	at sample.payments.coreServices.ProcessAPayment.<init>(ProcessAPayment.java:72)
+	at sample.payments.coreServices.ProcessAPayment.main(ProcessAPayment.java:68)
+
+2018-10-10 13:03:26.367 [main] FATAL  - File not found, Entered path/file name :: null
+2018-10-10 13:03:26.378 [main] ERROR  - java.lang.NullPointerException
+	at com.cybersource.authsdk.core.MerchantConfig.getRequestData(MerchantConfig.java:94)
+	at com.cybersource.authsdk.http.HttpSignatureToken.<init>(HttpSignatureToken.java:44)
+	at com.cybersource.authsdk.core.TokenGeneratorFactory.getAuthToken(TokenGeneratorFactory.java:22)
+	at com.cybersource.authsdk.core.Authorization.getToken(Authorization.java:34)
+	at Invokers.ApiClient.callAuthenticationHeader(ApiClient.java:1221)
+	at Invokers.ApiClient.buildCall(ApiClient.java:1187)
+	at Api.PaymentApi.createPaymentCall(PaymentApi.java:106)
+	at Api.PaymentApi.createPaymentValidateBeforeCall(PaymentApi.java:118)
+	at Api.PaymentApi.createPaymentWithHttpInfo(PaymentApi.java:147)
+	at Api.PaymentApi.createPayment(PaymentApi.java:135)
+	at sample.payments.coreServices.ProcessAPayment.process(ProcessAPayment.java:81)
+	at sample.payments.coreServices.ProcessAPayment.<init>(ProcessAPayment.java:72)
+	at sample.payments.coreServices.ProcessAPayment.main(ProcessAPayment.java:68)
+
+2018-10-10 13:04:52.112 [main] FATAL  - File not found, Entered path/file name :: null
+2018-10-10 13:04:52.114 [main] ERROR  - java.lang.NullPointerException
+	at com.cybersource.authsdk.core.MerchantConfig.getRequestData(MerchantConfig.java:94)
+	at com.cybersource.authsdk.http.HttpSignatureToken.<init>(HttpSignatureToken.java:44)
+	at com.cybersource.authsdk.core.TokenGeneratorFactory.getAuthToken(TokenGeneratorFactory.java:22)
+	at com.cybersource.authsdk.core.Authorization.getToken(Authorization.java:34)
+	at Invokers.ApiClient.callAuthenticationHeader(ApiClient.java:1221)
+	at Invokers.ApiClient.buildCall(ApiClient.java:1187)
+	at Api.PaymentApi.createPaymentCall(PaymentApi.java:106)
+	at Api.PaymentApi.createPaymentValidateBeforeCall(PaymentApi.java:118)
+	at Api.PaymentApi.createPaymentWithHttpInfo(PaymentApi.java:147)
+	at Api.PaymentApi.createPayment(PaymentApi.java:135)
+	at sample.payments.coreServices.ProcessAPayment.process(ProcessAPayment.java:81)
+	at sample.payments.coreServices.ProcessAPayment.<init>(ProcessAPayment.java:72)
+	at sample.payments.coreServices.ProcessAPayment.main(ProcessAPayment.java:68)
+
+2018-10-10 13:05:39.714 [main] FATAL  - File not found, Entered path/file name :: null
+2018-10-10 13:05:39.716 [main] ERROR  - java.lang.NullPointerException
+	at com.cybersource.authsdk.core.MerchantConfig.getRequestData(MerchantConfig.java:94)
+	at com.cybersource.authsdk.http.HttpSignatureToken.<init>(HttpSignatureToken.java:44)
+	at com.cybersource.authsdk.core.TokenGeneratorFactory.getAuthToken(TokenGeneratorFactory.java:22)
+	at com.cybersource.authsdk.core.Authorization.getToken(Authorization.java:34)
+	at Invokers.ApiClient.callAuthenticationHeader(ApiClient.java:1221)
+	at Invokers.ApiClient.buildCall(ApiClient.java:1187)
+	at Api.PaymentApi.createPaymentCall(PaymentApi.java:106)
+	at Api.PaymentApi.createPaymentValidateBeforeCall(PaymentApi.java:118)
+	at Api.PaymentApi.createPaymentWithHttpInfo(PaymentApi.java:147)
+	at Api.PaymentApi.createPayment(PaymentApi.java:135)
+	at sample.payments.coreServices.ProcessAPayment.process(ProcessAPayment.java:81)
+	at sample.payments.coreServices.ProcessAPayment.<init>(ProcessAPayment.java:72)
+	at sample.payments.coreServices.ProcessAPayment.main(ProcessAPayment.java:68)
+
+2018-10-10 13:07:38.757 [main] FATAL  - File not found, Entered path/file name :: null
+2018-10-10 13:07:38.764 [main] ERROR  - java.lang.NullPointerException
+	at com.cybersource.authsdk.core.MerchantConfig.getRequestData(MerchantConfig.java:94)
+	at com.cybersource.authsdk.payloaddigest.PayloadDigest.payloadGeneration(PayloadDigest.java:69)
+	at com.cybersource.authsdk.payloaddigest.PayloadDigest.digestGeneration(PayloadDigest.java:45)
+	at com.cybersource.authsdk.payloaddigest.PayloadDigest.getDigest(PayloadDigest.java:90)
+	at com.cybersource.authsdk.http.SignatureGenerator.signatureGeneration(SignatureGenerator.java:77)
+	at com.cybersource.authsdk.http.HttpSignatureToken.signatureHeader(HttpSignatureToken.java:81)
+	at com.cybersource.authsdk.http.HttpSignatureToken.getToken(HttpSignatureToken.java:51)
+	at com.cybersource.authsdk.core.Authorization.getToken(Authorization.java:34)
+	at Invokers.ApiClient.callAuthenticationHeader(ApiClient.java:1221)
+	at Invokers.ApiClient.buildCall(ApiClient.java:1187)
+	at Api.PaymentApi.createPaymentCall(PaymentApi.java:106)
+	at Api.PaymentApi.createPaymentValidateBeforeCall(PaymentApi.java:118)
+	at Api.PaymentApi.createPaymentWithHttpInfo(PaymentApi.java:147)
+	at Api.PaymentApi.createPayment(PaymentApi.java:135)
+	at sample.payments.coreServices.ProcessAPayment.process(ProcessAPayment.java:81)
+	at sample.payments.coreServices.ProcessAPayment.<init>(ProcessAPayment.java:72)
+	at sample.payments.coreServices.ProcessAPayment.main(ProcessAPayment.java:68)
+
+2018-10-11 12:51:07.839 [main] INFO   - ********* START *********
+2018-10-11 12:51:07.855 [main] ERROR  - Invalid Authentication Type in cybs.properties :: 
+2018-10-11 12:51:40.389 [main] INFO   - ********* START *********
+2018-10-11 12:51:41.931 [main] ERROR  - Invalid Authentication Type in cybs.properties :: 
+2018-10-11 12:52:31.515 [main] INFO   - ********* START *********
+2018-10-11 12:52:31.515 [main] ERROR  - Invalid Authentication Type in cybs.properties :: 
+2018-10-11 13:00:32.850 [main] INFO   - ********* START *********
+2018-10-11 13:00:32.881 [main] ERROR  - Authentication type is mandatory
+2018-10-11 13:01:23.183 [main] INFO   - ********* START *********
+2018-10-11 13:01:23.198 [main] ERROR  - Invalid Authentication Type in cybs.properties :: 
+2018-10-11 13:01:35.746 [main] INFO   - ********* START *********
+2018-10-11 13:01:35.755 [main] ERROR  - Invalid Authentication Type in cybs.properties :: 
+2018-10-11 13:02:57.104 [main] INFO   - ********* START *********
+2018-10-11 13:02:57.121 [main] ERROR  - Invalid Authentication Type in cybs.properties :: 
+2018-10-11 13:05:29.213 [main] INFO   - ********* START *********
+2018-10-11 13:05:29.228 [main] ERROR  - Invalid Authentication Type in cybs.properties :: 
+2018-10-11 13:10:21.340 [main] ERROR  - KeyPassword Empty/Null. Assigning merchantID value
+2018-10-11 13:14:05.703 [main] ERROR  - KeyPassword Empty/Null. Assigning merchantID value
+2018-10-11 13:14:38.265 [main] ERROR  - KeyDirectory not found, Entered directory :: resources
+2018-10-11 13:16:01.890 [main] ERROR  - KeyDirectory not found, Entered directory :: resources
+2018-10-11 13:16:59.205 [main] ERROR  - KeyDirectory not found, Entered directory :: resources
+2018-10-11 13:19:28.519 [main] INFO   - KeyFile, Entered path/file name :: src/main/resources/testrest.p12
+2018-10-11 13:19:29.269 [main] INFO   -  Empty Cache :: Adding Data
+2018-10-11 13:21:40.398 [main] INFO   - KeyFile, Entered path/file name :: src/main/resources/testrest.p12
+2018-10-11 13:21:41.019 [main] INFO   -  Empty Cache :: Adding Data
+2018-10-11 14:27:29.802 [main] INFO   - KeyFile, Entered path/file name :: src/main/resources/testrest.p12
+2018-10-11 14:28:00.836 [main] INFO   -  Empty Cache :: Adding Data
+2018-10-11 14:28:23.385 [main] INFO   - KeyFile, Entered path/file name :: src/main/resources/testrest.p12
+2018-10-11 14:31:18.105 [main] INFO   - KeyFile, Entered path/file name :: src/main/resources/testrest.p12
+2018-10-11 14:35:40.234 [main] INFO   - KeyFile, Entered path/file name :: src/main/resources/testrest.p12
+2018-10-11 14:35:40.873 [main] INFO   -  Empty Cache :: Adding Data
+2018-10-12 10:12:59.098 [main] INFO   - KeyFile, Entered path/file name :: src/main/resources/testrest.p12
+2018-10-12 10:13:00.192 [main] INFO   -  Empty Cache :: Adding Data
+2018-10-12 10:13:01.374 [main] INFO   - KeyFile, Entered path/file name :: src/main/resources/testrest.p12
+2018-10-12 10:13:01.375 [main] INFO   -  Data present in Cache :: Extracting Data
+2018-10-12 10:13:45.855 [main] INFO   - KeyFile, Entered path/file name :: src/main/resources/testrest.p12
+2018-10-12 10:13:46.496 [main] INFO   -  Empty Cache :: Adding Data
+2018-10-12 10:21:47.983 [main] INFO   - KeyFile, Entered path/file name :: src/main/resources/testrest.p12
+2018-10-12 10:22:06.671 [main] INFO   -  Empty Cache :: Adding Data
+2018-10-12 10:23:38.739 [main] INFO   - KeyFile, Entered path/file name :: src/main/resources/testrest.p12
+2018-10-12 10:23:39.301 [main] INFO   -  Empty Cache :: Adding Data
+2018-10-12 10:24:49.314 [main] INFO   - KeyFile, Entered path/file name :: src/main/resources/testrest.p12
+2018-10-12 10:24:56.080 [main] INFO   -  Empty Cache :: Adding Data
+2018-10-12 10:25:07.183 [main] INFO   - KeyFile, Entered path/file name :: src/main/resources/testrest.p12
+2018-10-12 10:25:07.183 [main] INFO   -  Data present in Cache :: Extracting Data
