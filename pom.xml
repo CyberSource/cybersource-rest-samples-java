@@ -11,7 +11,7 @@
 		<dependency>
 			<groupId>io.swagger</groupId>
 			<artifactId>cybersource-rest-client-java</artifactId>
-			<version>1.0.0</version>
+			<version>0.0.1</version>
 		</dependency>
 
 	</dependencies>
