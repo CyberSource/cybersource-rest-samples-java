@@ -26,7 +26,7 @@ _Note: Support for building the SDK with Maven has been made. Please see the res
 			<version>0.0.1</version>
 		</dependency>
 ```
-## To run Sample Code SDK
+## To run Sample Cod
 
 The SDK works for POST, GET, PATCH, DELETE requests.
 It works with any one of the two authentication mechanisms, which are HTTP signature and JWT token.
