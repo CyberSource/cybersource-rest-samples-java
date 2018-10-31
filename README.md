@@ -32,6 +32,8 @@ _Note: Support for building the SDK with Maven has been made. Please see the res
 The SDK works for POST, GET, PATCH, DELETE requests.
 It works with any one of the two authentication mechanisms, which are HTTP signature and JWT token.
 
+FOR TESTING/POC PURPOSE - YOU CAN USE EXISTING CREDENTIALS or configure your own credentails. 
+
 #### To set your API credentials for an API request,Configure the following information in cybs.properties file:
   
   * Http
