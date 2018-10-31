@@ -1,5 +1,10 @@
 # Java Sample Code for the CyberSource SDK
-This project provides multiple sample codes for REST APIs supported by CyberSource.
+
+This repository contains working code samples which demonstrate Java integration with the CyberSource REST APIs through the CyberSource Java SDK.
+
+**__NOTE: THIS REPO OF CODE SAMPLES HAS BEEN MADE PUBLIC FOR SDK TESTING AND SHOULD NOT BE USED FOR PRODUCTION - YET.  PLEASE RAISE AN ISSUE ON THIS REPO IF YOU HAVE FURTHER QUESTIONS AND CHECK BACK SOON FOR GENERAL AVAILABILITY__**
+
+The samples are organized into categories and common usage examples.
 
 ## Requirements
 * JDK 1.8
@@ -7,34 +12,42 @@ This project provides multiple sample codes for REST APIs supported by CyberSour
 * [CyberSource Account](https://developer.cybersource.com/api/developer-guides/dita-gettingstarted/registration.html)
 * [CyberSource API Keys](https://prod.developer.cybersource.com/api/developer-guides/dita-gettingstarted/registration/createCertSharedKey.html)
 
-_Note: Support for building the SDK with Maven has been made. Please see the respective build processes below. 
- All initial jars and docs were built with Maven, however._
- 
- ## Dependencies
-* log4j-api-2.11.0              : logging
-* log4j-2.11.0.jar              : logging
-* log4j-core                    : logging
-* httpclient-4.0.1.jar          : http communication with the payment gateway
-* httpcore-4.0.1.jar            : http communication with the payment gateway
-* junit-4.8.1.jar               : unit testing
-* sonar-maven-plugin-3.4.0.905  : Sonar coverage
 
 ## Installation
 ```
 		<dependency>
-			<groupId>io.swagger</groupId>
+			<groupId>com.cybersource</groupId>
 			<artifactId>cybersource-rest-client-java</artifactId>
 			<version>0.0.1</version>
 		</dependency>
 ```
-## To run Sample Code
+The samples are organized into categories and common usage examples.
 
-The SDK works for POST, GET, PATCH, DELETE requests.
-It works with any one of the two authentication mechanisms, which are HTTP signature and JWT token.
+## Using the Sample Code
 
-FOR TESTING/POC PURPOSE - YOU CAN USE EXISTING CREDENTIALS or configure your own credentails. 
+The samples are all completely independent and self-contained. You can analyze them to get an understanding of how a particular method works, or you can use the snippets as a starting point for your own project.
 
-#### To set your API credentials for an API request,Configure the following information in cybs.properties file:
+You can also run each sample directly from the command line.
+
+## Running the Samples From the Command Line
+* Clone this repository:
+```
+    $ git clone https://github.com/CyberSource/cybersource-rest-samples-node
+```
+* Install the cybersource-rest-client-nodejs
+```
+    $ npm install 
+```
+* Run the individual samples by name. For example: 
+```
+    $ node [DirectoryPath]\[CodeSampleName]
+```
+e.g.
+```
+    $ node Samples\Payments\CoreServices\ProcessPayment.js
+```
+
+#### To set your API credentials for an API request,Configure the following information in resources/cybs.properties file:
   
   * Http
 
@@ -76,21 +89,10 @@ constant in cybs.properties file.  For example:
   runEnvironment      = CyberSource.Environment.PRODUCTION
 ```
 
-## SDK Usage Examples and Sample Code
- * To get started using this SDK, it's highly recommended to download our sample code repository.
- * In that respository, we have comprehensive sample code for all common uses of our API.
- * Additionally, you can find details and examples of how our API is structured in our API Reference Guide.
 
 The [API Reference Guide](https://developer.cybersource.com/api/reference/api-reference.html) provides examples of what information is needed for a particular request and how that information would be formatted. Using those examples, you can easily determine what methods would be necessary to include that information in a request
 using this SDK.
 
-## Building & Testing the SDK
-Build the SDK with Maven
-------------------------
-
-To compile the SDK and create a jar...
-
-  ` $ mvn clean package`
   
 ## License
 This repository is distributed under a proprietary license.
