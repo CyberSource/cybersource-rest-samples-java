@@ -4,7 +4,8 @@ This project provides a sample codes for REST APIs supported by CyberSource
 ## Requirements
 * JDK 1.8
 * Maven 2.2.0 or higher (build SDK only)
-* A cybersource-rest-auth-java account (see _Registration & Configuration_ section below)
+* [CyberSource Account](https://developer.cybersource.com/api/developer-guides/dita-gettingstarted/registration.html)
+* [CyberSource API Keys](https://prod.developer.cybersource.com/api/developer-guides/dita-gettingstarted/registration/createCertSharedKey.html)
 
 _Note: Support for building the SDK with Maven has been made. Please see the respective build processes below. 
  All initial jars and docs were built with Maven, however._
