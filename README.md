@@ -1,5 +1,5 @@
 # Java Sample Code for the CyberSource SDK
-This project provides a sample codes for REST APIs supported by CyberSource
+This project provides multiple sample codes for REST APIs supported by CyberSource.
 
 ## Requirements
 * JDK 1.8
