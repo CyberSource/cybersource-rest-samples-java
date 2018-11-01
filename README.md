@@ -40,11 +40,11 @@ You can also run each sample directly from the command line.
 ```
 * Run the individual samples by name. For example: 
 ```
-    $ node [DirectoryPath]\[CodeSampleName]
+    $ sampecode [DirectoryPath]\[CodeSampleName]
 ```
 e.g.
 ```
-    $ node Samples\Payments\CoreServices\ProcessPayment.js
+    $ samplecode Samples\Payments\CoreServices\ProcessPayment.js
 ```
 
 #### To set your API credentials for an API request,Configure the following information in resources/cybs.properties file:
