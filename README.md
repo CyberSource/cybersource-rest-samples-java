@@ -47,7 +47,7 @@ e.g.
     $ samplecode Samples\Payments\CoreServices\ProcessPayment.js
 ```
 
-#### To set your API credentials for an API request,Configure the following information in resources/cybs.properties file:
+#### To set your API credentials for an API request,Configure the following information in resources/cybersource.properties file:
   
   * Http
 
