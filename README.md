@@ -32,11 +32,11 @@ You can also run each sample directly from the command line.
 ## Running the Samples From the Command Line
 * Clone this repository:
 ```
-    $ git clone https://github.com/CyberSource/cybersource-rest-samples-node
+    $ git clone https://github.com/CyberSource/cybersource-rest-samples-java
 ```
-* Install the cybersource-rest-client-nodejs
+* Install the cybersource-rest-client-java
 ```
-    $ npm install 
+    $ mvn clean package
 ```
 * Run the individual samples by name. For example: 
 ```
@@ -82,7 +82,7 @@ e.g.
 CyberSource maintains a complete sandbox environment for testing and development purposes. This sandbox environment is an exact
 duplicate of our production environment with the transaction authorization and settlement process simulated. By default, this SDK is 
 configured to communicate with the sandbox environment. To switch to the production environment, set the appropriate environment 
-constant in cybs.properties file.  For example:
+constant in resources/cybersource.properties file.  For example:
 
 ```java
 // For PRODUCTION use
