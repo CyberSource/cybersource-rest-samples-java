@@ -30,7 +30,7 @@ The samples are all completely independent and self-contained. You can analyze t
 
 You can also run each sample directly from the command line.
 
-## Running the Samples From the Command Line
+## Running the Samples using Eclipse IDE
 * Clone this repository:
 ```
     $ git clone https://github.com/CyberSource/cybersource-rest-samples-java
