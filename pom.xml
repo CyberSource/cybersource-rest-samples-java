@@ -9,9 +9,9 @@
 
 		<!-- rest client dependency -->
 		<dependency>
-			<groupId>io.swagger</groupId>
+			<groupId>com.cybersource</groupId>
 			<artifactId>cybersource-rest-client-java</artifactId>
-			<version>0.0.1</version>
+			<version>0.0.2</version>
 		</dependency>
 
 	</dependencies>
