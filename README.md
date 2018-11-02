@@ -9,6 +9,7 @@ The samples are organized into categories and common usage examples.
 ## Requirements
 * JDK 1.8
 * Maven 2.2.0 or higher (build SDK only)
+* Eclipse IDE
 * [CyberSource Account](https://developer.cybersource.com/api/developer-guides/dita-gettingstarted/registration.html)
 * [CyberSource API Keys](https://prod.developer.cybersource.com/api/developer-guides/dita-gettingstarted/registration/createCertSharedKey.html)
 
@@ -34,18 +35,23 @@ You can also run each sample directly from the command line.
 ```
     $ git clone https://github.com/CyberSource/cybersource-rest-samples-java
 ```
-* Install the cybersource-rest-client-java
-```
-    $ mvn clean package
-```
-* Run the individual samples by name. For example: 
-```
-    $ sampecode [DirectoryPath]\[CodeSampleName]
-```
-e.g.
-```
-    $ samplecode Samples\Payments\CoreServices\ProcessPayment.js
-```
+* Import the project:
+	* From File menu,select Import.
+	* Expand Maven menu. 
+	* And click Existing Maven Projects
+	* Click next and browse the location where you have the Maven project source code. 
+	* Click next, Eclipse will recognize the Maven project and it will show you a list of all possible Maven projects located there. 
+	* Just select the project and click next. 
+	* Eclipse will show you a Maven Build message. Just click finish. 
+	* The Maven project is successfully imported into Eclipse IDE.
+
+* Run the project: 
+	* Right-click the project folder.
+	* Select Run as Maven Build.
+	* In the Goals field, enter "clean install"
+	* Select the JRE tab and make sure it is pointing at a JRE associated with a JDK.
+	* Click Run.
+
 
 #### To set your API credentials for an API request,Configure the following information in resources/cybersource.properties file:
   
