@@ -1,34 +1,40 @@
 package samples.tms.paymentsWithToken;
 
-import Api.PaymentInstrumentApi;
+import java.util.Properties;
+
+import com.cybersource.authsdk.core.MerchantConfig;
+
+import Api.PaymentInstrumentsApi;
+import Data.Configuration;
 import Invokers.ApiClient;
 import Invokers.ApiException;
 import Model.Body2;
-import Model.InlineResponse2016;
-import Model.InstrumentidentifiersCard;
-import Model.PaymentinstrumentsBillTo;
-import Model.PaymentinstrumentsCard;
-import Model.PaymentinstrumentsCard.TypeEnum;
-import Model.PaymentinstrumentsInstrumentIdentifier;
+import Model.TmsV1PaymentinstrumentsPost201Response;
+import Model.Tmsv1instrumentidentifiersCard;
+import Model.Tmsv1paymentinstrumentsBillTo;
+import Model.Tmsv1paymentinstrumentsCard;
+import Model.Tmsv1paymentinstrumentsCard.TypeEnum;
+import Model.Tmsv1paymentinstrumentsInstrumentIdentifier;
 
 public class PaymentsInstrumentsForAuthorization {
-	private String responseCode = null;
-	private String status=null;
-	static InlineResponse2016 response;
-	private String profileId="93B32398-AD51-4CC2-A682-EA3E93614EB1";
+	private static String responseCode = null;
+	private static String status=null;
+	static TmsV1PaymentinstrumentsPost201Response response;
+	private static String profileId="93B32398-AD51-4CC2-A682-EA3E93614EB1";
+	private static Properties merchantProp;
 
-	Body2 body;
+	static Body2 body;
 
-	private Body2 getRequest() {
+	private static Body2 getRequest() {
 		body = new Body2();
 		
-		PaymentinstrumentsCard card=new PaymentinstrumentsCard();
+		Tmsv1paymentinstrumentsCard card=new Tmsv1paymentinstrumentsCard();
 		card.expirationMonth("09");
 		card.expirationYear("2022");
-		card.type(TypeEnum.visa);
+		card.type(TypeEnum.VISA);
 		body.card(card);
 		
-		PaymentinstrumentsBillTo billTo=new PaymentinstrumentsBillTo();
+		Tmsv1paymentinstrumentsBillTo billTo=new Tmsv1paymentinstrumentsBillTo();
 		billTo.firstName("john");
 		billTo.lastName("Deo");
 		billTo.company("Cybersource");
@@ -42,10 +48,10 @@ public class PaymentsInstrumentsForAuthorization {
 		billTo.phoneNumber("555123456");
 		body.billTo(billTo);
 		
-		InstrumentidentifiersCard instrumentidentifiersCard=new InstrumentidentifiersCard();
+		Tmsv1instrumentidentifiersCard instrumentidentifiersCard=new Tmsv1instrumentidentifiersCard();
 		instrumentidentifiersCard.number("4111111111111111");
 		
-		PaymentinstrumentsInstrumentIdentifier instrumentIdentifier=new PaymentinstrumentsInstrumentIdentifier();
+		Tmsv1paymentinstrumentsInstrumentIdentifier instrumentIdentifier=new Tmsv1paymentinstrumentsInstrumentIdentifier();
 		instrumentIdentifier.card(instrumentidentifiersCard);
 		body.instrumentIdentifier(instrumentIdentifier);
 		
@@ -54,20 +60,20 @@ public class PaymentsInstrumentsForAuthorization {
 	}
 
 	public static void main(String args[]) throws Exception {
-		new PaymentsInstrumentsForAuthorization();
-	}
-
-	public PaymentsInstrumentsForAuthorization() throws Exception {
 		process();
 	}
 
-	private void process() throws Exception {
+	private static void process() throws Exception {
 
 		try {
 			body = getRequest();
 
-			PaymentInstrumentApi paymentInstrumentApi = new PaymentInstrumentApi();
-			response=paymentInstrumentApi.paymentinstrumentsPost(profileId, body);
+			/* Read Merchant details. */
+			merchantProp = Configuration.getMerchantDetails();
+			MerchantConfig merchantConfig = new MerchantConfig(merchantProp);
+			
+			PaymentInstrumentsApi paymentInstrumentApi = new PaymentInstrumentsApi();
+			response=paymentInstrumentApi.tmsV1PaymentinstrumentsPost(profileId, body,merchantConfig);
 
 
 			responseCode=ApiClient.responseCode;

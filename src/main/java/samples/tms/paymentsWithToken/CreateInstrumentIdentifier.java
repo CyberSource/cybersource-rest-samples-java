@@ -1,69 +1,74 @@
 package samples.tms.paymentsWithToken;
 
-import Api.InstrumentIdentifierApi;
+import java.util.Properties;
+
+import com.cybersource.authsdk.core.MerchantConfig;
+
+import Api.InstrumentIdentifiersApi;
+import Data.Configuration;
 import Invokers.ApiClient;
 import Invokers.ApiException;
 import Model.Body;
-import Model.InlineResponse2007;
-import Model.InstrumentidentifiersCard;
-import Model.InstrumentidentifiersProcessingInformation;
-import Model.InstrumentidentifiersProcessingInformationAuthorizationOptions;
-import Model.InstrumentidentifiersProcessingInformationAuthorizationOptionsInitiator;
-import Model.InstrumentidentifiersProcessingInformationAuthorizationOptionsInitiatorMerchantInitiatedTransaction;
+import Model.TmsV1InstrumentidentifiersPost200Response;
+import Model.Tmsv1instrumentidentifiersCard;
+import Model.Tmsv1instrumentidentifiersProcessingInformation;
+import Model.Tmsv1instrumentidentifiersProcessingInformationAuthorizationOptions;
+import Model.Tmsv1instrumentidentifiersProcessingInformationAuthorizationOptionsInitiator;
+import Model.Tmsv1instrumentidentifiersProcessingInformationAuthorizationOptionsInitiatorMerchantInitiatedTransaction;
 
 public class CreateInstrumentIdentifier {
-	private String responseCode = null;
-	private String status=null;
-	static InlineResponse2007 response;
-	private String profileId="93B32398-AD51-4CC2-A682-EA3E93614EB1";
+	private static String responseCode = null;
+	private static String status = null;
+	static TmsV1InstrumentidentifiersPost200Response response;
+	private static String profileId = "93B32398-AD51-4CC2-A682-EA3E93614EB1";
 
-	Body body;
+	private static Properties merchantProp;
+	static Body body;
 
-	private Body getRequest() {
+	private static Body getRequest() {
 		body = new Body();
-		
-		InstrumentidentifiersCard card=new InstrumentidentifiersCard();
+
+		Tmsv1instrumentidentifiersCard card = new Tmsv1instrumentidentifiersCard();
 		card.number("1234567890987654");
 		body.card(card);
-		
-		InstrumentidentifiersProcessingInformationAuthorizationOptionsInitiatorMerchantInitiatedTransaction merchantInitiatedTransaction=new InstrumentidentifiersProcessingInformationAuthorizationOptionsInitiatorMerchantInitiatedTransaction();
+
+		Tmsv1instrumentidentifiersProcessingInformationAuthorizationOptionsInitiatorMerchantInitiatedTransaction merchantInitiatedTransaction = new Tmsv1instrumentidentifiersProcessingInformationAuthorizationOptionsInitiatorMerchantInitiatedTransaction();
 		merchantInitiatedTransaction.previousTransactionId("123456789012345");
-		
-		InstrumentidentifiersProcessingInformationAuthorizationOptionsInitiator initiator=new InstrumentidentifiersProcessingInformationAuthorizationOptionsInitiator();
+
+		Tmsv1instrumentidentifiersProcessingInformationAuthorizationOptionsInitiator initiator = new Tmsv1instrumentidentifiersProcessingInformationAuthorizationOptionsInitiator();
 		initiator.merchantInitiatedTransaction(merchantInitiatedTransaction);
-		
-		InstrumentidentifiersProcessingInformationAuthorizationOptions authorizationOptions=new InstrumentidentifiersProcessingInformationAuthorizationOptions();
+
+		Tmsv1instrumentidentifiersProcessingInformationAuthorizationOptions authorizationOptions = new Tmsv1instrumentidentifiersProcessingInformationAuthorizationOptions();
 		authorizationOptions.initiator(initiator);
-		
-		InstrumentidentifiersProcessingInformation processingInformation=new InstrumentidentifiersProcessingInformation();
+
+		Tmsv1instrumentidentifiersProcessingInformation processingInformation = new Tmsv1instrumentidentifiersProcessingInformation();
 		processingInformation.authorizationOptions(authorizationOptions);
 		body.processingInformation(processingInformation);
-		
+
 		return body;
 
 	}
 
 	public static void main(String args[]) throws Exception {
-		new CreateInstrumentIdentifier();
-	}
-
-	public CreateInstrumentIdentifier() throws Exception {
 		process();
 	}
 
-	private void process() throws Exception {
+	private static void process() throws Exception {
 
 		try {
 			body = getRequest();
+			/* Read Merchant details. */
+			merchantProp = Configuration.getMerchantDetails();
+			MerchantConfig merchantConfig = new MerchantConfig(merchantProp);
 
-			InstrumentIdentifierApi instrumentIdentifierApi = new InstrumentIdentifierApi();
-			response=instrumentIdentifierApi.instrumentidentifiersPost(profileId,body);
+			InstrumentIdentifiersApi instrumentIdentifierApi = new InstrumentIdentifiersApi();
+			response = instrumentIdentifierApi.tmsV1InstrumentidentifiersPost(profileId,merchantConfig, body);
 
-			responseCode=ApiClient.responseCode;
-			status=ApiClient.status;
-			
-			System.out.println("ResponseCode :" +responseCode);
-			System.out.println("Status :" +status);
+			responseCode = ApiClient.responseCode;
+			status = ApiClient.status;
+
+			System.out.println("ResponseCode :" + responseCode);
+			System.out.println("Status :" + status);
 			System.out.println(response.getId());
 
 		} catch (ApiException e) {
@@ -71,6 +76,5 @@ public class CreateInstrumentIdentifier {
 			e.printStackTrace();
 		}
 	}
-
 
 }

@@ -1,37 +1,43 @@
 package samples.payments.coreServices;
 
+import java.util.Properties;
+
+import com.cybersource.authsdk.core.MerchantConfig;
+
 import Api.CaptureApi;
+import Data.Configuration;
 import Invokers.ApiClient;
 import Invokers.ApiException;
 import Model.CapturePaymentRequest;
-import Model.InlineResponse201;
-import Model.InlineResponse2012;
-import Model.V2paymentsClientReferenceInformation;
-import Model.V2paymentsidcapturesOrderInformation;
-import Model.V2paymentsidcapturesOrderInformationAmountDetails;
-import Model.V2paymentsidcapturesOrderInformationBillTo;
-import Model.V2paymentsidcapturesPointOfSaleInformation;
+import Model.PtsV2PaymentsCapturesPost201Response;
+import Model.PtsV2PaymentsPost201Response;
+import Model.Ptsv2paymentsClientReferenceInformation;
+import Model.Ptsv2paymentsidcapturesOrderInformation;
+import Model.Ptsv2paymentsidcapturesOrderInformationAmountDetails;
+import Model.Ptsv2paymentsidcapturesOrderInformationBillTo;
+import Model.Ptsv2paymentsidcapturesPointOfSaleInformation;
 
 public class CapturePayment {
 
 	private static String responseCode = null;
 	private static String status = null;
-	public static InlineResponse201 paymentResponse;
-	public static InlineResponse2012 response;
+	public static PtsV2PaymentsPost201Response paymentResponse;
+	public static PtsV2PaymentsCapturesPost201Response response;
+	private static Properties merchantProp;
 
 	static CapturePaymentRequest request;
 
 	private static CapturePaymentRequest getRequest() {
 		request = new CapturePaymentRequest();
 
-		V2paymentsClientReferenceInformation client = new V2paymentsClientReferenceInformation();
+		Ptsv2paymentsClientReferenceInformation client = new Ptsv2paymentsClientReferenceInformation();
 		client.code("test_capture");
 		request.setClientReferenceInformation(client);
 
-		V2paymentsidcapturesPointOfSaleInformation saleInformation = new V2paymentsidcapturesPointOfSaleInformation();
+		Ptsv2paymentsidcapturesPointOfSaleInformation saleInformation = new Ptsv2paymentsidcapturesPointOfSaleInformation();
 		request.pointOfSaleInformation(saleInformation);
 
-		V2paymentsidcapturesOrderInformationBillTo billTo = new V2paymentsidcapturesOrderInformationBillTo();
+		Ptsv2paymentsidcapturesOrderInformationBillTo billTo = new Ptsv2paymentsidcapturesOrderInformationBillTo();
 		billTo.country("US");
 		billTo.firstName("John");
 		billTo.lastName("Deo");
@@ -41,11 +47,11 @@ public class CapturePayment {
 		billTo.administrativeArea("CA");
 		billTo.email("test@cybs.com");
 
-		V2paymentsidcapturesOrderInformationAmountDetails amountDetails = new V2paymentsidcapturesOrderInformationAmountDetails();
+		Ptsv2paymentsidcapturesOrderInformationAmountDetails amountDetails = new Ptsv2paymentsidcapturesOrderInformationAmountDetails();
 		amountDetails.totalAmount("100.00");
 		amountDetails.currency("USD");
 
-		V2paymentsidcapturesOrderInformation orderInformation = new V2paymentsidcapturesOrderInformation();
+		Ptsv2paymentsidcapturesOrderInformation orderInformation = new Ptsv2paymentsidcapturesOrderInformation();
 		orderInformation.billTo(billTo);
 		orderInformation.amountDetails(amountDetails);
 		request.setOrderInformation(orderInformation);
@@ -58,15 +64,17 @@ public class CapturePayment {
 		process();
 	}
 
-	public static InlineResponse2012 process() throws Exception {
+	public static PtsV2PaymentsCapturesPost201Response process() throws Exception {
 
 		try {
 			request = getRequest();
-			CaptureApi captureApi = new CaptureApi();
-
+			/* Read Merchant details. */
+			merchantProp = Configuration.getMerchantDetails();
+			MerchantConfig merchantConfig = new MerchantConfig(merchantProp);
+			
 			paymentResponse = ProcessPayment.process(false);
-
-			response = captureApi.capturePayment(request, paymentResponse.getId());
+			CaptureApi captureApi = new CaptureApi();
+			response = captureApi.capturePayment(request,merchantConfig, paymentResponse.getId());
 
 			responseCode = ApiClient.responseCode;
 			status = ApiClient.status;

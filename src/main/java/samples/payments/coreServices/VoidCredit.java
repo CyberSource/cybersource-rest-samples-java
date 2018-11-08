@@ -1,26 +1,32 @@
 package samples.payments.coreServices;
 
+import java.util.Properties;
+
+import com.cybersource.authsdk.core.MerchantConfig;
+
 import Api.VoidApi;
+import Data.Configuration;
 import Invokers.ApiClient;
 import Invokers.ApiException;
-import Model.InlineResponse2014;
-import Model.InlineResponse2015;
-import Model.V2paymentsidreversalsClientReferenceInformation;
+import Model.PtsV2CreditsPost201Response;
+import Model.PtsV2PaymentsVoidsPost201Response;
+import Model.Ptsv2paymentsidreversalsClientReferenceInformation;
 import Model.VoidCreditRequest;
 
 public class VoidCredit {
 
 	private static String responseCode = null;
 	private static String status = null;
-	public static InlineResponse2015 response;
-	public static InlineResponse2014 creditResponse;
+	public static PtsV2PaymentsVoidsPost201Response response;
+	public static PtsV2CreditsPost201Response creditResponse;
+	private static Properties merchantProp;
 
 	static VoidCreditRequest request;
 
 	private static VoidCreditRequest getRequest() {
 		request = new VoidCreditRequest();
 
-		V2paymentsidreversalsClientReferenceInformation client = new V2paymentsidreversalsClientReferenceInformation();
+		Ptsv2paymentsidreversalsClientReferenceInformation client = new Ptsv2paymentsidreversalsClientReferenceInformation();
 		client.code("test_credit_void");
 		request.setClientReferenceInformation(client);
 
@@ -37,11 +43,14 @@ public class VoidCredit {
 		try {
 			request = getRequest();
 
+			/* Read Merchant details. */
+			merchantProp = Configuration.getMerchantDetails();
+			MerchantConfig merchantConfig = new MerchantConfig(merchantProp);
+			
+			creditResponse = ProcessCredit.process();
+
 			VoidApi voidApi = new VoidApi();
-
-			creditResponse=ProcessCredit.process();
-
-			response = voidApi.voidCredit(request, creditResponse.getId());
+			response = voidApi.voidCredit(request, creditResponse.getId(),merchantConfig);
 
 			responseCode = ApiClient.responseCode;
 			status = ApiClient.status;

@@ -1,40 +1,46 @@
 package samples.payouts.coreServices;
 
-import Api.DefaultApi;
+import java.util.Properties;
+
+import com.cybersource.authsdk.core.MerchantConfig;
+
+import Api.ProcessAPayoutApi;
+import Data.Configuration;
 import Invokers.ApiClient;
 import Invokers.ApiException;
-import Model.InlineResponse201ClientReferenceInformation;
-import Model.OctCreatePaymentRequest;
-import Model.V2payoutsMerchantInformation;
-import Model.V2payoutsMerchantInformationMerchantDescriptor;
-import Model.V2payoutsOrderInformation;
-import Model.V2payoutsOrderInformationAmountDetails;
-import Model.V2payoutsPaymentInformation;
-import Model.V2payoutsPaymentInformationCard;
-import Model.V2payoutsProcessingInformation;
-import Model.V2payoutsRecipientInformation;
-import Model.V2payoutsSenderInformation;
-import Model.V2payoutsSenderInformationAccount;
+import Model.PtsV2PaymentsPost201ResponseClientReferenceInformation;
+import Model.PtsV2PayoutsPostResponse;
+import Model.Ptsv2payoutsMerchantInformation;
+import Model.Ptsv2payoutsMerchantInformationMerchantDescriptor;
+import Model.Ptsv2payoutsOrderInformation;
+import Model.Ptsv2payoutsOrderInformationAmountDetails;
+import Model.Ptsv2payoutsPaymentInformation;
+import Model.Ptsv2payoutsPaymentInformationCard;
+import Model.Ptsv2payoutsProcessingInformation;
+import Model.Ptsv2payoutsRecipientInformation;
+import Model.Ptsv2payoutsSenderInformation;
+import Model.Ptsv2payoutsSenderInformationAccount;
 
 public class ProcessPayout {
 
 	private static String responseCode = null;
 	private static String status = null;
+	private static Properties merchantProp;
+	
+	static PtsV2PayoutsPostResponse request;
 
-	static OctCreatePaymentRequest request;
+	private static PtsV2PayoutsPostResponse getRequest() {
+		request = new PtsV2PayoutsPostResponse();
 
-	private static OctCreatePaymentRequest getRequest() {
-		request = new OctCreatePaymentRequest();
-
-		InlineResponse201ClientReferenceInformation client = new InlineResponse201ClientReferenceInformation();
+		PtsV2PaymentsPost201ResponseClientReferenceInformation client = new PtsV2PaymentsPost201ResponseClientReferenceInformation();
 		client.code("33557799");
 		request.clientReferenceInformation(client);
 
-		V2payoutsSenderInformationAccount account = new V2payoutsSenderInformationAccount();
+		Ptsv2payoutsSenderInformationAccount account = new Ptsv2payoutsSenderInformationAccount();
 		account.number("1234567890123456789012345678901234");
 		account.fundsSource("01");
 
-		V2payoutsSenderInformation senderInformation = new V2payoutsSenderInformation();
+		Ptsv2payoutsSenderInformation senderInformation = new Ptsv2payoutsSenderInformation();
 		senderInformation.referenceNumber("1234567890");
 		senderInformation.address1("900 Metro Center Blvd.900");
 		senderInformation.countryCode("US");
@@ -43,44 +49,44 @@ public class ProcessPayout {
 		senderInformation.administrativeArea("CA");
 		request.senderInformation(senderInformation);
 
-		V2payoutsProcessingInformation processingInformation = new V2payoutsProcessingInformation();
+		Ptsv2payoutsProcessingInformation processingInformation = new Ptsv2payoutsProcessingInformation();
 		processingInformation.commerceIndicator("internet");
 		processingInformation.businessApplicationId("FD");
 		processingInformation.networkRoutingOrder("ECG");
 		request.processingInformation(processingInformation);
 
-		V2payoutsOrderInformationAmountDetails amountDetails = new V2payoutsOrderInformationAmountDetails();
+		Ptsv2payoutsOrderInformationAmountDetails amountDetails = new Ptsv2payoutsOrderInformationAmountDetails();
 		amountDetails.totalAmount("100.00");
 		amountDetails.currency("USD");
 
-		V2payoutsOrderInformation orderInformation = new V2payoutsOrderInformation();
+		Ptsv2payoutsOrderInformation orderInformation = new Ptsv2payoutsOrderInformation();
 		orderInformation.amountDetails(amountDetails);
 		request.orderInformation(orderInformation);
 
-		V2payoutsMerchantInformationMerchantDescriptor merchantDescriptor = new V2payoutsMerchantInformationMerchantDescriptor();
+		Ptsv2payoutsMerchantInformationMerchantDescriptor merchantDescriptor = new Ptsv2payoutsMerchantInformationMerchantDescriptor();
 		merchantDescriptor.country("US");
 		merchantDescriptor.postalCode("94440");
 		merchantDescriptor.locality("FC");
 		merchantDescriptor.name("Thomas");
 		merchantDescriptor.administrativeArea("CA");
 
-		V2payoutsMerchantInformation merchantInformation = new V2payoutsMerchantInformation();
+		Ptsv2payoutsMerchantInformation merchantInformation = new Ptsv2payoutsMerchantInformation();
 		merchantInformation.categoryCode(123);
 		merchantInformation.merchantDescriptor(merchantDescriptor);
 		request.merchantInformation(merchantInformation);
 
-		V2payoutsPaymentInformationCard card = new V2payoutsPaymentInformationCard();
+		Ptsv2payoutsPaymentInformationCard card = new Ptsv2payoutsPaymentInformationCard();
 		card.expirationYear("2025");
 		card.number("4111111111111111");
 		card.expirationMonth("12");
 		card.type("001");
 		card.sourceAccountType("CH");
 
-		V2payoutsPaymentInformation paymentInformation = new V2payoutsPaymentInformation();
+		Ptsv2payoutsPaymentInformation paymentInformation = new Ptsv2payoutsPaymentInformation();
 		paymentInformation.card(card);
 		request.paymentInformation(paymentInformation);
 
-		V2payoutsRecipientInformation recipientInformation = new V2payoutsRecipientInformation();
+		Ptsv2payoutsRecipientInformation recipientInformation = new Ptsv2payoutsRecipientInformation();
 		recipientInformation.firstName("John");
 		recipientInformation.lastName("Deo");
 		recipientInformation.address1("Paseo Padre Boulevard");
@@ -103,9 +109,13 @@ public class ProcessPayout {
 
 		try {
 			request = getRequest();
-
-			DefaultApi defaultApi = new DefaultApi();
-			defaultApi.octCreatePayment(request);
+			
+			/* Read Merchant details. */
+			merchantProp = Configuration.getMerchantDetails();
+			MerchantConfig merchantConfig = new MerchantConfig(merchantProp);
+			
+			ProcessAPayoutApi payoutApi = new ProcessAPayoutApi();
+			payoutApi.octCreatePayment(request,merchantConfig);
 
 			responseCode = ApiClient.responseCode;
 			status = ApiClient.status;

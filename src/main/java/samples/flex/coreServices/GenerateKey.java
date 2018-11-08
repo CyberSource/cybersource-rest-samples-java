@@ -1,15 +1,21 @@
 package samples.flex.coreServices;
 
+import java.util.Properties;
+
+import com.cybersource.authsdk.core.MerchantConfig;
+
 import Api.KeyGenerationApi;
+import Data.Configuration;
 import Invokers.ApiClient;
 import Invokers.ApiException;
 import Model.GeneratePublicKeyRequest;
-import Model.InlineResponse200;
+import Model.FlexV1KeysPost200Response ;
 
 public class GenerateKey {
 	private static String status=null;
 	private static String responseCode;
-	public static InlineResponse200 response=null;
+	public static FlexV1KeysPost200Response  response=null;
+	private static Properties merchantProp;
 
 	static GeneratePublicKeyRequest request;
 
@@ -25,13 +31,17 @@ public class GenerateKey {
 	}
 
 	
-	public static InlineResponse200 process() throws Exception {
+	public static FlexV1KeysPost200Response  process() throws Exception {
 
 		try {
 			request = getRequest();
 
+			/* Read Merchant details. */
+			merchantProp = Configuration.getMerchantDetails();
+			MerchantConfig merchantConfig = new MerchantConfig(merchantProp);
+			
 			KeyGenerationApi keyGenerationApi = new KeyGenerationApi();
-			response=keyGenerationApi.generatePublicKey(request);
+			response=keyGenerationApi.generatePublicKey(request,merchantConfig);
 
 			responseCode=ApiClient.responseCode;
 			status=ApiClient.status;

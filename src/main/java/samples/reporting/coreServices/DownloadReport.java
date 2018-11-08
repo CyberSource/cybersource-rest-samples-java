@@ -1,45 +1,45 @@
-package samples.tms.coreServices;
+package samples.reporting.coreServices;
 
 import java.util.Properties;
 
+import org.joda.time.LocalDate;
+
 import com.cybersource.authsdk.core.MerchantConfig;
 
-import Api.InstrumentIdentifierApi;
+import Api.ReportDownloadsApi;
 import Data.Configuration;
 import Invokers.ApiClient;
 import Invokers.ApiException;
-import Model.TmsV1InstrumentidentifiersPost200Response;
 
-public class RetrieveInstrumentIdentifier {
-	private static String profileId = "93B32398-AD51-4CC2-A682-EA3E93614EB1";
-	private static String tokenId = "7010000000004697654";
+public class DownloadReport {
+
 	private static String responseCode = null;
 	private static String status = null;
-	public static TmsV1InstrumentidentifiersPost200Response response;
+	private static String reportName = "testrest_v2";
+	private static String organizationId = "testrest";
 	private static Properties merchantProp;
-	
+
+	static LocalDate reportDate = new LocalDate("2018-09-02");
+
 	public static void main(String args[]) throws Exception {
 		process();
 	}
 
-
 	private static void process() throws Exception {
 
 		try {
+
 			/* Read Merchant details. */
 			merchantProp = Configuration.getMerchantDetails();
 			MerchantConfig merchantConfig = new MerchantConfig(merchantProp);
 			
-			InstrumentIdentifierApi instrumentIdentifierApi = new InstrumentIdentifierApi();
-			response = instrumentIdentifierApi.tmsV1InstrumentidentifiersTokenIdGet(profileId,merchantConfig, tokenId);
+			ReportDownloadsApi downloadsApi = new ReportDownloadsApi();
+			downloadsApi.downloadReport(reportDate, reportName, organizationId,merchantConfig);
 
 			responseCode = ApiClient.responseCode;
 			status = ApiClient.status;
-
 			System.out.println("ResponseCode :" + responseCode);
-			System.out.println("Status :" + status);
-			System.out.println(response.getCard());
-			
+			System.out.println("ResponseMessage :" + status);
 
 		} catch (ApiException e) {
 
