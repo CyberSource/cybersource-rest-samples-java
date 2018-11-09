@@ -53,7 +53,7 @@ You can also run each sample directly from the command line.
 	* Click Run.
 
 
-#### To set your API credentials for an API request,Configure the following information in resources/cybersource.properties file:
+#### To set your API credentials for an API request,Configure the following information in src/main/java/data/Configuration.java file:
   
   * Http
 
