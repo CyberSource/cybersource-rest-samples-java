@@ -1,42 +1,48 @@
 package samples.payments.coreServices;
 
+import java.util.Properties;
+
+import com.cybersource.authsdk.core.MerchantConfig;
+
 import Api.RefundApi;
+import Data.Configuration;
 import Invokers.ApiClient;
 import Invokers.ApiException;
-import Model.InlineResponse2012;
-import Model.InlineResponse2013;
+import Model.PtsV2PaymentsRefundPost201Response;
+import Model.PtsV2PaymentsCapturesPost201Response;
+import Model.Ptsv2paymentsClientReferenceInformation;
+import Model.Ptsv2paymentsidcapturesAggregatorInformation;
+import Model.Ptsv2paymentsidcapturesAggregatorInformationSubMerchant;
+import Model.Ptsv2paymentsidcapturesBuyerInformation;
+import Model.Ptsv2paymentsidcapturesOrderInformationAmountDetails;
+import Model.Ptsv2paymentsidcapturesOrderInformationBillTo;
+import Model.Ptsv2paymentsidcapturesOrderInformationInvoiceDetails;
+import Model.Ptsv2paymentsidcapturesOrderInformationShippingDetails;
+import Model.Ptsv2paymentsidrefundsMerchantInformation;
+import Model.Ptsv2paymentsidrefundsOrderInformation;
 import Model.RefundCaptureRequest;
-import Model.V2paymentsClientReferenceInformation;
-import Model.V2paymentsidcapturesAggregatorInformation;
-import Model.V2paymentsidcapturesAggregatorInformationSubMerchant;
-import Model.V2paymentsidcapturesBuyerInformation;
-import Model.V2paymentsidcapturesOrderInformationAmountDetails;
-import Model.V2paymentsidcapturesOrderInformationBillTo;
-import Model.V2paymentsidcapturesOrderInformationInvoiceDetails;
-import Model.V2paymentsidcapturesOrderInformationShippingDetails;
-import Model.V2paymentsidrefundsMerchantInformation;
-import Model.V2paymentsidrefundsOrderInformation;
 
 public class RefundCapture {
 	private static String responseCode = null;
-	private static String status=null;
-	public static InlineResponse2013 response;
-	public static InlineResponse2012 captureResponse;
-	
+	private static String status = null;
+	public static PtsV2PaymentsRefundPost201Response response;
+	public static PtsV2PaymentsCapturesPost201Response captureResponse;
+	private static Properties merchantProp;
+
 	static RefundCaptureRequest request;
 
 	private static RefundCaptureRequest getRequest() {
 		request = new RefundCaptureRequest();
 
-		V2paymentsClientReferenceInformation client = new V2paymentsClientReferenceInformation();
+		Ptsv2paymentsClientReferenceInformation client = new Ptsv2paymentsClientReferenceInformation();
 		client.code("test_refund_capture");
 		request.setClientReferenceInformation(client);
 
-		V2paymentsidcapturesBuyerInformation buyerInformation = new V2paymentsidcapturesBuyerInformation();
+		Ptsv2paymentsidcapturesBuyerInformation buyerInformation = new Ptsv2paymentsidcapturesBuyerInformation();
 		buyerInformation.merchantCustomerId("123456abcd");
 		request.buyerInformation(buyerInformation);
 
-		V2paymentsidcapturesAggregatorInformationSubMerchant subMerchant = new V2paymentsidcapturesAggregatorInformationSubMerchant();
+		Ptsv2paymentsidcapturesAggregatorInformationSubMerchant subMerchant = new Ptsv2paymentsidcapturesAggregatorInformationSubMerchant();
 
 		subMerchant.country("US");
 		subMerchant.phoneNumber("4158880000");
@@ -46,18 +52,17 @@ public class RefundCapture {
 		subMerchant.name("Visa Inc");
 		subMerchant.administrativeArea("CA");
 		subMerchant.email("test@cybs.com");
-		
-       
-		V2paymentsidcapturesAggregatorInformation aggregatorInformation = new V2paymentsidcapturesAggregatorInformation();
+
+		Ptsv2paymentsidcapturesAggregatorInformation aggregatorInformation = new Ptsv2paymentsidcapturesAggregatorInformation();
 		aggregatorInformation.subMerchant(subMerchant);
 		aggregatorInformation.name("V-Internatio");
 		aggregatorInformation.aggregatorId("123456789");
 		request.setAggregatorInformation(aggregatorInformation);
-		
-		V2paymentsidcapturesOrderInformationShippingDetails shippingDetails=new V2paymentsidcapturesOrderInformationShippingDetails();
+
+		Ptsv2paymentsidcapturesOrderInformationShippingDetails shippingDetails = new Ptsv2paymentsidcapturesOrderInformationShippingDetails();
 		shippingDetails.shipFromPostalCode("47404");
-		
-		V2paymentsidcapturesOrderInformationBillTo billTo = new V2paymentsidcapturesOrderInformationBillTo();
+
+		Ptsv2paymentsidcapturesOrderInformationBillTo billTo = new Ptsv2paymentsidcapturesOrderInformationBillTo();
 		billTo.country("US");
 		billTo.firstName("John");
 		billTo.lastName("Deo");
@@ -69,52 +74,53 @@ public class RefundCapture {
 		billTo.company("Visa");
 		billTo.administrativeArea("MI");
 		billTo.email("test@cybs.com");
-		
-		
-		V2paymentsidcapturesOrderInformationInvoiceDetails invoiceDetails=new V2paymentsidcapturesOrderInformationInvoiceDetails();
+
+		Ptsv2paymentsidcapturesOrderInformationInvoiceDetails invoiceDetails = new Ptsv2paymentsidcapturesOrderInformationInvoiceDetails();
 		invoiceDetails.purchaseOrderDate("20111231");
 		invoiceDetails.purchaseOrderNumber("CREDIT US");
 
-		V2paymentsidcapturesOrderInformationAmountDetails amountDetails = new V2paymentsidcapturesOrderInformationAmountDetails();
+		Ptsv2paymentsidcapturesOrderInformationAmountDetails amountDetails = new Ptsv2paymentsidcapturesOrderInformationAmountDetails();
 		amountDetails.totalAmount("100");
 		amountDetails.exchangeRate("0.5");
 		amountDetails.exchangeRateTimeStamp("2.01304E+13");
 		amountDetails.currency("usd");
 
-		V2paymentsidrefundsOrderInformation orderInformation = new V2paymentsidrefundsOrderInformation();
+		Ptsv2paymentsidrefundsOrderInformation orderInformation = new Ptsv2paymentsidrefundsOrderInformation();
 		orderInformation.shippingDetails(shippingDetails);
 		orderInformation.billTo(billTo);
 		orderInformation.invoiceDetails(invoiceDetails);
 		orderInformation.amountDetails(amountDetails);
 		request.setOrderInformation(orderInformation);
-		
-		V2paymentsidrefundsMerchantInformation merchantInformation=new V2paymentsidrefundsMerchantInformation();
+
+		Ptsv2paymentsidrefundsMerchantInformation merchantInformation = new Ptsv2paymentsidrefundsMerchantInformation();
 		merchantInformation.categoryCode(1234);
 		request.merchantInformation(merchantInformation);
 
 		return request;
 
 	}
-	
+
 	public static void main(String args[]) throws Exception {
 		process();
 	}
 
-	public static  void process() throws Exception {
+	public static void process() throws Exception {
 
 		try {
 			request = getRequest();
-			RefundApi refundApi = new RefundApi();
-			 
-		    captureResponse=CapturePayment.process();
-		    
-			response=refundApi.refundCapture(request, captureResponse.getId());
-
-			responseCode=ApiClient.responseCode;
-			status=ApiClient.status;
+			/* Read Merchant details. */
+			merchantProp = Configuration.getMerchantDetails();
+			MerchantConfig merchantConfig = new MerchantConfig(merchantProp);
 			
-			System.out.println("ResponseCode :" +responseCode);
-			System.out.println("Status :" +status);
+			captureResponse = CapturePayment.process();
+			RefundApi refundApi = new RefundApi();
+			response = refundApi.refundCapture(request, captureResponse.getId(),merchantConfig);
+
+			responseCode = ApiClient.responseCode;
+			status = ApiClient.status;
+
+			System.out.println("ResponseCode :" + responseCode);
+			System.out.println("Status :" + status);
 			System.out.println(response.getId());
 
 		} catch (ApiException e) {

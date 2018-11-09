@@ -1,70 +1,76 @@
 package samples.payments.coreServices;
 
+import java.util.Properties;
+
+import com.cybersource.authsdk.core.MerchantConfig;
+
 import Api.RefundApi;
+import Data.Configuration;
 import Invokers.ApiClient;
 import Invokers.ApiException;
-import Model.InlineResponse201;
-import Model.InlineResponse2013;
+import Model.PtsV2PaymentsPost201Response;
+import Model.PtsV2PaymentsRefundPost201Response;
+import Model.Ptsv2paymentsClientReferenceInformation;
+import Model.Ptsv2paymentsidcapturesOrderInformationAmountDetails;
+import Model.Ptsv2paymentsidrefundsOrderInformation;
 import Model.RefundPaymentRequest;
-import Model.V2paymentsClientReferenceInformation;
-import Model.V2paymentsidcapturesOrderInformationAmountDetails;
-import Model.V2paymentsidrefundsOrderInformation;
 
 public class RefundPayment {
-	private static String responseCode=null;
-	private static String status=null;
-	public static InlineResponse2013 response;
-	public static InlineResponse201 paymentResponse;
-	
+	private static String responseCode = null;
+	private static String status = null;
+	public static PtsV2PaymentsRefundPost201Response response;
+	public static PtsV2PaymentsPost201Response paymentResponse;
+	private static Properties merchantProp;
+
 	static RefundPaymentRequest request;
-	
-   private static RefundPaymentRequest getRequest(){
-		 request=new RefundPaymentRequest();
-		
-		V2paymentsClientReferenceInformation client = new V2paymentsClientReferenceInformation();
+
+	private static RefundPaymentRequest getRequest() {
+		request = new RefundPaymentRequest();
+
+		Ptsv2paymentsClientReferenceInformation client = new Ptsv2paymentsClientReferenceInformation();
 		client.code("test_refund_payment");
 		request.setClientReferenceInformation(client);
-		
-		V2paymentsidcapturesOrderInformationAmountDetails amountDetails = new V2paymentsidcapturesOrderInformationAmountDetails();
+
+		Ptsv2paymentsidcapturesOrderInformationAmountDetails amountDetails = new Ptsv2paymentsidcapturesOrderInformationAmountDetails();
 		amountDetails.totalAmount("102.21");
 		amountDetails.currency("USD");
 
-		V2paymentsidrefundsOrderInformation orderInformation=new V2paymentsidrefundsOrderInformation();
-         orderInformation.amountDetails(amountDetails);
-        request.setOrderInformation(orderInformation);
-		
+		Ptsv2paymentsidrefundsOrderInformation orderInformation = new Ptsv2paymentsidrefundsOrderInformation();
+		orderInformation.amountDetails(amountDetails);
+		request.setOrderInformation(orderInformation);
+
 		return request;
-		
+
 	}
-	
+
 	public static void main(String args[]) throws Exception {
 		process();
 	}
-  
-	public static InlineResponse2013 process() throws Exception {
-	
-	try {
-	    request=getRequest();
-	    RefundApi refundApi=new RefundApi();
-	    
-	     paymentResponse=ProcessPayment.process(true);
-	    
-		response=refundApi.refundPayment(request, paymentResponse.getId());
-	    
-		
-		responseCode=ApiClient.responseCode;
-		status=ApiClient.status;
-		
-		System.out.println("ResponseCode :" +responseCode);
-		System.out.println("Status :" +status);
-		System.out.println(response.getId());
-		
-	
-	} catch (ApiException e) {
-		
-		e.printStackTrace();
+
+	public static PtsV2PaymentsRefundPost201Response process() throws Exception {
+
+		try {
+			request = getRequest();
+			/* Read Merchant details. */
+			merchantProp = Configuration.getMerchantDetails();
+			MerchantConfig merchantConfig = new MerchantConfig(merchantProp);
+			
+			paymentResponse = ProcessPayment.process(true);
+			RefundApi refundApi = new RefundApi();
+			response = refundApi.refundPayment(request, paymentResponse.getId(),merchantConfig);
+
+			responseCode = ApiClient.responseCode;
+			status = ApiClient.status;
+
+			System.out.println("ResponseCode :" + responseCode);
+			System.out.println("Status :" + status);
+			System.out.println(response.getId());
+
+		} catch (ApiException e) {
+
+			e.printStackTrace();
+		}
+		return response;
 	}
-	return response;
-  }
 
 }

@@ -1,26 +1,32 @@
 package samples.payments.coreServices;
 
+import java.util.Properties;
+
+import com.cybersource.authsdk.core.MerchantConfig;
+
 import Api.VoidApi;
+import Data.Configuration;
 import Invokers.ApiClient;
 import Invokers.ApiException;
-import Model.InlineResponse2013;
-import Model.InlineResponse2015;
-import Model.V2paymentsidreversalsClientReferenceInformation;
+import Model.PtsV2PaymentsRefundPost201Response;
+import Model.PtsV2PaymentsVoidsPost201Response;
+import Model.Ptsv2paymentsidreversalsClientReferenceInformation;
 import Model.VoidRefundRequest;
 
 public class VoidRefund {
 
 	private String responseCode = null;
-	private String status=null;
-	static InlineResponse2015 response;
-	public static InlineResponse2013 refundResponse;
+	private String status = null;
+	static PtsV2PaymentsVoidsPost201Response response;
+	public static PtsV2PaymentsRefundPost201Response refundResponse;
+	private static Properties merchantProp;
 
 	VoidRefundRequest request;
 
 	private VoidRefundRequest getRequest() {
 		request = new VoidRefundRequest();
 
-		V2paymentsidreversalsClientReferenceInformation client = new V2paymentsidreversalsClientReferenceInformation();
+		Ptsv2paymentsidreversalsClientReferenceInformation client = new Ptsv2paymentsidreversalsClientReferenceInformation();
 		client.code("test_refund_void");
 		request.setClientReferenceInformation(client);
 
@@ -41,17 +47,20 @@ public class VoidRefund {
 		try {
 			request = getRequest();
 
-			VoidApi voidApi = new VoidApi();
-			
-			refundResponse=RefundPayment.process();
-			
-			response=voidApi.voidRefund(request, refundResponse.getId());
+			/* Read Merchant details. */
+			merchantProp = Configuration.getMerchantDetails();
+			MerchantConfig merchantConfig = new MerchantConfig(merchantProp);
 
-			responseCode=ApiClient.responseCode;
-			status=ApiClient.status;
+			refundResponse = RefundPayment.process();
 			
-			System.out.println("ResponseCode :" +responseCode);
-			System.out.println("Status :" +status);
+			VoidApi voidApi = new VoidApi();
+			response = voidApi.voidRefund(request, refundResponse.getId(),merchantConfig);
+
+			responseCode = ApiClient.responseCode;
+			status = ApiClient.status;
+
+			System.out.println("ResponseCode :" + responseCode);
+			System.out.println("Status :" + status);
 			System.out.println(response.getId());
 
 		} catch (ApiException e) {

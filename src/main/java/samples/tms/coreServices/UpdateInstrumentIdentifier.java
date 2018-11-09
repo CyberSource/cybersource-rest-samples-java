@@ -1,37 +1,43 @@
 package samples.tms.coreServices;
 
+import java.util.Properties;
+
+import com.cybersource.authsdk.core.MerchantConfig;
+
 import Api.InstrumentIdentifierApi;
+import Data.Configuration;
 import Invokers.ApiClient;
 import Invokers.ApiException;
 import Model.Body1;
-import Model.InlineResponse2007;
-import Model.InstrumentidentifiersProcessingInformation;
-import Model.InstrumentidentifiersProcessingInformationAuthorizationOptions;
-import Model.InstrumentidentifiersProcessingInformationAuthorizationOptionsInitiator;
-import Model.InstrumentidentifiersProcessingInformationAuthorizationOptionsInitiatorMerchantInitiatedTransaction;
+import Model.TmsV1InstrumentidentifiersPost200Response;
+import Model.Tmsv1instrumentidentifiersProcessingInformation;
+import Model.Tmsv1instrumentidentifiersProcessingInformationAuthorizationOptions;
+import Model.Tmsv1instrumentidentifiersProcessingInformationAuthorizationOptionsInitiator;
+import Model.Tmsv1instrumentidentifiersProcessingInformationAuthorizationOptionsInitiatorMerchantInitiatedTransaction;
 
 public class UpdateInstrumentIdentifier {
 	private static String responseCode = null;
 	private static String status = null;
-	static InlineResponse2007 response;
+	static TmsV1InstrumentidentifiersPost200Response response;
 	private static String profileId = "93B32398-AD51-4CC2-A682-EA3E93614EB1";
-	private static String tokenId = "76C16E5FCB608FEAE05340588D0ADAB1";
+	private static String tokenId = "7010000000004697654";
+	private static Properties merchantProp;
 
 	static Body1 body;
 
 	private static Body1 getRequest() {
 		body = new Body1();
 
-		InstrumentidentifiersProcessingInformationAuthorizationOptionsInitiatorMerchantInitiatedTransaction merchantInitiatedTransaction = new InstrumentidentifiersProcessingInformationAuthorizationOptionsInitiatorMerchantInitiatedTransaction();
+		Tmsv1instrumentidentifiersProcessingInformationAuthorizationOptionsInitiatorMerchantInitiatedTransaction merchantInitiatedTransaction = new Tmsv1instrumentidentifiersProcessingInformationAuthorizationOptionsInitiatorMerchantInitiatedTransaction();
 		merchantInitiatedTransaction.previousTransactionId("123456789012345");
 
-		InstrumentidentifiersProcessingInformationAuthorizationOptionsInitiator initiator = new InstrumentidentifiersProcessingInformationAuthorizationOptionsInitiator();
+		Tmsv1instrumentidentifiersProcessingInformationAuthorizationOptionsInitiator initiator = new Tmsv1instrumentidentifiersProcessingInformationAuthorizationOptionsInitiator();
 		initiator.merchantInitiatedTransaction(merchantInitiatedTransaction);
 
-		InstrumentidentifiersProcessingInformationAuthorizationOptions authorizationOptions = new InstrumentidentifiersProcessingInformationAuthorizationOptions();
+		Tmsv1instrumentidentifiersProcessingInformationAuthorizationOptions authorizationOptions = new Tmsv1instrumentidentifiersProcessingInformationAuthorizationOptions();
 		authorizationOptions.initiator(initiator);
 
-		InstrumentidentifiersProcessingInformation processingInformation = new InstrumentidentifiersProcessingInformation();
+		Tmsv1instrumentidentifiersProcessingInformation processingInformation = new Tmsv1instrumentidentifiersProcessingInformation();
 		processingInformation.authorizationOptions(authorizationOptions);
 		body.processingInformation(processingInformation);
 
@@ -43,13 +49,16 @@ public class UpdateInstrumentIdentifier {
 		process();
 	}
 
-	public static InlineResponse2007 process() throws Exception {
+	public static TmsV1InstrumentidentifiersPost200Response process() throws Exception {
 
 		try {
 			body = getRequest();
-
+			/* Read Merchant details. */
+			merchantProp = Configuration.getMerchantDetails();
+			MerchantConfig merchantConfig = new MerchantConfig(merchantProp);
+			
 			InstrumentIdentifierApi instrumentIdentifierApi = new InstrumentIdentifierApi();
-			response = instrumentIdentifierApi.instrumentidentifiersTokenIdPatch(profileId, tokenId, body);
+			response = instrumentIdentifierApi.tmsV1InstrumentidentifiersTokenIdPatch(profileId,merchantConfig, tokenId, body);
 
 			responseCode = ApiClient.responseCode;
 			status = ApiClient.status;

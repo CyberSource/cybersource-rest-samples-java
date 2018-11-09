@@ -1,41 +1,47 @@
 package samples.payments.coreServices;
 
-import Api.PaymentApi;
+import java.util.Properties;
+
+import com.cybersource.authsdk.core.MerchantConfig;
+
+import Api.PaymentsApi;
+import Data.Configuration;
 import Invokers.ApiClient;
 import Invokers.ApiException;
 import Model.CreatePaymentRequest;
-import Model.InlineResponse201;
-import Model.V2paymentsClientReferenceInformation;
-import Model.V2paymentsOrderInformation;
-import Model.V2paymentsOrderInformationAmountDetails;
-import Model.V2paymentsOrderInformationBillTo;
-import Model.V2paymentsPaymentInformation;
-import Model.V2paymentsPaymentInformationCard;
-import Model.V2paymentsPointOfSaleInformation;
-import Model.V2paymentsProcessingInformation;
+import Model.PtsV2PaymentsPost201Response;
+import Model.Ptsv2paymentsClientReferenceInformation;
+import Model.Ptsv2paymentsOrderInformation;
+import Model.Ptsv2paymentsOrderInformationAmountDetails;
+import Model.Ptsv2paymentsOrderInformationBillTo;
+import Model.Ptsv2paymentsPaymentInformation;
+import Model.Ptsv2paymentsPaymentInformationCard;
+import Model.Ptsv2paymentsPointOfSaleInformation;
+import Model.Ptsv2paymentsProcessingInformation;
 
 public class ProcessPayment {
 	private static String responseCode = null;
-	private static String status=null;
-	static InlineResponse201 response;
-	static boolean capture=false;
+	private static String status = null;
+	private static PtsV2PaymentsPost201Response response;
+	private static boolean capture = false;
+	private static Properties merchantProp;
 
 	private static CreatePaymentRequest request;
 
 	private static CreatePaymentRequest getRequest(boolean capture) {
 		request = new CreatePaymentRequest();
 
-		V2paymentsClientReferenceInformation client = new V2paymentsClientReferenceInformation();
+		Ptsv2paymentsClientReferenceInformation client = new Ptsv2paymentsClientReferenceInformation();
 		client.code("test_payment");
 		request.clientReferenceInformation(client);
 
-		V2paymentsPointOfSaleInformation saleInformation = new V2paymentsPointOfSaleInformation();
+		Ptsv2paymentsPointOfSaleInformation saleInformation = new Ptsv2paymentsPointOfSaleInformation();
 		saleInformation.cardPresent(false);
 		saleInformation.catLevel(6);
 		saleInformation.terminalCapability(4);
 		request.pointOfSaleInformation(saleInformation);
 
-		V2paymentsOrderInformationBillTo billTo = new V2paymentsOrderInformationBillTo();
+		Ptsv2paymentsOrderInformationBillTo billTo = new Ptsv2paymentsOrderInformationBillTo();
 		billTo.country("US");
 		billTo.firstName("John");
 		billTo.lastName("Deo");
@@ -44,30 +50,29 @@ public class ProcessPayment {
 		billTo.locality("san francisco");
 		billTo.administrativeArea("CA");
 		billTo.email("test@cybs.com");
-		
 
-		V2paymentsOrderInformationAmountDetails amountDetails = new V2paymentsOrderInformationAmountDetails();
+		Ptsv2paymentsOrderInformationAmountDetails amountDetails = new Ptsv2paymentsOrderInformationAmountDetails();
 		amountDetails.totalAmount("100.00");
 		amountDetails.currency("USD");
 
-		V2paymentsOrderInformation orderInformation = new V2paymentsOrderInformation();
+		Ptsv2paymentsOrderInformation orderInformation = new Ptsv2paymentsOrderInformation();
 		orderInformation.billTo(billTo);
 		orderInformation.amountDetails(amountDetails);
 		request.setOrderInformation(orderInformation);
-		
-		V2paymentsProcessingInformation processingInformation=new V2paymentsProcessingInformation();
-		if(capture==true){
-		processingInformation.capture(true);
+
+		Ptsv2paymentsProcessingInformation processingInformation = new Ptsv2paymentsProcessingInformation();
+		if (capture == true) {
+			processingInformation.capture(true);
 		}
 		request.processingInformation(processingInformation);
 
-		V2paymentsPaymentInformationCard card = new V2paymentsPaymentInformationCard();
+		Ptsv2paymentsPaymentInformationCard card = new Ptsv2paymentsPaymentInformationCard();
 		card.expirationYear("2031");
 		card.number("4111111111111111");
 		card.securityCode("123");
 		card.expirationMonth("12");
 
-		V2paymentsPaymentInformation paymentInformation = new V2paymentsPaymentInformation();
+		Ptsv2paymentsPaymentInformation paymentInformation = new Ptsv2paymentsPaymentInformation();
 		paymentInformation.card(card);
 		request.setPaymentInformation(paymentInformation);
 
@@ -79,21 +84,23 @@ public class ProcessPayment {
 		process(capture);
 	}
 
-	
-	public static  InlineResponse201 process(boolean check) throws Exception {
+	public static PtsV2PaymentsPost201Response process(boolean check) throws Exception {
 
 		try {
-			capture=check;
+			capture = check;
 			request = getRequest(capture);
-
-			PaymentApi paymentApi = new PaymentApi();
-			response=paymentApi.createPayment(request);
-
-			responseCode=ApiClient.responseCode;
-			status=ApiClient.status;
+			/* Read Merchant details. */
+			merchantProp = Configuration.getMerchantDetails();
+			MerchantConfig merchantConfig = new MerchantConfig(merchantProp);
 			
-			System.out.println("ResponseCode :" +responseCode);
-			System.out.println("Status :" +status);
+			PaymentsApi paymentApi = new PaymentsApi();
+			response = paymentApi.createPayment(request,merchantConfig);
+
+			responseCode = ApiClient.responseCode;
+			status = ApiClient.status;
+
+			System.out.println("ResponseCode :" + responseCode);
+			System.out.println("Status :" + status);
 			System.out.println(response.getId());
 
 		} catch (ApiException e) {

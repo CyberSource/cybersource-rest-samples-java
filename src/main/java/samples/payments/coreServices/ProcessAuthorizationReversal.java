@@ -1,35 +1,41 @@
 package samples.payments.coreServices;
 
+import java.util.Properties;
+
+import com.cybersource.authsdk.core.MerchantConfig;
+
 import Api.ReversalApi;
+import Data.Configuration;
 import Invokers.ApiClient;
 import Invokers.ApiException;
 import Model.AuthReversalRequest;
-import Model.InlineResponse201;
-import Model.InlineResponse2011;
-import Model.V2paymentsidreversalsClientReferenceInformation;
-import Model.V2paymentsidreversalsReversalInformation;
-import Model.V2paymentsidreversalsReversalInformationAmountDetails;
+import Model.PtsV2PaymentsPost201Response;
+import Model.PtsV2PaymentsReversalsPost201Response;
+import Model.Ptsv2paymentsidreversalsClientReferenceInformation;
+import Model.Ptsv2paymentsidreversalsReversalInformation;
+import Model.Ptsv2paymentsidreversalsReversalInformationAmountDetails;
 
 public class ProcessAuthorizationReversal {
 
 	private static String responseCode = null;
 	private static String status = null;
-	static InlineResponse2011 response;
-	public static InlineResponse201 paymentResponse;
+	static PtsV2PaymentsReversalsPost201Response response;
+	public static PtsV2PaymentsPost201Response paymentResponse;
+	private static Properties merchantProp;
 
 	static AuthReversalRequest request;
 
 	private static AuthReversalRequest getRequest() {
 		request = new AuthReversalRequest();
 
-		V2paymentsidreversalsClientReferenceInformation client = new V2paymentsidreversalsClientReferenceInformation();
+		Ptsv2paymentsidreversalsClientReferenceInformation client = new Ptsv2paymentsidreversalsClientReferenceInformation();
 		client.code("test_reversal");
 		request.setClientReferenceInformation(client);
 
-		V2paymentsidreversalsReversalInformationAmountDetails amountDetails = new V2paymentsidreversalsReversalInformationAmountDetails();
-		amountDetails.totalAmount("102.21");
+		Ptsv2paymentsidreversalsReversalInformationAmountDetails amountDetails = new Ptsv2paymentsidreversalsReversalInformationAmountDetails();
+		amountDetails.totalAmount("100.00");
 
-		V2paymentsidreversalsReversalInformation reversalInformation = new V2paymentsidreversalsReversalInformation();
+		Ptsv2paymentsidreversalsReversalInformation reversalInformation = new Ptsv2paymentsidreversalsReversalInformation();
 		reversalInformation.reason("testing");
 		reversalInformation.setAmountDetails(amountDetails);
 
@@ -43,17 +49,19 @@ public class ProcessAuthorizationReversal {
 		process();
 	}
 
-	
 	private static void process() throws Exception {
 
 		try {
 			request = getRequest();
 
+			/* Read Merchant details. */
+			merchantProp = Configuration.getMerchantDetails();
+			MerchantConfig merchantConfig = new MerchantConfig(merchantProp);
+			
+			paymentResponse = ProcessPayment.process(false);
+
 			ReversalApi reversalApi = new ReversalApi();
-			
-			paymentResponse=ProcessPayment.process(false);
-			
-			response = reversalApi.authReversal(paymentResponse.getId(), request);
+			response = reversalApi.authReversal(paymentResponse.getId(), request,merchantConfig);
 
 			responseCode = ApiClient.responseCode;
 			status = ApiClient.status;

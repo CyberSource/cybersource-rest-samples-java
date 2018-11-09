@@ -1,27 +1,26 @@
-package samples.tms.coreServices;
+package samples.reporting.coreServices;
 
 import java.util.Properties;
 
 import com.cybersource.authsdk.core.MerchantConfig;
 
-import Api.PaymentInstrumentsApi;
+import Api.ReportSubscriptionsApi;
 import Data.Configuration;
 import Invokers.ApiClient;
 import Invokers.ApiException;
-import Model.TmsV1PaymentinstrumentsPost201Response;
 
-public class RetrievePaymentInstrument {
-	private static String profileId="93B32398-AD51-4CC2-A682-EA3E93614EB1";
-	private static String tokenId="786A6C043D7D9DBDE05340588D0A4847";
-	private static  String responseCode=null;
+public class GetSubscriptionForReportName {
+	
+	
+	private static String reportName="Texture";
+	private static String responseCode=null;
 	private static String status=null;
-	static TmsV1PaymentinstrumentsPost201Response response;
 	private static Properties merchantProp;
 	
 	public static void main(String args[]) throws Exception {
 		process();
 	}
-
+    
 	private static void process() throws Exception {
 	
 	try {
@@ -29,15 +28,13 @@ public class RetrievePaymentInstrument {
 		merchantProp = Configuration.getMerchantDetails();
 		MerchantConfig merchantConfig = new MerchantConfig(merchantProp);
 		
-		PaymentInstrumentsApi paymentInstrumentApi = new PaymentInstrumentsApi();
-		response=paymentInstrumentApi.tmsV1PaymentinstrumentsTokenIdGet(profileId, tokenId,merchantConfig);
+		ReportSubscriptionsApi reportSubscriptionsApi=new ReportSubscriptionsApi();
+		reportSubscriptionsApi.getSubscription(reportName,merchantConfig);
 		
 		responseCode=ApiClient.responseCode;
 		status=ApiClient.status;
-		
 		System.out.println("ResponseCode :" +responseCode);
-		System.out.println("Status :" +status);
-		System.out.println(response.getId());
+		System.out.println("ResponseMessage :" +status);
 		
 	
 	} catch (ApiException e) {

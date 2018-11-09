@@ -1,26 +1,32 @@
 package samples.payments.coreServices;
 
+import java.util.Properties;
+
+import com.cybersource.authsdk.core.MerchantConfig;
+
 import Api.VoidApi;
+import Data.Configuration;
 import Invokers.ApiClient;
 import Invokers.ApiException;
-import Model.InlineResponse2012;
-import Model.InlineResponse2015;
-import Model.V2paymentsidreversalsClientReferenceInformation;
+import Model.PtsV2PaymentsCapturesPost201Response;
+import Model.PtsV2PaymentsVoidsPost201Response;
+import Model.Ptsv2paymentsidreversalsClientReferenceInformation;
 import Model.VoidCaptureRequest;
 
 public class VoidCapture {
 
 	private static String responseCode = null;
 	private static String status = null;
-	public static InlineResponse2015 response;
-	public static InlineResponse2012 captureResponse;
+	public static PtsV2PaymentsVoidsPost201Response response;
+	public static PtsV2PaymentsCapturesPost201Response captureResponse;
+	private static Properties merchantProp;
 
 	static VoidCaptureRequest request;
 
 	private static VoidCaptureRequest getRequest() {
 		request = new VoidCaptureRequest();
 
-		V2paymentsidreversalsClientReferenceInformation client = new V2paymentsidreversalsClientReferenceInformation();
+		Ptsv2paymentsidreversalsClientReferenceInformation client = new Ptsv2paymentsidreversalsClientReferenceInformation();
 		client.code("test_capture_void");
 		request.setClientReferenceInformation(client);
 
@@ -37,11 +43,14 @@ public class VoidCapture {
 		try {
 			request = getRequest();
 
-			VoidApi voidApi = new VoidApi();
+			/* Read Merchant details. */
+			merchantProp = Configuration.getMerchantDetails();
+			MerchantConfig merchantConfig = new MerchantConfig(merchantProp);
 
 			captureResponse = CapturePayment.process();
 
-			response = voidApi.voidCapture(request, captureResponse.getId());
+			VoidApi voidApi = new VoidApi();
+			response = voidApi.voidCapture(request, captureResponse.getId(), merchantConfig);
 
 			responseCode = ApiClient.responseCode;
 			status = ApiClient.status;
