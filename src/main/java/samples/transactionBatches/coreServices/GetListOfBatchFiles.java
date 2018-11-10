@@ -11,6 +11,7 @@ import Api.TransactionBatchesApi;
 import Data.Configuration;
 import Invokers.ApiClient;
 import Invokers.ApiException;
+import Model.PtsV1TransactionBatchesGet200Response;
 
 public class GetListOfBatchFiles {
 
@@ -38,12 +39,13 @@ public class GetListOfBatchFiles {
 			MerchantConfig merchantConfig = new MerchantConfig(merchantProp);
             
 			TransactionBatchesApi transactionBatchApi = new TransactionBatchesApi();
-			transactionBatchApi.ptsV1TransactionBatchesGet(startTime, endTime,merchantConfig);
+			PtsV1TransactionBatchesGet200Response response = transactionBatchApi.ptsV1TransactionBatchesGet(startTime, endTime,merchantConfig);
 			
 			responseCode = ApiClient.responseCode;
 			status = ApiClient.status;
 			System.out.println("ResponseCode :" + responseCode);
 			System.out.println("ResponseMessage :" + status);
+			System.out.println(response);
 
 		} catch (ApiException e) {
 

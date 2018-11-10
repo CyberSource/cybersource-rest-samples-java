@@ -12,7 +12,7 @@ import Model.TmsV1PaymentinstrumentsPost201Response;
 
 public class RetrievePaymentInstrument {
 	private static String profileId="93B32398-AD51-4CC2-A682-EA3E93614EB1";
-	private static String tokenId="786A6C043D7D9DBDE05340588D0A4847";
+	private static String tokenId="7A487901519D17A1E05340588D0A5171";
 	private static  String responseCode=null;
 	private static String status=null;
 	static TmsV1PaymentinstrumentsPost201Response response;

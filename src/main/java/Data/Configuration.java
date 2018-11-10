@@ -6,7 +6,7 @@ public class Configuration {
 	public static Properties getMerchantDetails() {
 		Properties props = new Properties();
 
-		// HTTP_Signature and JWT
+		// HTTP_Signature = http_signature and JWT = jwt
 		props.setProperty("authenticationType", "http_signature");
 		props.setProperty("merchantID", "testrest");
 		props.setProperty("runEnvironment", "CyberSource.Environment.SANDBOX");

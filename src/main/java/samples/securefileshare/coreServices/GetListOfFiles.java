@@ -10,6 +10,7 @@ import Api.SecureFileShareApi;
 import Data.Configuration;
 import Invokers.ApiClient;
 import Invokers.ApiException;
+import Model.V1FileDetailsGet200Response;
 
 public class GetListOfFiles {
 
@@ -34,12 +35,13 @@ public class GetListOfFiles {
 			MerchantConfig merchantConfig = new MerchantConfig(merchantProp);
 
 			SecureFileShareApi secureFileShareApi = new SecureFileShareApi();
-			secureFileShareApi.getFileDetails(startDate, endDate, organizationId,merchantConfig);
+			V1FileDetailsGet200Response response = secureFileShareApi.getFileDetails(startDate, endDate, organizationId,merchantConfig);
 
 			responseCode = ApiClient.responseCode;
 			status = ApiClient.status;
 			System.out.println("ResponseCode :" + responseCode);
 			System.out.println("ResponseMessage :" + status);
+			System.out.println(response);
 
 		} catch (ApiException e) {
 

@@ -8,6 +8,7 @@ import Api.ReportsApi;
 import Data.Configuration;
 import Invokers.ApiClient;
 import Invokers.ApiException;
+import Model.ReportingV3ReportsIdGet200Response;
 
 public class GetReportBasedOnReportid {
 
@@ -31,12 +32,13 @@ public class GetReportBasedOnReportid {
 			MerchantConfig merchantConfig = new MerchantConfig(merchantProp);
 			
 			ReportsApi reportsApi = new ReportsApi();
-			reportsApi.getReportByReportId(reportId, organizationId,merchantConfig);
+			ReportingV3ReportsIdGet200Response response = reportsApi.getReportByReportId(reportId, organizationId,merchantConfig);
 
 			responseCode = ApiClient.responseCode;
 			status = ApiClient.status;
 			System.out.println("ResponseCode :" + responseCode);
 			System.out.println("ResponseMessage :" + status);
+			System.out.println(response);
 
 		} catch (ApiException e) {
 

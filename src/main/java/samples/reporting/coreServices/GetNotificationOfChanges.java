@@ -12,6 +12,7 @@ import Api.NotificationOfChangesApi;
 import Data.Configuration;
 import Invokers.ApiClient;
 import Invokers.ApiException;
+import Model.ReportingV3NotificationofChangesGet200Response;
 
 public class GetNotificationOfChanges {
 
@@ -41,13 +42,13 @@ public class GetNotificationOfChanges {
 			
 			NotificationOfChangesApi notificationOfChangesApi = new NotificationOfChangesApi();
 			System.out.println("startTime :" +startTime + "endTime : "+endTime);
-			notificationOfChangesApi.getNotificationOfChangeReport(startTime, endTime,merchantConfig);
+			ReportingV3NotificationofChangesGet200Response response = notificationOfChangesApi.getNotificationOfChangeReport(startTime, endTime,merchantConfig);
 
 			responseCode = ApiClient.responseCode;
 			status = ApiClient.status;
 			System.out.println("ResponseCode :" + responseCode);
 			System.out.println("ResponseMessage :" + status);
-
+			System.out.println(response);
 		} catch (ApiException e) {
 
 			e.printStackTrace();
