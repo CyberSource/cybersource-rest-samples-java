@@ -18,7 +18,7 @@ public class CreateReportSubscriptionForReportNameByOrganization {
 	private static String status = null;
 	private static RequestBody request;
 	private static Properties merchantProp;
-	
+	private static String report_name = "Texture_v";
 	private static RequestBody getRequest() {
 		request = new RequestBody();
 		
@@ -32,11 +32,11 @@ public class CreateReportSubscriptionForReportNameByOrganization {
 
 		
 		request.reportFrequency("WEEKLY");
-		request.startDay(2);
-		request.startTime("0900");
+		request.startDay(3);
+		request.startTime("0950");
 		
 		request.reportMimeType(ReportMimeTypeEnum.TEXT_CSV);
-		request.reportName("Texture");
+		request.reportName(report_name);
 		request.timezone("America/Chicago");
 		return request;
 
@@ -63,7 +63,9 @@ public class CreateReportSubscriptionForReportNameByOrganization {
 		
 			System.out.println("ResponseCode :" + responseCode);
 			System.out.println("ResponseMessage :" + status);
+			System.out.println(ApiClient.responseBody);
 			
+			DeleteSubscriptionOfReportNameByOrganization.process(report_name);
 
 		} catch (ApiException e) {
 

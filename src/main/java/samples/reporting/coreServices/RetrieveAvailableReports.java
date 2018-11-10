@@ -11,6 +11,7 @@ import Api.ReportsApi;
 import Data.Configuration;
 import Invokers.ApiClient;
 import Invokers.ApiException;
+import Model.ReportingV3ReportsGet200Response;
 
 public class RetrieveAvailableReports {
 
@@ -18,7 +19,7 @@ public class RetrieveAvailableReports {
 	private static String status = null;
 	private static Properties merchantProp;
 
-	private static String timeString="2018-10-01T00:00:00.0Z";
+	private static String timeString="2018-10-02T00:00:00.0Z";
 	private static DateTime ddateTime = new DateTime(timeString);
 	private static DateTime startTime = ddateTime.withZone(DateTimeZone.forID("GMT"));
 	
@@ -42,13 +43,14 @@ public class RetrieveAvailableReports {
 			MerchantConfig merchantConfig = new MerchantConfig(merchantProp);
 
 			ReportsApi reportsApi = new ReportsApi();
-			reportsApi.searchReports(startTime, endTime, timeQueryType, organizationId, null, null,
+			ReportingV3ReportsGet200Response response = reportsApi.searchReports(startTime, endTime, timeQueryType, organizationId, null, null,
 					null, null, null, merchantConfig);
 
 			responseCode = ApiClient.responseCode;
 			status = ApiClient.status;
 			System.out.println("ResponseCode :" + responseCode);
 			System.out.println("ResponseMessage :" + status);
+			System.out.println(response);
 
 		} catch (ApiException e) {
 

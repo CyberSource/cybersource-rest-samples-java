@@ -52,7 +52,7 @@ public class CreateSearch {
 			status = ApiClient.status;
 			System.out.println("ResponseCode :" + responseCode);
 			System.out.println("ResponseMessage :" + status);
-			System.out.println(reponse.getId());
+			System.out.println(reponse);
 
 		} catch (ApiException e) {
 

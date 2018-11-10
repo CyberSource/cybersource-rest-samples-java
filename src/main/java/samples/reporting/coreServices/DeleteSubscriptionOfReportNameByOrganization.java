@@ -12,16 +12,16 @@ import Invokers.ApiException;
 public class DeleteSubscriptionOfReportNameByOrganization {
 	
 	
-	private static String reportName="Texture";
+	private static String reportName="Textutvij";
 	private static String responseCode=null;
 	private static String status=null;
 	private static Properties merchantProp;
 	
 	public static void main(String args[]) throws Exception {
-		process();
+		process(reportName);
 	}
     
-	private static void process() throws Exception {
+	public static void process(String reportName) throws Exception {
 	
 	try {
 		/* Read Merchant details. */
@@ -35,7 +35,7 @@ public class DeleteSubscriptionOfReportNameByOrganization {
 		status=ApiClient.status;
 		System.out.println("ResponseCode :" +responseCode);
 		System.out.println("ResponseMessage :" +status);
-		
+		System.out.println(ApiClient.responseBody);
 	
 	} catch (ApiException e) {
 		

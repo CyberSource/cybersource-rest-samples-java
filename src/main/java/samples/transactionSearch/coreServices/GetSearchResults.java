@@ -8,6 +8,7 @@ import Api.SearchTransactionsApi;
 import Data.Configuration;
 import Invokers.ApiClient;
 import Invokers.ApiException;
+import Model.TssV2TransactionsPost201Response;
 
 public class GetSearchResults {
 
@@ -28,12 +29,13 @@ public class GetSearchResults {
 			MerchantConfig merchantConfig = new MerchantConfig(merchantProp);
 
 			SearchTransactionsApi searchTransactionsApi = new SearchTransactionsApi();
-			searchTransactionsApi.getSearch(id,merchantConfig);
+			TssV2TransactionsPost201Response response = searchTransactionsApi.getSearch(id,merchantConfig);
 
 			responseCode = ApiClient.responseCode;
 			status = ApiClient.status;
 			System.out.println("ResponseCode :" + responseCode);
 			System.out.println("ResponseMessage :" + status);
+			System.out.println(response);
 
 		} catch (ApiException e) {
 

@@ -8,6 +8,7 @@ import Api.UserManagementApi;
 import Data.Configuration;
 import Invokers.ApiClient;
 import Invokers.ApiException;
+import Model.UmsV1UsersGet200Response;
 
 public class GetUserInformation {
 
@@ -28,12 +29,13 @@ public class GetUserInformation {
 			MerchantConfig merchantConfig = new MerchantConfig(merchantProp);
 
 			UserManagementApi userManagementApi = new UserManagementApi();
-			userManagementApi.getUsers("testrest", null, null, "admin",merchantConfig);
+			UmsV1UsersGet200Response response = userManagementApi.getUsers("testrest", null, null, "admin",merchantConfig);
 
 			responseCode = ApiClient.responseCode;
 			status = ApiClient.status;
 			System.out.println("ResponseCode :" + responseCode);
 			System.out.println("ResponseMessage :" + status);
+			System.out.println(response);
 
 		} catch (ApiException e) {
 

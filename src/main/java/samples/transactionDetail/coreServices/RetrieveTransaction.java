@@ -8,12 +8,13 @@ import Api.TransactionDetailsApi;
 import Data.Configuration;
 import Invokers.ApiClient;
 import Invokers.ApiException;
+import Model.TssV2TransactionsGet200Response;
 
 public class RetrieveTransaction {
 
 	private static String responseCode = null;
 	private static String status = null;
-	private static String id="5408386919326811103004";
+	private static String id="5418499035246279604004";
 	private static Properties merchantProp;
 
 	public static void main(String args[]) throws Exception {
@@ -28,13 +29,14 @@ public class RetrieveTransaction {
 			MerchantConfig merchantConfig = new MerchantConfig(merchantProp);
 
 			TransactionDetailsApi transactionDetailsApi = new TransactionDetailsApi();
-			transactionDetailsApi.getTransaction(id,merchantConfig);
+			TssV2TransactionsGet200Response respose = transactionDetailsApi.getTransaction(id,merchantConfig);
 
 			responseCode = ApiClient.responseCode;
 			status = ApiClient.status;
 			System.out.println("ResponseCode :" + responseCode);
 			System.out.println("ResponseMessage :" + status);
-
+			System.out.println(respose);
+			
 		} catch (ApiException e) {
 
 			e.printStackTrace();

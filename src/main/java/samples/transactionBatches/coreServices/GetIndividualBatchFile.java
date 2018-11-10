@@ -8,6 +8,7 @@ import Api.TransactionBatchApi;
 import Data.Configuration;
 import Invokers.ApiClient;
 import Invokers.ApiException;
+import Invokers.ApiResponse;
 
 public class GetIndividualBatchFile {
 
@@ -28,12 +29,13 @@ public class GetIndividualBatchFile {
 			MerchantConfig merchantConfig = new MerchantConfig(merchantProp);
 
 			TransactionBatchApi transactionBatchApi = new TransactionBatchApi();
-			transactionBatchApi.ptsV1TransactionBatchesIdGet(id,merchantConfig);
+			ApiResponse<Void> response = transactionBatchApi.ptsV1TransactionBatchesIdGet(id,merchantConfig);
 
 			responseCode = ApiClient.responseCode;
 			status = ApiClient.status;
 			System.out.println("ResponseCode :" + responseCode);
 			System.out.println("ResponseMessage :" + status);
+			System.out.println(ApiClient.responseBody);
 
 		} catch (ApiException e) {
 
