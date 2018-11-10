@@ -19,7 +19,7 @@ The samples are organized into categories and common usage examples.
 		<dependency>
 			<groupId>com.cybersource</groupId>
 			<artifactId>cybersource-rest-client-java</artifactId>
-			<version>0.0.3</version>
+			<version>0.0.4</version>
 		</dependency>
 ```
 The samples are organized into categories and common usage examples.
