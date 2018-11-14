@@ -1,4 +1,4 @@
-package samples.transactionDetail.coreServices;
+package samples.transactionDetails.coreServices;
 
 import java.util.Properties;
 
@@ -14,7 +14,7 @@ public class RetrieveTransaction {
 
 	private static String responseCode = null;
 	private static String status = null;
-	private static String id="5418499035246279604004";
+	private static String id="5422054956856755003002";
 	private static Properties merchantProp;
 
 	public static void main(String args[]) throws Exception {

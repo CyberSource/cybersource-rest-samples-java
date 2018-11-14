@@ -1,4 +1,4 @@
-package samples.securefileshare.coreServices;
+package samples.secureFileShare.coreServices;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
@@ -26,8 +26,8 @@ public class DownloadFileWithFileIdentifier {
 	
 	private static String organizationId = "testrest";
 	private static Properties merchantProp;
-	private  static String resourceFile = "secureFile";
-    private static final String FILE_PATH = "C:\\Nov8workspace\\cybersource-rest-samples-java\\src\\test\\resources\\";
+	private  static String resourceFile = "SecureFile";
+    private static final String FILE_PATH = "src/test/resources/";
 	
     private static String  fileId = "VFJSUmVwb3J0LTc4NTVkMTNmLTkzOTgtNTExMy1lMDUzLWEyNTg4ZTBhNzE5Mi5jc3YtMjAxOC0xMC0yMA==";
 
@@ -47,7 +47,6 @@ public class DownloadFileWithFileIdentifier {
 			secureFileShareApi.getFileWithHttpInfo(fileId, organizationId, merchantConfig);
 			
 			responseBody=ApiClient.responseBody;
-			System.out.println("responseBody:: "+responseBody);
 			InputStream stream = new ByteArrayInputStream(responseBody.getBytes(StandardCharsets.UTF_8));
 			
 			ByteArrayOutputStream baos = new ByteArrayOutputStream();
@@ -58,29 +57,25 @@ public class DownloadFileWithFileIdentifier {
 
 	        String output;
 	        String reportType="csv";
-	        System.out.println("Output from Server .... \n");
 	        while ((output = br.readLine()) != null) {
 	            if(output.contains("xml")){
 	                reportType = "xml";
 	            }
 	        }
-	        //System.out.println("Wait. "+resourceFile+"."+reportType+" is getting downloaded...\n");
-	        BufferedReader br_write = new BufferedReader(new InputStreamReader(
+	         BufferedReader br_write = new BufferedReader(new InputStreamReader(
 	                (new ByteArrayInputStream(bytes))));
 	        BufferedWriter bw = new BufferedWriter(new FileWriter(new File(FILE_PATH+resourceFile+"."+reportType)));
 	        while ((output = br_write.readLine()) != null) {
-	        	 System.out.println(output);
-	  	       
-	            bw.write(output+"\n");
+	           bw.write(output+"\n");
 	        }
-	        System.out.println(resourceFile+"."+reportType+" is downloaded successfully");
 	        bw.close();
-	        
 
 			responseCode = ApiClient.responseCode;
 			status = ApiClient.status;
 			System.out.println("ResponseCode :" + responseCode);
 			System.out.println("ResponseMessage :" + status);
+			System.out.println("File downloaded at the below location :");
+			System.out.println(new File(FILE_PATH + resourceFile + "." + reportType).getAbsolutePath());
 
 		} catch (ApiException e) {
 

@@ -18,7 +18,7 @@ public class CreateReportSubscriptionForReportNameByOrganization {
 	private static String status = null;
 	private static RequestBody request;
 	private static Properties merchantProp;
-	private static String report_name = "Texture_v";
+	private static String report_name = "Dexa";
 	private static RequestBody getRequest() {
 		request = new RequestBody();
 		
@@ -31,8 +31,8 @@ public class CreateReportSubscriptionForReportNameByOrganization {
 		request.reportFields(reportFields);
 
 		
-		request.reportFrequency("WEEKLY");
-		request.startDay(3);
+		request.reportFrequency("MONTHLY");
+		request.startDay(2);
 		request.startTime("0950");
 		
 		request.reportMimeType(ReportMimeTypeEnum.TEXT_CSV);
@@ -65,8 +65,6 @@ public class CreateReportSubscriptionForReportNameByOrganization {
 			System.out.println("ResponseMessage :" + status);
 			System.out.println(ApiClient.responseBody);
 			
-			DeleteSubscriptionOfReportNameByOrganization.process(report_name);
-
 		} catch (ApiException e) {
 
 			e.printStackTrace();
