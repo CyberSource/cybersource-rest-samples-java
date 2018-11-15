@@ -10,7 +10,7 @@ import Invokers.ApiClient;
 import Invokers.ApiException;
 import Model.ReportingV3ReportDefinitionsGet200Response;
 
-public class GetReportingInformation {
+public class GetReportingResourceInformation {
 
 	private static String organisationId="testrest";
 	private static String responseCode = null;

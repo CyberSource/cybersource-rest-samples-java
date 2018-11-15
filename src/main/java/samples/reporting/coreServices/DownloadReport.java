@@ -24,13 +24,12 @@ public class DownloadReport {
 
 	private static String responseCode = null;
 	private static String status = null;
-	private static String responseBody=null;
+	private static String responseBody = null;
 	private static String reportName = "testrest_v2";
 	private static String organizationId = "testrest";
 	private static Properties merchantProp;
-	 public static String resourceFile = "report";
-	private static final String FILE_PATH = "C:\\Nov8workspace\\cybersource-rest-samples-java\\src\\test\\resources\\";
-	
+	public static String resourceFile = "DownloadReport";
+	private static final String FILE_PATH = "src/test/resources/";
 	static LocalDate reportDate = new LocalDate("2018-09-02");
 
 	public static void main(String args[]) throws Exception {
@@ -44,44 +43,39 @@ public class DownloadReport {
 			/* Read Merchant details. */
 			merchantProp = Configuration.getMerchantDetails();
 			MerchantConfig merchantConfig = new MerchantConfig(merchantProp);
-			
+
 			ReportDownloadsApi downloadsApi = new ReportDownloadsApi();
-			downloadsApi.downloadReportWithHttpInfo(reportDate, reportName, organizationId,merchantConfig);
-			
-			responseBody=ApiClient.responseBody;
+			downloadsApi.downloadReportWithHttpInfo(reportDate, reportName, organizationId, merchantConfig);
+
+			responseBody = ApiClient.responseBody;
 			InputStream stream = new ByteArrayInputStream(responseBody.getBytes(StandardCharsets.UTF_8));
-			
+
 			ByteArrayOutputStream baos = new ByteArrayOutputStream();
-	        org.apache.commons.io.IOUtils.copy(stream, baos);
-	        byte[] bytes = baos.toByteArray();
-	        BufferedReader br = new BufferedReader(new InputStreamReader(
-	                (new ByteArrayInputStream(bytes))));
+			org.apache.commons.io.IOUtils.copy(stream, baos);
+			byte[] bytes = baos.toByteArray();
+			BufferedReader br = new BufferedReader(new InputStreamReader((new ByteArrayInputStream(bytes))));
 
-	        String output;
-	        String reportType="csv";
-	        System.out.println("Output from Server .... \n");
-	        while ((output = br.readLine()) != null) {
-	            if(output.contains("xml")){
-	                reportType = "xml";
-	            }
-	        }
-	        //System.out.println("Wait. "+resourceFile+"."+reportType+" is getting downloaded...\n");
-	        BufferedReader br_write = new BufferedReader(new InputStreamReader(
-	                (new ByteArrayInputStream(bytes))));
-	        BufferedWriter bw = new BufferedWriter(new FileWriter(new File(FILE_PATH+resourceFile+"."+reportType)));
-	        while ((output = br_write.readLine()) != null) {
-	        	 bw.write(output+"\n");
-	        }
-	        System.out.println(resourceFile+"."+reportType+" is downloaded successfully");
-	        bw.close();
-	        
-
-	   
+			String output;
+			String reportType = "csv";
+			while ((output = br.readLine()) != null) {
+				if (output.contains("xml")) {
+					reportType = "xml";
+				}
+			}
+			BufferedReader br_write = new BufferedReader(new InputStreamReader((new ByteArrayInputStream(bytes))));
+			BufferedWriter bw = new BufferedWriter(
+					new FileWriter(new File(FILE_PATH + resourceFile + "." + reportType)));
+			while ((output = br_write.readLine()) != null) {
+				bw.write(output + "\n");
+			}
+			bw.close();
 
 			responseCode = ApiClient.responseCode;
 			status = ApiClient.status;
 			System.out.println("ResponseCode :" + responseCode);
 			System.out.println("ResponseMessage :" + status);
+			System.out.println("File downloaded at the below location :");
+			System.out.println(new File(FILE_PATH + resourceFile + "." + reportType).getAbsolutePath());
 
 		} catch (ApiException e) {
 

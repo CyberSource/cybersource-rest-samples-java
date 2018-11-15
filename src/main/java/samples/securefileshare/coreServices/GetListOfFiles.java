@@ -1,4 +1,4 @@
-package samples.securefileshare.coreServices;
+package samples.secureFileShare.coreServices;
 
 import java.util.Properties;
 
