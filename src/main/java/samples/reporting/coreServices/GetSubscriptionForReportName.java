@@ -35,10 +35,9 @@ public class GetSubscriptionForReportName {
 		
 		responseCode=ApiClient.responseCode;
 		status=ApiClient.status;
-		System.out.println("ResponseCode :" +responseCode);
-		System.out.println("ResponseMessage :" +status);
-		System.out.println(response);
-		System.out.println(ApiClient.responseBody);
+		System.out.println("ResponseCode :" + responseCode);
+		System.out.println("ResponseMessage :" + status);
+		System.out.println("ResponseBody :"+ApiClient.respBody);
 		
 		
 	
