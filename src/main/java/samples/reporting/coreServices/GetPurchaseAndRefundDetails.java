@@ -43,10 +43,11 @@ public class GetPurchaseAndRefundDetails {
 			/* Read Merchant details. */
 			merchantProp = Configuration.getMerchantDetails();
 			MerchantConfig merchantConfig = new MerchantConfig(merchantProp);
+			ApiClient apiClient=new ApiClient(merchantConfig);
 			
 			PurchaseAndRefundDetailsApi purchaseAndRefundDetailsApi = new PurchaseAndRefundDetailsApi();
 			purchaseAndRefundDetailsApi.getPurchaseAndRefundDetails(startTime, endTime, organizationId, paymentSubtype,
-					viewBy, groupName, offSet, limit,merchantConfig);
+					viewBy, groupName, offSet, limit);
 
 			responseCode = ApiClient.responseCode;
 			status = ApiClient.status;

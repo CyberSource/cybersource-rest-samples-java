@@ -28,9 +28,10 @@ public class GetIndividualBatchFile {
 			 /* Read Merchant details. */
 			merchantProp = Configuration.getMerchantDetails();
 			MerchantConfig merchantConfig = new MerchantConfig(merchantProp);
+			ApiClient apiClient=new ApiClient(merchantConfig);
 
 			TransactionBatchApi transactionBatchApi = new TransactionBatchApi();
-			ApiResponse<PtsV1TransactionBatchesGet200Response> response = transactionBatchApi.ptsV1TransactionBatchesIdGet(id,merchantConfig);
+			ApiResponse<PtsV1TransactionBatchesGet200Response> response = transactionBatchApi.ptsV1TransactionBatchesIdGet(id);
 
 			responseCode = ApiClient.responseCode;
 			status = ApiClient.status;

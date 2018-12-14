@@ -6,6 +6,7 @@ import com.cybersource.authsdk.core.MerchantConfig;
 
 import Api.KeyGenerationApi;
 import Data.Configuration;
+import Invokers.ApiClient;
 import Invokers.ApiException;
 import Model.GeneratePublicKeyRequest;
 import Model.FlexV1KeysPost200Response;
@@ -36,9 +37,10 @@ public class KeyGenerationNoEnc {
 			/* Read Merchant details. */
 			merchantProp = Configuration.getMerchantDetails();
 			MerchantConfig merchantConfig = new MerchantConfig(merchantProp);
+			ApiClient apiClient=new ApiClient(merchantConfig);
 			
 			KeyGenerationApi keyGenerationApi = new KeyGenerationApi();
-			response = keyGenerationApi.generatePublicKey(request,merchantConfig);
+			response = keyGenerationApi.generatePublicKey(request);
 
 			System.out.println(response.getKeyId());
 			System.out.println(response.toString());

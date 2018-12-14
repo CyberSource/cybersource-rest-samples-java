@@ -109,15 +109,17 @@ public class Payout {
 	    /* Read Merchant details. */
 		merchantProp = Configuration.getMerchantDetails();
 		MerchantConfig merchantConfig = new MerchantConfig(merchantProp);
+		ApiClient apiClient=new ApiClient(merchantConfig);
 		
 	    ProcessAPayoutApi defaultApi=new ProcessAPayoutApi();
-	    defaultApi.octCreatePayment(request,merchantConfig);
+	    defaultApi.octCreatePayment(request);
 		
 	    responseCode=ApiClient.responseCode;
 		status=ApiClient.status;
 		
 		System.out.println("ResponseCode :" +responseCode);
 		System.out.println("Status :" +status);
+		System.out.println("ResponseBody :"+ApiClient.respBody);
 		
 		
 	

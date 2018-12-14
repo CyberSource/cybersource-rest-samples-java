@@ -28,16 +28,17 @@ public class RetrieveAllPaymentInstruments {
 			/* Read Merchant details. */
 			merchantProp = Configuration.getMerchantDetails();
 			MerchantConfig merchantConfig = new MerchantConfig(merchantProp);
+			ApiClient apiClient=new ApiClient(merchantConfig);
 			
 			InstrumentIdentifierApi instrumentIdentifierApi = new InstrumentIdentifierApi();
-			response = instrumentIdentifierApi.tmsV1InstrumentidentifiersTokenIdGet(profileId,merchantConfig, tokenId);
+			response = instrumentIdentifierApi.tmsV1InstrumentidentifiersTokenIdGet(profileId, tokenId);
 
 			responseCode = ApiClient.responseCode;
 			status = ApiClient.status;
 
 			System.out.println("ResponseCode :" + responseCode);
 			System.out.println("Status :" + status);
-			System.out.println(response.getCard());
+			System.out.println(response);
 
 		} catch (ApiException e) {
 

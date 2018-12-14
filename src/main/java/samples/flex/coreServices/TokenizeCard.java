@@ -66,9 +66,10 @@ public class TokenizeCard {
 			/* Read Merchant details. */
 			merchantProp = Configuration.getMerchantDetails();
 			MerchantConfig merchantConfig = new MerchantConfig(merchantProp);
+			ApiClient apiClient=new ApiClient(merchantConfig);
 			
 			FlexTokenApi tokenizationApi = new FlexTokenApi();
-			response=tokenizationApi.tokenize(request,merchantConfig);
+			response=tokenizationApi.tokenize(request);
 			
 			byte[] publicBytes = Base64.decode(keyResponse.getDer().getPublicKey());
 			X509EncodedKeySpec keySpec = new X509EncodedKeySpec(publicBytes);
@@ -97,7 +98,7 @@ public class TokenizeCard {
 			
 			System.out.println("ResponseCode :" +responseCode);
 			System.out.println("Status :" +status);
-			System.out.println(response.getKeyId());
+			System.out.println(response);
 
 		} catch (ApiException e) {
 

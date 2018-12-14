@@ -54,17 +54,18 @@ public class RefundPayment {
 			/* Read Merchant details. */
 			merchantProp = Configuration.getMerchantDetails();
 			MerchantConfig merchantConfig = new MerchantConfig(merchantProp);
+			ApiClient apiClient=new ApiClient(merchantConfig);
 			
 			paymentResponse = ProcessPayment.process(true);
 			RefundApi refundApi = new RefundApi();
-			response = refundApi.refundPayment(request, paymentResponse.getId(),merchantConfig);
+			response = refundApi.refundPayment(request, paymentResponse.getId());
 
 			responseCode = ApiClient.responseCode;
 			status = ApiClient.status;
 
 			System.out.println("ResponseCode :" + responseCode);
 			System.out.println("Status :" + status);
-			System.out.println(response.getId());
+			System.out.println(response);
 
 		} catch (ApiException e) {
 

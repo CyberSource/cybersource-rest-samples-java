@@ -50,18 +50,19 @@ public class VoidRefund {
 			/* Read Merchant details. */
 			merchantProp = Configuration.getMerchantDetails();
 			MerchantConfig merchantConfig = new MerchantConfig(merchantProp);
+			ApiClient apiClient=new ApiClient(merchantConfig);
 
 			refundResponse = RefundPayment.process();
 			
 			VoidApi voidApi = new VoidApi();
-			response = voidApi.voidRefund(request, refundResponse.getId(),merchantConfig);
+			response = voidApi.voidRefund(request, refundResponse.getId());
 
 			responseCode = ApiClient.responseCode;
 			status = ApiClient.status;
 
 			System.out.println("ResponseCode :" + responseCode);
 			System.out.println("Status :" + status);
-			System.out.println(response.getId());
+			System.out.println(response);
 
 		} catch (ApiException e) {
 

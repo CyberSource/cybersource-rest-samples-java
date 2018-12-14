@@ -37,9 +37,10 @@ public class GetListOfBatchFiles {
 			 /* Read Merchant details. */
 			merchantProp = Configuration.getMerchantDetails();
 			MerchantConfig merchantConfig = new MerchantConfig(merchantProp);
+			ApiClient apiClient=new ApiClient(merchantConfig);
             
 			TransactionBatchesApi transactionBatchApi = new TransactionBatchesApi();
-			PtsV1TransactionBatchesGet200Response response = transactionBatchApi.ptsV1TransactionBatchesGet(startTime, endTime,merchantConfig);
+			PtsV1TransactionBatchesGet200Response response = transactionBatchApi.ptsV1TransactionBatchesGet(startTime, endTime);
 			
 			responseCode = ApiClient.responseCode;
 			status = ApiClient.status;

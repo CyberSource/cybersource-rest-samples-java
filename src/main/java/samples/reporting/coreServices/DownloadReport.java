@@ -25,12 +25,12 @@ public class DownloadReport {
 	private static String responseCode = null;
 	private static String status = null;
 	private static String responseBody = null;
-	private static String reportName = "testrest_v2";
+	private static String reportName = "testrest dec V3";
 	private static String organizationId = "testrest";
 	private static Properties merchantProp;
 	public static String resourceFile = "DownloadReport";
 	private static final String FILE_PATH = "src/test/resources/";
-	static LocalDate reportDate = new LocalDate("2018-09-02");
+	static LocalDate reportDate = new LocalDate("2018-09-03");
 
 	public static void main(String args[]) throws Exception {
 		process();
@@ -43,9 +43,10 @@ public class DownloadReport {
 			/* Read Merchant details. */
 			merchantProp = Configuration.getMerchantDetails();
 			MerchantConfig merchantConfig = new MerchantConfig(merchantProp);
+			ApiClient apiClient=new ApiClient(merchantConfig);
 
 			ReportDownloadsApi downloadsApi = new ReportDownloadsApi();
-			downloadsApi.downloadReportWithHttpInfo(reportDate, reportName, organizationId, merchantConfig);
+			downloadsApi.downloadReportWithHttpInfo(reportDate, reportName, organizationId);
 
 			responseBody = ApiClient.responseBody;
 			InputStream stream = new ByteArrayInputStream(responseBody.getBytes(StandardCharsets.UTF_8));

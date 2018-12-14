@@ -27,9 +27,10 @@ public class GetUserInformation {
 			/* Read Merchant details. */
 			merchantProp = Configuration.getMerchantDetails();
 			MerchantConfig merchantConfig = new MerchantConfig(merchantProp);
+			ApiClient apiClient=new ApiClient(merchantConfig);
 
 			UserManagementApi userManagementApi = new UserManagementApi();
-			UmsV1UsersGet200Response response = userManagementApi.getUsers("testrest", null, null, "admin",merchantConfig);
+			UmsV1UsersGet200Response response = userManagementApi.getUsers("testrest", null, null, "admin");
 
 			responseCode = ApiClient.responseCode;
 			status = ApiClient.status;

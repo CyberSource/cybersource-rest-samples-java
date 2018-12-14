@@ -46,18 +46,19 @@ public class VoidCapture {
 			/* Read Merchant details. */
 			merchantProp = Configuration.getMerchantDetails();
 			MerchantConfig merchantConfig = new MerchantConfig(merchantProp);
+			ApiClient apiClient=new ApiClient(merchantConfig);
 
 			captureResponse = CapturePayment.process();
 
 			VoidApi voidApi = new VoidApi();
-			response = voidApi.voidCapture(request, captureResponse.getId(), merchantConfig);
+			response = voidApi.voidCapture(request, captureResponse.getId());
 
 			responseCode = ApiClient.responseCode;
 			status = ApiClient.status;
 
 			System.out.println("ResponseCode :" + responseCode);
 			System.out.println("Status :" + status);
-			System.out.println(response.getId());
+			System.out.println(response);
 
 		} catch (ApiException e) {
 

@@ -29,9 +29,10 @@ public class GetSubscriptionForReportName {
 		/* Read Merchant details. */
 		merchantProp = Configuration.getMerchantDetails();
 		MerchantConfig merchantConfig = new MerchantConfig(merchantProp);
+		ApiClient apiClient=new ApiClient(merchantConfig);
 		
 		ReportSubscriptionsApi reportSubscriptionsApi=new ReportSubscriptionsApi();
-		ReportingV3ReportSubscriptionsGet200Response response = reportSubscriptionsApi.getSubscription(reportName,merchantConfig);
+		ReportingV3ReportSubscriptionsGet200Response response = reportSubscriptionsApi.getSubscription(reportName);
 		
 		responseCode=ApiClient.responseCode;
 		status=ApiClient.status;

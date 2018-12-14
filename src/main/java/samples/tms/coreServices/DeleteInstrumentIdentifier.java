@@ -26,10 +26,10 @@ public class DeleteInstrumentIdentifier {
 			/* Read Merchant details. */
 			merchantProp = Configuration.getMerchantDetails();
 			MerchantConfig merchantConfig = new MerchantConfig(merchantProp);
-			
+			ApiClient apiClient=new ApiClient(merchantConfig);
 			
 			InstrumentIdentifierApi instrumentIdentifierApi = new InstrumentIdentifierApi();
-			instrumentIdentifierApi.tmsV1InstrumentidentifiersTokenIdDelete(profileId,merchantConfig, tokenId);
+			instrumentIdentifierApi.tmsV1InstrumentidentifiersTokenIdDelete(profileId, tokenId);
 
 			responseCode = ApiClient.responseCode;
 			status = ApiClient.status;

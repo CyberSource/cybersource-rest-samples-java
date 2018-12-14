@@ -14,7 +14,7 @@ public class GetSearchResults {
 
 	private static String responseCode = null;
 	private static String status = null;
-	private static String id="4862be87-e01d-427b-bc59-4783a3bcdb25";
+	private static String id="95f6ab1c-d64d-4fdb-949d-cf174405c21f";
 	private static Properties merchantProp;
 
 	public static void main(String args[]) throws Exception {
@@ -27,15 +27,17 @@ public class GetSearchResults {
 			 /* Read Merchant details. */
 			merchantProp = Configuration.getMerchantDetails();
 			MerchantConfig merchantConfig = new MerchantConfig(merchantProp);
+			ApiClient apiClient=new ApiClient(merchantConfig);
 
 			SearchTransactionsApi searchTransactionsApi = new SearchTransactionsApi();
-			TssV2TransactionsPost201Response response = searchTransactionsApi.getSearch(id,merchantConfig);
+			TssV2TransactionsPost201Response response = searchTransactionsApi.getSearch(id);
 
 			responseCode = ApiClient.responseCode;
 			status = ApiClient.status;
+			
 			System.out.println("ResponseCode :" + responseCode);
 			System.out.println("ResponseMessage :" + status);
-			System.out.println(response);
+			System.out.println("ResponseBody :"+response);
 
 		} catch (ApiException e) {
 

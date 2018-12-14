@@ -71,17 +71,18 @@ public class CapturePayment {
 			/* Read Merchant details. */
 			merchantProp = Configuration.getMerchantDetails();
 			MerchantConfig merchantConfig = new MerchantConfig(merchantProp);
+			ApiClient apiClient=new ApiClient(merchantConfig);
 			
 			paymentResponse = ProcessPayment.process(false);
 			CaptureApi captureApi = new CaptureApi();
-			response = captureApi.capturePayment(request,merchantConfig, paymentResponse.getId());
+			response = captureApi.capturePayment(request, paymentResponse.getId());
 
 			responseCode = ApiClient.responseCode;
 			status = ApiClient.status;
 
 			System.out.println("ResponseCode :" + responseCode);
 			System.out.println("Status :" + status);
-			System.out.println(response.getId());
+			System.out.println(response);
 
 		} catch (ApiException e) {
 

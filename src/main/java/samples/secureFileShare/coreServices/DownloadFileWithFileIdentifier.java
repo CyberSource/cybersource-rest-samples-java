@@ -42,9 +42,10 @@ public class DownloadFileWithFileIdentifier {
 			/* Read Merchant details. */
 			merchantProp = Configuration.getMerchantDetails();
 			MerchantConfig merchantConfig = new MerchantConfig(merchantProp);
+			ApiClient apiClient=new ApiClient(merchantConfig);
 
 			SecureFileShareApi secureFileShareApi = new SecureFileShareApi();
-			secureFileShareApi.getFileWithHttpInfo(fileId, organizationId, merchantConfig);
+			secureFileShareApi.getFileWithHttpInfo(fileId, organizationId);
 			
 			responseBody=ApiClient.responseBody;
 			InputStream stream = new ByteArrayInputStream(responseBody.getBytes(StandardCharsets.UTF_8));

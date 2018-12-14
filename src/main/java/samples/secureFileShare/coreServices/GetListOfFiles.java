@@ -33,15 +33,16 @@ public class GetListOfFiles {
 			/* Read Merchant details. */
 			merchantProp = Configuration.getMerchantDetails();
 			MerchantConfig merchantConfig = new MerchantConfig(merchantProp);
+			ApiClient apiClient=new ApiClient(merchantConfig);
 
 			SecureFileShareApi secureFileShareApi = new SecureFileShareApi();
-			V1FileDetailsGet200Response response = secureFileShareApi.getFileDetails(startDate, endDate, organizationId,merchantConfig);
+			V1FileDetailsGet200Response response = secureFileShareApi.getFileDetails(startDate, endDate, organizationId);
 
 			responseCode = ApiClient.responseCode;
 			status = ApiClient.status;
 			System.out.println("ResponseCode :" + responseCode);
 			System.out.println("ResponseMessage :" + status);
-			System.out.println(response);
+			System.out.println("ResponseBody :"+ApiClient.respBody);
 
 		} catch (ApiException e) {
 

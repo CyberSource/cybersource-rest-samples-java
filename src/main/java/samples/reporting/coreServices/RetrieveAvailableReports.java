@@ -41,10 +41,11 @@ public class RetrieveAvailableReports {
 			/* Read Merchant details. */
 			merchantProp = Configuration.getMerchantDetails();
 			MerchantConfig merchantConfig = new MerchantConfig(merchantProp);
+			ApiClient apiClient=new ApiClient(merchantConfig);
 
 			ReportsApi reportsApi = new ReportsApi();
 			ReportingV3ReportsGet200Response response = reportsApi.searchReports(startTime, endTime, timeQueryType, organizationId, null, null,
-					null, null, null, merchantConfig);
+					null, null, null);
 
 			responseCode = ApiClient.responseCode;
 			status = ApiClient.status;

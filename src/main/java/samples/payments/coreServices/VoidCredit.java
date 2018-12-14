@@ -46,18 +46,19 @@ public class VoidCredit {
 			/* Read Merchant details. */
 			merchantProp = Configuration.getMerchantDetails();
 			MerchantConfig merchantConfig = new MerchantConfig(merchantProp);
+			ApiClient apiClient=new ApiClient(merchantConfig);
 			
 			creditResponse = ProcessCredit.process();
 
 			VoidApi voidApi = new VoidApi();
-			response = voidApi.voidCredit(request, creditResponse.getId(),merchantConfig);
+			response = voidApi.voidCredit(request, creditResponse.getId());
 
 			responseCode = ApiClient.responseCode;
 			status = ApiClient.status;
 
 			System.out.println("ResponseCode :" + responseCode);
 			System.out.println("Status :" + status);
-			System.out.println(response.getId());
+			System.out.println(response);
 
 		} catch (ApiException e) {
 
