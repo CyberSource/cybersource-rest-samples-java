@@ -30,9 +30,10 @@ public class GetReportBasedOnReportid {
 			/* Read Merchant details. */
 			merchantProp = Configuration.getMerchantDetails();
 			MerchantConfig merchantConfig = new MerchantConfig(merchantProp);
+			ApiClient apiClient = new ApiClient(merchantConfig);
 			
 			ReportsApi reportsApi = new ReportsApi();
-			ReportingV3ReportsIdGet200Response response = reportsApi.getReportByReportId(reportId, organizationId,merchantConfig);
+			ReportingV3ReportsIdGet200Response response = reportsApi.getReportByReportId(reportId, organizationId);
 
 			responseCode = ApiClient.responseCode;
 			status = ApiClient.status;

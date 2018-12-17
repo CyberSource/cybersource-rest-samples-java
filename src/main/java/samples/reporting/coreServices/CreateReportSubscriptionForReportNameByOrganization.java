@@ -54,9 +54,10 @@ public class CreateReportSubscriptionForReportNameByOrganization {
 			/* Read Merchant details. */
 			merchantProp = Configuration.getMerchantDetails();
 			MerchantConfig merchantConfig = new MerchantConfig(merchantProp);
+			ApiClient apiClient = new ApiClient(merchantConfig);
 			
 			ReportSubscriptionsApi reportSubscriptionsApi = new ReportSubscriptionsApi();
-			reportSubscriptionsApi.createSubscription(request,merchantConfig);
+			reportSubscriptionsApi.createSubscription(request);
 			
 			responseCode = ApiClient.responseCode;
 			status = ApiClient.status;

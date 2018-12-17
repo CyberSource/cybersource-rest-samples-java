@@ -26,7 +26,7 @@ public class GetNotificationOfChanges {
 	private static DateTime startTime = ddateTime.withZone(DateTimeZone.forID("America/Atikokan"));
 	
 	private static String timeString2 = "2018-05-30T12:00:00-05:00";
-	private static DateTime ddateTime2=new DateTime(timeString2);
+	private static DateTime ddateTime2 = new DateTime(timeString2);
 	private static DateTime endTime = ddateTime2.withZone(DateTimeZone.forID("America/Atikokan"));
 
 	public static void main(String args[]) throws Exception {
@@ -39,10 +39,11 @@ public class GetNotificationOfChanges {
 			/* Read Merchant details. */
 			merchantProp = Configuration.getMerchantDetails();
 			MerchantConfig merchantConfig = new MerchantConfig(merchantProp);
+			ApiClient apiClient = new ApiClient(merchantConfig);
 			
 			NotificationOfChangesApi notificationOfChangesApi = new NotificationOfChangesApi();
 			System.out.println("startTime :" +startTime + "endTime : "+endTime);
-			ReportingV3NotificationofChangesGet200Response response = notificationOfChangesApi.getNotificationOfChangeReport(startTime, endTime,merchantConfig);
+			ReportingV3NotificationofChangesGet200Response response = notificationOfChangesApi.getNotificationOfChangeReport(startTime, endTime);
 
 			responseCode = ApiClient.responseCode;
 			status = ApiClient.status;

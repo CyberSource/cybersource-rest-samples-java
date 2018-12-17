@@ -8,6 +8,7 @@ import Api.ProcessAPayoutApi;
 import Data.Configuration;
 import Invokers.ApiClient;
 import Invokers.ApiException;
+import Invokers.ApiResponse;
 import Model.PtsV2PaymentsPost201ResponseClientReferenceInformation;
 import Model.PtsV2PayoutsPostResponse;
 import Model.Ptsv2payoutsMerchantInformation;
@@ -113,14 +114,16 @@ public class ProcessPayout {
 			/* Read Merchant details. */
 			merchantProp = Configuration.getMerchantDetails();
 			MerchantConfig merchantConfig = new MerchantConfig(merchantProp);
+			ApiClient apiClient = new ApiClient(merchantConfig);
 			
 			ProcessAPayoutApi payoutApi = new ProcessAPayoutApi();
-			payoutApi.octCreatePayment(request,merchantConfig);
+			payoutApi.octCreatePayment(request);
 
 			responseCode = ApiClient.responseCode;
 			status = ApiClient.status;
 			System.out.println("ResponseCode :" + responseCode);
 			System.out.println("ResponseMessage :" + status);
+			System.out.println("ResponseBody :"+ApiClient.respBody);
 
 		} catch (ApiException e) {
 

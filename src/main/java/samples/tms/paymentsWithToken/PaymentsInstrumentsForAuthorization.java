@@ -18,9 +18,9 @@ import Model.Tmsv1paymentinstrumentsInstrumentIdentifier;
 
 public class PaymentsInstrumentsForAuthorization {
 	private static String responseCode = null;
-	private static String status=null;
+	private static String status = null;
 	static TmsV1PaymentinstrumentsPost201Response response;
-	private static String profileId="93B32398-AD51-4CC2-A682-EA3E93614EB1";
+	private static String profileId = "93B32398-AD51-4CC2-A682-EA3E93614EB1";
 	private static Properties merchantProp;
 
 	static Body2 body;
@@ -71,13 +71,14 @@ public class PaymentsInstrumentsForAuthorization {
 			/* Read Merchant details. */
 			merchantProp = Configuration.getMerchantDetails();
 			MerchantConfig merchantConfig = new MerchantConfig(merchantProp);
+			ApiClient apiClient = new ApiClient(merchantConfig);
 			
 			PaymentInstrumentsApi paymentInstrumentApi = new PaymentInstrumentsApi();
-			response=paymentInstrumentApi.tmsV1PaymentinstrumentsPost(profileId, body,merchantConfig);
+			response = paymentInstrumentApi.tmsV1PaymentinstrumentsPost(profileId, body);
 
 
-			responseCode=ApiClient.responseCode;
-			status=ApiClient.status;
+			responseCode = ApiClient.responseCode;
+			status = ApiClient.status;
 			
 			System.out.println("ResponseCode :" +responseCode);
 			System.out.println("Status :" +status);

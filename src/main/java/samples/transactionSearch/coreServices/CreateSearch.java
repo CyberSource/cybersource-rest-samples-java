@@ -44,9 +44,10 @@ public class CreateSearch {
 			 /* Read Merchant details. */
 			merchantProp = Configuration.getMerchantDetails();
 			MerchantConfig merchantConfig = new MerchantConfig(merchantProp);
+			ApiClient apiClient = new ApiClient(merchantConfig);
 			
 			SearchTransactionsApi searchTransactionsApi = new SearchTransactionsApi();
-			reponse=searchTransactionsApi.createSearch(request,merchantConfig);
+			reponse = searchTransactionsApi.createSearch(request);
 
 			responseCode = ApiClient.responseCode;
 			status = ApiClient.status;

@@ -14,9 +14,9 @@ import Model.ReportingV3ReportSubscriptionsGet200ResponseSubscriptions;
 public class GetSubscriptionForReportName {
 	
 	
-	private static String reportName="Texture";
-	private static String responseCode=null;
-	private static String status=null;
+	private static String reportName = "Texture";
+	private static String responseCode = null;
+	private static String status = null;
 	private static Properties merchantProp;
 	
 	public static void main(String args[]) throws Exception {
@@ -29,12 +29,13 @@ public class GetSubscriptionForReportName {
 		/* Read Merchant details. */
 		merchantProp = Configuration.getMerchantDetails();
 		MerchantConfig merchantConfig = new MerchantConfig(merchantProp);
+		ApiClient apiClient = new ApiClient(merchantConfig);
 		
-		ReportSubscriptionsApi reportSubscriptionsApi=new ReportSubscriptionsApi();
-		ReportingV3ReportSubscriptionsGet200Response response = reportSubscriptionsApi.getSubscription(reportName,merchantConfig);
+		ReportSubscriptionsApi reportSubscriptionsApi = new ReportSubscriptionsApi();
+		ReportingV3ReportSubscriptionsGet200Response response = reportSubscriptionsApi.getSubscription(reportName);
 		
-		responseCode=ApiClient.responseCode;
-		status=ApiClient.status;
+		responseCode = ApiClient.responseCode;
+		status = ApiClient.status;
 		System.out.println("ResponseCode :" + responseCode);
 		System.out.println("ResponseMessage :" + status);
 		System.out.println("ResponseBody :"+ApiClient.respBody);

@@ -60,9 +60,10 @@ public class CreateInstrumentIdentifier {
 			/* Read Merchant details. */
 			merchantProp = Configuration.getMerchantDetails();
 			MerchantConfig merchantConfig = new MerchantConfig(merchantProp);
+			ApiClient apiClient = new ApiClient(merchantConfig);
 
 			InstrumentIdentifiersApi instrumentIdentifierApi = new InstrumentIdentifiersApi();
-			response = instrumentIdentifierApi.tmsV1InstrumentidentifiersPost(profileId,merchantConfig, body);
+			response = instrumentIdentifierApi.tmsV1InstrumentidentifiersPost(profileId, body);
 
 			responseCode = ApiClient.responseCode;
 			status = ApiClient.status;

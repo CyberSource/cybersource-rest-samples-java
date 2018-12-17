@@ -56,16 +56,16 @@ public class UpdateInstrumentIdentifier {
 			/* Read Merchant details. */
 			merchantProp = Configuration.getMerchantDetails();
 			MerchantConfig merchantConfig = new MerchantConfig(merchantProp);
+			ApiClient apiClient = new ApiClient(merchantConfig);
 			
 			InstrumentIdentifierApi instrumentIdentifierApi = new InstrumentIdentifierApi();
-			response = instrumentIdentifierApi.tmsV1InstrumentidentifiersTokenIdPatch(profileId,merchantConfig, tokenId, body);
+			response = instrumentIdentifierApi.tmsV1InstrumentidentifiersTokenIdPatch(profileId, tokenId, body);
 
 			responseCode = ApiClient.responseCode;
 			status = ApiClient.status;
 
 			System.out.println("ResponseCode :" + responseCode);
 			System.out.println("Status :" + status);
-			System.out.println(response.getId());
 			System.out.println(response.toString());
 
 		} catch (ApiException e) {

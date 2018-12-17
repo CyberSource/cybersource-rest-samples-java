@@ -24,7 +24,7 @@ public class GetListOfBatchFiles {
 	private static DateTime startTime = ddateTime.withZone(DateTimeZone.forID("GMT"));
 	
 	private static String timeString2 = "2018-10-31T23:59:59.59Z";
-	private static DateTime ddateTime2=new DateTime(timeString2);
+	private static DateTime ddateTime2 = new DateTime(timeString2);
 	private static DateTime endTime = ddateTime2.withZone(DateTimeZone.forID("GMT"));
 
 	public static void main(String args[]) throws Exception {
@@ -37,9 +37,10 @@ public class GetListOfBatchFiles {
 			 /* Read Merchant details. */
 			merchantProp = Configuration.getMerchantDetails();
 			MerchantConfig merchantConfig = new MerchantConfig(merchantProp);
+			ApiClient apiClient = new ApiClient(merchantConfig);
             
 			TransactionBatchesApi transactionBatchApi = new TransactionBatchesApi();
-			PtsV1TransactionBatchesGet200Response response = transactionBatchApi.ptsV1TransactionBatchesGet(startTime, endTime,merchantConfig);
+			PtsV1TransactionBatchesGet200Response response = transactionBatchApi.ptsV1TransactionBatchesGet(startTime, endTime);
 			
 			responseCode = ApiClient.responseCode;
 			status = ApiClient.status;

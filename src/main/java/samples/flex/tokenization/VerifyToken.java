@@ -39,7 +39,7 @@ public class VerifyToken {
 		    final Signature signInstance = Signature.getInstance("SHA512withRSA");
 		    signInstance.initVerify(publicKey);
 		    signInstance.update(signedFields.getBytes());
-		    success=signInstance.verify(Base64.decode(signature));
+		    success = signInstance.verify(Base64.decode(signature));
 		    System.out.println(success);
 		  } catch (IOException e) {
 		    throw new FlexEncodingException("Unable to decode signature"+ e);

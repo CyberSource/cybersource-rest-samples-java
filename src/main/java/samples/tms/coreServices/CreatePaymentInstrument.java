@@ -70,17 +70,17 @@ public class CreatePaymentInstrument {
 			/* Read Merchant details. */
 			merchantProp = Configuration.getMerchantDetails();
 			MerchantConfig merchantConfig = new MerchantConfig(merchantProp);
-			
+			ApiClient apiClient = new ApiClient(merchantConfig);
 
 			PaymentInstrumentsApi paymentInstrumentApi = new PaymentInstrumentsApi();
-			response = paymentInstrumentApi.tmsV1PaymentinstrumentsPost(profileId, body,merchantConfig);
+			response = paymentInstrumentApi.tmsV1PaymentinstrumentsPost(profileId, body);
 
 			responseCode = ApiClient.responseCode;
 			status = ApiClient.status;
 
 			System.out.println("ResponseCode :" + responseCode);
 			System.out.println("Status :" + status);
-			System.out.println(response.getId());
+			System.out.println("ResponseBody :"+ApiClient.respBody);
 
 		} catch (ApiException e) {
 

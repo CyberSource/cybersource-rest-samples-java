@@ -1,4 +1,4 @@
-package samples.secureFileShare.coreServices;
+ package samples.secureFileShare.coreServices;
 
 import java.util.Properties;
 
@@ -19,8 +19,8 @@ public class GetListOfFiles {
 	private static String organizationId = "testrest";
 	private static Properties merchantProp;
 	
-	static LocalDate startDate=new LocalDate("2018-10-20");
-	static LocalDate endDate=new LocalDate("2018-10-30");
+	static LocalDate startDate = new LocalDate("2018-10-20");
+	static LocalDate endDate = new LocalDate("2018-10-30");
 
 
 	public static void main(String args[]) throws Exception {
@@ -33,15 +33,16 @@ public class GetListOfFiles {
 			/* Read Merchant details. */
 			merchantProp = Configuration.getMerchantDetails();
 			MerchantConfig merchantConfig = new MerchantConfig(merchantProp);
+			ApiClient apiClient = new ApiClient(merchantConfig);
 
 			SecureFileShareApi secureFileShareApi = new SecureFileShareApi();
-			V1FileDetailsGet200Response response = secureFileShareApi.getFileDetails(startDate, endDate, organizationId,merchantConfig);
+			V1FileDetailsGet200Response response = secureFileShareApi.getFileDetails(startDate, endDate, organizationId);
 
 			responseCode = ApiClient.responseCode;
 			status = ApiClient.status;
 			System.out.println("ResponseCode :" + responseCode);
 			System.out.println("ResponseMessage :" + status);
-			System.out.println(response);
+			System.out.println("ResponseBody :"+ApiClient.respBody);
 
 		} catch (ApiException e) {
 
