@@ -32,7 +32,7 @@ public class CreateAdhocReport {
 		request.reportDefinitionName("TransactionRequestClass");
 		request.timezone("GMT");
 		request.reportMimeType(ReportMimeTypeEnum.APPLICATION_XML);
-		request.reportName("testrest_dec-V35");
+		request.reportName("testrest_dec-V39");
 
 		String timeString = "2018-09-02T12:00:00+05:00";
 		DateTime ddateTime = new DateTime(timeString);
@@ -72,7 +72,7 @@ public class CreateAdhocReport {
 			/* Read Merchant details. */
 			merchantProp = Configuration.getMerchantDetails();
 			MerchantConfig merchantConfig = new MerchantConfig(merchantProp);
-			ApiClient apiClient=new ApiClient(merchantConfig);
+			ApiClient apiClient = new ApiClient(merchantConfig);
 
 			ReportsApi ReportsApi = new ReportsApi();
 			ApiResponse<ReportingV3ReportsIdGet200Response> response = ReportsApi.createReport(request);

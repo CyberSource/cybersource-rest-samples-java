@@ -25,7 +25,7 @@ public class DownloadReport {
 	private static String responseCode = null;
 	private static String status = null;
 	private static String responseBody = null;
-	private static String reportName = "testrest_dec-V35";
+	private static String reportName = "testrest_dec-V39";
 	private static String organizationId = "testrest";
 	private static Properties merchantProp;
 	public static String resourceFile = "DownloadReport";
@@ -43,7 +43,7 @@ public class DownloadReport {
 			/* Read Merchant details. */
 			merchantProp = Configuration.getMerchantDetails();
 			MerchantConfig merchantConfig = new MerchantConfig(merchantProp);
-			ApiClient apiClient=new ApiClient(merchantConfig);
+			ApiClient apiClient = new ApiClient(merchantConfig);
 
 			ReportDownloadsApi downloadsApi = new ReportDownloadsApi();
 			downloadsApi.downloadReportWithHttpInfo(reportDate, reportName, organizationId);

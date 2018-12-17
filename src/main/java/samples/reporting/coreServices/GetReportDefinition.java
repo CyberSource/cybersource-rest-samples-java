@@ -28,7 +28,7 @@ public class GetReportDefinition {
 			/* Read Merchant details. */
 			merchantProp = Configuration.getMerchantDetails();
 			MerchantConfig merchantConfig = new MerchantConfig(merchantProp);
-			ApiClient apiClient=new ApiClient(merchantConfig);
+			ApiClient apiClient = new ApiClient(merchantConfig);
 
 			ReportDefinitionsApi reportDefinitionsApi = new ReportDefinitionsApi();
 			ReportingV3ReportDefinitionsNameGet200Response response = reportDefinitionsApi.getResourceInfoByReportDefinition(reportDefinitionName, organisationId);

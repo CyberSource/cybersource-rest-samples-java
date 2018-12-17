@@ -37,7 +37,7 @@ public class KeyGenerationNoEnc {
 			/* Read Merchant details. */
 			merchantProp = Configuration.getMerchantDetails();
 			MerchantConfig merchantConfig = new MerchantConfig(merchantProp);
-			ApiClient apiClient=new ApiClient(merchantConfig);
+			ApiClient apiClient = new ApiClient(merchantConfig);
 			
 			KeyGenerationApi keyGenerationApi = new KeyGenerationApi();
 			response = keyGenerationApi.generatePublicKey(request);

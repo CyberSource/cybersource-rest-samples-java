@@ -39,13 +39,13 @@ public class GenerateKey {
 			/* Read Merchant details. */
 			merchantProp = Configuration.getMerchantDetails();
 			MerchantConfig merchantConfig = new MerchantConfig(merchantProp);
-			ApiClient apiClient=new ApiClient(merchantConfig);
+			ApiClient apiClient = new ApiClient(merchantConfig);
 			
 			KeyGenerationApi keyGenerationApi = new KeyGenerationApi();
-			response=keyGenerationApi.generatePublicKey(request);
+			response = keyGenerationApi.generatePublicKey(request);
 
-			responseCode=ApiClient.responseCode;
-			status=ApiClient.status;
+			responseCode = ApiClient.responseCode;
+			status = ApiClient.status;
 			
 			System.out.println("ResponseCode :" +responseCode);
 			System.out.println("Status :" +status);

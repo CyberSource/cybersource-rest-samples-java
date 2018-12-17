@@ -12,7 +12,7 @@ import Model.ReportingV3ReportDefinitionsGet200Response;
 
 public class GetReportingResourceInformation {
 
-	private static String organisationId="testrest";
+	private static String organisationId = "testrest";
 	private static String responseCode = null;
 	private static String status = null;
 	private static Properties merchantProp;
@@ -27,7 +27,7 @@ public class GetReportingResourceInformation {
 			/* Read Merchant details. */
 			merchantProp = Configuration.getMerchantDetails();
 			MerchantConfig merchantConfig = new MerchantConfig(merchantProp);
-			ApiClient apiClient=new ApiClient(merchantConfig);
+			ApiClient apiClient = new ApiClient(merchantConfig);
 
 			ReportDefinitionsApi reportDefinitionsApi = new ReportDefinitionsApi();
 			ReportingV3ReportDefinitionsGet200Response response = reportDefinitionsApi.getResourceV2Info(organisationId);

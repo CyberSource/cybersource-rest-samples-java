@@ -92,7 +92,7 @@ public class ProcessPayment {
 			/* Read Merchant details. */
 			merchantProp = Configuration.getMerchantDetails();
 			MerchantConfig merchantConfig = new MerchantConfig(merchantProp);
-			ApiClient apiClient=new ApiClient(merchantConfig);
+			ApiClient apiClient = new ApiClient(merchantConfig);
 			
 			PaymentsApi paymentApi = new PaymentsApi();
 			response = paymentApi.createPayment(request);

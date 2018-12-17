@@ -22,7 +22,7 @@ public class GetPurchaseAndRefundDetails {
 	private static DateTime startTime = ddateTime.withZone(DateTimeZone.forID("Asia/Ashkhabad"));
 	
 	private static String timeString2 = "2018-05-30T12:00:00-05:00";
-	private static DateTime ddateTime2=new DateTime(timeString2);
+	private static DateTime ddateTime2 = new DateTime(timeString2);
 	private static DateTime endTime = ddateTime2.withZone(DateTimeZone.forID("Asia/Ashkhabad"));
 	
 	private static String organizationId = "testrest";
@@ -43,7 +43,7 @@ public class GetPurchaseAndRefundDetails {
 			/* Read Merchant details. */
 			merchantProp = Configuration.getMerchantDetails();
 			MerchantConfig merchantConfig = new MerchantConfig(merchantProp);
-			ApiClient apiClient=new ApiClient(merchantConfig);
+			ApiClient apiClient = new ApiClient(merchantConfig);
 			
 			PurchaseAndRefundDetailsApi purchaseAndRefundDetailsApi = new PurchaseAndRefundDetailsApi();
 			purchaseAndRefundDetailsApi.getPurchaseAndRefundDetails(startTime, endTime, organizationId, paymentSubtype,

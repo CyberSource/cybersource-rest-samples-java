@@ -70,7 +70,7 @@ public class CreatePaymentInstrument {
 			/* Read Merchant details. */
 			merchantProp = Configuration.getMerchantDetails();
 			MerchantConfig merchantConfig = new MerchantConfig(merchantProp);
-			ApiClient apiClient=new ApiClient(merchantConfig);
+			ApiClient apiClient = new ApiClient(merchantConfig);
 
 			PaymentInstrumentsApi paymentInstrumentApi = new PaymentInstrumentsApi();
 			response = paymentInstrumentApi.tmsV1PaymentinstrumentsPost(profileId, body);

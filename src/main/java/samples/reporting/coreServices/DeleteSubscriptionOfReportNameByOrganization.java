@@ -12,9 +12,9 @@ import Invokers.ApiException;
 public class DeleteSubscriptionOfReportNameByOrganization {
 	
 	
-	private static String reportName="Dexa";
-	private static String responseCode=null;
-	private static String status=null;
+	private static String reportName = "Dexa";
+	private static String responseCode = null;
+	private static String status = null;
 	private static Properties merchantProp;
 	
 	public static void main(String args[]) throws Exception {
@@ -27,13 +27,13 @@ public class DeleteSubscriptionOfReportNameByOrganization {
 		/* Read Merchant details. */
 		merchantProp = Configuration.getMerchantDetails();
 		MerchantConfig merchantConfig = new MerchantConfig(merchantProp);
-		ApiClient apiClient=new ApiClient(merchantConfig);
+		ApiClient apiClient = new ApiClient(merchantConfig);
 		
 		ReportSubscriptionsApi reportSubscriptionsApi=new ReportSubscriptionsApi();
 		reportSubscriptionsApi.deleteSubscription(reportName);
 		
-		responseCode=ApiClient.responseCode;
-		status=ApiClient.status;
+		responseCode = ApiClient.responseCode;
+		status = ApiClient.status;
 		System.out.println("ResponseCode :" +responseCode);
 		System.out.println("ResponseMessage :" +status);
 		System.out.println(ApiClient.responseBody);

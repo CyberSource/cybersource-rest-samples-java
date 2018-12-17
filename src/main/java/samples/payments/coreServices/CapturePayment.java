@@ -71,7 +71,7 @@ public class CapturePayment {
 			/* Read Merchant details. */
 			merchantProp = Configuration.getMerchantDetails();
 			MerchantConfig merchantConfig = new MerchantConfig(merchantProp);
-			ApiClient apiClient=new ApiClient(merchantConfig);
+			ApiClient apiClient = new ApiClient(merchantConfig);
 			
 			paymentResponse = ProcessPayment.process(false);
 			CaptureApi captureApi = new CaptureApi();

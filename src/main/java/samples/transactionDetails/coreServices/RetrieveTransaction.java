@@ -14,7 +14,7 @@ public class RetrieveTransaction {
 
 	private static String responseCode = null;
 	private static String status = null;
-	private static String id="5422054956856755003002";
+	private static String id = "5422054956856755003002";
 	private static Properties merchantProp;
 
 	public static void main(String args[]) throws Exception {
@@ -27,7 +27,7 @@ public class RetrieveTransaction {
 			 /* Read Merchant details. */
 			merchantProp = Configuration.getMerchantDetails();
 			MerchantConfig merchantConfig = new MerchantConfig(merchantProp);
-			ApiClient apiClient=new ApiClient(merchantConfig);
+			ApiClient apiClient = new ApiClient(merchantConfig);
 
 			TransactionDetailsApi transactionDetailsApi = new TransactionDetailsApi();
 			TssV2TransactionsGet200Response respose = transactionDetailsApi.getTransaction(id);

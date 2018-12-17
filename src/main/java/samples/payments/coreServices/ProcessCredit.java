@@ -122,7 +122,7 @@ public class ProcessCredit {
 			/* Read Merchant details. */
 			merchantProp = Configuration.getMerchantDetails();
 			MerchantConfig merchantConfig = new MerchantConfig(merchantProp);
-			ApiClient apiClient=new ApiClient(merchantConfig);
+			ApiClient apiClient = new ApiClient(merchantConfig);
 			
 			CreditApi creditApi = new CreditApi();
 			response = creditApi.createCredit(request);

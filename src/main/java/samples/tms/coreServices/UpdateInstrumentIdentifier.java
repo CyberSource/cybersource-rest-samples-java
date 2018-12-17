@@ -56,7 +56,7 @@ public class UpdateInstrumentIdentifier {
 			/* Read Merchant details. */
 			merchantProp = Configuration.getMerchantDetails();
 			MerchantConfig merchantConfig = new MerchantConfig(merchantProp);
-			ApiClient apiClient=new ApiClient(merchantConfig);
+			ApiClient apiClient = new ApiClient(merchantConfig);
 			
 			InstrumentIdentifierApi instrumentIdentifierApi = new InstrumentIdentifierApi();
 			response = instrumentIdentifierApi.tmsV1InstrumentidentifiersTokenIdPatch(profileId, tokenId, body);

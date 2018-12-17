@@ -24,7 +24,7 @@ public class RetrieveAvailableReports {
 	private static DateTime startTime = ddateTime.withZone(DateTimeZone.forID("GMT"));
 	
 	private static String timeString2 = "2018-08-10T23:59:59.0Z";
-	private static DateTime ddateTime2=new DateTime(timeString2);
+	private static DateTime ddateTime2 = new DateTime(timeString2);
 	private static DateTime endTime = ddateTime2.withZone(DateTimeZone.forID("GMT"));
 	
 	private static String timeQueryType = "executedTime";
@@ -41,7 +41,7 @@ public class RetrieveAvailableReports {
 			/* Read Merchant details. */
 			merchantProp = Configuration.getMerchantDetails();
 			MerchantConfig merchantConfig = new MerchantConfig(merchantProp);
-			ApiClient apiClient=new ApiClient(merchantConfig);
+			ApiClient apiClient = new ApiClient(merchantConfig);
 
 			ReportsApi reportsApi = new ReportsApi();
 			ReportingV3ReportsGet200Response response = reportsApi.searchReports(startTime, endTime, timeQueryType, organizationId, null, null,

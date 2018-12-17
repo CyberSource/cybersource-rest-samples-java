@@ -23,8 +23,8 @@ import Model.Ptsv2payoutsSenderInformationAccount;
 
 public class Payout {
 	
-	private static String responseCode=null;
-	private static String status=null;
+	private static String responseCode = null;
+	private static String status = null;
 	private static Properties merchantProp;
 	
 	static PtsV2PayoutsPostResponse request;
@@ -109,13 +109,13 @@ public class Payout {
 	    /* Read Merchant details. */
 		merchantProp = Configuration.getMerchantDetails();
 		MerchantConfig merchantConfig = new MerchantConfig(merchantProp);
-		ApiClient apiClient=new ApiClient(merchantConfig);
+		ApiClient apiClient = new ApiClient(merchantConfig);
 		
 	    ProcessAPayoutApi defaultApi=new ProcessAPayoutApi();
 	    defaultApi.octCreatePayment(request);
 		
-	    responseCode=ApiClient.responseCode;
-		status=ApiClient.status;
+	    responseCode = ApiClient.responseCode;
+		status = ApiClient.status;
 		
 		System.out.println("ResponseCode :" +responseCode);
 		System.out.println("Status :" +status);

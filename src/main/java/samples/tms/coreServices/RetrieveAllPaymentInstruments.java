@@ -29,7 +29,7 @@ public class RetrieveAllPaymentInstruments {
 			/* Read Merchant details. */
 			merchantProp = Configuration.getMerchantDetails();
 			MerchantConfig merchantConfig = new MerchantConfig(merchantProp);
-			ApiClient apiClient=new ApiClient(merchantConfig);
+			ApiClient apiClient = new ApiClient(merchantConfig);
 			
 			PaymentInstrumentsApi paymentInstrumentsApi = new PaymentInstrumentsApi();
 			response = paymentInstrumentsApi.tmsV1InstrumentidentifiersTokenIdPaymentinstrumentsGet(profileId, tokenId, null, null);

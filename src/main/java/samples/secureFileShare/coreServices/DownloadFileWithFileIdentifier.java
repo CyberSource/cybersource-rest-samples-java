@@ -22,7 +22,7 @@ public class DownloadFileWithFileIdentifier {
 
 	private static String responseCode = null;
 	private static String status = null;
-	private static String responseBody=null;
+	private static String responseBody = null;
 	
 	private static String organizationId = "testrest";
 	private static Properties merchantProp;
@@ -42,12 +42,12 @@ public class DownloadFileWithFileIdentifier {
 			/* Read Merchant details. */
 			merchantProp = Configuration.getMerchantDetails();
 			MerchantConfig merchantConfig = new MerchantConfig(merchantProp);
-			ApiClient apiClient=new ApiClient(merchantConfig);
+			ApiClient apiClient = new ApiClient(merchantConfig);
 
 			SecureFileShareApi secureFileShareApi = new SecureFileShareApi();
 			secureFileShareApi.getFileWithHttpInfo(fileId, organizationId);
 			
-			responseBody=ApiClient.responseBody;
+			responseBody = ApiClient.responseBody;
 			InputStream stream = new ByteArrayInputStream(responseBody.getBytes(StandardCharsets.UTF_8));
 			
 			ByteArrayOutputStream baos = new ByteArrayOutputStream();

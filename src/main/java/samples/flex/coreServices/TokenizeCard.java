@@ -24,9 +24,9 @@ import samples.flex.noEncryptionKeyGeneration.KeyGenerationNoEnc;
 import samples.flex.tokenization.VerifyToken;
 
 public class TokenizeCard {
-	private static String status=null;
+	private static String status = null;
 	private static String responseCode;
-	public static FlexV1TokensPost200Response response =null;
+	public static FlexV1TokensPost200Response response  = null;
 	
 	public static FlexV1KeysPost200Response keyResponse;
 	private static Properties merchantProp;
@@ -34,16 +34,16 @@ public class TokenizeCard {
 	
 	@SuppressWarnings("rawtypes")
 	
-	static Map<?, ?> tokenMap=new HashMap();
+	static Map<?, ?> tokenMap = new HashMap();
 	
 	static TokenizeRequest request;
 
 	private static TokenizeRequest getRequest() throws Exception {
 		request = new TokenizeRequest();
-		keyResponse=KeyGenerationNoEnc.process();
+		keyResponse = KeyGenerationNoEnc.process();
 		request.keyId(keyResponse.getKeyId());
 		
-		Flexv1tokensCardInfo cardInfo=new Flexv1tokensCardInfo();
+		Flexv1tokensCardInfo cardInfo = new Flexv1tokensCardInfo();
 		cardInfo.cardNumber("5555555555554444");
 		cardInfo.cardExpirationMonth("03");
 		cardInfo.cardExpirationYear("2031");
@@ -66,10 +66,10 @@ public class TokenizeCard {
 			/* Read Merchant details. */
 			merchantProp = Configuration.getMerchantDetails();
 			MerchantConfig merchantConfig = new MerchantConfig(merchantProp);
-			ApiClient apiClient=new ApiClient(merchantConfig);
+			ApiClient apiClient = new ApiClient(merchantConfig);
 			
 			FlexTokenApi tokenizationApi = new FlexTokenApi();
-			response=tokenizationApi.tokenize(request);
+			response = tokenizationApi.tokenize(request);
 			
 			byte[] publicBytes = Base64.decode(keyResponse.getDer().getPublicKey());
 			X509EncodedKeySpec keySpec = new X509EncodedKeySpec(publicBytes);
@@ -77,7 +77,7 @@ public class TokenizeCard {
 			PublicKey pubKey = keyFactory.generatePublic(keySpec);
 			
 			
-			FlexToken flexTokenResponseBody=new FlexToken();
+			FlexToken flexTokenResponseBody = new FlexToken();
 			flexTokenResponseBody.setKeyId(response.getKeyId());
 			flexTokenResponseBody.setToken(response.getToken());
 			flexTokenResponseBody.setMaskedPan(response.getMaskedPan());
@@ -90,11 +90,11 @@ public class TokenizeCard {
 			ObjectMapper oMapper = new ObjectMapper();
 			tokenMap = oMapper.convertValue(flexTokenResponseBody, Map.class);
 			
-			VerifyToken verifyToken=new VerifyToken();
+			VerifyToken verifyToken = new VerifyToken();
 			verifyToken.verify(pubKey, tokenMap);
 			
-			responseCode=ApiClient.responseCode;
-			status=ApiClient.status;
+			responseCode = ApiClient.responseCode;
+			status = ApiClient.status;
 			
 			System.out.println("ResponseCode :" +responseCode);
 			System.out.println("Status :" +status);
