@@ -11,7 +11,7 @@ import Invokers.ApiException;
 
 public class DeletePaymentInstrument {
 	private static String profileId = "93B32398-AD51-4CC2-A682-EA3E93614EB1";
-	private static String tokenId="7CF7798BC2D3796DE05340588D0A34BA";
+	private static String tokenId="7D24F53E87C53E92E05340588D0AE170";
 	private static String responseCode = null;
 	private static String status = null;
 	private static Properties merchantProp;

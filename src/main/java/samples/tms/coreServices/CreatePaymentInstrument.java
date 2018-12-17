@@ -80,7 +80,7 @@ public class CreatePaymentInstrument {
 
 			System.out.println("ResponseCode :" + responseCode);
 			System.out.println("Status :" + status);
-			System.out.println(response);
+			System.out.println("ResponseBody :"+ApiClient.respBody);
 
 		} catch (ApiException e) {
 

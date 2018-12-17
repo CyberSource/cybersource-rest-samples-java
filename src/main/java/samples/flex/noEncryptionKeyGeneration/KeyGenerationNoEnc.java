@@ -42,8 +42,7 @@ public class KeyGenerationNoEnc {
 			KeyGenerationApi keyGenerationApi = new KeyGenerationApi();
 			response = keyGenerationApi.generatePublicKey(request);
 
-			System.out.println(response.getKeyId());
-			System.out.println(response.toString());
+			System.out.println(ApiClient.respBody);
 
 		} catch (ApiException e) {
 
