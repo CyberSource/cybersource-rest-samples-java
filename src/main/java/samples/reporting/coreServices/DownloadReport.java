@@ -25,7 +25,7 @@ public class DownloadReport {
 	private static String responseCode = null;
 	private static String status = null;
 	private static String responseBody = null;
-	private static String reportName = "testrest_dec-V39";
+	private static String reportName = "testrest dec V70";
 	private static String organizationId = "testrest";
 	private static Properties merchantProp;
 	public static String resourceFile = "DownloadReport";
