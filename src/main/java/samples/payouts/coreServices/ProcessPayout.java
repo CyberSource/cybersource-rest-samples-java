@@ -106,7 +106,7 @@ public class ProcessPayout {
 		process();
 	}
 
-	private static void process() throws Exception {
+	public static void process() throws Exception {
 
 		try {
 			request = getRequest();
