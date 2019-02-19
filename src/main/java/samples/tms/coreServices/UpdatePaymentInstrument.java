@@ -17,17 +17,12 @@ import Model.Tmsv1paymentinstrumentsCard.TypeEnum;
 import Model.Tmsv1paymentinstrumentsInstrumentIdentifier;
 
 public class UpdatePaymentInstrument {
-	private static String responseCode = null;
-	private static String status = null;
-	static TmsV1PaymentinstrumentsPost201Response response;
-	private static String profileId = "93B32398-AD51-4CC2-A682-EA3E93614EB1";
-	private static String tokenId = "79AB33E6A3DE03B6E05340588D0A4B9A";
+	private TmsV1PaymentinstrumentsPost201Response response;
+	private String profileId = "93B32398-AD51-4CC2-A682-EA3E93614EB1";
+	private Properties merchantProp;
+	private Body3 body;
 
-	private static Properties merchantProp;
-
-	static Body3 body;
-
-	private static Body3 getRequest() {
+	private  Body3 getRequest() {
 		body = new Body3();
 
 		Tmsv1paymentinstrumentsCard card = new Tmsv1paymentinstrumentsCard();
@@ -62,31 +57,39 @@ public class UpdatePaymentInstrument {
 	}
 
 	public static void main(String args[]) throws Exception {
-		process();
+		UpdatePaymentInstrument updatePaymentInstrument = new UpdatePaymentInstrument();
+		updatePaymentInstrument.process();
 	}
 
-	public static TmsV1PaymentinstrumentsPost201Response process() throws Exception {
-
+	private TmsV1PaymentinstrumentsPost201Response process() throws Exception {
+		String className=UpdatePaymentInstrument.class.getSimpleName();
+		System.out.println("[BEGIN] EXECUTION OF SAMPLE CODE: "+className+"\n");
+		ApiClient apiClient = new ApiClient();
 		try {
 			body = getRequest();
 			/* Read Merchant details. */
 			merchantProp = Configuration.getMerchantDetails();
 			MerchantConfig merchantConfig = new MerchantConfig(merchantProp);
-			ApiClient apiClient = new ApiClient(merchantConfig);
-
-			PaymentInstrumentsApi paymentInstrumentApi = new PaymentInstrumentsApi();
-			response = paymentInstrumentApi.tmsV1PaymentinstrumentsTokenIdPatch(profileId, tokenId, body);
-
-			responseCode = ApiClient.responseCode;
-			status = ApiClient.status;
-
-			System.out.println("ResponseCode :" + responseCode);
-			System.out.println("Status :" + status);
-			System.out.println("ResponseBody :"+ApiClient.respBody);
-
+			CreatePaymentInstrument createPaymentInstrument = new CreatePaymentInstrument();
+			TmsV1PaymentinstrumentsPost201Response post201Response=createPaymentInstrument.process();
+			if (post201Response != null) {
+				PaymentInstrumentsApi paymentInstrumentApi = new PaymentInstrumentsApi(merchantConfig);
+				apiClient=Invokers.Configuration.getDefaultApiClient();
+				response = paymentInstrumentApi.tmsV1PaymentinstrumentsTokenIdPatch(profileId, post201Response.getId(), body);
+			}
 		} catch (ApiException e) {
-
-			e.printStackTrace();
+			System.out.println("Exception on calling the Sample Code " +className+": "+apiClient.getRespBody()+"\n");
+		} finally {
+			System.out.println("API REQUEST HEADERS:");
+			System.out.println(apiClient.getRequestHeader() + "\n");
+			System.out.println("API REQUEST BODY:");
+			System.out.println(apiClient.getRequestBody() + "\n");
+			System.out.println("API RESPONSE CODE: " + apiClient.getResponseCode() + "\n");
+			System.out.println("API RESPONSE HEADERS:");
+			System.out.println(apiClient.getResponseHeader() + "\n");
+			System.out.println("API RESPONSE BODY:");
+			System.out.println(apiClient.getRespBody() + "\n");
+			System.out.println("[END] EXECUTION OF SAMPLE CODE:" + className + "\n");
 		}
 		return response;
 	}

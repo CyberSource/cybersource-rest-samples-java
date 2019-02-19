@@ -13,26 +13,22 @@ import Api.ReportsApi;
 import Data.Configuration;
 import Invokers.ApiClient;
 import Invokers.ApiException;
-import Invokers.ApiResponse;
 import Model.ReportingV3ReportSubscriptionsGet200ResponseReportPreferences;
-import Model.ReportingV3ReportsIdGet200Response;
 import Model.ReportingV3ReportSubscriptionsGet200ResponseReportPreferences.FieldNameConventionEnum;
 import Model.RequestBody1;
 import Model.RequestBody1.ReportMimeTypeEnum;
 
 public class CreateAdhocReport {
-	private static String responseCode = null;
-	private static String status = null;
-	private static RequestBody1 request;
-	private static Properties merchantProp;
+	private  RequestBody1 request;
+	private  Properties merchantProp;
 
-	private static RequestBody1 getRequest() {
+	private  RequestBody1 getRequest() {
 		request = new RequestBody1();
 		
 		request.reportDefinitionName("TransactionRequestClass");
 		request.timezone("GMT");
 		request.reportMimeType(ReportMimeTypeEnum.APPLICATION_XML);
-		request.reportName("testrest dec V70");
+		request.reportName("testrest v2 Feb06");
 
 		String timeString = "2018-09-02T12:00:00+05:00";
 		DateTime ddateTime = new DateTime(timeString);
@@ -62,31 +58,37 @@ public class CreateAdhocReport {
 	}
 
 	public static void main(String args[]) throws Exception {
-		process();
+		CreateAdhocReport createAdhocReport = new CreateAdhocReport();
+		createAdhocReport.process();
 	}
 
-	public static void process() throws Exception {
-
+	private  void process() throws Exception {
+		String className=CreateAdhocReport.class.getSimpleName();
+		System.out.println("[BEGIN] EXECUTION OF SAMPLE CODE: "+className+"\n");
+		ApiClient apiClient = null;
 		try {
 			request = getRequest();
 			/* Read Merchant details. */
 			merchantProp = Configuration.getMerchantDetails();
 			MerchantConfig merchantConfig = new MerchantConfig(merchantProp);
-			ApiClient apiClient = new ApiClient(merchantConfig);
 
-			ReportsApi ReportsApi = new ReportsApi();
-			ApiResponse<ReportingV3ReportsIdGet200Response> response = ReportsApi.createReport(request);
-
-			responseCode = ApiClient.responseCode;
-			status = ApiClient.status;
-			System.out.println("ResponseCode :" + responseCode);
-			System.out.println("ResponseMessage :" + status);
-			System.out.println(ApiClient.responseBody.toString());
+			ReportsApi ReportsApi = new ReportsApi(merchantConfig);
+			apiClient=Invokers.Configuration.getDefaultApiClient();
+			ReportsApi.createReport(request);
 			
-
 		} catch (ApiException e) {
-
-			e.printStackTrace();
+			System.out.println("Exception on calling the Sample Code " +className+": "+apiClient.getRespBody()+"\n");
+		} finally {
+			System.out.println("API REQUEST HEADERS:");
+			System.out.println(apiClient.getRequestHeader() + "\n");
+			System.out.println("API REQUEST BODY:");
+			System.out.println(apiClient.getRequestBody() + "\n");
+			System.out.println("API RESPONSE CODE: " + apiClient.getResponseCode() + "\n");
+			System.out.println("API RESPONSE HEADERS:");
+			System.out.println(apiClient.getResponseHeader() + "\n");
+			System.out.println("API RESPONSE BODY:");
+			System.out.println(apiClient.getRespBody() + "\n");
+			System.out.println("[END] EXECUTION OF SAMPLE CODE: " + className + "\n");
 		}
 	}
 

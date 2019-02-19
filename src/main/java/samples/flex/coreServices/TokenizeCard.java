@@ -24,25 +24,26 @@ import samples.flex.noEncryptionKeyGeneration.KeyGenerationNoEnc;
 import samples.flex.tokenization.VerifyToken;
 
 public class TokenizeCard {
-	private static String status = null;
-	private static String responseCode;
-	public static FlexV1TokensPost200Response response  = null;
+	private FlexV1TokensPost200Response response;
 	
-	public static FlexV1KeysPost200Response keyResponse;
+	private FlexV1KeysPost200Response keyResponse;
+	
 	private static Properties merchantProp;
 	
 	
 	@SuppressWarnings("rawtypes")
 	
-	static Map<?, ?> tokenMap = new HashMap();
+	private  Map<?, ?> tokenMap = new HashMap();
 	
-	static TokenizeRequest request;
+	private TokenizeRequest request;
 
-	private static TokenizeRequest getRequest() throws Exception {
+	private  TokenizeRequest getRequest() throws Exception {
 		request = new TokenizeRequest();
-		keyResponse = KeyGenerationNoEnc.process();
+		KeyGenerationNoEnc keyGenerationNoEnc=new KeyGenerationNoEnc();
+		keyResponse = keyGenerationNoEnc.process();
+		if(keyResponse!=null){
 		request.keyId(keyResponse.getKeyId());
-		
+		}
 		Flexv1tokensCardInfo cardInfo = new Flexv1tokensCardInfo();
 		cardInfo.cardNumber("5555555555554444");
 		cardInfo.cardExpirationMonth("03");
@@ -55,28 +56,28 @@ public class TokenizeCard {
 	}
 
 	public static void main(String args[]) throws Exception {
-		process();
+		TokenizeCard tokenizeCard=new TokenizeCard();
+		tokenizeCard.process();
 	}
 
-	public static void process() throws Exception {
-
+	public  void process() throws Exception {
+		String className=TokenizeCard.class.getSimpleName();
+		System.out.println("[BEGIN] EXECUTION OF SAMPLE CODE: "+className+"\n");
+		ApiClient apiClient=null;
 		try {
 			request = getRequest();
 
 			/* Read Merchant details. */
 			merchantProp = Configuration.getMerchantDetails();
 			MerchantConfig merchantConfig = new MerchantConfig(merchantProp);
-			ApiClient apiClient = new ApiClient(merchantConfig);
-			
-			FlexTokenApi tokenizationApi = new FlexTokenApi();
+			FlexTokenApi tokenizationApi = new FlexTokenApi(merchantConfig);
+			apiClient=Invokers.Configuration.getDefaultApiClient();
 			response = tokenizationApi.tokenize(request);
 			
 			byte[] publicBytes = Base64.decode(keyResponse.getDer().getPublicKey());
 			X509EncodedKeySpec keySpec = new X509EncodedKeySpec(publicBytes);
 			KeyFactory keyFactory = KeyFactory.getInstance("RSA");
 			PublicKey pubKey = keyFactory.generatePublic(keySpec);
-			
-			
 			FlexToken flexTokenResponseBody = new FlexToken();
 			flexTokenResponseBody.setKeyId(response.getKeyId());
 			flexTokenResponseBody.setToken(response.getToken());
@@ -92,17 +93,19 @@ public class TokenizeCard {
 			
 			VerifyToken verifyToken = new VerifyToken();
 			verifyToken.verify(pubKey, tokenMap);
-			
-			responseCode = ApiClient.responseCode;
-			status = ApiClient.status;
-			
-			System.out.println("ResponseCode :" +responseCode);
-			System.out.println("Status :" +status);
-			System.out.println("ResponseBody :"+ApiClient.respBody);
-
 		} catch (ApiException e) {
-
-			e.printStackTrace();
+			System.out.println("Exception on calling the Sample Code" +className+": "+apiClient.getRespBody()+"\n");
+		} finally {
+			System.out.println("API REQUEST HEADERS:");
+			System.out.println(apiClient.getRequestHeader()+ "\n");
+			System.out.println("API REQUEST BODY:");
+			System.out.println(apiClient.getRequestBody()+ "\n");
+			System.out.println("API RESPONSE CODE: " + apiClient.getResponseCode()+ "\n");
+			System.out.println("API RESPONSE HEADERS:");
+			System.out.println(apiClient.getResponseHeader()+ "\n");
+			System.out.println("API RESPONSE BODY:");
+			System.out.println(apiClient.getRespBody() + "\n");
+			System.out.println("[END] EXECUTION OF SAMPLE CODE: " + className+ "\n");
 		}
 	}
 

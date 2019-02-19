@@ -8,44 +8,41 @@ import Api.ReportSubscriptionsApi;
 import Data.Configuration;
 import Invokers.ApiClient;
 import Invokers.ApiException;
-import Model.ReportingV3ReportSubscriptionsGet200Response;
-import Model.ReportingV3ReportSubscriptionsGet200ResponseSubscriptions;
 
 public class GetSubscriptionForReportName {
 	
 	
-	private static String reportName = "Texture";
-	private static String responseCode = null;
-	private static String status = null;
-	private static Properties merchantProp;
+	private  String reportName = "Texture";
+	private  Properties merchantProp;
 	
 	public static void main(String args[]) throws Exception {
-		process();
+		GetSubscriptionForReportName getSubscriptionForReportName = new GetSubscriptionForReportName();
+		getSubscriptionForReportName.process();
 	}
     
-	private static void process() throws Exception {
-	
-	try {
-		/* Read Merchant details. */
-		merchantProp = Configuration.getMerchantDetails();
-		MerchantConfig merchantConfig = new MerchantConfig(merchantProp);
-		ApiClient apiClient = new ApiClient(merchantConfig);
-		
-		ReportSubscriptionsApi reportSubscriptionsApi = new ReportSubscriptionsApi();
-		ReportingV3ReportSubscriptionsGet200Response response = reportSubscriptionsApi.getSubscription(reportName);
-		
-		responseCode = ApiClient.responseCode;
-		status = ApiClient.status;
-		System.out.println("ResponseCode :" + responseCode);
-		System.out.println("ResponseMessage :" + status);
-		System.out.println("ResponseBody :"+ApiClient.respBody);
-		
-		
-	
-	} catch (ApiException e) {
-		
-		e.printStackTrace();
-	}
+	private  void process() throws Exception {
+		String className=GetSubscriptionForReportName.class.getSimpleName();
+		System.out.println("[BEGIN] EXECUTION OF SAMPLE CODE: "+className+"\n");
+		ApiClient apiClient = null;
+		try {
+			/* Read Merchant details. */
+			merchantProp = Configuration.getMerchantDetails();
+			MerchantConfig merchantConfig = new MerchantConfig(merchantProp);
+			ReportSubscriptionsApi reportSubscriptionsApi = new ReportSubscriptionsApi(merchantConfig);
+			apiClient=Invokers.Configuration.getDefaultApiClient();
+			reportSubscriptionsApi.getSubscription(reportName);
+		} catch (ApiException e) {
+			System.out.println("Exception on calling the Sample Code " + className + ": " + apiClient.getRespBody() + "\n");
+		} finally {
+			System.out.println("API REQUEST HEADERS:");
+			System.out.println(apiClient.getRequestHeader() + "\n");
+			System.out.println("API RESPONSE CODE: " + apiClient.getResponseCode() + "\n");
+			System.out.println("API RESPONSE HEADERS:");
+			System.out.println(apiClient.getResponseHeader() + "\n");
+			System.out.println("API RESPONSE BODY:");
+			System.out.println(apiClient.getRespBody() + "\n");
+			System.out.println("[END] EXECUTION OF SAMPLE CODE:" + className + "\n");
+		}
   }
 
 }

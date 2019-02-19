@@ -17,15 +17,12 @@ import Model.Tmsv1instrumentidentifiersProcessingInformationAuthorizationOptions
 import Model.Tmsv1instrumentidentifiersProcessingInformationAuthorizationOptionsInitiatorMerchantInitiatedTransaction;
 
 public class CreateInstrumentIdentifier {
-	private static String responseCode = null;
-	private static String status = null;
-	static TmsV1InstrumentidentifiersPost200Response response;
+	private TmsV1InstrumentidentifiersPost200Response response;
 	private static String profileId = "93B32398-AD51-4CC2-A682-EA3E93614EB1";
 	private static Properties merchantProp;
+	private Body body;
 
-	static Body body;
-
-	private static Body getRequest() {
+	private  Body getRequest() {
 		body = new Body();
 
 		Tmsv1instrumentidentifiersCard card = new Tmsv1instrumentidentifiersCard();
@@ -50,31 +47,35 @@ public class CreateInstrumentIdentifier {
 	}
 
 	public static void main(String args[]) throws Exception {
-		process();
+		CreateInstrumentIdentifier createInstrumentIdentifier = new CreateInstrumentIdentifier();
+		createInstrumentIdentifier.process();
 	}
 
-	public static TmsV1InstrumentidentifiersPost200Response process() throws Exception {
-
+	public TmsV1InstrumentidentifiersPost200Response process() throws Exception {
+		String className=CreateInstrumentIdentifier.class.getSimpleName();
+		System.out.println("[BEGIN] EXECUTION OF SAMPLE CODE: "+className+"\n");
+		ApiClient apiClient = null;
 		try {
 			body = getRequest();
 			/* Read Merchant details. */
 			merchantProp = Configuration.getMerchantDetails();
 			MerchantConfig merchantConfig = new MerchantConfig(merchantProp);
-			ApiClient apiClient = new ApiClient(merchantConfig);
-		
-			InstrumentIdentifiersApi instrumentIdentifierApi = new InstrumentIdentifiersApi();
+			InstrumentIdentifiersApi instrumentIdentifierApi = new InstrumentIdentifiersApi(merchantConfig);
+			apiClient=Invokers.Configuration.getDefaultApiClient();
 			response = instrumentIdentifierApi.tmsV1InstrumentidentifiersPost(profileId, body);
-
-			responseCode = ApiClient.responseCode;
-			status = ApiClient.status;
-
-			System.out.println("ResponseCode :" + responseCode);
-			System.out.println("Status :" + status);
-			System.out.println(response);
-
 		} catch (ApiException e) {
-
-			e.printStackTrace();
+			System.out.println("Exception on calling the Sample Code " +className+": "+apiClient.getRespBody()+"\n");
+		} finally {
+			System.out.println("API REQUEST HEADERS:");
+			System.out.println(apiClient.getRequestHeader() + "\n");
+			System.out.println("API REQUEST BODY:");
+			System.out.println(apiClient.getRequestBody() + "\n");
+			System.out.println("API RESPONSE CODE: " + apiClient.getResponseCode() + "\n");
+			System.out.println("API RESPONSE HEADERS:");
+			System.out.println(apiClient.getResponseHeader() + "\n");
+			System.out.println("API RESPONSE BODY:");
+			System.out.println(apiClient.getRespBody() + "\n");
+			System.out.println("[END] EXECUTION OF SAMPLE CODE: " + className + "\n");
 		}
 		return response;
 	}

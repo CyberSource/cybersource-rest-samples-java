@@ -20,35 +20,31 @@ import Invokers.ApiException;
 
 public class DownloadFileWithFileIdentifier {
 
-	private static String responseCode = null;
-	private static String status = null;
-	private static String responseBody = null;
-	
-	private static String organizationId = "testrest";
-	private static Properties merchantProp;
-	private  static String resourceFile = "SecureFile";
+	private String organizationId = "testrest";
+	private Properties merchantProp;
+	private String resourceFile = "SecureFile";
     private static final String FILE_PATH = "src/test/resources/";
 	
-    private static String  fileId = "VFJSUmVwb3J0LTc4NTVkMTNmLTkzOTgtNTExMy1lMDUzLWEyNTg4ZTBhNzE5Mi5jc3YtMjAxOC0xMC0yMA==";
+    private  String  fileId = "VFJSUmVwb3J0LTc4NTVkMTNmLTkzOTgtNTExMy1lMDUzLWEyNTg4ZTBhNzE5Mi5jc3YtMjAxOC0xMC0yMA==";
 
 
 	public static void main(String args[]) throws Exception {
-		process();
+		DownloadFileWithFileIdentifier downloadFileWithFileIdentifier = new DownloadFileWithFileIdentifier();
+		downloadFileWithFileIdentifier.process();
 	}
 
-	private static void process() throws Exception {
-
+	private void process() throws Exception {
+		String className=DownloadFileWithFileIdentifier.class.getSimpleName();
+		System.out.println("[BEGIN] EXECUTION OF SAMPLE CODE: "+className+"\n");
+		ApiClient apiClient = null;
 		try {
 			/* Read Merchant details. */
 			merchantProp = Configuration.getMerchantDetails();
 			MerchantConfig merchantConfig = new MerchantConfig(merchantProp);
-			ApiClient apiClient = new ApiClient(merchantConfig);
-
-			SecureFileShareApi secureFileShareApi = new SecureFileShareApi();
+			SecureFileShareApi secureFileShareApi = new SecureFileShareApi(merchantConfig);
+			apiClient=Invokers.Configuration.getDefaultApiClient();
 			secureFileShareApi.getFileWithHttpInfo(fileId, organizationId);
-			
-			responseBody = ApiClient.responseBody;
-			InputStream stream = new ByteArrayInputStream(responseBody.getBytes(StandardCharsets.UTF_8));
+			InputStream stream = new ByteArrayInputStream(apiClient.getResponseBody().getBytes(StandardCharsets.UTF_8));
 			
 			ByteArrayOutputStream baos = new ByteArrayOutputStream();
 	        org.apache.commons.io.IOUtils.copy(stream, baos);
@@ -70,17 +66,19 @@ public class DownloadFileWithFileIdentifier {
 	           bw.write(output+"\n");
 	        }
 	        bw.close();
-
-			responseCode = ApiClient.responseCode;
-			status = ApiClient.status;
-			System.out.println("ResponseCode :" + responseCode);
-			System.out.println("ResponseMessage :" + status);
-			System.out.println("File downloaded at the below location :");
-			System.out.println(new File(FILE_PATH + resourceFile + "." + reportType).getAbsolutePath());
-
+	        System.out.println("File downloaded at the below location :");
+			System.out.println(new File(FILE_PATH + resourceFile + "." + reportType).getAbsolutePath() + "\n");
 		} catch (ApiException e) {
-
-			e.printStackTrace();
+			System.out.println("Exception on calling the Sample Code " +className+": "+apiClient.getRespBody()+"\n");
+		} finally {
+			System.out.println("API REQUEST HEADERS:");
+			System.out.println(apiClient.getRequestHeader() + "\n");
+			System.out.println("API RESPONSE CODE: " + apiClient.getResponseCode() + "\n");
+			System.out.println("API RESPONSE HEADERS:");
+			System.out.println(apiClient.getResponseHeader() + "\n");
+			System.out.println("API RESPONSE BODY:");
+			System.out.println(apiClient.getResponseBody() + "\n");
+			System.out.println("[END] EXECUTION OF SAMPLE CODE:" + className + "\n");
 		}
 	}
 

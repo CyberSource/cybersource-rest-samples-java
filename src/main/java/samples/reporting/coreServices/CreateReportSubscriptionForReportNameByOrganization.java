@@ -14,12 +14,11 @@ import Model.RequestBody;
 import Model.RequestBody.ReportMimeTypeEnum;
 
 public class CreateReportSubscriptionForReportNameByOrganization {
-	private static String responseCode = null;
-	private static String status = null;
-	private static RequestBody request;
-	private static Properties merchantProp;
-	private static String report_name = "Dexa";
-	private static RequestBody getRequest() {
+	private  RequestBody request;
+	private  Properties merchantProp;
+	private  String reportName = "Dexa";
+	
+	private  RequestBody getRequest() {
 		request = new RequestBody();
 		
 		request.reportDefinitionName("TransactionRequestClass");
@@ -36,39 +35,43 @@ public class CreateReportSubscriptionForReportNameByOrganization {
 		request.startTime("0950");
 		
 		request.reportMimeType(ReportMimeTypeEnum.TEXT_CSV);
-		request.reportName(report_name);
+		request.reportName(reportName);
 		request.timezone("America/Chicago");
 		return request;
 
 	}
 
 	public static void main(String args[]) throws Exception {
-		process();
+		CreateReportSubscriptionForReportNameByOrganization createReportSubscriptionForReportNameByOrganization = new CreateReportSubscriptionForReportNameByOrganization();
+		createReportSubscriptionForReportNameByOrganization.process();
 	}
 
-	public static void process() throws Exception {
-
+	private  void process() throws Exception {
+		String className=CreateReportSubscriptionForReportNameByOrganization.class.getSimpleName();
+		System.out.println("[BEGIN] EXECUTION OF SAMPLE CODE: "+className + "\n");
+		ApiClient apiClient = null;
 		try {
 			request = getRequest();
 
 			/* Read Merchant details. */
 			merchantProp = Configuration.getMerchantDetails();
 			MerchantConfig merchantConfig = new MerchantConfig(merchantProp);
-			ApiClient apiClient = new ApiClient(merchantConfig);
-			
-			ReportSubscriptionsApi reportSubscriptionsApi = new ReportSubscriptionsApi();
+			ReportSubscriptionsApi reportSubscriptionsApi = new ReportSubscriptionsApi(merchantConfig);
+			apiClient=Invokers.Configuration.getDefaultApiClient();
 			reportSubscriptionsApi.createSubscription(request);
-			
-			responseCode = ApiClient.responseCode;
-			status = ApiClient.status;
-		
-			System.out.println("ResponseCode :" + responseCode);
-			System.out.println("ResponseMessage :" + status);
-			System.out.println(ApiClient.responseBody);
-			
 		} catch (ApiException e) {
-
-			e.printStackTrace();
+			System.out.println("Exception on calling the Sample Code " +className+": "+apiClient.getRespBody()+"\n");
+		} finally {
+			System.out.println("API REQUEST HEADERS:");
+			System.out.println(apiClient.getRequestHeader() + "\n");
+			System.out.println("API REQUEST BODY:");
+			System.out.println(apiClient.getRequestBody() + "\n");
+			System.out.println("API RESPONSE CODE: " + apiClient.getResponseCode() + "\n");
+			System.out.println("API RESPONSE HEADERS:");
+			System.out.println(apiClient.getResponseHeader() + "\n");
+			System.out.println("API RESPONSE BODY:");
+			System.out.println(apiClient.getRespBody() + "\n");
+			System.out.println("[END] EXECUTION OF SAMPLE CODE: " + className + "\n");
 		}
 	}
 

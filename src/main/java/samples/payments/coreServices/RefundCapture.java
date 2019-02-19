@@ -23,15 +23,12 @@ import Model.Ptsv2paymentsidrefundsOrderInformation;
 import Model.RefundCaptureRequest;
 
 public class RefundCapture {
-	private static String responseCode = null;
-	private static String status = null;
-	public static PtsV2PaymentsRefundPost201Response response;
-	public static PtsV2PaymentsCapturesPost201Response captureResponse;
-	private static Properties merchantProp;
+	private  PtsV2PaymentsRefundPost201Response response;
+	private  PtsV2PaymentsCapturesPost201Response captureResponse;
+	private Properties merchantProp;
+	private RefundCaptureRequest request;
 
-	static RefundCaptureRequest request;
-
-	private static RefundCaptureRequest getRequest() {
+	private RefundCaptureRequest getRequest() {
 		request = new RefundCaptureRequest();
 
 		Ptsv2paymentsClientReferenceInformation client = new Ptsv2paymentsClientReferenceInformation();
@@ -101,32 +98,39 @@ public class RefundCapture {
 	}
 
 	public static void main(String args[]) throws Exception {
-		process();
+		RefundCapture refundCapture = new RefundCapture();
+		refundCapture.process();
 	}
 
-	public static void process() throws Exception {
-
+	public void process() throws Exception {
+		String className=RefundCapture.class.getSimpleName();
+		System.out.println("[BEGIN] EXECUTION OF SAMPLE CODE: "+className+"\n");
+		ApiClient apiClient=new ApiClient();
 		try {
 			request = getRequest();
 			/* Read Merchant details. */
 			merchantProp = Configuration.getMerchantDetails();
 			MerchantConfig merchantConfig = new MerchantConfig(merchantProp);
-			ApiClient apiClient = new ApiClient(merchantConfig);
-			
-			captureResponse = CapturePayment.process();
-			RefundApi refundApi = new RefundApi();
-			response = refundApi.refundCapture(request, captureResponse.getId());
-
-			responseCode = ApiClient.responseCode;
-			status = ApiClient.status;
-
-			System.out.println("ResponseCode :" + responseCode);
-			System.out.println("Status :" + status);
-			System.out.println(response);
-
+			CapturePayment capturePayment=new CapturePayment();
+			captureResponse = capturePayment.process();
+			if (captureResponse != null) {
+				RefundApi refundApi = new RefundApi(merchantConfig);
+				apiClient=Invokers.Configuration.getDefaultApiClient();
+				response = refundApi.refundCapture(request, captureResponse.getId());
+			}
 		} catch (ApiException e) {
-
-			e.printStackTrace();
+			System.out.println("Exception on calling the Sample Code " +className+": "+apiClient.getRespBody()+"\n");
+		} finally {
+			System.out.println("API REQUEST HEADERS:");
+			System.out.println(apiClient.getRequestHeader() + "\n");
+			System.out.println("API REQUEST BODY:");
+			System.out.println(apiClient.getRequestBody() + "\n");
+			System.out.println("API RESPONSE CODE: " + apiClient.getResponseCode() + "\n");
+			System.out.println("API RESPONSE HEADERS:");
+			System.out.println(apiClient.getResponseHeader() + "\n");
+			System.out.println("API RESPONSE BODY:");
+			System.out.println(apiClient.getRespBody() + "\n");
+			System.out.println("[END] EXECUTION OF SAMPLE CODE:" + className + "\n");
 		}
 	}
 

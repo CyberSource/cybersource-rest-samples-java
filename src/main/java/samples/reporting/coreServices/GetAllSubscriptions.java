@@ -8,38 +8,39 @@ import Api.ReportSubscriptionsApi;
 import Data.Configuration;
 import Invokers.ApiClient;
 import Invokers.ApiException;
-import Model.ReportingV3ReportSubscriptionsGet200Response;
 
 public class GetAllSubscriptions {
 
-	private static String responseCode = null;
-	private static String status = null;
-	private static Properties merchantProp;
+	private Properties merchantProp;
 
 	public static void main(String args[]) throws Exception {
-		process();
+		GetAllSubscriptions getAllSubscriptions = new GetAllSubscriptions();
+		getAllSubscriptions.process();
 	}
 
-	private static void process() throws Exception {
-
+	private  void process() throws Exception {
+		String className=GetAllSubscriptions.class.getSimpleName();
+		System.out.println("[BEGIN] EXECUTION OF SAMPLE CODE: "+className+"\n");
+		ApiClient apiClient = null;
 		try {
 
 			/* Read Merchant details. */
 			merchantProp = Configuration.getMerchantDetails();
 			MerchantConfig merchantConfig = new MerchantConfig(merchantProp);
-			ApiClient apiClient = new ApiClient(merchantConfig);
-			
-			ReportSubscriptionsApi reportSubscriptionsApi = new ReportSubscriptionsApi();
-			ReportingV3ReportSubscriptionsGet200Response response = reportSubscriptionsApi.getAllSubscriptions();
-
-			responseCode = ApiClient.responseCode;
-			status = ApiClient.status;
-			System.out.println("ResponseCode :" + responseCode);
-			System.out.println("ResponseMessage :" + status);
-			System.out.println("ResponseBody :"+ApiClient.respBody);
+			ReportSubscriptionsApi reportSubscriptionsApi = new ReportSubscriptionsApi(merchantConfig);
+			apiClient=Invokers.Configuration.getDefaultApiClient();
+			reportSubscriptionsApi.getAllSubscriptions();
 		} catch (ApiException e) {
-
-			e.printStackTrace();
+			System.out.println("Exception on calling the Sample Code " +className+": "+apiClient.getRespBody()+"\n");
+		} finally {
+			System.out.println("API REQUEST HEADERS:");
+			System.out.println(apiClient.getRequestHeader() + "\n");
+			System.out.println("API RESPONSE CODE: " + apiClient.getResponseCode() + "\n");
+			System.out.println("API RESPONSE HEADERS:");
+			System.out.println(apiClient.getResponseHeader() + "\n");
+			System.out.println("API RESPONSE BODY:");
+			System.out.println(apiClient.getRespBody() + "\n");
+			System.out.println("[END] EXECUTION OF SAMPLE CODE:" + className + "\n");
 		}
 	}
 

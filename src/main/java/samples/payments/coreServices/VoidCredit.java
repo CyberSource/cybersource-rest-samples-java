@@ -15,15 +15,12 @@ import Model.VoidCreditRequest;
 
 public class VoidCredit {
 
-	private static String responseCode = null;
-	private static String status = null;
-	public static PtsV2PaymentsVoidsPost201Response response;
-	public static PtsV2CreditsPost201Response creditResponse;
-	private static Properties merchantProp;
+	private  PtsV2PaymentsVoidsPost201Response response;
+	private  PtsV2CreditsPost201Response creditResponse;
+	private Properties merchantProp;
+	private VoidCreditRequest request;
 
-	static VoidCreditRequest request;
-
-	private static VoidCreditRequest getRequest() {
+	private VoidCreditRequest getRequest() {
 		request = new VoidCreditRequest();
 
 		Ptsv2paymentsidreversalsClientReferenceInformation client = new Ptsv2paymentsidreversalsClientReferenceInformation();
@@ -35,34 +32,41 @@ public class VoidCredit {
 	}
 
 	public static void main(String args[]) throws Exception {
-		process();
+		VoidCredit voidCredit= new VoidCredit();
+		voidCredit.process();
 	}
 
-	private static void process() throws Exception {
-
+	private  void process() throws Exception {
+		String className=VoidCredit.class.getSimpleName();
+		System.out.println("[BEGIN] EXECUTION OF SAMPLE CODE: "+className+"\n");
+		ApiClient apiClient = new ApiClient();
 		try {
 			request = getRequest();
 
 			/* Read Merchant details. */
 			merchantProp = Configuration.getMerchantDetails();
 			MerchantConfig merchantConfig = new MerchantConfig(merchantProp);
-			ApiClient apiClient = new ApiClient(merchantConfig);
+			ProcessCredit processCredit = new ProcessCredit();
+			creditResponse = processCredit.process();
 			
-			creditResponse = ProcessCredit.process();
-
-			VoidApi voidApi = new VoidApi();
-			response = voidApi.voidCredit(request, creditResponse.getId());
-
-			responseCode = ApiClient.responseCode;
-			status = ApiClient.status;
-
-			System.out.println("ResponseCode :" + responseCode);
-			System.out.println("Status :" + status);
-			System.out.println(response);
-
+			if (creditResponse != null) {
+				VoidApi voidApi = new VoidApi(merchantConfig);
+				apiClient=Invokers.Configuration.getDefaultApiClient();
+				response = voidApi.voidCredit(request, creditResponse.getId());
+			}
 		} catch (ApiException e) {
-
-			e.printStackTrace();
+			System.out.println("Exception on calling the Sample Code " +className+": "+apiClient.getRespBody()+"\n");
+		} finally {
+			System.out.println("API REQUEST HEADERS:");
+			System.out.println(apiClient.getRequestHeader() + "\n");
+			System.out.println("API REQUEST BODY:");
+			System.out.println(apiClient.getRequestBody() + "\n");
+			System.out.println("API RESPONSE CODE: " + apiClient.getResponseCode() + "\n");
+			System.out.println("API RESPONSE HEADERS:");
+			System.out.println(apiClient.getResponseHeader() + "\n");
+			System.out.println("API RESPONSE BODY:");
+			System.out.println(apiClient.getRespBody() + "\n");
+			System.out.println("[END] EXECUTION OF SAMPLE CODE:" + className + "\n");
 		}
 	}
 

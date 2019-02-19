@@ -10,22 +10,17 @@ import Invokers.ApiClient;
 import Invokers.ApiException;
 import Model.AuthReversalRequest;
 import Model.PtsV2PaymentsPost201Response;
-import Model.PtsV2PaymentsReversalsPost201Response;
 import Model.Ptsv2paymentsidreversalsClientReferenceInformation;
 import Model.Ptsv2paymentsidreversalsReversalInformation;
 import Model.Ptsv2paymentsidreversalsReversalInformationAmountDetails;
 
 public class ProcessAuthorizationReversal {
 
-	private static String responseCode = null;
-	private static String status = null;
-	static PtsV2PaymentsReversalsPost201Response response;
-	public static PtsV2PaymentsPost201Response paymentResponse;
-	private static Properties merchantProp;
+	private  PtsV2PaymentsPost201Response paymentResponse;
+	private  Properties merchantProp;
+	private AuthReversalRequest request;
 
-	static AuthReversalRequest request;
-
-	private static AuthReversalRequest getRequest() {
+	private  AuthReversalRequest getRequest() {
 		request = new AuthReversalRequest();
 
 		Ptsv2paymentsidreversalsClientReferenceInformation client = new Ptsv2paymentsidreversalsClientReferenceInformation();
@@ -46,34 +41,41 @@ public class ProcessAuthorizationReversal {
 	}
 
 	public static void main(String args[]) throws Exception {
-		process();
+		ProcessAuthorizationReversal processAuthorizationReversal=new ProcessAuthorizationReversal();
+		processAuthorizationReversal.process();
 	}
 
-	private static void process() throws Exception {
-
+	public  void process() throws Exception {
+		String className=ProcessAuthorizationReversal.class.getSimpleName();
+		System.out.println("[BEGIN] EXECUTION OF SAMPLE CODE: "+className+"\n");
+		ApiClient apiClient = new ApiClient();
 		try {
 			request = getRequest();
 
 			/* Read Merchant details. */
 			merchantProp = Configuration.getMerchantDetails();
 			MerchantConfig merchantConfig = new MerchantConfig(merchantProp);
-			ApiClient apiClient = new ApiClient(merchantConfig);
+			ProcessPayment processPayment = new ProcessPayment();
+			paymentResponse = processPayment.process(false);
 			
-			paymentResponse = ProcessPayment.process(false);
-
-			ReversalApi reversalApi = new ReversalApi();
-			response = reversalApi.authReversal(paymentResponse.getId(), request);
-
-			responseCode = ApiClient.responseCode;
-			status = ApiClient.status;
-
-			System.out.println("ResponseCode :" + responseCode);
-			System.out.println("Status :" + status);
-			System.out.println(response);
-
+			if(paymentResponse!=null){
+			ReversalApi reversalApi = new ReversalApi(merchantConfig);
+			apiClient=Invokers.Configuration.getDefaultApiClient();
+			reversalApi.authReversal(paymentResponse.getId(), request);
+			}
 		} catch (ApiException e) {
-
-			e.printStackTrace();
+			System.out.println("Exception on calling the Sample Code" +className+": "+apiClient.getRespBody()+"\n");
+		} finally {
+			System.out.println("API REQUEST HEADERS:");
+			System.out.println(apiClient.getRequestHeader() + "\n");
+			System.out.println("API REQUEST BODY:");
+			System.out.println(apiClient.getRequestBody() + "\n");
+			System.out.println("API RESPONSE CODE: " + apiClient.getResponseCode() + "\n");
+			System.out.println("API RESPONSE HEADERS:");
+			System.out.println(apiClient.getResponseHeader() + "\n");
+			System.out.println("API RESPONSE BODY:");
+			System.out.println(apiClient.getRespBody() + "\n");
+			System.out.println("[END] EXECUTION OF SAMPLE CODE:" + className + "\n");
 		}
 	}
 
