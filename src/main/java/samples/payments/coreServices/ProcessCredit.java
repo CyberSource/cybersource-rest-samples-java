@@ -25,14 +25,12 @@ import Model.Ptsv2paymentsidrefundsPaymentInformationCard;
 
 public class ProcessCredit {
 
-	private static String responseCode = null;
-	private static String status = null;
-	private static PtsV2CreditsPost201Response response;
-	private static Properties merchantProp;
+	private  PtsV2CreditsPost201Response response;
+	private  Properties merchantProp;
 
-	private static CreateCreditRequest request;
+	private  CreateCreditRequest request;
 
-	private static CreateCreditRequest getRequest() {
+	private  CreateCreditRequest getRequest() {
 		request = new CreateCreditRequest();
 
 		Ptsv2paymentsClientReferenceInformation client = new Ptsv2paymentsClientReferenceInformation();
@@ -112,31 +110,35 @@ public class ProcessCredit {
 	}
 
 	public static void main(String args[]) throws Exception {
-		process();
+		ProcessCredit processCredit= new ProcessCredit();
+		processCredit.process();
 	}
 
-	public static  PtsV2CreditsPost201Response process() throws Exception {
-
+	public PtsV2CreditsPost201Response process() throws Exception {
+		String className=ProcessCredit.class.getSimpleName();
+		System.out.println("[BEGIN] EXECUTION OF SAMPLE CODE: "+className+"\n");
+		ApiClient apiClient = null;
 		try {
 			request = getRequest();
 			/* Read Merchant details. */
 			merchantProp = Configuration.getMerchantDetails();
 			MerchantConfig merchantConfig = new MerchantConfig(merchantProp);
-			ApiClient apiClient = new ApiClient(merchantConfig);
-			
-			CreditApi creditApi = new CreditApi();
+			CreditApi creditApi = new CreditApi(merchantConfig);
+			apiClient=Invokers.Configuration.getDefaultApiClient();
 			response = creditApi.createCredit(request);
-
-			responseCode = ApiClient.responseCode;
-			status = ApiClient.status;
-
-			System.out.println("ResponseCode :" + responseCode);
-			System.out.println("Status :" + status);
-			System.out.println(response);
-
 		} catch (ApiException e) {
-
-			e.printStackTrace();
+			System.out.println("Exception on calling the Sample Code " +className+": "+apiClient.getRespBody()+"\n");
+		} finally {
+			System.out.println("API REQUEST HEADERS:");
+			System.out.println(apiClient.getRequestHeader() + "\n");
+			System.out.println("API REQUEST BODY:");
+			System.out.println(apiClient.getRequestBody() + "\n");
+			System.out.println("API RESPONSE CODE: " + apiClient.getResponseCode() + "\n");
+			System.out.println("API RESPONSE HEADERS:");
+			System.out.println(apiClient.getResponseHeader() + "\n");
+			System.out.println("API RESPONSE BODY:");
+			System.out.println(apiClient.getRespBody() + "\n");
+			System.out.println("[END] EXECUTION OF SAMPLE CODE:" + className + "\n");
 		}
 		return response;
 	}

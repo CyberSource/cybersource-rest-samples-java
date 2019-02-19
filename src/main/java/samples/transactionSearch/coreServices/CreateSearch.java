@@ -12,54 +12,57 @@ import Model.TssV2TransactionsPostResponse;
 import Model.TssV2TransactionsPost201Response;
 
 public class CreateSearch {
-	private static String responseCode = null;
-	private static String status = null;
-	private static TssV2TransactionsPost201Response reponse;
-	private static TssV2TransactionsPostResponse request;
-	private static Properties merchantProp;
+	private TssV2TransactionsPost201Response response;
+	private TssV2TransactionsPostResponse request;
+	private Properties merchantProp;
 
-	private static TssV2TransactionsPostResponse getRequest() {
+	private TssV2TransactionsPostResponse getRequest() {
 		request = new TssV2TransactionsPostResponse();
 		
 		request.save(false);
-		request.name("MRN");
+		request.name("TSS search");
 		request.timezone("America/Chicago");
-		request.query("clientReferenceInformation.code:TC50171_3");
+		request.query("clientReferenceInformation.code:12345");
 		request.offset(0);
-		request.limit(80);
+		request.limit(100);
 		request.sort("id:asc, submitTimeUtc:asc");
 		return request;
 
 	}
 
 	public static void main(String args[]) throws Exception {
-		process();
+		CreateSearch createSearch = new CreateSearch();
+		createSearch.process();
 	}
 
-	public static TssV2TransactionsPost201Response process() throws Exception {
-
+	private TssV2TransactionsPost201Response process() throws Exception {
+		String className=CreateSearch.class.getSimpleName();
+		System.out.println("[BEGIN] EXECUTION OF SAMPLE CODE: "+className+"\n");
+		ApiClient apiClient = null;
 		try {
 			request = getRequest();
 
 			 /* Read Merchant details. */
 			merchantProp = Configuration.getMerchantDetails();
 			MerchantConfig merchantConfig = new MerchantConfig(merchantProp);
-			ApiClient apiClient = new ApiClient(merchantConfig);
-			
-			SearchTransactionsApi searchTransactionsApi = new SearchTransactionsApi();
-			reponse = searchTransactionsApi.createSearch(request);
-
-			responseCode = ApiClient.responseCode;
-			status = ApiClient.status;
-			System.out.println("ResponseCode :" + responseCode);
-			System.out.println("ResponseMessage :" + status);
-			System.out.println("ResponseBody :"+ApiClient.respBody);
-
+			SearchTransactionsApi searchTransactionsApi = new SearchTransactionsApi(merchantConfig);
+			apiClient=Invokers.Configuration.getDefaultApiClient();
+			response = searchTransactionsApi.createSearch(request);
 		} catch (ApiException e) {
-
-			e.printStackTrace();
+			System.out.println("Exception on calling the Sample Code " +className+": "+apiClient.getRespBody()+"\n");
+		} finally {
+			System.out.println("API REQUEST HEADERS:");
+			System.out.println(apiClient.getRequestHeader() + "\n");
+			System.out.println("API REQUEST BODY:");
+			System.out.println(apiClient.getRequestBody() + "\n");
+			System.out.println("API RESPONSE CODE: " + apiClient.getResponseCode() + "\n");
+			System.out.println("API RESPONSE HEADERS:");
+			System.out.println(apiClient.getResponseHeader() + "\n");
+			System.out.println("API RESPONSE BODY:");
+			System.out.println(apiClient.getRespBody() + "\n");
+			System.out.println("[END] EXECUTION OF SAMPLE CODE: " + className + "\n");
 		}
-		return reponse;
+		return response;
 	}
 
 }

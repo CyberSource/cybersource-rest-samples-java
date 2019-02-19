@@ -23,13 +23,11 @@ import Model.Ptsv2payoutsSenderInformationAccount;
 
 public class Payout {
 	
-	private static String responseCode = null;
-	private static String status = null;
-	private static Properties merchantProp;
+	private  Properties merchantProp;
 	
-	static PtsV2PayoutsPostResponse request;
+	private PtsV2PayoutsPostResponse request;
 	
-    private static PtsV2PayoutsPostResponse getRequest(){
+    private  PtsV2PayoutsPostResponse getRequest(){
 		 request=new PtsV2PayoutsPostResponse();
 		
 		 PtsV2PaymentsPost201ResponseClientReferenceInformation client = new PtsV2PaymentsPost201ResponseClientReferenceInformation();
@@ -98,34 +96,36 @@ public class Payout {
 	}
 	
 	public static void main(String args[]) throws Exception {
-		process();
+		Payout payout = new Payout();
+		payout.process();
 	}
     
-	private static void process() throws Exception {
-	
-	try {
-	    request=getRequest();
-	   
-	    /* Read Merchant details. */
-		merchantProp = Configuration.getMerchantDetails();
-		MerchantConfig merchantConfig = new MerchantConfig(merchantProp);
-		ApiClient apiClient = new ApiClient(merchantConfig);
-		
-	    ProcessAPayoutApi defaultApi=new ProcessAPayoutApi();
-	    defaultApi.octCreatePayment(request);
-		
-	    responseCode = ApiClient.responseCode;
-		status = ApiClient.status;
-		
-		System.out.println("ResponseCode :" +responseCode);
-		System.out.println("Status :" +status);
-		System.out.println("ResponseBody :"+ApiClient.respBody);
-		
-		
-	
-	} catch (ApiException e) {
-		
-		e.printStackTrace();
+	private  void process() throws Exception {
+		String className=Payout.class.getSimpleName();
+		System.out.println("[BEGIN] EXECUTION OF SAMPLE CODE: "+className+"\n");
+		ApiClient apiClient=null;
+		try {
+			request = getRequest();
+
+			/* Read Merchant details. */
+			merchantProp = Configuration.getMerchantDetails();
+			MerchantConfig merchantConfig = new MerchantConfig(merchantProp);
+			ProcessAPayoutApi defaultApi = new ProcessAPayoutApi(merchantConfig);
+			apiClient = Invokers.Configuration.getDefaultApiClient();
+			defaultApi.octCreatePayment(request);
+		} catch (ApiException e) {
+			System.out.println("Exception on calling the Sample Code " + className + ": " + apiClient.getRespBody() + "\n");
+		} finally {
+			System.out.println("API REQUEST HEADERS:");
+			System.out.println(apiClient.getRequestHeader() + "\n");
+			System.out.println("API REQUEST BODY:");
+			System.out.println(apiClient.getRequestBody() + "\n");
+			System.out.println("API RESPONSE CODE: " + apiClient.getResponseCode() + "\n");
+			System.out.println("API RESPONSE HEADERS:");
+			System.out.println(apiClient.getResponseHeader() + "\n");
+			System.out.println("API RESPONSE BODY:");
+			System.out.println(apiClient.getRespBody() + "\n");
+			System.out.println("[END] EXECUTION OF SAMPLE CODE:" + className + "\n");
 	}
   }
 

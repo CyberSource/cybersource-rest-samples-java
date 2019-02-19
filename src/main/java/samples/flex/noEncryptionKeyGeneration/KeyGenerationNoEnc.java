@@ -8,17 +8,16 @@ import Api.KeyGenerationApi;
 import Data.Configuration;
 import Invokers.ApiClient;
 import Invokers.ApiException;
-import Model.GeneratePublicKeyRequest;
 import Model.FlexV1KeysPost200Response;
+import Model.GeneratePublicKeyRequest;
 
 public class KeyGenerationNoEnc {
-	public static FlexV1KeysPost200Response response = null;
-	public static String keyId = null;
-	private static Properties merchantProp;
+	private  FlexV1KeysPost200Response response;
+	private  Properties merchantProp;
 
-	static GeneratePublicKeyRequest request;
+	private  GeneratePublicKeyRequest request;
 
-	private static GeneratePublicKeyRequest getRequest() {
+	private  GeneratePublicKeyRequest getRequest() {
 		request = new GeneratePublicKeyRequest();
 		request.encryptionType("None");
 		return request;
@@ -26,27 +25,35 @@ public class KeyGenerationNoEnc {
 	}
 
 	public static void main(String args[]) throws Exception {
-		process();
+		KeyGenerationNoEnc keyGenerationNoEnc=new KeyGenerationNoEnc();
+		keyGenerationNoEnc.process();
 	}
 
-	public static FlexV1KeysPost200Response process() throws Exception {
-
+	public  FlexV1KeysPost200Response process() throws Exception {
+		String className=KeyGenerationNoEnc.class.getSimpleName();
+		System.out.println("[BEGIN] EXECUTION OF SAMPLE CODE: "+className+"\n");
+		ApiClient apiClient=null;
 		try {
 			request = getRequest();
-			
 			/* Read Merchant details. */
 			merchantProp = Configuration.getMerchantDetails();
 			MerchantConfig merchantConfig = new MerchantConfig(merchantProp);
-			ApiClient apiClient = new ApiClient(merchantConfig);
-			
-			KeyGenerationApi keyGenerationApi = new KeyGenerationApi();
+			KeyGenerationApi keyGenerationApi = new KeyGenerationApi(merchantConfig);
+			apiClient=Invokers.Configuration.getDefaultApiClient();
 			response = keyGenerationApi.generatePublicKey(request);
-
-			System.out.println(ApiClient.respBody);
-
 		} catch (ApiException e) {
-
-			e.printStackTrace();
+			System.out.println("Exception on calling the Sample Code" +className+": "+apiClient.getRespBody()+"\n");
+		} finally {
+			System.out.println("API REQUEST HEADERS:");
+			System.out.println(apiClient.getRequestHeader() + "\n");
+			System.out.println("API REQUEST BODY:");
+			System.out.println(apiClient.getRequestBody() + "\n");
+			System.out.println("API RESPONSE CODE: " + apiClient.getResponseCode() + "\n");
+			System.out.println("API RESPONSE HEADERS:");
+			System.out.println(apiClient.getResponseHeader() + "\n");
+			System.out.println("API RESPONSE BODY:");
+			System.out.println(apiClient.getRespBody() + "\n");
+			System.out.println("[END] EXECUTION OF SAMPLE CODE:" + className + "\n");
 		}
 		return response;
 	}

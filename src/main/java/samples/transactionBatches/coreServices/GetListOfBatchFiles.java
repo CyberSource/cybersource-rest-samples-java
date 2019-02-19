@@ -11,46 +11,46 @@ import Api.TransactionBatchesApi;
 import Data.Configuration;
 import Invokers.ApiClient;
 import Invokers.ApiException;
-import Model.PtsV1TransactionBatchesGet200Response;
 
 public class GetListOfBatchFiles {
 
-	private static String responseCode = null;
-	private static String status = null;
-	private static Properties merchantProp;
+	private Properties merchantProp;
 	
-	private static String timeString = "2018-10-01T00:00:00.00Z";
-	private static DateTime ddateTime = new DateTime(timeString);
-	private static DateTime startTime = ddateTime.withZone(DateTimeZone.forID("GMT"));
+	private  String timeString = "2018-10-01T00:00:00.00Z";
+	private  DateTime ddateTime = new DateTime(timeString);
+	private  DateTime startTime = ddateTime.withZone(DateTimeZone.forID("GMT"));
 	
-	private static String timeString2 = "2018-10-31T23:59:59.59Z";
-	private static DateTime ddateTime2 = new DateTime(timeString2);
-	private static DateTime endTime = ddateTime2.withZone(DateTimeZone.forID("GMT"));
+	private  String timeString2 = "2018-10-31T23:59:59.59Z";
+	private  DateTime ddateTime2 = new DateTime(timeString2);
+	private  DateTime endTime = ddateTime2.withZone(DateTimeZone.forID("GMT"));
 
 	public static void main(String args[]) throws Exception {
-		process();
+		GetListOfBatchFiles getListOfBatchFiles = new GetListOfBatchFiles();
+		getListOfBatchFiles.process();
 	}
 
-	private static void process() throws Exception {
-
+	private  void process() throws Exception {
+		String className=GetListOfBatchFiles.class.getSimpleName();
+		System.out.println("[BEGIN] EXECUTION OF SAMPLE CODE: "+className+"\n");
+		ApiClient apiClient = null;
 		try {
 			 /* Read Merchant details. */
 			merchantProp = Configuration.getMerchantDetails();
 			MerchantConfig merchantConfig = new MerchantConfig(merchantProp);
-			ApiClient apiClient = new ApiClient(merchantConfig);
-            
-			TransactionBatchesApi transactionBatchApi = new TransactionBatchesApi();
-			PtsV1TransactionBatchesGet200Response response = transactionBatchApi.ptsV1TransactionBatchesGet(startTime, endTime);
-			
-			responseCode = ApiClient.responseCode;
-			status = ApiClient.status;
-			System.out.println("ResponseCode :" + responseCode);
-			System.out.println("ResponseMessage :" + status);
-			System.out.println(response);
-
+			TransactionBatchesApi transactionBatchApi = new TransactionBatchesApi(merchantConfig);
+			apiClient=Invokers.Configuration.getDefaultApiClient();
+			transactionBatchApi.ptsV1TransactionBatchesGet(startTime, endTime);
 		} catch (ApiException e) {
-
-			e.printStackTrace();
+			System.out.println("Exception on calling the Sample Code " +className+": "+apiClient.getRespBody()+"\n");
+		} finally {
+			System.out.println("API REQUEST HEADERS:");
+			System.out.println(apiClient.getRequestHeader() + "\n");
+			System.out.println("API RESPONSE CODE: " + apiClient.getResponseCode() + "\n");
+			System.out.println("API RESPONSE HEADERS:");
+			System.out.println(apiClient.getResponseHeader() + "\n");
+			System.out.println("API RESPONSE BODY:");
+			System.out.println(apiClient.getRespBody() + "\n");
+			System.out.println("[END] EXECUTION OF SAMPLE CODE: " + className + "\n");
 		}
 	}
 
