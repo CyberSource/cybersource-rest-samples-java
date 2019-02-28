@@ -8,8 +8,8 @@ import Api.RefundApi;
 import Data.Configuration;
 import Invokers.ApiClient;
 import Invokers.ApiException;
-import Model.PtsV2PaymentsRefundPost201Response;
 import Model.PtsV2PaymentsCapturesPost201Response;
+import Model.PtsV2PaymentsRefundPost201Response;
 import Model.Ptsv2paymentsClientReferenceInformation;
 import Model.Ptsv2paymentsidcapturesAggregatorInformation;
 import Model.Ptsv2paymentsidcapturesAggregatorInformationSubMerchant;
@@ -71,7 +71,6 @@ public class RefundCapture {
 		billTo.address1("1 Market St");
 		billTo.postalCode("94105");
 		billTo.locality("Ann Arbor");
-		billTo.company("Visa");
 		billTo.administrativeArea("MI");
 		billTo.email("test@cybs.com");
 
@@ -111,7 +110,7 @@ public class RefundCapture {
 			/* Read Merchant details. */
 			merchantProp = Configuration.getMerchantDetails();
 			MerchantConfig merchantConfig = new MerchantConfig(merchantProp);
-			ApiClient apiClient = new ApiClient(merchantConfig);
+			ApiClient.merchantConfig = merchantConfig;	
 			
 			captureResponse = CapturePayment.process();
 			RefundApi refundApi = new RefundApi();

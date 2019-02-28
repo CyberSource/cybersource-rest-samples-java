@@ -8,8 +8,8 @@ import Api.SearchTransactionsApi;
 import Data.Configuration;
 import Invokers.ApiClient;
 import Invokers.ApiException;
-import Model.TssV2TransactionsPostResponse;
 import Model.TssV2TransactionsPost201Response;
+import Model.TssV2TransactionsPostResponse;
 
 public class CreateSearch {
 	private static String responseCode = null;
@@ -44,7 +44,7 @@ public class CreateSearch {
 			 /* Read Merchant details. */
 			merchantProp = Configuration.getMerchantDetails();
 			MerchantConfig merchantConfig = new MerchantConfig(merchantProp);
-			ApiClient apiClient = new ApiClient(merchantConfig);
+			ApiClient.merchantConfig = merchantConfig;	
 			
 			SearchTransactionsApi searchTransactionsApi = new SearchTransactionsApi();
 			reponse = searchTransactionsApi.createSearch(request);

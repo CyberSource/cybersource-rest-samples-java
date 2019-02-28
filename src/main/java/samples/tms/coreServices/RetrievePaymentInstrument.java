@@ -8,14 +8,14 @@ import Api.PaymentInstrumentsApi;
 import Data.Configuration;
 import Invokers.ApiClient;
 import Invokers.ApiException;
-import Model.TmsV1PaymentinstrumentsPost201Response;
+import Model.TmsV1PaymentinstrumentsGet200Response;
 
 public class RetrievePaymentInstrument {
 	private static String profileId = "93B32398-AD51-4CC2-A682-EA3E93614EB1";
-	private static String tokenId = "7BB8C1A9FB273964E05340588D0AE5FB";
+	private static String tokenId = "82EFD42A2806C20CE05340588D0A2D59";
 	private static  String responseCode = null;
 	private static String status = null;
-	static TmsV1PaymentinstrumentsPost201Response response;
+	static TmsV1PaymentinstrumentsGet200Response response;
 	private static Properties merchantProp;
 	
 	public static void main(String args[]) throws Exception {
@@ -28,7 +28,7 @@ public class RetrievePaymentInstrument {
 		/* Read Merchant details. */
 		merchantProp = Configuration.getMerchantDetails();
 		MerchantConfig merchantConfig = new MerchantConfig(merchantProp);
-		ApiClient apiClient = new ApiClient(merchantConfig);
+		ApiClient.merchantConfig = merchantConfig;	
 		
 		PaymentInstrumentsApi paymentInstrumentApi = new PaymentInstrumentsApi();
 		response=paymentInstrumentApi.tmsV1PaymentinstrumentsTokenIdGet(profileId, tokenId);

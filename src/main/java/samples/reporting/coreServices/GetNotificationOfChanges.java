@@ -39,7 +39,7 @@ public class GetNotificationOfChanges {
 			/* Read Merchant details. */
 			merchantProp = Configuration.getMerchantDetails();
 			MerchantConfig merchantConfig = new MerchantConfig(merchantProp);
-			ApiClient apiClient = new ApiClient(merchantConfig);
+			ApiClient.merchantConfig = merchantConfig;	
 			
 			NotificationOfChangesApi notificationOfChangesApi = new NotificationOfChangesApi();
 			System.out.println("startTime :" +startTime + "endTime : "+endTime);

@@ -13,21 +13,19 @@ import Api.ReportsApi;
 import Data.Configuration;
 import Invokers.ApiClient;
 import Invokers.ApiException;
-import Invokers.ApiResponse;
-import Model.ReportingV3ReportSubscriptionsGet200ResponseReportPreferences;
-import Model.ReportingV3ReportsIdGet200Response;
-import Model.ReportingV3ReportSubscriptionsGet200ResponseReportPreferences.FieldNameConventionEnum;
-import Model.RequestBody1;
-import Model.RequestBody1.ReportMimeTypeEnum;
+import Model.Reportingv3reportsReportPreferences;
+import Model.Reportingv3reportsReportPreferences.FieldNameConventionEnum;
+import Model.RequestBody;
+import Model.RequestBody.ReportMimeTypeEnum;
 
 public class CreateAdhocReport {
 	private static String responseCode = null;
 	private static String status = null;
-	private static RequestBody1 request;
+	private static RequestBody request;
 	private static Properties merchantProp;
 
-	private static RequestBody1 getRequest() {
-		request = new RequestBody1();
+	private static RequestBody getRequest() {
+		request = new RequestBody();
 		
 		request.reportDefinitionName("TransactionRequestClass");
 		request.timezone("GMT");
@@ -45,7 +43,7 @@ public class CreateAdhocReport {
 		DateTime endTime = ddateTime2.withZone(DateTimeZone.forID("Asia/Dushanbe"));
 		request.reportEndTime(endTime);
 		
-		ReportingV3ReportSubscriptionsGet200ResponseReportPreferences reportPreferences = new ReportingV3ReportSubscriptionsGet200ResponseReportPreferences();
+		Reportingv3reportsReportPreferences reportPreferences = new Reportingv3reportsReportPreferences();
 		reportPreferences.signedAmounts(true);
 		reportPreferences.fieldNameConvention(FieldNameConventionEnum.SOAPI);
 		request.reportPreferences(reportPreferences);
@@ -72,10 +70,10 @@ public class CreateAdhocReport {
 			/* Read Merchant details. */
 			merchantProp = Configuration.getMerchantDetails();
 			MerchantConfig merchantConfig = new MerchantConfig(merchantProp);
-			ApiClient apiClient = new ApiClient(merchantConfig);
+			ApiClient.merchantConfig = merchantConfig;	
 
 			ReportsApi ReportsApi = new ReportsApi();
-			ApiResponse<ReportingV3ReportsIdGet200Response> response = ReportsApi.createReport(request);
+			ReportsApi.createReport(request,null);
 
 			responseCode = ApiClient.responseCode;
 			status = ApiClient.status;

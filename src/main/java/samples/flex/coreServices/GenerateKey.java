@@ -8,8 +8,8 @@ import Api.KeyGenerationApi;
 import Data.Configuration;
 import Invokers.ApiClient;
 import Invokers.ApiException;
-import Model.GeneratePublicKeyRequest;
 import Model.FlexV1KeysPost200Response ;
+import Model.GeneratePublicKeyRequest;
 
 public class GenerateKey {
 	private static String status=null;
@@ -39,7 +39,7 @@ public class GenerateKey {
 			/* Read Merchant details. */
 			merchantProp = Configuration.getMerchantDetails();
 			MerchantConfig merchantConfig = new MerchantConfig(merchantProp);
-			ApiClient apiClient = new ApiClient(merchantConfig);
+			ApiClient.merchantConfig = merchantConfig;	
 			
 			KeyGenerationApi keyGenerationApi = new KeyGenerationApi();
 			response = keyGenerationApi.generatePublicKey(request);

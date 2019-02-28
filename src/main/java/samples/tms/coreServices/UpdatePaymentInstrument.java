@@ -9,7 +9,7 @@ import Data.Configuration;
 import Invokers.ApiClient;
 import Invokers.ApiException;
 import Model.Body3;
-import Model.TmsV1PaymentinstrumentsPost201Response;
+import Model.TmsV1PaymentinstrumentsGet200Response;
 import Model.Tmsv1instrumentidentifiersCard;
 import Model.Tmsv1paymentinstrumentsBillTo;
 import Model.Tmsv1paymentinstrumentsCard;
@@ -19,9 +19,9 @@ import Model.Tmsv1paymentinstrumentsInstrumentIdentifier;
 public class UpdatePaymentInstrument {
 	private static String responseCode = null;
 	private static String status = null;
-	static TmsV1PaymentinstrumentsPost201Response response;
+	static TmsV1PaymentinstrumentsGet200Response response;
 	private static String profileId = "93B32398-AD51-4CC2-A682-EA3E93614EB1";
-	private static String tokenId = "79AB33E6A3DE03B6E05340588D0A4B9A";
+	private static String tokenId = "82EFD42A2806C20CE05340588D0A2D59";
 
 	private static Properties merchantProp;
 
@@ -65,14 +65,14 @@ public class UpdatePaymentInstrument {
 		process();
 	}
 
-	public static TmsV1PaymentinstrumentsPost201Response process() throws Exception {
+	public static TmsV1PaymentinstrumentsGet200Response process() throws Exception {
 
 		try {
 			body = getRequest();
 			/* Read Merchant details. */
 			merchantProp = Configuration.getMerchantDetails();
 			MerchantConfig merchantConfig = new MerchantConfig(merchantProp);
-			ApiClient apiClient = new ApiClient(merchantConfig);
+			ApiClient.merchantConfig = merchantConfig;	
 
 			PaymentInstrumentsApi paymentInstrumentApi = new PaymentInstrumentsApi();
 			response = paymentInstrumentApi.tmsV1PaymentinstrumentsTokenIdPatch(profileId, tokenId, body);
