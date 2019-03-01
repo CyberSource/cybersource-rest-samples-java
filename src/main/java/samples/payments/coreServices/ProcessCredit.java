@@ -62,9 +62,6 @@ public class ProcessCredit {
 
 		Ptsv2paymentsidcapturesOrderInformationShippingDetails shippingDetails = new Ptsv2paymentsidcapturesOrderInformationShippingDetails();
 		shippingDetails.shipFromPostalCode("47404");
-/*
-		Ptsv2paymentsOrderInformationBillToCompany billToCompany = new Ptsv2paymentsOrderInformationBillToCompany();
-		billToCompany.c*/
 		
 		Ptsv2paymentsidcapturesOrderInformationBillTo billTo = new Ptsv2paymentsidcapturesOrderInformationBillTo();
 		billTo.country("US");
