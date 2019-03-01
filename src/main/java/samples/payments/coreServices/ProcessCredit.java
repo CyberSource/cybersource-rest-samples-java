@@ -62,7 +62,10 @@ public class ProcessCredit {
 
 		Ptsv2paymentsidcapturesOrderInformationShippingDetails shippingDetails = new Ptsv2paymentsidcapturesOrderInformationShippingDetails();
 		shippingDetails.shipFromPostalCode("47404");
-
+/*
+		Ptsv2paymentsOrderInformationBillToCompany billToCompany = new Ptsv2paymentsOrderInformationBillToCompany();
+		billToCompany.c*/
+		
 		Ptsv2paymentsidcapturesOrderInformationBillTo billTo = new Ptsv2paymentsidcapturesOrderInformationBillTo();
 		billTo.country("US");
 		billTo.firstName("John");
@@ -71,7 +74,6 @@ public class ProcessCredit {
 		billTo.address1("1 Market St");
 		billTo.postalCode("94105");
 		billTo.locality("san francisco");
-		billTo.company("Visa");
 		billTo.administrativeArea("MI");
 		billTo.email("test@cybs.com");
 		
@@ -122,7 +124,7 @@ public class ProcessCredit {
 			/* Read Merchant details. */
 			merchantProp = Configuration.getMerchantDetails();
 			MerchantConfig merchantConfig = new MerchantConfig(merchantProp);
-			ApiClient apiClient = new ApiClient(merchantConfig);
+			ApiClient.merchantConfig = merchantConfig;	
 			
 			CreditApi creditApi = new CreditApi();
 			response = creditApi.createCredit(request);

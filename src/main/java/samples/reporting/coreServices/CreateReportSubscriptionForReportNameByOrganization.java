@@ -10,17 +10,19 @@ import Api.ReportSubscriptionsApi;
 import Data.Configuration;
 import Invokers.ApiClient;
 import Invokers.ApiException;
-import Model.RequestBody;
-import Model.RequestBody.ReportMimeTypeEnum;
+import Model.RequestBody1;
+import Model.RequestBody1.ReportFrequencyEnum;
+import Model.RequestBody1.ReportMimeTypeEnum;
+
 
 public class CreateReportSubscriptionForReportNameByOrganization {
 	private static String responseCode = null;
 	private static String status = null;
-	private static RequestBody request;
+	private static RequestBody1 request;
 	private static Properties merchantProp;
 	private static String report_name = "Dexa";
-	private static RequestBody getRequest() {
-		request = new RequestBody();
+	private static RequestBody1 getRequest() {
+		request = new RequestBody1();
 		
 		request.reportDefinitionName("TransactionRequestClass");
 		
@@ -31,7 +33,7 @@ public class CreateReportSubscriptionForReportNameByOrganization {
 		request.reportFields(reportFields);
 
 		
-		request.reportFrequency("MONTHLY");
+		request.reportFrequency(ReportFrequencyEnum.MONTHLY);
 		request.startDay(2);
 		request.startTime("0950");
 		
@@ -54,10 +56,10 @@ public class CreateReportSubscriptionForReportNameByOrganization {
 			/* Read Merchant details. */
 			merchantProp = Configuration.getMerchantDetails();
 			MerchantConfig merchantConfig = new MerchantConfig(merchantProp);
-			ApiClient apiClient = new ApiClient(merchantConfig);
+			ApiClient.merchantConfig = merchantConfig;	
 			
 			ReportSubscriptionsApi reportSubscriptionsApi = new ReportSubscriptionsApi();
-			reportSubscriptionsApi.createSubscription(request);
+			reportSubscriptionsApi.createSubscription(request,"testrest");
 			
 			responseCode = ApiClient.responseCode;
 			status = ApiClient.status;

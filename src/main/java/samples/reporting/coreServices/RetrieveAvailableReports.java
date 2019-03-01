@@ -11,7 +11,6 @@ import Api.ReportsApi;
 import Data.Configuration;
 import Invokers.ApiClient;
 import Invokers.ApiException;
-import Model.ReportingV3ReportsGet200Response;
 
 public class RetrieveAvailableReports {
 
@@ -41,10 +40,10 @@ public class RetrieveAvailableReports {
 			/* Read Merchant details. */
 			merchantProp = Configuration.getMerchantDetails();
 			MerchantConfig merchantConfig = new MerchantConfig(merchantProp);
-			ApiClient apiClient = new ApiClient(merchantConfig);
+			ApiClient.merchantConfig = merchantConfig;	
 
 			ReportsApi reportsApi = new ReportsApi();
-			ReportingV3ReportsGet200Response response = reportsApi.searchReports(startTime, endTime, timeQueryType, organizationId, null, null,
+			reportsApi.searchReports(startTime, endTime, timeQueryType, organizationId, null, null,
 					null, null, null);
 
 			responseCode = ApiClient.responseCode;

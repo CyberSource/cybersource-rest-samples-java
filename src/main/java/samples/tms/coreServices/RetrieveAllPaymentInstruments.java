@@ -9,7 +9,6 @@ import Data.Configuration;
 import Invokers.ApiClient;
 import Invokers.ApiException;
 import Model.TmsV1InstrumentidentifiersPaymentinstrumentsGet200Response;
-import Model.TmsV1InstrumentidentifiersPost200Response;
 
 public class RetrieveAllPaymentInstruments {
 	private static String profileId = "93B32398-AD51-4CC2-A682-EA3E93614EB1";
@@ -29,7 +28,7 @@ public class RetrieveAllPaymentInstruments {
 			/* Read Merchant details. */
 			merchantProp = Configuration.getMerchantDetails();
 			MerchantConfig merchantConfig = new MerchantConfig(merchantProp);
-			ApiClient apiClient = new ApiClient(merchantConfig);
+			ApiClient.merchantConfig = merchantConfig;	
 			
 			PaymentInstrumentsApi paymentInstrumentsApi = new PaymentInstrumentsApi();
 			response = paymentInstrumentsApi.tmsV1InstrumentidentifiersTokenIdPaymentinstrumentsGet(profileId, tokenId, null, null);

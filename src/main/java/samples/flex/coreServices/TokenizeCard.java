@@ -66,7 +66,7 @@ public class TokenizeCard {
 			/* Read Merchant details. */
 			merchantProp = Configuration.getMerchantDetails();
 			MerchantConfig merchantConfig = new MerchantConfig(merchantProp);
-			ApiClient apiClient = new ApiClient(merchantConfig);
+			ApiClient.merchantConfig = merchantConfig;	
 			
 			FlexTokenApi tokenizationApi = new FlexTokenApi();
 			response = tokenizationApi.tokenize(request);

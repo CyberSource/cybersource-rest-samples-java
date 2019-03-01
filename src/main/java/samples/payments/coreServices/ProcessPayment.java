@@ -36,7 +36,6 @@ public class ProcessPayment {
 		request.clientReferenceInformation(client);
 
 		Ptsv2paymentsPointOfSaleInformation saleInformation = new Ptsv2paymentsPointOfSaleInformation();
-		saleInformation.cardPresent(false);
 		saleInformation.catLevel(6);
 		saleInformation.terminalCapability(4);
 		request.pointOfSaleInformation(saleInformation);
@@ -92,7 +91,7 @@ public class ProcessPayment {
 			/* Read Merchant details. */
 			merchantProp = Configuration.getMerchantDetails();
 			MerchantConfig merchantConfig = new MerchantConfig(merchantProp);
-			ApiClient apiClient = new ApiClient(merchantConfig);
+			ApiClient.merchantConfig = merchantConfig;	
 			
 			PaymentsApi paymentApi = new PaymentsApi();
 			response = paymentApi.createPayment(request);

@@ -4,12 +4,10 @@ import java.util.Properties;
 
 import com.cybersource.authsdk.core.MerchantConfig;
 
-import Api.TransactionBatchApi;
+import Api.TransactionBatchesApi;
 import Data.Configuration;
 import Invokers.ApiClient;
 import Invokers.ApiException;
-import Invokers.ApiResponse;
-import Model.PtsV1TransactionBatchesGet200Response;
 
 public class GetIndividualBatchFile {
 
@@ -28,10 +26,10 @@ public class GetIndividualBatchFile {
 			 /* Read Merchant details. */
 			merchantProp = Configuration.getMerchantDetails();
 			MerchantConfig merchantConfig = new MerchantConfig(merchantProp);
-			ApiClient apiClient = new ApiClient(merchantConfig);
+			ApiClient.merchantConfig = merchantConfig;	
 
-			TransactionBatchApi transactionBatchApi = new TransactionBatchApi();
-			ApiResponse<PtsV1TransactionBatchesGet200Response> response = transactionBatchApi.ptsV1TransactionBatchesIdGet(id);
+			TransactionBatchesApi transactionBatchApi = new TransactionBatchesApi();
+			transactionBatchApi.getTransactionBatchId(id);
 
 			responseCode = ApiClient.responseCode;
 			status = ApiClient.status;

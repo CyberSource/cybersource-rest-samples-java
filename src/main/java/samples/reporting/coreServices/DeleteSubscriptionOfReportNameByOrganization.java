@@ -27,7 +27,7 @@ public class DeleteSubscriptionOfReportNameByOrganization {
 		/* Read Merchant details. */
 		merchantProp = Configuration.getMerchantDetails();
 		MerchantConfig merchantConfig = new MerchantConfig(merchantProp);
-		ApiClient apiClient = new ApiClient(merchantConfig);
+		ApiClient.merchantConfig = merchantConfig;	
 		
 		ReportSubscriptionsApi reportSubscriptionsApi=new ReportSubscriptionsApi();
 		reportSubscriptionsApi.deleteSubscription(reportName);

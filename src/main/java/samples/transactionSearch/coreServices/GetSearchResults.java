@@ -8,13 +8,12 @@ import Api.SearchTransactionsApi;
 import Data.Configuration;
 import Invokers.ApiClient;
 import Invokers.ApiException;
-import Model.TssV2TransactionsPost201Response;
 
 public class GetSearchResults {
 
 	private static String responseCode = null;
 	private static String status = null;
-	private static String id = "95f6ab1c-d64d-4fdb-949d-cf174405c21f";
+	private static String id = "9db3c19b-2f88-4828-97b2-a6a739eacace";
 	private static Properties merchantProp;
 
 	public static void main(String args[]) throws Exception {
@@ -27,10 +26,10 @@ public class GetSearchResults {
 			 /* Read Merchant details. */
 			merchantProp = Configuration.getMerchantDetails();
 			MerchantConfig merchantConfig = new MerchantConfig(merchantProp);
-			ApiClient apiClient = new ApiClient(merchantConfig);
+			ApiClient.merchantConfig = merchantConfig;	
 
 			SearchTransactionsApi searchTransactionsApi = new SearchTransactionsApi();
-			TssV2TransactionsPost201Response response = searchTransactionsApi.getSearch(id);
+			searchTransactionsApi.getSearch(id);
 
 			responseCode = ApiClient.responseCode;
 			status = ApiClient.status;
