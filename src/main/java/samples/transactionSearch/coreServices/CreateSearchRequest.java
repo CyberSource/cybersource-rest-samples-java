@@ -11,7 +11,7 @@ import Invokers.ApiException;
 import Model.TssV2TransactionsPost201Response;
 import Model.TssV2TransactionsPostResponse;
 
-public class CreateSearch {
+public class CreateSearchRequest {
 	private static String responseCode = null;
 	private static String status = null;
 	private static TssV2TransactionsPost201Response reponse;
