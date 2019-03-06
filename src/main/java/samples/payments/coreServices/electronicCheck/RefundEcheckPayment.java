@@ -43,12 +43,12 @@ public class RefundEcheckPayment {
 		Ptsv2paymentsidrefundsProcessingInformation processingInformation = new Ptsv2paymentsidrefundsProcessingInformation();
 		processingInformation.setPaymentSolution("Internet");
 		request.setProcessingInformation(processingInformation);
-		
+
 		// This is a section to initialize Bill to company information
 		Ptsv2paymentsOrderInformationBillToCompany billToCompany = new Ptsv2paymentsOrderInformationBillToCompany();
-		billToCompany.name("visa");
-		
-		//This is a section to initialize Bill to Order information
+		billToCompany.name("ABC Company");
+
+		// This is a section to initialize Bill to Order information
 		Ptsv2paymentsidcapturesOrderInformationBillTo billTo = new Ptsv2paymentsidcapturesOrderInformationBillTo();
 		billTo.country("US");
 		billTo.firstName("John");
@@ -66,14 +66,14 @@ public class RefundEcheckPayment {
 		Ptsv2paymentsidcapturesOrderInformationAmountDetails amountDetails = new Ptsv2paymentsidcapturesOrderInformationAmountDetails();
 		amountDetails.totalAmount("100");
 		amountDetails.currency("usd");
-		
+
 		// setting amount details to order information
 		Ptsv2paymentsidrefundsOrderInformation orderInformation = new Ptsv2paymentsidrefundsOrderInformation();
 		orderInformation.billTo(billTo);
 		orderInformation.amountDetails(amountDetails);
 		request.setOrderInformation(orderInformation);
 
-		// This is a section to set Bank Information details 
+		// This is a section to set Bank Information details
 		Ptsv2paymentsPaymentInformationBank bankInformation = new Ptsv2paymentsPaymentInformationBank();
 		Ptsv2paymentsPaymentInformationBankAccount bankAccount = new Ptsv2paymentsPaymentInformationBankAccount();
 		bankAccount.number("4100");
@@ -81,13 +81,13 @@ public class RefundEcheckPayment {
 		bankInformation.account(bankAccount);
 		bankInformation.routingNumber("071923284");
 
-		// This is a section to set payment information details using the bank account we initialized
+		// This is a section to set payment information details using the bank account
+		// we initialized
 		Ptsv2paymentsidrefundsPaymentInformation paymentInformation = new Ptsv2paymentsidrefundsPaymentInformation();
 		paymentInformation.bank(bankInformation);
 		request.setPaymentInformation(paymentInformation);
 
 		return request;
-
 	}
 
 	public static void main(String args[]) throws Exception {
@@ -95,13 +95,12 @@ public class RefundEcheckPayment {
 	}
 
 	public static PtsV2PaymentsRefundPost201Response process() throws Exception {
-
 		try {
 			request = getRequest();
 			/* Read Merchant details. */
 			merchantProp = Configuration.getMerchantDetails();
 			MerchantConfig merchantConfig = new MerchantConfig(merchantProp);
-			ApiClient apiClient = new ApiClient(merchantConfig);
+			ApiClient.merchantConfig = merchantConfig;
 
 			paymentResponse = ProcessPayment.process(true);
 			RefundApi refundApi = new RefundApi();
@@ -113,12 +112,10 @@ public class RefundEcheckPayment {
 			System.out.println("ResponseCode :" + responseCode);
 			System.out.println("Status :" + status);
 			System.out.println(response);
-
+			
 		} catch (ApiException e) {
-
 			e.printStackTrace();
 		}
 		return response;
 	}
-
 }

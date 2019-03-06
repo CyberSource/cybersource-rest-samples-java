@@ -20,13 +20,7 @@ import Model.Ptsv2paymentsPaymentInformation;
 import Model.Ptsv2paymentsPaymentInformationCard;
 import Model.Ptsv2paymentsProcessingInformation;
 
-/**
- * 
- * This is a sample code to process
- *
- */
 public class ProcessPaymentWithServiceFee {
-
 	private static String responseCode = null;
 	private static String status = null;
 	private static PtsV2PaymentsPost201Response response;
@@ -67,7 +61,7 @@ public class ProcessPaymentWithServiceFee {
 		Ptsv2paymentsOrderInformationAmountDetails amountDetails = new Ptsv2paymentsOrderInformationAmountDetails();
 		amountDetails.totalAmount("2325.00");
 		amountDetails.currency("USD");
-		amountDetails.serviceFeeAmount("30.0");
+		amountDetails.serviceFeeAmount("30.00");
 
 		// setting amount details to order information
 		Ptsv2paymentsOrderInformation orderInformation = new Ptsv2paymentsOrderInformation();
@@ -98,8 +92,8 @@ public class ProcessPaymentWithServiceFee {
 		Ptsv2paymentsMerchantInformation merchantInformation = new Ptsv2paymentsMerchantInformation();
 		merchantInformation.setServiceFeeDescriptor(merchantInformationServiceFeeDescriptor);
 		request.setMerchantInformation(merchantInformation);
+		
 		return request;
-
 	}
 
 	public static void main(String args[]) throws Exception {
@@ -107,14 +101,13 @@ public class ProcessPaymentWithServiceFee {
 	}
 
 	public static PtsV2PaymentsPost201Response process(boolean check) throws Exception {
-
 		try {
 			capture = check;
 			request = getRequest(capture);
 			/* Read Merchant details. */
 			merchantProp = Configuration.getMerchantDetails();
 			MerchantConfig merchantConfig = new MerchantConfig(merchantProp);
-			ApiClient apiClient = new ApiClient(merchantConfig);
+			ApiClient.merchantConfig = merchantConfig;
 
 			PaymentsApi paymentApi = new PaymentsApi();
 			response = paymentApi.createPayment(request);
@@ -127,10 +120,8 @@ public class ProcessPaymentWithServiceFee {
 			System.out.println(response);
 
 		} catch (ApiException e) {
-
 			e.printStackTrace();
 		}
 		return response;
 	}
-
 }

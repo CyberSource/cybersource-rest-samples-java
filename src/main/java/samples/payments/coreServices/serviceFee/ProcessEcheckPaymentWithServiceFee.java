@@ -20,7 +20,6 @@ import Model.Ptsv2paymentsPaymentInformationBankAccount;
 import Model.Ptsv2paymentsProcessingInformation;
 
 public class ProcessEcheckPaymentWithServiceFee {
-
 	private static String responseCode = null;
 	private static String status = null;
 	private static PtsV2PaymentsPost201Response response;
@@ -56,7 +55,7 @@ public class ProcessEcheckPaymentWithServiceFee {
 		Ptsv2paymentsOrderInformationAmountDetails amountDetails = new Ptsv2paymentsOrderInformationAmountDetails();
 		amountDetails.totalAmount("2325.00");
 		amountDetails.currency("USD");
-		amountDetails.serviceFeeAmount("30.0");
+		amountDetails.serviceFeeAmount("30.00");
 
 		// setting amount details to order information
 		Ptsv2paymentsOrderInformation orderInformation = new Ptsv2paymentsOrderInformation();
@@ -78,7 +77,6 @@ public class ProcessEcheckPaymentWithServiceFee {
 		request.setPaymentInformation(paymentInformation);
 
 		return request;
-
 	}
 
 	public static void main(String args[]) throws Exception {
@@ -86,13 +84,12 @@ public class ProcessEcheckPaymentWithServiceFee {
 	}
 
 	public static PtsV2PaymentsPost201Response process() throws Exception {
-
 		try {
 			request = getRequest();
 			/* Read Merchant details. */
 			merchantProp = Configuration.getMerchantDetails();
 			MerchantConfig merchantConfig = new MerchantConfig(merchantProp);
-			ApiClient apiClient = new ApiClient(merchantConfig);
+			ApiClient.merchantConfig = merchantConfig;
 
 			PaymentsApi paymentApi = new PaymentsApi();
 			response = paymentApi.createPayment(request);
@@ -105,7 +102,6 @@ public class ProcessEcheckPaymentWithServiceFee {
 			System.out.println(response);
 
 		} catch (ApiException e) {
-
 			e.printStackTrace();
 		}
 		return response;

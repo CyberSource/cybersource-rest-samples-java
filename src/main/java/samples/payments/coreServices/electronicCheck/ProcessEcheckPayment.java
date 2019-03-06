@@ -17,7 +17,6 @@ import Model.Ptsv2paymentsOrderInformationBillTo;
 import Model.Ptsv2paymentsPaymentInformation;
 import Model.Ptsv2paymentsPaymentInformationBank;
 import Model.Ptsv2paymentsPaymentInformationBankAccount;
-import Model.Ptsv2paymentsPointOfSaleInformation;
 import Model.Ptsv2paymentsProcessingInformation;
 
 public class ProcessEcheckPayment {
@@ -76,7 +75,6 @@ public class ProcessEcheckPayment {
 		request.setPaymentInformation(paymentInformation);
 
 		return request;
-
 	}
 
 	public static void main(String args[]) throws Exception {
@@ -84,14 +82,13 @@ public class ProcessEcheckPayment {
 	}
 
 	public static PtsV2PaymentsPost201Response process(boolean check) throws Exception {
-
 		try {
 			capture = check;
 			request = getRequest(capture);
 			/* Read Merchant details. */
 			merchantProp = Configuration.getMerchantDetails();
 			MerchantConfig merchantConfig = new MerchantConfig(merchantProp);
-			ApiClient apiClient = new ApiClient(merchantConfig);
+			ApiClient.merchantConfig = merchantConfig;
 
 			PaymentsApi paymentApi = new PaymentsApi();
 			response = paymentApi.createPayment(request);
@@ -104,10 +101,8 @@ public class ProcessEcheckPayment {
 			System.out.println(response);
 
 		} catch (ApiException e) {
-
 			e.printStackTrace();
 		}
 		return response;
 	}
-
 }
