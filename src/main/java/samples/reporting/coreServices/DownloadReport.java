@@ -43,7 +43,7 @@ public class DownloadReport {
 			/* Read Merchant details. */
 			merchantProp = Configuration.getMerchantDetails();
 			MerchantConfig merchantConfig = new MerchantConfig(merchantProp);
-			ApiClient apiClient = new ApiClient(merchantConfig);
+			ApiClient.merchantConfig = merchantConfig;	
 
 			ReportDownloadsApi downloadsApi = new ReportDownloadsApi();
 			downloadsApi.downloadReportWithHttpInfo(reportDate, reportName, organizationId);

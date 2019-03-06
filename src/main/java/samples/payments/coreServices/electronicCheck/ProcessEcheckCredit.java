@@ -1,4 +1,4 @@
-package samples.payments.coreServices;
+package samples.payments.coreServices.electronicCheck;
 
 import java.util.Properties;
 
@@ -10,21 +10,17 @@ import Invokers.ApiClient;
 import Invokers.ApiException;
 import Model.CreateCreditRequest;
 import Model.PtsV2CreditsPost201Response;
+import Model.Ptsv2creditsProcessingInformation;
 import Model.Ptsv2paymentsClientReferenceInformation;
-import Model.Ptsv2paymentsidcapturesAggregatorInformation;
-import Model.Ptsv2paymentsidcapturesAggregatorInformationSubMerchant;
-import Model.Ptsv2paymentsidcapturesBuyerInformation;
+import Model.Ptsv2paymentsOrderInformationBillToCompany;
+import Model.Ptsv2paymentsPaymentInformationBank;
+import Model.Ptsv2paymentsPaymentInformationBankAccount;
 import Model.Ptsv2paymentsidcapturesOrderInformationAmountDetails;
 import Model.Ptsv2paymentsidcapturesOrderInformationBillTo;
-import Model.Ptsv2paymentsidcapturesOrderInformationInvoiceDetails;
-import Model.Ptsv2paymentsidcapturesOrderInformationShippingDetails;
-import Model.Ptsv2paymentsidrefundsMerchantInformation;
 import Model.Ptsv2paymentsidrefundsOrderInformation;
 import Model.Ptsv2paymentsidrefundsPaymentInformation;
-import Model.Ptsv2paymentsidrefundsPaymentInformationCard;
 
-public class ProcessCredit {
-
+public class ProcessEcheckCredit {
 	private static String responseCode = null;
 	private static String status = null;
 	private static PtsV2CreditsPost201Response response;
@@ -35,34 +31,22 @@ public class ProcessCredit {
 	private static CreateCreditRequest getRequest() {
 		request = new CreateCreditRequest();
 
+		// This is a section to set client reference information
 		Ptsv2paymentsClientReferenceInformation client = new Ptsv2paymentsClientReferenceInformation();
 		client.code("test_credits");
 		request.setClientReferenceInformation(client);
 
-		Ptsv2paymentsidcapturesBuyerInformation buyerInformation = new Ptsv2paymentsidcapturesBuyerInformation();
-		buyerInformation.merchantCustomerId("123456abcd");
-		request.buyerInformation(buyerInformation);
+		// This is a section to set ProcessingInformation
+		Ptsv2creditsProcessingInformation processingInformation = new Ptsv2creditsProcessingInformation();
+		processingInformation.commerceIndicator("internet");
+		request.setProcessingInformation(processingInformation);
 
-		Ptsv2paymentsidcapturesAggregatorInformationSubMerchant subMerchant = new Ptsv2paymentsidcapturesAggregatorInformationSubMerchant();
+		// This is a section to set Amount Details which is needed to capture the
+		// payment. Please note that it includes Service Fee Attribute
+		Ptsv2paymentsOrderInformationBillToCompany billToCompany = new Ptsv2paymentsOrderInformationBillToCompany();
+		billToCompany.name("ABC Company");
 
-		subMerchant.country("US");
-		subMerchant.phoneNumber("4158880000");
-		subMerchant.address1("1 Market St");
-		subMerchant.postalCode("941055");
-		subMerchant.locality("san francisco");
-		subMerchant.name("Visa Inc");
-		subMerchant.administrativeArea("CA");
-		subMerchant.email("test@cybs.com");
-
-		Ptsv2paymentsidcapturesAggregatorInformation aggregatorInformation = new Ptsv2paymentsidcapturesAggregatorInformation();
-		aggregatorInformation.subMerchant(subMerchant);
-		aggregatorInformation.name("V-Internatio");
-		aggregatorInformation.aggregatorId("123456789");
-		request.setAggregatorInformation(aggregatorInformation);
-
-		Ptsv2paymentsidcapturesOrderInformationShippingDetails shippingDetails = new Ptsv2paymentsidcapturesOrderInformationShippingDetails();
-		shippingDetails.shipFromPostalCode("47404");
-		
+		// This is a section to initialize Bill to company information
 		Ptsv2paymentsidcapturesOrderInformationBillTo billTo = new Ptsv2paymentsidcapturesOrderInformationBillTo();
 		billTo.country("US");
 		billTo.firstName("John");
@@ -71,58 +55,49 @@ public class ProcessCredit {
 		billTo.address1("1 Market St");
 		billTo.postalCode("94105");
 		billTo.locality("san francisco");
+		billTo.company(billToCompany);
 		billTo.administrativeArea("MI");
 		billTo.email("test@cybs.com");
-		
 
-		Ptsv2paymentsidcapturesOrderInformationInvoiceDetails invoiceDetails = new Ptsv2paymentsidcapturesOrderInformationInvoiceDetails();
-		invoiceDetails.purchaseOrderDate("20111231");
-		invoiceDetails.purchaseOrderNumber("CREDIT US");
-
+		// This is a section to initialize Order information
 		Ptsv2paymentsidcapturesOrderInformationAmountDetails amountDetails = new Ptsv2paymentsidcapturesOrderInformationAmountDetails();
 		amountDetails.totalAmount("100");
-		amountDetails.exchangeRate("0.5");
-		amountDetails.exchangeRateTimeStamp("2.01304E+13");
 		amountDetails.currency("usd");
 
+		// setting amount details and bill to details to order information
 		Ptsv2paymentsidrefundsOrderInformation orderInformation = new Ptsv2paymentsidrefundsOrderInformation();
-		orderInformation.shippingDetails(shippingDetails);
 		orderInformation.billTo(billTo);
-		orderInformation.invoiceDetails(invoiceDetails);
 		orderInformation.amountDetails(amountDetails);
 		request.setOrderInformation(orderInformation);
 
-		Ptsv2paymentsidrefundsMerchantInformation merchantInformation = new Ptsv2paymentsidrefundsMerchantInformation();
-		merchantInformation.categoryCode(1234);
-		request.merchantInformation(merchantInformation);
+		// This is a section to set Bank Information details
+		Ptsv2paymentsPaymentInformationBank bankInformation = new Ptsv2paymentsPaymentInformationBank();
+		Ptsv2paymentsPaymentInformationBankAccount bankAccount = new Ptsv2paymentsPaymentInformationBankAccount();
+		bankAccount.number("4100");
+		bankAccount.type("C");
+		bankInformation.account(bankAccount);
+		bankInformation.routingNumber("071923284");
 
-		Ptsv2paymentsidrefundsPaymentInformationCard card = new Ptsv2paymentsidrefundsPaymentInformationCard();
-		card.expirationYear("2031");
-		card.number("5555555555554444");
-		card.expirationMonth("12");
-		card.type("002");
-
+		// This is a section to set Payment refunds information
 		Ptsv2paymentsidrefundsPaymentInformation paymentInformation = new Ptsv2paymentsidrefundsPaymentInformation();
-		paymentInformation.card(card);
+		paymentInformation.bank(bankInformation);
 		request.setPaymentInformation(paymentInformation);
-
+		
 		return request;
-
 	}
 
 	public static void main(String args[]) throws Exception {
 		process();
 	}
 
-	public static  PtsV2CreditsPost201Response process() throws Exception {
-
+	public static PtsV2CreditsPost201Response process() throws Exception {
 		try {
 			request = getRequest();
 			/* Read Merchant details. */
 			merchantProp = Configuration.getMerchantDetails();
 			MerchantConfig merchantConfig = new MerchantConfig(merchantProp);
-			ApiClient.merchantConfig = merchantConfig;	
-			
+			ApiClient.merchantConfig = merchantConfig;
+
 			CreditApi creditApi = new CreditApi();
 			response = creditApi.createCredit(request);
 
@@ -134,10 +109,8 @@ public class ProcessCredit {
 			System.out.println(response);
 
 		} catch (ApiException e) {
-
 			e.printStackTrace();
 		}
 		return response;
 	}
-
 }

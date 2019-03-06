@@ -8,9 +8,8 @@ import Api.ProcessAPayoutApi;
 import Data.Configuration;
 import Invokers.ApiClient;
 import Invokers.ApiException;
-import Invokers.ApiResponse;
-import Model.PtsV2PaymentsPost201ResponseClientReferenceInformation;
 import Model.PtsV2PayoutsPostResponse;
+import Model.Ptsv2payoutsClientReferenceInformation;
 import Model.Ptsv2payoutsMerchantInformation;
 import Model.Ptsv2payoutsMerchantInformationMerchantDescriptor;
 import Model.Ptsv2payoutsOrderInformation;
@@ -33,7 +32,7 @@ public class ProcessPayout {
 	private static PtsV2PayoutsPostResponse getRequest() {
 		request = new PtsV2PayoutsPostResponse();
 
-		PtsV2PaymentsPost201ResponseClientReferenceInformation client = new PtsV2PaymentsPost201ResponseClientReferenceInformation();
+		Ptsv2payoutsClientReferenceInformation client = new Ptsv2payoutsClientReferenceInformation();
 		client.code("33557799");
 		request.clientReferenceInformation(client);
 

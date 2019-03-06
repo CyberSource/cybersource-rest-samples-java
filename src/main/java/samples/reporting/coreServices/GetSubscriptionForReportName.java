@@ -8,8 +8,6 @@ import Api.ReportSubscriptionsApi;
 import Data.Configuration;
 import Invokers.ApiClient;
 import Invokers.ApiException;
-import Model.ReportingV3ReportSubscriptionsGet200Response;
-import Model.ReportingV3ReportSubscriptionsGet200ResponseSubscriptions;
 
 public class GetSubscriptionForReportName {
 	
@@ -29,10 +27,10 @@ public class GetSubscriptionForReportName {
 		/* Read Merchant details. */
 		merchantProp = Configuration.getMerchantDetails();
 		MerchantConfig merchantConfig = new MerchantConfig(merchantProp);
-		ApiClient apiClient = new ApiClient(merchantConfig);
+		ApiClient.merchantConfig = merchantConfig;	
 		
 		ReportSubscriptionsApi reportSubscriptionsApi = new ReportSubscriptionsApi();
-		ReportingV3ReportSubscriptionsGet200Response response = reportSubscriptionsApi.getSubscription(reportName);
+		reportSubscriptionsApi.getSubscription(reportName);
 		
 		responseCode = ApiClient.responseCode;
 		status = ApiClient.status;

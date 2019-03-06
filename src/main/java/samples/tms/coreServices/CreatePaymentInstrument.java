@@ -56,7 +56,6 @@ public class CreatePaymentInstrument {
 		body.instrumentIdentifier(instrumentIdentifier);
 
 		return body;
-
 	}
 
 	public static void main(String args[]) throws Exception {
@@ -70,7 +69,7 @@ public class CreatePaymentInstrument {
 			/* Read Merchant details. */
 			merchantProp = Configuration.getMerchantDetails();
 			MerchantConfig merchantConfig = new MerchantConfig(merchantProp);
-			ApiClient apiClient = new ApiClient(merchantConfig);
+			ApiClient.merchantConfig = merchantConfig;
 
 			PaymentInstrumentsApi paymentInstrumentApi = new PaymentInstrumentsApi();
 			response = paymentInstrumentApi.tmsV1PaymentinstrumentsPost(profileId, body);
