@@ -18,7 +18,7 @@ public class GetMethod {
 	/**
 	 * REQUEST TARGET / UNIQUE GET ID [Editable]
 	 */
-	private String requestTarget = "/pts/v2/payments/5383909529456080803003";
+	private String requestTarget = "/pts/v2/payments/5525469669016421003004";
 	/**
 	 * REQUEST-TYPE. [Non-Editable]
 	 */
@@ -69,6 +69,9 @@ public class GetMethod {
 				System.out.println(" Response Code       : " + response.getResponseCode());
 				System.out.println(" V-C-Corealation ID  : " + response.getVcCorelationId());
 				System.out.println(" Response Message    : " + response.getResponseMessage());
+			} 
+			else {
+				System.out.println(response.getResponseMessage());
 			}
 		} catch (Exception e) {
 			System.out.println(e.getMessage());

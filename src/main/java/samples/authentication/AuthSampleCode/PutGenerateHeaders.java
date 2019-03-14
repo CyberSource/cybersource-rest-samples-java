@@ -91,7 +91,7 @@ public class PutGenerateHeaders {
 			auth.setJWTRequestBody(jwtRequestBody);
 			auth.setLogger(this.logger);
 			TempSig = auth.getToken(merchantConfig);
-			System.out.println(" Authorization, Bearer " + TempSig.toString());
+			System.out.println("Authorization, Bearer " + TempSig.toString());
 		}
 	}
 

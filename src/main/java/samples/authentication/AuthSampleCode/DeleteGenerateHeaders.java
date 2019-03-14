@@ -46,8 +46,6 @@ public class DeleteGenerateHeaders {
 	}
 
 	public DeleteGenerateHeaders() throws Exception {
-		
-		
 		auth = new Authorization();
 		merchantProp = PropertiesUtil.getMerchantProperties();
 		merchantConfig = new MerchantConfig(merchantProp);

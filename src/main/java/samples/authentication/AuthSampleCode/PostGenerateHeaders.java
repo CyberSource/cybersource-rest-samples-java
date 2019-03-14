@@ -44,7 +44,7 @@ public class PostGenerateHeaders {
 	 * [Editable]
 	 */
 
-	private String requestJsonPath = "src/main/resources/request.json";
+	private String requestJsonPath = "src/main/resources/authRequest.json";
 
 	/**
 	 * 
@@ -133,7 +133,7 @@ public class PostGenerateHeaders {
 			auth.setJWTRequestBody(jwtRequestBody);
 			auth.setLogger(this.logger);
 			tempSig = auth.getToken(merchantConfig);
-			System.out.println(" Authorization, Bearer " + tempSig.toString());
+			System.out.println("Authorization, Bearer " + tempSig.toString());
 		}
 	}
 

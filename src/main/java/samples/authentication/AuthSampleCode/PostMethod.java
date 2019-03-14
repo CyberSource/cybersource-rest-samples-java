@@ -27,7 +27,7 @@ public class PostMethod {
 	/**
 	 * JSON PATH [Editable]
 	 */
-	private String requestJsonPath = "src/main/resources/request.json";
+	private String requestJsonPath = "src/main/resources/authRequest.json";
 	/**
 	 * REQUEST-TYPE. [Non-Editable]
 	 */
@@ -79,12 +79,15 @@ public class PostMethod {
 			/* Call payment method of Api Controller class */
 			responseObj = apiController.paymentPost(merchantConfig);
 			/* Display Response Message from the server and Headers. */
-			if (!StringUtils.isBlank(responseObj.getResponseCode())&& !StringUtils.isBlank(responseObj.getResponseMessage())) {
+			if (!StringUtils.isBlank(responseObj.getResponseCode())
+					&& !StringUtils.isBlank(responseObj.getResponseMessage())) {
 				new PostGenerateHeaders(merchantConfig);
 				System.out.println(" URL                 : " + url);
 				System.out.println(" Response Code       : " + responseObj.getResponseCode());
 				System.out.println(" v-c-Co-relation ID  : " + responseObj.getVcCorelationId());
 				System.out.println(" Response Message    : " + responseObj.getResponseMessage());
+			} else {
+				System.out.println(responseObj.getResponseMessage());
 			}
 		} catch (Exception e) {
 			System.out.println(e.getMessage());

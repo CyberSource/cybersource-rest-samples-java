@@ -38,10 +38,7 @@ public class PutMethod {
 
 	/* This method initiates or begins the process. */
 	public static void main(String[] args) throws Exception {
-		/**
-		 * 
-		 */
-		new PutMethod(args);
+		new PutMethod();
 	}
 
 	/**
@@ -50,7 +47,7 @@ public class PutMethod {
 	 * @return
 	 * @throws Exception
 	 */
-	public PutMethod(String[] args) throws Exception {
+	public PutMethod() throws Exception {
 		apiController = new ApiController();
 		merchantProp = PropertiesUtil.getMerchantProperties();
 		merchantConfig = new MerchantConfig(merchantProp);
@@ -85,8 +82,7 @@ public class PutMethod {
 			/* Call payment method of Api Controller class */
 			response = apiController.paymentPut(merchantConfig);
 
-			if (!StringUtils.isBlank(response.getResponseCode())
-					&& !StringUtils.isBlank(response.getResponseMessage())) {
+			if (!StringUtils.isBlank(response.getResponseCode()) && !StringUtils.isBlank(response.getResponseMessage())) {
 				new PutGenerateHeaders(merchantConfig);
 				System.out.println(" URL                 : " + url);
 				System.out.println(" Response Code       : " + response.getResponseCode());

@@ -32,10 +32,7 @@ public class DeleteMethod {
 
 	/* This method initiates or begins the process. */
 	public static void main(String[] args) throws Exception {
-		/**
-		 * 
-		 */
-		new DeleteMethod(args);
+		new DeleteMethod();
 	}
 
 	/**
@@ -44,7 +41,7 @@ public class DeleteMethod {
 	 * @return
 	 * @throws Exception
 	 */
-	public DeleteMethod(String[] args) throws Exception {
+	public DeleteMethod() throws Exception {
 		apiController = new ApiController();
 
 		merchantProp = PropertiesUtil.getMerchantProperties();
@@ -77,14 +74,18 @@ public class DeleteMethod {
 		try {
 			/* Call payment method of Api Controller class */
 			responseObj = apiController.paymentGet(merchantConfig);
+			response = responseObj.getResponseMessage();
 			/* Display Response Message from the server. */
-			responseCode=responseObj.getResponseCode();
+			responseCode = responseObj.getResponseCode();
 			if (!StringUtils.isBlank(responseCode)&& !StringUtils.isBlank(response)) {
 				new DeleteGenerateHeaders(merchantConfig);
 				System.out.println(" URL                : " + url);
 				System.out.println(" Response Code      : " + merchantConfig.getResponseCode());
 				System.out.println(" V-C-Corealation ID : " + merchantConfig.getVcCorelationID());
 				System.out.println(" Response Message   : " + response);
+			}
+			else {
+				System.out.println(responseObj.getResponseMessage());
 			}
 		} catch (Exception e) {
 			System.out.println(e.getMessage());

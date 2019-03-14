@@ -85,7 +85,7 @@ public class PostObjectMethod {
 				System.out.println(" URL                 : " + url);
 				System.out.println(" Response Code       : " + response.getResponseCode());
 				System.out.println(" v-c-Co-relation ID  : " + response.getVcCorelationId());
-				System.out.println(" Response Message    : " + response);
+				System.out.println(" Response Message    : " + response.getResponseMessage());
 			}
 		} catch (Exception e) {
 			System.out.println(e.getMessage());

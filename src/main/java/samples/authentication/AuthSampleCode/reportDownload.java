@@ -31,7 +31,7 @@ public class reportDownload {
 	public String gmtDateTime = "";
 	public static String resourceURI = "/reporting/v2/reportSubscriptions/TRRReport?organizationId=testrest";
 	public static String resourceFile = "report";
-	private static final String FILE_PATH = "src/main/java/samples/authentication/resources/";
+	private static final String FILE_PATH = "src/main/resources/";
 
 	public static void main(String[] args) throws Exception {
 
