@@ -34,7 +34,6 @@ public class ProcessAuthorizationReversalWithServiceFee {
 
 		Ptsv2paymentsidreversalsReversalInformationAmountDetails amountDetails = new Ptsv2paymentsidreversalsReversalInformationAmountDetails();
 		amountDetails.totalAmount("2325.00");
-//		amountDetails.serviceFeeAmount("30.00");
 
 		Ptsv2paymentsidreversalsReversalInformation reversalInformation = new Ptsv2paymentsidreversalsReversalInformation();
 		reversalInformation.reason("34");
@@ -51,9 +50,6 @@ public class ProcessAuthorizationReversalWithServiceFee {
 	}
 
 	private static void process() throws Exception {
-		
-//		ProcessEcheckPayment.process(false);
-
 		try {
 			request = getRequest();
 

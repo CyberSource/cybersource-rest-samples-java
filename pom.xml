@@ -1,4 +1,5 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>com.cybersource.sample</groupId>
@@ -14,6 +15,14 @@
 			<groupId>com.cybersource</groupId>
 			<artifactId>cybersource-rest-client-java</artifactId>
 			<version>0.0.8</version>
+		</dependency>
+		<!-- Sample API Client dependency -->
+		<dependency>
+			<groupId>com.cybersource</groupId>
+			<artifactId>SampleApiClient</artifactId>
+			<version>0.0.1</version>
+			<scope>system</scope>
+			<systemPath>${project.basedir}/src/main/java/samples/authentication/lib/SampleApiClient-0.0.1.jar</systemPath>
 		</dependency>
 
 	</dependencies>
@@ -55,8 +64,8 @@
 				<version>2.9</version>
 				<configuration>
 					<includes>
-                        <include>**/*.java</include>
-                    </includes>
+						<include>**/*.java</include>
+					</includes>
 				</configuration>
 			</plugin>
 		</plugins>
