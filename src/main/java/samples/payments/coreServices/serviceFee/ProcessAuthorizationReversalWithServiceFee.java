@@ -14,7 +14,6 @@ import Model.PtsV2PaymentsReversalsPost201Response;
 import Model.Ptsv2paymentsidreversalsClientReferenceInformation;
 import Model.Ptsv2paymentsidreversalsReversalInformation;
 import Model.Ptsv2paymentsidreversalsReversalInformationAmountDetails;
-import samples.payments.coreServices.electronicCheck.ProcessEcheckPayment;
 
 public class ProcessAuthorizationReversalWithServiceFee {
 
@@ -30,15 +29,14 @@ public class ProcessAuthorizationReversalWithServiceFee {
 		request = new AuthReversalRequest();
 
 		Ptsv2paymentsidreversalsClientReferenceInformation client = new Ptsv2paymentsidreversalsClientReferenceInformation();
-		client.code("test_reversal");
+		client.code("TC50171_3");
 		request.setClientReferenceInformation(client);
 
 		Ptsv2paymentsidreversalsReversalInformationAmountDetails amountDetails = new Ptsv2paymentsidreversalsReversalInformationAmountDetails();
 		amountDetails.totalAmount("2325.00");
-//		amountDetails.serviceFeeAmount("30.00");
 
 		Ptsv2paymentsidreversalsReversalInformation reversalInformation = new Ptsv2paymentsidreversalsReversalInformation();
-		reversalInformation.reason("testing");
+		reversalInformation.reason("34");
 		reversalInformation.setAmountDetails(amountDetails);
 
 		request.setReversalInformation(reversalInformation);
@@ -52,9 +50,6 @@ public class ProcessAuthorizationReversalWithServiceFee {
 	}
 
 	private static void process() throws Exception {
-		
-//		ProcessEcheckPayment.process(false);
-
 		try {
 			request = getRequest();
 
@@ -63,7 +58,7 @@ public class ProcessAuthorizationReversalWithServiceFee {
 			MerchantConfig merchantConfig = new MerchantConfig(merchantProp);
 			ApiClient.merchantConfig = merchantConfig;	
 			
-			paymentResponse = ProcessEcheckPayment.process(false);
+			paymentResponse = ProcessPaymentWithServiceFee.process(false);
 
 			ReversalApi reversalApi = new ReversalApi();
 			response = reversalApi.authReversal(paymentResponse.getId(), request);
