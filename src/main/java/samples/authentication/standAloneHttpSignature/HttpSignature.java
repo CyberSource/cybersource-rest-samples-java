@@ -13,6 +13,7 @@ import java.util.Base64;
 /**
  * Created by glondhe on 3/11/2019.
  */
+package samples.authentication.standAloneHttpSignature;
 
 /** @noinspection ALL*/
 public class HttpSignature {
