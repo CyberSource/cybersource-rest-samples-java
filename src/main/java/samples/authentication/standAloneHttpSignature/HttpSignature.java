@@ -1,3 +1,5 @@
+package samples.authentication.standAloneHttpSignature;
+
 import javax.crypto.Mac;
 import javax.crypto.spec.SecretKeySpec;
 import java.io.*;
@@ -13,7 +15,6 @@ import java.util.Base64;
 /**
  * Created by glondhe on 3/11/2019.
  */
-package samples.authentication.standAloneHttpSignature;
 
 /** @noinspection ALL*/
 public class HttpSignature {
