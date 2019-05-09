@@ -12,7 +12,7 @@ import com.cybersource.flex.sdk.model.FlexToken;
 import com.cybersource.flex.sdk.repackaged.Base64;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
-import Api.FlexTokenApi;
+import Api.TokenizationApi;
 import Data.Configuration;
 import Invokers.ApiClient;
 import Invokers.ApiException;
@@ -68,7 +68,7 @@ public class TokenizeCard {
 			MerchantConfig merchantConfig = new MerchantConfig(merchantProp);
 			ApiClient.merchantConfig = merchantConfig;	
 			
-			FlexTokenApi tokenizationApi = new FlexTokenApi();
+			TokenizationApi tokenizationApi = new TokenizationApi();
 			response = tokenizationApi.tokenize(request);
 			
 			byte[] publicBytes = Base64.decode(keyResponse.getDer().getPublicKey());
