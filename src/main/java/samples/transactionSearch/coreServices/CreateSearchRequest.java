@@ -9,17 +9,16 @@ import Data.Configuration;
 import Invokers.ApiClient;
 import Invokers.ApiException;
 import Model.TssV2TransactionsPost201Response;
-import Model.TssV2TransactionsPostResponse;
 
 public class CreateSearchRequest {
 	private static String responseCode = null;
 	private static String status = null;
 	private static TssV2TransactionsPost201Response reponse;
-	private static TssV2TransactionsPostResponse request;
+	private static Model.CreateSearchRequest request;
 	private static Properties merchantProp;
 
-	private static TssV2TransactionsPostResponse getRequest() {
-		request = new TssV2TransactionsPostResponse();
+	private static Model.CreateSearchRequest getRequest() {
+		request = new Model.CreateSearchRequest();
 		
 		request.save(false);
 		request.name("MRN");
