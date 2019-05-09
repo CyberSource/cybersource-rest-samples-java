@@ -35,7 +35,7 @@ public class GetListOfFiles {
 			ApiClient.merchantConfig = merchantConfig;	
 
 			SecureFileShareApi secureFileShareApi = new SecureFileShareApi();
-			secureFileShareApi.getFileDetails(startDate, endDate, organizationId);
+			secureFileShareApi.getFileDetailWithHttpInfo(startDate, endDate, organizationId);
 
 			responseCode = ApiClient.responseCode;
 			status = ApiClient.status;
