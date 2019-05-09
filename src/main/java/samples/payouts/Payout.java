@@ -4,11 +4,11 @@ import java.util.Properties;
 
 import com.cybersource.authsdk.core.MerchantConfig;
 
-import Api.ProcessAPayoutApi;
+import Api.PayoutsApi;
 import Data.Configuration;
 import Invokers.ApiClient;
 import Invokers.ApiException;
-import Model.PtsV2PayoutsPostResponse;
+import Model.OctCreatePaymentRequest;
 import Model.Ptsv2payoutsClientReferenceInformation;
 import Model.Ptsv2payoutsMerchantInformation;
 import Model.Ptsv2payoutsMerchantInformationMerchantDescriptor;
@@ -27,10 +27,10 @@ public class Payout {
 	private static String status = null;
 	private static Properties merchantProp;
 	
-	static PtsV2PayoutsPostResponse request;
+	static OctCreatePaymentRequest request;
 	
     private static PtsV2PayoutsPostResponse getRequest(){
-		 request=new PtsV2PayoutsPostResponse();
+		 request=new OctCreatePaymentRequest();
 		
 		 Ptsv2payoutsClientReferenceInformation client = new Ptsv2payoutsClientReferenceInformation();
 		client.code("1234567890");
