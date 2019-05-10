@@ -4,11 +4,15 @@ import java.util.Properties;
 
 import com.cybersource.authsdk.core.MerchantConfig;
 
-import Api.PaymentInstrumentsApi;
+import Api.PaymentInstrumentApi;
 import Data.Configuration;
 import Invokers.ApiClient;
 import Invokers.ApiException;
-
+/**
+ * 
+ * Delete Payment instrument identifer
+ *
+ */
 public class DeletePaymentInstrument {
 	private static String profileId = "93B32398-AD51-4CC2-A682-EA3E93614EB1";
 	private static String tokenId = "82EF9C807EA197ECE05340588D0A4700";
@@ -28,8 +32,8 @@ public class DeletePaymentInstrument {
 			MerchantConfig merchantConfig = new MerchantConfig(merchantProp);
 			ApiClient.merchantConfig = merchantConfig;	
 			
-			PaymentInstrumentsApi paymentInstrumentApi = new PaymentInstrumentsApi();
-			paymentInstrumentApi.tmsV1PaymentinstrumentsTokenIdDelete(profileId, tokenId);
+			PaymentInstrumentApi paymentInstrumentApi = new PaymentInstrumentApi();
+			paymentInstrumentApi.deletePaymentInstrument(profileId, tokenId);
 
 			responseCode = ApiClient.responseCode;
 			status = ApiClient.status;

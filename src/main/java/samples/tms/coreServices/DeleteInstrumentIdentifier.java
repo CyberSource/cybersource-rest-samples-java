@@ -29,7 +29,7 @@ public class DeleteInstrumentIdentifier {
 			ApiClient.merchantConfig = merchantConfig;	
 			
 			InstrumentIdentifierApi instrumentIdentifierApi = new InstrumentIdentifierApi();
-			instrumentIdentifierApi.tmsV1InstrumentidentifiersTokenIdDelete(profileId, tokenId);
+			instrumentIdentifierApi.deleteInstrumentIdentifier(profileId, tokenId);
 
 			responseCode = ApiClient.responseCode;
 			status = ApiClient.status;

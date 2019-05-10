@@ -4,37 +4,47 @@ import java.util.Properties;
 
 import com.cybersource.authsdk.core.MerchantConfig;
 
-import Api.PaymentInstrumentsApi;
+import Api.PaymentInstrumentApi;
 import Data.Configuration;
 import Invokers.ApiClient;
 import Invokers.ApiException;
-import Model.Body2;
-import Model.TmsV1PaymentinstrumentsPost201Response;
-import Model.Tmsv1instrumentidentifiersCard;
-import Model.Tmsv1paymentinstrumentsBillTo;
-import Model.Tmsv1paymentinstrumentsCard;
-import Model.Tmsv1paymentinstrumentsCard.TypeEnum;
-import Model.Tmsv1paymentinstrumentsInstrumentIdentifier;
+import Model.CreatePaymentInstrumentRequest;
+import Model.TmsV1InstrumentIdentifiersPaymentInstrumentsGet200ResponseEmbeddedCard.TypeEnum;
+import Model.TmsV1InstrumentIdentifiersPaymentInstrumentsGet200ResponseEmbeddedBillTo;
+import Model.TmsV1InstrumentIdentifiersPaymentInstrumentsGet200ResponseEmbeddedCard;
+import Model.TmsV1InstrumentIdentifiersPaymentInstrumentsGet200ResponseEmbeddedInstrumentIdentifier;
+import Model.TmsV1InstrumentIdentifiersPaymentInstrumentsGet200ResponseEmbeddedPaymentInstruments;
+import Model.TmsV1InstrumentIdentifiersPost200ResponseCard;
 
+/**
+ * 
+ * This is the sample create Payment instrument identifier request
+ *
+ */
 public class CreatePaymentInstrument {
 	private static String responseCode = null;
 	private static String status = null;
-	static TmsV1PaymentinstrumentsPost201Response response;
+	static TmsV1InstrumentIdentifiersPaymentInstrumentsGet200ResponseEmbeddedPaymentInstruments response;
 	private static String profileId = "93B32398-AD51-4CC2-A682-EA3E93614EB1";
 	private static Properties merchantProp;
 
-	static Body2 body;
+	/**
+	 * 
+	 * Add Card details and instrument identifier as part of the request
+	 * 
+	 * @param createPaymentInstrumentRequest
+	 * @return
+	 */
+	private static CreatePaymentInstrumentRequest getRequest(
+			CreatePaymentInstrumentRequest createPaymentInstrumentRequest) {
 
-	private static Body2 getRequest() {
-		body = new Body2();
-
-		Tmsv1paymentinstrumentsCard card = new Tmsv1paymentinstrumentsCard();
+		TmsV1InstrumentIdentifiersPaymentInstrumentsGet200ResponseEmbeddedCard card = new TmsV1InstrumentIdentifiersPaymentInstrumentsGet200ResponseEmbeddedCard();
 		card.expirationMonth("09");
 		card.expirationYear("2022");
 		card.type(TypeEnum.VISA);
-		body.card(card);
+		createPaymentInstrumentRequest.card(card);
 
-		Tmsv1paymentinstrumentsBillTo billTo = new Tmsv1paymentinstrumentsBillTo();
+		TmsV1InstrumentIdentifiersPaymentInstrumentsGet200ResponseEmbeddedBillTo billTo = new TmsV1InstrumentIdentifiersPaymentInstrumentsGet200ResponseEmbeddedBillTo();
 		billTo.firstName("John");
 		billTo.lastName("Deo");
 		billTo.company("CyberSource");
@@ -46,40 +56,43 @@ public class CreatePaymentInstrument {
 		billTo.country("US");
 		billTo.email("test@cybs.com");
 		billTo.phoneNumber("555123456");
-		body.billTo(billTo);
+		createPaymentInstrumentRequest.billTo(billTo);
 
-		Tmsv1instrumentidentifiersCard instrumentidentifiersCard = new Tmsv1instrumentidentifiersCard();
+		TmsV1InstrumentIdentifiersPost200ResponseCard instrumentidentifiersCard = new TmsV1InstrumentIdentifiersPost200ResponseCard();
 		instrumentidentifiersCard.number("4111111111111111");
 
-		Tmsv1paymentinstrumentsInstrumentIdentifier instrumentIdentifier = new Tmsv1paymentinstrumentsInstrumentIdentifier();
+		TmsV1InstrumentIdentifiersPaymentInstrumentsGet200ResponseEmbeddedInstrumentIdentifier instrumentIdentifier = new TmsV1InstrumentIdentifiersPaymentInstrumentsGet200ResponseEmbeddedInstrumentIdentifier();
 		instrumentIdentifier.card(instrumentidentifiersCard);
-		body.instrumentIdentifier(instrumentIdentifier);
 
-		return body;
+		createPaymentInstrumentRequest.instrumentIdentifier(instrumentIdentifier);
+
+		return createPaymentInstrumentRequest;
 	}
 
 	public static void main(String args[]) throws Exception {
 		process();
 	}
 
-	public static TmsV1PaymentinstrumentsPost201Response process() throws Exception {
+	public static TmsV1InstrumentIdentifiersPaymentInstrumentsGet200ResponseEmbeddedPaymentInstruments process()
+			throws Exception {
 
 		try {
-			body = getRequest();
+			CreatePaymentInstrumentRequest createPaymentInstrumentRequest = new CreatePaymentInstrumentRequest();
+			createPaymentInstrumentRequest = getRequest(createPaymentInstrumentRequest);
 			/* Read Merchant details. */
 			merchantProp = Configuration.getMerchantDetails();
 			MerchantConfig merchantConfig = new MerchantConfig(merchantProp);
 			ApiClient.merchantConfig = merchantConfig;
 
-			PaymentInstrumentsApi paymentInstrumentApi = new PaymentInstrumentsApi();
-			response = paymentInstrumentApi.tmsV1PaymentinstrumentsPost(profileId, body);
+			PaymentInstrumentApi paymentInstrumentApi = new PaymentInstrumentApi();
+			response = paymentInstrumentApi.createPaymentInstrument(profileId, createPaymentInstrumentRequest);
 
 			responseCode = ApiClient.responseCode;
 			status = ApiClient.status;
 
 			System.out.println("ResponseCode :" + responseCode);
 			System.out.println("Status :" + status);
-			System.out.println("ResponseBody :"+ApiClient.respBody);
+			System.out.println("ResponseBody :" + ApiClient.respBody);
 
 		} catch (ApiException e) {
 
