@@ -20,7 +20,7 @@ public class RetrieveAllPaymentInstruments {
 	private static String responseCode = null;
 	private static String status = null;
 	static TmsV1InstrumentIdentifiersPaymentInstrumentsGet200ResponseEmbeddedPaymentInstruments response;
-	private static String tokenId = "7020000000000137654";
+	private static String tokenId = "888454C31FB6150CE05340588D0AA9BE";
 	private static Properties merchantProp;
 
 	public static void main(String args[]) throws Exception {

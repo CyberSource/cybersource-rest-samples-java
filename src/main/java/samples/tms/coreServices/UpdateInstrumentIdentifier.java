@@ -25,7 +25,7 @@ public class UpdateInstrumentIdentifier {
 	private static String status = null;
 	static TmsV1InstrumentIdentifiersPost200Response response;
 	private static String profileId = "93B32398-AD51-4CC2-A682-EA3E93614EB1";
-	private static String tokenId = "7010000000004697654";
+	private static String tokenId = "7010000000016241111";
 	private static Properties merchantProp;
 
 	private static UpdateInstrumentIdentifierRequest getRequest(

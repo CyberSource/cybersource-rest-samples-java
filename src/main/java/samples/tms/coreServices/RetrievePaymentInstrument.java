@@ -16,7 +16,7 @@ import Model.TmsV1InstrumentIdentifiersPaymentInstrumentsGet200ResponseEmbeddedP
  */
 public class RetrievePaymentInstrument {
 	private static String profileId = "93B32398-AD51-4CC2-A682-EA3E93614EB1";
-	private static String tokenId = "82EFD42A2806C20CE05340588D0A2D59";
+	private static String tokenId = "888454C31FB6150CE05340588D0AA9BE";
 	private static  String responseCode = null;
 	private static String status = null;
 	static TmsV1InstrumentIdentifiersPaymentInstrumentsGet200ResponseEmbeddedPaymentInstruments response;
