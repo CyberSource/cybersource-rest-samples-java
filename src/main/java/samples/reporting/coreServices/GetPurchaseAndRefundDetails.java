@@ -17,11 +17,11 @@ public class GetPurchaseAndRefundDetails {
 	private static String responseCode = null;
 	private static String status = null;
 
-	private static String timeString = "2018-09-01T12:00:00+05:00";
+	private static String timeString = "2019-05-01T12:00:00+05:00";
 	private static DateTime ddateTime = new DateTime(timeString);
 	private static DateTime startTime = ddateTime.withZone(DateTimeZone.forID("Asia/Ashkhabad"));
 	
-	private static String timeString2 = "2018-05-30T12:00:00-05:00";
+	private static String timeString2 = "2019-05-30T12:00:00-05:00";
 	private static DateTime ddateTime2 = new DateTime(timeString2);
 	private static DateTime endTime = ddateTime2.withZone(DateTimeZone.forID("Asia/Ashkhabad"));
 	
