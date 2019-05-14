@@ -4,10 +4,11 @@ import java.util.Properties;
 
 import com.cybersource.authsdk.core.MerchantConfig;
 
-import Api.PaymentInstrumentApi;
+import Api.InstrumentIdentifierApi;
 import Data.Configuration;
 import Invokers.ApiClient;
 import Invokers.ApiException;
+import Model.TmsV1InstrumentIdentifiersPaymentInstrumentsGet200Response;
 import Model.TmsV1InstrumentIdentifiersPaymentInstrumentsGet200ResponseEmbeddedPaymentInstruments;
 
 /**
@@ -19,7 +20,7 @@ public class RetrieveAllPaymentInstruments {
 	private static String profileId = "93B32398-AD51-4CC2-A682-EA3E93614EB1";
 	private static String responseCode = null;
 	private static String status = null;
-	static TmsV1InstrumentIdentifiersPaymentInstrumentsGet200ResponseEmbeddedPaymentInstruments response;
+	static TmsV1InstrumentIdentifiersPaymentInstrumentsGet200Response response;
 	private static String tokenId = "888454C31FB6150CE05340588D0AA9BE";
 	private static Properties merchantProp;
 
@@ -35,8 +36,10 @@ public class RetrieveAllPaymentInstruments {
 			MerchantConfig merchantConfig = new MerchantConfig(merchantProp);
 			ApiClient.merchantConfig = merchantConfig;
 
-			PaymentInstrumentApi paymentInstrumentsApi = new PaymentInstrumentApi();
-			response = paymentInstrumentsApi.getPaymentInstrument(profileId, tokenId);
+			InstrumentIdentifierApi instrumentIdentifierApi = new InstrumentIdentifierApi();
+			long offset=0;
+			long limit=0;
+			response = instrumentIdentifierApi.getAllPaymentInstruments(profileId, tokenId, offset, limit);
 
 			responseCode = ApiClient.responseCode;
 			status = ApiClient.status;
