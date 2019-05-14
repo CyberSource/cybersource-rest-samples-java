@@ -21,7 +21,7 @@ public class RetrieveAllPaymentInstruments {
 	private static String responseCode = null;
 	private static String status = null;
 	static TmsV1InstrumentIdentifiersPaymentInstrumentsGet200Response response;
-	private static String tokenId = "888454C31FB6150CE05340588D0AA9BE";
+	private static String tokenId = "7010000000016241111";
 	private static Properties merchantProp;
 
 	public static void main(String args[]) throws Exception {
@@ -38,7 +38,7 @@ public class RetrieveAllPaymentInstruments {
 
 			InstrumentIdentifierApi instrumentIdentifierApi = new InstrumentIdentifierApi();
 			long offset=0;
-			long limit=0;
+			long limit=100;
 			response = instrumentIdentifierApi.getAllPaymentInstruments(profileId, tokenId, offset, limit);
 
 			responseCode = ApiClient.responseCode;
