@@ -9,31 +9,29 @@ import Data.Configuration;
 import Invokers.ApiClient;
 import Invokers.ApiException;
 import Model.CreateDecisionManagerCaseRequest;
-import Model.Ptsv2paymentsBuyerInformationPersonalIdentification;
-import Model.Ptsv2paymentsBuyerInformationPersonalIdentification.TypeEnum;
 import Model.RiskV1DecisionsPost201Response;
-import Model.Riskv1decisionsBuyerInformation;
 import Model.Riskv1decisionsClientReferenceInformation;
 import Model.Riskv1decisionsOrderInformation;
 import Model.Riskv1decisionsOrderInformationAmountDetails;
 import Model.Riskv1decisionsOrderInformationBillTo;
 import Model.Riskv1decisionsPaymentInformation;
 import Model.Riskv1decisionsPaymentInformationCard;
+import Model.Riskv1decisionsRiskInformation;
+import Model.Riskv1decisionsRiskInformationProfile;
 
 /**
  * 
- * This is the sample code for Decision Manager Request With Details of Buyer
- * information
+ * This is the sample code for decision profile reject
  *
  */
-public class DMWithBuyerInformation {
+public class DecisionProfileReject {
 	private static Properties merchantProp;
 	private static String responseCode = null;
 	private static String status = null;
 	private static RiskV1DecisionsPost201Response response;
 
 	/**
-	 * Function to create Decision Manager Case Request
+	 * Function to create Decision Manager Case Request to reject profiles
 	 * 
 	 * @return
 	 * @throws Exception
@@ -76,19 +74,15 @@ public class DMWithBuyerInformation {
 		riskv1decisionsOrderInformation.billTo(riskv1decisionsOrderInformationBillTo);
 		createDecisionManagerCaseRequest.orderInformation(riskv1decisionsOrderInformation);
 
-		// set Buyer information details
-		Riskv1decisionsBuyerInformation riskv1decisionsBuyerInformation = new Riskv1decisionsBuyerInformation();
-		riskv1decisionsBuyerInformation.hashedPassword("");
-		riskv1decisionsBuyerInformation.dateOfBirth("1998-05-05");
+		// set risk information details with the profile info
+		Riskv1decisionsRiskInformation riskv1decisionsRiskInformation = new Riskv1decisionsRiskInformation();
 
-		// set Personal Information of the buyer
-		Ptsv2paymentsBuyerInformationPersonalIdentification ptsv2paymentsBuyerInformationPersonalIdentification0 = new Ptsv2paymentsBuyerInformationPersonalIdentification();
-		ptsv2paymentsBuyerInformationPersonalIdentification0.type(TypeEnum.CPF);
-		ptsv2paymentsBuyerInformationPersonalIdentification0.id("1a23apwe98");
-		riskv1decisionsBuyerInformation
-				.addPersonalIdentificationItem(ptsv2paymentsBuyerInformationPersonalIdentification0);
+		// set the profile info which needs to be rejected
+		Riskv1decisionsRiskInformationProfile riskv1decisionsRiskInformationProfile = new Riskv1decisionsRiskInformationProfile();
+		riskv1decisionsRiskInformationProfile.name("profile2");
+		riskv1decisionsRiskInformation.setProfile(riskv1decisionsRiskInformationProfile);
+		createDecisionManagerCaseRequest.riskInformation(riskv1decisionsRiskInformation);
 
-		createDecisionManagerCaseRequest.buyerInformation(riskv1decisionsBuyerInformation);
 		return createDecisionManagerCaseRequest;
 	}
 

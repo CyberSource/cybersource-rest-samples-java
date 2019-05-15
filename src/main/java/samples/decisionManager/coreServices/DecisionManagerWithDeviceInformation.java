@@ -24,7 +24,7 @@ import Model.Riskv1decisionsPaymentInformationCard;
  * information
  *
  */
-public class DMWithDeviceInformation {
+public class DecisionManagerWithDeviceInformation {
 	private static Properties merchantProp;
 	private static String responseCode = null;
 	private static String status = null;

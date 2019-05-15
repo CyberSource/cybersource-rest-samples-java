@@ -16,22 +16,23 @@ import Model.Riskv1decisionsOrderInformationAmountDetails;
 import Model.Riskv1decisionsOrderInformationBillTo;
 import Model.Riskv1decisionsPaymentInformation;
 import Model.Riskv1decisionsPaymentInformationCard;
-import Model.Riskv1decisionsRiskInformation;
-import Model.Riskv1decisionsRiskInformationProfile;
+import Model.Riskv1decisionsTravelInformation;
+import Model.Riskv1decisionsTravelInformationLegs;
 
 /**
  * 
- * This is the sample code for decision profile reject
+ * This is the sample code for Decision Manager Request With Details of Travel
+ * information
  *
  */
-public class DECISION_PROFILE_REJECT {
+public class DecisionManagerWithTravelInformation {
 	private static Properties merchantProp;
 	private static String responseCode = null;
 	private static String status = null;
 	private static RiskV1DecisionsPost201Response response;
 
 	/**
-	 * Function to create Decision Manager Case Request to reject profiles
+	 * Function to create Decision Manager Case Request
 	 * 
 	 * @return
 	 * @throws Exception
@@ -74,15 +75,26 @@ public class DECISION_PROFILE_REJECT {
 		riskv1decisionsOrderInformation.billTo(riskv1decisionsOrderInformationBillTo);
 		createDecisionManagerCaseRequest.orderInformation(riskv1decisionsOrderInformation);
 
-		// set risk information details with the profile info
-		Riskv1decisionsRiskInformation riskv1decisionsRiskInformation = new Riskv1decisionsRiskInformation();
+		// Set Travel Information Details
+		Riskv1decisionsTravelInformation riskv1decisionsTravelInformation = new Riskv1decisionsTravelInformation();
+		riskv1decisionsTravelInformation.completeRoute("SFO-JFK:JFK-BLR");
+		riskv1decisionsTravelInformation.journeyType("One way");
 
-		// set the profile info which needs to be rejected
-		Riskv1decisionsRiskInformationProfile riskv1decisionsRiskInformationProfile = new Riskv1decisionsRiskInformationProfile();
-		riskv1decisionsRiskInformationProfile.name("profile2");
-		riskv1decisionsRiskInformation.setProfile(riskv1decisionsRiskInformationProfile);
-		createDecisionManagerCaseRequest.riskInformation(riskv1decisionsRiskInformation);
+		// Set Travel leg information
 
+		// set Travel Leg1 details
+		Riskv1decisionsTravelInformationLegs riskv1decisionsTravelInformationLegs0 = new Riskv1decisionsTravelInformationLegs();
+		riskv1decisionsTravelInformationLegs0.origination("SFO");
+		riskv1decisionsTravelInformationLegs0.destination("JFK");
+		riskv1decisionsTravelInformation.addLegsItem(riskv1decisionsTravelInformationLegs0);
+
+		// set Travel leg2 details
+		Riskv1decisionsTravelInformationLegs riskv1decisionsTravelInformationLegs1 = new Riskv1decisionsTravelInformationLegs();
+		riskv1decisionsTravelInformationLegs1.origination("JFK");
+		riskv1decisionsTravelInformationLegs1.destination("BLR");
+		riskv1decisionsTravelInformation.addLegsItem(riskv1decisionsTravelInformationLegs1);
+
+		createDecisionManagerCaseRequest.setTravelInformation(riskv1decisionsTravelInformation);
 		return createDecisionManagerCaseRequest;
 	}
 
