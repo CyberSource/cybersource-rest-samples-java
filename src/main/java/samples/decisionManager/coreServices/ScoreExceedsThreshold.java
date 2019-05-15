@@ -21,7 +21,7 @@ import Model.Riskv1decisionsRiskInformation;
 import Model.Riskv1decisionsRiskInformationProfile;
 /**
  * 
- * This is the sample code for decision profile reject
+ * This is the sample code for score Exceeds Threshold
  *
  */
 public class ScoreExceedsThreshold {
