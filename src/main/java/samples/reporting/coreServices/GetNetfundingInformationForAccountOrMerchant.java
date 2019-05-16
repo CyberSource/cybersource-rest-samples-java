@@ -36,7 +36,7 @@ public class GetNetfundingInformationForAccountOrMerchant {
 			MerchantConfig merchantConfig = new MerchantConfig(merchantProp);
 			ApiClient.merchantConfig = merchantConfig;	
 			NetFundingsApi netFundingsApi=new NetFundingsApi(); 
-			netFundingsApi.getNetFundingInfo(startTime, endTime, organizationId, groupName);
+			netFundingsApi.getNetFundingDetails(startTime, endTime, organizationId, groupName);
 			responseCode = ApiClient.responseCode;
 			status = ApiClient.status;
 			System.out.println("ResponseCode :" + responseCode);

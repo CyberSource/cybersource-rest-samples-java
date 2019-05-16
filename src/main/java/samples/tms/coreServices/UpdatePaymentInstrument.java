@@ -4,39 +4,40 @@ import java.util.Properties;
 
 import com.cybersource.authsdk.core.MerchantConfig;
 
-import Api.PaymentInstrumentsApi;
+import Api.PaymentInstrumentApi;
 import Data.Configuration;
 import Invokers.ApiClient;
 import Invokers.ApiException;
-import Model.Body3;
-import Model.TmsV1PaymentinstrumentsGet200Response;
-import Model.Tmsv1instrumentidentifiersCard;
-import Model.Tmsv1paymentinstrumentsBillTo;
-import Model.Tmsv1paymentinstrumentsCard;
-import Model.Tmsv1paymentinstrumentsCard.TypeEnum;
-import Model.Tmsv1paymentinstrumentsInstrumentIdentifier;
+import Model.TmsV1InstrumentIdentifiersPaymentInstrumentsGet200ResponseEmbeddedBillTo;
+import Model.TmsV1InstrumentIdentifiersPaymentInstrumentsGet200ResponseEmbeddedCard;
+import Model.TmsV1InstrumentIdentifiersPaymentInstrumentsGet200ResponseEmbeddedInstrumentIdentifier;
+import Model.TmsV1InstrumentIdentifiersPaymentInstrumentsGet200ResponseEmbeddedPaymentInstruments;
+import Model.TmsV1InstrumentIdentifiersPost200ResponseCard;
+import Model.UpdatePaymentInstrumentRequest;
 
+/**
+ * 
+ * Update payment instrument
+ *
+ */
 public class UpdatePaymentInstrument {
 	private static String responseCode = null;
 	private static String status = null;
-	static TmsV1PaymentinstrumentsGet200Response response;
+	static TmsV1InstrumentIdentifiersPaymentInstrumentsGet200ResponseEmbeddedPaymentInstruments response;
 	private static String profileId = "93B32398-AD51-4CC2-A682-EA3E93614EB1";
 	private static String tokenId = "82EFD42A2806C20CE05340588D0A2D59";
 
 	private static Properties merchantProp;
 
-	static Body3 body;
-
-	private static Body3 getRequest() {
-		body = new Body3();
-
-		Tmsv1paymentinstrumentsCard card = new Tmsv1paymentinstrumentsCard();
+	private static UpdatePaymentInstrumentRequest getRequest(UpdatePaymentInstrumentRequest updatePaymentInstrumentRequest) {
+		
+		TmsV1InstrumentIdentifiersPaymentInstrumentsGet200ResponseEmbeddedCard card = new TmsV1InstrumentIdentifiersPaymentInstrumentsGet200ResponseEmbeddedCard();
 		card.expirationMonth("09");
 		card.expirationYear("2022");
-		card.type(TypeEnum.VISA);
-		body.card(card);
+		card.type(TmsV1InstrumentIdentifiersPaymentInstrumentsGet200ResponseEmbeddedCard.TypeEnum.VISA);
+		updatePaymentInstrumentRequest.card(card);
 
-		Tmsv1paymentinstrumentsBillTo billTo = new Tmsv1paymentinstrumentsBillTo();
+		TmsV1InstrumentIdentifiersPaymentInstrumentsGet200ResponseEmbeddedBillTo billTo = new TmsV1InstrumentIdentifiersPaymentInstrumentsGet200ResponseEmbeddedBillTo();
 		billTo.firstName("John");
 		billTo.lastName("Deo");
 		billTo.company("CyberSource");
@@ -48,16 +49,16 @@ public class UpdatePaymentInstrument {
 		billTo.country("US");
 		billTo.email("test@cybs.com");
 		billTo.phoneNumber("555123456");
-		body.billTo(billTo);
+		updatePaymentInstrumentRequest.billTo(billTo);
 
-		Tmsv1instrumentidentifiersCard instrumentidentifiersCard = new Tmsv1instrumentidentifiersCard();
+		TmsV1InstrumentIdentifiersPost200ResponseCard instrumentidentifiersCard = new TmsV1InstrumentIdentifiersPost200ResponseCard();
 		instrumentidentifiersCard.number("4111111111111111");
 
-		Tmsv1paymentinstrumentsInstrumentIdentifier instrumentIdentifier = new Tmsv1paymentinstrumentsInstrumentIdentifier();
+		TmsV1InstrumentIdentifiersPaymentInstrumentsGet200ResponseEmbeddedInstrumentIdentifier instrumentIdentifier = new TmsV1InstrumentIdentifiersPaymentInstrumentsGet200ResponseEmbeddedInstrumentIdentifier();
 		instrumentIdentifier.card(instrumentidentifiersCard);
-		body.instrumentIdentifier(instrumentIdentifier);
+		updatePaymentInstrumentRequest.instrumentIdentifier(instrumentIdentifier);
 
-		return body;
+		return updatePaymentInstrumentRequest;
 
 	}
 
@@ -65,17 +66,18 @@ public class UpdatePaymentInstrument {
 		process();
 	}
 
-	public static TmsV1PaymentinstrumentsGet200Response process() throws Exception {
+	public static TmsV1InstrumentIdentifiersPaymentInstrumentsGet200ResponseEmbeddedPaymentInstruments process() throws Exception {
 
 		try {
-			body = getRequest();
+			UpdatePaymentInstrumentRequest updatePaymentInstrumentRequest= new UpdatePaymentInstrumentRequest();
+			updatePaymentInstrumentRequest = getRequest(updatePaymentInstrumentRequest);
 			/* Read Merchant details. */
 			merchantProp = Configuration.getMerchantDetails();
 			MerchantConfig merchantConfig = new MerchantConfig(merchantProp);
 			ApiClient.merchantConfig = merchantConfig;	
 
-			PaymentInstrumentsApi paymentInstrumentApi = new PaymentInstrumentsApi();
-			response = paymentInstrumentApi.tmsV1PaymentinstrumentsTokenIdPatch(profileId, tokenId, body);
+			PaymentInstrumentApi paymentInstrumentApi = new PaymentInstrumentApi();
+			response = paymentInstrumentApi.updatePaymentInstrument(profileId, tokenId, updatePaymentInstrumentRequest);
 
 			responseCode = ApiClient.responseCode;
 			status = ApiClient.status;

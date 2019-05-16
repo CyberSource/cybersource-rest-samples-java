@@ -9,6 +9,11 @@ import Data.Configuration;
 import Invokers.ApiClient;
 import Invokers.ApiException;
 
+/**
+ * 
+ * Code to delete instrument identifier
+ *
+ */
 public class DeleteInstrumentIdentifier {
 	private static String profileId = "93B32398-AD51-4CC2-A682-EA3E93614EB1";
 	private static String tokenId = "7010000000004697654";
@@ -29,7 +34,7 @@ public class DeleteInstrumentIdentifier {
 			ApiClient.merchantConfig = merchantConfig;	
 			
 			InstrumentIdentifierApi instrumentIdentifierApi = new InstrumentIdentifierApi();
-			instrumentIdentifierApi.tmsV1InstrumentidentifiersTokenIdDelete(profileId, tokenId);
+			instrumentIdentifierApi.deleteInstrumentIdentifier(profileId, tokenId);
 
 			responseCode = ApiClient.responseCode;
 			status = ApiClient.status;

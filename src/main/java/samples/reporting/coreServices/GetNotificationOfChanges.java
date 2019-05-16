@@ -21,7 +21,7 @@ public class GetNotificationOfChanges {
 	
 	private static Properties merchantProp;
 	
-	private static String timeString = "2018-09-01T12:00:00-05:00";
+	private static String timeString = "2018-01-01T12:00:00-05:00";
 	private static DateTime ddateTime = new DateTime(timeString);
 	private static DateTime startTime = ddateTime.withZone(DateTimeZone.forID("America/Atikokan"));
 	
