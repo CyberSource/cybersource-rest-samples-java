@@ -21,7 +21,7 @@ import Model.Riskv1decisionsPaymentInformationCard;
  * This is the sample code for basic Decision Manager Request 
  *
  */
-public class CreateDecisionManagerRequest {
+public class CreateDecisionManagerCase {
 	private static Properties merchantProp;
 	private static String responseCode = null;
 	private static String status = null;
