@@ -37,13 +37,16 @@ public class KeyGenerationNoEnc {
 			/* Read Merchant details. */
 			merchantProp = Configuration.getMerchantDetails();
 			MerchantConfig merchantConfig = new MerchantConfig(merchantProp);
-			ApiClient.merchantConfig = merchantConfig;	
 			
-			KeyGenerationApi keyGenerationApi = new KeyGenerationApi();
+			ApiClient apiClient = new ApiClient();
+			
+			apiClient.merchantConfig = merchantConfig;	
+			
+			KeyGenerationApi keyGenerationApi = new KeyGenerationApi(apiClient);
 			response = keyGenerationApi.generatePublicKey(request);
-			System.out.println("ResponseCode :" +ApiClient.responseCode);
-			System.out.println("Status :" +ApiClient.status);
-			System.out.println(ApiClient.respBody);
+			System.out.println("ResponseCode :" +apiClient.responseCode);
+			System.out.println("Status :" +apiClient.status);
+			System.out.println(apiClient.respBody);
 
 		} catch (ApiException e) {
 

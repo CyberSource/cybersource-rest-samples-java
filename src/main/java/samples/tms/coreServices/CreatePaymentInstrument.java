@@ -82,17 +82,20 @@ public class CreatePaymentInstrument {
 			/* Read Merchant details. */
 			merchantProp = Configuration.getMerchantDetails();
 			MerchantConfig merchantConfig = new MerchantConfig(merchantProp);
-			ApiClient.merchantConfig = merchantConfig;
+			
+			ApiClient apiClient = new ApiClient();
+			
+			apiClient.merchantConfig = merchantConfig;
 
-			PaymentInstrumentApi paymentInstrumentApi = new PaymentInstrumentApi();
+			PaymentInstrumentApi paymentInstrumentApi = new PaymentInstrumentApi(apiClient);
 			response = paymentInstrumentApi.createPaymentInstrument(profileId, createPaymentInstrumentRequest);
 
-			responseCode = ApiClient.responseCode;
-			status = ApiClient.status;
+			responseCode = apiClient.responseCode;
+			status = apiClient.status;
 
 			System.out.println("ResponseCode :" + responseCode);
 			System.out.println("Status :" + status);
-			System.out.println("ResponseBody :" + ApiClient.respBody);
+			System.out.println("ResponseBody :" + apiClient.respBody);
 
 		} catch (ApiException e) {
 

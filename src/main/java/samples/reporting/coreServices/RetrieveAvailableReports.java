@@ -40,17 +40,18 @@ public class RetrieveAvailableReports {
 			/* Read Merchant details. */
 			merchantProp = Configuration.getMerchantDetails();
 			MerchantConfig merchantConfig = new MerchantConfig(merchantProp);
-			ApiClient.merchantConfig = merchantConfig;	
+			ApiClient apiClient = new ApiClient();
+			apiClient.merchantConfig = merchantConfig;	
 
-			ReportsApi reportsApi = new ReportsApi();
+			ReportsApi reportsApi = new ReportsApi(apiClient);
 			reportsApi.searchReports(startTime, endTime, timeQueryType, organizationId, null, null,
 					null, null, null);
 
-			responseCode = ApiClient.responseCode;
-			status = ApiClient.status;
+			responseCode = apiClient.responseCode;
+			status = apiClient.status;
 			System.out.println("ResponseCode :" + responseCode);
 			System.out.println("ResponseMessage :" + status);
-			System.out.println("ResponseBody :"+ApiClient.respBody);
+			System.out.println("ResponseBody :"+apiClient.respBody);
 
 		} catch (ApiException e) {
 

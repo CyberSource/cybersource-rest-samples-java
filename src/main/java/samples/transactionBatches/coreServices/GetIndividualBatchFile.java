@@ -26,16 +26,19 @@ public class GetIndividualBatchFile {
 			 /* Read Merchant details. */
 			merchantProp = Configuration.getMerchantDetails();
 			MerchantConfig merchantConfig = new MerchantConfig(merchantProp);
-			ApiClient.merchantConfig = merchantConfig;	
+			
+			ApiClient apiClient = new ApiClient();
+			
+			apiClient.merchantConfig = merchantConfig;
 
-			TransactionBatchesApi transactionBatchApi = new TransactionBatchesApi();
+			TransactionBatchesApi transactionBatchApi = new TransactionBatchesApi(apiClient);
 			transactionBatchApi.getTransactionBatchId(id);
 
-			responseCode = ApiClient.responseCode;
-			status = ApiClient.status;
+			responseCode = apiClient.responseCode;
+			status = apiClient.status;
 			System.out.println("ResponseCode :" + responseCode);
 			System.out.println("ResponseMessage :" + status);
-			System.out.println(ApiClient.respBody);
+			System.out.println(apiClient.respBody);
 
 		} catch (ApiException e) {
 

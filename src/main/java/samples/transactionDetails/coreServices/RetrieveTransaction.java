@@ -27,13 +27,16 @@ public class RetrieveTransaction {
 			 /* Read Merchant details. */
 			merchantProp = Configuration.getMerchantDetails();
 			MerchantConfig merchantConfig = new MerchantConfig(merchantProp);
-			ApiClient.merchantConfig = merchantConfig;	
+			
+			ApiClient apiClient = new ApiClient();
+			
+			apiClient.merchantConfig = merchantConfig;
 
-			TransactionDetailsApi transactionDetailsApi = new TransactionDetailsApi();
+			TransactionDetailsApi transactionDetailsApi = new TransactionDetailsApi(apiClient);
 			TssV2TransactionsGet200Response respose = transactionDetailsApi.getTransaction(id);
 
-			responseCode = ApiClient.responseCode;
-			status = ApiClient.status;
+			responseCode = apiClient.responseCode;
+			status = apiClient.status;
 			System.out.println("ResponseCode :" + responseCode);
 			System.out.println("ResponseMessage :" + status);
 			System.out.println(respose);

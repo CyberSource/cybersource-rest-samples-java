@@ -43,12 +43,13 @@ public class DownloadReport {
 			/* Read Merchant details. */
 			merchantProp = Configuration.getMerchantDetails();
 			MerchantConfig merchantConfig = new MerchantConfig(merchantProp);
-			ApiClient.merchantConfig = merchantConfig;	
+			ApiClient apiClient = new ApiClient();
+			apiClient.merchantConfig = merchantConfig;	
 
-			ReportDownloadsApi downloadsApi = new ReportDownloadsApi();
+			ReportDownloadsApi downloadsApi = new ReportDownloadsApi(apiClient);
 			downloadsApi.downloadReportWithHttpInfo(reportDate, reportName, organizationId);
 
-			responseBody = ApiClient.responseBody;
+			responseBody = apiClient.responseBody;
 			InputStream stream = new ByteArrayInputStream(responseBody.getBytes(StandardCharsets.UTF_8));
 
 			ByteArrayOutputStream baos = new ByteArrayOutputStream();
@@ -71,8 +72,8 @@ public class DownloadReport {
 			}
 			bw.close();
 
-			responseCode = ApiClient.responseCode;
-			status = ApiClient.status;
+			responseCode = apiClient.responseCode;
+			status = apiClient.status;
 			System.out.println("ResponseCode :" + responseCode);
 			System.out.println("ResponseMessage :" + status);
 			System.out.println("File downloaded at the below location :");

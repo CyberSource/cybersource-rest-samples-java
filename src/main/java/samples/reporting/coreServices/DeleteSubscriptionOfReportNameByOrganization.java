@@ -27,16 +27,17 @@ public class DeleteSubscriptionOfReportNameByOrganization {
 		/* Read Merchant details. */
 		merchantProp = Configuration.getMerchantDetails();
 		MerchantConfig merchantConfig = new MerchantConfig(merchantProp);
-		ApiClient.merchantConfig = merchantConfig;	
+		ApiClient apiClient = new ApiClient();
+		apiClient.merchantConfig = merchantConfig;	
 		
-		ReportSubscriptionsApi reportSubscriptionsApi=new ReportSubscriptionsApi();
+		ReportSubscriptionsApi reportSubscriptionsApi=new ReportSubscriptionsApi(apiClient);
 		reportSubscriptionsApi.deleteSubscription(reportName);
 		
-		responseCode = ApiClient.responseCode;
-		status = ApiClient.status;
+		responseCode = apiClient.responseCode;
+		status = apiClient.status;
 		System.out.println("ResponseCode :" +responseCode);
 		System.out.println("ResponseMessage :" +status);
-		System.out.println(ApiClient.responseBody);
+		System.out.println(apiClient.responseBody);
 	
 	} catch (ApiException e) {
 		

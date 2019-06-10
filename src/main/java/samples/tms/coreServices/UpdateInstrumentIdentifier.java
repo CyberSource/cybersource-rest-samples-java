@@ -60,14 +60,17 @@ public class UpdateInstrumentIdentifier {
 			/* Read Merchant details. */
 			merchantProp = Configuration.getMerchantDetails();
 			MerchantConfig merchantConfig = new MerchantConfig(merchantProp);
-			ApiClient.merchantConfig = merchantConfig;
+			
+			ApiClient apiClient = new ApiClient();
+			
+			apiClient.merchantConfig = merchantConfig;
 
-			InstrumentIdentifierApi instrumentIdentifierApi = new InstrumentIdentifierApi();
+			InstrumentIdentifierApi instrumentIdentifierApi = new InstrumentIdentifierApi(apiClient);
 			response = instrumentIdentifierApi.updateInstrumentIdentifier(profileId, tokenId,
 					updateInstrumentIdentifierRequest);
 
-			responseCode = ApiClient.responseCode;
-			status = ApiClient.status;
+			responseCode = apiClient.responseCode;
+			status = apiClient.status;
 
 			System.out.println("ResponseCode :" + responseCode);
 			System.out.println("Status :" + status);

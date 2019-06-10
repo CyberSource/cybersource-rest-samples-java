@@ -70,16 +70,19 @@ public class CreateAdhocReport {
 			/* Read Merchant details. */
 			merchantProp = Configuration.getMerchantDetails();
 			MerchantConfig merchantConfig = new MerchantConfig(merchantProp);
-			ApiClient.merchantConfig = merchantConfig;	
+			
+			ApiClient apiClient = new ApiClient();
+			
+			apiClient.merchantConfig = merchantConfig;	
 
-			ReportsApi ReportsApi = new ReportsApi();
+			ReportsApi ReportsApi = new ReportsApi(apiClient);
 			ReportsApi.createReport(request,null);
 
-			responseCode = ApiClient.responseCode;
-			status = ApiClient.status;
+			responseCode = apiClient.responseCode;
+			status = apiClient.status;
 			System.out.println("ResponseCode :" + responseCode);
 			System.out.println("ResponseMessage :" + status);
-			System.out.println(ApiClient.responseBody.toString());
+			System.out.println(apiClient.responseBody.toString());
 			
 
 		} catch (ApiException e) {

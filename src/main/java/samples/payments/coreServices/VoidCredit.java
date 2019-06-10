@@ -46,15 +46,18 @@ public class VoidCredit {
 			/* Read Merchant details. */
 			merchantProp = Configuration.getMerchantDetails();
 			MerchantConfig merchantConfig = new MerchantConfig(merchantProp);
-			ApiClient.merchantConfig = merchantConfig;	
+			
+			ApiClient apiClient = new ApiClient();
+			
+			apiClient.merchantConfig = merchantConfig;
 			
 			creditResponse = ProcessCredit.process();
 
-			VoidApi voidApi = new VoidApi();
+			VoidApi voidApi = new VoidApi(apiClient);
 			response = voidApi.voidCredit(request, creditResponse.getId());
 
-			responseCode = ApiClient.responseCode;
-			status = ApiClient.status;
+			responseCode = apiClient.responseCode;
+			status = apiClient.status;
 
 			System.out.println("ResponseCode :" + responseCode);
 			System.out.println("Status :" + status);
