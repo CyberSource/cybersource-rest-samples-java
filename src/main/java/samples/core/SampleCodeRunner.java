@@ -18,14 +18,14 @@ public class SampleCodeRunner {
 												  IllegalAccessException, IllegalArgumentException, 
 												  InvocationTargetException, InterruptedException {
 		Set<String> files = new HashSet<>();
-        listOfPackage("src/main/java/", files);
+        getListOfPackages("src/main/java/", files);
         
         for(String pkg : files) {
         	Class<?>[] classList = getClasses(pkg);
         	
         	if (classList.length > 0) {
         		for(Class<?> sampleClass : classList) {
-        			// IGNORE LIST PART 1
+        			// IGNORE LIST PART 1 : Classes inside Data, lib and SampleCodeRunner packages are not tested.
         			if (sampleClass.getName().contains("Data") || sampleClass.getName().contains("lib") || sampleClass.getName().contains("SampleCodeRunner")) {
         				System.out.println("\n#### SKIPPED - " + sampleClass.getName() + " ####");            			
             			continue;
@@ -35,7 +35,7 @@ public class SampleCodeRunner {
 					try {
 						sample = sampleClass.getDeclaredMethod("main", String[].class);
 					} catch (Exception e) {
-						// IGNORE LIST PART 2
+						// IGNORE LIST PART 2 : Classes without a main() method are not runnable.
 						System.out.println("\n#### SKIPPED - " + sampleClass.getName() + " ####");
 						continue;
 					}
@@ -61,7 +61,13 @@ public class SampleCodeRunner {
         }
     }
 
-    public static void listOfPackage(String directoryName, Set<String> pack) {
+	/**
+     * Recursively extract the names of all packages from the given path
+     *
+     * @param directoryName Path in which to extract packages
+     * @param pack List of all packages
+     */
+	public static void getListOfPackages(String directoryName, Set<String> pack) {
         File directory = new File(directoryName);
 
         // get all the files from a directory
@@ -72,7 +78,7 @@ public class SampleCodeRunner {
                 String packName = path.substring(path.indexOf("src") + 4, path.lastIndexOf('\\')).replace("main\\java\\", "");
                 pack.add(packName.replace('\\', '.'));
             } else if (file.isDirectory()) {
-                listOfPackage(file.getAbsolutePath(), pack);
+                getListOfPackages(file.getAbsolutePath(), pack);
             }
         }
     }
