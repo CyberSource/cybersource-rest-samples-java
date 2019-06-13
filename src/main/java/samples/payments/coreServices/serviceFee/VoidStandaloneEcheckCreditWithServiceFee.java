@@ -9,7 +9,6 @@ import Data.Configuration;
 import Invokers.ApiClient;
 import Invokers.ApiException;
 import Model.PtsV2CreditsPost201Response;
-import Model.PtsV2PaymentsRefundPost201Response;
 import Model.PtsV2PaymentsVoidsPost201Response;
 import Model.Ptsv2paymentsidreversalsClientReferenceInformation;
 import Model.VoidCreditRequest;

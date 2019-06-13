@@ -11,21 +11,14 @@ import Api.PayerAuthenticationApi;
 import Data.Configuration;
 import Invokers.ApiClient;
 import Invokers.ApiException;
-import Model.CheckPayerAuthEnrollmentRequest;
 import Model.Request;
 import Model.RiskV1AuthenticationResultsPost201Response;
-import Model.RiskV1AuthenticationsPost201Response;
 import Model.Riskv1authenticationresultsConsumerAuthenticationInformation;
 import Model.Riskv1authenticationresultsOrderInformation;
 import Model.Riskv1authenticationresultsOrderInformationLineItems;
 import Model.Riskv1authenticationresultsPaymentInformation;
 import Model.Riskv1authenticationresultsPaymentInformationCard;
 import Model.Riskv1authenticationsClientReferenceInformation;
-import Model.Riskv1authenticationsOrderInformation;
-import Model.Riskv1authenticationsOrderInformationBillTo;
-import Model.Riskv1authenticationsOrderInformationLineItems;
-import Model.Riskv1authenticationsPaymentInformation;
-import Model.Riskv1authenticationsPaymentInformationCard;
 import Model.Riskv1decisionsOrderInformationAmountDetails;
 
 public class ValidateAuthenticationResults {

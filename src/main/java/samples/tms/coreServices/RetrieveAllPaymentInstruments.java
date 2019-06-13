@@ -9,7 +9,6 @@ import Data.Configuration;
 import Invokers.ApiClient;
 import Invokers.ApiException;
 import Model.TmsV1InstrumentIdentifiersPaymentInstrumentsGet200Response;
-import Model.TmsV1InstrumentIdentifiersPaymentInstrumentsGet200ResponseEmbeddedPaymentInstruments;
 
 /**
  * 
