@@ -1,5 +1,5 @@
 # Java Sample Code for the CyberSource SDK
-[![Travis CI Status](https://travis-ci.org/AuthorizeNet/sample-code-java.svg?branch=master)](https://travis-ci.org/AuthorizeNet/sample-code-java)
+[![Travis CI Status](https://travis-ci.org/Cybersource/cybersource-rest-samples-java.svg?branch=master)](https://travis-ci.org/Cybersource/cybersource-rest-samples-java)
 
 This repository contains working code samples which demonstrate Java integration with the CyberSource REST APIs through the [CyberSource Java SDK](https://github.com/CyberSource/cybersource-rest-client-java).
 
