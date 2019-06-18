@@ -26,17 +26,20 @@ public class GetSearchResults {
 			 /* Read Merchant details. */
 			merchantProp = Configuration.getMerchantDetails();
 			MerchantConfig merchantConfig = new MerchantConfig(merchantProp);
-			ApiClient.merchantConfig = merchantConfig;	
+			
+			ApiClient apiClient = new ApiClient();
+			
+			apiClient.merchantConfig = merchantConfig;
 
-			SearchTransactionsApi searchTransactionsApi = new SearchTransactionsApi();
+			SearchTransactionsApi searchTransactionsApi = new SearchTransactionsApi(apiClient);
 			searchTransactionsApi.getSearch(id);
 
-			responseCode = ApiClient.responseCode;
-			status = ApiClient.status;
+			responseCode = apiClient.responseCode;
+			status = apiClient.status;
 			
 			System.out.println("ResponseCode :" + responseCode);
 			System.out.println("ResponseMessage :" + status);
-			System.out.println("ResponseBody :"+ApiClient.respBody);
+			System.out.println("ResponseBody :"+apiClient.respBody);
 
 		} catch (ApiException e) {
 

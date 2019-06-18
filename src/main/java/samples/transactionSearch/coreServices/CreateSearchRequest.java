@@ -25,7 +25,7 @@ public class CreateSearchRequest {
 		request.timezone("America/Chicago");
 		request.query("clientReferenceInformation.code:TC50171_3");
 		request.offset(0);
-		request.limit(80);
+		request.limit(10);
 		request.sort("id:asc, submitTimeUtc:asc");
 		return request;
 
@@ -43,16 +43,19 @@ public class CreateSearchRequest {
 			 /* Read Merchant details. */
 			merchantProp = Configuration.getMerchantDetails();
 			MerchantConfig merchantConfig = new MerchantConfig(merchantProp);
-			ApiClient.merchantConfig = merchantConfig;	
 			
-			SearchTransactionsApi searchTransactionsApi = new SearchTransactionsApi();
+			ApiClient apiClient = new ApiClient();
+			
+			apiClient.merchantConfig = merchantConfig;
+			
+			SearchTransactionsApi searchTransactionsApi = new SearchTransactionsApi(apiClient);
 			reponse = searchTransactionsApi.createSearch(request);
 
-			responseCode = ApiClient.responseCode;
-			status = ApiClient.status;
+			responseCode = apiClient.responseCode;
+			status = apiClient.status;
 			System.out.println("ResponseCode :" + responseCode);
 			System.out.println("ResponseMessage :" + status);
-			System.out.println("ResponseBody :"+ApiClient.respBody);
+			System.out.println("ResponseBody :"+apiClient.respBody);
 
 		} catch (ApiException e) {
 

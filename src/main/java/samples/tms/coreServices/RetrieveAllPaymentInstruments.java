@@ -9,7 +9,6 @@ import Data.Configuration;
 import Invokers.ApiClient;
 import Invokers.ApiException;
 import Model.TmsV1InstrumentIdentifiersPaymentInstrumentsGet200Response;
-import Model.TmsV1InstrumentIdentifiersPaymentInstrumentsGet200ResponseEmbeddedPaymentInstruments;
 
 /**
  * 
@@ -34,19 +33,22 @@ public class RetrieveAllPaymentInstruments {
 			/* Read Merchant details. */
 			merchantProp = Configuration.getMerchantDetails();
 			MerchantConfig merchantConfig = new MerchantConfig(merchantProp);
-			ApiClient.merchantConfig = merchantConfig;
+			
+			ApiClient apiClient = new ApiClient();
+			
+			apiClient.merchantConfig = merchantConfig;
 
-			InstrumentIdentifierApi instrumentIdentifierApi = new InstrumentIdentifierApi();
+			InstrumentIdentifierApi instrumentIdentifierApi = new InstrumentIdentifierApi(apiClient);
 			long offset=0;
 			long limit=100;
 			response = instrumentIdentifierApi.getAllPaymentInstruments(profileId, tokenId, offset, limit);
 
-			responseCode = ApiClient.responseCode;
-			status = ApiClient.status;
+			responseCode = apiClient.responseCode;
+			status = apiClient.status;
 
 			System.out.println("ResponseCode :" + responseCode);
 			System.out.println("Status :" + status);
-			System.out.println("ResponseBody :" + ApiClient.respBody);
+			System.out.println("ResponseBody :" + apiClient.respBody);
 
 		} catch (ApiException e) {
 

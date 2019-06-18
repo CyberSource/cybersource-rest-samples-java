@@ -66,9 +66,12 @@ public class TokenizeCard {
 			/* Read Merchant details. */
 			merchantProp = Configuration.getMerchantDetails();
 			MerchantConfig merchantConfig = new MerchantConfig(merchantProp);
-			ApiClient.merchantConfig = merchantConfig;	
 			
-			TokenizationApi tokenizationApi = new TokenizationApi();
+			ApiClient apiClient = new ApiClient();
+			
+			apiClient.merchantConfig = merchantConfig;	
+			
+			TokenizationApi tokenizationApi = new TokenizationApi(apiClient);
 			response = tokenizationApi.tokenize(request);
 			
 			byte[] publicBytes = Base64.decode(keyResponse.getDer().getPublicKey());
@@ -93,12 +96,12 @@ public class TokenizeCard {
 			VerifyToken verifyToken = new VerifyToken();
 			verifyToken.verify(pubKey, tokenMap);
 			
-			responseCode = ApiClient.responseCode;
-			status = ApiClient.status;
+			responseCode = apiClient.responseCode;
+			status = apiClient.status;
 			
 			System.out.println("ResponseCode :" +responseCode);
 			System.out.println("Status :" +status);
-			System.out.println("ResponseBody :"+ApiClient.respBody);
+			System.out.println("ResponseBody :"+apiClient.respBody);
 
 		} catch (ApiException e) {
 

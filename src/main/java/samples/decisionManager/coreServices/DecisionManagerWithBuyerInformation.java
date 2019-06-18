@@ -102,11 +102,14 @@ public class DecisionManagerWithBuyerInformation {
 			merchantProp = Configuration.getMerchantDetails();
 
 			MerchantConfig merchantConfig = new MerchantConfig(merchantProp);
-			ApiClient.merchantConfig = merchantConfig;
-			DecisionManagerApi decisionManagerApi = new DecisionManagerApi();
+			
+			ApiClient apiClient = new ApiClient();
+			
+			apiClient.merchantConfig = merchantConfig;	
+			DecisionManagerApi decisionManagerApi = new DecisionManagerApi(apiClient);
 			response = decisionManagerApi.createDecisionManagerCase(createDecisionManagerCaseRequest);
-			responseCode = ApiClient.responseCode;
-			status = ApiClient.status;
+			responseCode = apiClient.responseCode;
+			status = apiClient.status;
 
 			System.out.println("ResponseCode :" + responseCode);
 			System.out.println("Status :" + status);

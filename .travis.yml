@@ -1,0 +1,16 @@
+language:
+    java
+
+sudo:
+    false
+
+jdk:
+    - oraclejdk8
+    - oraclejdk9
+
+matrix:
+    allow_failures:
+        - jdk: oraclejdk9
+        
+script:
+    - java -jar target/SampleCode.jar

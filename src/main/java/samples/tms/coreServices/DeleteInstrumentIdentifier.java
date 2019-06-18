@@ -31,13 +31,16 @@ public class DeleteInstrumentIdentifier {
 			/* Read Merchant details. */
 			merchantProp = Configuration.getMerchantDetails();
 			MerchantConfig merchantConfig = new MerchantConfig(merchantProp);
-			ApiClient.merchantConfig = merchantConfig;	
 			
-			InstrumentIdentifierApi instrumentIdentifierApi = new InstrumentIdentifierApi();
+			ApiClient apiClient = new ApiClient();
+			
+			apiClient.merchantConfig = merchantConfig;
+			
+			InstrumentIdentifierApi instrumentIdentifierApi = new InstrumentIdentifierApi(apiClient);
 			instrumentIdentifierApi.deleteInstrumentIdentifier(profileId, tokenId);
 
-			responseCode = ApiClient.responseCode;
-			status = ApiClient.status;
+			responseCode = apiClient.responseCode;
+			status = apiClient.status;
 
 			System.out.println("ResponseCode :" + responseCode);
 			System.out.println("Status :" + status);

@@ -14,7 +14,7 @@
 		<dependency>
 			<groupId>com.cybersource</groupId>
 			<artifactId>cybersource-rest-client-java</artifactId>
-			<version>0.0.9</version>
+			<version>0.0.10</version>
 		</dependency>
 		<!-- Sample API Client dependency -->
 		<dependency>
@@ -24,7 +24,12 @@
 			<scope>system</scope>
 			<systemPath>${project.basedir}/src/main/java/samples/authentication/lib/SampleApiClient-0.0.1.jar</systemPath>
 		</dependency>
-
+		<!-- https://mvnrepository.com/artifact/com.google.guava/guava -->
+		<dependency>
+		    <groupId>com.google.guava</groupId>
+		    <artifactId>guava</artifactId>
+		    <version>27.1-jre</version>
+		</dependency>
 	</dependencies>
 
 	<build>
@@ -47,11 +52,21 @@
 							<goal>shade</goal>
 						</goals>
 						<configuration>
+							<filters>
+						        <filter>
+						            <artifact>*:*</artifact>
+						            <excludes>
+						                <exclude>META-INF/*.SF</exclude>
+						                <exclude>META-INF/*.DSA</exclude>
+						                <exclude>META-INF/*.RSA</exclude>
+						            </excludes>
+						        </filter>
+						    </filters>
 							<finalName>SampleCode</finalName>
 							<transformers>
 								<transformer
 									implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">
-									<mainClass>com.cybersource.sample.SampleCode</mainClass>
+									<mainClass>samples.core.SampleCodeRunner</mainClass>
 								</transformer>
 							</transformers>
 						</configuration>

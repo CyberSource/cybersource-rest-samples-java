@@ -26,16 +26,19 @@ public class GetUserInformation {
 			/* Read Merchant details. */
 			merchantProp = Configuration.getMerchantDetails();
 			MerchantConfig merchantConfig = new MerchantConfig(merchantProp);
-			ApiClient.merchantConfig = merchantConfig;	
+			
+			ApiClient apiClient = new ApiClient();
+			
+			apiClient.merchantConfig = merchantConfig;
 
-			UserManagementApi userManagementApi = new UserManagementApi();
+			UserManagementApi userManagementApi = new UserManagementApi(apiClient);
 			userManagementApi.getUsers("testrest", null, null, "admin");
 
-			responseCode = ApiClient.responseCode;
-			status = ApiClient.status;
+			responseCode = apiClient.responseCode;
+			status = apiClient.status;
 			System.out.println("ResponseCode :" + responseCode);
 			System.out.println("ResponseMessage :" + status);
-			System.out.println("ResponseBody :"+ApiClient.respBody);
+			System.out.println("ResponseBody :"+apiClient.respBody);
 
 		} catch (ApiException e) {
 

@@ -57,15 +57,18 @@ public class ProcessAuthorizationReversal {
 			/* Read Merchant details. */
 			merchantProp = Configuration.getMerchantDetails();
 			MerchantConfig merchantConfig = new MerchantConfig(merchantProp);
-			ApiClient.merchantConfig = merchantConfig;	
+			
+			ApiClient apiClient = new ApiClient();
+			
+			apiClient.merchantConfig = merchantConfig;
 			
 			paymentResponse = ProcessPayment.process(false);
 
-			ReversalApi reversalApi = new ReversalApi();
+			ReversalApi reversalApi = new ReversalApi(apiClient);
 			response = reversalApi.authReversal(paymentResponse.getId(), request);
 
-			responseCode = ApiClient.responseCode;
-			status = ApiClient.status;
+			responseCode = apiClient.responseCode;
+			status = apiClient.status;
 
 			System.out.println("ResponseCode :" + responseCode);
 			System.out.println("Status :" + status);

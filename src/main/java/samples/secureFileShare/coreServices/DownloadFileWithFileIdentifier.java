@@ -42,12 +42,15 @@ public class DownloadFileWithFileIdentifier {
 			/* Read Merchant details. */
 			merchantProp = Configuration.getMerchantDetails();
 			MerchantConfig merchantConfig = new MerchantConfig(merchantProp);
-			ApiClient.merchantConfig = merchantConfig;	
+			
+			ApiClient apiClient = new ApiClient();
+			
+			apiClient.merchantConfig = merchantConfig;
 
-			SecureFileShareApi secureFileShareApi = new SecureFileShareApi();
+			SecureFileShareApi secureFileShareApi = new SecureFileShareApi(apiClient);
 			secureFileShareApi.getFileWithHttpInfo(fileId, organizationId);
 			
-			responseBody = ApiClient.responseBody;
+			responseBody = apiClient.responseBody;
 			InputStream stream = new ByteArrayInputStream(responseBody.getBytes(StandardCharsets.UTF_8));
 			
 			ByteArrayOutputStream baos = new ByteArrayOutputStream();
@@ -71,8 +74,8 @@ public class DownloadFileWithFileIdentifier {
 	        }
 	        bw.close();
 
-			responseCode = ApiClient.responseCode;
-			status = ApiClient.status;
+			responseCode = apiClient.responseCode;
+			status = apiClient.status;
 			System.out.println("ResponseCode :" + responseCode);
 			System.out.println("ResponseMessage :" + status);
 			System.out.println("File downloaded at the below location :");
