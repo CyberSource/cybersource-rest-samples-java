@@ -16,13 +16,11 @@ public class SampleCodeRunner {
 												  IllegalAccessException, IllegalArgumentException, 
 												  InvocationTargetException, InterruptedException {
 		Set<String> files = new HashSet<>();
-		// System.out.println(System.getProperty("user.dir"));
 		
 		getListOfPackages("src/main/java/", files);
         
 		for(String pkg : files) {
         	Class<?>[] classList = getClasses(pkg);
-        	// System.out.println(pkg + " : " + Arrays.toString(classList));
         	
         	if (classList.length > 0) {
         		for(Class<?> sampleClass : classList) {
@@ -76,8 +74,14 @@ public class SampleCodeRunner {
         for (File file : fList) {
             if (file.isFile()) {
                 String path = file.getPath();
-                String packName = path.substring(path.indexOf("src") + 4, path.lastIndexOf('\\')).replace("main\\java\\", "");
-                pack.add(packName.replace('\\', '.'));
+                boolean pathSeparator = path.contains("\\");
+                if (pathSeparator) {
+	                String packName = path.substring(path.indexOf("src") + 4, path.lastIndexOf('\\')).replace("main\\java\\", "");
+	                pack.add(packName.replace('\\', '.'));
+                } else {
+                	String packName = path.substring(path.indexOf("src") + 4, path.lastIndexOf('/')).replace("main/java/", "");
+	                pack.add(packName.replace('/', '.'));
+                }
             } else if (file.isDirectory()) {
                 getListOfPackages(file.getAbsolutePath(), pack);
             }
@@ -95,8 +99,6 @@ public class SampleCodeRunner {
     private static Class<?>[] getClasses(String packageName) throws ClassNotFoundException, IOException {
         ClassLoader classLoader = Thread.currentThread().getContextClassLoader();
         assert classLoader != null;
-        // String path = packageName.replace('.', '/');
-        // System.out.println("PATH : " + path);
         
         ArrayList<Class<?>> classes = new ArrayList<Class<?>>();
         ClassPath cp = ClassPath.from(Thread.currentThread().getContextClassLoader());
