@@ -5,8 +5,8 @@ sudo:
     false
 
 jdk:
-    - oraclejdk8
-    - oraclejdk9
+    - openjdk8
+    - openjdk9
 
 matrix:
     allow_failures:
