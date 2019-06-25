@@ -33,10 +33,11 @@
 		    <artifactId>guava</artifactId>
 		    <version>27.1-jre</version>
 		</dependency>
+		<!-- https://mvnrepository.com/artifact/org.apache.maven.plugins/maven-jar-plugin -->
 		<dependency>
-			<groupId>org.bouncycastle</groupId>
-			<artifactId>bcprov-jdk16</artifactId>
-			<version>1.45</version>
+		    <groupId>org.apache.maven.plugins</groupId>
+		    <artifactId>maven-jar-plugin</artifactId>
+		    <version>3.1.2</version>
 		</dependency>
 	</dependencies>
 
