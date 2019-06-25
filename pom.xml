@@ -8,6 +8,9 @@
 	<version>1.0</version>
 	<name>SampleCode</name>
 	<url>http://maven.apache.org</url>
+	<properties>
+	    <jar.finalName>SampleCode</jar.finalName>
+	</properties>
 	<dependencies>
 
 		<!-- rest client dependency -->
