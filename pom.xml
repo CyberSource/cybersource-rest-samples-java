@@ -30,6 +30,11 @@
 		    <artifactId>guava</artifactId>
 		    <version>27.1-jre</version>
 		</dependency>
+		<dependency>
+			<groupId>org.bouncycastle</groupId>
+			<artifactId>bcprov-jdk16</artifactId>
+			<version>1.45</version>
+		</dependency>
 	</dependencies>
 
 	<build>
