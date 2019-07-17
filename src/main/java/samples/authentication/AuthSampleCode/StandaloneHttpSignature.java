@@ -1,4 +1,4 @@
-package samples.authentication.standAloneHttpSignature;
+package samples.authentication.AuthSampleCode;
 
 import javax.crypto.Mac;
 import javax.crypto.spec.SecretKeySpec;
@@ -12,7 +12,7 @@ import java.time.ZonedDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.Base64;
 
-public class HttpSignature {
+public class StandaloneHttpSignature {
 	/* Try with your own credentaials
      * Get  Key ID, Secret Key and Merchant Id from EBC portal
      */
@@ -38,7 +38,7 @@ public class HttpSignature {
         /* This Example illustrate two tests - HTTP GET and POST method with Cybersource Payments API.
          * Each test will caluate HTTP Signature Digest and Authenticate Cybersource Payments API using HTTP Client 
          */
-        HttpSignature http = new HttpSignature();
+        StandaloneHttpSignature http = new StandaloneHttpSignature();
 
         // POST Example for Payments
         postRequestTarget = "post /pts/v2/payments";

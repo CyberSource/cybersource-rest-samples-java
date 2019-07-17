@@ -1,4 +1,4 @@
-package samples.authentication.standAloneJwt;
+package samples.authentication.AuthSampleCode;
 
 import org.bouncycastle.jce.provider.BouncyCastleProvider;
 
@@ -35,7 +35,7 @@ import java.util.StringTokenizer;
  * This sample will not pass due to issues with JWT and keystores on Linux machines.
  * </summary>
  */
-public class JwtCredentials {
+public class StandaloneJwt {
     private static String merchantId = "testrest";
     private static String requestHost = "apitest.cybersource.com";
 
