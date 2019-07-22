@@ -29,7 +29,7 @@ public class DownloadReport {
 	private static String organizationId = "testrest";
 	private static Properties merchantProp;
 	public static String resourceFile = "DownloadReport";
-	private static final String FILE_PATH = "src/test/resources/";
+	private static final String FILE_PATH = "src/main/resources/";
 	static LocalDate reportDate = new LocalDate("2018-09-03");
 
 	public static void main(String args[]) throws Exception {
