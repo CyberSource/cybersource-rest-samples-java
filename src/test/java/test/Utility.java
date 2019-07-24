@@ -76,9 +76,13 @@ public class Utility {
                 roads.add(road);
             }
             return roads;
-        } catch (JsonIOException | JsonSyntaxException | FileNotFoundException ex) {
+        } catch (JsonIOException | JsonSyntaxException ex) {
 //            Logger.getLogger(Utility.class.getName()).log(Level.SEVERE, null, ex);
-                    return null;
+            System.out.println("JSON Exception");
+            return null;
+        } catch (FileNotFoundException ex){
+            System.out.println("File Not Found");
+            return null;
         }
 
     }

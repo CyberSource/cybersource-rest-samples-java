@@ -41,7 +41,7 @@ public class RoadRunner {
         return getRoads("executor.json");
     }
     @Test
-    public void RoadTest() throws InstantiationException, NoSuchFieldException {
+    public void RoadTest(){
         String reqClassName = road.getRequestClassName();
         String name = road.getName();
         boolean brokenDependent = true;
@@ -60,12 +60,11 @@ public class RoadRunner {
                     .forEachOrdered((responseField) -> {
                 fieldmap.remove(name+responseField);
             });
-            Object o = requestClassType.newInstance();
             Object response = new Object();
             //If there are no dependent field, run sample code without variables
             if(dependentFields.isEmpty()){
                 Method runMethod = requestClassType.getMethod("run");
-                response = runMethod.invoke(o);
+                response = runMethod.invoke(null);
                 //Broken Sample Code returns null object and the next line throws a Null Pointer Exception
                 String responseString = response.toString();
             }
