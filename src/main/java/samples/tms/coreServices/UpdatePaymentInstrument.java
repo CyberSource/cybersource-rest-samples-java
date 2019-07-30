@@ -34,7 +34,7 @@ public class UpdatePaymentInstrument {
 		TmsV1InstrumentIdentifiersPaymentInstrumentsGet200ResponseEmbeddedCard card = new TmsV1InstrumentIdentifiersPaymentInstrumentsGet200ResponseEmbeddedCard();
 		card.expirationMonth("09");
 		card.expirationYear("2022");
-		card.type(TmsV1InstrumentIdentifiersPaymentInstrumentsGet200ResponseEmbeddedCard.TypeEnum.VISA);
+		card.type("visa");
 		updatePaymentInstrumentRequest.card(card);
 
 		TmsV1InstrumentIdentifiersPaymentInstrumentsGet200ResponseEmbeddedBillTo billTo = new TmsV1InstrumentIdentifiersPaymentInstrumentsGet200ResponseEmbeddedBillTo();

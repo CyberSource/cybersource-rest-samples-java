@@ -27,7 +27,7 @@ public class DownloadFileWithFileIdentifier {
 	private static String organizationId = "testrest";
 	private static Properties merchantProp;
 	private  static String resourceFile = "SecureFile";
-    private static final String FILE_PATH = "src/test/resources/";
+    private static final String FILE_PATH = "src/main/resources/";
 	
     private static String  fileId = "VFJSUmVwb3J0LTc4NTVkMTNmLTkzOTgtNTExMy1lMDUzLWEyNTg4ZTBhNzE5Mi5jc3YtMjAxOC0xMC0yMA==";
 

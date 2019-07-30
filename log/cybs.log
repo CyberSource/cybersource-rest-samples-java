@@ -318,3 +318,116 @@
 2019-03-14 13:27:24.797 [main] INFO   - v-c-merchant-id : testrest
 2019-03-14 13:27:24.812 [main] INFO   -  Data present in Cache :: Extracting Data
 2019-03-14 13:27:26.443 [main] INFO   - Content-Type : application/json
+2019-07-30 15:54:16.603 [main] INFO   - ********* START ********* Delete Generate Headers *******************
+2019-07-30 15:54:16.603 [main] INFO   - KeyFile, Entered path/file name :: src/main/resources/testrest.p12
+2019-07-30 15:54:16.603 [main] INFO   - KeyFile, Entered path/file name :: src/main/resources/testrest.p12
+2019-07-30 15:54:16.603 [main] INFO   - Authentication Type : jwt
+2019-07-30 15:54:16.603 [main] INFO   - Request Type : DELETE
+2019-07-30 15:54:16.603 [main] INFO   - Date : Tue, 30 Jul 2019 10:24:16 GMT
+2019-07-30 15:54:16.603 [main] INFO   - Host : apitest.cybersource.com
+2019-07-30 15:54:16.603 [main] INFO   - v-c-merchant-id : testrest
+2019-07-30 15:54:16.884 [main] INFO   -  Empty Cache :: Adding Data
+2019-07-30 15:54:16.942 [main] INFO   - Content-Type : application/json
+2019-07-30 15:54:16.942 [main] INFO   - ********* END   *********
+2019-07-30 15:54:16.942 [main] OFF    - 
+
+2019-07-30 15:54:19.962 [main] INFO   - ********* START *********
+2019-07-30 15:54:19.962 [main] INFO   - KeyFile, Entered path/file name :: src/main/resources/testrest.p12
+2019-07-30 15:54:19.962 [main] INFO   - Authentication Type : jwt
+2019-07-30 15:54:19.962 [main] INFO   - Content-Type : application/json
+2019-07-30 15:54:19.962 [main] INFO   - Request Type : DELETE
+2019-07-30 15:54:19.962 [main] INFO   -  Data present in Cache :: Extracting Data
+2019-07-30 15:54:21.884 [main] INFO   - Status Information :: Not Found
+2019-07-30 15:54:21.884 [main] INFO   - Response Code : 404
+2019-07-30 15:54:21.884 [main] INFO   - v-c-correlation-id : ac5c98b2-77bb-4784-adc9-a2d4b76eb734
+2019-07-30 15:54:21.900 [main] INFO   - Response Message : {"_links":{"self":{"href":"https://apitest.cybersource.com/reporting/v2/reportSubscriptions/TRRReport?organizationId=testrest"}},"code":"RESOURCE_NOTFOUND","correlationId":null,"detail":"The requested resource is not found. Please try again later.","fields":null,"localizationKey":"cybsapi.resource.notfound","message":"Requested subscription does not exist."}
+2019-07-30 15:54:21.900 [main] INFO   - ********* END   *********
+2019-07-30 15:54:21.900 [main] OFF    - 
+
+2019-07-30 15:54:21.900 [main] INFO   - KeyFile, Entered path/file name :: src/main/resources/testrest.p12
+2019-07-30 15:54:21.900 [main] INFO   - Authentication Type : jwt
+2019-07-30 15:54:21.900 [main] INFO   - Request Type : DELETE
+2019-07-30 15:54:21.900 [main] INFO   - Date : Tue, 30 Jul 2019 10:24:21 GMT
+2019-07-30 15:54:21.900 [main] INFO   - Host : apitest.cybersource.com
+2019-07-30 15:54:21.900 [main] INFO   - v-c-merchant-id : testrest
+2019-07-30 15:54:21.900 [main] INFO   -  Data present in Cache :: Extracting Data
+2019-07-30 15:54:21.909 [main] INFO   - Content-Type : application/json
+2019-07-30 15:54:24.911 [main] INFO   - ********* START ********* Generate GET Headers *******************
+2019-07-30 15:54:24.911 [main] INFO   - KeyFile, Entered path/file name :: src/main/resources/testrest.p12
+2019-07-30 15:54:24.911 [main] INFO   - Authentication Type : jwt
+2019-07-30 15:54:24.911 [main] INFO   - Request Type : GET
+2019-07-30 15:54:24.911 [main] INFO   - v-c-merchant-id : testrest
+2019-07-30 15:54:24.911 [main] INFO   - Date : Tue, 30 Jul 2019 10:24:24 GMT
+2019-07-30 15:54:24.911 [main] INFO   - GET_ID : 5265502011846829204101
+2019-07-30 15:54:24.911 [main] INFO   - Host : apitest.cybersource.com
+2019-07-30 15:54:24.911 [main] INFO   -  Data present in Cache :: Extracting Data
+2019-07-30 15:54:24.911 [main] INFO   - Content-Type : application/json
+2019-07-30 15:54:24.911 [main] INFO   - ********* END   *********
+2019-07-30 15:54:24.911 [main] OFF    - 
+
+2019-07-30 15:54:27.911 [main] INFO   - ********* START *********
+2019-07-30 15:54:27.912 [main] INFO   - KeyFile, Entered path/file name :: src/main/resources/testrest.p12
+2019-07-30 15:54:27.912 [main] INFO   - Authentication Type : jwt
+2019-07-30 15:54:27.912 [main] INFO   - Content-Type : application/json
+2019-07-30 15:54:27.912 [main] INFO   - Request Type : GET
+2019-07-30 15:54:27.912 [main] INFO   - GETID : 5525469669016421003004
+2019-07-30 15:54:27.912 [main] INFO   -  Data present in Cache :: Extracting Data
+2019-07-30 15:54:29.569 [main] INFO   - Status Information :: Transaction Successful
+2019-07-30 15:54:29.569 [main] INFO   - Response Code : 200
+2019-07-30 15:54:29.569 [main] INFO   - v-c-correlation-id : 464b0bfc-f84b-4eb8-bd40-7e3486057d39
+2019-07-30 15:54:29.569 [main] INFO   - Response Message : {"_links":{"self":{"href":"https://apitest.cybersource.com/payment/v1/tss/payments/5525469669016421003004","method":"GET"}},"id":"5525469669016421003004","submitTimeUTC":"2019-03-14T07:02:47Z","reconciliationID":"720770056T6FJMYQ","statusInformation":{"reason":"Success","message":"Request was processed successfully."},"clientReferenceInformation":{"code":"TC50171_3","applicationVersion":"1.0"},"processorInformation":{"approvalCode":"888888","avs":{"code":"X"}},"paymentInformation":{"card":{"suffix":"4444","expirationMonth":"XXXXXXXXX","expirationYear":"2031","type":"credit card"}},"orderInformation":{"billTo":{"address1":"201 S. Division St.","address2":"Address 2","locality":"Ann Arbor","country":"US","email":"XXXXXXXXX","firstName":"RTS","lastName":"VDP","phoneNumber":"999999999","postalCode":"48104-2201","administrativeArea":"MI"},"lineItems":[{"productCode":"default","taxAmount":0,"quantity":1,"unitPrice":102.21}]}}
+2019-07-30 15:54:29.569 [main] INFO   - ********* END   *********
+2019-07-30 15:54:29.569 [main] OFF    - 
+
+2019-07-30 15:54:37.015 [main] INFO   - ********* START ********* Generate POST Headers *******************
+2019-07-30 15:54:37.015 [main] INFO   - KeyFile, Entered path/file name :: src/main/resources/testrest.p12
+2019-07-30 15:54:37.015 [main] INFO   - Authentication Type : jwt
+2019-07-30 15:54:37.015 [main] INFO   - Request Type : POST
+2019-07-30 15:54:37.015 [main] INFO   - Date : Tue, 30 Jul 2019 10:24:37 GMT
+2019-07-30 15:54:37.015 [main] INFO   - v-c-merchant-id : testrest
+2019-07-30 15:54:37.015 [main] INFO   - Content-Type : application/json
+2019-07-30 15:54:37.015 [main] INFO   - Host : apitest.cybersource.com
+2019-07-30 15:54:37.015 [main] INFO   -  Data present in Cache :: Extracting Data
+2019-07-30 15:54:37.015 [main] INFO   - ********* END   *********
+2019-07-30 15:54:37.015 [main] OFF    - 
+
+2019-07-30 15:54:40.017 [main] INFO   - ********* START *********
+2019-07-30 15:54:40.017 [main] INFO   - KeyFile, Entered path/file name :: src/main/resources/testrest.p12
+2019-07-30 15:54:40.018 [main] INFO   - Authentication Type : jwt
+2019-07-30 15:54:40.019 [main] INFO   - Content-Type : application/json
+2019-07-30 15:54:40.019 [main] INFO   - Request Type : POST
+2019-07-30 15:54:40.020 [main] INFO   - ClaimSet : {"clientReferenceInformation":{"code":"TC50171_3"},"processingInformation":{"commerceIndicator":"internet"},"aggregatorInformation":{"subMerchant":{"cardAcceptorID":"1234567890","country":"US","phoneNumber":"650-432-0000","address1":"900 Metro Center","postalCode":"94404-2775","locality":"Foster City","name":"Visa Inc","administrativeArea":"CA","region":"PEN","email":"XXXXXXXXX"},"name":"V-Internatio","aggregatorID":"123456789"},"orderInformation":{"billTo":{"country":"US","lastName":"VDP","address2":"Address 2","address1":"201 S. Division St.","postalCode":"48104-2201","locality":"Ann Arbor","administrativeArea":"MI","firstName":"RTS","phoneNumber":"999999999","district":"MI","buildingNumber":"123","company":"Visa","email":"XXXXXXXXX"},"amountDetails":{"totalAmount":"102.21","currency":"XXXXXXXXX"}},"paymentInformation":{"card":{"expirationYear":"2031","number":"5555555555554444","securityCode":"123","expirationMonth":"XXXXXXXXX","type":"002"}}}
+2019-07-30 15:54:40.020 [main] INFO   -  Data present in Cache :: Extracting Data
+2019-07-30 15:54:41.446 [main] INFO   - Status Information :: Transaction Successful
+2019-07-30 15:54:41.446 [main] INFO   - Response Code : 201
+2019-07-30 15:54:41.446 [main] INFO   - v-c-correlation-id : 31303686-6a52-4f61-964e-a7dd0f64e50b
+2019-07-30 15:54:41.446 [main] INFO   - Response Message : {"clientReferenceInformation":{"code":"TC50171_3"},"id":"5644822809656231303002","orderInformation":{"amountDetails":{"authorizedAmount":"102.21","currency":"XXXXXXXXX"}},"processorInformation":{"approvalCode":"888888","authIndicator":"1","responseCode":"100","avs":{"code":"X","codeRaw":"I1"}},"reconciliationId":"74659020QYPFK46H","status":"AUTHORIZED","submitTimeUtc":"2019-07-30T10:24:41Z","_links":{"self":{"href":"/pts/v2/payments/5644822809656231303002","method":"GET"},"authReversal":{"href":"/pts/v2/payments/5644822809656231303002/reversals","method":"POST"},"capture":{"href":"/pts/v2/payments/5644822809656231303002/captures","method":"POST"},"refund":{"href":"/pts/v2/payments/5644822809656231303002/refunds","method":"POST"},"void":{"href":"/pts/v2/payments/5644822809656231303002/voids","method":"POST"}}}
+2019-07-30 15:54:41.446 [main] INFO   - ********* END   *********
+2019-07-30 15:54:41.446 [main] OFF    - 
+
+2019-07-30 15:54:48.881 [main] INFO   - ********* START ********* Generate PUT Headers *******************
+2019-07-30 15:54:48.882 [main] INFO   - KeyFile, Entered path/file name :: src/main/resources/testrest.p12
+2019-07-30 15:54:48.882 [main] INFO   - Authentication Type : jwt
+2019-07-30 15:54:48.882 [main] INFO   - Request Type : PUT
+2019-07-30 15:54:48.882 [main] INFO   - Date : Tue, 30 Jul 2019 10:24:48 GMT
+2019-07-30 15:54:48.882 [main] INFO   - v-c-merchant-id : testrest
+2019-07-30 15:54:48.882 [main] INFO   - Content-Type : application/json
+2019-07-30 15:54:48.882 [main] INFO   - Host : apitest.cybersource.com
+2019-07-30 15:54:48.882 [main] INFO   -  Data present in Cache :: Extracting Data
+2019-07-30 15:54:48.882 [main] INFO   - ********* END   *********
+2019-07-30 15:54:48.882 [main] OFF    - 
+
+2019-07-30 15:54:51.884 [main] INFO   - ********* START *********
+2019-07-30 15:54:51.885 [main] INFO   - KeyFile, Entered path/file name :: src/main/resources/testrest.p12
+2019-07-30 15:54:51.886 [main] INFO   - Authentication Type : jwt
+2019-07-30 15:54:51.886 [main] INFO   - Content-Type : application/json
+2019-07-30 15:54:51.887 [main] INFO   - Request Type : PUT
+2019-07-30 15:54:51.887 [main] INFO   - ClaimSet : {"startDay":"23","timeZone":"America/Chicago","reportDefinitionName":"TransactionRequestClass","startTime":"1100","reportFrequency":"DAILY","ReportName":"TRRReport","reportFormat":"csv","orgId":"testrest","reportType":"detail","reportFields":["Request.RequestID","Request.TransactionDate","Request.MerchantReferenceNumber","Request.MerchantID"]}
+2019-07-30 15:54:51.887 [main] INFO   -  Data present in Cache :: Extracting Data
+2019-07-30 15:54:54.480 [main] INFO   - Status Information :: Transaction Successful
+2019-07-30 15:54:54.480 [main] INFO   - Response Code : 201
+2019-07-30 15:54:54.480 [main] INFO   - v-c-correlation-id : fc7096a1-c79e-4d0f-95b0-545d3f24bc6f
+2019-07-30 15:54:54.480 [main] INFO   - Response Message : {"_links":{"self":{"href":"https://apitest.cybersource.com/reporting/v2/reportSubscriptions/TRRReport?organizationId=testrest"}}}
+2019-07-30 15:54:54.480 [main] INFO   - ********* END   *********
+2019-07-30 15:54:54.480 [main] OFF    - 
+

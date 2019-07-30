@@ -90,7 +90,7 @@ public class CreateDecisionManagerCase {
 					ApiClient apiClient = new ApiClient();
 					apiClient.merchantConfig = merchantConfig;
 					
-					DecisionManagerApi decisionManagerApi= new DecisionManagerApi();	
+					DecisionManagerApi decisionManagerApi= new DecisionManagerApi(apiClient);	
 					response=decisionManagerApi.createDecisionManagerCase(createDecisionManagerCaseRequest);
 					responseCode = apiClient.responseCode;
 					status = apiClient.status;

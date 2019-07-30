@@ -12,7 +12,6 @@ import Model.CreateCreditRequest;
 import Model.PtsV2CreditsPost201Response;
 import Model.Ptsv2paymentsClientReferenceInformation;
 import Model.Ptsv2paymentsidcapturesOrderInformationAmountDetails;
-import Model.Ptsv2paymentsOrderInformationBillToCompany;
 import Model.Ptsv2paymentsidcapturesOrderInformationBillTo;
 import Model.Ptsv2paymentsidrefundsOrderInformation;
 import Model.Ptsv2paymentsidrefundsPaymentInformation;
@@ -38,9 +37,7 @@ public class ECheckStandaloneCreditWithServiceFee {
 		Ptsv2creditsProcessingInformation processingInformation= new Ptsv2creditsProcessingInformation();
 		processingInformation.commerceIndicator("internet");
 		request.setProcessingInformation(processingInformation);
-		Ptsv2paymentsOrderInformationBillToCompany company=new Ptsv2paymentsOrderInformationBillToCompany();
-		company.name("Visa");
-		
+
 		Ptsv2paymentsidcapturesOrderInformationBillTo billTo = new Ptsv2paymentsidcapturesOrderInformationBillTo();
 		billTo.country("US");
 		billTo.firstName("John");
@@ -48,7 +45,7 @@ public class ECheckStandaloneCreditWithServiceFee {
 		billTo.phoneNumber("4158880000");
 		billTo.address1("1 Market St");
 		billTo.postalCode("94105");
-		billTo.company(company);
+		billTo.company("ABC Company");
 		billTo.locality("san francisco");
 		billTo.administrativeArea("CA");
 		billTo.email("test@cybs.com");

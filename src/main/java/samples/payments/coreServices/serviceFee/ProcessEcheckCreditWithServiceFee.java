@@ -11,7 +11,6 @@ import Invokers.ApiException;
 import Model.PtsV2PaymentsPost201Response;
 import Model.PtsV2PaymentsRefundPost201Response;
 import Model.Ptsv2paymentsClientReferenceInformation;
-import Model.Ptsv2paymentsOrderInformationBillToCompany;
 import Model.Ptsv2paymentsPaymentInformationBank;
 import Model.Ptsv2paymentsPaymentInformationBankAccount;
 import Model.Ptsv2paymentsidcapturesOrderInformationAmountDetails;
@@ -50,10 +49,6 @@ public class ProcessEcheckCreditWithServiceFee {
 		amountDetails.currency("USD");
 		amountDetails.serviceFeeAmount("30.00");
 		
-		// This is a section to initialize Bill to company information
-		Ptsv2paymentsOrderInformationBillToCompany billToCompany=new Ptsv2paymentsOrderInformationBillToCompany();
-		billToCompany.name("ABC Company");
-		
 		//This is a section to initialize Bill to Order information
 		Ptsv2paymentsidcapturesOrderInformationBillTo billTo = new Ptsv2paymentsidcapturesOrderInformationBillTo();
 		billTo.country("US");
@@ -63,7 +58,7 @@ public class ProcessEcheckCreditWithServiceFee {
 		billTo.address1("1 Market St");
 		billTo.postalCode("94105");
 		billTo.locality("san francisco");
-		billTo.company(billToCompany);
+		billTo.company("ABC Company");
 		billTo.administrativeArea("MI");
 		billTo.email("test@cybs.com");
 
