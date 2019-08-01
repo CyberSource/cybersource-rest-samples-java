@@ -14,9 +14,7 @@ import Data.Configuration;
 import Invokers.ApiClient;
 import Invokers.ApiException;
 import Model.Reportingv3reportsReportPreferences;
-import Model.Reportingv3reportsReportPreferences.FieldNameConventionEnum;
 import Model.RequestBody;
-import Model.RequestBody.ReportMimeTypeEnum;
 
 public class CreateAdhocReport {
 	private static String responseCode = null;
@@ -29,7 +27,7 @@ public class CreateAdhocReport {
 		
 		request.reportDefinitionName("TransactionRequestClass");
 		request.timezone("GMT");
-		request.reportMimeType(ReportMimeTypeEnum.APPLICATION_XML);
+		request.reportMimeType("application/xml");
 		request.reportName("testrest dec V70");
 
 		String timeString = "2018-09-02T12:00:00+05:00";
@@ -45,7 +43,7 @@ public class CreateAdhocReport {
 		
 		Reportingv3reportsReportPreferences reportPreferences = new Reportingv3reportsReportPreferences();
 		reportPreferences.signedAmounts(true);
-		reportPreferences.fieldNameConvention(FieldNameConventionEnum.SOAPI);
+		reportPreferences.fieldNameConvention("SOAPI");
 		request.reportPreferences(reportPreferences);
 
 		List<String> reportFields = new ArrayList<String>();

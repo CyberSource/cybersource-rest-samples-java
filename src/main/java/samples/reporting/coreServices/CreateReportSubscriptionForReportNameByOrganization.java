@@ -11,8 +11,6 @@ import Data.Configuration;
 import Invokers.ApiClient;
 import Invokers.ApiException;
 import Model.RequestBody1;
-import Model.RequestBody1.ReportFrequencyEnum;
-import Model.RequestBody1.ReportMimeTypeEnum;
 
 
 public class CreateReportSubscriptionForReportNameByOrganization {
@@ -33,11 +31,11 @@ public class CreateReportSubscriptionForReportNameByOrganization {
 		request.reportFields(reportFields);
 
 		
-		request.reportFrequency(ReportFrequencyEnum.MONTHLY);
+		request.reportFrequency("MONTHLY");
 		request.startDay(2);
 		request.startTime("0950");
 		
-		request.reportMimeType(ReportMimeTypeEnum.TEXT_CSV);
+		request.reportMimeType("text/csv");
 		request.reportName(report_name);
 		request.timezone("America/Chicago");
 		return request;

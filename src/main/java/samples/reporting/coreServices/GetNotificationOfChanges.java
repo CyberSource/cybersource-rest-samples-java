@@ -21,11 +21,11 @@ public class GetNotificationOfChanges {
 	
 	private static Properties merchantProp;
 	
-	private static String timeString = "2018-01-01T12:00:00-05:00";
+	private static String timeString = "2019-03-01T12:00:00-05:00";
 	private static DateTime ddateTime = new DateTime(timeString);
 	private static DateTime startTime = ddateTime.withZone(DateTimeZone.forID("America/Atikokan"));
 	
-	private static String timeString2 = "2018-05-30T12:00:00-05:00";
+	private static String timeString2 = "2019-06-30T12:00:00-05:00";
 	private static DateTime ddateTime2 = new DateTime(timeString2);
 	private static DateTime endTime = ddateTime2.withZone(DateTimeZone.forID("America/Atikokan"));
 
@@ -43,7 +43,7 @@ public class GetNotificationOfChanges {
 			apiClient.merchantConfig = merchantConfig;	
 			
 			NotificationOfChangesApi notificationOfChangesApi = new NotificationOfChangesApi(apiClient);
-			System.out.println("startTime :" +startTime + "endTime : "+endTime);
+			System.out.println("startTime :" + startTime + "\nendTime : " + endTime);
 			ReportingV3NotificationofChangesGet200Response response = notificationOfChangesApi.getNotificationOfChangeReport(startTime, endTime);
 
 			responseCode = apiClient.responseCode;

@@ -10,7 +10,6 @@ import Invokers.ApiClient;
 import Invokers.ApiException;
 import Model.CreateDecisionManagerCaseRequest;
 import Model.Ptsv2paymentsBuyerInformationPersonalIdentification;
-import Model.Ptsv2paymentsBuyerInformationPersonalIdentification.TypeEnum;
 import Model.RiskV1DecisionsPost201Response;
 import Model.Riskv1decisionsBuyerInformation;
 import Model.Riskv1decisionsClientReferenceInformation;
@@ -83,7 +82,7 @@ public class DecisionManagerWithBuyerInformation {
 
 		// set Personal Information of the buyer
 		Ptsv2paymentsBuyerInformationPersonalIdentification ptsv2paymentsBuyerInformationPersonalIdentification0 = new Ptsv2paymentsBuyerInformationPersonalIdentification();
-		ptsv2paymentsBuyerInformationPersonalIdentification0.type(TypeEnum.CPF);
+		ptsv2paymentsBuyerInformationPersonalIdentification0.type("CPF");
 		ptsv2paymentsBuyerInformationPersonalIdentification0.id("1a23apwe98");
 		riskv1decisionsBuyerInformation
 				.addPersonalIdentificationItem(ptsv2paymentsBuyerInformationPersonalIdentification0);

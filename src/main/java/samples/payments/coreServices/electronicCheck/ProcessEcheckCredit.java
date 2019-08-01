@@ -12,7 +12,6 @@ import Model.CreateCreditRequest;
 import Model.PtsV2CreditsPost201Response;
 import Model.Ptsv2creditsProcessingInformation;
 import Model.Ptsv2paymentsClientReferenceInformation;
-import Model.Ptsv2paymentsOrderInformationBillToCompany;
 import Model.Ptsv2paymentsPaymentInformationBank;
 import Model.Ptsv2paymentsPaymentInformationBankAccount;
 import Model.Ptsv2paymentsidcapturesOrderInformationAmountDetails;
@@ -41,11 +40,6 @@ public class ProcessEcheckCredit {
 		processingInformation.commerceIndicator("internet");
 		request.setProcessingInformation(processingInformation);
 
-		// This is a section to set Amount Details which is needed to capture the
-		// payment. Please note that it includes Service Fee Attribute
-		Ptsv2paymentsOrderInformationBillToCompany billToCompany = new Ptsv2paymentsOrderInformationBillToCompany();
-		billToCompany.name("ABC Company");
-
 		// This is a section to initialize Bill to company information
 		Ptsv2paymentsidcapturesOrderInformationBillTo billTo = new Ptsv2paymentsidcapturesOrderInformationBillTo();
 		billTo.country("US");
@@ -55,7 +49,7 @@ public class ProcessEcheckCredit {
 		billTo.address1("1 Market St");
 		billTo.postalCode("94105");
 		billTo.locality("san francisco");
-		billTo.company(billToCompany);
+		billTo.company("ABC Company");
 		billTo.administrativeArea("MI");
 		billTo.email("test@cybs.com");
 
