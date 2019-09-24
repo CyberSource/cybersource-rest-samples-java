@@ -35,7 +35,7 @@ public class SampleCodeRunner {
 						sample = sampleClass.getDeclaredMethod("main", String[].class);
 					} catch (Exception e) {
 						// IGNORE LIST PART 2 : Classes without a main() method are not runnable.
-						System.out.println("\n#### SKIPPED -  " + sampleClass.getName() + " ####");
+						System.out.println("\n#### SKIPPED - " + sampleClass.getName() + " ####");
 						continue;
 					}
 					

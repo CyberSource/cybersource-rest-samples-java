@@ -1,13 +1,12 @@
-// 56
-// Code Generated: createPaymentInstrument[Create Payment Instrument (Card with Instrument Identifier Id)]
-
 package samples.Token_Management;
 import java.*;
 import java.util.*;
+import java.math.BigDecimal;
 import org.joda.time.DateTime;
 import org.joda.time.DateTimeZone;
 import org.joda.time.LocalDate;
 
+import com.google.common.base.Strings;
 import com.cybersource.authsdk.core.MerchantConfig;
 
 import Api.*;
@@ -16,7 +15,7 @@ import Invokers.ApiClient;
 import Invokers.ApiException;
 import Model.*;
 
-public class CreatePaymentInstrumentCardwithInstrumentIdentifierId{
+public class CreatePaymentInstrumentCardWithInstrumentIdentifierId{
 	private static String responseCode = null;
 	private static String status = null;
 	private static Properties merchantProp;
@@ -25,14 +24,14 @@ public class CreatePaymentInstrumentCardwithInstrumentIdentifierId{
 	public static void main(String args[]) throws Exception 
 	{
 		// Accept required parameters from args[] and pass to run.
-		run( profileid );
+		run(profileid);
 	}
 */
-	public static TmsV1PaymentInstrumentsPost201Response run( String profileid ){
+	public static TmsV1InstrumentIdentifiersPaymentInstrumentsGet200ResponseEmbeddedPaymentInstruments run(String profileid){
 	
 		CreatePaymentInstrumentRequest requestObj = new CreatePaymentInstrumentRequest();
 
-		Tmsv1paymentinstrumentsCard card = new Tmsv1paymentinstrumentsCard();
+		TmsV1InstrumentIdentifiersPaymentInstrumentsGet200ResponseEmbeddedCard card = new TmsV1InstrumentIdentifiersPaymentInstrumentsGet200ResponseEmbeddedCard();
 		card.expirationMonth("09");
 		card.expirationYear("2017");
 		card.type("visa");
@@ -41,7 +40,7 @@ public class CreatePaymentInstrumentCardwithInstrumentIdentifierId{
 		card.startYear("2016");
 		requestObj.card(card);
 
-		Tmsv1paymentinstrumentsBuyerInformation buyerInformation = new Tmsv1paymentinstrumentsBuyerInformation();
+		TmsV1InstrumentIdentifiersPaymentInstrumentsGet200ResponseEmbeddedBuyerInformation buyerInformation = new TmsV1InstrumentIdentifiersPaymentInstrumentsGet200ResponseEmbeddedBuyerInformation();
 		buyerInformation.companyTaxID("12345");
 		buyerInformation.currency("USD");
 		requestObj.buyerInformation(buyerInformation);
@@ -55,20 +54,20 @@ public class CreatePaymentInstrumentCardwithInstrumentIdentifierId{
 		billTo.locality("Austin");
 		billTo.administrativeArea("TX");
 		billTo.postalCode("78731");
-		billTo.country("United States");
+		billTo.country("US");
 		billTo.email("john.smith@test.com");
 		billTo.phoneNumber("+44 2890447951");
 		requestObj.billTo(billTo);
 
-		Tmsv1paymentinstrumentsProcessingInformation processingInformation = new Tmsv1paymentinstrumentsProcessingInformation();
+		TmsV1InstrumentIdentifiersPaymentInstrumentsGet200ResponseEmbeddedProcessingInformation processingInformation = new TmsV1InstrumentIdentifiersPaymentInstrumentsGet200ResponseEmbeddedProcessingInformation();
 		processingInformation.billPaymentProgramEnabled(true);
 		requestObj.processingInformation(processingInformation);
 
-		Tmsv1paymentinstrumentsInstrumentIdentifier instrumentIdentifier = new Tmsv1paymentinstrumentsInstrumentIdentifier();
-		instrumentIdentifier.id("9000000000000000001003");
+		TmsV1InstrumentIdentifiersPaymentInstrumentsGet200ResponseEmbeddedInstrumentIdentifier instrumentIdentifier = new TmsV1InstrumentIdentifiersPaymentInstrumentsGet200ResponseEmbeddedInstrumentIdentifier();
+		instrumentIdentifier.id("7020000000000781543");
 		requestObj.instrumentIdentifier(instrumentIdentifier);
 
-		TmsV1PaymentInstrumentsPost201Response result = null;
+		TmsV1InstrumentIdentifiersPaymentInstrumentsGet200ResponseEmbeddedPaymentInstruments result = null;
 		try
 		{
 			merchantProp = Configuration.getMerchantDetails();
@@ -77,7 +76,7 @@ public class CreatePaymentInstrumentCardwithInstrumentIdentifierId{
 			apiClient.merchantConfig = merchantConfig;
 
 			PaymentInstrumentApi apiInstance = new PaymentInstrumentApi(apiClient);
-			result = apiInstance.createPaymentInstrument( profileid, requestObj );
+			result = apiInstance.createPaymentInstrument(profileid, requestObj);
 
 			responseCode = apiClient.responseCode;
 			status = apiClient.status;
@@ -93,8 +92,3 @@ public class CreatePaymentInstrumentCardwithInstrumentIdentifierId{
 	return result;
 	}
 }
-
-
-//****************************************************************************************************
-
-

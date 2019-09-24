@@ -1,13 +1,12 @@
-// 58
-// Code Generated: createPaymentInstrument[Create Payment Instrument (Bank Account)]
-
 package samples.Token_Management;
 import java.*;
 import java.util.*;
+import java.math.BigDecimal;
 import org.joda.time.DateTime;
 import org.joda.time.DateTimeZone;
 import org.joda.time.LocalDate;
 
+import com.google.common.base.Strings;
 import com.cybersource.authsdk.core.MerchantConfig;
 
 import Api.*;
@@ -21,25 +20,27 @@ public class CreatePaymentInstrumentBankAccount{
 	private static String status = null;
 	private static Properties merchantProp;
 
-	public static void main(String args[]) throws Exception
+/*
+	public static void main(String args[]) throws Exception 
 	{
 		// Accept required parameters from args[] and pass to run.
-		run( "93B32398-AD51-4CC2-A682-EA3E93614EB1" );
+		run(profileid);
 	}
-	public static TmsV1PaymentInstrumentsPost201Response run( String profileid ){
+*/
+	public static TmsV1InstrumentIdentifiersPaymentInstrumentsGet200ResponseEmbeddedPaymentInstruments run(String profileid){
 	
 		CreatePaymentInstrumentRequest requestObj = new CreatePaymentInstrumentRequest();
 
-		Tmsv1paymentinstrumentsBankAccount bankAccount = new Tmsv1paymentinstrumentsBankAccount();
+		TmsV1InstrumentIdentifiersPaymentInstrumentsGet200ResponseEmbeddedBankAccount bankAccount = new TmsV1InstrumentIdentifiersPaymentInstrumentsGet200ResponseEmbeddedBankAccount();
 		bankAccount.type("savings");
 		requestObj.bankAccount(bankAccount);
 
-		Tmsv1paymentinstrumentsBuyerInformation buyerInformation = new Tmsv1paymentinstrumentsBuyerInformation();
+		TmsV1InstrumentIdentifiersPaymentInstrumentsGet200ResponseEmbeddedBuyerInformation buyerInformation = new TmsV1InstrumentIdentifiersPaymentInstrumentsGet200ResponseEmbeddedBuyerInformation();
 		buyerInformation.companyTaxID("12345");
 		buyerInformation.currency("USD");
 
-		List <Tmsv1paymentinstrumentsBuyerInformationPersonalIdentification> personalIdentification =  new ArrayList <Tmsv1paymentinstrumentsBuyerInformationPersonalIdentification>();
-		Tmsv1paymentinstrumentsBuyerInformationPersonalIdentification personalIdentification1 = new Tmsv1paymentinstrumentsBuyerInformationPersonalIdentification();
+		List <TmsV1InstrumentIdentifiersPaymentInstrumentsGet200ResponseEmbeddedBuyerInformationPersonalIdentification> personalIdentification =  new ArrayList <TmsV1InstrumentIdentifiersPaymentInstrumentsGet200ResponseEmbeddedBuyerInformationPersonalIdentification>();
+		TmsV1InstrumentIdentifiersPaymentInstrumentsGet200ResponseEmbeddedBuyerInformationPersonalIdentification personalIdentification1 = new TmsV1InstrumentIdentifiersPaymentInstrumentsGet200ResponseEmbeddedBuyerInformationPersonalIdentification();
 		personalIdentification1.id("57684432111321");
 		personalIdentification1.type("driver license");
 		TmsV1InstrumentIdentifiersPaymentInstrumentsGet200ResponseEmbeddedBuyerInformationIssuedBy issuedBy1 = new TmsV1InstrumentIdentifiersPaymentInstrumentsGet200ResponseEmbeddedBuyerInformationIssuedBy();
@@ -66,9 +67,9 @@ public class CreatePaymentInstrumentBankAccount{
 		billTo.phoneNumber("+44 2890447951");
 		requestObj.billTo(billTo);
 
-		Tmsv1paymentinstrumentsProcessingInformation processingInformation = new Tmsv1paymentinstrumentsProcessingInformation();
+		TmsV1InstrumentIdentifiersPaymentInstrumentsGet200ResponseEmbeddedProcessingInformation processingInformation = new TmsV1InstrumentIdentifiersPaymentInstrumentsGet200ResponseEmbeddedProcessingInformation();
 		processingInformation.billPaymentProgramEnabled(true);
-		Tmsv1paymentinstrumentsProcessingInformationBankTransferOptions processingInformationBankTransferOptions = new Tmsv1paymentinstrumentsProcessingInformationBankTransferOptions();
+		TmsV1InstrumentIdentifiersPaymentInstrumentsGet200ResponseEmbeddedProcessingInformationBankTransferOptions processingInformationBankTransferOptions = new TmsV1InstrumentIdentifiersPaymentInstrumentsGet200ResponseEmbeddedProcessingInformationBankTransferOptions();
 		processingInformationBankTransferOptions.seCCode("WEB");
 		processingInformation.bankTransferOptions(processingInformationBankTransferOptions);
 
@@ -81,15 +82,15 @@ public class CreatePaymentInstrumentBankAccount{
 
 		requestObj.merchantInformation(merchantInformation);
 
-		Tmsv1paymentinstrumentsInstrumentIdentifier instrumentIdentifier = new Tmsv1paymentinstrumentsInstrumentIdentifier();
-		TmsV1InstrumentIdentifiersPost200ResponseBankAccount instrumentIdentifierBankAccount = new TmsV1InstrumentIdentifiersPost200ResponseBankAccount();
+		TmsV1InstrumentIdentifiersPaymentInstrumentsGet200ResponseEmbeddedInstrumentIdentifier instrumentIdentifier = new TmsV1InstrumentIdentifiersPaymentInstrumentsGet200ResponseEmbeddedInstrumentIdentifier();
+		Tmsv1instrumentidentifiersBankAccount instrumentIdentifierBankAccount = new Tmsv1instrumentidentifiersBankAccount();
 		instrumentIdentifierBankAccount.number("4100");
 		instrumentIdentifierBankAccount.routingNumber("071923284");
 		instrumentIdentifier.bankAccount(instrumentIdentifierBankAccount);
 
 		requestObj.instrumentIdentifier(instrumentIdentifier);
 
-		TmsV1PaymentInstrumentsPost201Response result = null;
+		TmsV1InstrumentIdentifiersPaymentInstrumentsGet200ResponseEmbeddedPaymentInstruments result = null;
 		try
 		{
 			merchantProp = Configuration.getMerchantDetails();
@@ -98,7 +99,7 @@ public class CreatePaymentInstrumentBankAccount{
 			apiClient.merchantConfig = merchantConfig;
 
 			PaymentInstrumentApi apiInstance = new PaymentInstrumentApi(apiClient);
-			result = apiInstance.createPaymentInstrument( profileid, requestObj );
+			result = apiInstance.createPaymentInstrument(profileid, requestObj);
 
 			responseCode = apiClient.responseCode;
 			status = apiClient.status;
@@ -114,8 +115,3 @@ public class CreatePaymentInstrumentBankAccount{
 	return result;
 	}
 }
-
-
-//****************************************************************************************************
-
-

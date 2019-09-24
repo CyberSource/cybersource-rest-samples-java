@@ -1,13 +1,12 @@
-// 37
-// Code Generated: getNotificationOfChangeReport[Get Notification Of Changes]
-
 package samples.Reporting;
 import java.*;
 import java.util.*;
+import java.math.BigDecimal;
 import org.joda.time.DateTime;
 import org.joda.time.DateTimeZone;
 import org.joda.time.LocalDate;
 
+import com.google.common.base.Strings;
 import com.cybersource.authsdk.core.MerchantConfig;
 
 import Api.*;
@@ -25,13 +24,13 @@ public class GetNotificationOfChanges{
 	public static void main(String args[]) throws Exception 
 	{
 		// Accept required parameters from args[] and pass to run.
-		run( );
+		run();
 	}
 */
-	public static ReportingV3NotificationofChangesGet200Response run( ){
+	public static ReportingV3NotificationofChangesGet200Response run(){
 	
-		DateTime startTime = new DateTime("2018-05-01T12:00:00-05:00");
-		DateTime endTime = new DateTime("2018-05-30T12:00:00-05:00");
+		DateTime startTime = new DateTime("2018-05-01T12:00:00-05:00").withZone(DateTimeZone.forID("GMT"));
+		DateTime endTime = new DateTime("2018-05-30T12:00:00-05:00").withZone(DateTimeZone.forID("GMT"));
 
 		ReportingV3NotificationofChangesGet200Response result = null;
 		try
@@ -42,7 +41,7 @@ public class GetNotificationOfChanges{
 			apiClient.merchantConfig = merchantConfig;
 
 			NotificationOfChangesApi apiInstance = new NotificationOfChangesApi(apiClient);
-			result = apiInstance.getNotificationOfChangeReport( startTime, endTime );
+			result = apiInstance.getNotificationOfChangeReport(startTime, endTime);
 
 			responseCode = apiClient.responseCode;
 			status = apiClient.status;
@@ -58,8 +57,3 @@ public class GetNotificationOfChanges{
 	return result;
 	}
 }
-
-
-//****************************************************************************************************
-
-

@@ -1,13 +1,12 @@
-// 16
-// Code Generated: authReversal[Service Fees Authorization Reversal]
-
 package samples.Payments;
 import java.*;
 import java.util.*;
+import java.math.BigDecimal;
 import org.joda.time.DateTime;
 import org.joda.time.DateTimeZone;
 import org.joda.time.LocalDate;
 
+import com.google.common.base.Strings;
 import com.cybersource.authsdk.core.MerchantConfig;
 
 import Api.*;
@@ -25,10 +24,10 @@ public class ServiceFeesAuthorizationReversal{
 	public static void main(String args[]) throws Exception 
 	{
 		// Accept required parameters from args[] and pass to run.
-		run( id );
+		run(id);
 	}
 */
-	public static PtsV2PaymentsReversalsPost201Response run( String id ){
+	public static PtsV2PaymentsReversalsPost201Response run(String id){
 	
 		AuthReversalRequest requestObj = new AuthReversalRequest();
 
@@ -53,7 +52,7 @@ public class ServiceFeesAuthorizationReversal{
 			apiClient.merchantConfig = merchantConfig;
 
 			ReversalApi apiInstance = new ReversalApi(apiClient);
-			result = apiInstance.authReversal( id, requestObj );
+			result = apiInstance.authReversal(id, requestObj);
 
 			responseCode = apiClient.responseCode;
 			status = apiClient.status;
@@ -69,8 +68,3 @@ public class ServiceFeesAuthorizationReversal{
 	return result;
 	}
 }
-
-
-//****************************************************************************************************
-
-

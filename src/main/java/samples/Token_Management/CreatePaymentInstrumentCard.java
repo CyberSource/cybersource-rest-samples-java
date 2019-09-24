@@ -1,13 +1,12 @@
-// 59
-// Code Generated: createPaymentInstrument[Create Payment Instrument (Card)]
-
 package samples.Token_Management;
 import java.*;
 import java.util.*;
+import java.math.BigDecimal;
 import org.joda.time.DateTime;
 import org.joda.time.DateTimeZone;
 import org.joda.time.LocalDate;
 
+import com.google.common.base.Strings;
 import com.cybersource.authsdk.core.MerchantConfig;
 
 import Api.*;
@@ -25,14 +24,14 @@ public class CreatePaymentInstrumentCard{
 	public static void main(String args[]) throws Exception 
 	{
 		// Accept required parameters from args[] and pass to run.
-		run( profileid );
+		run(profileid);
 	}
 */
-	public static TmsV1PaymentInstrumentsPost201Response run( String profileid ){
+	public static TmsV1InstrumentIdentifiersPaymentInstrumentsGet200ResponseEmbeddedPaymentInstruments run(String profileid){
 	
 		CreatePaymentInstrumentRequest requestObj = new CreatePaymentInstrumentRequest();
 
-		Tmsv1paymentinstrumentsCard card = new Tmsv1paymentinstrumentsCard();
+		TmsV1InstrumentIdentifiersPaymentInstrumentsGet200ResponseEmbeddedCard card = new TmsV1InstrumentIdentifiersPaymentInstrumentsGet200ResponseEmbeddedCard();
 		card.expirationMonth("09");
 		card.expirationYear("2017");
 		card.type("visa");
@@ -41,7 +40,7 @@ public class CreatePaymentInstrumentCard{
 		card.startYear("2016");
 		requestObj.card(card);
 
-		Tmsv1paymentinstrumentsBuyerInformation buyerInformation = new Tmsv1paymentinstrumentsBuyerInformation();
+		TmsV1InstrumentIdentifiersPaymentInstrumentsGet200ResponseEmbeddedBuyerInformation buyerInformation = new TmsV1InstrumentIdentifiersPaymentInstrumentsGet200ResponseEmbeddedBuyerInformation();
 		buyerInformation.companyTaxID("12345");
 		buyerInformation.currency("USD");
 		requestObj.buyerInformation(buyerInformation);
@@ -55,23 +54,23 @@ public class CreatePaymentInstrumentCard{
 		billTo.locality("Austin");
 		billTo.administrativeArea("TX");
 		billTo.postalCode("78731");
-		billTo.country("United States");
+		billTo.country("US");
 		billTo.email("john.smith@test.com");
 		billTo.phoneNumber("+44 2890447951");
 		requestObj.billTo(billTo);
 
-		Tmsv1paymentinstrumentsProcessingInformation processingInformation = new Tmsv1paymentinstrumentsProcessingInformation();
+		TmsV1InstrumentIdentifiersPaymentInstrumentsGet200ResponseEmbeddedProcessingInformation processingInformation = new TmsV1InstrumentIdentifiersPaymentInstrumentsGet200ResponseEmbeddedProcessingInformation();
 		processingInformation.billPaymentProgramEnabled(true);
 		requestObj.processingInformation(processingInformation);
 
-		Tmsv1paymentinstrumentsInstrumentIdentifier instrumentIdentifier = new Tmsv1paymentinstrumentsInstrumentIdentifier();
+		TmsV1InstrumentIdentifiersPaymentInstrumentsGet200ResponseEmbeddedInstrumentIdentifier instrumentIdentifier = new TmsV1InstrumentIdentifiersPaymentInstrumentsGet200ResponseEmbeddedInstrumentIdentifier();
 		TmsV1InstrumentIdentifiersPost200ResponseCard instrumentIdentifierCard = new TmsV1InstrumentIdentifiersPost200ResponseCard();
 		instrumentIdentifierCard.number("411111111111112");
 		instrumentIdentifier.card(instrumentIdentifierCard);
 
 		requestObj.instrumentIdentifier(instrumentIdentifier);
 
-		TmsV1PaymentInstrumentsPost201Response result = null;
+		TmsV1InstrumentIdentifiersPaymentInstrumentsGet200ResponseEmbeddedPaymentInstruments result = null;
 		try
 		{
 			merchantProp = Configuration.getMerchantDetails();
@@ -80,7 +79,7 @@ public class CreatePaymentInstrumentCard{
 			apiClient.merchantConfig = merchantConfig;
 
 			PaymentInstrumentApi apiInstance = new PaymentInstrumentApi(apiClient);
-			result = apiInstance.createPaymentInstrument( profileid, requestObj );
+			result = apiInstance.createPaymentInstrument(profileid, requestObj);
 
 			responseCode = apiClient.responseCode;
 			status = apiClient.status;
@@ -96,8 +95,3 @@ public class CreatePaymentInstrumentCard{
 	return result;
 	}
 }
-
-
-//****************************************************************************************************
-
-

@@ -1,13 +1,12 @@
-// 38
-// Code Generated: getPurchaseAndRefundDetails[Get Purchase and Refund details]
-
 package samples.Reporting;
 import java.*;
 import java.util.*;
+import java.math.BigDecimal;
 import org.joda.time.DateTime;
 import org.joda.time.DateTimeZone;
 import org.joda.time.LocalDate;
 
+import com.google.common.base.Strings;
 import com.cybersource.authsdk.core.MerchantConfig;
 
 import Api.*;
@@ -16,7 +15,7 @@ import Invokers.ApiClient;
 import Invokers.ApiException;
 import Model.*;
 
-public class GetPurchaseandRefunddetails{
+public class GetPurchaseAndRefundDetails{
 	private static String responseCode = null;
 	private static String status = null;
 	private static Properties merchantProp;
@@ -25,19 +24,19 @@ public class GetPurchaseandRefunddetails{
 	public static void main(String args[]) throws Exception 
 	{
 		// Accept required parameters from args[] and pass to run.
-		run( );
+		run();
 	}
 */
-	public static ReportingV3PurchaseRefundDetailsGet200Response run( ){
+	public static ReportingV3PurchaseRefundDetailsGet200Response run(){
 	
-		DateTime startTime = new DateTime("2018-05-01T12:00:00-05:00");
-		DateTime endTime = new DateTime("2018-05-30T12:00:00-05:00");
+		DateTime startTime = new DateTime("2018-05-01T12:00:00-05:00").withZone(DateTimeZone.forID("GMT"));
+		DateTime endTime = new DateTime("2018-05-30T12:00:00-05:00").withZone(DateTimeZone.forID("GMT"));
 		String organizationId = "testrest";
 		String paymentSubtype = "VI";
 		String viewBy = "requestDate";
 		String groupName = "groupName";
-		Integer offset = 20;
-		Integer limit = 2000;
+		int offset = 20;
+		int limit = 2000;
 
 		ReportingV3PurchaseRefundDetailsGet200Response result = null;
 		try
@@ -48,7 +47,7 @@ public class GetPurchaseandRefunddetails{
 			apiClient.merchantConfig = merchantConfig;
 
 			PurchaseAndRefundDetailsApi apiInstance = new PurchaseAndRefundDetailsApi(apiClient);
-			result = apiInstance.getPurchaseAndRefundDetails( startTime, endTime, organizationId, paymentSubtype, viewBy, groupName, offset, limit );
+			result = apiInstance.getPurchaseAndRefundDetails(startTime, endTime, organizationId, paymentSubtype, viewBy, groupName, offset, limit);
 
 			responseCode = apiClient.responseCode;
 			status = apiClient.status;
@@ -64,8 +63,3 @@ public class GetPurchaseandRefunddetails{
 	return result;
 	}
 }
-
-
-//****************************************************************************************************
-
-

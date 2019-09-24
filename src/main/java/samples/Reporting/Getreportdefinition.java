@@ -1,13 +1,12 @@
-// 33
-// Code Generated: getResourceInfoByReportDefinition[Get report definition]
-
 package samples.Reporting;
 import java.*;
 import java.util.*;
+import java.math.BigDecimal;
 import org.joda.time.DateTime;
 import org.joda.time.DateTimeZone;
 import org.joda.time.LocalDate;
 
+import com.google.common.base.Strings;
 import com.cybersource.authsdk.core.MerchantConfig;
 
 import Api.*;
@@ -16,7 +15,7 @@ import Invokers.ApiClient;
 import Invokers.ApiException;
 import Model.*;
 
-public class Getreportdefinition{
+public class GetReportDefinition{
 	private static String responseCode = null;
 	private static String status = null;
 	private static Properties merchantProp;
@@ -25,10 +24,10 @@ public class Getreportdefinition{
 	public static void main(String args[]) throws Exception 
 	{
 		// Accept required parameters from args[] and pass to run.
-		run( reportDefinitionName );
+		run(reportDefinitionName);
 	}
 */
-	public static ReportingV3ReportDefinitionsNameGet200Response run( String reportDefinitionName ){
+	public static ReportingV3ReportDefinitionsNameGet200Response run(String reportDefinitionName){
 	
 		String organizationId = "testrest";
 
@@ -41,7 +40,7 @@ public class Getreportdefinition{
 			apiClient.merchantConfig = merchantConfig;
 
 			ReportDefinitionsApi apiInstance = new ReportDefinitionsApi(apiClient);
-			result = apiInstance.getResourceInfoByReportDefinition( reportDefinitionName, organizationId );
+			result = apiInstance.getResourceInfoByReportDefinition(reportDefinitionName, organizationId);
 
 			responseCode = apiClient.responseCode;
 			status = apiClient.status;
@@ -57,8 +56,3 @@ public class Getreportdefinition{
 	return result;
 	}
 }
-
-
-//****************************************************************************************************
-
-

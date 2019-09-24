@@ -1,13 +1,12 @@
-// 36
-// Code Generated: getSubscription[Get subscription for report name]
-
 package samples.Reporting;
 import java.*;
 import java.util.*;
+import java.math.BigDecimal;
 import org.joda.time.DateTime;
 import org.joda.time.DateTimeZone;
 import org.joda.time.LocalDate;
 
+import com.google.common.base.Strings;
 import com.cybersource.authsdk.core.MerchantConfig;
 
 import Api.*;
@@ -16,7 +15,7 @@ import Invokers.ApiClient;
 import Invokers.ApiException;
 import Model.*;
 
-public class Getsubscriptionforreportname{
+public class GetSubscriptionForReportName{
 	private static String responseCode = null;
 	private static String status = null;
 	private static Properties merchantProp;
@@ -25,12 +24,12 @@ public class Getsubscriptionforreportname{
 	public static void main(String args[]) throws Exception 
 	{
 		// Accept required parameters from args[] and pass to run.
-		run( reportName );
+		run(reportName);
 	}
 */
-	public static ReportingV3ReportsSbscriptionsNameGet200Response run( String reportName ){
+	public static ReportingV3ReportSubscriptionsGet200ResponseSubscriptions run(String reportName){
 	
-		ReportingV3ReportsSbscriptionsNameGet200Response result = null;
+		ReportingV3ReportSubscriptionsGet200ResponseSubscriptions result = null;
 		try
 		{
 			merchantProp = Configuration.getMerchantDetails();
@@ -39,7 +38,7 @@ public class Getsubscriptionforreportname{
 			apiClient.merchantConfig = merchantConfig;
 
 			ReportSubscriptionsApi apiInstance = new ReportSubscriptionsApi(apiClient);
-			result = apiInstance.getSubscription( reportName );
+			result = apiInstance.getSubscription(reportName);
 
 			responseCode = apiClient.responseCode;
 			status = apiClient.status;
@@ -55,8 +54,3 @@ public class Getsubscriptionforreportname{
 	return result;
 	}
 }
-
-
-//****************************************************************************************************
-
-

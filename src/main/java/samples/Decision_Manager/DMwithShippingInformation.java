@@ -1,13 +1,12 @@
-// 42
-// Code Generated: createDecisionManagerCase[DM with Shipping Information]
-
 package samples.Decision_Manager;
 import java.*;
 import java.util.*;
+import java.math.BigDecimal;
 import org.joda.time.DateTime;
 import org.joda.time.DateTimeZone;
 import org.joda.time.LocalDate;
 
+import com.google.common.base.Strings;
 import com.cybersource.authsdk.core.MerchantConfig;
 
 import Api.*;
@@ -16,7 +15,7 @@ import Invokers.ApiClient;
 import Invokers.ApiException;
 import Model.*;
 
-public class DMwithShippingInformation{
+public class DMWithShippingInformation{
 	private static String responseCode = null;
 	private static String status = null;
 	private static Properties merchantProp;
@@ -25,10 +24,10 @@ public class DMwithShippingInformation{
 	public static void main(String args[]) throws Exception 
 	{
 		// Accept required parameters from args[] and pass to run.
-		run( );
+		run();
 	}
 */
-	public static RiskV1DecisionsPost201Response run( ){
+	public static RiskV1DecisionsPost201Response run(){
 	
 		CreateDecisionManagerCaseRequest requestObj = new CreateDecisionManagerCaseRequest();
 
@@ -86,7 +85,7 @@ public class DMwithShippingInformation{
 			apiClient.merchantConfig = merchantConfig;
 
 			DecisionManagerApi apiInstance = new DecisionManagerApi(apiClient);
-			result = apiInstance.createDecisionManagerCase( requestObj );
+			result = apiInstance.createDecisionManagerCase(requestObj);
 
 			responseCode = apiClient.responseCode;
 			status = apiClient.status;
@@ -102,8 +101,3 @@ public class DMwithShippingInformation{
 	return result;
 	}
 }
-
-
-//****************************************************************************************************
-
-

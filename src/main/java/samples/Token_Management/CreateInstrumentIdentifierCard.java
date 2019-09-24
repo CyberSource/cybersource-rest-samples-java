@@ -1,13 +1,12 @@
-// 51
-// Code Generated: createInstrumentIdentifier[Create Instrument Identifier (Card)]
-
 package samples.Token_Management;
 import java.*;
 import java.util.*;
+import java.math.BigDecimal;
 import org.joda.time.DateTime;
 import org.joda.time.DateTimeZone;
 import org.joda.time.LocalDate;
 
+import com.google.common.base.Strings;
 import com.cybersource.authsdk.core.MerchantConfig;
 
 import Api.*;
@@ -25,15 +24,15 @@ public class CreateInstrumentIdentifierCard{
 	public static void main(String args[]) throws Exception 
 	{
 		// Accept required parameters from args[] and pass to run.
-		run( profileid );
+		run(profileid);
 	}
 */
-	public static TmsV1InstrumentIdentifiersPost200Response run( String profileid ){
+	public static TmsV1InstrumentIdentifiersPost200Response run(String profileid){
 	
 		CreateInstrumentIdentifierRequest requestObj = new CreateInstrumentIdentifierRequest();
 
 		Tmsv1instrumentidentifiersCard card = new Tmsv1instrumentidentifiersCard();
-		card.number("411111111111112");
+		card.number("411111111111666");
 		requestObj.card(card);
 
 		TmsV1InstrumentIdentifiersPost200Response result = null;
@@ -45,7 +44,7 @@ public class CreateInstrumentIdentifierCard{
 			apiClient.merchantConfig = merchantConfig;
 
 			InstrumentIdentifierApi apiInstance = new InstrumentIdentifierApi(apiClient);
-			result = apiInstance.createInstrumentIdentifier( profileid, requestObj );
+			result = apiInstance.createInstrumentIdentifier(profileid, requestObj);
 
 			responseCode = apiClient.responseCode;
 			status = apiClient.status;
@@ -61,8 +60,3 @@ public class CreateInstrumentIdentifierCard{
 	return result;
 	}
 }
-
-
-//****************************************************************************************************
-
-

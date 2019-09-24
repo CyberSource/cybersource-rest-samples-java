@@ -1,13 +1,12 @@
-// 49
-// Code Generated: createInstrumentIdentifier[Create Instrument Identifier (Card & Enroll for Network Token)]
-
 package samples.Token_Management;
 import java.*;
 import java.util.*;
+import java.math.BigDecimal;
 import org.joda.time.DateTime;
 import org.joda.time.DateTimeZone;
 import org.joda.time.LocalDate;
 
+import com.google.common.base.Strings;
 import com.cybersource.authsdk.core.MerchantConfig;
 
 import Api.*;
@@ -16,7 +15,7 @@ import Invokers.ApiClient;
 import Invokers.ApiException;
 import Model.*;
 
-public class CreateInstrumentIdentifierCardEnrollforNetworkToken{
+public class CreateInstrumentIdentifierCardEnrollForNetworkToken{
 	private static String responseCode = null;
 	private static String status = null;
 	private static Properties merchantProp;
@@ -25,10 +24,10 @@ public class CreateInstrumentIdentifierCardEnrollforNetworkToken{
 	public static void main(String args[]) throws Exception 
 	{
 		// Accept required parameters from args[] and pass to run.
-		run( profileid );
+		run(profileid);
 	}
 */
-	public static TmsV1InstrumentIdentifiersPost200Response run( String profileid ){
+	public static TmsV1InstrumentIdentifiersPost200Response run(String profileid){
 	
 		CreateInstrumentIdentifierRequest requestObj = new CreateInstrumentIdentifierRequest();
 
@@ -58,7 +57,7 @@ public class CreateInstrumentIdentifierCardEnrollforNetworkToken{
 			apiClient.merchantConfig = merchantConfig;
 
 			InstrumentIdentifierApi apiInstance = new InstrumentIdentifierApi(apiClient);
-			result = apiInstance.createInstrumentIdentifier( profileid, requestObj );
+			result = apiInstance.createInstrumentIdentifier(profileid, requestObj);
 
 			responseCode = apiClient.responseCode;
 			status = apiClient.status;
@@ -74,8 +73,3 @@ public class CreateInstrumentIdentifierCardEnrollforNetworkToken{
 	return result;
 	}
 }
-
-
-//****************************************************************************************************
-
-

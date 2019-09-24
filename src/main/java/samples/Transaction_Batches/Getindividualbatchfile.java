@@ -1,13 +1,12 @@
-// 28
-// Code Generated: getTransactionBatchId[Get individual batch file]
-
 package samples.Transaction_Batches;
 import java.*;
 import java.util.*;
+import java.math.BigDecimal;
 import org.joda.time.DateTime;
 import org.joda.time.DateTimeZone;
 import org.joda.time.LocalDate;
 
+import com.google.common.base.Strings;
 import com.cybersource.authsdk.core.MerchantConfig;
 
 import Api.*;
@@ -16,7 +15,7 @@ import Invokers.ApiClient;
 import Invokers.ApiException;
 import Model.*;
 
-public class Getindividualbatchfile{
+public class GetIndividualBatchFile{
 	private static String responseCode = null;
 	private static String status = null;
 	private static Properties merchantProp;
@@ -25,10 +24,10 @@ public class Getindividualbatchfile{
 	public static void main(String args[]) throws Exception 
 	{
 		// Accept required parameters from args[] and pass to run.
-		run( id );
+		run(id);
 	}
 */
-	public static PtsV1TransactionBatchesIdGet200Response run( String id ){
+	public static PtsV1TransactionBatchesIdGet200Response run(String id){
 	
 		PtsV1TransactionBatchesIdGet200Response result = null;
 		try
@@ -39,7 +38,7 @@ public class Getindividualbatchfile{
 			apiClient.merchantConfig = merchantConfig;
 
 			TransactionBatchesApi apiInstance = new TransactionBatchesApi(apiClient);
-			result = apiInstance.getTransactionBatchId( id );
+			result = apiInstance.getTransactionBatchId(id);
 
 			responseCode = apiClient.responseCode;
 			status = apiClient.status;
@@ -55,8 +54,3 @@ public class Getindividualbatchfile{
 	return result;
 	}
 }
-
-
-//****************************************************************************************************
-
-

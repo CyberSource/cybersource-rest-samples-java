@@ -1,13 +1,12 @@
-// 1
-// Code Generated: generatePublicKey[Generate Key]
-
 package samples.Flex;
 import java.*;
 import java.util.*;
+import java.math.BigDecimal;
 import org.joda.time.DateTime;
 import org.joda.time.DateTimeZone;
 import org.joda.time.LocalDate;
 
+import com.google.common.base.Strings;
 import com.cybersource.authsdk.core.MerchantConfig;
 
 import Api.*;
@@ -25,14 +24,14 @@ public class GenerateKey{
 	public static void main(String args[]) throws Exception 
 	{
 		// Accept required parameters from args[] and pass to run.
-		run( );
+		run();
 	}
 */
-	public static FlexV1KeysPost200Response run( ){
+	public static FlexV1KeysPost200Response run(){
 	
 		GeneratePublicKeyRequest requestObj = new GeneratePublicKeyRequest();
 
-		requestObj.encryptionType("RsaOaep256");
+		requestObj.encryptionType("None");
 		FlexV1KeysPost200Response result = null;
 		try
 		{
@@ -42,7 +41,7 @@ public class GenerateKey{
 			apiClient.merchantConfig = merchantConfig;
 
 			KeyGenerationApi apiInstance = new KeyGenerationApi(apiClient);
-			result = apiInstance.generatePublicKey( requestObj );
+			result = apiInstance.generatePublicKey(requestObj);
 
 			responseCode = apiClient.responseCode;
 			status = apiClient.status;
@@ -58,8 +57,3 @@ public class GenerateKey{
 	return result;
 	}
 }
-
-
-//****************************************************************************************************
-
-

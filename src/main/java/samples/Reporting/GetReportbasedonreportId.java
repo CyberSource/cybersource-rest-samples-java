@@ -1,13 +1,12 @@
-// 32
-// Code Generated: getReportByReportId[Get Report based on reportId]
-
 package samples.Reporting;
 import java.*;
 import java.util.*;
+import java.math.BigDecimal;
 import org.joda.time.DateTime;
 import org.joda.time.DateTimeZone;
 import org.joda.time.LocalDate;
 
+import com.google.common.base.Strings;
 import com.cybersource.authsdk.core.MerchantConfig;
 
 import Api.*;
@@ -16,7 +15,7 @@ import Invokers.ApiClient;
 import Invokers.ApiException;
 import Model.*;
 
-public class GetReportbasedonreportId{
+public class GetReportBasedOnReportId{
 	private static String responseCode = null;
 	private static String status = null;
 	private static Properties merchantProp;
@@ -25,10 +24,10 @@ public class GetReportbasedonreportId{
 	public static void main(String args[]) throws Exception 
 	{
 		// Accept required parameters from args[] and pass to run.
-		run( reportId );
+		run(reportId);
 	}
 */
-	public static ReportingV3ReportsIdGet200Response run( String reportId ){
+	public static ReportingV3ReportsIdGet200Response run(String reportId){
 	
 		String organizationId = "testrest";
 
@@ -41,7 +40,7 @@ public class GetReportbasedonreportId{
 			apiClient.merchantConfig = merchantConfig;
 
 			ReportsApi apiInstance = new ReportsApi(apiClient);
-			result = apiInstance.getReportByReportId( reportId, organizationId );
+			result = apiInstance.getReportByReportId(reportId, organizationId);
 
 			responseCode = apiClient.responseCode;
 			status = apiClient.status;
@@ -57,8 +56,3 @@ public class GetReportbasedonreportId{
 	return result;
 	}
 }
-
-
-//****************************************************************************************************
-
-

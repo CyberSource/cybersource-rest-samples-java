@@ -25,6 +25,7 @@ public class RoadInfo {
     private boolean isAssert;
     
     public RoadInfo() {
+    	
     }
 
     public String getRequestClassName() {

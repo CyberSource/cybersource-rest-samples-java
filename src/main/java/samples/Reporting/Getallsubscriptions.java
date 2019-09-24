@@ -1,13 +1,12 @@
-// 35
-// Code Generated: getAllSubscriptions[Get all subscriptions]
-
 package samples.Reporting;
 import java.*;
 import java.util.*;
+import java.math.BigDecimal;
 import org.joda.time.DateTime;
 import org.joda.time.DateTimeZone;
 import org.joda.time.LocalDate;
 
+import com.google.common.base.Strings;
 import com.cybersource.authsdk.core.MerchantConfig;
 
 import Api.*;
@@ -16,7 +15,7 @@ import Invokers.ApiClient;
 import Invokers.ApiException;
 import Model.*;
 
-public class Getallsubscriptions{
+public class GetAllSubscriptions{
 	private static String responseCode = null;
 	private static String status = null;
 	private static Properties merchantProp;
@@ -25,10 +24,10 @@ public class Getallsubscriptions{
 	public static void main(String args[]) throws Exception 
 	{
 		// Accept required parameters from args[] and pass to run.
-		run( );
+		run();
 	}
 */
-	public static ReportingV3ReportSubscriptionsGet200Response run( ){
+	public static ReportingV3ReportSubscriptionsGet200Response run(){
 	
 		ReportingV3ReportSubscriptionsGet200Response result = null;
 		try
@@ -39,7 +38,7 @@ public class Getallsubscriptions{
 			apiClient.merchantConfig = merchantConfig;
 
 			ReportSubscriptionsApi apiInstance = new ReportSubscriptionsApi(apiClient);
-			result = apiInstance.getAllSubscriptions( );
+			result = apiInstance.getAllSubscriptions();
 
 			responseCode = apiClient.responseCode;
 			status = apiClient.status;
@@ -55,8 +54,3 @@ public class Getallsubscriptions{
 	return result;
 	}
 }
-
-
-//****************************************************************************************************
-
-
