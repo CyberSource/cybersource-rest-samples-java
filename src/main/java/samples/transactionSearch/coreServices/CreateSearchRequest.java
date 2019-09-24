@@ -23,7 +23,7 @@ public class CreateSearchRequest {
 		request.save(false);
 		request.name("MRN");
 		request.timezone("America/Chicago");
-		request.query("clientReferenceInformation.code:TC50171_3");
+		request.query("clientReferenceInformation.code:TC50171_3 AND submitTimeUtc:[NOW/DAY-7DAYS TO NOW/DAY+1DAY}");
 		request.offset(0);
 		request.limit(10);
 		request.sort("id:asc, submitTimeUtc:asc");
