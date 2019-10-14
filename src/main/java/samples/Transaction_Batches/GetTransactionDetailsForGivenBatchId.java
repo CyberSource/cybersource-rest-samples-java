@@ -27,12 +27,7 @@ public class GetTransactionDetailsForGivenBatchId{
 		run(id);
 	}
 */
-	public static void run(String id){
-	
-		LocalDate uploadDate = new LocalDate("2019-08-30");
-		String status = "Rejected";
-
-		
+	public static void run(String id){	
 		try
 		{
 			merchantProp = Configuration.getMerchantDetails();
@@ -41,7 +36,7 @@ public class GetTransactionDetailsForGivenBatchId{
 			apiClient.merchantConfig = merchantConfig;
 
 			TransactionBatchesApi apiInstance = new TransactionBatchesApi(apiClient);
-			apiInstance.getTransactionBatchDetails(id, uploadDate, status);
+			apiInstance.getTransactionBatchDetails(id);
 
 			responseCode = apiClient.responseCode;
 			status = apiClient.status;

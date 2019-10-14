@@ -74,7 +74,7 @@ public class ProcessPaymentWithLevelIIIData{
 		List <Ptsv2paymentsOrderInformationLineItems> lineItems =  new ArrayList <Ptsv2paymentsOrderInformationLineItems>();
 		Ptsv2paymentsOrderInformationLineItems lineItems1 = new Ptsv2paymentsOrderInformationLineItems();
 		lineItems1.productCode("default");
-		lineItems1.quantity(new BigDecimal(10));
+		lineItems1.quantity(10);
 		lineItems1.unitPrice("10.00");
 		lineItems1.totalAmount("100");
 		lineItems1.amountIncludesTax(false);
