@@ -13,17 +13,17 @@ import Api.ReportsApi;
 import Data.Configuration;
 import Invokers.ApiClient;
 import Invokers.ApiException;
+import Model.CreateAdhocReportRequest;
 import Model.Reportingv3reportsReportPreferences;
-import Model.RequestBody;
 
 public class CreateAdhocReport {
 	private static String responseCode = null;
 	private static String status = null;
-	private static RequestBody request;
+	private static CreateAdhocReportRequest request;
 	private static Properties merchantProp;
 
-	private static RequestBody getRequest() {
-		request = new RequestBody();
+	private static CreateAdhocReportRequest getRequest() {
+		request = new CreateAdhocReportRequest();
 		
 		request.reportDefinitionName("TransactionRequestClass");
 		request.timezone("GMT");

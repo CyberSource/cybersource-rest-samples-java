@@ -19,11 +19,11 @@ public class GetListOfBatchFiles {
 	private static String status = null;
 	private static Properties merchantProp;
 	
-	private static String timeString = "2018-10-01T00:00:00.00Z";
+	private static String timeString = "2019-05-22T00:00:00.00Z";
 	private static DateTime ddateTime = new DateTime(timeString);
 	private static DateTime startTime = ddateTime.withZone(DateTimeZone.forID("GMT"));
 	
-	private static String timeString2 = "2018-10-31T23:59:59.59Z";
+	private static String timeString2 = "2019-07-22T23:59:59.59Z";
 	private static DateTime ddateTime2 = new DateTime(timeString2);
 	private static DateTime endTime = ddateTime2.withZone(DateTimeZone.forID("GMT"));
 

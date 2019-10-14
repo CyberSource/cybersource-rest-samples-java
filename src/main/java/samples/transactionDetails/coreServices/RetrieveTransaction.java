@@ -14,7 +14,7 @@ public class RetrieveTransaction {
 
 	private static String responseCode = null;
 	private static String status = null;
-	private static String id = "5562245381336083504001";
+	private static String id = "5699138443066708404002";
 	private static Properties merchantProp;
 
 	public static void main(String args[]) throws Exception {

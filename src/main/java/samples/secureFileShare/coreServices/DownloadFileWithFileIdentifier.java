@@ -29,7 +29,7 @@ public class DownloadFileWithFileIdentifier {
 	private  static String resourceFile = "SecureFile";
     private static final String FILE_PATH = "src/main/resources/";
 	
-    private static String  fileId = "VFJSUmVwb3J0LTc4NTVkMTNmLTkzOTgtNTExMy1lMDUzLWEyNTg4ZTBhNzE5Mi5jc3YtMjAxOC0xMC0yMA==";
+    private static String  fileId = "dGVzdHJlc3Rfc3ViY3JpcHRpb25fdjI5ODktOTMwYWU5MmItOTcxMy00N2U4LWUwNTMtYTI1ODhlMGFjZDNjLnhtbC0yMDE5LTA5LTMw";
 
 
 	public static void main(String args[]) throws Exception {

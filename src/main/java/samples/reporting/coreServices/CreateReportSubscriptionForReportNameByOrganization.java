@@ -10,17 +10,17 @@ import Api.ReportSubscriptionsApi;
 import Data.Configuration;
 import Invokers.ApiClient;
 import Invokers.ApiException;
-import Model.RequestBody1;
+import Model.CreateReportSubscriptionRequest;
 
 
 public class CreateReportSubscriptionForReportNameByOrganization {
 	private static String responseCode = null;
 	private static String status = null;
-	private static RequestBody1 request;
+	private static CreateReportSubscriptionRequest request;
 	private static Properties merchantProp;
 	private static String report_name = "Dexa";
-	private static RequestBody1 getRequest() {
-		request = new RequestBody1();
+	private static CreateReportSubscriptionRequest getRequest() {
+		request = new CreateReportSubscriptionRequest();
 		
 		request.reportDefinitionName("TransactionRequestClass");
 		

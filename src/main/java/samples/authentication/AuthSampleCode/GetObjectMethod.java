@@ -18,7 +18,7 @@ public class GetObjectMethod {
 	/**
 	 * REQUEST TARGET [Editable]
 	 */
-	private String requestTarget = "/pts/v2/payments/5525472056876749203002";
+	private String requestTarget = "/pts/v2/payments/5699138443066708404002";
 	/* Request Type [Non-Editable.] */
 	private String requestType = "GET";
 	/* [Non Editable] */

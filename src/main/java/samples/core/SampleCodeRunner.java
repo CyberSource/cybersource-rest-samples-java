@@ -25,7 +25,7 @@ public class SampleCodeRunner {
         	if (classList.length > 0) {
         		for(Class<?> sampleClass : classList) {
         			// IGNORE LIST PART 1 : Classes inside Data, lib and SampleCodeRunner packages are not tested.
-        			if (sampleClass.getName().contains("Data") || sampleClass.getName().contains("lib") || sampleClass.getName().contains("SampleCodeRunner")) {
+        			if (sampleClass.getName().contains("Configuration") || sampleClass.getName().contains("lib") || sampleClass.getName().contains("SampleCodeRunner")) {
         				System.out.println("\n#### SKIPPED - " + sampleClass.getName() + " ####");            			
             			continue;
         			}

@@ -13,7 +13,7 @@ public class GetIndividualBatchFile {
 
 	private static String responseCode = null;
 	private static String status = null;
-	private static String id = "Owcyk6pl";
+	private static String id = "12345";
 	private static Properties merchantProp;
 
 	public static void main(String args[]) throws Exception {

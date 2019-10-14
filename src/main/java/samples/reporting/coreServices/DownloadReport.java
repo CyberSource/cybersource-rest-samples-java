@@ -25,12 +25,12 @@ public class DownloadReport {
 	private static String responseCode = null;
 	private static String status = null;
 	private static String responseBody = null;
-	private static String reportName = "testrest dec V70";
+	private static String reportName = "testrest_subcription_v2989";
 	private static String organizationId = "testrest";
 	private static Properties merchantProp;
 	public static String resourceFile = "DownloadReport";
 	private static final String FILE_PATH = "src/main/resources/";
-	static LocalDate reportDate = new LocalDate("2018-09-03");
+	static LocalDate reportDate = new LocalDate("2019-09-05");
 
 	public static void main(String args[]) throws Exception {
 		process();
