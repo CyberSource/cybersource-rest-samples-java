@@ -18,6 +18,7 @@ import Invokers.ApiClient;
 
 public class GetTransactionDetailsForGivenBatchId{
 	private static String responseCode = null;
+	private static String status = null;
 	private static Properties merchantProp;
 	private static String responseBody = null;
 	public static String resourceFile = "BatchDetailsReport";
