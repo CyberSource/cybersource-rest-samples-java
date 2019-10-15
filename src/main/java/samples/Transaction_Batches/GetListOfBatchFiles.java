@@ -1,4 +1,5 @@
 package samples.Transaction_Batches;
+
 import java.*;
 import java.util.*;
 import java.math.BigDecimal;
@@ -15,26 +16,24 @@ import Invokers.ApiClient;
 import Invokers.ApiException;
 import Model.*;
 
-public class GetListOfBatchFiles{
+public class GetListOfBatchFiles {
 	private static String responseCode = null;
 	private static String status = null;
 	private static Properties merchantProp;
 
 /*
-	public static void main(String args[]) throws Exception 
-	{
+	public static void main(String args[]) throws Exception {
 		// Accept required parameters from args[] and pass to run.
 		run();
 	}
 */
-	public static PtsV1TransactionBatchesGet200Response run(){
+	public static PtsV1TransactionBatchesGet200Response run() {
 	
 		DateTime startTime = new DateTime("2019-05-22T01:47:57.000Z").withZone(DateTimeZone.forID("GMT"));
 		DateTime endTime = new DateTime("2019-07-22T22:47:57.000Z").withZone(DateTimeZone.forID("GMT"));
 
 		PtsV1TransactionBatchesGet200Response result = null;
-		try
-		{
+		try {
 			merchantProp = Configuration.getMerchantDetails();
 			ApiClient apiClient = new ApiClient();
 			MerchantConfig merchantConfig = new MerchantConfig(merchantProp);
@@ -49,9 +48,7 @@ public class GetListOfBatchFiles{
 			System.out.println("ResponseMessage :" + status);
 			System.out.println(result);
 			
-		}
-		catch (Exception e)
-		{
+		} catch (Exception e) {
 			e.printStackTrace();
 		}
 	return result;

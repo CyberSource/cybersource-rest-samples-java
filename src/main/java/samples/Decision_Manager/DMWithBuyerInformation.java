@@ -1,4 +1,5 @@
 package samples.Decision_Manager;
+
 import java.*;
 import java.util.*;
 import java.math.BigDecimal;
@@ -15,19 +16,18 @@ import Invokers.ApiClient;
 import Invokers.ApiException;
 import Model.*;
 
-public class DMWithBuyerInformation{
+public class DMWithBuyerInformation {
 	private static String responseCode = null;
 	private static String status = null;
 	private static Properties merchantProp;
 
 /*
-	public static void main(String args[]) throws Exception 
-	{
+	public static void main(String args[]) throws Exception {
 		// Accept required parameters from args[] and pass to run.
 		run();
 	}
 */
-	public static RiskV1DecisionsPost201Response run(){
+	public static RiskV1DecisionsPost201Response run() {
 	
 		CreateDecisionManagerCaseRequest requestObj = new CreateDecisionManagerCaseRequest();
 
@@ -66,7 +66,7 @@ public class DMWithBuyerInformation{
 
 		Riskv1decisionsBuyerInformation buyerInformation = new Riskv1decisionsBuyerInformation();
 		buyerInformation.hashedPassword("");
-		buyerInformation.dateOfBirth("1998-05-05");
+		buyerInformation.dateOfBirth("19980505");
 
 		List <Ptsv2paymentsBuyerInformationPersonalIdentification> personalIdentification =  new ArrayList <Ptsv2paymentsBuyerInformationPersonalIdentification>();
 		Ptsv2paymentsBuyerInformationPersonalIdentification personalIdentification1 = new Ptsv2paymentsBuyerInformationPersonalIdentification();
@@ -79,8 +79,7 @@ public class DMWithBuyerInformation{
 		requestObj.buyerInformation(buyerInformation);
 
 		RiskV1DecisionsPost201Response result = null;
-		try
-		{
+		try {
 			merchantProp = Configuration.getMerchantDetails();
 			ApiClient apiClient = new ApiClient();
 			MerchantConfig merchantConfig = new MerchantConfig(merchantProp);
@@ -95,9 +94,7 @@ public class DMWithBuyerInformation{
 			System.out.println("ResponseMessage :" + status);
 			System.out.println(result);
 			
-		}
-		catch (Exception e)
-		{
+		} catch (Exception e) {
 			e.printStackTrace();
 		}
 	return result;

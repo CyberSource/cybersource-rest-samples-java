@@ -1,4 +1,5 @@
 package samples.User_Management;
+
 import java.*;
 import java.util.*;
 import java.math.BigDecimal;
@@ -15,19 +16,18 @@ import Invokers.ApiClient;
 import Invokers.ApiException;
 import Model.*;
 
-public class GetUserInformation{
+public class GetUserInformation {
 	private static String responseCode = null;
 	private static String status = null;
 	private static Properties merchantProp;
 
 /*
-	public static void main(String args[]) throws Exception 
-	{
+	public static void main(String args[]) throws Exception {
 		// Accept required parameters from args[] and pass to run.
 		run();
 	}
 */
-	public static UmsV1UsersGet200Response run(){
+	public static UmsV1UsersGet200Response run() {
 	
 		String organizationId = "testrest";
 		String userName = null;
@@ -35,8 +35,7 @@ public class GetUserInformation{
 		String roleId = null;
 
 		UmsV1UsersGet200Response result = null;
-		try
-		{
+		try {
 			merchantProp = Configuration.getMerchantDetails();
 			ApiClient apiClient = new ApiClient();
 			MerchantConfig merchantConfig = new MerchantConfig(merchantProp);
@@ -51,9 +50,7 @@ public class GetUserInformation{
 			System.out.println("ResponseMessage :" + status);
 			System.out.println(result);
 			
-		}
-		catch (Exception e)
-		{
+		} catch (Exception e) {
 			e.printStackTrace();
 		}
 	return result;

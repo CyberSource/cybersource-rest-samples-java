@@ -15,4 +15,7 @@ matrix:
         - jdk: oraclejdk9
         
 script:
+    # - java -jar target/SampleCode.jar
+    
+    # For RoadRunner
     - mvn test

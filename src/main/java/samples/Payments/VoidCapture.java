@@ -1,4 +1,5 @@
 package samples.Payments;
+
 import java.*;
 import java.util.*;
 import java.math.BigDecimal;
@@ -15,19 +16,18 @@ import Invokers.ApiClient;
 import Invokers.ApiException;
 import Model.*;
 
-public class VoidCapture{
+public class VoidCapture {
 	private static String responseCode = null;
 	private static String status = null;
 	private static Properties merchantProp;
 
 /*
-	public static void main(String args[]) throws Exception 
-	{
+	public static void main(String args[]) throws Exception {
 		// Accept required parameters from args[] and pass to run.
 		run(id);
 	}
 */
-	public static PtsV2PaymentsVoidsPost201Response run(String id){
+	public static PtsV2PaymentsVoidsPost201Response run(String id) {
 	
 		VoidCaptureRequest requestObj = new VoidCaptureRequest();
 
@@ -36,8 +36,7 @@ public class VoidCapture{
 		requestObj.clientReferenceInformation(clientReferenceInformation);
 
 		PtsV2PaymentsVoidsPost201Response result = null;
-		try
-		{
+		try {
 			merchantProp = Configuration.getMerchantDetails();
 			ApiClient apiClient = new ApiClient();
 			MerchantConfig merchantConfig = new MerchantConfig(merchantProp);
@@ -52,9 +51,7 @@ public class VoidCapture{
 			System.out.println("ResponseMessage :" + status);
 			System.out.println(result);
 			
-		}
-		catch (Exception e)
-		{
+		} catch (Exception e) {
 			e.printStackTrace();
 		}
 	return result;

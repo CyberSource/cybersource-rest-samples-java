@@ -1,4 +1,5 @@
 package samples.Token_Management;
+
 import java.*;
 import java.util.*;
 import java.math.BigDecimal;
@@ -15,19 +16,18 @@ import Invokers.ApiClient;
 import Invokers.ApiException;
 import Model.*;
 
-public class CreateInstrumentIdentifierCardEnrollForNetworkToken{
+public class CreateInstrumentIdentifierCardEnrollForNetworkToken {
 	private static String responseCode = null;
 	private static String status = null;
 	private static Properties merchantProp;
 
 /*
-	public static void main(String args[]) throws Exception 
-	{
+	public static void main(String args[]) throws Exception {
 		// Accept required parameters from args[] and pass to run.
 		run(profileid);
 	}
 */
-	public static TmsV1InstrumentIdentifiersPost200Response run(String profileid){
+	public static TmsV1InstrumentIdentifiersPost200Response run(String profileid) {
 	
 		CreateInstrumentIdentifierRequest requestObj = new CreateInstrumentIdentifierRequest();
 
@@ -49,8 +49,7 @@ public class CreateInstrumentIdentifierCardEnrollForNetworkToken{
 		requestObj.billTo(billTo);
 
 		TmsV1InstrumentIdentifiersPost200Response result = null;
-		try
-		{
+		try {
 			merchantProp = Configuration.getMerchantDetails();
 			ApiClient apiClient = new ApiClient();
 			MerchantConfig merchantConfig = new MerchantConfig(merchantProp);
@@ -65,9 +64,7 @@ public class CreateInstrumentIdentifierCardEnrollForNetworkToken{
 			System.out.println("ResponseMessage :" + status);
 			System.out.println(result);
 			
-		}
-		catch (Exception e)
-		{
+		} catch (Exception e) {
 			e.printStackTrace();
 		}
 	return result;

@@ -1,4 +1,5 @@
 package samples.Token_Management;
+
 import java.*;
 import java.util.*;
 import java.math.BigDecimal;
@@ -15,23 +16,21 @@ import Invokers.ApiClient;
 import Invokers.ApiException;
 import Model.*;
 
-public class DeletePaymentInstrument{
+public class DeletePaymentInstrument {
 	private static String responseCode = null;
 	private static String status = null;
 	private static Properties merchantProp;
 
 /*
-	public static void main(String args[]) throws Exception 
-	{
+	public static void main(String args[]) throws Exception {
 		// Accept required parameters from args[] and pass to run.
 		run(profileid, tokenId);
 	}
 */
-	public static void run(String profileid, String tokenId){
+	public static void run(String profileid, String tokenId) {
 	
 		
-		try
-		{
+		try {
 			merchantProp = Configuration.getMerchantDetails();
 			ApiClient apiClient = new ApiClient();
 			MerchantConfig merchantConfig = new MerchantConfig(merchantProp);
@@ -44,9 +43,7 @@ public class DeletePaymentInstrument{
 			status = apiClient.status;
 			System.out.println("ResponseCode :" + responseCode);
 			System.out.println("ResponseMessage :" + status);
-		}
-		catch (Exception e)
-		{
+		} catch (Exception e) {
 			e.printStackTrace();
 		}
 	

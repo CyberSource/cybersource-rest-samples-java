@@ -1,4 +1,5 @@
 package samples.Payouts;
+
 import java.*;
 import java.util.*;
 import java.math.BigDecimal;
@@ -15,19 +16,18 @@ import Invokers.ApiClient;
 import Invokers.ApiException;
 import Model.*;
 
-public class ProcessPayoutToken{
+public class ProcessPayoutToken {
 	private static String responseCode = null;
 	private static String status = null;
 	private static Properties merchantProp;
 
 /*
-	public static void main(String args[]) throws Exception 
-	{
+	public static void main(String args[]) throws Exception {
 		// Accept required parameters from args[] and pass to run.
 		run();
 	}
 */
-	public static PtsV2PayoutsPost201Response run(){
+	public static PtsV2PayoutsPost201Response run() {
 	
 		OctCreatePaymentRequest requestObj = new OctCreatePaymentRequest();
 
@@ -93,8 +93,7 @@ public class ProcessPayoutToken{
 		requestObj.paymentInformation(paymentInformation);
 
 		PtsV2PayoutsPost201Response result = null;
-		try
-		{
+		try {
 			merchantProp = Configuration.getMerchantDetails();
 			ApiClient apiClient = new ApiClient();
 			MerchantConfig merchantConfig = new MerchantConfig(merchantProp);
@@ -109,9 +108,7 @@ public class ProcessPayoutToken{
 			System.out.println("ResponseMessage :" + status);
 			System.out.println(result);
 			
-		}
-		catch (Exception e)
-		{
+		} catch (Exception e) {
 			e.printStackTrace();
 		}
 	return result;

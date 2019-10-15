@@ -1,4 +1,5 @@
 package samples.Reporting;
+
 import java.*;
 import java.util.*;
 import java.math.BigDecimal;
@@ -15,25 +16,23 @@ import Invokers.ApiClient;
 import Invokers.ApiException;
 import Model.*;
 
-public class GetReportingResourceInformation{
+public class GetReportingResourceInformation {
 	private static String responseCode = null;
 	private static String status = null;
 	private static Properties merchantProp;
 
 /*
-	public static void main(String args[]) throws Exception 
-	{
+	public static void main(String args[]) throws Exception {
 		// Accept required parameters from args[] and pass to run.
 		run();
 	}
 */
-	public static ReportingV3ReportDefinitionsGet200Response run(){
+	public static ReportingV3ReportDefinitionsGet200Response run() {
 	
 		String organizationId = "testrest";
 
 		ReportingV3ReportDefinitionsGet200Response result = null;
-		try
-		{
+		try {
 			merchantProp = Configuration.getMerchantDetails();
 			ApiClient apiClient = new ApiClient();
 			MerchantConfig merchantConfig = new MerchantConfig(merchantProp);
@@ -48,9 +47,7 @@ public class GetReportingResourceInformation{
 			System.out.println("ResponseMessage :" + status);
 			System.out.println(result);
 			
-		}
-		catch (Exception e)
-		{
+		} catch (Exception e) {
 			e.printStackTrace();
 		}
 	return result;

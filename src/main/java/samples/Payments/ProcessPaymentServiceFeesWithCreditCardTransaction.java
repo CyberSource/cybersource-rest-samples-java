@@ -1,4 +1,5 @@
 package samples.Payments;
+
 import java.*;
 import java.util.*;
 import java.math.BigDecimal;
@@ -15,19 +16,18 @@ import Invokers.ApiClient;
 import Invokers.ApiException;
 import Model.*;
 
-public class ProcessPaymentServiceFeesWithCreditCardTransaction{
+public class ProcessPaymentServiceFeesWithCreditCardTransaction {
 	private static String responseCode = null;
 	private static String status = null;
 	private static Properties merchantProp;
 
 /*
-	public static void main(String args[]) throws Exception 
-	{
+	public static void main(String args[]) throws Exception {
 		// Accept required parameters from args[] and pass to run.
 		run();
 	}
 */
-	public static PtsV2PaymentsPost201Response run(){
+	public static PtsV2PaymentsPost201Response run() {
 	
 		CreatePaymentRequest requestObj = new CreatePaymentRequest();
 
@@ -73,16 +73,15 @@ public class ProcessPaymentServiceFeesWithCreditCardTransaction{
 
 		Ptsv2paymentsMerchantInformation merchantInformation = new Ptsv2paymentsMerchantInformation();
 		Ptsv2paymentsMerchantInformationServiceFeeDescriptor merchantInformationServiceFeeDescriptor = new Ptsv2paymentsMerchantInformationServiceFeeDescriptor();
-		merchantInformationServiceFeeDescriptor.name("CyberVacations Service Fee");
-		merchantInformationServiceFeeDescriptor.contact("800-999-9999");
+		merchantInformationServiceFeeDescriptor.name("Vacations Service Fee");
+		merchantInformationServiceFeeDescriptor.contact("8009999999");
 		merchantInformationServiceFeeDescriptor.state("CA");
 		merchantInformation.serviceFeeDescriptor(merchantInformationServiceFeeDescriptor);
 
 		requestObj.merchantInformation(merchantInformation);
 
 		PtsV2PaymentsPost201Response result = null;
-		try
-		{
+		try {
 			merchantProp = Configuration.getMerchantDetails();
 			ApiClient apiClient = new ApiClient();
 			MerchantConfig merchantConfig = new MerchantConfig(merchantProp);
@@ -97,9 +96,7 @@ public class ProcessPaymentServiceFeesWithCreditCardTransaction{
 			System.out.println("ResponseMessage :" + status);
 			System.out.println(result);
 			
-		}
-		catch (Exception e)
-		{
+		} catch (Exception e) {
 			e.printStackTrace();
 		}
 	return result;

@@ -1,4 +1,5 @@
 package samples.Reporting;
+
 import java.*;
 import java.util.*;
 import java.math.BigDecimal;
@@ -15,27 +16,25 @@ import Invokers.ApiClient;
 import Invokers.ApiException;
 import Model.*;
 
-public class GetConversionDetailTransactions{
+public class GetConversionDetailTransactions {
 	private static String responseCode = null;
 	private static String status = null;
 	private static Properties merchantProp;
 
 /*
-	public static void main(String args[]) throws Exception 
-	{
+	public static void main(String args[]) throws Exception {
 		// Accept required parameters from args[] and pass to run.
 		run();
 	}
 */
-	public static ReportingV3ConversionDetailsGet200Response run(){
+	public static ReportingV3ConversionDetailsGet200Response run() {
 	
 		DateTime startTime = new DateTime("2019-03-21T00:00:00.0Z").withZone(DateTimeZone.forID("GMT"));
 		DateTime endTime = new DateTime("2019-03-21T23:00:00.0Z").withZone(DateTimeZone.forID("GMT"));
 		String organizationId = "testrest";
 
 		ReportingV3ConversionDetailsGet200Response result = null;
-		try
-		{
+		try {
 			merchantProp = Configuration.getMerchantDetails();
 			ApiClient apiClient = new ApiClient();
 			MerchantConfig merchantConfig = new MerchantConfig(merchantProp);
@@ -50,9 +49,7 @@ public class GetConversionDetailTransactions{
 			System.out.println("ResponseMessage :" + status);
 			System.out.println(result);
 			
-		}
-		catch (Exception e)
-		{
+		} catch (Exception e) {
 			e.printStackTrace();
 		}
 	return result;

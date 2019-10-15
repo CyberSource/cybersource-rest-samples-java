@@ -1,4 +1,5 @@
 package samples.Transaction_Search;
+
 import java.*;
 import java.util.*;
 import java.math.BigDecimal;
@@ -15,23 +16,21 @@ import Invokers.ApiClient;
 import Invokers.ApiException;
 import Model.*;
 
-public class GetSearchResults{
+public class GetSearchResults {
 	private static String responseCode = null;
 	private static String status = null;
 	private static Properties merchantProp;
 
 /*
-	public static void main(String args[]) throws Exception 
-	{
+	public static void main(String args[]) throws Exception {
 		// Accept required parameters from args[] and pass to run.
 		run(searchId);
 	}
 */
-	public static TssV2TransactionsPost201Response run(String searchId){
+	public static TssV2TransactionsPost201Response run(String searchId) {
 	
 		TssV2TransactionsPost201Response result = null;
-		try
-		{
+		try {
 			merchantProp = Configuration.getMerchantDetails();
 			ApiClient apiClient = new ApiClient();
 			MerchantConfig merchantConfig = new MerchantConfig(merchantProp);
@@ -46,9 +45,7 @@ public class GetSearchResults{
 			System.out.println("ResponseMessage :" + status);
 			System.out.println(result);
 			
-		}
-		catch (Exception e)
-		{
+		} catch (Exception e) {
 			e.printStackTrace();
 		}
 	return result;
