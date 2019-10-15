@@ -62,13 +62,13 @@ public class GetTransactionDetailsForGivenBatchId {
 			ByteArrayOutputStream byteOutStream = new ByteArrayOutputStream();
 
 			org.apache.commons.io.IOUtils.copy(inStream, byteOutStream);
-			byte[] streamInBytes = byteOutStream.toByteAray();
+			byte[] streamInBytes = byteOutStream.toByteArray();
 
-			BufferedReader bReader = new BufferedReader(new InputStreamReader((new ByteArrayInputStream(bytes))));
+			BufferedReader bReader = new BufferedReader(new InputStreamReader((new ByteArrayInputStream(streamInBytes))));
 			String output;
 			String reportType = "csv";
 
-			while((output = br.readLine()) != null) {
+			while((output = bReader.readLine()) != null) {
 				if (output.contains("xml")) {
 					reportType = "xml";
 				} else if (output.contains("json")) {
@@ -78,7 +78,7 @@ public class GetTransactionDetailsForGivenBatchId {
 
 			bReader.close();
 
-			bReader = new BufferedReader(new InputStreamReader((new ByteArrayInputStream(bytes))));
+			bReader = new BufferedReader(new InputStreamReader((new ByteArrayInputStream(streamInBytes))));
 			BufferedWriter bWriter = new BufferedWriter(new FileWriter(new File(FILE_PATH + resourceFile + "." + reportType)));
 
 			while((output = bReader.readLine()) != null) {
