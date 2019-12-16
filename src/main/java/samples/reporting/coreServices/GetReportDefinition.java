@@ -31,7 +31,7 @@ public class GetReportDefinition {
 			apiClient.merchantConfig = merchantConfig;	
 
 			ReportDefinitionsApi reportDefinitionsApi = new ReportDefinitionsApi(apiClient);
-			reportDefinitionsApi.getResourceInfoByReportDefinition(reportDefinitionName, organisationId);
+			reportDefinitionsApi.getResourceInfoByReportDefinition(reportDefinitionName, organisationId, null, null);
 
 			responseCode = apiClient.responseCode;
 			status = apiClient.status;

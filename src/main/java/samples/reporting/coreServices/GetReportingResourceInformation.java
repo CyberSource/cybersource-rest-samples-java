@@ -30,7 +30,7 @@ public class GetReportingResourceInformation {
 			apiClient.merchantConfig = merchantConfig;	
 
 			ReportDefinitionsApi reportDefinitionsApi = new ReportDefinitionsApi(apiClient);
-			reportDefinitionsApi.getResourceV2Info(organisationId);
+			reportDefinitionsApi.getResourceV2Info(organisationId, null);
 
 			responseCode = apiClient.responseCode;
 			status = apiClient.status;

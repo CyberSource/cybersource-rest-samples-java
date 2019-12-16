@@ -41,7 +41,7 @@ public class DownloadReport {
 			apiClient.merchantConfig = merchantConfig;	
 
 			ReportDownloadsApi downloadsApi = new ReportDownloadsApi(apiClient);
-			ApiResponse<InputStream> responseStream = downloadsApi.downloadReportWithHttpInfo(reportDate, reportName, organizationId);
+			ApiResponse<InputStream> responseStream = downloadsApi.downloadReportWithHttpInfo(reportDate, reportName, organizationId, null);
 			
 			String contentType = responseStream.getHeaders().get("Content-Type").get(0);
 			

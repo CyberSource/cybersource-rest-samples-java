@@ -11,9 +11,9 @@ import Invokers.ApiException;
 import Model.CreatePaymentInstrumentRequest;
 import Model.TmsV1InstrumentIdentifiersPaymentInstrumentsGet200ResponseEmbeddedBillTo;
 import Model.TmsV1InstrumentIdentifiersPaymentInstrumentsGet200ResponseEmbeddedCard;
-import Model.TmsV1InstrumentIdentifiersPaymentInstrumentsGet200ResponseEmbeddedInstrumentIdentifier;
 import Model.TmsV1InstrumentIdentifiersPaymentInstrumentsGet200ResponseEmbeddedPaymentInstruments;
 import Model.TmsV1InstrumentIdentifiersPost200ResponseCard;
+import Model.Tmsv1paymentinstrumentsInstrumentIdentifier;
 
 /**
  * 
@@ -60,7 +60,7 @@ public class CreatePaymentInstrument {
 		TmsV1InstrumentIdentifiersPost200ResponseCard instrumentidentifiersCard = new TmsV1InstrumentIdentifiersPost200ResponseCard();
 		instrumentidentifiersCard.number("4111111111111111");
 
-		TmsV1InstrumentIdentifiersPaymentInstrumentsGet200ResponseEmbeddedInstrumentIdentifier instrumentIdentifier = new TmsV1InstrumentIdentifiersPaymentInstrumentsGet200ResponseEmbeddedInstrumentIdentifier();
+		Tmsv1paymentinstrumentsInstrumentIdentifier instrumentIdentifier = new Tmsv1paymentinstrumentsInstrumentIdentifier();
 		instrumentIdentifier.card(instrumentidentifiersCard);
 
 		createPaymentInstrumentRequest.instrumentIdentifier(instrumentIdentifier);
