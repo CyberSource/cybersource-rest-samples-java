@@ -8,8 +8,6 @@ import java.util.Map;
 import java.util.Properties;
 
 import com.cybersource.authsdk.core.MerchantConfig;
-import com.cybersource.flex.sdk.model.FlexToken;
-import com.cybersource.flex.sdk.repackaged.Base64;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import Api.TokenizationApi;
@@ -21,7 +19,9 @@ import Model.FlexV1TokensPost200Response;
 import Model.Flexv1tokensCardInfo;
 import Model.TokenizeRequest;
 import samples.flex.noEncryptionKeyGeneration.KeyGenerationNoEnc;
+import utilities.flex.tokenverification.FlexToken;
 import utilities.flex.tokenverification.TokenVerificationUtility;
+import utilities.flex.security.Base64;
 
 public class TokenizeCard {
 	private static String status = null;
