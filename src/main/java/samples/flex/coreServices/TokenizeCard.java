@@ -8,8 +8,6 @@ import java.util.Map;
 import java.util.Properties;
 
 import com.cybersource.authsdk.core.MerchantConfig;
-import com.cybersource.flex.sdk.model.FlexToken;
-import com.cybersource.flex.sdk.repackaged.Base64;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import Api.TokenizationApi;
@@ -21,7 +19,9 @@ import Model.FlexV1TokensPost200Response;
 import Model.Flexv1tokensCardInfo;
 import Model.TokenizeRequest;
 import samples.flex.noEncryptionKeyGeneration.KeyGenerationNoEnc;
-import samples.flex.tokenization.VerifyToken;
+import utilities.flex.tokenverification.FlexToken;
+import utilities.flex.tokenverification.TokenVerificationUtility;
+import utilities.flex.security.Base64;
 
 public class TokenizeCard {
 	private static String status = null;
@@ -93,8 +93,8 @@ public class TokenizeCard {
 			ObjectMapper oMapper = new ObjectMapper();
 			tokenMap = oMapper.convertValue(flexTokenResponseBody, Map.class);
 			
-			VerifyToken verifyToken = new VerifyToken();
-			verifyToken.verify(pubKey, tokenMap);
+			TokenVerificationUtility tokenVerifier = new TokenVerificationUtility();
+			boolean isTokenVerified = tokenVerifier.verifyToken(pubKey, tokenMap);
 			
 			responseCode = apiClient.responseCode;
 			status = apiClient.status;
@@ -102,6 +102,7 @@ public class TokenizeCard {
 			System.out.println("ResponseCode :" +responseCode);
 			System.out.println("Status :" +status);
 			System.out.println("ResponseBody :"+apiClient.respBody);
+			System.out.println("Token Verification : " + isTokenVerified);
 
 		} catch (ApiException e) {
 
