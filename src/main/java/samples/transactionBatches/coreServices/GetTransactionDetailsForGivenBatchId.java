@@ -35,7 +35,7 @@ public class GetTransactionDetailsForGivenBatchId{
 			apiClient.merchantConfig = merchantConfig;
 
 			TransactionBatchesApi apiInstance = new TransactionBatchesApi(apiClient);
-			ApiResponse<InputStream> responseStream = apiInstance.getTransactionBatchDetailsWithHttpInfo( id );
+			ApiResponse<InputStream> responseStream = apiInstance.getTransactionBatchDetailsWithHttpInfo( id, null, null );
 			
 			String contentType = responseStream.getHeaders().get("Content-Type").get(0);
 			

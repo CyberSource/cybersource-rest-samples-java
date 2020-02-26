@@ -1,4 +1,4 @@
-package samples.decisionManager.coreServices;
+package samples.riskManagement.coreServices;
 
 import java.util.Properties;
 
@@ -14,14 +14,17 @@ import Model.Riskv1decisionsClientReferenceInformation;
 import Model.Riskv1decisionsOrderInformation;
 import Model.Riskv1decisionsOrderInformationAmountDetails;
 import Model.Riskv1decisionsOrderInformationBillTo;
+import Model.Riskv1decisionsOrderInformationShipTo;
 import Model.Riskv1decisionsPaymentInformation;
 import Model.Riskv1decisionsPaymentInformationCard;
+import Model.Riskv1decisionsRiskInformation;
+import Model.Riskv1decisionsRiskInformationProfile;
 /**
  * 
- * This is the sample code for basic Decision Manager Request 
+ * This is the sample code for score Exceeds Threshold
  *
  */
-public class CreateDecisionManagerCase {
+public class ScoreExceedsThreshold {
 	private static Properties merchantProp;
 	private static String responseCode = null;
 	private static String status = null;
@@ -29,7 +32,7 @@ public class CreateDecisionManagerCase {
 	
 	
 	/**
-	 * Function to create Decision Manager Case Request
+	 * sample request to simulate score exceeds threshold
 	 * @return
 	 * @throws Exception
 	 */
@@ -57,7 +60,19 @@ public class CreateDecisionManagerCase {
 		riskv1decisionsOrderInformationAmountDetails.setTotalAmount("144.14");
 		riskv1decisionsOrderInformationAmountDetails.setCurrency("USD");
 		riskv1decisionsOrderInformation.amountDetails(riskv1decisionsOrderInformationAmountDetails);
-	
+		
+		// Set Ship to information
+		Riskv1decisionsOrderInformationShipTo riskv1decisionsOrderInformationShipTo= new Riskv1decisionsOrderInformationShipTo();
+		riskv1decisionsOrderInformationShipTo.address1("96, powers street");
+		riskv1decisionsOrderInformationShipTo.address2("");
+		riskv1decisionsOrderInformationShipTo.administrativeArea("KA");
+		riskv1decisionsOrderInformationShipTo.country("INDIA");
+		riskv1decisionsOrderInformationShipTo.locality("Clearwater milford");
+		riskv1decisionsOrderInformationShipTo.firstName("James");
+		riskv1decisionsOrderInformationShipTo.lastName("Smith");
+		riskv1decisionsOrderInformationShipTo.setPhoneNumber("7606160717");
+		riskv1decisionsOrderInformationShipTo.setPostalCode("560056");
+		riskv1decisionsOrderInformation.shipTo(riskv1decisionsOrderInformationShipTo);
 		
 		// set bill to information
 		Riskv1decisionsOrderInformationBillTo riskv1decisionsOrderInformationBillTo= new Riskv1decisionsOrderInformationBillTo();
@@ -73,6 +88,16 @@ public class CreateDecisionManagerCase {
 		riskv1decisionsOrderInformation.billTo(riskv1decisionsOrderInformationBillTo);
 		createDecisionManagerCaseRequest.orderInformation(riskv1decisionsOrderInformation);
 		
+		
+		// set risk information details with the profile info
+		Riskv1decisionsRiskInformation riskv1decisionsRiskInformation= new Riskv1decisionsRiskInformation();
+		
+		// set the profile info which needs to be rejected
+		Riskv1decisionsRiskInformationProfile riskv1decisionsRiskInformationProfile= new Riskv1decisionsRiskInformationProfile();
+		riskv1decisionsRiskInformationProfile.name("profile2");
+		riskv1decisionsRiskInformation.setProfile(riskv1decisionsRiskInformationProfile);
+		createDecisionManagerCaseRequest.riskInformation(riskv1decisionsRiskInformation);
+		
 		return createDecisionManagerCaseRequest;
 	}
 	public static void main(String args[]) throws Exception{
@@ -80,7 +105,7 @@ public class CreateDecisionManagerCase {
 		{
 			CreateDecisionManagerCaseRequest createDecisionManagerCaseRequest=null;
 		// Create the Create Decision Manager Request 
-			createDecisionManagerCaseRequest=getRequest(createDecisionManagerCaseRequest);
+					createDecisionManagerCaseRequest=getRequest(createDecisionManagerCaseRequest);
 		
 		// set Merchant Details
 					merchantProp = Configuration.getMerchantDetails();
@@ -88,8 +113,8 @@ public class CreateDecisionManagerCase {
 					MerchantConfig merchantConfig = new MerchantConfig(merchantProp);
 					
 					ApiClient apiClient = new ApiClient();
-					apiClient.merchantConfig = merchantConfig;
 					
+					apiClient.merchantConfig = merchantConfig;	
 					DecisionManagerApi decisionManagerApi= new DecisionManagerApi(apiClient);	
 					response=decisionManagerApi.createDecisionManagerCase(createDecisionManagerCaseRequest);
 					responseCode = apiClient.responseCode;

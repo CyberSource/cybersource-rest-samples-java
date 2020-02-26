@@ -1,4 +1,4 @@
-package samples.decisionManager.coreServices;
+package samples.riskManagement.coreServices;
 
 import java.util.Properties;
 

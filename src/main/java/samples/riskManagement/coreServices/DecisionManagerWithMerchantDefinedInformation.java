@@ -1,5 +1,7 @@
-package samples.decisionManager.coreServices;
+package samples.riskManagement.coreServices;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Properties;
 
 import com.cybersource.authsdk.core.MerchantConfig;
@@ -8,23 +10,23 @@ import Api.DecisionManagerApi;
 import Data.Configuration;
 import Invokers.ApiClient;
 import Invokers.ApiException;
+import Model.CreateDecisionManagerCaseRequest;
+import Model.RiskV1DecisionsPost201Response;
 import Model.Riskv1decisionsClientReferenceInformation;
+import Model.Riskv1decisionsMerchantDefinedInformation;
 import Model.Riskv1decisionsOrderInformation;
 import Model.Riskv1decisionsOrderInformationAmountDetails;
 import Model.Riskv1decisionsOrderInformationBillTo;
-import Model.Riskv1decisionsOrderInformationShipTo;
 import Model.Riskv1decisionsPaymentInformation;
-import Model.CreateDecisionManagerCaseRequest;
-import Model.RiskV1DecisionsPost201Response;
 import Model.Riskv1decisionsPaymentInformationCard;
 
 /**
  * 
- * This is the sample code for Decision Manager Request With Details of Shipping
- * information
+ * This is the sample code for Decision Manager Request With Details of Merchant
+ * Defined Information
  *
  */
-public class DecisionManagerWithShippingInformation {
+public class DecisionManagerWithMerchantDefinedInformation {
 	private static Properties merchantProp;
 	private static String responseCode = null;
 	private static String status = null;
@@ -60,19 +62,6 @@ public class DecisionManagerWithShippingInformation {
 		riskv1decisionsOrderInformationAmountDetails.setCurrency("USD");
 		riskv1decisionsOrderInformation.amountDetails(riskv1decisionsOrderInformationAmountDetails);
 
-		// Set Ship to information
-		Riskv1decisionsOrderInformationShipTo riskv1decisionsOrderInformationShipTo = new Riskv1decisionsOrderInformationShipTo();
-		riskv1decisionsOrderInformationShipTo.address1("96, powers street");
-		riskv1decisionsOrderInformationShipTo.address2("");
-		riskv1decisionsOrderInformationShipTo.administrativeArea("KA");
-		riskv1decisionsOrderInformationShipTo.country("INDIA");
-		riskv1decisionsOrderInformationShipTo.locality("Clearwater milford");
-		riskv1decisionsOrderInformationShipTo.firstName("James");
-		riskv1decisionsOrderInformationShipTo.lastName("Smith");
-		riskv1decisionsOrderInformationShipTo.setPhoneNumber("7606160717");
-		riskv1decisionsOrderInformationShipTo.setPostalCode("560056");
-		riskv1decisionsOrderInformation.shipTo(riskv1decisionsOrderInformationShipTo);
-
 		// set bill to information
 		Riskv1decisionsOrderInformationBillTo riskv1decisionsOrderInformationBillTo = new Riskv1decisionsOrderInformationBillTo();
 		riskv1decisionsOrderInformationBillTo.address1("96, powers street");
@@ -85,14 +74,29 @@ public class DecisionManagerWithShippingInformation {
 		riskv1decisionsOrderInformationBillTo.postalCode("03055");
 		riskv1decisionsOrderInformationBillTo.administrativeArea("NH");
 		riskv1decisionsOrderInformation.billTo(riskv1decisionsOrderInformationBillTo);
-
 		createDecisionManagerCaseRequest.orderInformation(riskv1decisionsOrderInformation);
+
+		// Set Merchant Defined Information Details
+
+		List<Riskv1decisionsMerchantDefinedInformation> riskv1decisionsMerchantDefinedInformationList = new ArrayList<Riskv1decisionsMerchantDefinedInformation>();
+		Riskv1decisionsMerchantDefinedInformation riskv1decisionsMerchantDefinedInformation0 = new Riskv1decisionsMerchantDefinedInformation();
+		riskv1decisionsMerchantDefinedInformation0.key("1");
+		riskv1decisionsMerchantDefinedInformation0.value("Test1");
+		riskv1decisionsMerchantDefinedInformationList.add(riskv1decisionsMerchantDefinedInformation0);
+
+		Riskv1decisionsMerchantDefinedInformation riskv1decisionsMerchantDefinedInformation1 = new Riskv1decisionsMerchantDefinedInformation();
+		riskv1decisionsMerchantDefinedInformation1.key("2");
+		riskv1decisionsMerchantDefinedInformation1.value("Test2");
+		riskv1decisionsMerchantDefinedInformationList.add(riskv1decisionsMerchantDefinedInformation1);
+
+		createDecisionManagerCaseRequest.setMerchantDefinedInformation(riskv1decisionsMerchantDefinedInformationList);
 		return createDecisionManagerCaseRequest;
 	}
 
 	public static void main(String args[]) throws Exception {
 		try {
 			CreateDecisionManagerCaseRequest createDecisionManagerCaseRequest = null;
+
 			// Create the Create Decision Manager Request
 			createDecisionManagerCaseRequest = getRequest(createDecisionManagerCaseRequest);
 

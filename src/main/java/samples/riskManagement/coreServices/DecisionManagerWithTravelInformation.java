@@ -1,4 +1,4 @@
-package samples.decisionManager.coreServices;
+package samples.riskManagement.coreServices;
 
 import java.util.Properties;
 
@@ -9,23 +9,23 @@ import Data.Configuration;
 import Invokers.ApiClient;
 import Invokers.ApiException;
 import Model.CreateDecisionManagerCaseRequest;
-import Model.Ptsv2paymentsBuyerInformationPersonalIdentification;
 import Model.RiskV1DecisionsPost201Response;
-import Model.Riskv1decisionsBuyerInformation;
 import Model.Riskv1decisionsClientReferenceInformation;
 import Model.Riskv1decisionsOrderInformation;
 import Model.Riskv1decisionsOrderInformationAmountDetails;
 import Model.Riskv1decisionsOrderInformationBillTo;
 import Model.Riskv1decisionsPaymentInformation;
 import Model.Riskv1decisionsPaymentInformationCard;
+import Model.Riskv1decisionsTravelInformation;
+import Model.Riskv1decisionsTravelInformationLegs;
 
 /**
  * 
- * This is the sample code for Decision Manager Request With Details of Buyer
+ * This is the sample code for Decision Manager Request With Details of Travel
  * information
  *
  */
-public class DecisionManagerWithBuyerInformation {
+public class DecisionManagerWithTravelInformation {
 	private static Properties merchantProp;
 	private static String responseCode = null;
 	private static String status = null;
@@ -75,19 +75,26 @@ public class DecisionManagerWithBuyerInformation {
 		riskv1decisionsOrderInformation.billTo(riskv1decisionsOrderInformationBillTo);
 		createDecisionManagerCaseRequest.orderInformation(riskv1decisionsOrderInformation);
 
-		// set Buyer information details
-		Riskv1decisionsBuyerInformation riskv1decisionsBuyerInformation = new Riskv1decisionsBuyerInformation();
-		riskv1decisionsBuyerInformation.hashedPassword("");
-		riskv1decisionsBuyerInformation.dateOfBirth("1998-05-05");
+		// Set Travel Information Details
+		Riskv1decisionsTravelInformation riskv1decisionsTravelInformation = new Riskv1decisionsTravelInformation();
+		riskv1decisionsTravelInformation.completeRoute("SFO-JFK:JFK-BLR");
+		riskv1decisionsTravelInformation.journeyType("One way");
 
-		// set Personal Information of the buyer
-		Ptsv2paymentsBuyerInformationPersonalIdentification ptsv2paymentsBuyerInformationPersonalIdentification0 = new Ptsv2paymentsBuyerInformationPersonalIdentification();
-		ptsv2paymentsBuyerInformationPersonalIdentification0.type("CPF");
-		ptsv2paymentsBuyerInformationPersonalIdentification0.id("1a23apwe98");
-		riskv1decisionsBuyerInformation
-				.addPersonalIdentificationItem(ptsv2paymentsBuyerInformationPersonalIdentification0);
+		// Set Travel leg information
 
-		createDecisionManagerCaseRequest.buyerInformation(riskv1decisionsBuyerInformation);
+		// set Travel Leg1 details
+		Riskv1decisionsTravelInformationLegs riskv1decisionsTravelInformationLegs0 = new Riskv1decisionsTravelInformationLegs();
+		riskv1decisionsTravelInformationLegs0.origination("SFO");
+		riskv1decisionsTravelInformationLegs0.destination("JFK");
+		riskv1decisionsTravelInformation.addLegsItem(riskv1decisionsTravelInformationLegs0);
+
+		// set Travel leg2 details
+		Riskv1decisionsTravelInformationLegs riskv1decisionsTravelInformationLegs1 = new Riskv1decisionsTravelInformationLegs();
+		riskv1decisionsTravelInformationLegs1.origination("JFK");
+		riskv1decisionsTravelInformationLegs1.destination("BLR");
+		riskv1decisionsTravelInformation.addLegsItem(riskv1decisionsTravelInformationLegs1);
+
+		createDecisionManagerCaseRequest.setTravelInformation(riskv1decisionsTravelInformation);
 		return createDecisionManagerCaseRequest;
 	}
 
