@@ -8,7 +8,7 @@ import Data.Configuration;
 import Invokers.ApiClient;
 import Model.*;
 
-public class VerboseRequestWithAllFields {
+public class VerifyCustomerAddress {
 	private static String responseCode = null;
 	private static String status = null;
 	private static Properties merchantProp;
