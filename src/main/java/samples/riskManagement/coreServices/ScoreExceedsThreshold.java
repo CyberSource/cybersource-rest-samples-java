@@ -9,6 +9,7 @@ import Data.Configuration;
 import Invokers.ApiClient;
 import Invokers.ApiException;
 import Model.CreateDecisionManagerCaseRequest;
+import Model.Ptsv2paymentsRiskInformationProfile;
 import Model.RiskV1DecisionsPost201Response;
 import Model.Riskv1decisionsClientReferenceInformation;
 import Model.Riskv1decisionsOrderInformation;
@@ -18,7 +19,6 @@ import Model.Riskv1decisionsOrderInformationShipTo;
 import Model.Riskv1decisionsPaymentInformation;
 import Model.Riskv1decisionsPaymentInformationCard;
 import Model.Riskv1decisionsRiskInformation;
-import Model.Riskv1decisionsRiskInformationProfile;
 /**
  * 
  * This is the sample code for score Exceeds Threshold
@@ -93,7 +93,7 @@ public class ScoreExceedsThreshold {
 		Riskv1decisionsRiskInformation riskv1decisionsRiskInformation= new Riskv1decisionsRiskInformation();
 		
 		// set the profile info which needs to be rejected
-		Riskv1decisionsRiskInformationProfile riskv1decisionsRiskInformationProfile= new Riskv1decisionsRiskInformationProfile();
+		Ptsv2paymentsRiskInformationProfile riskv1decisionsRiskInformationProfile= new Ptsv2paymentsRiskInformationProfile();
 		riskv1decisionsRiskInformationProfile.name("profile2");
 		riskv1decisionsRiskInformation.setProfile(riskv1decisionsRiskInformationProfile);
 		createDecisionManagerCaseRequest.riskInformation(riskv1decisionsRiskInformation);

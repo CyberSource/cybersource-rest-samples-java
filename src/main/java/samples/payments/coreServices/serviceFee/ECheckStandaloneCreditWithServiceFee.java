@@ -45,7 +45,6 @@ public class ECheckStandaloneCreditWithServiceFee {
 		billTo.phoneNumber("4158880000");
 		billTo.address1("1 Market St");
 		billTo.postalCode("94105");
-		billTo.company("ABC Company");
 		billTo.locality("san francisco");
 		billTo.administrativeArea("CA");
 		billTo.email("test@cybs.com");

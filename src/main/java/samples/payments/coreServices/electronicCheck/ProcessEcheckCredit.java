@@ -49,7 +49,6 @@ public class ProcessEcheckCredit {
 		billTo.address1("1 Market St");
 		billTo.postalCode("94105");
 		billTo.locality("san francisco");
-		billTo.company("ABC Company");
 		billTo.administrativeArea("MI");
 		billTo.email("test@cybs.com");
 
