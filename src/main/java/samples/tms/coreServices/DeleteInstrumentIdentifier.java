@@ -16,7 +16,7 @@ import Invokers.ApiException;
  */
 public class DeleteInstrumentIdentifier {
 	private static String profileId = "93B32398-AD51-4CC2-A682-EA3E93614EB1";
-	private static String tokenId = "7020000000001185934";
+	private static String tokenId = "7010000000004697654";
 	private static String responseCode = null;
 	private static String status = null;
 	private static Properties merchantProp;

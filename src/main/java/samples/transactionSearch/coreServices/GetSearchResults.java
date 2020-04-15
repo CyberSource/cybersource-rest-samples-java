@@ -13,7 +13,7 @@ public class GetSearchResults {
 
 	private static String responseCode = null;
 	private static String status = null;
-	private static String id = "a385f569-b97c-4ef8-8a0d-b0fc3073b777";
+	private static String id = "09c93a61-2517-431a-b5d5-a516550f6d98";
 	private static Properties merchantProp;
 
 	public static void main(String args[]) throws Exception {

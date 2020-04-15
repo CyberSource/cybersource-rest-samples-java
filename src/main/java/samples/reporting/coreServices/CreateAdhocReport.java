@@ -28,15 +28,15 @@ public class CreateAdhocReport {
 		request.reportDefinitionName("TransactionRequestClass");
 		request.timezone("GMT");
 		request.reportMimeType("application/xml");
-		request.reportName("testrest dec V70");
+		request.reportName("testrest April V70");
 
-		String timeString = "2018-09-02T12:00:00+05:00";
+		String timeString = "2020-03-02T12:00:00+05:00";
 		DateTime ddateTime = new DateTime(timeString);
 		DateTime startTime = ddateTime.withZone(DateTimeZone.forID("Asia/Dushanbe"));
 		request.reportStartTime(startTime);
 		
 
-		String timeString2 = "2018-09-03T12:00:00+05:00";
+		String timeString2 = "2020-03-03T12:00:00+05:00";
 		DateTime ddateTime2 = new DateTime(timeString2);
 		DateTime endTime = ddateTime2.withZone(DateTimeZone.forID("Asia/Dushanbe"));
 		request.reportEndTime(endTime);
@@ -80,7 +80,6 @@ public class CreateAdhocReport {
 			status = apiClient.status;
 			System.out.println("ResponseCode :" + responseCode);
 			System.out.println("ResponseMessage :" + status);
-			System.out.println(apiClient.responseBody.toString());
 			
 
 		} catch (ApiException e) {

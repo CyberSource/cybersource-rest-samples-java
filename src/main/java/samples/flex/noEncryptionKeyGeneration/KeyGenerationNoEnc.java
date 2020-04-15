@@ -43,7 +43,7 @@ public class KeyGenerationNoEnc {
 			apiClient.merchantConfig = merchantConfig;	
 			
 			KeyGenerationApi keyGenerationApi = new KeyGenerationApi(apiClient);
-			response = keyGenerationApi.generatePublicKey(request);
+			response = keyGenerationApi.generatePublicKey(request, null);
 			System.out.println("ResponseCode :" +apiClient.responseCode);
 			System.out.println("Status :" +apiClient.status);
 			System.out.println(apiClient.respBody);

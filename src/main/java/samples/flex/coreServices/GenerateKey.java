@@ -45,7 +45,7 @@ public class GenerateKey {
 			apiClient.merchantConfig = merchantConfig;	
 			
 			KeyGenerationApi keyGenerationApi = new KeyGenerationApi(apiClient);
-			response = keyGenerationApi.generatePublicKey(request);
+			response = keyGenerationApi.generatePublicKey(request, null);
 
 			responseCode = apiClient.responseCode;
 			status = apiClient.status;

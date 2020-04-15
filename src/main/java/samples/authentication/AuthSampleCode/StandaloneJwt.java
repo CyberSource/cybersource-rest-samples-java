@@ -116,7 +116,7 @@ public class StandaloneJwt {
 	private static int getCall(String request) {
 		int responseStatus = 0;
 		
-		String resource = "/reporting/v3/reports?startTime=2018-10-01T00:00:00.0Z&endTime=2018-10-30T23:59:59.0Z&timeQueryType=executedTime&reportMimeType=application/xml";
+		String resource = "/reporting/v3/reports?startTime=2020-04-01T00:00:00.0Z&endTime=2020-04-05T23:59:59.0Z&timeQueryType=executedTime&reportMimeType=application/xml";
 		
 		/* HTTP connection */
         URL url;

@@ -21,11 +21,11 @@ public class GetNotificationOfChanges {
 	
 	private static Properties merchantProp;
 	
-	private static String timeString = "2019-03-01T12:00:00-05:00";
+	private static String timeString = "2020-03-01T12:00:00-05:00";
 	private static DateTime ddateTime = new DateTime(timeString);
 	private static DateTime startTime = ddateTime.withZone(DateTimeZone.forID("America/Atikokan"));
 	
-	private static String timeString2 = "2019-06-30T12:00:00-05:00";
+	private static String timeString2 = "2020-03-30T12:00:00-05:00";
 	private static DateTime ddateTime2 = new DateTime(timeString2);
 	private static DateTime endTime = ddateTime2.withZone(DateTimeZone.forID("America/Atikokan"));
 

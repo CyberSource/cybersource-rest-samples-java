@@ -84,7 +84,7 @@ public class StandaloneHttpSignature {
         http.sendPost("https://" + requestHost + resource);
 
         // GET Example for Reports
-        resource = "/reporting/v3/reports?startTime=2018-10-01T00:00:00.0Z&endTime=2018-10-30T23:59:59.0Z&timeQueryType=executedTime&reportMimeType=application/xml";
+        resource = "/reporting/v3/reports?startTime=2020-04-01T00:00:00.0Z&endTime=2020-04-05T23:59:59.0Z&timeQueryType=executedTime&reportMimeType=application/xml";
         
         System.out.println("\n\nSample 2: GET call - CyberSource Reporting API - HTTP GET Reporting request");
         http.sendGet("https://" + requestHost + resource);

@@ -19,8 +19,8 @@ public class GetNetfundingInformationForAccountOrMerchant {
 	private static String responseCode = null;
 	private static String status = null;
 	private static String organizationId="testrest";
-	private static DateTime startTime=new DateTime ("2018-10-01T00:00:00.0Z");
-	private static DateTime endTime=new DateTime ("2018-10-30T23:59:59.0Z");
+	private static DateTime startTime=new DateTime ("2020-03-01T00:00:00.0Z");
+	private static DateTime endTime=new DateTime ("2020-03-30T23:59:59.0Z");
 	private static String groupName="groupName"; 
 	private static Properties merchantProp;
 

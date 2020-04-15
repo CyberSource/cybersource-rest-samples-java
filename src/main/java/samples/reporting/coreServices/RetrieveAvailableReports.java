@@ -18,11 +18,11 @@ public class RetrieveAvailableReports {
 	private static String status = null;
 	private static Properties merchantProp;
 
-	private static String timeString="2018-08-02T00:00:00.0Z";
+	private static String timeString="2020-03-02T00:00:00.0Z";
 	private static DateTime ddateTime = new DateTime(timeString);
 	private static DateTime startTime = ddateTime.withZone(DateTimeZone.forID("GMT"));
 	
-	private static String timeString2 = "2018-08-10T23:59:59.0Z";
+	private static String timeString2 = "2020-03-10T23:59:59.0Z";
 	private static DateTime ddateTime2 = new DateTime(timeString2);
 	private static DateTime endTime = ddateTime2.withZone(DateTimeZone.forID("GMT"));
 	
