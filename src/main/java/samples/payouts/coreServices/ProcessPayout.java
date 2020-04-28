@@ -10,6 +10,7 @@ import Invokers.ApiClient;
 import Invokers.ApiException;
 import Model.OctCreatePaymentRequest;
 import Model.PtsV2IncrementalAuthorizationPatch201ResponseClientReferenceInformation;
+import Model.Ptsv2payoutsClientReferenceInformation;
 import Model.Ptsv2payoutsMerchantInformation;
 import Model.Ptsv2payoutsMerchantInformationMerchantDescriptor;
 import Model.Ptsv2payoutsOrderInformation;
@@ -32,7 +33,7 @@ public class ProcessPayout {
 	private static OctCreatePaymentRequest getRequest() {
 		request = new OctCreatePaymentRequest();
 
-		PtsV2IncrementalAuthorizationPatch201ResponseClientReferenceInformation client = new PtsV2IncrementalAuthorizationPatch201ResponseClientReferenceInformation();
+		Ptsv2payoutsClientReferenceInformation client = new Ptsv2payoutsClientReferenceInformation();
 		client.code("33557799");
 		request.clientReferenceInformation(client);
 

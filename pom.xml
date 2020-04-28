@@ -9,11 +9,11 @@
 	<name>SampleCode</name>
 	<url>http://maven.apache.org</url>
 	<dependencies>
-		<!-- rest client dependency -->
-		<dependency>
+ 		<!-- rest client dependency -->
+ 		<dependency>
 			<groupId>com.cybersource</groupId>
 			<artifactId>cybersource-rest-client-java</artifactId>
-			<version>0.0.20</version>
+			<version>0.0.22</version>
 		</dependency>
 		<!-- Sample API Client dependency -->
 		<dependency>
