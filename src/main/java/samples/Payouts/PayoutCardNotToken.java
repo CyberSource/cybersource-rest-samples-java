@@ -29,7 +29,7 @@ public class PayoutCardNotToken {
 	
 		OctCreatePaymentRequest requestObj = new OctCreatePaymentRequest();
 
-		PtsV2IncrementalAuthorizationPatch201ResponseClientReferenceInformation clientReferenceInformation = new PtsV2IncrementalAuthorizationPatch201ResponseClientReferenceInformation();
+		Ptsv2payoutsClientReferenceInformation clientReferenceInformation = new Ptsv2payoutsClientReferenceInformation();
 		clientReferenceInformation.code("33557799");
 		requestObj.clientReferenceInformation(clientReferenceInformation);
 

@@ -48,7 +48,6 @@ public class CreateClassicStandardReportSubscription {
 			status = apiClient.status;
 			System.out.println("ResponseCode :" + responseCode);
 			System.out.println("ResponseMessage :" + status);
-			System.out.println(apiClient.responseBody.toString());
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

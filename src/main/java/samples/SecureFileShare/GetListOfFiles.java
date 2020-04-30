@@ -27,8 +27,8 @@ public class GetListOfFiles {
 
 	public static V1FileDetailsGet200Response run() {
 	
-		LocalDate startDate = new LocalDate("2018-10-20");
-		LocalDate endDate = new LocalDate("2018-10-30");
+		LocalDate startDate = new LocalDate("2020-03-20");
+		LocalDate endDate = new LocalDate("2020-03-30");
 		String organizationId = "testrest";
 
 		V1FileDetailsGet200Response result = null;
@@ -39,7 +39,7 @@ public class GetListOfFiles {
 			apiClient.merchantConfig = merchantConfig;
 
 			SecureFileShareApi apiInstance = new SecureFileShareApi(apiClient);
-			result = apiInstance.getFileDetail(startDate, endDate, organizationId);
+			result = apiInstance.getFileDetail(startDate, endDate, organizationId, null);
 
 			responseCode = apiClient.responseCode;
 			status = apiClient.status;

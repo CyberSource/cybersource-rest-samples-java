@@ -32,9 +32,8 @@ public class DownloadReport {
 	public static void run() {
 	
 		String organizationId = "testrest";
-		LocalDate reportDate = new LocalDate("2018-09-30");
-		String reportName = "Demo_Report";
-		String reportTime = "00:00:00Z";
+		LocalDate reportDate = new LocalDate("2020-03-03");
+		String reportName = "testrest_subcription_v2989";
 
 		try {
 			merchantProp = Configuration.getMerchantDetails();
@@ -43,7 +42,7 @@ public class DownloadReport {
 			apiClient.merchantConfig = merchantConfig;
 
 			ReportDownloadsApi apiInstance = new ReportDownloadsApi(apiClient);
-			ApiResponse<InputStream> responseStream = apiInstance.downloadReportWithHttpInfo(reportDate, reportName, organizationId, reportTime);
+			ApiResponse<InputStream> responseStream = apiInstance.downloadReportWithHttpInfo(reportDate, reportName, organizationId);
 
 			// START : FILE DOWNLOAD FUNCTIONALITY
 

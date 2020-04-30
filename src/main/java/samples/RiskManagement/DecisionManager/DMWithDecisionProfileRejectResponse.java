@@ -63,7 +63,7 @@ public class DMWithDecisionProfileRejectResponse {
 		requestObj.orderInformation(orderInformation);
 
 		Riskv1decisionsRiskInformation riskInformation = new Riskv1decisionsRiskInformation();
-		Riskv1decisionsRiskInformationProfile riskInformationProfile = new Riskv1decisionsRiskInformationProfile();
+		Ptsv2paymentsRiskInformationProfile riskInformationProfile = new Ptsv2paymentsRiskInformationProfile();
 		riskInformationProfile.name("profile2");
 		riskInformation.profile(riskInformationProfile);
 
