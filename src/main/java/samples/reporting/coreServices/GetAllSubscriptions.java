@@ -11,6 +11,7 @@ import Invokers.ApiException;
 
 public class GetAllSubscriptions {
 
+	private static String organizationId = "testrest";
 	private static String responseCode = null;
 	private static String status = null;
 	private static Properties merchantProp;
@@ -30,7 +31,7 @@ public class GetAllSubscriptions {
 			apiClient.merchantConfig = merchantConfig;	
 			
 			ReportSubscriptionsApi reportSubscriptionsApi = new ReportSubscriptionsApi(apiClient);
-			reportSubscriptionsApi.getAllSubscriptions();
+			reportSubscriptionsApi.getAllSubscriptions(organizationId);
 
 			responseCode = apiClient.responseCode;
 			status = apiClient.status;

@@ -431,3 +431,229 @@
 2019-07-30 15:54:54.480 [main] INFO   - ********* END   *********
 2019-07-30 15:54:54.480 [main] OFF    - 
 
+2020-05-13 11:39:18.894 [main] INFO   - ********* START ********* Delete Generate Headers *******************
+2020-05-13 11:39:18.903 [main] INFO   - KeyFile, Entered path/file name :: src/main/resources/testrest.p12
+2020-05-13 11:39:18.904 [main] INFO   - KeyFile, Entered path/file name :: src/main/resources/testrest.p12
+2020-05-13 11:39:18.904 [main] INFO   - Authentication Type : jwt
+2020-05-13 11:39:18.904 [main] INFO   - Request Type : DELETE
+2020-05-13 11:39:18.905 [main] INFO   - Date : Wed, 13 May 2020 06:09:18 GMT
+2020-05-13 11:39:18.905 [main] INFO   - Host : apitest.cybersource.com
+2020-05-13 11:39:18.905 [main] INFO   - v-c-merchant-id : testrest
+2020-05-13 11:39:18.917 [main] INFO   -  Empty Cache :: Adding Data
+2020-05-13 11:39:18.932 [main] INFO   - Content-Type : application/json
+2020-05-13 11:39:18.932 [main] INFO   - ********* END   *********
+2020-05-13 11:39:18.934 [main] OFF    - 
+
+2020-05-13 11:39:21.933 [main] INFO   - ********* START *********
+2020-05-13 11:39:21.933 [main] INFO   - KeyFile, Entered path/file name :: src/main/resources/testrest.p12
+2020-05-13 11:39:21.934 [main] INFO   - Authentication Type : jwt
+2020-05-13 11:39:21.942 [main] INFO   - Content-Type : application/json
+2020-05-13 11:39:21.942 [main] INFO   - Request Type : DELETE
+2020-05-13 11:39:21.943 [main] INFO   -  Data present in Cache :: Extracting Data
+2020-05-13 11:39:23.136 [main] INFO   - Status Information :: Transaction Successful
+2020-05-13 11:39:23.137 [main] INFO   - Response Code : 200
+2020-05-13 11:39:23.137 [main] INFO   - v-c-correlation-id : a3afb54f-e536-4de2-a284-16f4a417b54a
+2020-05-13 11:39:23.140 [main] INFO   - Response Message : null
+2020-05-13 11:39:23.140 [main] INFO   - ********* END   *********
+2020-05-13 11:39:23.140 [main] OFF    - 
+
+2020-05-13 11:39:23.141 [main] INFO   - KeyFile, Entered path/file name :: src/main/resources/testrest.p12
+2020-05-13 11:39:23.141 [main] INFO   - Authentication Type : jwt
+2020-05-13 11:39:23.141 [main] INFO   - Request Type : DELETE
+2020-05-13 11:39:23.141 [main] INFO   - Date : Wed, 13 May 2020 06:09:23 GMT
+2020-05-13 11:39:23.142 [main] INFO   - Host : apitest.cybersource.com
+2020-05-13 11:39:23.142 [main] INFO   - v-c-merchant-id : testrest
+2020-05-13 11:39:23.142 [main] INFO   -  Data present in Cache :: Extracting Data
+2020-05-13 11:39:23.149 [main] INFO   - Content-Type : application/json
+2020-05-13 11:39:26.143 [main] INFO   - ********* START ********* Generate GET Headers *******************
+2020-05-13 11:39:26.143 [main] INFO   - KeyFile, Entered path/file name :: src/main/resources/testrest.p12
+2020-05-13 11:39:26.144 [main] INFO   - Authentication Type : jwt
+2020-05-13 11:39:26.144 [main] INFO   - Request Type : GET
+2020-05-13 11:39:26.145 [main] INFO   - v-c-merchant-id : testrest
+2020-05-13 11:39:26.145 [main] INFO   - Date : Wed, 13 May 2020 06:09:26 GMT
+2020-05-13 11:39:26.145 [main] INFO   - GET_ID : 5265502011846829204101
+2020-05-13 11:39:26.145 [main] INFO   - Host : apitest.cybersource.com
+2020-05-13 11:39:26.145 [main] INFO   -  Data present in Cache :: Extracting Data
+2020-05-13 11:39:26.151 [main] INFO   - Content-Type : application/json
+2020-05-13 11:39:26.151 [main] INFO   - ********* END   *********
+2020-05-13 11:39:26.152 [main] OFF    - 
+
+2020-05-13 11:39:29.146 [main] INFO   - ********* START *********
+2020-05-13 11:39:29.146 [main] INFO   - KeyFile, Entered path/file name :: src/main/resources/testrest.p12
+2020-05-13 11:39:29.147 [main] INFO   - Authentication Type : jwt
+2020-05-13 11:39:29.147 [main] INFO   - Content-Type : application/json
+2020-05-13 11:39:29.148 [main] INFO   - Request Type : GET
+2020-05-13 11:39:29.148 [main] INFO   - GETID : 5525469669016421003004
+2020-05-13 11:39:29.148 [main] INFO   -  Data present in Cache :: Extracting Data
+2020-05-13 11:39:30.300 [main] INFO   - Status Information :: Not Found
+2020-05-13 11:39:30.301 [main] INFO   - Response Code : 404
+2020-05-13 11:39:30.301 [main] INFO   - v-c-correlation-id : ba1b6a17-cf7f-40bd-999d-3f3eb687f9bf
+2020-05-13 11:39:30.303 [main] INFO   - Response Message : {"_links":{"self":{"href":"https://apitest.cybersource.com/payment/v1/tss/payments/5525469669016421003004"}},"invalidFields":null,"message":"The requested resource does not exist","messageKey":null,"missingFields":null}
+2020-05-13 11:39:30.303 [main] INFO   - ********* END   *********
+2020-05-13 11:39:30.303 [main] OFF    - 
+
+2020-05-13 11:39:37.463 [main] INFO   - ********* START ********* Generate POST Headers *******************
+2020-05-13 11:39:37.463 [main] INFO   - KeyFile, Entered path/file name :: src/main/resources/testrest.p12
+2020-05-13 11:39:37.464 [main] INFO   - Authentication Type : jwt
+2020-05-13 11:39:37.464 [main] INFO   - Request Type : POST
+2020-05-13 11:39:37.464 [main] INFO   - Date : Wed, 13 May 2020 06:09:37 GMT
+2020-05-13 11:39:37.465 [main] INFO   - v-c-merchant-id : testrest
+2020-05-13 11:39:37.465 [main] INFO   - Content-Type : application/json
+2020-05-13 11:39:37.465 [main] INFO   - Host : apitest.cybersource.com
+2020-05-13 11:39:37.467 [main] INFO   -  Data present in Cache :: Extracting Data
+2020-05-13 11:39:37.472 [main] INFO   - ********* END   *********
+2020-05-13 11:39:37.473 [main] OFF    - 
+
+2020-05-13 11:39:40.466 [main] INFO   - ********* START *********
+2020-05-13 11:39:40.467 [main] INFO   - KeyFile, Entered path/file name :: src/main/resources/testrest.p12
+2020-05-13 11:39:40.467 [main] INFO   - Authentication Type : jwt
+2020-05-13 11:39:40.468 [main] INFO   - Content-Type : application/json
+2020-05-13 11:39:40.468 [main] INFO   - Request Type : POST
+2020-05-13 11:39:40.469 [main] INFO   - ClaimSet : {"clientReferenceInformation":{"code":"TC50171_3"},"processingInformation":{"commerceIndicator":"internet"},"aggregatorInformation":{"subMerchant":{"cardAcceptorID":"1234567890","country":"US","phoneNumber":"650-432-0000","address1":"900 Metro Center","postalCode":"94404-2775","locality":"Foster City","name":"Visa Inc","administrativeArea":"CA","region":"PEN","email":"XXXXXXXXX"},"name":"V-Internatio","aggregatorID":"123456789"},"orderInformation":{"billTo":{"country":"US","lastName":"VDP","address2":"Address 2","address1":"201 S. Division St.","postalCode":"48104-2201","locality":"Ann Arbor","administrativeArea":"MI","firstName":"RTS","phoneNumber":"999999999","district":"MI","buildingNumber":"123","company":"Visa","email":"XXXXXXXXX"},"amountDetails":{"totalAmount":"102.21","currency":"XXXXXXXXX"}},"paymentInformation":{"card":{"expirationYear":"2031","number":"5555555555554444","securityCode":"123","expirationMonth":"XXXXXXXXX","type":"002"}}}
+2020-05-13 11:39:40.469 [main] INFO   -  Data present in Cache :: Extracting Data
+2020-05-13 11:39:41.964 [main] INFO   - Status Information :: Transaction Successful
+2020-05-13 11:39:41.965 [main] INFO   - Response Code : 201
+2020-05-13 11:39:41.965 [main] INFO   - v-c-correlation-id : f917e98d-f31b-42d6-9ef1-ec58391edebf
+2020-05-13 11:39:41.968 [main] INFO   - Response Message : {"_links":{"authReversal":{"method":"POST","href":"/pts/v2/payments/5893501809386886803002/reversals"},"self":{"method":"GET","href":"/pts/v2/payments/5893501809386886803002"},"capture":{"method":"POST","href":"/pts/v2/payments/5893501809386886803002/captures"}},"clientReferenceInformation":{"code":"TC50171_3"},"id":"5893501809386886803002","orderInformation":{"amountDetails":{"authorizedAmount":"102.21","currency":"XXXXXXXXX"}},"paymentAccountInformation":{"card":{"type":"002"}},"paymentInformation":{"tokenizedCard":{"type":"002"}},"processorInformation":{"approvalCode":"888888","authIndicator":"1","responseCode":"100","avs":{"code":"X","codeRaw":"I1"}},"reconciliationId":"79793470MA27L5R7","status":"AUTHORIZED","submitTimeUtc":"2020-05-13T06:09:41Z"}
+2020-05-13 11:39:41.969 [main] INFO   - ********* END   *********
+2020-05-13 11:39:41.970 [main] OFF    - 
+
+2020-05-13 11:39:49.529 [main] INFO   - ********* START ********* Generate PUT Headers *******************
+2020-05-13 11:39:49.530 [main] INFO   - KeyFile, Entered path/file name :: src/main/resources/testrest.p12
+2020-05-13 11:39:49.531 [main] INFO   - Authentication Type : jwt
+2020-05-13 11:39:49.531 [main] INFO   - Request Type : PUT
+2020-05-13 11:39:49.531 [main] INFO   - Date : Wed, 13 May 2020 06:09:49 GMT
+2020-05-13 11:39:49.531 [main] INFO   - v-c-merchant-id : testrest
+2020-05-13 11:39:49.531 [main] INFO   - Content-Type : application/json
+2020-05-13 11:39:49.532 [main] INFO   - Host : apitest.cybersource.com
+2020-05-13 11:39:49.532 [main] INFO   -  Data present in Cache :: Extracting Data
+2020-05-13 11:39:49.537 [main] INFO   - ********* END   *********
+2020-05-13 11:39:49.537 [main] OFF    - 
+
+2020-05-13 11:39:52.531 [main] INFO   - ********* START *********
+2020-05-13 11:39:52.531 [main] INFO   - KeyFile, Entered path/file name :: src/main/resources/testrest.p12
+2020-05-13 11:39:52.532 [main] INFO   - Authentication Type : jwt
+2020-05-13 11:39:52.533 [main] INFO   - Content-Type : application/json
+2020-05-13 11:39:52.533 [main] INFO   - Request Type : PUT
+2020-05-13 11:39:52.534 [main] INFO   - ClaimSet : {"startDay":"23","timeZone":"America/Chicago","reportDefinitionName":"TransactionRequestClass","startTime":"1100","reportFrequency":"DAILY","ReportName":"TRRReport","reportFormat":"csv","orgId":"testrest","reportType":"detail","reportFields":["Request.RequestID","Request.TransactionDate","Request.MerchantReferenceNumber","Request.MerchantID"]}
+2020-05-13 11:39:52.534 [main] INFO   -  Data present in Cache :: Extracting Data
+2020-05-13 11:39:54.820 [main] INFO   - Status Information :: Transaction Successful
+2020-05-13 11:39:54.820 [main] INFO   - Response Code : 201
+2020-05-13 11:39:54.820 [main] INFO   - v-c-correlation-id : 0e700b95-6966-417b-8253-9d8eacbf7e47
+2020-05-13 11:39:54.821 [main] INFO   - Response Message : {"_links":{"self":{"href":"https://apitest.cybersource.com/reporting/v2/reportSubscriptions/TRRReport?organizationId=testrest"}}}
+2020-05-13 11:39:54.822 [main] INFO   - ********* END   *********
+2020-05-13 11:39:54.822 [main] OFF    - 
+
+2020-05-13 12:38:00.979 [main] INFO   - ********* START ********* Delete Generate Headers *******************
+2020-05-13 12:38:00.995 [main] INFO   - KeyFile, Entered path/file name :: src/main/resources/testrest.p12
+2020-05-13 12:38:00.995 [main] INFO   - KeyFile, Entered path/file name :: src/main/resources/testrest.p12
+2020-05-13 12:38:00.995 [main] INFO   - Authentication Type : jwt
+2020-05-13 12:38:00.995 [main] INFO   - Request Type : DELETE
+2020-05-13 12:38:00.995 [main] INFO   - Date : Wed, 13 May 2020 07:08:00 GMT
+2020-05-13 12:38:00.995 [main] INFO   - Host : apitest.cybersource.com
+2020-05-13 12:38:00.995 [main] INFO   - v-c-merchant-id : testrest
+2020-05-13 12:38:01.011 [main] INFO   -  Empty Cache :: Adding Data
+2020-05-13 12:38:01.017 [main] INFO   - Content-Type : application/json
+2020-05-13 12:38:01.017 [main] INFO   - ********* END   *********
+2020-05-13 12:38:01.017 [main] OFF    - 
+
+2020-05-13 12:38:04.021 [main] INFO   - ********* START *********
+2020-05-13 12:38:04.022 [main] INFO   - KeyFile, Entered path/file name :: src/main/resources/testrest.p12
+2020-05-13 12:38:04.022 [main] INFO   - Authentication Type : jwt
+2020-05-13 12:38:04.022 [main] INFO   - Content-Type : application/json
+2020-05-13 12:38:04.022 [main] INFO   - Request Type : DELETE
+2020-05-13 12:38:04.022 [main] INFO   -  Data present in Cache :: Extracting Data
+2020-05-13 12:38:05.178 [main] INFO   - Status Information :: Transaction Successful
+2020-05-13 12:38:05.178 [main] INFO   - Response Code : 200
+2020-05-13 12:38:05.178 [main] INFO   - v-c-correlation-id : a43da258-3bc9-4e20-b95b-558ba52537ea
+2020-05-13 12:38:05.178 [main] INFO   - Response Message : null
+2020-05-13 12:38:05.193 [main] INFO   - ********* END   *********
+2020-05-13 12:38:05.193 [main] OFF    - 
+
+2020-05-13 12:38:05.193 [main] INFO   - KeyFile, Entered path/file name :: src/main/resources/testrest.p12
+2020-05-13 12:38:05.193 [main] INFO   - Authentication Type : jwt
+2020-05-13 12:38:05.193 [main] INFO   - Request Type : DELETE
+2020-05-13 12:38:05.193 [main] INFO   - Date : Wed, 13 May 2020 07:08:05 GMT
+2020-05-13 12:38:05.193 [main] INFO   - Host : apitest.cybersource.com
+2020-05-13 12:38:05.193 [main] INFO   - v-c-merchant-id : testrest
+2020-05-13 12:38:05.193 [main] INFO   -  Data present in Cache :: Extracting Data
+2020-05-13 12:38:05.198 [main] INFO   - Content-Type : application/json
+2020-05-13 12:38:08.214 [main] INFO   - ********* START ********* Generate GET Headers *******************
+2020-05-13 12:38:08.214 [main] INFO   - KeyFile, Entered path/file name :: src/main/resources/testrest.p12
+2020-05-13 12:38:08.214 [main] INFO   - Authentication Type : jwt
+2020-05-13 12:38:08.214 [main] INFO   - Request Type : GET
+2020-05-13 12:38:08.214 [main] INFO   - v-c-merchant-id : testrest
+2020-05-13 12:38:08.214 [main] INFO   - Date : Wed, 13 May 2020 07:08:08 GMT
+2020-05-13 12:38:08.214 [main] INFO   - GET_ID : 5265502011846829204101
+2020-05-13 12:38:08.214 [main] INFO   - Host : apitest.cybersource.com
+2020-05-13 12:38:08.214 [main] INFO   -  Data present in Cache :: Extracting Data
+2020-05-13 12:38:08.214 [main] INFO   - Content-Type : application/json
+2020-05-13 12:38:08.214 [main] INFO   - ********* END   *********
+2020-05-13 12:38:08.214 [main] OFF    - 
+
+2020-05-13 12:38:11.230 [main] INFO   - ********* START *********
+2020-05-13 12:38:11.231 [main] INFO   - KeyFile, Entered path/file name :: src/main/resources/testrest.p12
+2020-05-13 12:38:11.231 [main] INFO   - Authentication Type : jwt
+2020-05-13 12:38:11.231 [main] INFO   - Content-Type : application/json
+2020-05-13 12:38:11.231 [main] INFO   - Request Type : GET
+2020-05-13 12:38:11.231 [main] INFO   - GETID : 5525469669016421003004
+2020-05-13 12:38:11.231 [main] INFO   -  Data present in Cache :: Extracting Data
+2020-05-13 12:38:12.447 [main] INFO   - Status Information :: Not Found
+2020-05-13 12:38:12.447 [main] INFO   - Response Code : 404
+2020-05-13 12:38:12.448 [main] INFO   - v-c-correlation-id : a5e10e03-3480-4395-be92-454b8098238b
+2020-05-13 12:38:12.456 [main] INFO   - Response Message : {"_links":{"self":{"href":"https://apitest.cybersource.com/payment/v1/tss/payments/5525469669016421003004"}},"invalidFields":null,"message":"The requested resource does not exist","messageKey":null,"missingFields":null}
+2020-05-13 12:38:12.457 [main] INFO   - ********* END   *********
+2020-05-13 12:38:12.458 [main] OFF    - 
+
+2020-05-13 12:38:19.626 [main] INFO   - ********* START ********* Generate POST Headers *******************
+2020-05-13 12:38:19.626 [main] INFO   - KeyFile, Entered path/file name :: src/main/resources/testrest.p12
+2020-05-13 12:38:19.627 [main] INFO   - Authentication Type : jwt
+2020-05-13 12:38:19.627 [main] INFO   - Request Type : POST
+2020-05-13 12:38:19.627 [main] INFO   - Date : Wed, 13 May 2020 07:08:19 GMT
+2020-05-13 12:38:19.627 [main] INFO   - v-c-merchant-id : testrest
+2020-05-13 12:38:19.627 [main] INFO   - Content-Type : application/json
+2020-05-13 12:38:19.627 [main] INFO   - Host : apitest.cybersource.com
+2020-05-13 12:38:19.627 [main] INFO   -  Data present in Cache :: Extracting Data
+2020-05-13 12:38:19.627 [main] INFO   - ********* END   *********
+2020-05-13 12:38:19.627 [main] OFF    - 
+
+2020-05-13 12:38:22.642 [main] INFO   - ********* START *********
+2020-05-13 12:38:22.643 [main] INFO   - KeyFile, Entered path/file name :: src/main/resources/testrest.p12
+2020-05-13 12:38:22.644 [main] INFO   - Authentication Type : jwt
+2020-05-13 12:38:22.644 [main] INFO   - Content-Type : application/json
+2020-05-13 12:38:22.644 [main] INFO   - Request Type : POST
+2020-05-13 12:38:22.644 [main] INFO   - ClaimSet : {"clientReferenceInformation":{"code":"TC50171_3"},"processingInformation":{"commerceIndicator":"internet"},"aggregatorInformation":{"subMerchant":{"cardAcceptorID":"1234567890","country":"US","phoneNumber":"650-432-0000","address1":"900 Metro Center","postalCode":"94404-2775","locality":"Foster City","name":"Visa Inc","administrativeArea":"CA","region":"PEN","email":"XXXXXXXXX"},"name":"V-Internatio","aggregatorID":"123456789"},"orderInformation":{"billTo":{"country":"US","lastName":"VDP","address2":"Address 2","address1":"201 S. Division St.","postalCode":"48104-2201","locality":"Ann Arbor","administrativeArea":"MI","firstName":"RTS","phoneNumber":"999999999","district":"MI","buildingNumber":"123","company":"Visa","email":"XXXXXXXXX"},"amountDetails":{"totalAmount":"102.21","currency":"XXXXXXXXX"}},"paymentInformation":{"card":{"expirationYear":"2031","number":"5555555555554444","securityCode":"123","expirationMonth":"XXXXXXXXX","type":"002"}}}
+2020-05-13 12:38:22.644 [main] INFO   -  Data present in Cache :: Extracting Data
+2020-05-13 12:38:24.129 [main] INFO   - Status Information :: Transaction Successful
+2020-05-13 12:38:24.129 [main] INFO   - Response Code : 201
+2020-05-13 12:38:24.129 [main] INFO   - v-c-correlation-id : 9f721d8d-1123-46ab-bfef-07b74a20f313
+2020-05-13 12:38:24.144 [main] INFO   - Response Message : {"_links":{"authReversal":{"method":"POST","href":"/pts/v2/payments/5893537036736067703006/reversals"},"self":{"method":"GET","href":"/pts/v2/payments/5893537036736067703006"},"capture":{"method":"POST","href":"/pts/v2/payments/5893537036736067703006/captures"}},"clientReferenceInformation":{"code":"TC50171_3"},"id":"5893537036736067703006","orderInformation":{"amountDetails":{"authorizedAmount":"102.21","currency":"XXXXXXXXX"}},"paymentAccountInformation":{"card":{"type":"002"}},"paymentInformation":{"tokenizedCard":{"type":"002"}},"processorInformation":{"approvalCode":"888888","authIndicator":"1","responseCode":"100","avs":{"code":"X","codeRaw":"I1"}},"reconciliationId":"79808536UA25IQZE","status":"AUTHORIZED","submitTimeUtc":"2020-05-13T07:08:23Z"}
+2020-05-13 12:38:24.144 [main] INFO   - ********* END   *********
+2020-05-13 12:38:24.144 [main] OFF    - 
+
+2020-05-13 12:38:31.707 [main] INFO   - ********* START ********* Generate PUT Headers *******************
+2020-05-13 12:38:31.709 [main] INFO   - KeyFile, Entered path/file name :: src/main/resources/testrest.p12
+2020-05-13 12:38:31.712 [main] INFO   - Authentication Type : jwt
+2020-05-13 12:38:31.712 [main] INFO   - Request Type : PUT
+2020-05-13 12:38:31.712 [main] INFO   - Date : Wed, 13 May 2020 07:08:31 GMT
+2020-05-13 12:38:31.713 [main] INFO   - v-c-merchant-id : testrest
+2020-05-13 12:38:31.713 [main] INFO   - Content-Type : application/json
+2020-05-13 12:38:31.713 [main] INFO   - Host : apitest.cybersource.com
+2020-05-13 12:38:31.714 [main] INFO   -  Data present in Cache :: Extracting Data
+2020-05-13 12:38:31.718 [main] INFO   - ********* END   *********
+2020-05-13 12:38:31.719 [main] OFF    - 
+
+2020-05-13 12:38:34.736 [main] INFO   - ********* START *********
+2020-05-13 12:38:34.736 [main] INFO   - KeyFile, Entered path/file name :: src/main/resources/testrest.p12
+2020-05-13 12:38:34.736 [main] INFO   - Authentication Type : jwt
+2020-05-13 12:38:34.736 [main] INFO   - Content-Type : application/json
+2020-05-13 12:38:34.736 [main] INFO   - Request Type : PUT
+2020-05-13 12:38:34.736 [main] INFO   - ClaimSet : {"startDay":"23","timeZone":"America/Chicago","reportDefinitionName":"TransactionRequestClass","startTime":"1100","reportFrequency":"DAILY","ReportName":"TRRReport","reportFormat":"csv","orgId":"testrest","reportType":"detail","reportFields":["Request.RequestID","Request.TransactionDate","Request.MerchantReferenceNumber","Request.MerchantID"]}
+2020-05-13 12:38:34.736 [main] INFO   -  Data present in Cache :: Extracting Data
+2020-05-13 12:38:37.113 [main] INFO   - Status Information :: Transaction Successful
+2020-05-13 12:38:37.113 [main] INFO   - Response Code : 201
+2020-05-13 12:38:37.113 [main] INFO   - v-c-correlation-id : 9451e8e4-59bb-4085-a8c2-93066c3409df
+2020-05-13 12:38:37.113 [main] INFO   - Response Message : {"_links":{"self":{"href":"https://apitest.cybersource.com/reporting/v2/reportSubscriptions/TRRReport?organizationId=testrest"}}}
+2020-05-13 12:38:37.113 [main] INFO   - ********* END   *********
+2020-05-13 12:38:37.113 [main] OFF    - 
+

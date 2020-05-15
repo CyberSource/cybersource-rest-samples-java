@@ -11,7 +11,7 @@ import Invokers.ApiException;
 
 public class DeleteSubscriptionOfReportNameByOrganization {
 	
-	
+	private static String organizationId = "testrest";
 	private static String reportName = "Dexa";
 	private static String responseCode = null;
 	private static String status = null;
@@ -31,7 +31,7 @@ public class DeleteSubscriptionOfReportNameByOrganization {
 		apiClient.merchantConfig = merchantConfig;	
 		
 		ReportSubscriptionsApi reportSubscriptionsApi=new ReportSubscriptionsApi(apiClient);
-		reportSubscriptionsApi.deleteSubscription(reportName);
+		reportSubscriptionsApi.deleteSubscription(reportName, organizationId);
 		
 		responseCode = apiClient.responseCode;
 		status = apiClient.status;

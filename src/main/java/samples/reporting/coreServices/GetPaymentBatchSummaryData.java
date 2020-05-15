@@ -22,8 +22,8 @@ public class GetPaymentBatchSummaryData{
 	}
 
 	public static void process() throws Exception {
-		DateTime startTime = new DateTime("2019-05-01T12:00:00Z").withZone(DateTimeZone.forID("Asia/Dushanbe"));
-		DateTime endTime = new DateTime("2019-08-30T12:00:00Z").withZone(DateTimeZone.forID("Asia/Dushanbe"));
+		DateTime startTime = new DateTime("2020-05-01T12:00:00Z").withZone(DateTimeZone.forID("Asia/Dushanbe"));
+		DateTime endTime = new DateTime("2020-05-10T12:00:00Z").withZone(DateTimeZone.forID("Asia/Dushanbe"));
 		String organizationId = "testrest";
 
 		ReportingV3PaymentBatchSummariesGet200Response result = null;

@@ -18,8 +18,8 @@ public class GetListOfFiles {
 	private static String organizationId = "testrest";
 	private static Properties merchantProp;
 	
-	static LocalDate startDate = new LocalDate("2018-10-20");
-	static LocalDate endDate = new LocalDate("2018-10-30");
+	static LocalDate startDate = new LocalDate("2020-04-20");
+	static LocalDate endDate = new LocalDate("2020-04-30");
 
 
 	public static void main(String args[]) throws Exception {

@@ -8,7 +8,7 @@ import Api.DecisionManagerApi;
 import Data.Configuration;
 import Invokers.ApiClient;
 import Invokers.ApiException;
-import Model.CreateDecisionManagerCaseRequest;
+import Model.CreateBundledDecisionManagerCaseRequest;
 import Model.RiskV1DecisionsPost201Response;
 import Model.Riskv1decisionsClientReferenceInformation;
 import Model.Riskv1decisionsDeviceInformation;
@@ -36,14 +36,14 @@ public class DecisionManagerWithDeviceInformation {
 	 * @return
 	 * @throws Exception
 	 */
-	public static CreateDecisionManagerCaseRequest getRequest(
-			CreateDecisionManagerCaseRequest createDecisionManagerCaseRequest) throws Exception {
-		createDecisionManagerCaseRequest = new CreateDecisionManagerCaseRequest();
+	public static CreateBundledDecisionManagerCaseRequest getRequest(
+			CreateBundledDecisionManagerCaseRequest CreateBundledDecisionManagerCaseRequest) throws Exception {
+		CreateBundledDecisionManagerCaseRequest = new CreateBundledDecisionManagerCaseRequest();
 
 		// set Client reference information
 		Riskv1decisionsClientReferenceInformation riskv1decisionsClientReferenceInformation = new Riskv1decisionsClientReferenceInformation();
 		riskv1decisionsClientReferenceInformation.code("54323007");
-		createDecisionManagerCaseRequest.clientReferenceInformation(riskv1decisionsClientReferenceInformation);
+		CreateBundledDecisionManagerCaseRequest.clientReferenceInformation(riskv1decisionsClientReferenceInformation);
 
 		Riskv1decisionsPaymentInformation riskv1decisionsPaymentInformation = new Riskv1decisionsPaymentInformation();
 		Riskv1decisionsPaymentInformationCard riskv1decisionsPaymentInformationCard = new Riskv1decisionsPaymentInformationCard();
@@ -51,7 +51,7 @@ public class DecisionManagerWithDeviceInformation {
 		riskv1decisionsPaymentInformationCard.expirationMonth("12");
 		riskv1decisionsPaymentInformationCard.setExpirationYear("2020");
 		riskv1decisionsPaymentInformation.card(riskv1decisionsPaymentInformationCard);
-		createDecisionManagerCaseRequest.paymentInformation(riskv1decisionsPaymentInformation);
+		CreateBundledDecisionManagerCaseRequest.paymentInformation(riskv1decisionsPaymentInformation);
 
 		// set Order information
 		Riskv1decisionsOrderInformation riskv1decisionsOrderInformation = new Riskv1decisionsOrderInformation();
@@ -72,7 +72,7 @@ public class DecisionManagerWithDeviceInformation {
 		riskv1decisionsOrderInformationBillTo.postalCode("03055");
 		riskv1decisionsOrderInformationBillTo.administrativeArea("NH");
 		riskv1decisionsOrderInformation.billTo(riskv1decisionsOrderInformationBillTo);
-		createDecisionManagerCaseRequest.orderInformation(riskv1decisionsOrderInformation);
+		CreateBundledDecisionManagerCaseRequest.orderInformation(riskv1decisionsOrderInformation);
 
 		// Set Device Information Details
 		Riskv1decisionsDeviceInformation riskv1decisionsDeviceInformation = new Riskv1decisionsDeviceInformation();
@@ -80,16 +80,16 @@ public class DecisionManagerWithDeviceInformation {
 		riskv1decisionsDeviceInformation.ipAddress("64.124.61.215");
 		riskv1decisionsDeviceInformation.hostName("host.com");
 		riskv1decisionsDeviceInformation.httpBrowserEmail("xyz@gmail.com");
-		createDecisionManagerCaseRequest.deviceInformation(riskv1decisionsDeviceInformation);
+		CreateBundledDecisionManagerCaseRequest.deviceInformation(riskv1decisionsDeviceInformation);
 
-		return createDecisionManagerCaseRequest;
+		return CreateBundledDecisionManagerCaseRequest;
 	}
 
 	public static void main(String args[]) throws Exception {
 		try {
-			CreateDecisionManagerCaseRequest createDecisionManagerCaseRequest = null;
+			CreateBundledDecisionManagerCaseRequest CreateBundledDecisionManagerCaseRequest = null;
 			// Create the Create Decision Manager Request
-			createDecisionManagerCaseRequest = getRequest(createDecisionManagerCaseRequest);
+			CreateBundledDecisionManagerCaseRequest = getRequest(CreateBundledDecisionManagerCaseRequest);
 
 			// set Merchant Details
 			merchantProp = Configuration.getMerchantDetails();
@@ -101,7 +101,7 @@ public class DecisionManagerWithDeviceInformation {
 			apiClient.merchantConfig = merchantConfig;	
 			
 			DecisionManagerApi decisionManagerApi = new DecisionManagerApi(apiClient);
-			response = decisionManagerApi.createDecisionManagerCase(createDecisionManagerCaseRequest);
+			response = decisionManagerApi.createBundledDecisionManagerCase(CreateBundledDecisionManagerCaseRequest);
 			responseCode = apiClient.responseCode;
 			status = apiClient.status;
 

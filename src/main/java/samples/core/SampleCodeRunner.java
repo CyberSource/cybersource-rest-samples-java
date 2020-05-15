@@ -18,6 +18,8 @@ public class SampleCodeRunner {
 		Set<String> files = new HashSet<>();
 		
 		getListOfPackages("src/main/java/", files);
+		
+		int sampleCodeIndex = 1;
         
 		for(String pkg : files) {
         	Class<?>[] classList = getClasses(pkg);
@@ -43,7 +45,9 @@ public class SampleCodeRunner {
         			methodArgs[0] = new String[] {};
         			
         			try {            			
-            			System.out.println("\n**** RUNNING - " + sampleClass.getName() + " ****");
+            			System.out.println("\n" + sampleCodeIndex + ". **** RUNNING - " + sampleClass.getName() + " ****");
+            			
+            			sampleCodeIndex++;
             			
             			sample.invoke(null, methodArgs);
             			

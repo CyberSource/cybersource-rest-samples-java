@@ -23,7 +23,7 @@ public class DownloadFileWithFileIdentifier {
 	private  static String resourceFile = "SecureFile";
     private static final String FILE_PATH = "src/main/resources/";
 	
-    private static String  fileId = "dGVzdHJlc3Rfc3ViY3JpcHRpb25fdjI5ODktOTMwYWU5MmItOTcxMy00N2U4LWUwNTMtYTI1ODhlMGFjZDNjLnhtbC0yMDE5LTA5LTMw";
+    private static String  fileId = "dGVzdHJlc3Rfc3ViY3JpcHRpb25fdjI5ODktYTM3ZmI2ZjUtM2QzYi0wOGVhLWUwNTMtYTI1ODhlMGFkOTJjLnhtbC0yMDIwLTA0LTMw";
 
 
 	public static void main(String args[]) throws Exception {
@@ -40,6 +40,7 @@ public class DownloadFileWithFileIdentifier {
 			ApiClient apiClient = new ApiClient();
 			
 			apiClient.merchantConfig = merchantConfig;
+			apiClient.setAcceptHeader("text/csv");
 
 			SecureFileShareApi secureFileShareApi = new SecureFileShareApi(apiClient);
 			ApiResponse<InputStream> responseStream = secureFileShareApi.getFileWithHttpInfo(fileId, organizationId);
