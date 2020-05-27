@@ -1,4 +1,4 @@
-package samples.PayerAuthentication.PayerAuthentication;
+package samples.PayerAuthentication;
 
 import java.*;
 import java.util.*;
