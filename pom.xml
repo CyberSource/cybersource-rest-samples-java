@@ -1,0 +1,101 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>com.cybersource.sample</groupId>
+	<artifactId>SampleCode</artifactId>
+	<packaging>jar</packaging>
+	<version>1.0</version>
+	<name>SampleCode</name>
+	<url>http://maven.apache.org</url>
+	<dependencies>
+		<!-- rest client dependency -->
+		<dependency>
+			<groupId>com.cybersource</groupId>
+			<artifactId>cybersource-rest-client-java</artifactId>
+			<version>0.0.22</version>
+		</dependency>
+		<!-- Sample API Client dependency -->
+		<dependency>
+			<groupId>com.cybersource</groupId>
+			<artifactId>SampleApiClient</artifactId>
+			<version>0.0.1</version>
+			<scope>system</scope>
+			<systemPath>${project.basedir}/src/main/java/samples/authentication/lib/SampleApiClient-0.0.1.jar</systemPath>
+		</dependency>
+		<!-- https://mvnrepository.com/artifact/com.google.guava/guava -->
+		<dependency>
+		    <groupId>com.google.guava</groupId>
+		    <artifactId>guava</artifactId>
+		    <version>27.1-jre</version>
+		</dependency>
+		<!-- https://mvnrepository.com/artifact/commons-io/commons-io -->
+		<dependency>
+		    <groupId>commons-io</groupId>
+		    <artifactId>commons-io</artifactId>
+		    <version>2.4</version>
+		</dependency>
+		<!-- https://mvnrepository.com/artifact/com.fasterxml.jackson.core/jackson-databind -->
+		<dependency>
+		    <groupId>com.fasterxml.jackson.core</groupId>
+		    <artifactId>jackson-databind</artifactId>
+		    <version>2.10.3</version>
+		</dependency>	
+	</dependencies>
+
+	<build>
+		<plugins>
+			<plugin>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<configuration>
+					<source>1.8</source>
+					<target>1.8</target>
+				</configuration>
+			</plugin>
+			<plugin>
+			    <groupId>org.apache.maven.plugins</groupId>
+			    <artifactId>maven-dependency-plugin</artifactId>
+			    <executions>
+			        <execution>
+			            <id>copy-dependencies</id>
+			            <phase>prepare-package</phase>
+			            <goals>
+			                <goal>copy-dependencies</goal>
+			            </goals>
+			            <configuration>
+			                <outputDirectory>
+			                    ${project.build.directory}/libs
+			                </outputDirectory>
+			            </configuration>
+			        </execution>
+			    </executions>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-surefire-plugin</artifactId>
+				<version>2.9</version>
+				<configuration>
+					<includes>
+						<include>**/*.java</include>
+					</includes>
+				</configuration>
+			</plugin>
+			<plugin>
+			<!-- Build an executable JAR -->
+			  <groupId>org.apache.maven.plugins</groupId>
+			  <artifactId>maven-jar-plugin</artifactId>
+			  <version>3.1.2</version>
+			  <configuration>
+			  	<finalName>SampleCode</finalName>
+			    <archive>
+			      <manifest>
+			        <addClasspath>true</addClasspath>
+                	<classpathPrefix>libs/</classpathPrefix>
+ 			        <mainClass>samples.core.SampleCodeRunner</mainClass>
+			      </manifest>
+			    </archive>
+			  </configuration>
+			</plugin>
+		</plugins>
+	</build>
+</project>
