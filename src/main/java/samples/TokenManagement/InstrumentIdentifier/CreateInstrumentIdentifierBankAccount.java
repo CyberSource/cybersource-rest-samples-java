@@ -1,4 +1,4 @@
-package samples.Flex.KeyGeneration;
+package samples.TokenManagement.InstrumentIdentifier;
 
 import java.*;
 import java.util.*;
@@ -16,7 +16,7 @@ import Invokers.ApiClient;
 import Invokers.ApiException;
 import Model.*;
 
-public class GenerateKey {
+public class CreateInstrumentIdentifierBankAccount {
 	private static String responseCode = null;
 	private static String status = null;
 	private static Properties merchantProp;
@@ -25,20 +25,24 @@ public class GenerateKey {
 		run();
 	}
 
-	public static FlexV1KeysPost200Response run() {
-	
-		GeneratePublicKeyRequest requestObj = new GeneratePublicKeyRequest();
+	public static TmsV1InstrumentIdentifiersPost200Response run() {
+		String profileid = "93B32398-AD51-4CC2-A682-EA3E93614EB1";
+		CreateInstrumentIdentifierRequest requestObj = new CreateInstrumentIdentifierRequest();
 
-		requestObj.encryptionType("None");
-		FlexV1KeysPost200Response result = null;
+		Tmsv1instrumentidentifiersBankAccount bankAccount = new Tmsv1instrumentidentifiersBankAccount();
+		bankAccount.number("4100");
+		bankAccount.routingNumber("071923284");
+		requestObj.bankAccount(bankAccount);
+
+		TmsV1InstrumentIdentifiersPost200Response result = null;
 		try {
 			merchantProp = Configuration.getMerchantDetails();
 			ApiClient apiClient = new ApiClient();
 			MerchantConfig merchantConfig = new MerchantConfig(merchantProp);
 			apiClient.merchantConfig = merchantConfig;
 
-			KeyGenerationApi apiInstance = new KeyGenerationApi(apiClient);
-			result = apiInstance.generatePublicKey(requestObj, null);
+			InstrumentIdentifierApi apiInstance = new InstrumentIdentifierApi(apiClient);
+			result = apiInstance.createInstrumentIdentifier(profileid, requestObj);
 
 			responseCode = apiClient.responseCode;
 			status = apiClient.status;
