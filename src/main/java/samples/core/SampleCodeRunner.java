@@ -15,6 +15,8 @@ public class SampleCodeRunner {
 												  NoSuchMethodException, SecurityException, 
 												  IllegalAccessException, IllegalArgumentException, 
 												  InvocationTargetException, InterruptedException {
+		int sampleCount = 1;
+		
 		Set<String> files = new HashSet<>();
 		
 		getListOfPackages("src/main/java/", files);
@@ -43,7 +45,8 @@ public class SampleCodeRunner {
         			methodArgs[0] = new String[] {};
         			
         			try {            			
-            			System.out.println("\n**** RUNNING - " + sampleClass.getName() + " ****");
+            			System.out.println("\n" + sampleCount + ". **** RUNNING - " + sampleClass.getName() + " ****");
+            			sampleCount++;
             			
             			sample.invoke(null, methodArgs);
             			
@@ -58,6 +61,8 @@ public class SampleCodeRunner {
         		}
         	}
         }
+		
+		System.out.println("\n\nTotal number of sample codes : " + sampleCount);
     }
 
 	/**
