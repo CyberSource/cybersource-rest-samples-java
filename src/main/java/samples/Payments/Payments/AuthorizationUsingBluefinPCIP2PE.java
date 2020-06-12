@@ -1,4 +1,4 @@
-package samples.Payments.Credit;
+package samples.Payments.Payments;
 
 import java.*;
 import java.util.*;
@@ -16,7 +16,7 @@ import Invokers.ApiClient;
 import Invokers.ApiException;
 import Model.*;
 
-public class CreditUsingBluefinPCIPPE {
+public class AuthorizationUsingBluefinPCIP2PE {
 	private static String responseCode = null;
 	private static String status = null;
 	private static Properties merchantProp;
@@ -25,20 +25,27 @@ public class CreditUsingBluefinPCIPPE {
 		// Accept required parameters from args[] and pass to run.
 		run();
 	}
-	public static PtsV2CreditsPost201Response run() {
+	public static PtsV2PaymentsPost201Response run() {
 	
-		CreateCreditRequest requestObj = new CreateCreditRequest();
+		CreatePaymentRequest requestObj = new CreatePaymentRequest();
 
 		Ptsv2paymentsClientReferenceInformation clientReferenceInformation = new Ptsv2paymentsClientReferenceInformation();
 		clientReferenceInformation.code("demomerchant");
 		requestObj.clientReferenceInformation(clientReferenceInformation);
 
-		Ptsv2creditsProcessingInformation processingInformation = new Ptsv2creditsProcessingInformation();
+		Ptsv2paymentsProcessingInformation processingInformation = new Ptsv2paymentsProcessingInformation();
+		processingInformation.capture(false);
 		processingInformation.commerceIndicator("retail");
+		Ptsv2paymentsProcessingInformationAuthorizationOptions processingInformationAuthorizationOptions = new Ptsv2paymentsProcessingInformationAuthorizationOptions();
+		processingInformationAuthorizationOptions.partialAuthIndicator(true);
+		processingInformationAuthorizationOptions.ignoreAvsResult(true);
+		processingInformationAuthorizationOptions.ignoreCvResult(true);
+		processingInformation.authorizationOptions(processingInformationAuthorizationOptions);
+
 		requestObj.processingInformation(processingInformation);
 
-		Ptsv2paymentsidrefundsPaymentInformation paymentInformation = new Ptsv2paymentsidrefundsPaymentInformation();
-		Ptsv2paymentsidrefundsPaymentInformationCard paymentInformationCard = new Ptsv2paymentsidrefundsPaymentInformationCard();
+		Ptsv2paymentsPaymentInformation paymentInformation = new Ptsv2paymentsPaymentInformation();
+		Ptsv2paymentsPaymentInformationCard paymentInformationCard = new Ptsv2paymentsPaymentInformationCard();
 		paymentInformationCard.expirationMonth("12");
 		paymentInformationCard.expirationYear("2050");
 		paymentInformation.card(paymentInformationCard);
@@ -50,13 +57,13 @@ public class CreditUsingBluefinPCIPPE {
 
 		requestObj.paymentInformation(paymentInformation);
 
-		Ptsv2paymentsidrefundsOrderInformation orderInformation = new Ptsv2paymentsidrefundsOrderInformation();
-		Ptsv2paymentsidcapturesOrderInformationAmountDetails orderInformationAmountDetails = new Ptsv2paymentsidcapturesOrderInformationAmountDetails();
+		Ptsv2paymentsOrderInformation orderInformation = new Ptsv2paymentsOrderInformation();
+		Ptsv2paymentsOrderInformationAmountDetails orderInformationAmountDetails = new Ptsv2paymentsOrderInformationAmountDetails();
 		orderInformationAmountDetails.totalAmount("100.00");
 		orderInformationAmountDetails.currency("USD");
 		orderInformation.amountDetails(orderInformationAmountDetails);
 
-		Ptsv2paymentsidcapturesOrderInformationBillTo orderInformationBillTo = new Ptsv2paymentsidcapturesOrderInformationBillTo();
+		Ptsv2paymentsOrderInformationBillTo orderInformationBillTo = new Ptsv2paymentsOrderInformationBillTo();
 		orderInformationBillTo.firstName("John");
 		orderInformationBillTo.lastName("Deo");
 		orderInformationBillTo.address1("201 S. Division St.");
@@ -64,6 +71,7 @@ public class CreditUsingBluefinPCIPPE {
 		orderInformationBillTo.administrativeArea("MI");
 		orderInformationBillTo.postalCode("48104-2201");
 		orderInformationBillTo.country("US");
+		orderInformationBillTo.district("MI");
 		orderInformationBillTo.email("test@cybs.com");
 		orderInformationBillTo.phoneNumber("999999999");
 		orderInformation.billTo(orderInformationBillTo);
@@ -76,15 +84,15 @@ public class CreditUsingBluefinPCIPPE {
 		pointOfSaleInformation.terminalCapability(2);
 		requestObj.pointOfSaleInformation(pointOfSaleInformation);
 
-		PtsV2CreditsPost201Response result = null;
+		PtsV2PaymentsPost201Response result = null;
 		try {
 			merchantProp = Configuration.getMerchantDetails();
 			ApiClient apiClient = new ApiClient();
 			MerchantConfig merchantConfig = new MerchantConfig(merchantProp);
 			apiClient.merchantConfig = merchantConfig;
 
-			CreditApi apiInstance = new CreditApi(apiClient);
-			result = apiInstance.createCredit(requestObj);
+			PaymentsApi apiInstance = new PaymentsApi(apiClient);
+			result = apiInstance.createPayment(requestObj);
 
 			responseCode = apiClient.responseCode;
 			status = apiClient.status;
