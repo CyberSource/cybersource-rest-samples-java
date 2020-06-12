@@ -16,7 +16,7 @@ import Invokers.ApiClient;
 import Invokers.ApiException;
 import Model.*;
 
-public class CreditUsingBluefinPCIPPE {
+public class CreditUsingBluefinPCIP2PE {
 	private static String responseCode = null;
 	private static String status = null;
 	private static Properties merchantProp;
