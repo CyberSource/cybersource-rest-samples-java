@@ -316,7 +316,7 @@ public class StandaloneHttpSignature {
          *                   Example: "post /pts/v2/payments"
          * Digest: Only needed for POST calls.
          *          digestString = BASE64( HMAC-SHA256 ( Payload ));
-         *          Digest: “SHA-256=“ + digestString;
+         *          Digest: "SHA-256=" + digestString;
          * v-c-merchant-id: set value to Cybersource Merchant ID
          *                   This ID can be found on EBC portal
          */
