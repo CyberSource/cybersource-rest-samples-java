@@ -16,6 +16,7 @@ import Invokers.ApiClient;
 import Invokers.ApiException;
 import Model.*;
 import samples.Payments.Payments.AuthorizationForTimeoutReversalFlow;
+import samples.core.SampleCodeRunner;
 
 public class TimeoutReversal {
 	private static String responseCode = null;
@@ -32,7 +33,7 @@ public class TimeoutReversal {
 
 		Ptsv2paymentsClientReferenceInformation clientReferenceInformation = new Ptsv2paymentsClientReferenceInformation();
 		clientReferenceInformation.code("TC50171_3");
-		clientReferenceInformation.transactionId("987548785668");
+		clientReferenceInformation.transactionId(SampleCodeRunner.timeoutReversalTransactionId);
 		requestObj.clientReferenceInformation(clientReferenceInformation);
 
 		Ptsv2paymentsidreversalsReversalInformation reversalInformation = new Ptsv2paymentsidreversalsReversalInformation();

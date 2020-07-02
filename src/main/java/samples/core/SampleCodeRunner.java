@@ -11,6 +11,9 @@ import com.google.common.reflect.ClassPath;
 
 public class SampleCodeRunner {
 	
+	public static String timeoutVoidTransactionId;
+	public static String timeoutReversalTransactionId;
+
 	public static void main(String[] args) throws ClassNotFoundException, IOException, 
 												  NoSuchMethodException, SecurityException, 
 												  IllegalAccessException, IllegalArgumentException, 

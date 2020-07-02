@@ -1,4 +1,4 @@
-package samples.Flex.Tokenization;
+package samples.FlexMicroform;
 
 import java.*;
 import java.util.*;
@@ -21,7 +21,7 @@ import Data.Configuration;
 import Invokers.ApiClient;
 import Invokers.ApiException;
 import Model.*;
-import samples.Flex.KeyGeneration.GenerateKey;
+import samples.FlexMicroform.GenerateKey;
 import utilities.flex.tokenverification.FlexToken;
 import utilities.flex.tokenverification.TokenVerificationUtility;
 import utilities.flex.security.Base64;

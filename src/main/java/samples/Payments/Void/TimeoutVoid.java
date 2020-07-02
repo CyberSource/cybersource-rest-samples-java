@@ -17,6 +17,7 @@ import Invokers.ApiException;
 import Model.*;
 import samples.Payments.Payments.AuthorizationCaptureForTimeoutVoidFlow;
 import samples.Payments.Payments.AuthorizationForIncrementalAuthorizationFlow;
+import samples.core.SampleCodeRunner;
 
 public class TimeoutVoid {
 	private static String responseCode = null;
@@ -33,7 +34,7 @@ public class TimeoutVoid {
 
 		Ptsv2paymentsClientReferenceInformation clientReferenceInformation = new Ptsv2paymentsClientReferenceInformation();
 		clientReferenceInformation.code("TC50171_3");
-		clientReferenceInformation.transactionId("58597784856");
+		clientReferenceInformation.transactionId(SampleCodeRunner.timeoutVoidTransactionId);
 		requestObj.clientReferenceInformation(clientReferenceInformation);
 
 		PtsV2PaymentsVoidsPost201Response result = null;

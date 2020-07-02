@@ -1,4 +1,4 @@
-package samples.Flex.KeyGeneration;
+package samples.FlexMicroform;
 
 import java.*;
 import java.util.*;

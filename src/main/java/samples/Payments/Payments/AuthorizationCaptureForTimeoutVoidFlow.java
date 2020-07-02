@@ -1,6 +1,7 @@
 package samples.Payments.Payments;
 
 import java.util.Properties;
+import java.util.concurrent.ThreadLocalRandom;
 
 import com.cybersource.authsdk.core.MerchantConfig;
 
@@ -16,6 +17,7 @@ import Model.Ptsv2paymentsOrderInformationBillTo;
 import Model.Ptsv2paymentsPaymentInformation;
 import Model.Ptsv2paymentsPaymentInformationCard;
 import Model.Ptsv2paymentsProcessingInformation;
+import samples.core.SampleCodeRunner;
 
 public class AuthorizationCaptureForTimeoutVoidFlow {
 	private static String responseCode = null;
@@ -27,12 +29,13 @@ public class AuthorizationCaptureForTimeoutVoidFlow {
 	}
 
 	public static PtsV2PaymentsPost201Response run() {
+		SampleCodeRunner.timeoutVoidTransactionId = String.valueOf(ThreadLocalRandom.current().nextLong(1000, 1000000000 + 1));
 	
 		CreatePaymentRequest requestObj = new CreatePaymentRequest();
 
 		Ptsv2paymentsClientReferenceInformation clientReferenceInformation = new Ptsv2paymentsClientReferenceInformation();
 		clientReferenceInformation.code("TC50171_3");
-		clientReferenceInformation.transactionId("58597784856");
+		clientReferenceInformation.transactionId(SampleCodeRunner.timeoutVoidTransactionId);
 		requestObj.clientReferenceInformation(clientReferenceInformation);
 
 		Ptsv2paymentsProcessingInformation processingInformation = new Ptsv2paymentsProcessingInformation();
