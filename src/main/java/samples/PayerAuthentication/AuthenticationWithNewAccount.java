@@ -29,7 +29,7 @@ public class AuthenticationWithNewAccount {
 	
 		CheckPayerAuthEnrollmentRequest requestObj = new CheckPayerAuthEnrollmentRequest();
 
-		Riskv1authenticationsClientReferenceInformation clientReferenceInformation = new Riskv1authenticationsClientReferenceInformation();
+		Riskv1authenticationsetupsClientReferenceInformation clientReferenceInformation = new Riskv1authenticationsetupsClientReferenceInformation();
 		clientReferenceInformation.code("New Account");
 		requestObj.clientReferenceInformation(clientReferenceInformation);
 
@@ -64,7 +64,7 @@ public class AuthenticationWithNewAccount {
 
 		requestObj.paymentInformation(paymentInformation);
 
-		Riskv1authenticationsConsumerAuthenticationInformation consumerAuthenticationInformation = new Riskv1authenticationsConsumerAuthenticationInformation();
+		Riskv1decisionsConsumerAuthenticationInformation consumerAuthenticationInformation = new Riskv1decisionsConsumerAuthenticationInformation();
 		consumerAuthenticationInformation.transactionMode("MOTO");
 		requestObj.consumerAuthenticationInformation(consumerAuthenticationInformation);
 

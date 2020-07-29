@@ -25,52 +25,39 @@ public class CreatePaymentInstrumentPinlessDebit {
 		run();
 	}
 
-	public static TmsV1InstrumentIdentifiersPaymentInstrumentsGet200ResponseEmbeddedPaymentInstruments run() {
+	public static Tmsv2customersEmbeddedDefaultPaymentInstrument run() {
 		String profileid = "93B32398-AD51-4CC2-A682-EA3E93614EB1";
 	
-		CreatePaymentInstrumentRequest requestObj = new CreatePaymentInstrumentRequest();
+		PostPaymentInstrumentRequest requestObj = new PostPaymentInstrumentRequest();
 
-		TmsV1InstrumentIdentifiersPaymentInstrumentsGet200ResponseEmbeddedCard card = new TmsV1InstrumentIdentifiersPaymentInstrumentsGet200ResponseEmbeddedCard();
-		card.expirationMonth("09");
-		card.expirationYear("2017");
+		Tmsv2customersEmbeddedDefaultPaymentInstrumentCard card = new Tmsv2customersEmbeddedDefaultPaymentInstrumentCard();
+		card.expirationMonth("12");
+		card.expirationYear("2031");
 		card.type("visa");
 		card.issueNumber("01");
 		card.startMonth("01");
-		card.startYear("2016");
+		card.startYear("2020");
 		card.useAs("pinless debit");
 		requestObj.card(card);
 
-		TmsV1InstrumentIdentifiersPaymentInstrumentsGet200ResponseEmbeddedBuyerInformation buyerInformation = new TmsV1InstrumentIdentifiersPaymentInstrumentsGet200ResponseEmbeddedBuyerInformation();
-		buyerInformation.companyTaxID("12345");
-		buyerInformation.currency("USD");
-		requestObj.buyerInformation(buyerInformation);
-
-		TmsV1InstrumentIdentifiersPaymentInstrumentsGet200ResponseEmbeddedBillTo billTo = new TmsV1InstrumentIdentifiersPaymentInstrumentsGet200ResponseEmbeddedBillTo();
+		Tmsv2customersEmbeddedDefaultPaymentInstrumentBillTo billTo = new Tmsv2customersEmbeddedDefaultPaymentInstrumentBillTo();
 		billTo.firstName("John");
-		billTo.lastName("Smith");
-		billTo.company("Cybersource");
-		billTo.address1("8310 Capital of Texas Highwas North");
-		billTo.address2("Bluffstone Drive");
-		billTo.locality("Austin");
-		billTo.administrativeArea("TX");
-		billTo.postalCode("78731");
+		billTo.lastName("Doe");
+		billTo.company("CyberSource");
+		billTo.address1("1 Market St");
+		billTo.locality("San Francisco");
+		billTo.administrativeArea("CA");
+		billTo.postalCode("94105");
 		billTo.country("US");
-		billTo.email("john.smith@test.com");
-		billTo.phoneNumber("+44 2890447951");
+		billTo.email("test@cybs.com");
+		billTo.phoneNumber("4158880000");
 		requestObj.billTo(billTo);
 
-		TmsV1InstrumentIdentifiersPaymentInstrumentsGet200ResponseEmbeddedProcessingInformation processingInformation = new TmsV1InstrumentIdentifiersPaymentInstrumentsGet200ResponseEmbeddedProcessingInformation();
-		processingInformation.billPaymentProgramEnabled(true);
-		requestObj.processingInformation(processingInformation);
-
-		Tmsv1paymentinstrumentsInstrumentIdentifier instrumentIdentifier = new Tmsv1paymentinstrumentsInstrumentIdentifier();
-		TmsV1InstrumentIdentifiersPost200ResponseCard instrumentIdentifierCard = new TmsV1InstrumentIdentifiersPost200ResponseCard();
-		instrumentIdentifierCard.number("411111111111111");
-		instrumentIdentifier.card(instrumentIdentifierCard);
-
+		Tmsv2customersEmbeddedDefaultPaymentInstrumentInstrumentIdentifier instrumentIdentifier = new Tmsv2customersEmbeddedDefaultPaymentInstrumentInstrumentIdentifier();
+		instrumentIdentifier.id("7010000000016241111");
 		requestObj.instrumentIdentifier(instrumentIdentifier);
 
-		TmsV1InstrumentIdentifiersPaymentInstrumentsGet200ResponseEmbeddedPaymentInstruments result = null;
+		Tmsv2customersEmbeddedDefaultPaymentInstrument result = null;
 		try {
 			merchantProp = Configuration.getMerchantDetails();
 			ApiClient apiClient = new ApiClient();
@@ -78,7 +65,7 @@ public class CreatePaymentInstrumentPinlessDebit {
 			apiClient.merchantConfig = merchantConfig;
 
 			PaymentInstrumentApi apiInstance = new PaymentInstrumentApi(apiClient);
-			result = apiInstance.createPaymentInstrument(profileid, requestObj);
+			result = apiInstance.postPaymentInstrument(requestObj, profileid);
 
 			responseCode = apiClient.responseCode;
 			status = apiClient.status;

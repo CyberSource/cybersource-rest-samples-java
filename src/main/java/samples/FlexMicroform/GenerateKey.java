@@ -29,7 +29,10 @@ public class GenerateKey {
 	
 		GeneratePublicKeyRequest requestObj = new GeneratePublicKeyRequest();
 
-		requestObj.encryptionType("None");
+		requestObj.encryptionType("RsaOaep");
+		requestObj.targetOrigin("https://www.test.com");
+		String format = "JWT";
+
 		FlexV1KeysPost200Response result = null;
 		try {
 			merchantProp = Configuration.getMerchantDetails();
@@ -38,7 +41,7 @@ public class GenerateKey {
 			apiClient.merchantConfig = merchantConfig;
 
 			KeyGenerationApi apiInstance = new KeyGenerationApi(apiClient);
-			result = apiInstance.generatePublicKey(requestObj, null);
+			result = apiInstance.generatePublicKey(format, requestObj);
 
 			responseCode = apiClient.responseCode;
 			status = apiClient.status;

@@ -25,16 +25,16 @@ public class CreateInstrumentIdentifierBankAccount {
 		run();
 	}
 
-	public static TmsV1InstrumentIdentifiersPost200Response run() {
+	public static Tmsv2customersEmbeddedDefaultPaymentInstrumentEmbeddedInstrumentIdentifier run() {
 		String profileid = "93B32398-AD51-4CC2-A682-EA3E93614EB1";
-		CreateInstrumentIdentifierRequest requestObj = new CreateInstrumentIdentifierRequest();
+		PostInstrumentIdentifierRequest requestObj = new PostInstrumentIdentifierRequest();
 
-		Tmsv1instrumentidentifiersBankAccount bankAccount = new Tmsv1instrumentidentifiersBankAccount();
+		Tmsv2customersEmbeddedDefaultPaymentInstrumentEmbeddedInstrumentIdentifierBankAccount bankAccount = new Tmsv2customersEmbeddedDefaultPaymentInstrumentEmbeddedInstrumentIdentifierBankAccount();
 		bankAccount.number("4100");
 		bankAccount.routingNumber("071923284");
 		requestObj.bankAccount(bankAccount);
 
-		TmsV1InstrumentIdentifiersPost200Response result = null;
+		Tmsv2customersEmbeddedDefaultPaymentInstrumentEmbeddedInstrumentIdentifier result = null;
 		try {
 			merchantProp = Configuration.getMerchantDetails();
 			ApiClient apiClient = new ApiClient();
@@ -42,7 +42,7 @@ public class CreateInstrumentIdentifierBankAccount {
 			apiClient.merchantConfig = merchantConfig;
 
 			InstrumentIdentifierApi apiInstance = new InstrumentIdentifierApi(apiClient);
-			result = apiInstance.createInstrumentIdentifier(profileid, requestObj);
+			result = apiInstance.postInstrumentIdentifier(requestObj, profileid);
 
 			responseCode = apiClient.responseCode;
 			status = apiClient.status;

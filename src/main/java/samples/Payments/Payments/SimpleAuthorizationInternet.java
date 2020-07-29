@@ -40,7 +40,6 @@ public class SimpleAuthorizationInternet {
 			processingInformation.capture(true);
 		}
 		
-		processingInformation.commerceIndicator("internet");
 		requestObj.processingInformation(processingInformation);
 
 		Ptsv2paymentsPaymentInformation paymentInformation = new Ptsv2paymentsPaymentInformation();
@@ -48,7 +47,6 @@ public class SimpleAuthorizationInternet {
 		paymentInformationCard.number("4111111111111111");
 		paymentInformationCard.expirationMonth("12");
 		paymentInformationCard.expirationYear("2031");
-		paymentInformationCard.securityCode("123");
 		paymentInformation.card(paymentInformationCard);
 
 		requestObj.paymentInformation(paymentInformation);
@@ -63,7 +61,6 @@ public class SimpleAuthorizationInternet {
 		orderInformationBillTo.firstName("John");
 		orderInformationBillTo.lastName("Doe");
 		orderInformationBillTo.address1("1 Market St");
-		orderInformationBillTo.address2("Address 2");
 		orderInformationBillTo.locality("san francisco");
 		orderInformationBillTo.administrativeArea("CA");
 		orderInformationBillTo.postalCode("94105");

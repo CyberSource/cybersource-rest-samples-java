@@ -41,7 +41,7 @@ public class CreditWithInstrumentIdentifierTokenId {
 		paymentInformation.card(paymentInformationCard);
 
 		Ptsv2paymentsPaymentInformationInstrumentIdentifier paymentInformationInstrumentIdentifier = new Ptsv2paymentsPaymentInformationInstrumentIdentifier();
-		paymentInformationInstrumentIdentifier.id("7500BB199B4270EFE05340588D0AFCII");
+		paymentInformationInstrumentIdentifier.id("7010000000016241111");
 		paymentInformation.instrumentIdentifier(paymentInformationInstrumentIdentifier);
 
 		requestObj.paymentInformation(paymentInformation);

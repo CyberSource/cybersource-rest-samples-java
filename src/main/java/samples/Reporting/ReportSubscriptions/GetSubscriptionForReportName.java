@@ -28,6 +28,8 @@ public class GetSubscriptionForReportName {
 	public static ReportingV3ReportSubscriptionsGet200ResponseSubscriptions run() {
 		String reportName = "testrest_subcription_v1";
 		
+		String organizationId = null;
+
 		ReportingV3ReportSubscriptionsGet200ResponseSubscriptions result = null;
 		try {
 			merchantProp = Configuration.getMerchantDetails();
@@ -36,7 +38,7 @@ public class GetSubscriptionForReportName {
 			apiClient.merchantConfig = merchantConfig;
 
 			ReportSubscriptionsApi apiInstance = new ReportSubscriptionsApi(apiClient);
-			result = apiInstance.getSubscription(reportName);
+			result = apiInstance.getSubscription(reportName, organizationId);
 
 			responseCode = apiClient.responseCode;
 			status = apiClient.status;

@@ -27,7 +27,7 @@ public class BasicDMTransaction {
 
 	public static RiskV1DecisionsPost201Response run() {
 	
-		CreateDecisionManagerCaseRequest requestObj = new CreateDecisionManagerCaseRequest();
+		CreateBundledDecisionManagerCaseRequest requestObj = new CreateBundledDecisionManagerCaseRequest();
 
 		Riskv1decisionsClientReferenceInformation clientReferenceInformation = new Riskv1decisionsClientReferenceInformation();
 		clientReferenceInformation.code("54323007");
@@ -70,7 +70,7 @@ public class BasicDMTransaction {
 			apiClient.merchantConfig = merchantConfig;
 
 			DecisionManagerApi apiInstance = new DecisionManagerApi(apiClient);
-			result = apiInstance.createDecisionManagerCase(requestObj);
+			result = apiInstance.createBundledDecisionManagerCase(requestObj);
 
 			responseCode = apiClient.responseCode;
 			status = apiClient.status;

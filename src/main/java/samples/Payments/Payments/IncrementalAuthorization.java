@@ -30,11 +30,7 @@ public class IncrementalAuthorization {
 		IncrementAuthRequest requestObj = new IncrementAuthRequest();
 
 		Ptsv2paymentsidClientReferenceInformation clientReferenceInformation = new Ptsv2paymentsidClientReferenceInformation();
-		Ptsv2paymentsidClientReferenceInformationPartner clientReferenceInformationPartner = new Ptsv2paymentsidClientReferenceInformationPartner();
-		clientReferenceInformationPartner.originalTransactionId("12345");
-		clientReferenceInformationPartner.developerId("12345");
-		clientReferenceInformationPartner.solutionId("12345");
-		clientReferenceInformation.partner(clientReferenceInformationPartner);
+		clientReferenceInformation.code("TC50171_3");
 
 		requestObj.clientReferenceInformation(clientReferenceInformation);
 
@@ -50,17 +46,18 @@ public class IncrementalAuthorization {
 
 		Ptsv2paymentsidOrderInformation orderInformation = new Ptsv2paymentsidOrderInformation();
 		Ptsv2paymentsidOrderInformationAmountDetails orderInformationAmountDetails = new Ptsv2paymentsidOrderInformationAmountDetails();
-		orderInformationAmountDetails.additionalAmount("100");
+		orderInformationAmountDetails.additionalAmount("22.49");
 		orderInformationAmountDetails.currency("USD");
 		orderInformation.amountDetails(orderInformationAmountDetails);
 
 		requestObj.orderInformation(orderInformation);
 
 		Ptsv2paymentsidMerchantInformation merchantInformation = new Ptsv2paymentsidMerchantInformation();
+		merchantInformation.transactionLocalDateTime("20191002080000");
 		requestObj.merchantInformation(merchantInformation);
 
 		Ptsv2paymentsidTravelInformation travelInformation = new Ptsv2paymentsidTravelInformation();
-		travelInformation.duration("3");
+		travelInformation.duration("4");
 		requestObj.travelInformation(travelInformation);
 
 		PtsV2IncrementalAuthorizationPatch201Response result = null;

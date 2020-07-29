@@ -25,25 +25,25 @@ public class CreatePaymentInstrumentBankAccount {
 		run();
 	}
 
-	public static TmsV1InstrumentIdentifiersPaymentInstrumentsGet200ResponseEmbeddedPaymentInstruments run() {
+	public static Tmsv2customersEmbeddedDefaultPaymentInstrument run() {
 		String profileid = "93B32398-AD51-4CC2-A682-EA3E93614EB1";
 	
-		CreatePaymentInstrumentRequest requestObj = new CreatePaymentInstrumentRequest();
+		PostPaymentInstrumentRequest requestObj = new PostPaymentInstrumentRequest();
 
-		TmsV1InstrumentIdentifiersPaymentInstrumentsGet200ResponseEmbeddedBankAccount bankAccount = new TmsV1InstrumentIdentifiersPaymentInstrumentsGet200ResponseEmbeddedBankAccount();
+		Tmsv2customersEmbeddedDefaultPaymentInstrumentBankAccount bankAccount = new Tmsv2customersEmbeddedDefaultPaymentInstrumentBankAccount();
 		bankAccount.type("savings");
 		requestObj.bankAccount(bankAccount);
 
-		TmsV1InstrumentIdentifiersPaymentInstrumentsGet200ResponseEmbeddedBuyerInformation buyerInformation = new TmsV1InstrumentIdentifiersPaymentInstrumentsGet200ResponseEmbeddedBuyerInformation();
+		Tmsv2customersEmbeddedDefaultPaymentInstrumentBuyerInformation buyerInformation = new Tmsv2customersEmbeddedDefaultPaymentInstrumentBuyerInformation();
 		buyerInformation.companyTaxID("12345");
 		buyerInformation.currency("USD");
-		buyerInformation.dateOfBirth("2000-12-13");
+		buyerInformation.dateOfBirth(new LocalDate("2000-12-13"));
 
-		List <TmsV1InstrumentIdentifiersPaymentInstrumentsGet200ResponseEmbeddedBuyerInformationPersonalIdentification> personalIdentification =  new ArrayList <TmsV1InstrumentIdentifiersPaymentInstrumentsGet200ResponseEmbeddedBuyerInformationPersonalIdentification>();
-		TmsV1InstrumentIdentifiersPaymentInstrumentsGet200ResponseEmbeddedBuyerInformationPersonalIdentification personalIdentification1 = new TmsV1InstrumentIdentifiersPaymentInstrumentsGet200ResponseEmbeddedBuyerInformationPersonalIdentification();
+		List <Tmsv2customersEmbeddedDefaultPaymentInstrumentBuyerInformationPersonalIdentification> personalIdentification =  new ArrayList <Tmsv2customersEmbeddedDefaultPaymentInstrumentBuyerInformationPersonalIdentification>();
+		Tmsv2customersEmbeddedDefaultPaymentInstrumentBuyerInformationPersonalIdentification personalIdentification1 = new Tmsv2customersEmbeddedDefaultPaymentInstrumentBuyerInformationPersonalIdentification();
 		personalIdentification1.id("57684432111321");
 		personalIdentification1.type("driver license");
-		TmsV1InstrumentIdentifiersPaymentInstrumentsGet200ResponseEmbeddedBuyerInformationIssuedBy issuedBy1 = new TmsV1InstrumentIdentifiersPaymentInstrumentsGet200ResponseEmbeddedBuyerInformationIssuedBy();
+		Tmsv2customersEmbeddedDefaultPaymentInstrumentBuyerInformationIssuedBy issuedBy1 = new Tmsv2customersEmbeddedDefaultPaymentInstrumentBuyerInformationIssuedBy();
 		issuedBy1.administrativeArea("CA");
 		personalIdentification1.issuedBy(issuedBy1);
 
@@ -53,44 +53,31 @@ public class CreatePaymentInstrumentBankAccount {
 
 		requestObj.buyerInformation(buyerInformation);
 
-		TmsV1InstrumentIdentifiersPaymentInstrumentsGet200ResponseEmbeddedBillTo billTo = new TmsV1InstrumentIdentifiersPaymentInstrumentsGet200ResponseEmbeddedBillTo();
+		Tmsv2customersEmbeddedDefaultPaymentInstrumentBillTo billTo = new Tmsv2customersEmbeddedDefaultPaymentInstrumentBillTo();
 		billTo.firstName("John");
-		billTo.lastName("Smith");
-		billTo.company("Cybersource");
-		billTo.address1("8310 Capital of Texas Highwas North");
-		billTo.address2("Bluffstone Drive");
-		billTo.locality("Austin");
-		billTo.administrativeArea("TX");
-		billTo.postalCode("78731");
+		billTo.lastName("Doe");
+		billTo.company("CyberSource");
+		billTo.address1("1 Market St");
+		billTo.locality("San Francisco");
+		billTo.administrativeArea("CA");
+		billTo.postalCode("94105");
 		billTo.country("US");
-		billTo.email("john.smith@test.com");
-		billTo.phoneNumber("+44 2890447951");
+		billTo.email("test@cybs.com");
+		billTo.phoneNumber("4158880000");
 		requestObj.billTo(billTo);
 
-		TmsV1InstrumentIdentifiersPaymentInstrumentsGet200ResponseEmbeddedProcessingInformation processingInformation = new TmsV1InstrumentIdentifiersPaymentInstrumentsGet200ResponseEmbeddedProcessingInformation();
-		processingInformation.billPaymentProgramEnabled(true);
-		TmsV1InstrumentIdentifiersPaymentInstrumentsGet200ResponseEmbeddedProcessingInformationBankTransferOptions processingInformationBankTransferOptions = new TmsV1InstrumentIdentifiersPaymentInstrumentsGet200ResponseEmbeddedProcessingInformationBankTransferOptions();
+		Tmsv2customersEmbeddedDefaultPaymentInstrumentProcessingInformation processingInformation = new Tmsv2customersEmbeddedDefaultPaymentInstrumentProcessingInformation();
+		Tmsv2customersEmbeddedDefaultPaymentInstrumentProcessingInformationBankTransferOptions processingInformationBankTransferOptions = new Tmsv2customersEmbeddedDefaultPaymentInstrumentProcessingInformationBankTransferOptions();
 		processingInformationBankTransferOptions.seCCode("WEB");
 		processingInformation.bankTransferOptions(processingInformationBankTransferOptions);
 
 		requestObj.processingInformation(processingInformation);
 
-		TmsV1InstrumentIdentifiersPaymentInstrumentsGet200ResponseEmbeddedMerchantInformation merchantInformation = new TmsV1InstrumentIdentifiersPaymentInstrumentsGet200ResponseEmbeddedMerchantInformation();
-		TmsV1InstrumentIdentifiersPaymentInstrumentsGet200ResponseEmbeddedMerchantInformationMerchantDescriptor merchantInformationMerchantDescriptor = new TmsV1InstrumentIdentifiersPaymentInstrumentsGet200ResponseEmbeddedMerchantInformationMerchantDescriptor();
-		merchantInformationMerchantDescriptor.alternateName("Branch Name");
-		merchantInformation.merchantDescriptor(merchantInformationMerchantDescriptor);
-
-		requestObj.merchantInformation(merchantInformation);
-
-		Tmsv1paymentinstrumentsInstrumentIdentifier instrumentIdentifier = new Tmsv1paymentinstrumentsInstrumentIdentifier();
-		Tmsv1instrumentidentifiersBankAccount instrumentIdentifierBankAccount = new Tmsv1instrumentidentifiersBankAccount();
-		instrumentIdentifierBankAccount.number("4100");
-		instrumentIdentifierBankAccount.routingNumber("071923284");
-		instrumentIdentifier.bankAccount(instrumentIdentifierBankAccount);
-
+		Tmsv2customersEmbeddedDefaultPaymentInstrumentInstrumentIdentifier instrumentIdentifier = new Tmsv2customersEmbeddedDefaultPaymentInstrumentInstrumentIdentifier();
+		instrumentIdentifier.id("A7A91A2CA872B272E05340588D0A0699");
 		requestObj.instrumentIdentifier(instrumentIdentifier);
 
-		TmsV1InstrumentIdentifiersPaymentInstrumentsGet200ResponseEmbeddedPaymentInstruments result = null;
+		Tmsv2customersEmbeddedDefaultPaymentInstrument result = null;
 		try {
 			merchantProp = Configuration.getMerchantDetails();
 			ApiClient apiClient = new ApiClient();
@@ -98,7 +85,7 @@ public class CreatePaymentInstrumentBankAccount {
 			apiClient.merchantConfig = merchantConfig;
 
 			PaymentInstrumentApi apiInstance = new PaymentInstrumentApi(apiClient);
-			result = apiInstance.createPaymentInstrument(profileid, requestObj);
+			result = apiInstance.postPaymentInstrument(requestObj, profileid);
 
 			responseCode = apiClient.responseCode;
 			status = apiClient.status;

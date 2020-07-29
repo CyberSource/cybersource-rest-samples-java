@@ -25,28 +25,27 @@ public class CreateInstrumentIdentifierCardEnrollForNetworkToken {
 		run();
 	}
 
-	public static TmsV1InstrumentIdentifiersPost200Response run() {
+	public static Tmsv2customersEmbeddedDefaultPaymentInstrumentEmbeddedInstrumentIdentifier run() {
 		String profileid = "93B32398-AD51-4CC2-A682-EA3E93614EB1";
-		CreateInstrumentIdentifierRequest requestObj = new CreateInstrumentIdentifierRequest();
+		PostInstrumentIdentifierRequest requestObj = new PostInstrumentIdentifierRequest();
 
 		requestObj.type("enrollable card");
-		Tmsv1instrumentidentifiersCard card = new Tmsv1instrumentidentifiersCard();
-		card.number("4622943127013705");
+		Tmsv2customersEmbeddedDefaultPaymentInstrumentEmbeddedInstrumentIdentifierCard card = new Tmsv2customersEmbeddedDefaultPaymentInstrumentEmbeddedInstrumentIdentifierCard();
+		card.number("4111111111111111");
 		card.expirationMonth("12");
-		card.expirationYear("2022");
-		card.securityCode("838");
+		card.expirationYear("2031");
+		card.securityCode("123");
 		requestObj.card(card);
 
-		Tmsv1instrumentidentifiersBillTo billTo = new Tmsv1instrumentidentifiersBillTo();
-		billTo.address1("8310 Capital of Texas Highway North");
-		billTo.address2("Bluffstone Drive");
-		billTo.locality("Austin");
-		billTo.administrativeArea("TX");
-		billTo.postalCode("78731");
+		Tmsv2customersEmbeddedDefaultPaymentInstrumentEmbeddedInstrumentIdentifierBillTo billTo = new Tmsv2customersEmbeddedDefaultPaymentInstrumentEmbeddedInstrumentIdentifierBillTo();
+		billTo.address1("1 Market St");
+		billTo.locality("San Francisco");
+		billTo.administrativeArea("CA");
+		billTo.postalCode("94105");
 		billTo.country("US");
 		requestObj.billTo(billTo);
 
-		TmsV1InstrumentIdentifiersPost200Response result = null;
+		Tmsv2customersEmbeddedDefaultPaymentInstrumentEmbeddedInstrumentIdentifier result = null;
 		try {
 			merchantProp = Configuration.getMerchantDetails();
 			ApiClient apiClient = new ApiClient();
@@ -54,7 +53,7 @@ public class CreateInstrumentIdentifierCardEnrollForNetworkToken {
 			apiClient.merchantConfig = merchantConfig;
 
 			InstrumentIdentifierApi apiInstance = new InstrumentIdentifierApi(apiClient);
-			result = apiInstance.createInstrumentIdentifier(profileid, requestObj);
+			result = apiInstance.postInstrumentIdentifier(requestObj, profileid);
 
 			responseCode = apiClient.responseCode;
 			status = apiClient.status;

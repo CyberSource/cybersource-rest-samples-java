@@ -27,8 +27,8 @@ public class GetListOfBatchFiles {
 
 	public static PtsV1TransactionBatchesGet200Response run() {
 	
-		DateTime startTime = new DateTime("2019-05-22T01:47:57.000Z").withZone(DateTimeZone.forID("GMT"));
-		DateTime endTime = new DateTime("2019-07-22T22:47:57.000Z").withZone(DateTimeZone.forID("GMT"));
+		DateTime startTime = new DateTime("2020-02-22T01:47:57.000Z").withZone(DateTimeZone.forID("GMT"));
+		DateTime endTime = new DateTime("2020-02-22T22:47:57.000Z").withZone(DateTimeZone.forID("GMT"));
 
 		PtsV1TransactionBatchesGet200Response result = null;
 		try {

@@ -22,14 +22,13 @@ public class EnrollWithTravelInformation {
 	private static Properties merchantProp;
 
 	public static void main(String args[]) throws Exception {
-		// Accept required parameters from args[] and pass to run.
 		run();
 	}
 	public static RiskV1AuthenticationsPost201Response run() {
 	
 		CheckPayerAuthEnrollmentRequest requestObj = new CheckPayerAuthEnrollmentRequest();
 
-		Riskv1authenticationsClientReferenceInformation clientReferenceInformation = new Riskv1authenticationsClientReferenceInformation();
+		Riskv1authenticationsetupsClientReferenceInformation clientReferenceInformation = new Riskv1authenticationsetupsClientReferenceInformation();
 		clientReferenceInformation.code("cybs_test");
 		requestObj.clientReferenceInformation(clientReferenceInformation);
 
@@ -68,20 +67,20 @@ public class EnrollWithTravelInformation {
 		buyerInformation.mobilePhone(1245789632);
 		requestObj.buyerInformation(buyerInformation);
 
-		Riskv1authenticationsConsumerAuthenticationInformation consumerAuthenticationInformation = new Riskv1authenticationsConsumerAuthenticationInformation();
+		Riskv1decisionsConsumerAuthenticationInformation consumerAuthenticationInformation = new Riskv1decisionsConsumerAuthenticationInformation();
 		consumerAuthenticationInformation.transactionMode("MOTO");
 		requestObj.consumerAuthenticationInformation(consumerAuthenticationInformation);
 
 		Riskv1authenticationsTravelInformation travelInformation = new Riskv1authenticationsTravelInformation();
 
-		List <Riskv1authenticationsTravelInformationLegs> legs =  new ArrayList <Riskv1authenticationsTravelInformationLegs>();
-		Riskv1authenticationsTravelInformationLegs legs1 = new Riskv1authenticationsTravelInformationLegs();
+		List <Riskv1decisionsTravelInformationLegs> legs =  new ArrayList <Riskv1decisionsTravelInformationLegs>();
+		Riskv1decisionsTravelInformationLegs legs1 = new Riskv1decisionsTravelInformationLegs();
 		legs1.destination("DEF");
 		legs1.carrierCode("UA");
 		legs1.departureDate("2019-01-01");
 		legs.add(legs1);
 
-		Riskv1authenticationsTravelInformationLegs legs2 = new Riskv1authenticationsTravelInformationLegs();
+		Riskv1decisionsTravelInformationLegs legs2 = new Riskv1decisionsTravelInformationLegs();
 		legs2.destination("RES");
 		legs2.carrierCode("AS");
 		legs2.departureDate("2019-02-21");
@@ -91,13 +90,13 @@ public class EnrollWithTravelInformation {
 
 		travelInformation.numberOfPassengers(2);
 
-		List <Riskv1authenticationsTravelInformationPassengers> passengers =  new ArrayList <Riskv1authenticationsTravelInformationPassengers>();
-		Riskv1authenticationsTravelInformationPassengers passengers1 = new Riskv1authenticationsTravelInformationPassengers();
+		List <Riskv1decisionsTravelInformationPassengers> passengers =  new ArrayList <Riskv1decisionsTravelInformationPassengers>();
+		Riskv1decisionsTravelInformationPassengers passengers1 = new Riskv1decisionsTravelInformationPassengers();
 		passengers1.firstName("Raj");
 		passengers1.lastName("Charles");
 		passengers.add(passengers1);
 
-		Riskv1authenticationsTravelInformationPassengers passengers2 = new Riskv1authenticationsTravelInformationPassengers();
+		Riskv1decisionsTravelInformationPassengers passengers2 = new Riskv1decisionsTravelInformationPassengers();
 		passengers2.firstName("Potter");
 		passengers2.lastName("Suhember");
 		passengers.add(passengers2);

@@ -40,7 +40,6 @@ public class ZeroDollarAuthorization {
 			processingInformation.capture(true);
 		}
 
-		processingInformation.commerceIndicator("internet");
 		requestObj.processingInformation(processingInformation);
 
 		Ptsv2paymentsPaymentInformation paymentInformation = new Ptsv2paymentsPaymentInformation();

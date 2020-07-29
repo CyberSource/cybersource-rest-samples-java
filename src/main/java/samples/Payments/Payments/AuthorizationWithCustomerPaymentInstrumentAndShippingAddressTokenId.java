@@ -35,15 +35,15 @@ public class AuthorizationWithCustomerPaymentInstrumentAndShippingAddressTokenId
 
 		Ptsv2paymentsPaymentInformation paymentInformation = new Ptsv2paymentsPaymentInformation();
 		Ptsv2paymentsPaymentInformationCustomer paymentInformationCustomer = new Ptsv2paymentsPaymentInformationCustomer();
-		paymentInformationCustomer.id("7500BB199B4270EFE05340588D0AFCAD");
+		paymentInformationCustomer.id("AB695DA801DD1BB6E05341588E0A3BDC");
 		paymentInformation.customer(paymentInformationCustomer);
 
 		Ptsv2paymentsPaymentInformationPaymentInstrument paymentInformationPaymentInstrument = new Ptsv2paymentsPaymentInformationPaymentInstrument();
-		paymentInformationPaymentInstrument.id("7500BB199B4270EFE05340588D0AFCPI");
+		paymentInformationPaymentInstrument.id("AB6A54B982A6FCB6E05341588E0A3935");
 		paymentInformation.paymentInstrument(paymentInformationPaymentInstrument);
 
 		Ptsv2paymentsPaymentInformationShippingAddress paymentInformationShippingAddress = new Ptsv2paymentsPaymentInformationShippingAddress();
-		paymentInformationShippingAddress.id("7500BB199B4270EFE05340588D0AFCSA");
+		paymentInformationShippingAddress.id("AB6A54B97C00FCB6E05341588E0A3935");
 		paymentInformation.shippingAddress(paymentInformationShippingAddress);
 
 		requestObj.paymentInformation(paymentInformation);

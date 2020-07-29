@@ -20,7 +20,6 @@ public class LevelIIData {
 	private static String responseCode = null;
 	private static String status = null;
 	private static Properties merchantProp;
-	public static boolean userCapture = false;
 
 	public static void main(String args[]) throws Exception {
 		run();
@@ -33,15 +32,6 @@ public class LevelIIData {
 		Ptsv2paymentsClientReferenceInformation clientReferenceInformation = new Ptsv2paymentsClientReferenceInformation();
 		clientReferenceInformation.code("TC50171_12");
 		requestObj.clientReferenceInformation(clientReferenceInformation);
-
-		Ptsv2paymentsProcessingInformation processingInformation = new Ptsv2paymentsProcessingInformation();
-		processingInformation.capture(false);
-		if (userCapture) {
-			processingInformation.capture(true);
-		}
-
-		processingInformation.commerceIndicator("internet");
-		requestObj.processingInformation(processingInformation);
 
 		Ptsv2paymentsPaymentInformation paymentInformation = new Ptsv2paymentsPaymentInformation();
 		Ptsv2paymentsPaymentInformationCard paymentInformationCard = new Ptsv2paymentsPaymentInformationCard();

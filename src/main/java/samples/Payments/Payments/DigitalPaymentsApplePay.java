@@ -40,7 +40,6 @@ public class DigitalPaymentsApplePay {
 			processingInformation.capture(true);
 		}
 
-		processingInformation.commerceIndicator("internet");
 		processingInformation.paymentSolution("001");
 		requestObj.processingInformation(processingInformation);
 
@@ -65,7 +64,6 @@ public class DigitalPaymentsApplePay {
 		orderInformationBillTo.firstName("John");
 		orderInformationBillTo.lastName("Deo");
 		orderInformationBillTo.address1("901 Metro Center Blvd");
-		orderInformationBillTo.address2("Desk M3-5573");
 		orderInformationBillTo.locality("Foster City");
 		orderInformationBillTo.administrativeArea("CA");
 		orderInformationBillTo.postalCode("94404");

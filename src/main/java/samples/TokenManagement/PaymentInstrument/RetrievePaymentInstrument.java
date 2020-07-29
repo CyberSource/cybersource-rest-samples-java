@@ -25,11 +25,11 @@ public class RetrievePaymentInstrument {
 		run();
 	}
 
-	public static TmsV1InstrumentIdentifiersPaymentInstrumentsGet200ResponseEmbeddedPaymentInstruments run() {
+	public static Tmsv2customersEmbeddedDefaultPaymentInstrument run() {
 		String profileid = "93B32398-AD51-4CC2-A682-EA3E93614EB1";
 		String tokenId = "888454C31FB6150CE05340588D0AA9BE";
 	
-		TmsV1InstrumentIdentifiersPaymentInstrumentsGet200ResponseEmbeddedPaymentInstruments result = null;
+		Tmsv2customersEmbeddedDefaultPaymentInstrument result = null;
 		try {
 			merchantProp = Configuration.getMerchantDetails();
 			ApiClient apiClient = new ApiClient();
@@ -37,7 +37,7 @@ public class RetrievePaymentInstrument {
 			apiClient.merchantConfig = merchantConfig;
 
 			PaymentInstrumentApi apiInstance = new PaymentInstrumentApi(apiClient);
-			result = apiInstance.getPaymentInstrument(profileid, tokenId);
+			result = apiInstance.getPaymentInstrument(tokenId, profileid);
 
 			responseCode = apiClient.responseCode;
 			status = apiClient.status;

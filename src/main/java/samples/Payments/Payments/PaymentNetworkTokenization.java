@@ -40,7 +40,7 @@ public class PaymentNetworkTokenization {
 			processingInformation.capture(true);
 		}
 
-		processingInformation.commerceIndicator("internet");
+		processingInformation.commerceIndicator("vbv");
 		requestObj.processingInformation(processingInformation);
 
 		Ptsv2paymentsPaymentInformation paymentInformation = new Ptsv2paymentsPaymentInformation();

@@ -36,7 +36,7 @@ public class DeletePaymentInstrument {
 			apiClient.merchantConfig = merchantConfig;
 
 			PaymentInstrumentApi apiInstance = new PaymentInstrumentApi(apiClient);
-			apiInstance.deletePaymentInstrument(profileid, tokenId);
+			apiInstance.deletePaymentInstrument(tokenId, profileid);
 
 			responseCode = apiClient.responseCode;
 			status = apiClient.status;

@@ -20,7 +20,6 @@ public class ElectronicCheckDebits {
 	private static String responseCode = null;
 	private static String status = null;
 	private static Properties merchantProp;
-	public static boolean userCapture = false;
 
 	public static void main(String args[]) throws Exception {
 		run();
@@ -34,15 +33,6 @@ public class ElectronicCheckDebits {
 		clientReferenceInformation.code("TC50171_3");
 		requestObj.clientReferenceInformation(clientReferenceInformation);
 
-		Ptsv2paymentsProcessingInformation processingInformation = new Ptsv2paymentsProcessingInformation();
-		processingInformation.capture(false);
-		if (userCapture) {
-			processingInformation.capture(true);
-		}
-		
-		processingInformation.commerceIndicator("internet");
-		requestObj.processingInformation(processingInformation);
-
 		Ptsv2paymentsPaymentInformation paymentInformation = new Ptsv2paymentsPaymentInformation();
 		Ptsv2paymentsPaymentInformationBank paymentInformationBank = new Ptsv2paymentsPaymentInformationBank();
 		Ptsv2paymentsPaymentInformationBankAccount paymentInformationBankAccount = new Ptsv2paymentsPaymentInformationBankAccount();
@@ -52,6 +42,10 @@ public class ElectronicCheckDebits {
 
 		paymentInformationBank.routingNumber("071923284");
 		paymentInformation.bank(paymentInformationBank);
+
+		Ptsv2paymentsPaymentInformationPaymentType paymentInformationPaymentType = new Ptsv2paymentsPaymentInformationPaymentType();
+		paymentInformationPaymentType.name("CHECK");
+		paymentInformation.paymentType(paymentInformationPaymentType);
 
 		requestObj.paymentInformation(paymentInformation);
 

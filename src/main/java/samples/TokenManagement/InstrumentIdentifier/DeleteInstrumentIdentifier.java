@@ -38,7 +38,7 @@ public class DeleteInstrumentIdentifier {
 			apiClient.merchantConfig = merchantConfig;
 
 			InstrumentIdentifierApi apiInstance = new InstrumentIdentifierApi(apiClient);
-			apiInstance.deleteInstrumentIdentifier(profileid, tokenId);
+			apiInstance.deleteInstrumentIdentifier(tokenId, profileid);
 
 			responseCode = apiClient.responseCode;
 			status = apiClient.status;

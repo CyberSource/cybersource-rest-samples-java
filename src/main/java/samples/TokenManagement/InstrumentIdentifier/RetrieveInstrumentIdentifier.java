@@ -25,11 +25,11 @@ public class RetrieveInstrumentIdentifier {
 		run();
 	}
 
-	public static TmsV1InstrumentIdentifiersPost200Response run() {
+	public static Tmsv2customersEmbeddedDefaultPaymentInstrumentEmbeddedInstrumentIdentifier run() {
 		String profileid = "93B32398-AD51-4CC2-A682-EA3E93614EB1";
 		String tokenId = "7010000000016241111";
 		
-		TmsV1InstrumentIdentifiersPost200Response result = null;
+		Tmsv2customersEmbeddedDefaultPaymentInstrumentEmbeddedInstrumentIdentifier result = null;
 		try {
 			merchantProp = Configuration.getMerchantDetails();
 			ApiClient apiClient = new ApiClient();
@@ -37,7 +37,7 @@ public class RetrieveInstrumentIdentifier {
 			apiClient.merchantConfig = merchantConfig;
 
 			InstrumentIdentifierApi apiInstance = new InstrumentIdentifierApi(apiClient);
-			result = apiInstance.getInstrumentIdentifier(profileid, tokenId);
+			result = apiInstance.getInstrumentIdentifier(tokenId, profileid);
 
 			responseCode = apiClient.responseCode;
 			status = apiClient.status;

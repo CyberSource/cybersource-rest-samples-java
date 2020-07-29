@@ -35,7 +35,7 @@ public class CreditWithCustomerTokenId {
 
 		Ptsv2paymentsidrefundsPaymentInformation paymentInformation = new Ptsv2paymentsidrefundsPaymentInformation();
 		Ptsv2paymentsPaymentInformationCustomer paymentInformationCustomer = new Ptsv2paymentsPaymentInformationCustomer();
-		paymentInformationCustomer.id("7500BB199B4270EFE05340588D0AFCAD");
+		paymentInformationCustomer.id("AB695DA801DD1BB6E05341588E0A3BDC");
 		paymentInformation.customer(paymentInformationCustomer);
 
 		requestObj.paymentInformation(paymentInformation);

@@ -40,7 +40,6 @@ public class LevelIIIData {
 			processingInformation.capture(true);
 		}
 
-		processingInformation.commerceIndicator("internet");
 		processingInformation.purchaseLevel("3");
 		requestObj.processingInformation(processingInformation);
 

@@ -33,10 +33,6 @@ public class ElectronicCheckStandAloneCredits {
 		clientReferenceInformation.code("TC46125-1");
 		requestObj.clientReferenceInformation(clientReferenceInformation);
 
-		Ptsv2creditsProcessingInformation processingInformation = new Ptsv2creditsProcessingInformation();
-		processingInformation.commerceIndicator("internet");
-		requestObj.processingInformation(processingInformation);
-
 		Ptsv2paymentsidrefundsPaymentInformation paymentInformation = new Ptsv2paymentsidrefundsPaymentInformation();
 		Ptsv2paymentsPaymentInformationBank paymentInformationBank = new Ptsv2paymentsPaymentInformationBank();
 		Ptsv2paymentsPaymentInformationBankAccount paymentInformationBankAccount = new Ptsv2paymentsPaymentInformationBankAccount();
@@ -47,6 +43,10 @@ public class ElectronicCheckStandAloneCredits {
 
 		paymentInformationBank.routingNumber("071923284");
 		paymentInformation.bank(paymentInformationBank);
+
+		Ptsv2paymentsPaymentInformationPaymentType paymentInformationPaymentType = new Ptsv2paymentsPaymentInformationPaymentType();
+		paymentInformationPaymentType.name("CHECK");
+		paymentInformation.paymentType(paymentInformationPaymentType);
 
 		requestObj.paymentInformation(paymentInformation);
 

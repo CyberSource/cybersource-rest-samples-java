@@ -39,6 +39,8 @@ public class UpdateInvoiceSettings {
 		invoiceSettingsInformationHeaderStyle.backgroundColor("#FFFFFF");
 		invoiceSettingsInformation.headerStyle(invoiceSettingsInformationHeaderStyle);
 
+		invoiceSettingsInformation.deliveryLanguage("en-US");
+		invoiceSettingsInformation.defaultCurrencyCode("USD");
 		requestObj.invoiceSettingsInformation(invoiceSettingsInformation);
 
 		InvoicingV2InvoiceSettingsGet200Response result = null;

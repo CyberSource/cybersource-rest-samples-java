@@ -29,7 +29,7 @@ public class EnrollWithPendingAuthentication {
 	
 		CheckPayerAuthEnrollmentRequest requestObj = new CheckPayerAuthEnrollmentRequest();
 
-		Riskv1authenticationsClientReferenceInformation clientReferenceInformation = new Riskv1authenticationsClientReferenceInformation();
+		Riskv1authenticationsetupsClientReferenceInformation clientReferenceInformation = new Riskv1authenticationsetupsClientReferenceInformation();
 		clientReferenceInformation.code("cybs_test");
 		requestObj.clientReferenceInformation(clientReferenceInformation);
 
@@ -68,7 +68,8 @@ public class EnrollWithPendingAuthentication {
 		buyerInformation.mobilePhone(1245789632);
 		requestObj.buyerInformation(buyerInformation);
 
-		Riskv1authenticationsConsumerAuthenticationInformation consumerAuthenticationInformation = new Riskv1authenticationsConsumerAuthenticationInformation();
+		Riskv1decisionsConsumerAuthenticationInformation consumerAuthenticationInformation = new Riskv1decisionsConsumerAuthenticationInformation();
+		consumerAuthenticationInformation.returnUrl("http://localhost:8189/cart/enterprise/collect-term");
 		consumerAuthenticationInformation.transactionMode("MOTO");
 		requestObj.consumerAuthenticationInformation(consumerAuthenticationInformation);
 

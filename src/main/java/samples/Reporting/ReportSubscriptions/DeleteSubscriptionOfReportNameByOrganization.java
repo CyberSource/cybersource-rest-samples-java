@@ -26,6 +26,8 @@ public class DeleteSubscriptionOfReportNameByOrganization {
 	}
 
 	public static void run() {
+
+		String organizationId = null;
 		String reportName = "testrest_subcription_v1";
 		
 		try {
@@ -35,7 +37,7 @@ public class DeleteSubscriptionOfReportNameByOrganization {
 			apiClient.merchantConfig = merchantConfig;
 
 			ReportSubscriptionsApi apiInstance = new ReportSubscriptionsApi(apiClient);
-			apiInstance.deleteSubscription(reportName);
+			apiInstance.deleteSubscription(reportName, organizationId);
 
 			responseCode = apiClient.responseCode;
 			status = apiClient.status;
