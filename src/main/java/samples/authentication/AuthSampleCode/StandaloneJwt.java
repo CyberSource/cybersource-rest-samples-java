@@ -251,7 +251,10 @@ public class StandaloneJwt {
 
         try {
         	KeyStore merchantKeyStore = KeyStore.getInstance("PKCS12", new BouncyCastleProvider());
-        	FileInputStream keyFile = new FileInputStream("src/main/resources/testrest.p12");
+	
+		//Replace below testrest.p12 file with your <MERCHANT>.p12 file.
+                //Steps to generate your P12 - https://developer.cybersource.com/api/developer-guides/dita-gettingstarted/authentication/createCert.html
+  	 	FileInputStream keyFile = new FileInputStream("src/main/resources/testrest.p12");
         	
 			merchantKeyStore.load(keyFile, merchantId.toCharArray());
 			
