@@ -69,7 +69,6 @@ public class EnrollWithPendingAuthentication {
 		requestObj.buyerInformation(buyerInformation);
 
 		Riskv1decisionsConsumerAuthenticationInformation consumerAuthenticationInformation = new Riskv1decisionsConsumerAuthenticationInformation();
-		consumerAuthenticationInformation.returnUrl("http://localhost:8189/cart/enterprise/collect-term");
 		consumerAuthenticationInformation.transactionMode("MOTO");
 		requestObj.consumerAuthenticationInformation(consumerAuthenticationInformation);
 

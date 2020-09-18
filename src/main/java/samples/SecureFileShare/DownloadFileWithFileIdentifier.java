@@ -43,7 +43,7 @@ public class DownloadFileWithFileIdentifier {
 	}
 
 	public static void run() {
-		String  fileId = "VFJSXzEzODMtYTIwZjUyNDgtNWNlYy0yN2QzLWUwNTMtYTI1ODhlMGFkZjMxLnhtbC0yMDIwLTAzLTMw";
+		String  fileId = "Q2hhcmdlYmFja0FuZFJldHJpZXZhbFJlcG9ydC1hYWVkMWEwMS03OGNhLTU1YzgtZTA1My1hMjU4OGUwYWNhZWEuY3N2LTIwMjAtMDctMzA=";
 		String organizationId = "testrest";
 
 		

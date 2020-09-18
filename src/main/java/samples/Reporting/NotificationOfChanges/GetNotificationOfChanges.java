@@ -27,8 +27,8 @@ public class GetNotificationOfChanges {
 
 	public static ReportingV3NotificationofChangesGet200Response run() {
 	
-		DateTime startTime = new DateTime("2020-03-01T12:00:00Z").withZone(DateTimeZone.forID("GMT"));
-		DateTime endTime = new DateTime("2020-03-10T12:00:00Z").withZone(DateTimeZone.forID("GMT"));
+		DateTime startTime = new DateTime("2020-07-01T12:00:00Z").withZone(DateTimeZone.forID("GMT"));
+		DateTime endTime = new DateTime("2020-07-10T12:00:00Z").withZone(DateTimeZone.forID("GMT"));
 
 		ReportingV3NotificationofChangesGet200Response result = null;
 		try {

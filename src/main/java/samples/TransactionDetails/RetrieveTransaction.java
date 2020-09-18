@@ -15,6 +15,7 @@ import Data.Configuration;
 import Invokers.ApiClient;
 import Invokers.ApiException;
 import Model.*;
+import samples.Payments.Payments.SimpleAuthorizationInternet;
 
 public class RetrieveTransaction {
 	private static String responseCode = null;
@@ -25,8 +26,10 @@ public class RetrieveTransaction {
 		run();
 	}
 
-	public static TssV2TransactionsGet200Response run() {
-		String id = "5843582801906488504004";
+	public static TssV2TransactionsGet200Response run() throws InterruptedException {
+		String id = SimpleAuthorizationInternet.run().getId();
+		
+		Thread.sleep(15000);
 		
 		TssV2TransactionsGet200Response result = null;
 		try {

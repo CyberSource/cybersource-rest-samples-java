@@ -13,7 +13,7 @@
 		<dependency>
 			<groupId>com.cybersource</groupId>
 			<artifactId>cybersource-rest-client-java</artifactId>
-			<version>0.0.25</version>
+			<version>0.0.26</version>
 		</dependency>
 		<!-- Sample API Client dependency -->
 		<dependency>

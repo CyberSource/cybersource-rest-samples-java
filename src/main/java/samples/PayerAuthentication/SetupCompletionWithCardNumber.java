@@ -37,7 +37,7 @@ public class SetupCompletionWithCardNumber {
 		paymentInformationCard.type("001");
 		paymentInformationCard.expirationMonth("12");
 		paymentInformationCard.expirationYear("2025");
-		paymentInformationCard.number("4111111111111111");
+		paymentInformationCard.number("4000000000000101");
 		paymentInformation.card(paymentInformationCard);
 
 		requestObj.paymentInformation(paymentInformation);

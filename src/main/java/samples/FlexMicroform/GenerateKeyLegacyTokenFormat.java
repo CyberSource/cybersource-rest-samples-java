@@ -1,22 +1,16 @@
-package samples.SecureFileShare;
+package samples.FlexMicroform;
 
-import java.*;
-import java.util.*;
-import java.math.BigDecimal;
-import org.joda.time.DateTime;
-import org.joda.time.DateTimeZone;
-import org.joda.time.LocalDate;
+import java.util.Properties;
 
-import com.google.common.base.Strings;
 import com.cybersource.authsdk.core.MerchantConfig;
 
-import Api.*;
+import Api.KeyGenerationApi;
 import Data.Configuration;
 import Invokers.ApiClient;
-import Invokers.ApiException;
-import Model.*;
+import Model.FlexV1KeysPost200Response;
+import Model.GeneratePublicKeyRequest;
 
-public class GetListOfFiles {
+public class GenerateKeyLegacyTokenFormat {
 	private static String responseCode = null;
 	private static String status = null;
 	private static Properties merchantProp;
@@ -25,21 +19,23 @@ public class GetListOfFiles {
 		run();
 	}
 
-	public static V1FileDetailsGet200Response run() {
+	public static FlexV1KeysPost200Response run() {
 	
-		LocalDate startDate = new LocalDate("2020-07-20");
-		LocalDate endDate = new LocalDate("2020-07-30");
-		String organizationId = "testrest";
+		GeneratePublicKeyRequest requestObj = new GeneratePublicKeyRequest();
 
-		V1FileDetailsGet200Response result = null;
+		requestObj.encryptionType("None");
+		requestObj.targetOrigin("https://www.test.com");
+		String format = "legacy";
+
+		FlexV1KeysPost200Response result = null;
 		try {
 			merchantProp = Configuration.getMerchantDetails();
 			ApiClient apiClient = new ApiClient();
 			MerchantConfig merchantConfig = new MerchantConfig(merchantProp);
 			apiClient.merchantConfig = merchantConfig;
 
-			SecureFileShareApi apiInstance = new SecureFileShareApi(apiClient);
-			result = apiInstance.getFileDetail(startDate, endDate, organizationId, null);
+			KeyGenerationApi apiInstance = new KeyGenerationApi(apiClient);
+			result = apiInstance.generatePublicKey(format, requestObj);
 
 			responseCode = apiClient.responseCode;
 			status = apiClient.status;
