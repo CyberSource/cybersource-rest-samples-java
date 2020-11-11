@@ -27,7 +27,7 @@ public class DeleteCustomerPaymentInstrument {
 	}
 	public static void run() {
 		String customerTokenId = "AB695DA801DD1BB6E05341588E0A3BDC";
-		String paymentInstrumentTokenId = CreateCustomerPaymentInstrumentCard.run().getId();
+		String paymentInstrumentTokenId = CreateCustomerNonDefaultPaymentInstrumentCard.run().getId();
 		
 		try {
 			merchantProp = Configuration.getMerchantDetails();

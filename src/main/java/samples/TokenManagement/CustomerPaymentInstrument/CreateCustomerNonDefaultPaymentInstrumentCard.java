@@ -16,7 +16,7 @@ import Invokers.ApiClient;
 import Invokers.ApiException;
 import Model.*;
 
-public class CreateCustomerPaymentInstrumentCard {
+public class CreateCustomerNonDefaultPaymentInstrumentCard {
 	private static String responseCode = null;
 	private static String status = null;
 	private static Properties merchantProp;
@@ -26,9 +26,10 @@ public class CreateCustomerPaymentInstrumentCard {
 	}
 	public static Tmsv2customersEmbeddedDefaultPaymentInstrument run() {
 		String customerTokenId = "AB695DA801DD1BB6E05341588E0A3BDC";
-		
+	
 		PostCustomerPaymentInstrumentRequest requestObj = new PostCustomerPaymentInstrumentRequest();
 
+		requestObj._default(false);
 		Tmsv2customersEmbeddedDefaultPaymentInstrumentCard card = new Tmsv2customersEmbeddedDefaultPaymentInstrumentCard();
 		card.expirationMonth("12");
 		card.expirationYear("2031");

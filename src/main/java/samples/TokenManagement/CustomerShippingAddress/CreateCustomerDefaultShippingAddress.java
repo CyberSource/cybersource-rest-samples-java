@@ -16,7 +16,7 @@ import Invokers.ApiClient;
 import Invokers.ApiException;
 import Model.*;
 
-public class CreateShippingAddress {
+public class CreateCustomerDefaultShippingAddress {
 	private static String responseCode = null;
 	private static String status = null;
 	private static Properties merchantProp;
@@ -29,6 +29,7 @@ public class CreateShippingAddress {
 	
 		PostCustomerShippingAddressRequest requestObj = new PostCustomerShippingAddressRequest();
 
+		requestObj._default(true);
 		Tmsv2customersEmbeddedDefaultShippingAddressShipTo shipTo = new Tmsv2customersEmbeddedDefaultShippingAddressShipTo();
 		shipTo.firstName("John");
 		shipTo.lastName("Doe");
