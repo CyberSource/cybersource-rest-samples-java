@@ -24,10 +24,17 @@ public class PutMethod {
 	 * REQUEST-TARGET [Editable]
 	 */
 	private String requestTarget = "/reporting/v2/reportSubscriptions/TRRReport?organizationId=testrest";
-	/**
-	 * JSON-PATH [Editable]
-	 */
-	private String requestJsonPath = "src/main/resources/TRRReport.json";
+	private String requestJson = "{ \"startDay\":\"23\",\r\n" + 
+			"  \"timeZone\":\"America/Chicago\",\r\n" + 
+			"  \"reportDefinitionName\":\"TransactionRequestClass\",\r\n" + 
+			"  \"startTime\":\"1100\",\r\n" + 
+			"  \"reportFrequency\":\"DAILY\",\r\n" + 
+			"  \"ReportName\":\"TRRReport\",\r\n" + 
+			"  \"reportFormat\":\"csv\",\r\n" + 
+			"  \"orgId\":\"testrest\",\r\n" + 
+			"  \"reportType\":\"detail\",\r\n" + 
+			"  \"reportFields\": [\"Request.RequestID\",\"Request.TransactionDate\",\"Request.MerchantReferenceNumber\",\"Request.MerchantID\"]\r\n" + 
+			"}";
 	/**
 	 * REQUEST-TYPE. [Non-Editable]
 	 */
@@ -59,7 +66,7 @@ public class PutMethod {
 		 * object.
 		 */
 
-		merchantConfig.setRequestJsonPath(requestJsonPath);
+		merchantConfig.setRequestData(requestJson);
 		merchantConfig.setRequestTarget(requestTarget);
 		merchantConfig.setRequestData(requestData);
 		// merchantConfig.validateMerchantDetails(logger)

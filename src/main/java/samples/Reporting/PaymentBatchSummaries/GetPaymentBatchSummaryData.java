@@ -27,8 +27,8 @@ public class GetPaymentBatchSummaryData {
 
 	public static ReportingV3PaymentBatchSummariesGet200Response run() {
 	
-		DateTime startTime = new DateTime("2019-05-01T12:00:00Z").withZone(DateTimeZone.forID("GMT"));
-		DateTime endTime = new DateTime("2019-08-30T12:00:00Z").withZone(DateTimeZone.forID("GMT"));
+		DateTime startTime = new DateTime("2020-09-01T12:00:00Z").withZone(DateTimeZone.forID("GMT"));
+		DateTime endTime = new DateTime("2020-09-30T12:00:00Z").withZone(DateTimeZone.forID("GMT"));
 		String organizationId = "testrest";
 		String rollUp = null;
 		String breakdown = null;

@@ -18,7 +18,7 @@ public class GetMethod {
 	/**
 	 * REQUEST TARGET / UNIQUE GET ID [Editable]
 	 */
-	private String requestTarget = "/pts/v2/payments/5525469669016421003004";
+	private String requestTarget = "/pts/v2/payments/6065710300556203803003";
 	/**
 	 * REQUEST-TYPE. [Non-Editable]
 	 */
