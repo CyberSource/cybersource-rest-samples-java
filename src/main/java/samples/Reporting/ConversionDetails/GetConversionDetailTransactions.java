@@ -27,8 +27,8 @@ public class GetConversionDetailTransactions {
 
 	public static ReportingV3ConversionDetailsGet200Response run() {
 	
-		DateTime startTime = new DateTime("2019-03-21T00:00:00Z").withZone(DateTimeZone.forID("GMT"));
-		DateTime endTime = new DateTime("2019-03-21T23:00:00Z").withZone(DateTimeZone.forID("GMT"));
+		DateTime startTime = new DateTime("2020-09-21T00:00:00Z").withZone(DateTimeZone.forID("GMT"));
+		DateTime endTime = new DateTime("2020-09-21T23:00:00Z").withZone(DateTimeZone.forID("GMT"));
 		String organizationId = "testrest";
 
 		ReportingV3ConversionDetailsGet200Response result = null;

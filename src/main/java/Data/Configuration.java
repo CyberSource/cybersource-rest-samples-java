@@ -12,6 +12,10 @@ public class Configuration {
 		props.setProperty("runEnvironment", "CyberSource.Environment.SANDBOX");
 		props.setProperty("requestJsonPath", "src/main/resources/request.json");
 
+		// MetaKey Parameters
+		props.setProperty("portfolioID", "");
+		props.setProperty("useMetaKey", "false");
+
 		// JWT Parameters
 		props.setProperty("keyAlias", "testrest");
 		props.setProperty("keyPass", "testrest");

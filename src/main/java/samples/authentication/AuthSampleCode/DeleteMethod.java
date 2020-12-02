@@ -28,7 +28,18 @@ public class DeleteMethod {
 	/* Request Target. */
 	private String requestTarget = "/reporting/v2/reportSubscriptions/TRRReport?organizationId=testrest";
 	/* Request json path */
-	private String requestJsonPath = "src/main/resources/TRRReport.json";
+//	private String requestJsonPath = "src/main/resources/TRRReport.json";
+	private String requestJson = "{ \"startDay\":\"23\",\r\n" + 
+			"  \"timeZone\":\"America/Chicago\",\r\n" + 
+			"  \"reportDefinitionName\":\"TransactionRequestClass\",\r\n" + 
+			"  \"startTime\":\"1100\",\r\n" + 
+			"  \"reportFrequency\":\"DAILY\",\r\n" + 
+			"  \"ReportName\":\"TRRReport\",\r\n" + 
+			"  \"reportFormat\":\"csv\",\r\n" + 
+			"  \"orgId\":\"testrest\",\r\n" + 
+			"  \"reportType\":\"detail\",\r\n" + 
+			"  \"reportFields\": [\"Request.RequestID\",\"Request.TransactionDate\",\"Request.MerchantReferenceNumber\",\"Request.MerchantID\"]\r\n" + 
+			"}";
 
 	/* This method initiates or begins the process. */
 	public static void main(String[] args) throws Exception {
@@ -53,7 +64,7 @@ public class DeleteMethod {
 		 * Set Json Path, request target, request data into merchant config
 		 * object.
 		 */
-		merchantConfig.setRequestJsonPath(requestJsonPath);
+		merchantConfig.setRequestData(requestJson);
 		merchantConfig.setRequestTarget(requestTarget);
 		/* Construct the URL with respect to PUTID. */
 		url = "https://" + merchantConfig.getRequestHost() + merchantConfig.getRequestTarget();
@@ -77,11 +88,12 @@ public class DeleteMethod {
 			response = responseObj.getResponseMessage();
 			/* Display Response Message from the server. */
 			responseCode = responseObj.getResponseCode();
+			String vcCorrelationId = responseObj.getVcCorelationId();
 			if (!StringUtils.isBlank(responseCode)&& !StringUtils.isBlank(response)) {
 				new DeleteGenerateHeaders(merchantConfig);
 				System.out.println(" URL                : " + url);
-				System.out.println(" Response Code      : " + merchantConfig.getResponseCode());
-				System.out.println(" V-C-Corealation ID : " + merchantConfig.getVcCorelationID());
+				System.out.println(" Response Code      : " + responseCode);
+				System.out.println(" V-C-Corealation ID : " + vcCorrelationId);
 				System.out.println(" Response Message   : " + response);
 			}
 			else {
