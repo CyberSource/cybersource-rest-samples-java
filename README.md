@@ -53,6 +53,7 @@ To set your API credentials for an API request,Configure the following informati
    merchantID 	       = your_merchant_id
    merchantKeyId       = your_key_serial_number
    merchantsecretKey   = your_key_shared_secret
+   useMetaKey          = false
 ```
   * Jwt
 
@@ -63,6 +64,30 @@ To set your API credentials for an API request,Configure the following informati
    keyPassword	       = your_merchant_id
    keyFileName         = your_merchant_id
    keysDirectory       = resources
+   useMetaKey          = false
+```
+
+   * MetaKey Http
+
+```java
+	authenticationType  = http_Signature
+	merchantID          = your_child_merchant_id
+	merchantKeyId       = your_metakey_serial_number
+	merchantsecretKey   = your_metakey_shared_secret
+	portfolioId         = your_portfolio_id
+	useMetaKey          = true
+```
+
+   * MetaKey JWT
+
+```java
+    authenticationType  = Jwt
+    merchantID          = your_child_merchant_id
+    keyAlias            = your_child_merchant_id
+    keyPassword         = your_portfolio_id
+    keyFileName         = your_portfolio_id
+    keysDirectory       = Resource
+    useMetaKey          = true
 ```
 
 ## Switching between the sandbox environment and the production environment
