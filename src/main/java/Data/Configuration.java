@@ -41,6 +41,8 @@ public class Configuration {
 		props.setProperty("clientCertDirectory", "src/main/resources");
 		props.setProperty("clientCertFile", "");
 		props.setProperty("clientCertPassword", "");
+		props.setProperty("clientId", "");
+		props.setProperty("clientSecret", "");
 
 		return props;
 

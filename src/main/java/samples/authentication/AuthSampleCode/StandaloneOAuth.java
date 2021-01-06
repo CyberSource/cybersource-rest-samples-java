@@ -14,18 +14,14 @@ public class StandaloneOAuth {
     private static String responseCode = null;
     private static String status = null;
     private static String code = "";
-    private static String clientId = "";
     private static String grantType = "";
-    private static String clientSecret = "";
     private static String refreshToken = "";
     private static String accessToken = "";
     private static Properties merchantProp;
-    public static boolean userCapture = false;
     public static MerchantConfig merchantConfig;
-    public static boolean createUsingAuthCode = false;
+    public static boolean createUsingAuthCode = true;
 
     public static void main(String args[]) throws Exception {
-        // Accept required parameters from args[] and pass to run.
         AccessTokenResponse result;
         if(createUsingAuthCode)
         {
@@ -59,21 +55,22 @@ public class StandaloneOAuth {
     }
     public static AccessTokenResponse postAccessTokenFromAuthCode() {
         CreateAccessTokenRequest requestObj = new CreateAccessTokenRequest();
-        requestObj.code(code);
-        requestObj.clientId(clientId);
-        requestObj.grantType(grantType);
-        requestObj.clientSecret(clientSecret);
 
         AccessTokenResponse result = null;
         try {
             merchantProp = Configuration.getMerchantDetails();
 
-            // Set Authentication to NoAuth to call OAuth API
-            merchantProp.setProperty("authenticationType","NoAuth");
+            // Set Authentication to MutualAuth to call OAuth API
+            merchantProp.setProperty("authenticationType","MutualAuth");
 
             ApiClient apiClient = new ApiClient();
             merchantConfig = new MerchantConfig(merchantProp);
             apiClient.merchantConfig = merchantConfig;
+
+            requestObj.code(code);
+            requestObj.grantType(grantType);
+            requestObj.clientSecret(merchantConfig.getClientSecret());
+            requestObj.clientId(merchantConfig.getClientId());
 
             OAuthApi apiInstance = new OAuthApi(apiClient);
             result = apiInstance.postAccessTokenFromAuthCode(requestObj);
@@ -92,21 +89,22 @@ public class StandaloneOAuth {
 
     public static AccessTokenResponse postAccessTokenFromRefreshToken() {
         CreateAccessTokenRequest requestObj = new CreateAccessTokenRequest();
-        requestObj.refreshToken(refreshToken);
-        requestObj.clientId(clientId);
-        requestObj.grantType(grantType);
-        requestObj.clientSecret(clientSecret);
 
         AccessTokenResponse result = null;
         try {
             merchantProp = Configuration.getMerchantDetails();
 
-            // Set Authentication to NoAuth to call OAuth API
-            merchantProp.setProperty("authenticationType","NoAuth");
+            // Set Authentication to MutualAuth to call OAuth API
+            merchantProp.setProperty("authenticationType","MutualAuth");
 
             ApiClient apiClient = new ApiClient();
             merchantConfig = new MerchantConfig(merchantProp);
             apiClient.merchantConfig = merchantConfig;
+
+            requestObj.refreshToken(refreshToken);
+            requestObj.grantType(grantType);
+            requestObj.clientSecret(merchantConfig.getClientSecret());
+            requestObj.clientId(merchantConfig.getClientId());
 
             OAuthApi apiInstance = new OAuthApi(apiClient);
             result = apiInstance.postAccessTokenFromAuthCode(requestObj);
@@ -133,9 +131,7 @@ public class StandaloneOAuth {
 
         Ptsv2paymentsProcessingInformation processingInformation = new Ptsv2paymentsProcessingInformation();
         processingInformation.capture(false);
-        if (userCapture) {
-            processingInformation.capture(true);
-        }
+
 
         requestObj.processingInformation(processingInformation);
 
