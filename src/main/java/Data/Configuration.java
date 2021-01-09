@@ -36,6 +36,14 @@ public class Configuration {
 		// Log file size in KB
 		props.setProperty("logMaximumSize", "5M");
 
+		// OAuth related properties.
+		props.setProperty("enableClientCert", "false");
+		props.setProperty("clientCertDirectory", "src/main/resources");
+		props.setProperty("clientCertFile", "");
+		props.setProperty("clientCertPassword", "");
+		props.setProperty("clientId", "");
+		props.setProperty("clientSecret", "");
+
 		return props;
 
 	}
