@@ -54,6 +54,7 @@ To set your API credentials for an API request,Configure the following informati
    merchantKeyId       = your_key_serial_number
    merchantsecretKey   = your_key_shared_secret
    useMetaKey          = false
+   enableClientCert    = false
 ```
   * Jwt
 
@@ -65,6 +66,7 @@ To set your API credentials for an API request,Configure the following informati
    keyFileName         = your_merchant_id
    keysDirectory       = resources
    useMetaKey          = false
+   enableClientCert    = false
 ```
 
    * MetaKey Http
@@ -75,7 +77,8 @@ To set your API credentials for an API request,Configure the following informati
 	merchantKeyId       = your_metakey_serial_number
 	merchantsecretKey   = your_metakey_shared_secret
 	portfolioId         = your_portfolio_id
-	useMetaKey          = true
+   useMetaKey          = true
+   enableClientCert    = false
 ```
 
    * MetaKey JWT
@@ -88,7 +91,38 @@ To set your API credentials for an API request,Configure the following informati
     keyFileName         = your_portfolio_id
     keysDirectory       = Resource
     useMetaKey          = true
+    enableClientCert    = false
 ```
+
+
+   * OAuth
+   To use OAuth, please follow the steps. Set the config below
+
+```java
+   authenticationType  = MutualAuth
+   enableClientCert    = true
+   clientCertDirectory = resources
+   clientCertFile      = your_client_cert - .p12 format
+   clientCertPassword  = password_for_client_cert
+   clientId            = your_client_id
+   clientSecret        = your_client_secret
+```
+
+   Hit OAuth API with the above configuration, to get the Access Token and Refresh Token. Once the tokens are obtained, set the config below
+
+```java
+   authenticationType  = OAuth
+   enableClientCert    = true
+   clientCertDirectory = resources
+   clientCertFile      = your_client_cert - .p12 format
+   clientCertPassword  = password_for_client_cert
+   clientId            = your_client_id
+   clientSecret        = your_client_secret
+   accessToken         = generated_access_token
+   refreshToken        = generated_refresh_token
+```
+
+   With the above config, we can use OAuth to hit other APIs. Once the Access Token expires, use the Refresh Token to generate another Access Token.   
 
 ## Switching between the sandbox environment and the production environment
 CyberSource maintains a complete sandbox environment for testing and development purposes. This sandbox environment is an exact
