@@ -96,6 +96,7 @@ To set your API credentials for an API request,Configure the following informati
 
 
    * OAuth
+   
    To use OAuth, please follow the steps. Client Certificate is required to hit OAuth API. If the certificate (Public Key) and Private Key are in 2 different files, merge them into a single .p12 file using openssl. 
 
 ```
