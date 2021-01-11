@@ -96,14 +96,25 @@ To set your API credentials for an API request,Configure the following informati
 
 
    * OAuth
+
+   To use OAuth, please follow the steps. 
+   Cybersource OAuth uses mutual authentication. Client Certificate is required to authenticate against OAuth API. Refer to this link - https://developer.cybersource.com/api/developer-guides/OAuth/cybs_extend_intro/Supporting-Mutual-Authentication.html to get information on how to generate Client certificate.
    
-   To use OAuth, please follow the steps. Client Certificate is required to hit OAuth API. If the certificate (Public Key) and Private Key are in 2 different files, merge them into a single .p12 file using openssl. 
+   If the certificate (Public Key) and Private Key are in 2 different files, merge them into a single .p12 file using openssl. 
 
 ```
    openssl pkcs12 -export -out certificate.p12 -inkey privateKey.key -in certificate.crt
 ```
 
-   Set the config below
+   Set the run environment to OAuth enabled URLs. OAuth only works in these run environments.
+```
+   // For TESTING use
+   runEnvironment      = CyberSource.Environment.MutualAuth.SANDBOX
+   // For PRODUCTION use
+   // runEnvironment   = CyberSource.Environment.MutualAuth.PRODUCTION
+```
+
+   Set the config below, Set authenticationType to 'MutualAuth' only to generate Access Token and Refresh Token. 
 
 ```java
    authenticationType  = MutualAuth
@@ -115,7 +126,10 @@ To set your API credentials for an API request,Configure the following informati
    clientSecret        = your_client_secret
 ```
 
-   Hit OAuth API with the above configuration, to get the Access Token and Refresh Token. Once the tokens are obtained, set the config below
+   Hit OAuth API with the above configuration. To generate tokens, an Auth Code is required. Generate the Auth Code by following the steps mentioned here - https://developer.cybersource.com/api/developer-guides/OAuth/cybs_extend_intro/integrating_OAuth.html.
+   Use the generated Auth Code to create the Access Token and Refresh Token.
+   
+   Once the tokens are obtained, set the config below, Set authenticationType to OAuth to use the generated Access Token
 
 ```java
    authenticationType  = OAuth
@@ -129,7 +143,9 @@ To set your API credentials for an API request,Configure the following informati
    refreshToken        = generated_refresh_token
 ```
 
-   With the above config, we can use OAuth to hit other APIs. Once the Access Token expires, use the Refresh Token to generate another Access Token.   
+   With the above config, we can use OAuth to hit other APIs. Access Token is valid for 15 mins, Refresh Token is valid for 1 year. Once the Access Token expires, use the Refresh Token to generate another Access Token.   
+   Refer to StandAloneOAuth.java (https://github.com/CyberSource/cybersource-rest-samples-java/blob/master/src/main/java/samples/authentication/AuthSampleCode/StandaloneOAuth.java) to understand how to consume OAuth.
+   For further information, refer to this link - https://developer.cybersource.com/api/developer-guides/OAuth/cybs_extend_intro.html
 
 ## Switching between the sandbox environment and the production environment
 CyberSource maintains a complete sandbox environment for testing and development purposes. This sandbox environment is an exact
