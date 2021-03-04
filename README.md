@@ -30,7 +30,7 @@ The samples are all completely independent and self-contained. You can analyze t
 ### Running the Samples using Eclipse IDE
 
 * Import the project:
-  * From File menu,select Import.
+  * From File menu, select Import.
   * Expand Maven menu.
   * And click Existing Maven Projects
   * Click next and browse the location where you have the Maven project source code.

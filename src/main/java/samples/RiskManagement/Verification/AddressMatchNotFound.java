@@ -29,7 +29,7 @@ public class AddressMatchNotFound {
 	
 		VerifyCustomerAddressRequest requestObj = new VerifyCustomerAddressRequest();
 
-		Riskv1addressverificationsClientReferenceInformation clientReferenceInformation = new Riskv1addressverificationsClientReferenceInformation();
+		Riskv1decisionsClientReferenceInformation clientReferenceInformation = new Riskv1decisionsClientReferenceInformation();
 		clientReferenceInformation.code("addressEg");
 		clientReferenceInformation.comments("dav-error response check");
 		requestObj.clientReferenceInformation(clientReferenceInformation);

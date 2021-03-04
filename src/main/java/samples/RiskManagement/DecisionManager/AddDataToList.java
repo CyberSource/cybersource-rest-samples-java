@@ -52,6 +52,11 @@ public class AddDataToList {
 
 		Riskv1decisionsClientReferenceInformation clientReferenceInformation = new Riskv1decisionsClientReferenceInformation();
 		clientReferenceInformation.code("54323007");
+		Riskv1decisionsClientReferenceInformationPartner clientReferenceInformationPartner = new Riskv1decisionsClientReferenceInformationPartner();
+		clientReferenceInformationPartner.developerId("7891234");
+		clientReferenceInformationPartner.solutionId("89012345");
+		clientReferenceInformation.partner(clientReferenceInformationPartner);
+
 		requestObj.clientReferenceInformation(clientReferenceInformation);
 
 		Riskv1liststypeentriesRiskInformation riskInformation = new Riskv1liststypeentriesRiskInformation();

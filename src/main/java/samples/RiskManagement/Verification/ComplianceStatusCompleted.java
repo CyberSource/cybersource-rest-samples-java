@@ -29,7 +29,7 @@ public class ComplianceStatusCompleted {
 	
 		ValidateExportComplianceRequest requestObj = new ValidateExportComplianceRequest();
 
-		Riskv1addressverificationsClientReferenceInformation clientReferenceInformation = new Riskv1addressverificationsClientReferenceInformation();
+		Riskv1decisionsClientReferenceInformation clientReferenceInformation = new Riskv1decisionsClientReferenceInformation();
 		clientReferenceInformation.code("verification example");
 		requestObj.clientReferenceInformation(clientReferenceInformation);
 

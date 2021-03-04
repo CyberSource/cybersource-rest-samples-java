@@ -27,8 +27,8 @@ public class GetNetfundingInformationForAccountOrMerchant {
 
 	public static ReportingV3NetFundingsGet200Response run() {
 	
-		DateTime startTime = new DateTime("2019-08-01T00:00:00Z").withZone(DateTimeZone.forID("GMT"));
-		DateTime endTime = new DateTime("2019-09-01T23:59:59Z").withZone(DateTimeZone.forID("GMT"));
+		DateTime startTime = new DateTime("2021-02-01T00:00:00Z").withZone(DateTimeZone.forID("GMT"));
+		DateTime endTime = new DateTime("2021-02-02T23:59:59Z").withZone(DateTimeZone.forID("GMT"));
 		String organizationId = "testrest";
 		String groupName = null;
 

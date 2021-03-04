@@ -29,9 +29,14 @@ public class CustomerMatchDeniedPartiesList {
 	
 		ValidateExportComplianceRequest requestObj = new ValidateExportComplianceRequest();
 
-		Riskv1addressverificationsClientReferenceInformation clientReferenceInformation = new Riskv1addressverificationsClientReferenceInformation();
+		Riskv1decisionsClientReferenceInformation clientReferenceInformation = new Riskv1decisionsClientReferenceInformation();
 		clientReferenceInformation.code("verification example");
 		clientReferenceInformation.comments("Export-basic");
+		Riskv1decisionsClientReferenceInformationPartner clientReferenceInformationPartner = new Riskv1decisionsClientReferenceInformationPartner();
+		clientReferenceInformationPartner.developerId("7891234");
+		clientReferenceInformationPartner.solutionId("89012345");
+		clientReferenceInformation.partner(clientReferenceInformationPartner);
+
 		requestObj.clientReferenceInformation(clientReferenceInformation);
 
 		Riskv1exportcomplianceinquiriesOrderInformation orderInformation = new Riskv1exportcomplianceinquiriesOrderInformation();

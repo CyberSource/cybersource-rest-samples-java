@@ -29,7 +29,7 @@ public class EnrollWithPendingAuthentication {
 	
 		CheckPayerAuthEnrollmentRequest requestObj = new CheckPayerAuthEnrollmentRequest();
 
-		Riskv1authenticationsetupsClientReferenceInformation clientReferenceInformation = new Riskv1authenticationsetupsClientReferenceInformation();
+		Riskv1decisionsClientReferenceInformation clientReferenceInformation = new Riskv1decisionsClientReferenceInformation();
 		clientReferenceInformation.code("cybs_test");
 		requestObj.clientReferenceInformation(clientReferenceInformation);
 

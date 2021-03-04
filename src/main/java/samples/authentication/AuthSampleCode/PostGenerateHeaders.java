@@ -110,6 +110,7 @@ public class PostGenerateHeaders {
 				GlobalLabelParameters.BEGIN_TRANSCATION , " Generate POST Headers *******************", Level.INFO);
 		merchantConfig.setRequestType(requestType);
 		merchantConfig.setRequestData(requestJson);
+		merchantConfig.setRequestJsonPath("not required");
 		digest = new PayloadDigest(this.merchantConfig);
 		boolean isMerchant = merchantConfig.validateMerchantDetails(logger);
 		Utility.logEnable = merchantConfig.getEnableLog();

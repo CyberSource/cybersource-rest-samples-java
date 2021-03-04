@@ -69,6 +69,7 @@ public class PutMethod {
 		merchantConfig.setRequestData(requestJson);
 		merchantConfig.setRequestTarget(requestTarget);
 		merchantConfig.setRequestData(requestData);
+		merchantConfig.setRequestJsonPath("not required");
 		// merchantConfig.validateMerchantDetails(logger)
 		/* Construct the URL with respect to PUTID. */
 		url = "https://" + merchantConfig.getRequestHost() + merchantConfig.getRequestTarget();

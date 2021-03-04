@@ -29,8 +29,13 @@ public class ValidateAuthenticationResults {
 	
 		ValidateRequest requestObj = new ValidateRequest();
 
-		Riskv1authenticationsetupsClientReferenceInformation clientReferenceInformation = new Riskv1authenticationsetupsClientReferenceInformation();
+		Riskv1decisionsClientReferenceInformation clientReferenceInformation = new Riskv1decisionsClientReferenceInformation();
 		clientReferenceInformation.code("pavalidatecheck");
+		Riskv1decisionsClientReferenceInformationPartner clientReferenceInformationPartner = new Riskv1decisionsClientReferenceInformationPartner();
+		clientReferenceInformationPartner.developerId("7891234");
+		clientReferenceInformationPartner.solutionId("89012345");
+		clientReferenceInformation.partner(clientReferenceInformationPartner);
+
 		requestObj.clientReferenceInformation(clientReferenceInformation);
 
 		Riskv1authenticationresultsOrderInformation orderInformation = new Riskv1authenticationresultsOrderInformation();

@@ -29,8 +29,13 @@ public class AuthenticationWithNORedirect {
 	
 		CheckPayerAuthEnrollmentRequest requestObj = new CheckPayerAuthEnrollmentRequest();
 
-		Riskv1authenticationsetupsClientReferenceInformation clientReferenceInformation = new Riskv1authenticationsetupsClientReferenceInformation();
+		Riskv1decisionsClientReferenceInformation clientReferenceInformation = new Riskv1decisionsClientReferenceInformation();
 		clientReferenceInformation.code("cybs_test");
+		Riskv1decisionsClientReferenceInformationPartner clientReferenceInformationPartner = new Riskv1decisionsClientReferenceInformationPartner();
+		clientReferenceInformationPartner.developerId("7891234");
+		clientReferenceInformationPartner.solutionId("89012345");
+		clientReferenceInformation.partner(clientReferenceInformationPartner);
+
 		requestObj.clientReferenceInformation(clientReferenceInformation);
 
 		Riskv1authenticationsOrderInformation orderInformation = new Riskv1authenticationsOrderInformation();

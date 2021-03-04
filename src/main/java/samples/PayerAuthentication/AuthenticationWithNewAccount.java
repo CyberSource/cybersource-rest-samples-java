@@ -29,7 +29,7 @@ public class AuthenticationWithNewAccount {
 	
 		CheckPayerAuthEnrollmentRequest requestObj = new CheckPayerAuthEnrollmentRequest();
 
-		Riskv1authenticationsetupsClientReferenceInformation clientReferenceInformation = new Riskv1authenticationsetupsClientReferenceInformation();
+		Riskv1decisionsClientReferenceInformation clientReferenceInformation = new Riskv1decisionsClientReferenceInformation();
 		clientReferenceInformation.code("New Account");
 		requestObj.clientReferenceInformation(clientReferenceInformation);
 

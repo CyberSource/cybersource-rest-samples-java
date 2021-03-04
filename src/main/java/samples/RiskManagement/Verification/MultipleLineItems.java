@@ -29,7 +29,7 @@ public class MultipleLineItems {
 	
 		VerifyCustomerAddressRequest requestObj = new VerifyCustomerAddressRequest();
 
-		Riskv1addressverificationsClientReferenceInformation clientReferenceInformation = new Riskv1addressverificationsClientReferenceInformation();
+		Riskv1decisionsClientReferenceInformation clientReferenceInformation = new Riskv1decisionsClientReferenceInformation();
 		clientReferenceInformation.code("addressEg");
 		clientReferenceInformation.comments("dav-All fields");
 		requestObj.clientReferenceInformation(clientReferenceInformation);

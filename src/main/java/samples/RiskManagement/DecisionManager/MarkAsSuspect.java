@@ -44,6 +44,15 @@ public class MarkAsSuspect {
 
 		requestObj.riskInformation(riskInformation);
 
+		Riskv1decisionsClientReferenceInformation clientReferenceInformation = new Riskv1decisionsClientReferenceInformation();
+		clientReferenceInformation.code("12345");
+		Riskv1decisionsClientReferenceInformationPartner clientReferenceInformationPartner = new Riskv1decisionsClientReferenceInformationPartner();
+		clientReferenceInformationPartner.developerId("1234");
+		clientReferenceInformationPartner.solutionId("3321");
+		clientReferenceInformation.partner(clientReferenceInformationPartner);
+
+		requestObj.clientReferenceInformation(clientReferenceInformation);
+
 		RiskV1UpdatePost201Response result = null;
 		try {
 			merchantProp = Configuration.getMerchantDetails();

@@ -29,7 +29,7 @@ public class EnrollInstrumentIdentifierForNetworkTokenization {
 		String profileid = "93B32398-AD51-4CC2-A682-EA3E93614EB1";
 		String instrumentIdentifierTokenId = "7010000000016241111";
 	
-		PostInstrumentIdentifierRequest requestObj = new PostInstrumentIdentifierRequest();
+		PostInstrumentIdentifierEnrollmentRequest requestObj = new PostInstrumentIdentifierEnrollmentRequest();
 
 		requestObj.type("enrollable card");
 		Tmsv2customersEmbeddedDefaultPaymentInstrumentEmbeddedInstrumentIdentifierCard card = new Tmsv2customersEmbeddedDefaultPaymentInstrumentEmbeddedInstrumentIdentifierCard();

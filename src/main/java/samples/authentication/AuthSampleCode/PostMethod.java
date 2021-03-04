@@ -114,6 +114,7 @@ public class PostMethod {
 		/* Set URL path w.r.t Post operation. */
 		url = "https://" + merchantConfig.getRequestHost() + merchantConfig.getRequestTarget();
 		merchantConfig.setUrl(url);
+		merchantConfig.setRequestJsonPath("not required");
 		/* Begin Post process. */
 		process();
 	}
