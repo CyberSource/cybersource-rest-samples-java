@@ -8,6 +8,13 @@
 	<version>1.0</version>
 	<name>SampleCode</name>
 	<url>http://maven.apache.org</url>
+	<repositories>
+		<repository>
+			<id>sample-api-client</id>
+			<name>SampleApiClient</name>
+			<url>file://${project.basedir}/src/main/java/samples/authentication/lib</url>
+		</repository>
+	</repositories>
 	<dependencies>
 		<!-- rest client dependency -->
 		<dependency>
@@ -20,8 +27,6 @@
 			<groupId>com.cybersource</groupId>
 			<artifactId>SampleApiClient</artifactId>
 			<version>0.0.3</version>
-			<scope>system</scope>
-			<systemPath>${project.basedir}/src/main/java/samples/authentication/lib/SampleApiClient-0.0.3.jar</systemPath>
 		</dependency>
 		<!-- https://mvnrepository.com/artifact/com.google.guava/guava -->
 		<dependency>
@@ -47,6 +52,7 @@
 		<plugins>
 			<plugin>
 				<artifactId>maven-compiler-plugin</artifactId>
+				<version>3.7.0</version>
 				<configuration>
 					<source>1.8</source>
 					<target>1.8</target>
