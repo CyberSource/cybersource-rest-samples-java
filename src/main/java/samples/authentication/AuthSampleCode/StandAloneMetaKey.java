@@ -21,15 +21,15 @@ public class StandAloneMetaKey {
 
         // HTTP_Signature = http_signature and JWT = jwt
         props.setProperty("authenticationType", "http_signature");
-        props.setProperty("merchantID", "merchannt998");
+        props.setProperty("merchantID", "");
         props.setProperty("runEnvironment", "CyberSource.Environment.SANDBOX");
 
         // MetaKey Parameters
-        props.setProperty("portfolioID", "developercp");
+        props.setProperty("portfolioID", "");
         props.setProperty("useMetaKey", "true");
         // HTTP Parameters
-        props.setProperty("merchantKeyId", "7a7f20a6-1f7f-4780-9a79-3ff8acf7cc83");
-        props.setProperty("merchantsecretKey", "X+ynT3aTCD643tZgnEnnLD+sd5pplDGMw5vG5klPvVY=");
+        props.setProperty("merchantKeyId", "");
+        props.setProperty("merchantsecretKey", "");
 
         return props;
 
