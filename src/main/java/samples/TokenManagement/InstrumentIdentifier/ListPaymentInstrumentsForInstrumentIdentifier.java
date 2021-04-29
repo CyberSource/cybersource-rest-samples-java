@@ -24,11 +24,11 @@ public class ListPaymentInstrumentsForInstrumentIdentifier {
 	public static void main(String args[]) throws Exception {
 		run();
 	}
-	public static PaymentInstrumentListForCustomer run() {
+	public static PaymentInstrumentList run() {
 		String profileid = "93B32398-AD51-4CC2-A682-EA3E93614EB1";
 		String instrumentIdentifierTokenId = "7010000000016241111";
 		
-		PaymentInstrumentListForCustomer result = null;
+		PaymentInstrumentList result = null;
 		try {
 			merchantProp = Configuration.getMerchantDetails();
 			ApiClient apiClient = new ApiClient();

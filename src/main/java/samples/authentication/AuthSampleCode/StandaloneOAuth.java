@@ -13,13 +13,29 @@ public class StandaloneOAuth {
 
     private static String responseCode = null;
     private static String status = null;
-    private static String code = "";
-    private static String grantType = "";
-    private static String refreshToken = "";
-    private static String accessToken = "";
+    private static String code;
+    private static String grantType;
+    private static String refreshToken;
+    private static String accessToken;
     private static Properties merchantProp;
     public static MerchantConfig merchantConfig;
     public static boolean createUsingAuthCode = true;
+
+    public static Properties getMerchantDetails() {
+        Properties props = new Properties();
+        props.setProperty("runEnvironment", "CyberSource.Environment.MutualAuth.SANDBOX");
+
+        // OAuth related properties.
+        props.setProperty("enableClientCert", "true");
+        props.setProperty("clientCertDirectory", "src/main/resources");
+        props.setProperty("clientCertFile", "");
+        props.setProperty("clientCertPassword", "");
+        props.setProperty("clientId", "");
+        props.setProperty("clientSecret", "");
+
+        return props;
+
+    }
 
     public static void main(String args[]) throws Exception {
         AccessTokenResponse result;
@@ -58,7 +74,7 @@ public class StandaloneOAuth {
 
         AccessTokenResponse result = null;
         try {
-            merchantProp = Configuration.getMerchantDetails();
+            merchantProp = getMerchantDetails();
 
             // Set Authentication to MutualAuth to call OAuth API
             merchantProp.setProperty("authenticationType","MutualAuth");
@@ -92,7 +108,7 @@ public class StandaloneOAuth {
 
         AccessTokenResponse result = null;
         try {
-            merchantProp = Configuration.getMerchantDetails();
+            merchantProp = getMerchantDetails();
 
             // Set Authentication to MutualAuth to call OAuth API
             merchantProp.setProperty("authenticationType","MutualAuth");
