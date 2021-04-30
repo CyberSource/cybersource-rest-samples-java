@@ -20,13 +20,13 @@
 		<dependency>
 			<groupId>com.cybersource</groupId>
 			<artifactId>cybersource-rest-client-java</artifactId>
-			<version>0.0.31</version>
+			<version>0.0.32</version>
 		</dependency>
 		<!-- Sample API Client dependency -->
 		<dependency>
 			<groupId>com.cybersource</groupId>
 			<artifactId>SampleApiClient</artifactId>
-			<version>0.0.3</version>
+			<version>0.0.4</version>
 		</dependency>
 		<!-- https://mvnrepository.com/artifact/com.google.guava/guava -->
 		<dependency>
