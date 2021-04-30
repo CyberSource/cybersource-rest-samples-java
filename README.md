@@ -162,7 +162,7 @@ To set your API credentials for an API request, configure the following informat
 
 ## Run Environments
 
-The run environments that were supported in CyberSource .NET SDK and CyberSource .NET Standard SDK have been deprecated.
+The run environments that were supported in CyberSource Java SDK have been deprecated.
 Moving forward, the SDKs will only support the direct hostname as the run environment.
 
 For the old run environments previously used, they should be replaced by the following hostnames:
