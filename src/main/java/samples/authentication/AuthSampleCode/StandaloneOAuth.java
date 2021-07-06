@@ -23,7 +23,7 @@ public class StandaloneOAuth {
 
     public static Properties getMerchantDetails() {
         Properties props = new Properties();
-        props.setProperty("runEnvironment", "CyberSource.Environment.MutualAuth.SANDBOX");
+        props.setProperty("runEnvironment", "api-matest.cybersource.com");
 
         // OAuth related properties.
         props.setProperty("enableClientCert", "true");

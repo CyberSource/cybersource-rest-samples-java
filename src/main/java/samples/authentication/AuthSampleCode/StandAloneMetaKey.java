@@ -22,7 +22,7 @@ public class StandAloneMetaKey {
         // HTTP_Signature = http_signature and JWT = jwt
         props.setProperty("authenticationType", "http_signature");
         props.setProperty("merchantID", "");
-        props.setProperty("runEnvironment", "CyberSource.Environment.SANDBOX");
+        props.setProperty("runEnvironment", "apitest.cybersource.com");
 
         // MetaKey Parameters
         props.setProperty("portfolioID", "");
