@@ -34,7 +34,7 @@ public class RoadRunner {
     @BeforeClass
     public static void setUpClass() {
         //Create a global map for fieldname and value
-        fieldmap = new HashMap<>();
+        fieldmap = new HashMap<>(); 
     }
 
     @SuppressWarnings("rawtypes")
@@ -128,24 +128,14 @@ public class RoadRunner {
                     }
                 }
             }
+           // String responseCode = getValueFromField(response, "responseCode").toString();
+           // Assert.assertEquals('2', responseCode.charAt(0));
             if(brokenDependent) {
                 for(String responseField : road.getResponseFields()) {
                     try{
                         fieldmap.put(name + responseField, getValueFromField(response, responseField).toString());
                     } catch(NullPointerException ne) {
-                    	System.out.println("Cannot access dependent field in response.");
-                    }
-                }
-                //Find & Execute SampleCode
-                //Get expecutedValues & Assert
-                if(road.getIsAssert() == true) {
-                    for (String expectedValueField : road.getExpectedValues().keySet()) {
-                        Assert.assertEquals(road.getExpectedValues().get(expectedValueField), getValueFromField(response, expectedValueField).toString());
-                    }
-
-                    //Get requiredValues & Assert
-                    for (String requiredField : road.getRequiredFields()) {
-                        Assert.assertNotNull(getValueFromField(response, requiredField));
+                    	Assert.fail("Required field missing from response payload");
                     }
                 }
             }
