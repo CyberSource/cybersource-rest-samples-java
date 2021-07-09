@@ -16,13 +16,10 @@ import java.util.Map;
 public class RoadInfo {
     private String name;
     private String requestClassName;
-    private List<String> requiredFields;
-    private Map<String,String> expectedValues;
     private String httpStatus;
     private String dependentClass;
     private List<String> responseFields;
     private List<String> dependentFields;
-    private boolean isAssert;
     
     public RoadInfo() {
     	
@@ -30,14 +27,6 @@ public class RoadInfo {
 
     public String getRequestClassName() {
         return requestClassName;
-    }
-
-    public Map<String, String> getExpectedValues() {
-        return expectedValues;
-    }
-
-    public List<String> getRequiredFields() {
-        return requiredFields;
     }
 
     public String getHttpStatus() {
@@ -56,10 +45,6 @@ public class RoadInfo {
         return dependentFields;
     }
     
-    public boolean getIsAssert(){
-        return isAssert;
-    }
-    
     public String getDependentClass(){
         return dependentClass;
     }
@@ -72,14 +57,6 @@ public class RoadInfo {
         this.requestClassName = requestClassName;
     }
 
-    public void setExpectedValues(Map<String, String> expectedValues) {
-        this.expectedValues = expectedValues;
-    }
-
-    public void setRequiredFields(List<String> requiredFields) {
-        this.requiredFields = requiredFields;
-    }
-
     public void setHttpStatus(String httpStatus) {
         this.httpStatus = httpStatus;
     }
@@ -90,10 +67,6 @@ public class RoadInfo {
     
     public void setDependentFields(List<String> dependentFields){
         this.dependentFields = dependentFields;
-    }
-    
-    public void setIsAssert(boolean isAssert){
-        this.isAssert = isAssert;
     }
     
     public void setDependentClass(String dependentClass){

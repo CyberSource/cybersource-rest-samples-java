@@ -38,32 +38,7 @@ public class Utility {
                 RoadInfo road = new RoadInfo();
                 road.setName(jsonRoadObj.get("uniqueName").getAsString());
                 road.setRequestClassName(jsonRoadObj.get("sampleClassNames").getAsJsonObject().get("java").getAsString());
-                JsonElement assertions = jsonRoadObj.get("Assertions");
-                
-                if(!(assertions.toString().equals("{}"))) {
-                    road.setIsAssert(true);                    
-                    road.setHttpStatus(jsonRoadObj.get("Assertions").getAsJsonObject().get("httpStatus").getAsString());
-                    JsonArray jsonExpectedValues = jsonRoadObj.get("Assertions").getAsJsonObject().getAsJsonArray("expectedValues");
-                    Map<String,String> expectedValues = new HashMap<>();
-                    
-                    for (JsonElement jsonExpectedValue : jsonExpectedValues) {
-                        expectedValues.put(jsonExpectedValue.getAsJsonObject().get("field").getAsString(), 
-                            jsonExpectedValue.getAsJsonObject().get("value").getAsString());
-                    }
-                    road.setExpectedValues(expectedValues);
-                
-                    JsonArray jsonRequiredFields = jsonRoadObj.get("Assertions").getAsJsonObject().getAsJsonArray("requiredFields");
-                    List<String> requiredFields = new ArrayList<>();
-                    
-                    for (JsonElement jsonRequiredField : jsonRequiredFields) {
-                        requiredFields.add(jsonRequiredField.getAsString());
-                    }
-                    road.setRequiredFields(requiredFields);
-                }
-                else{
-                    road.setIsAssert(false);
-                }
-                
+                            
                 road.setDependentClass(jsonRoadObj.get("prerequisiteRoad").getAsString());
                 JsonArray jsonResponseFields = jsonRoadObj.get("storedResponseFields").getAsJsonArray();
                 List<String> responseFields = new ArrayList<>();
