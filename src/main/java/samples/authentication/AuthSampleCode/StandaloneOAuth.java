@@ -28,10 +28,10 @@ public class StandaloneOAuth {
         // OAuth related properties.
         props.setProperty("enableClientCert", "true");
         props.setProperty("clientCertDirectory", "src/main/resources");
-        props.setProperty("clientCertFile", "certificate.p12");
-        props.setProperty("clientCertPassword", "password");
-        props.setProperty("clientId", "3sEPsYUFtz");
-        props.setProperty("clientSecret", "79fcae20-433f-49f8-b8e6-a8273205a010");
+        props.setProperty("clientCertFile", "");
+        props.setProperty("clientCertPassword", "");
+        props.setProperty("clientId", "");
+        props.setProperty("clientSecret", "");
 
         return props;
 
@@ -49,7 +49,7 @@ public class StandaloneOAuth {
         else {
             // Create Access Token using Refresh Token
             grantType = "refresh_token";
-            refreshToken = "eyJraWQiOiIxMGM2MTYxNzg2MzE2ZWMzMGJjZmI5ZDcyZGU4MzFjOSIsImFsZyI6IlJTMjU2In0.eyJqdGkiOiI1MTliMzQwYS1hMThmLTQ4OWEtOGE2My04NGQwMDU2ZGZkM2EiLCJzY29wZXMiOlsiYWx0ZXJuYXRlX3BheW1lbnRzIiwiYmFua190cmFuc2ZlcnMiLCJib2FyZGluZyIsImNvbW1lcmNlX3NlcnZpY2VzIiwiZnJhdWRfbWFuYWdlbWVudCIsImludm9pY2luZyIsImtleXMiLCJtYW5hZ2Vfc2VjdXJlX2FjY2VwdGFuY2UiLCJwYXltZW50c193aXRoX3N0YW5kYWxvbmVfY3JlZGl0IiwicGF5bWVudHNfd2l0aG91dF9zdGFuZGFsb25lX2NyZWRpdCIsInBheW91dHMiLCJyZXBvcnRpbmciLCJ0b2tlbml6YXRpb25fc2VydmljZXMiLCJ0cmFuc2FjdGlvbnMiLCJ1c2VycyJdLCJpYXQiOjE2MjM3NjQ3NDcyODIsImFzc29jaWF0ZWRfaWQiOiJzYW1wbGVwYXJ0bmVyIiwiY2xpZW50X2lkIjoiM3NFUHNZVUZ0eiIsIm1lcmNoYW50X2lkIjoiY2drMl9wdXNoX3Rlc3RzIiwiZXhwaXJlc19pbiI6MTY1NTMwMDc0NzI4MiwidG9rZW5fdHlwZSI6InJlZnJlc2hfdG9rZW4iLCJncmFudF90eXBlIjoiYXV0aG9yaXphdGlvbl9jb2RlIiwiZ3JhbnRfdGltZSI6IjIwMjEwNjE1MDY0NSJ9.Y2HBGJ7jFylCbxg7C55On97n3WqOm00ePVF2Bp4yduNXrsHVB7Or6mjcFQtgc70cxakMU-xEzEtoY08ZHYCIwsa0sJVkA0-PzMKqoMCQvHCqKFg7ZgoMRHv8uTPWCJKR6W4QHl195NCvZvN46nBxzW1QB4pxR2J3RqvLnrbt1RZoIQgVESKH16WX7aiemC6A078OdanoQpb26hUbPvNOxl6NHOqovqJoTS7ljhqtkeU3qAWLwj4xTHIMUELuq2FKStg9JXHgtpZtT5Bc4Lx7tfFN6L4g7Dz-SRUpsl80cZmT9Uf4_V5Sh5pos-zyF-d7QcHnAt9Ud3nj7QAhwnLxug";
+            refreshToken = "";
             result = postAccessTokenFromRefreshToken();
         }
 
