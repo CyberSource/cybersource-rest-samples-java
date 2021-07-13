@@ -50,7 +50,7 @@ public class AddDuplicateInformation {
 		Riskv1liststypeentriesPaymentInformation paymentInformation = new Riskv1liststypeentriesPaymentInformation();
 		requestObj.paymentInformation(paymentInformation);
 
-		Riskv1decisionsClientReferenceInformation clientReferenceInformation = new Riskv1decisionsClientReferenceInformation();
+		Riskv1liststypeentriesClientReferenceInformation clientReferenceInformation = new Riskv1liststypeentriesClientReferenceInformation();
 		clientReferenceInformation.code("54323007");
 		requestObj.clientReferenceInformation(clientReferenceInformation);
 

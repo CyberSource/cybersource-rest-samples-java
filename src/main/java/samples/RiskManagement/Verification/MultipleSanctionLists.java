@@ -29,7 +29,7 @@ public class MultipleSanctionLists {
 	
 		ValidateExportComplianceRequest requestObj = new ValidateExportComplianceRequest();
 
-		Riskv1decisionsClientReferenceInformation clientReferenceInformation = new Riskv1decisionsClientReferenceInformation();
+		Riskv1liststypeentriesClientReferenceInformation clientReferenceInformation = new Riskv1liststypeentriesClientReferenceInformation();
 		clientReferenceInformation.code("verification example");
 		clientReferenceInformation.comments("All fields");
 		requestObj.clientReferenceInformation(clientReferenceInformation);
