@@ -29,7 +29,7 @@ public class NoCompanyName {
 	
 		ValidateExportComplianceRequest requestObj = new ValidateExportComplianceRequest();
 
-		Riskv1decisionsClientReferenceInformation clientReferenceInformation = new Riskv1decisionsClientReferenceInformation();
+		Riskv1liststypeentriesClientReferenceInformation clientReferenceInformation = new Riskv1liststypeentriesClientReferenceInformation();
 		clientReferenceInformation.code("verification example");
 		requestObj.clientReferenceInformation(clientReferenceInformation);
 
