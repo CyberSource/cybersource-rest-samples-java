@@ -19,7 +19,7 @@ public class StandaloneOAuth {
     private static String accessToken;
     private static Properties merchantProp;
     public static MerchantConfig merchantConfig;
-    public static boolean createUsingAuthCode = false;
+    public static boolean createUsingAuthCode = true;
 
     public static Properties getMerchantDetails() {
         Properties props = new Properties();
