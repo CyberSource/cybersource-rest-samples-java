@@ -94,6 +94,7 @@ To set your API credentials for an API request, configure the following informat
   keyAlias            = your_child_merchant_id
   keyPassword         = your_portfolio_id
   keyFileName         = your_portfolio_id
+  portfolioId         = your_portfolio_id
   keysDirectory       = resources
   useMetaKey          = true
   enableClientCert    = false
