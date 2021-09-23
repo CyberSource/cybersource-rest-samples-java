@@ -7,7 +7,7 @@ import org.apache.commons.lang.StringUtils;
 import com.cybersource.apisdk.controller.ApiController;
 import com.cybersource.apisdk.model.Response;
 import com.cybersource.authsdk.core.MerchantConfig;
-import com.cybersource.authsdk.util.PropertiesUtil;
+import samples.authentication.harness.MerchantProperties;
 
 /**
  * Depending on the authentication type HTTP or JWT , this class performs the
@@ -27,8 +27,6 @@ public class DeleteMethod {
 	private String url;
 	/* Request Target. */
 	private String requestTarget = "/reporting/v2/reportSubscriptions/TRRReport?organizationId=testrest";
-	/* Request json path */
-//	private String requestJsonPath = "src/main/resources/TRRReport.json";
 	private String requestJson = "{ \"startDay\":\"23\",\r\n" + 
 			"  \"timeZone\":\"America/Chicago\",\r\n" + 
 			"  \"reportDefinitionName\":\"TransactionRequestClass\",\r\n" + 
@@ -55,22 +53,16 @@ public class DeleteMethod {
 	public DeleteMethod() throws Exception {
 		apiController = new ApiController();
 
-		merchantProp = PropertiesUtil.getMerchantProperties();
+		merchantProp = MerchantProperties.getMerchantProperties();
 		merchantConfig = new MerchantConfig(merchantProp);
 		merchantConfig.setRequestType(requestType);
-		/* Extract Authentication Type from cybs.properties */
+
 		authenticationType = merchantConfig.getAuthenticationType().trim();
-		/*
-		 * Set Json Path, request target, request data into merchant config
-		 * object.
-		 */
+
 		merchantConfig.setRequestData(requestJson);
 		merchantConfig.setRequestTarget(requestTarget);
-		/* Construct the URL with respect to PUTID. */
-		url = "https://" + merchantConfig.getRequestHost() + merchantConfig.getRequestTarget();
-		/* Set the URL. */
-		merchantConfig.setUrl(url);
 		/* Begin PUT process. */
+		url = "https://" + merchantConfig.getRequestHost() + merchantConfig.getRequestTarget();
 		process();
 	}
 
@@ -91,17 +83,16 @@ public class DeleteMethod {
 			String vcCorrelationId = responseObj.getVcCorelationId();
 			if (!StringUtils.isBlank(responseCode)&& !StringUtils.isBlank(response)) {
 				new DeleteGenerateHeaders(merchantConfig);
-				System.out.println(" URL                : " + url);
-				System.out.println(" Response Code      : " + responseCode);
-				System.out.println(" V-C-Corealation ID : " + vcCorrelationId);
-				System.out.println(" Response Message   : " + response);
+				System.out.println("URL                : " + url);
+				System.out.println("Response Code      : " + responseCode);
+				System.out.println("V-C-Corealation ID : " + vcCorrelationId);
+				System.out.println("Response Message   : " + response);
 			}
 			else {
 				System.out.println(responseObj.getResponseMessage());
 			}
 		} catch (Exception e) {
 			System.out.println(e.getMessage());
-			// return;
 		}
 	}
 }

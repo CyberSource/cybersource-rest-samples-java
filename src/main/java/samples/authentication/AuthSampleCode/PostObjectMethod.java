@@ -21,13 +21,16 @@ public class PostObjectMethod {
 	private Properties merchantProp;
 	private MerchantConfig merchantConfig;
 	private Response response;
+	
 	/**
 	 * REQUEST-TYPE. [Non-Editable]
 	 */
 	private String requestType = "POST";
-	/* Give the url path to where the data needs to be authenticated. */
+	
 	private String url;
+	
 	private String requestData = PayloadData.readData();
+	
 	/**
 	 * REQUEST TARGET [Editable]
 	 */
@@ -49,21 +52,14 @@ public class PostObjectMethod {
 	 */
 	public PostObjectMethod() throws Exception {
 		apiController = new ApiController();
-		/* Read Merchant details. */
 		merchantProp = Configuration.getMerchantDetails();
 		merchantConfig = new MerchantConfig(merchantProp);
 		merchantConfig.setRequestType(requestType);
-		/* Extract Authentication Type from cybs.properties */
 		authenticationType = merchantConfig.getAuthenticationType().trim();
-		/* Set request data */
-		merchantConfig.setRequestJsonPath("not required");
 		merchantConfig.setRequestData(requestData);
-		/* Set request target */
 		merchantConfig.setRequestTarget(requestTarget);
-		/* Set URL path w.r.t Post operation. */
 
 		url = "https://" + merchantConfig.getRequestHost() + merchantConfig.getRequestTarget();
-		merchantConfig.setUrl(url);
 
 		/* Begin Post process. */
 		process();
@@ -77,9 +73,8 @@ public class PostObjectMethod {
 	private void process() throws Exception {
 		System.out.println(authenticationType.toUpperCase() + " Request");
 		try {
-			/* Call payment method of Api Controller class */
 			response = apiController.paymentPost(merchantConfig);
-			/* Display Response Message from the server and Headers. */
+			
 			if (!StringUtils.isBlank(response.getResponseCode()) && !StringUtils.isBlank(response.getResponseMessage())) {
 				new PostGenerateHeaders(merchantConfig);
 				System.out.println(" URL                 : " + url);
@@ -89,7 +84,6 @@ public class PostObjectMethod {
 			}
 		} catch (Exception e) {
 			System.out.println(e.getMessage());
-			// return;
 		}
 	}
 }

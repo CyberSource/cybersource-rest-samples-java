@@ -5,10 +5,11 @@ import java.util.Properties;
 import org.apache.commons.lang.StringUtils;
 
 import samples.authentication.Data.PayloadData;
+import samples.authentication.harness.MerchantProperties;
+
 import com.cybersource.apisdk.controller.ApiController;
 import com.cybersource.apisdk.model.Response;
 import com.cybersource.authsdk.core.MerchantConfig;
-import com.cybersource.authsdk.util.PropertiesUtil;
 
 /**
  * Depending on the authentication type HTTP or JWT , this class performs the
@@ -20,26 +21,19 @@ public class PutMethod {
 	private Response response;
 	private Properties merchantProp;
 	private MerchantConfig merchantConfig;
+
 	/**
 	 * REQUEST-TARGET [Editable]
 	 */
-	private String requestTarget = "/reporting/v2/reportSubscriptions/TRRReport?organizationId=testrest";
-	private String requestJson = "{ \"startDay\":\"23\",\r\n" + 
-			"  \"timeZone\":\"America/Chicago\",\r\n" + 
-			"  \"reportDefinitionName\":\"TransactionRequestClass\",\r\n" + 
-			"  \"startTime\":\"1100\",\r\n" + 
-			"  \"reportFrequency\":\"DAILY\",\r\n" + 
-			"  \"ReportName\":\"TRRReport\",\r\n" + 
-			"  \"reportFormat\":\"csv\",\r\n" + 
-			"  \"orgId\":\"testrest\",\r\n" + 
-			"  \"reportType\":\"detail\",\r\n" + 
-			"  \"reportFields\": [\"Request.RequestID\",\"Request.TransactionDate\",\"Request.MerchantReferenceNumber\",\"Request.MerchantID\"]\r\n" + 
-			"}";
+	private String requestTarget = "/reporting/v3/reportSubscriptions/TRRReport?organizationId=testrest";
+
 	/**
 	 * REQUEST-TYPE. [Non-Editable]
 	 */
 	private String requestType = "PUT";
+
 	private String url;
+
 	/* Request Data. */
 	private String requestData = PayloadData.readData();
 
@@ -56,25 +50,17 @@ public class PutMethod {
 	 */
 	public PutMethod() throws Exception {
 		apiController = new ApiController();
-		merchantProp = PropertiesUtil.getMerchantProperties();
+		merchantProp = MerchantProperties.getMerchantProperties();
 		merchantConfig = new MerchantConfig(merchantProp);
 		merchantConfig.setRequestType(requestType);
-		/* Extract Authentication Type from cybs.properties */
-		authenticationType = merchantConfig.getAuthenticationType().trim();
-		/*
-		 * Set Json Path, request target, request data into merchant config
-		 * object.
-		 */
 
-		merchantConfig.setRequestData(requestJson);
+		authenticationType = merchantConfig.getAuthenticationType().trim();
+
 		merchantConfig.setRequestTarget(requestTarget);
 		merchantConfig.setRequestData(requestData);
-		merchantConfig.setRequestJsonPath("not required");
-		// merchantConfig.validateMerchantDetails(logger)
-		/* Construct the URL with respect to PUTID. */
+
 		url = "https://" + merchantConfig.getRequestHost() + merchantConfig.getRequestTarget();
-		/* Set the URL. */
-		merchantConfig.setUrl(url);
+
 		/* Begin PUT process. */
 		process();
 	}
@@ -99,8 +85,6 @@ public class PutMethod {
 			}
 		} catch (Exception e) {
 			System.out.println(e.getMessage());
-			// return;
 		}
-
 	}
 }

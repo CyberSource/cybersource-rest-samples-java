@@ -5,15 +5,15 @@ import java.time.ZonedDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.Properties;
 
-import org.apache.logging.log4j.Level;
+import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import com.cybersource.authsdk.core.Authorization;
 import com.cybersource.authsdk.core.MerchantConfig;
-import com.cybersource.authsdk.log.Log4j;
 import com.cybersource.authsdk.util.GlobalLabelParameters;
-import com.cybersource.authsdk.util.PropertiesUtil;
 import com.cybersource.authsdk.util.Utility;
+
+import samples.authentication.harness.MerchantProperties;
 /**
  * This class generates the Headers that are present in the token was sent the server for transaction,
  * GET operations.
@@ -27,23 +27,27 @@ public class GetGenerateHeaders {
 	private Authorization auth;
 	private Logger logger;
 	private String tempSig;
+	
 	/**
 	 * DATE
 	 * [Non-Editable]
 	 */
 	private String date = DateTimeFormatter.RFC_1123_DATE_TIME.format(ZonedDateTime.now(ZoneId.of("GMT")));
+	
 	/**
 	 * REQUEST - TYPE
 	 * [Non-Editable]
 	 * 
 	 */
 	private String requestType = "GET";
+	
 	/**
 	 * 
 	 * UNQUIE GetID
 	 * [Editable]
 	 */
 	private String getID = "5265502011846829204101";
+	
 	/**
 	 * 
 	 * @param getID
@@ -53,11 +57,10 @@ public class GetGenerateHeaders {
 	 */
 	public GetGenerateHeaders(String requestTarget) throws Exception {
 		setGenerateHeaders();
-		Utility.logEnable = false;
 		this.getID = Utility.retrieveGetIDFromRequestTarget(requestTarget);
 		generateGetHeaders();
 	}
-	
+
 	/**
 	 * 
 	 * @param merchantConfig
@@ -66,35 +69,36 @@ public class GetGenerateHeaders {
 	 */
 	public GetGenerateHeaders(MerchantConfig merchantConfig) throws Exception {
 		this.merchantConfig = merchantConfig;
-		Utility.logEnable = false;
-		merchantConfig.setGetID(getID);
+		
+		// merchantConfig.setGetID(getID);
 		merchantConfig.setRequestType(requestType);
-		this.logger = Log4j.getInstance(merchantConfig);
+		
+		this.logger = LogManager.getLogger(getClass());
+		
 		auth = new Authorization();
 		generateGetHeaders();
-		Utility.log(this.logger, GlobalLabelParameters.END_TRANSCATION,"", Level.INFO);
-		Utility.log(this.logger, " ","", Level.OFF);
 
+		this.logger.info(GlobalLabelParameters.END_TRANSACTION + "\n");
 	}
 
 	public GetGenerateHeaders() throws Exception {
 		setGenerateHeaders();
 		
-		System.out.println(" Authentication Type : " +  merchantConfig.getAuthenticationType().trim());
-		Utility.log(this.logger,
-				GlobalLabelParameters.BEGIN_TRANSCATION , " Generate GET Headers *******************", Level.INFO);
-		merchantConfig.validateMerchantDetails(logger);
+		System.out.println("Authentication Type : " +  merchantConfig.getAuthenticationType().trim());
+		this.logger.info(GlobalLabelParameters.BEGIN_TRANSACTION + "\n******************* Generate GET Headers *******************");
+		
+		merchantConfig.validateMerchantDetails();
 		generateGetHeaders();
-		Utility.log(this.logger, GlobalLabelParameters.END_TRANSCATION,"", Level.INFO);
-		Utility.log(this.logger, " ","", Level.OFF);
+
+		this.logger.info(GlobalLabelParameters.END_TRANSACTION + "\n");
 	}
 
 	private void setGenerateHeaders() throws Exception {
-		merchantProp = PropertiesUtil.getMerchantProperties();
+		merchantProp = MerchantProperties.getMerchantProperties();
 		merchantConfig = new MerchantConfig(merchantProp);
 		authenticationType = merchantConfig.getAuthenticationType().trim();
 		merchantConfig.setRequestType(requestType);
-		this.logger = Log4j.getInstance(merchantConfig);
+		this.logger = LogManager.getLogger(getClass());
 		auth = new Authorization();
 	}
 
@@ -106,46 +110,37 @@ public class GetGenerateHeaders {
 	 *             : Throws runtime exception.
 	 */
 	private void generateGetHeaders() throws Exception {
-
 		authenticationType = merchantConfig.getAuthenticationType().trim();
-		Utility.log(this.logger, GlobalLabelParameters.AUTENTICATION_TYPE , authenticationType, Level.INFO);
-		Utility.log(this.logger, GlobalLabelParameters.REQUEST_TYPE.concat(" : ") , requestType, Level.INFO);
-		Utility.log(logger,
-				GlobalLabelParameters.V_C_MERCHANTID .concat(" : ") , merchantConfig.getMerchantID().trim(), Level.INFO);
-		Utility.log(logger, GlobalLabelParameters.DATE .concat(" : ") , date, Level.INFO);
-		Utility.log(logger, GlobalLabelParameters.GET + "_ID" .concat(" : ") ,  this.getID, Level.INFO);
-		Utility.log(logger, GlobalLabelParameters.HOST .concat(" : ") , merchantConfig.getRequestHost(),
-				Level.INFO);
-		
-		System.out.println(" Request Type        : " + requestType);
-		System.out.println(" ID                  : " + this.getID);
-		System.out.println(" Date                : " + date);
-		System.out.println(" MerchantID          : " + merchantConfig.getMerchantID().trim());
-		System.out.println(" HOST                : " + merchantConfig.getRequestHost());
-		
-		
 
+		this.logger.info(GlobalLabelParameters.AUTENTICATION_TYPE + authenticationType);
+		this.logger.info(GlobalLabelParameters.REQUEST_TYPE + " : " + requestType);
+		this.logger.info(GlobalLabelParameters.DATE + " : " + date);
+		this.logger.info(GlobalLabelParameters.V_C_MERCHANTID + " : " + merchantConfig.getMerchantID().trim());
+		this.logger.info(GlobalLabelParameters.CONTENT_TYPE + " : " + GlobalLabelParameters.APPLICATION_JSON);
+		this.logger.info(GlobalLabelParameters.HOST + " : " + merchantConfig.getRequestHost());
+		this.logger.info(GlobalLabelParameters.GET + "_ID : " + this.getID);
+		this.logger.info(GlobalLabelParameters.CONTENT_TYPE + " : " + GlobalLabelParameters.APPLICATION_JSON);
+
+		System.out.println("Request Type        : " + requestType);
+		System.out.println("ID                  : " + this.getID);
+		System.out.println("Date                : " + date);
+		System.out.println("MerchantID          : " + merchantConfig.getMerchantID().trim());
+		System.out.println("HOST                : " + merchantConfig.getRequestHost());
+		System.out.println(GlobalLabelParameters.CONTENT_TYPE + "        : " + GlobalLabelParameters.APPLICATION_JSON);
+		
 		if (authenticationType.equalsIgnoreCase(GlobalLabelParameters.HTTP)) {
-			System.out.println(
-					" " + GlobalLabelParameters.USERAGENT + "          : " + GlobalLabelParameters.USER_AGENT_VALUE);
-			Utility.log(logger,
-					GlobalLabelParameters.USERAGENT .concat(" : ") , GlobalLabelParameters.USER_AGENT_VALUE, Level.INFO);
-			/* Signature Header */
+			System.out.println(GlobalLabelParameters.USERAGENT + "          : " + GlobalLabelParameters.USER_AGENT_VALUE);
+			this.logger.info(GlobalLabelParameters.USERAGENT + " : " + GlobalLabelParameters.USER_AGENT_VALUE);
+
 			tempSig = auth.getToken(merchantConfig);
-			System.out.println(" Signature           : " + tempSig.toString());
+			System.out.println("Signature           : " + tempSig.toString());
 			
 		} else {
-			/* JWT */
 			String jwtRequestBody = getID;
 			auth.setJWTRequestBody(jwtRequestBody);
-			auth.setLogger(this.logger);
 			tempSig = auth.getToken(merchantConfig);
-			System.out.println(" Authorization, Bearer " + tempSig.toString());
+			System.out.println("Authorization, Bearer " + tempSig.toString());
 		}
-		System.out.println(
-				" " + GlobalLabelParameters.CONTENT_TYPE + "        : " + GlobalLabelParameters.APPLICATION_JSON);
-		Utility.log(logger,
-				GlobalLabelParameters.CONTENT_TYPE .concat(" : "), GlobalLabelParameters.APPLICATION_JSON, Level.INFO);
 	}
 
 	/**
