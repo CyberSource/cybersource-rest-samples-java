@@ -39,7 +39,7 @@ public class ValidateAuthenticationResults {
 		requestObj.clientReferenceInformation(clientReferenceInformation);
 
 		Riskv1authenticationresultsOrderInformation orderInformation = new Riskv1authenticationresultsOrderInformation();
-		Riskv1authenticationsOrderInformationAmountDetails orderInformationAmountDetails = new Riskv1authenticationsOrderInformationAmountDetails();
+		Riskv1authenticationresultsOrderInformationAmountDetails orderInformationAmountDetails = new Riskv1authenticationresultsOrderInformationAmountDetails();
 		orderInformationAmountDetails.currency("USD");
 		orderInformationAmountDetails.totalAmount("200.00");
 		orderInformation.amountDetails(orderInformationAmountDetails);

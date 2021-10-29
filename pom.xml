@@ -20,13 +20,7 @@
 		<dependency>
 			<groupId>com.cybersource</groupId>
 			<artifactId>cybersource-rest-client-java</artifactId>
-			<version>0.0.35</version>
-		</dependency>
-		<!-- Sample API Client dependency -->
-		<dependency>
-			<groupId>com.cybersource</groupId>
-			<artifactId>SampleApiClient</artifactId>
-			<version>0.0.5</version>
+			<version>0.0.36</version>
 		</dependency>
 		<!-- https://mvnrepository.com/artifact/com.google.guava/guava -->
 		<dependency>
@@ -45,7 +39,13 @@
 		    <groupId>com.fasterxml.jackson.core</groupId>
 		    <artifactId>jackson-databind</artifactId>
 		    <version>2.10.5.1</version>
-		</dependency>	
+		</dependency>
+		<!-- Sample API Client dependency -->
+		<dependency>
+			<groupId>com.cybersource</groupId>
+			<artifactId>SampleApiClient</artifactId>
+			<version>0.0.5</version>
+		</dependency>
 	</dependencies>
 
 	<build>
