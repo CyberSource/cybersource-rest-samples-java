@@ -1,6 +1,5 @@
 package samples.authentication.Data;
 
-import com.cybersource.apisdk.model.AggregatorInformation;
 import com.cybersource.apisdk.model.AmountDetails;
 import com.cybersource.apisdk.model.BillTo;
 import com.cybersource.apisdk.model.Card;
@@ -35,11 +34,6 @@ public class PayloadData {
 		subMerchant.region("PEN");
 		subMerchant.email("test@cybs.com");
 
-		AggregatorInformation aggregatorInformation = new AggregatorInformation();
-		aggregatorInformation.subMerchant(subMerchant);
-		aggregatorInformation.name("V-Internatio");
-		aggregatorInformation.aggregatorID("123456789");
-
 		BillTo billTo = new BillTo();
 		billTo.country("US");
 		billTo.lastName("VDP");
@@ -70,7 +64,7 @@ public class PayloadData {
 
 		PaymentInformation paymentInformation = new PaymentInformation(card);
 
-		Payment payments = new Payment(client, processingInformation, aggregatorInformation, orderInformation,
+		Payment payments = new Payment(client, processingInformation, null, orderInformation,
 				paymentInformation);
 
 		Gson gson = new GsonBuilder().setPrettyPrinting().create();

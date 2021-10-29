@@ -7,7 +7,8 @@ import org.apache.commons.lang.StringUtils;
 import com.cybersource.apisdk.controller.ApiController;
 import com.cybersource.apisdk.model.Response;
 import com.cybersource.authsdk.core.MerchantConfig;
-import com.cybersource.authsdk.util.PropertiesUtil;
+
+import samples.authentication.harness.MerchantProperties;
 
 /**
  * Depending on the authentication type HTTP or JWT , this class performs the
@@ -101,20 +102,15 @@ public class PostMethod {
 	public PostMethod() throws Exception {
 		apiController = new ApiController();
 
-		merchantProp = PropertiesUtil.getMerchantProperties();
+		merchantProp = MerchantProperties.getMerchantProperties();
 		merchantConfig = new MerchantConfig(merchantProp);
-		/* Extract Authentication Type from cybs.properties */
 		authenticationType = merchantConfig.getAuthenticationType().trim();
-		/* Set request Type. */
 		merchantConfig.setRequestType(requestType);
-		/* Set request data */
 		merchantConfig.setRequestData(requestJson);
-		/* Set request target */
 		merchantConfig.setRequestTarget(requestTarget);
-		/* Set URL path w.r.t Post operation. */
+		
 		url = "https://" + merchantConfig.getRequestHost() + merchantConfig.getRequestTarget();
-		merchantConfig.setUrl(url);
-		merchantConfig.setRequestJsonPath("not required");
+		
 		/* Begin Post process. */
 		process();
 	}
@@ -127,9 +123,8 @@ public class PostMethod {
 	private void process() throws Exception {
 		System.out.println(authenticationType.toUpperCase() + " Request");
 		try {
-			/* Call payment method of Api Controller class */
 			responseObj = apiController.paymentPost(merchantConfig);
-			/* Display Response Message from the server and Headers. */
+			
 			if (!StringUtils.isBlank(responseObj.getResponseCode())
 					&& !StringUtils.isBlank(responseObj.getResponseMessage())) {
 				new PostGenerateHeaders(merchantConfig);
@@ -142,7 +137,6 @@ public class PostMethod {
 			}
 		} catch (Exception e) {
 			System.out.println(e.getMessage());
-			// return;
 		}
 	}
 }

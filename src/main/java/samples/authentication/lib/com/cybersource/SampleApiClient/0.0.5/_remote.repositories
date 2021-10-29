@@ -1,4 +1,4 @@
 #NOTE: This is a Maven Resolver internal implementation file, its format can be changed without prior notice.
-#Tue Apr 27 16:40:48 GMT+05:30 2021
-SampleApiClient-0.0.4.pom>=
-SampleApiClient-0.0.4.jar>=
+#Wed Sep 22 19:39:33 GMT+05:30 2021
+SampleApiClient-0.0.5.jar>=
+SampleApiClient-0.0.5.pom>=

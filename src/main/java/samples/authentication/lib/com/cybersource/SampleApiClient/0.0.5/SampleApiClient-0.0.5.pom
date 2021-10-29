@@ -1,76 +1,58 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
   <parent>
-    <groupId>com.cybersource</groupId>
+  <groupId>com.cybersource</groupId>
     <artifactId>Cybersource-Authentication-SampleCode</artifactId>
     <version>0.0.1-SNAPSHOT</version>
   </parent>
 <!--   <artifactId>ApiSdk</artifactId> -->
   <artifactId>SampleApiClient</artifactId>
-  <version>0.0.4</version>
+  <version>0.0.5</version>
   
   <dependencies>
-		
 		<dependency>
 			<groupId>org.apache.logging.log4j</groupId>
 			<artifactId>log4j</artifactId>
-			<version>2.11.0</version>
+			<version>2.13.3</version>
 			<type>pom</type>
 		</dependency>
-
-		
 		<dependency>
 			<groupId>org.apache.logging.log4j</groupId>
 			<artifactId>log4j-api</artifactId>
-			<version>2.11.0</version>
+			<version>2.13.3</version>
 		</dependency>
-
-		
 		<dependency>
 			<groupId>org.apache.logging.log4j</groupId>
 			<artifactId>log4j-core</artifactId>
-			<version>2.11.0</version>
+			<version>2.13.3</version>
 		</dependency>
-
-		
 		<dependency>
 			<groupId>org.slf4j</groupId>
 			<artifactId>slf4j-api</artifactId>
 			<version>1.6.4</version>
 		</dependency>
-
-
-
-		
 		<dependency>
 			<groupId>com.google.code.gson</groupId>
 			<artifactId>gson</artifactId>
 			<version>2.2.4</version>
 		</dependency>
-
-		
 		<dependency>
 			<groupId>junit</groupId>
 			<artifactId>junit</artifactId>
 			<version>4.8.1</version>
 			<scope>test</scope>
 		</dependency>
-
-		
 		<dependency>
 			<groupId>org.mockito</groupId>
 			<artifactId>mockito-core</artifactId>
 			<version>2.18.3</version>
 			<scope>test</scope>
 		</dependency>
-
-		
 		<dependency>
 			<groupId>com.cybersource</groupId>
 			<artifactId>AuthenticationSdk</artifactId>
-			<version>0.0.15-SNAPSHOT</version>
+			<version>0.0.17</version>
 		</dependency>
-
 	</dependencies>
 
 	<build>

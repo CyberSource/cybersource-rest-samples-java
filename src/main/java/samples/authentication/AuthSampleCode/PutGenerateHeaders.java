@@ -4,15 +4,14 @@ import java.time.ZoneId;
 import java.time.ZonedDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.Properties;
-import org.apache.logging.log4j.Level;
+import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import com.cybersource.authsdk.core.Authorization;
 import com.cybersource.authsdk.core.MerchantConfig;
-import com.cybersource.authsdk.log.Log4j;
 import com.cybersource.authsdk.payloaddigest.PayloadDigest;
 import com.cybersource.authsdk.util.GlobalLabelParameters;
-import com.cybersource.authsdk.util.PropertiesUtil;
-import com.cybersource.authsdk.util.Utility;
+import samples.authentication.harness.FileReader;
+import samples.authentication.harness.MerchantProperties;
 
 /**
  * This class generates the Headers that are present in the token was sent the
@@ -28,68 +27,63 @@ public class PutGenerateHeaders {
 	private String date = DateTimeFormatter.RFC_1123_DATE_TIME.format(ZonedDateTime.now(ZoneId.of("GMT")));
 	private PayloadDigest digest;
 	private Logger logger;
-
+	private String jsonRequestData;
 	private String TempSig;
 
 	public PutGenerateHeaders(MerchantConfig merchantConfig) throws Exception {
 		auth = new Authorization();
-		logger = Log4j.getInstance(merchantConfig);
+		logger = LogManager.getLogger(getClass());
 		digest = new PayloadDigest(merchantConfig);
-		Utility.logEnable = false;
 		PutMethodHeaders(merchantConfig);
 	}
-	
+
 	public PutGenerateHeaders() throws Exception {
 		auth = new Authorization();
-		logger = Log4j.getInstance(merchantConfig);
+		this.logger = LogManager.getLogger(getClass());
+		
+		this.jsonRequestData = FileReader.readJsonFromFile("src/main/resources/TRRReport.json");
+		
+		merchantConfig.setRequestData(jsonRequestData);
+		
 		digest = new PayloadDigest(merchantConfig);
-		logger = Log4j.getInstance(merchantConfig);
-		Utility.logEnable = merchantConfig.getEnableLog();
-		Utility.log(this.logger,
-				GlobalLabelParameters.BEGIN_TRANSCATION , " Generate PUT Headers *******************", Level.INFO);
-		boolean isMerchant = merchantConfig.validateMerchantDetails(logger);
+		this.logger.info(GlobalLabelParameters.BEGIN_TRANSACTION + "\n******************* Generate PUT Headers *******************");
+		
+		boolean isMerchant = merchantConfig.validateMerchantDetails();
 		if(isMerchant){
-		PutMethodHeaders(merchantConfig);
+			PutMethodHeaders(merchantConfig);
 		}
-		Utility.log(this.logger, GlobalLabelParameters.END_TRANSCATION,"", Level.INFO);
-		Utility.log(this.logger, " ","", Level.OFF);
+		
+		this.logger.info(GlobalLabelParameters.END_TRANSACTION + "\n");
 	}
 
 	private void PutMethodHeaders(MerchantConfig merchantConfig) throws Exception {
 		authenticationType = merchantConfig.getAuthenticationType().trim();
-		Utility.log(this.logger, GlobalLabelParameters.AUTENTICATION_TYPE , authenticationType, Level.INFO);
-		Utility.log(this.logger, GlobalLabelParameters.REQUEST_TYPE.concat(" : "), requestType, Level.INFO);
-		Utility.log(logger, GlobalLabelParameters.DATE .concat(" : "), date, Level.INFO);
-		Utility.log(logger,
-				GlobalLabelParameters.V_C_MERCHANTID .concat(" : "), merchantConfig.getMerchantID().trim(), Level.INFO);
-		Utility.log(logger,
-				GlobalLabelParameters.CONTENT_TYPE.concat(" : ") , GlobalLabelParameters.APPLICATION_JSON, Level.INFO);
-		Utility.log(logger, GlobalLabelParameters.HOST .concat(" : "), merchantConfig.getRequestHost(),
-				Level.INFO);
-		
-		
-		System.out.println(" MerchantID          : " + merchantConfig.getMerchantID().trim());
-		System.out.println(" Date                : " + date);
-		System.out.println(" Request Type        : " + requestType);
-		System.out.println(" HOST                : " + merchantConfig.getRequestHost());
-		System.out.println(
-				" " + GlobalLabelParameters.CONTENT_TYPE + "           : " + GlobalLabelParameters.APPLICATION_JSON);
-		
-		
-		if (authenticationType.equalsIgnoreCase(GlobalLabelParameters.HTTP)) {
-			System.out.println(
-					" " + GlobalLabelParameters.USERAGENT + "          : " + GlobalLabelParameters.USER_AGENT_VALUE);
 
-			System.out.println(" Digest              : " + digest.getDigest());
-			/* Signature Header */
+		this.logger.info(GlobalLabelParameters.AUTENTICATION_TYPE + authenticationType);
+		this.logger.info(GlobalLabelParameters.REQUEST_TYPE + " : " + requestType);
+		this.logger.info(GlobalLabelParameters.DATE + " : " + date);
+		this.logger.info(GlobalLabelParameters.V_C_MERCHANTID + " : " + merchantConfig.getMerchantID().trim());
+		this.logger.info(GlobalLabelParameters.CONTENT_TYPE + " : " + GlobalLabelParameters.APPLICATION_JSON);
+		this.logger.info(GlobalLabelParameters.HOST + " : " + merchantConfig.getRequestHost());		
+
+		System.out.println("MerchantID          : " + merchantConfig.getMerchantID().trim());
+		System.out.println("Date                : " + date);
+		System.out.println("Request Type        : " + requestType);
+		System.out.println("HOST                : " + merchantConfig.getRequestHost());
+		System.out.println(GlobalLabelParameters.CONTENT_TYPE + "        : " + GlobalLabelParameters.APPLICATION_JSON);
+
+		if (authenticationType.equalsIgnoreCase(GlobalLabelParameters.HTTP)) {
+			System.out.println(GlobalLabelParameters.USERAGENT + "          : " + GlobalLabelParameters.USER_AGENT_VALUE);
+			this.logger.info(GlobalLabelParameters.USERAGENT + " : " + GlobalLabelParameters.USER_AGENT_VALUE);
+
+			System.out.println("Digest              : " + digest.getDigest());
+
 			TempSig = auth.getToken(merchantConfig);
-			System.out.println(" Signature           : " + TempSig.toString());
+			System.out.println("Signature           : " + TempSig.toString());
 			
 		} else {
-			/* JWT */
-			String jwtRequestBody = PropertiesUtil.getJsonInput(merchantConfig.getRequestJsonPath());
+			String jwtRequestBody = this.jsonRequestData;
 			auth.setJWTRequestBody(jwtRequestBody);
-			auth.setLogger(this.logger);
 			TempSig = auth.getToken(merchantConfig);
 			System.out.println("Authorization, Bearer " + TempSig.toString());
 		}
@@ -97,11 +91,11 @@ public class PutGenerateHeaders {
 
 	/* This method initiate the PUT Header program. */
 	public static void main(String[] args) throws Exception {
-		merchantProp = PropertiesUtil.getMerchantProperties();
+		merchantProp = MerchantProperties.getMerchantProperties();
 		merchantConfig = new MerchantConfig(merchantProp);
-		merchantConfig.setEnableLog(true);
-		merchantConfig.setRequestType("PUT");
-		merchantConfig.setRequestJsonPath("src/main/resources/TRRReport.json");
+
+		merchantConfig.setRequestType("PUT");		
+
 		new PutGenerateHeaders();
 	}
 }

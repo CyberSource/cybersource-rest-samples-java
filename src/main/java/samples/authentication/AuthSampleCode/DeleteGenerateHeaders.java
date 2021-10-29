@@ -5,14 +5,12 @@ import java.time.ZonedDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.Properties;
 
-import org.apache.logging.log4j.Level;
+import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import com.cybersource.authsdk.core.Authorization;
 import com.cybersource.authsdk.core.MerchantConfig;
-import com.cybersource.authsdk.log.Log4j;
 import com.cybersource.authsdk.util.GlobalLabelParameters;
-import com.cybersource.authsdk.util.PropertiesUtil;
-import com.cybersource.authsdk.util.Utility;
+import samples.authentication.harness.MerchantProperties;
 /**
  * This class generates the Headers that are present in the token was sent the server for transaction,
  * Delete operations.
@@ -38,71 +36,64 @@ public class DeleteGenerateHeaders {
 	 *             :
 	 */
 	public DeleteGenerateHeaders(MerchantConfig merchantConfig) throws Exception {
-		merchantConfig.setEnableLog(false);
-		logger = Log4j.getInstance(merchantConfig);
-		merchantConfig.validateMerchantDetails(logger);
+		logger = LogManager.getLogger(getClass());
+		merchantConfig.validateMerchantDetails();
 		auth = new Authorization();
 		generateDeleteHeaders(merchantConfig);
 	}
 
 	public DeleteGenerateHeaders() throws Exception {
 		auth = new Authorization();
-		merchantProp = PropertiesUtil.getMerchantProperties();
+		merchantProp = MerchantProperties.getMerchantProperties();
 		merchantConfig = new MerchantConfig(merchantProp);
 		merchantConfig.setRequestType(requestType);
 		
-		logger = Log4j.getInstance(merchantConfig);
-		Utility.log(this.logger,
-				GlobalLabelParameters.BEGIN_TRANSCATION , " Delete Generate Headers *******************", Level.INFO);
-		merchantConfig.validateMerchantDetails(logger);
-		System.out.println(" Authentication Type : " +  merchantConfig.getAuthenticationType().trim());
-		boolean isMerchant = merchantConfig.validateMerchantDetails(logger);
+		this.logger = LogManager.getLogger(getClass());
+		this.logger.info(GlobalLabelParameters.BEGIN_TRANSACTION + "\n******************* Delete Generate Headers *******************");
+		
+		System.out.println("Authentication Type : " +  merchantConfig.getAuthenticationType().trim());
+		
+		boolean isMerchant = merchantConfig.validateMerchantDetails();
 		if(isMerchant){
-		generateDeleteHeaders(merchantConfig);
+			generateDeleteHeaders(merchantConfig);
 		}
-		Utility.log(this.logger, GlobalLabelParameters.END_TRANSCATION,"", Level.INFO);
-		Utility.log(this.logger, " ","", Level.OFF);
+		
+		this.logger.info(GlobalLabelParameters.END_TRANSACTION + "\n");
 	}
+	
 	/**
 	 * This method generates the detailed header detail of the transaction and displays and log them. 
 	 * @throws Exception
 	 */
 	private void generateDeleteHeaders(MerchantConfig merchantConfig) throws Exception {
 		authenticationType = merchantConfig.getAuthenticationType().trim();
-		Utility.log(this.logger, GlobalLabelParameters.AUTENTICATION_TYPE ,authenticationType, Level.INFO);
-		Utility.log(this.logger, GlobalLabelParameters.REQUEST_TYPE .concat(" : ") , requestType, Level.INFO);
-		Utility.log(logger, GlobalLabelParameters.DATE .concat(" : ") , date, Level.INFO);
-		Utility.log(logger, GlobalLabelParameters.HOST .concat(" : ") , merchantConfig.getRequestHost(),
-				Level.INFO);
-		Utility.log(logger,
-				GlobalLabelParameters.V_C_MERCHANTID .concat(" : ") , merchantConfig.getMerchantID().trim(), Level.INFO);
 		
-		System.out.println(" Request Type        : " + requestType);
-		System.out.println(" Date                : " + date);
-		System.out.println(" MerchantID          : " + merchantConfig.getMerchantID().trim());
-		System.out.println(" HOST                : " + merchantConfig.getRequestHost());
+		this.logger.info(GlobalLabelParameters.AUTENTICATION_TYPE + authenticationType);
+		this.logger.info(GlobalLabelParameters.REQUEST_TYPE + " : " + requestType);
+		this.logger.info(GlobalLabelParameters.DATE + " : " + date);
+		this.logger.info(GlobalLabelParameters.HOST + " : " + merchantConfig.getRequestHost());
+		this.logger.info(GlobalLabelParameters.V_C_MERCHANTID + " : " + merchantConfig.getMerchantID().trim());
+		this.logger.info(GlobalLabelParameters.CONTENT_TYPE + " : " + GlobalLabelParameters.APPLICATION_JSON);
+		
+		System.out.println("Request Type        : " + requestType);
+		System.out.println("Date                : " + date);
+		System.out.println("MerchantID          : " + merchantConfig.getMerchantID().trim());
+		System.out.println("HOST                : " + merchantConfig.getRequestHost());
+		System.out.println(GlobalLabelParameters.CONTENT_TYPE + "        : " + GlobalLabelParameters.APPLICATION_JSON);
 		
 		if (authenticationType.equalsIgnoreCase(GlobalLabelParameters.HTTP)) {
-			System.out.println(
-					" " + GlobalLabelParameters.USERAGENT + "          : " + GlobalLabelParameters.USER_AGENT_VALUE);
-			Utility.log(logger,
-					GlobalLabelParameters.USERAGENT .concat(" : ") , GlobalLabelParameters.USER_AGENT_VALUE, Level.INFO);
-			/* Signature Header */
+			System.out.println(GlobalLabelParameters.USERAGENT + "          : " + GlobalLabelParameters.USER_AGENT_VALUE);
+			this.logger.info(GlobalLabelParameters.USERAGENT + " : " + GlobalLabelParameters.USER_AGENT_VALUE);
+			
 			tempSig = auth.getToken(merchantConfig);
-			System.out.println(" Signature           : " + tempSig.toString());
+			System.out.println("Signature           : " + tempSig.toString());
 			
 		} else {
-			/* JWT */
 			String jwtRequestBody = null;
 			auth.setJWTRequestBody(jwtRequestBody);
-			auth.setLogger(this.logger);
 			tempSig = auth.getToken(merchantConfig);
-			System.out.println(" Authorization, Bearer " + tempSig.toString());
+			System.out.println("Authorization, Bearer " + tempSig.toString());
 		}
-		System.out.println(
-				" " + GlobalLabelParameters.CONTENT_TYPE + "        : " + GlobalLabelParameters.APPLICATION_JSON);
-		Utility.log(logger,
-				GlobalLabelParameters.CONTENT_TYPE .concat(" : "), GlobalLabelParameters.APPLICATION_JSON, Level.INFO);
 	}
 
 	/**

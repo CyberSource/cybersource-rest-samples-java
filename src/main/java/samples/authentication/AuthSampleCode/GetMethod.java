@@ -7,7 +7,8 @@ import org.apache.commons.lang.StringUtils;
 import com.cybersource.apisdk.controller.ApiController;
 import com.cybersource.apisdk.model.Response;
 import com.cybersource.authsdk.core.MerchantConfig;
-import com.cybersource.authsdk.util.PropertiesUtil;
+
+import samples.authentication.harness.MerchantProperties;
 
 public class GetMethod {
 	private ApiController apiController;
@@ -15,14 +16,17 @@ public class GetMethod {
 	private MerchantConfig merchantConfig;
 	private Response response;
 	private String authenticationType;
+	
 	/**
 	 * REQUEST TARGET / UNIQUE GET ID [Editable]
 	 */
 	private String requestTarget = "/pts/v2/payments/6065710300556203803003";
+	
 	/**
 	 * REQUEST-TYPE. [Non-Editable]
 	 */
 	private String requestType = "GET";
+	
 	private String url;
 
 	/* This method initiates or begins the process. */
@@ -38,17 +42,12 @@ public class GetMethod {
 	public GetMethod() throws Exception {
 		apiController = new ApiController();
 
-		merchantProp = PropertiesUtil.getMerchantProperties();
+		merchantProp = MerchantProperties.getMerchantProperties();
 		merchantConfig = new MerchantConfig(merchantProp);
-		/* Set Request Type into the merchant config object. */
 		merchantConfig.setRequestType(requestType);
-		/* Extract Authentication Type from cybs.properties */
 		authenticationType = merchantConfig.getAuthenticationType().trim();
 		merchantConfig.setRequestTarget(requestTarget);
-		/* Construct the URL. */
 		url = "https://" + merchantConfig.getRequestHost() + merchantConfig.getRequestTarget();
-		/* Set the URL. */
-		merchantConfig.setUrl(url);
 		/* Begin the Get process. */
 		process();
 	}
@@ -60,9 +59,8 @@ public class GetMethod {
 		System.out.println(authenticationType.toUpperCase() + " Request");
 
 		try {
-			/* Calling APISDK, com.cybersouce.api.controller. */
 			response = apiController.paymentGet(merchantConfig);
-			/* Display response message and Headers in console. */
+
 			if (!StringUtils.isBlank(response.getResponseCode())&& !StringUtils.isBlank(response.getResponseMessage())) {
 				new GetGenerateHeaders(requestTarget);
 				System.out.println(" URL                 : " + url);
@@ -75,7 +73,6 @@ public class GetMethod {
 			}
 		} catch (Exception e) {
 			System.out.println(e.getMessage());
-			// return;
 		}
 	}
 }
