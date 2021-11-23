@@ -1,4 +1,4 @@
-package samples.Reporting;
+package samples.Reporting.ChargebackSummaries;
 
 import java.*;
 import java.util.*;

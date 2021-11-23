@@ -1,4 +1,4 @@
-package samples.Reporting;
+package samples.Reporting.InterchangeClearingLevelDetails;
 
 import java.*;
 import java.util.*;

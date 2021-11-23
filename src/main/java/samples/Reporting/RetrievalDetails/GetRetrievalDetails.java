@@ -1,4 +1,4 @@
-package samples.Reporting;
+package samples.Reporting.RetrievalDetails;
 
 import java.*;
 import java.util.*;
