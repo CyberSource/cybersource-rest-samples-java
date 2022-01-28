@@ -32,8 +32,8 @@ public class DownloadReport {
 	public static void run() {
 	
 		String organizationId = "testrest";
-		LocalDate reportDate = new LocalDate("2021-02-01");
-		String reportName = "magic";
+		LocalDate reportDate = new LocalDate("2021-12-15");
+		String reportName = "test_v5801";
 
 		try {
 			merchantProp = Configuration.getMerchantDetails();

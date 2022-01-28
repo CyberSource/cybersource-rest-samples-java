@@ -10,7 +10,7 @@
 <Configuration status="warn">
 	<Properties>
 		<Property name="log-path">./logs</Property>
-		<Property name="logFileName">GABRIEL</Property>
+		<Property name="logFileName">application</Property>
 	</Properties>
 	<Appenders>
 		<Console name="LogToConsole" target="SYSTEM_OUT">
