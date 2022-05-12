@@ -67,7 +67,7 @@ To set your API credentials for an API request, configure the following informat
   authenticationType  = jwt
   merchantID          = your_merchant_id
   keyAlias            = your_merchant_id
-  keyPassword         = your_merchant_id
+  keyPass             = your_merchant_id
   keyFileName         = your_merchant_id
   keysDirectory       = resources
   useMetaKey          = false
@@ -92,7 +92,7 @@ To set your API credentials for an API request, configure the following informat
   authenticationType  = jwt
   merchantID          = your_child_merchant_id
   keyAlias            = your_child_merchant_id
-  keyPassword         = your_portfolio_id
+  keyPass             = your_portfolio_id
   keyFileName         = your_portfolio_id
   portfolioId         = your_portfolio_id
   keysDirectory       = resources
