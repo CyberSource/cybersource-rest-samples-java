@@ -37,7 +37,7 @@ public class AuthorizationWithDecisionManagerBuyerInformation {
 		Ptsv2paymentsPaymentInformationCard paymentInformationCard = new Ptsv2paymentsPaymentInformationCard();
 		paymentInformationCard.number("4444444444444448");
 		paymentInformationCard.expirationMonth("12");
-		paymentInformationCard.expirationYear("2020");
+		paymentInformationCard.expirationYear("2025");
 		paymentInformation.card(paymentInformationCard);
 
 		requestObj.paymentInformation(paymentInformation);

@@ -27,7 +27,7 @@ public class PostMethod {
 	private String requestTarget = "/pts/v2/payments/";
 	private String requestJson = "{\r\n" + 
 			"  \"clientReferenceInformation\": {\r\n" + 
-			"    \"code\": \"TC50171_3\"\r\n" + 
+			"    \"code\": \"TEST_OUSSAMA\"\r\n" +
 			"  },\r\n" + 
 			"  \"processingInformation\": {\r\n" + 
 			"    \"commerceIndicator\": \"internet\"\r\n" + 
@@ -51,7 +51,7 @@ public class PostMethod {
 			"  \"orderInformation\": {\r\n" + 
 			"    \"billTo\": {\r\n" + 
 			"      \"country\": \"US\",\r\n" + 
-			"      \"lastName\": \"VDP\",\r\n" + 
+			"      \"lastName\": \"Markad\",\r\n" +
 			"      \"address2\": \"Address 2\",\r\n" + 
 			"      \"address1\": \"201 S. Division St.\",\r\n" + 
 			"      \"postalCode\": \"48104-2201\",\r\n" + 
@@ -65,7 +65,7 @@ public class PostMethod {
 			"      \"email\": \"test@cybs.com\"\r\n" + 
 			"    },\r\n" + 
 			"    \"amountDetails\": {\r\n" + 
-			"      \"totalAmount\": \"102.21\",\r\n" + 
+			"      \"totalAmount\": \"2000.21\",\r\n" +
 			"      \"currency\": \"USD\"\r\n" + 
 			"    }\r\n" + 
 			"  },\r\n" + 

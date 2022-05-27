@@ -42,7 +42,7 @@ public class AuthorizationWithTMSTokenBypassingNetworkToken {
 
 		Ptsv2paymentsOrderInformation orderInformation = new Ptsv2paymentsOrderInformation();
 		Ptsv2paymentsOrderInformationAmountDetails orderInformationAmountDetails = new Ptsv2paymentsOrderInformationAmountDetails();
-		orderInformationAmountDetails.totalAmount("102.21");
+		orderInformationAmountDetails.totalAmount("113.21");
 		orderInformationAmountDetails.currency("USD");
 		orderInformation.amountDetails(orderInformationAmountDetails);
 
