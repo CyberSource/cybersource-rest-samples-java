@@ -38,7 +38,7 @@ public class AuthorizationForIncrementalAuthorizationFlow {
 		Ptsv2paymentsPaymentInformationCard paymentInformationCard = new Ptsv2paymentsPaymentInformationCard();
 		paymentInformationCard.number("4111111111111111");
 		paymentInformationCard.expirationMonth("12");
-		paymentInformationCard.expirationYear("2021");
+		paymentInformationCard.expirationYear("2025");
 		paymentInformationCard.type("001");
 		paymentInformation.card(paymentInformationCard);
 

@@ -28,8 +28,8 @@ public class RetrieveAvailableReports {
 	public static ReportingV3ReportsGet200Response run() {
 	
 		String organizationId = null;
-		DateTime startTime = new DateTime("2021-04-01T00:00:00Z").withZone(DateTimeZone.forID("GMT"));
-		DateTime endTime = new DateTime("2021-04-03T23:59:59Z").withZone(DateTimeZone.forID("GMT"));
+		DateTime startTime = new DateTime("2022-05-27T00:00:00Z").withZone(DateTimeZone.forID("GMT"));
+		DateTime endTime = new DateTime("2022-05-27T23:59:59Z").withZone(DateTimeZone.forID("GMT"));
 		String timeQueryType = "executedTime";
 		String reportMimeType = "application/xml";
 		String reportFrequency = null;
@@ -47,7 +47,7 @@ public class RetrieveAvailableReports {
 			result = apiInstance.searchReports(startTime, endTime, timeQueryType, organizationId, reportMimeType, reportFrequency, reportName, null, reportStatus);
 
 			responseCode = apiClient.responseCode;
-			status = apiClient.status;
+			status = apiClient.respBody;
 			System.out.println("ResponseCode :" + responseCode);
 			System.out.println("ResponseMessage :" + status);
 			System.out.println(result);

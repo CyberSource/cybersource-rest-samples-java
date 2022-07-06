@@ -1,0 +1,291 @@
+05/27/22 16:24:01,75: [main] ERROR (ApiClient:1304) - ApiException : 404 
+05/27/22 17:01:03,649: [main] ERROR (ApiClient:1304) - ApiException : 400 Bad Request
+05/27/22 17:12:37,221: [main] ERROR (ApiClient:1304) - ApiException : 404 Not Found
+05/27/22 17:12:41,01: [main] ERROR (ApiClient:1304) - ApiException : 404 Not Found
+05/27/22 17:12:44,748: [main] ERROR (ApiClient:1304) - ApiException : 404 Not Found
+05/27/22 17:12:49,55: [main] ERROR (ApiClient:1304) - ApiException : 400 
+05/27/22 17:12:53,361: [main] ERROR (ApiClient:1304) - ApiException : 404 
+05/27/22 17:13:00,936: [main] ERROR (ApiClient:1304) - ApiException : 400 
+05/27/22 17:13:18,168: [main] ERROR (ApiClient:1304) - ApiException : 400 
+05/27/22 17:13:42,978: [main] ERROR (MerchantConfig:391) - ConfigException : Portfolio ID is mandatory
+05/27/22 17:13:53,324: [main] ERROR (MerchantConfig:399) - ConfigException : Client Certificate is mandatory
+05/27/22 17:15:22,874: [main] ERROR (ApiClient:1304) - ApiException : 404 
+05/27/22 17:15:27,174: [main] ERROR (ApiClient:1304) - ApiException : 400 Bad Request
+05/27/22 17:15:34,850: [main] ERROR (ApiClient:1304) - ApiException : 400 Bad Request
+05/27/22 17:15:57,470: [main] ERROR (ApiClient:1304) - ApiException : 400 Bad Request
+05/27/22 17:16:01,440: [main] ERROR (ApiClient:1304) - ApiException : 400 Bad Request
+05/27/22 17:16:05,856: [main] ERROR (ApiClient:1304) - ApiException : 400 Bad Request
+05/27/22 17:16:29,953: [main] ERROR (ApiClient:1304) - ApiException : 400 Bad Request
+05/27/22 17:16:41,894: [main] ERROR (ApiClient:1304) - ApiException : 400 Bad Request
+05/27/22 17:16:57,901: [main] ERROR (ApiClient:1304) - ApiException : 400 Bad Request
+05/27/22 17:17:02,150: [main] ERROR (ApiClient:1304) - ApiException : 404 
+05/27/22 17:17:46,516: [main] ERROR (ApiClient:1304) - ApiException : 502 Bad Gateway
+05/27/22 17:17:58,643: [main] ERROR (ApiClient:1304) - ApiException : 400 Bad Request
+05/27/22 17:18:11,864: [main] ERROR (ApiClient:1304) - ApiException : 502 Bad Gateway
+05/27/22 17:19:43,346: [main] ERROR (ApiClient:1304) - ApiException : 400 Bad Request
+05/27/22 17:21:14,536: [main] ERROR (ApiClient:1304) - ApiException : 404 
+05/27/22 17:21:34,555: [main] ERROR (ApiClient:1304) - ApiException : 404 
+05/27/22 17:21:39,230: [main] ERROR (ApiClient:1304) - ApiException : 404 
+05/27/22 17:21:43,475: [main] ERROR (ApiClient:1304) - ApiException : 400 
+05/27/22 17:22:16,322: [main] ERROR (ApiClient:1304) - ApiException : 400 
+05/27/22 17:22:28,411: [main] ERROR (ApiClient:1304) - ApiException : 405 Method Not Allowed
+05/27/22 17:22:37,123: [main] ERROR (ApiClient:1304) - ApiException : 502 Bad Gateway
+05/27/22 17:22:49,235: [main] ERROR (ApiClient:1304) - ApiException : 502 Bad Gateway
+05/27/22 17:24:43,637: [main] ERROR (ApiClient:1304) - ApiException : 404 
+05/27/22 17:24:47,640: [main] ERROR (ApiClient:1304) - ApiException : 400 
+05/27/22 17:24:51,382: [main] ERROR (ApiClient:1304) - ApiException : 404 
+05/27/22 17:24:55,357: [main] ERROR (ApiClient:1304) - ApiException : 400 
+05/27/22 17:25:35,19: [main] ERROR (ApiClient:1304) - ApiException : 400 
+05/27/22 17:25:38,789: [main] ERROR (ApiClient:1304) - ApiException : 404 
+05/27/22 17:26:04,487: [main] ERROR (ApiClient:1304) - ApiException : 400 Bad Request
+05/27/22 17:26:19,164: [main] ERROR (ApiClient:1304) - ApiException : 400 Bad Request
+05/27/22 17:27:06,213: [main] ERROR (ApiClient:1304) - ApiException : 409 
+05/27/22 17:31:56,143: [main] ERROR (ApiClient:1304) - ApiException : 400 Bad Request
+05/27/22 17:56:57,764: [main] ERROR (ApiClient:1304) - ApiException : 404 Not Found
+05/27/22 17:57:01,525: [main] ERROR (ApiClient:1304) - ApiException : 404 Not Found
+05/27/22 17:57:05,300: [main] ERROR (ApiClient:1304) - ApiException : 404 Not Found
+05/27/22 17:57:09,795: [main] ERROR (ApiClient:1304) - ApiException : 400 
+05/27/22 17:57:14,235: [main] ERROR (ApiClient:1304) - ApiException : 404 
+05/27/22 17:57:21,850: [main] ERROR (ApiClient:1304) - ApiException : 400 
+05/27/22 17:57:39,327: [main] ERROR (ApiClient:1304) - ApiException : 400 
+05/27/22 17:58:04,243: [main] ERROR (MerchantConfig:391) - ConfigException : Portfolio ID is mandatory
+05/27/22 17:58:14,622: [main] ERROR (MerchantConfig:399) - ConfigException : Client Certificate is mandatory
+05/27/22 17:59:44,181: [main] ERROR (ApiClient:1304) - ApiException : 404 
+05/27/22 17:59:48,476: [main] ERROR (ApiClient:1304) - ApiException : 400 Bad Request
+05/27/22 17:59:56,186: [main] ERROR (ApiClient:1304) - ApiException : 400 Bad Request
+05/27/22 18:00:19,48: [main] ERROR (ApiClient:1304) - ApiException : 400 Bad Request
+05/27/22 18:00:22,978: [main] ERROR (ApiClient:1304) - ApiException : 400 Bad Request
+05/27/22 18:00:27,380: [main] ERROR (ApiClient:1304) - ApiException : 400 Bad Request
+05/27/22 18:00:51,743: [main] ERROR (ApiClient:1304) - ApiException : 400 Bad Request
+05/27/22 18:01:03,747: [main] ERROR (ApiClient:1304) - ApiException : 400 Bad Request
+05/27/22 18:01:19,951: [main] ERROR (ApiClient:1304) - ApiException : 400 Bad Request
+05/27/22 18:01:24,323: [main] ERROR (ApiClient:1304) - ApiException : 404 
+05/27/22 18:02:09,367: [main] ERROR (ApiClient:1304) - ApiException : 502 Bad Gateway
+05/27/22 18:02:21,512: [main] ERROR (ApiClient:1304) - ApiException : 400 Bad Request
+05/27/22 18:02:35,12: [main] ERROR (ApiClient:1304) - ApiException : 502 Bad Gateway
+05/27/22 18:04:07,151: [main] ERROR (ApiClient:1304) - ApiException : 400 Bad Request
+05/27/22 18:05:39,326: [main] ERROR (ApiClient:1304) - ApiException : 404 
+05/27/22 18:05:45,206: [main] ERROR (ApiClient:1304) - ApiException : 400 Bad Request
+05/27/22 18:05:50,139: [main] ERROR (ApiClient:1304) - ApiException : 400 Bad Request
+05/27/22 18:05:59,330: [main] ERROR (ApiClient:1304) - ApiException : 404 
+05/27/22 18:06:03,947: [main] ERROR (ApiClient:1304) - ApiException : 404 
+05/27/22 18:06:08,244: [main] ERROR (ApiClient:1304) - ApiException : 400 
+05/27/22 18:06:40,752: [main] ERROR (ApiClient:1304) - ApiException : 400 
+05/27/22 18:06:53,253: [main] ERROR (ApiClient:1304) - ApiException : 405 Method Not Allowed
+05/27/22 18:07:01,871: [main] ERROR (ApiClient:1304) - ApiException : 502 Bad Gateway
+05/27/22 18:07:14,44: [main] ERROR (ApiClient:1304) - ApiException : 502 Bad Gateway
+05/27/22 18:09:09,676: [main] ERROR (ApiClient:1304) - ApiException : 404 
+05/27/22 18:09:13,796: [main] ERROR (ApiClient:1304) - ApiException : 400 
+05/27/22 18:09:17,592: [main] ERROR (ApiClient:1304) - ApiException : 404 
+05/27/22 18:09:21,600: [main] ERROR (ApiClient:1304) - ApiException : 400 
+05/27/22 18:10:01,831: [main] ERROR (ApiClient:1304) - ApiException : 400 
+05/27/22 18:10:05,610: [main] ERROR (ApiClient:1304) - ApiException : 404 
+05/27/22 18:10:31,461: [main] ERROR (ApiClient:1304) - ApiException : 400 Bad Request
+05/27/22 18:10:46,384: [main] ERROR (ApiClient:1304) - ApiException : 400 Bad Request
+05/27/22 18:11:34,254: [main] ERROR (ApiClient:1304) - ApiException : 409 
+05/27/22 18:24:40,427: [main] ERROR (ApiClient:1304) - ApiException : 404 Not Found
+05/27/22 18:24:44,224: [main] ERROR (ApiClient:1304) - ApiException : 404 Not Found
+05/27/22 18:24:48,34: [main] ERROR (ApiClient:1304) - ApiException : 404 Not Found
+05/27/22 18:24:52,453: [main] ERROR (ApiClient:1304) - ApiException : 400 
+05/27/22 18:24:56,962: [main] ERROR (ApiClient:1304) - ApiException : 404 
+05/27/22 18:25:04,610: [main] ERROR (ApiClient:1304) - ApiException : 400 
+05/27/22 18:25:22,367: [main] ERROR (ApiClient:1304) - ApiException : 400 
+05/27/22 18:25:46,951: [main] ERROR (MerchantConfig:391) - ConfigException : Portfolio ID is mandatory
+05/27/22 18:25:57,285: [main] ERROR (MerchantConfig:399) - ConfigException : Client Certificate is mandatory
+05/27/22 18:27:26,605: [main] ERROR (ApiClient:1304) - ApiException : 404 
+05/27/22 18:27:30,822: [main] ERROR (ApiClient:1304) - ApiException : 400 Bad Request
+05/27/22 18:27:38,577: [main] ERROR (ApiClient:1304) - ApiException : 400 Bad Request
+05/27/22 18:28:01,206: [main] ERROR (ApiClient:1304) - ApiException : 400 Bad Request
+05/27/22 18:28:05,151: [main] ERROR (ApiClient:1304) - ApiException : 400 Bad Request
+05/27/22 18:28:09,412: [main] ERROR (ApiClient:1304) - ApiException : 400 Bad Request
+05/27/22 18:28:33,503: [main] ERROR (ApiClient:1304) - ApiException : 400 Bad Request
+05/27/22 18:28:45,641: [main] ERROR (ApiClient:1304) - ApiException : 400 Bad Request
+05/27/22 18:29:02,121: [main] ERROR (ApiClient:1304) - ApiException : 400 Bad Request
+05/27/22 18:29:06,412: [main] ERROR (ApiClient:1304) - ApiException : 404 
+05/27/22 18:29:51,304: [main] ERROR (ApiClient:1304) - ApiException : 502 Bad Gateway
+05/27/22 18:30:03,403: [main] ERROR (ApiClient:1304) - ApiException : 400 Bad Request
+05/27/22 18:30:16,667: [main] ERROR (ApiClient:1304) - ApiException : 502 Bad Gateway
+05/27/22 18:31:49,354: [main] ERROR (ApiClient:1304) - ApiException : 400 Bad Request
+05/27/22 18:33:21,558: [main] ERROR (ApiClient:1304) - ApiException : 404 
+05/27/22 18:33:27,456: [main] ERROR (ApiClient:1304) - ApiException : 400 Bad Request
+05/27/22 18:33:32,345: [main] ERROR (ApiClient:1304) - ApiException : 400 Bad Request
+05/27/22 18:33:41,610: [main] ERROR (ApiClient:1304) - ApiException : 404 
+05/27/22 18:33:46,389: [main] ERROR (ApiClient:1304) - ApiException : 404 
+05/27/22 18:33:50,604: [main] ERROR (ApiClient:1304) - ApiException : 400 
+05/27/22 18:34:23,607: [main] ERROR (ApiClient:1304) - ApiException : 400 
+05/27/22 18:34:36,102: [main] ERROR (ApiClient:1304) - ApiException : 405 Method Not Allowed
+05/27/22 18:34:44,809: [main] ERROR (ApiClient:1304) - ApiException : 502 Bad Gateway
+05/27/22 18:34:56,902: [main] ERROR (ApiClient:1304) - ApiException : 502 Bad Gateway
+05/27/22 18:36:51,930: [main] ERROR (ApiClient:1304) - ApiException : 404 
+05/27/22 18:36:55,929: [main] ERROR (ApiClient:1304) - ApiException : 400 
+05/27/22 18:36:59,696: [main] ERROR (ApiClient:1304) - ApiException : 404 
+05/27/22 18:37:03,773: [main] ERROR (ApiClient:1304) - ApiException : 400 
+05/27/22 18:37:44,17: [main] ERROR (ApiClient:1304) - ApiException : 400 
+05/27/22 18:37:47,836: [main] ERROR (ApiClient:1304) - ApiException : 404 
+05/27/22 18:38:14,317: [main] ERROR (ApiClient:1304) - ApiException : 400 Bad Request
+05/27/22 18:38:29,200: [main] ERROR (ApiClient:1304) - ApiException : 400 Bad Request
+05/27/22 18:39:17,756: [main] ERROR (ApiClient:1304) - ApiException : 409 
+05/27/22 18:51:05,413: [main] ERROR (ApiClient:1304) - ApiException : 500 Internal Server Error
+05/27/22 18:51:41,734: [main] ERROR (ApiClient:1304) - ApiException : 500 Internal Server Error
+05/27/22 18:51:59,586: [main] ERROR (ApiClient:1304) - ApiException : 403 
+05/27/22 18:52:04,636: [main] ERROR (ApiClient:1304) - ApiException : 404 Not Found
+05/27/22 18:52:08,722: [main] ERROR (ApiClient:1304) - ApiException : 404 Not Found
+05/27/22 18:52:12,490: [main] ERROR (ApiClient:1304) - ApiException : 404 Not Found
+05/27/22 18:52:16,927: [main] ERROR (ApiClient:1304) - ApiException : 403 
+05/27/22 18:52:21,310: [main] ERROR (ApiClient:1304) - ApiException : 403 
+05/27/22 18:52:25,87: [main] ERROR (ApiClient:1304) - ApiException : 404 
+05/27/22 18:52:29,111: [main] ERROR (ApiClient:1304) - ApiException : 403 
+05/27/22 18:52:46,551: [main] ERROR (ApiClient:1304) - ApiException : 403 
+05/27/22 18:52:52,93: [main] ERROR (ApiClient:1304) - ApiException : 500 Internal Server Error
+05/27/22 18:52:52,731: [main] ERROR (MerchantConfig:391) - ConfigException : Portfolio ID is mandatory
+05/27/22 18:53:03,86: [main] ERROR (MerchantConfig:399) - ConfigException : Client Certificate is mandatory
+05/27/22 18:53:51,820: [main] ERROR (ApiClient:1304) - ApiException : 400 Bad Request
+05/27/22 18:54:29,21: [main] ERROR (ApiClient:1304) - ApiException : 400 Bad Request
+05/27/22 18:54:33,342: [main] ERROR (ApiClient:1304) - ApiException : 403 
+05/27/22 18:54:45,374: [main] ERROR (ApiClient:1304) - ApiException : 400 Bad Request
+05/27/22 18:54:59,106: [main] ERROR (ApiClient:1304) - ApiException : 400 Bad Request
+05/27/22 18:55:07,391: [main] ERROR (ApiClient:1304) - ApiException : 400 Bad Request
+05/27/22 18:55:11,341: [main] ERROR (ApiClient:1304) - ApiException : 400 Bad Request
+05/27/22 18:55:15,831: [main] ERROR (ApiClient:1304) - ApiException : 400 Bad Request
+05/27/22 18:55:19,748: [main] ERROR (ApiClient:1304) - ApiException : 400 Bad Request
+05/27/22 18:55:23,652: [main] ERROR (ApiClient:1304) - ApiException : 400 Bad Request
+05/27/22 18:55:27,543: [main] ERROR (ApiClient:1304) - ApiException : 400 Bad Request
+05/27/22 18:55:31,443: [main] ERROR (ApiClient:1304) - ApiException : 400 Bad Request
+05/27/22 18:55:35,399: [main] ERROR (ApiClient:1304) - ApiException : 400 Bad Request
+05/27/22 18:55:39,404: [main] ERROR (ApiClient:1304) - ApiException : 400 Bad Request
+05/27/22 18:55:43,408: [main] ERROR (ApiClient:1304) - ApiException : 400 Bad Request
+05/27/22 18:55:47,278: [main] ERROR (ApiClient:1304) - ApiException : 400 Bad Request
+05/27/22 18:55:51,135: [main] ERROR (ApiClient:1304) - ApiException : 400 Bad Request
+05/27/22 18:55:55,73: [main] ERROR (ApiClient:1304) - ApiException : 400 Bad Request
+05/27/22 18:56:03,37: [main] ERROR (ApiClient:1304) - ApiException : 400 Bad Request
+05/27/22 18:56:06,928: [main] ERROR (ApiClient:1304) - ApiException : 400 Bad Request
+05/27/22 18:56:11,230: [main] ERROR (ApiClient:1304) - ApiException : 403 
+05/27/22 18:56:16,77: [main] ERROR (ApiClient:1304) - ApiException : 500 Internal Server Error
+05/27/22 18:56:20,203: [main] ERROR (ApiClient:1304) - ApiException : 502 Bad Gateway
+05/27/22 18:56:24,136: [main] ERROR (ApiClient:1304) - ApiException : 500 Internal Server Error
+05/27/22 18:56:28,97: [main] ERROR (ApiClient:1304) - ApiException : 500 Internal Server Error
+05/27/22 18:56:32,330: [main] ERROR (ApiClient:1304) - ApiException : 500 Internal Server Error
+05/27/22 18:56:36,247: [main] ERROR (ApiClient:1304) - ApiException : 400 Bad Request
+05/27/22 18:56:44,519: [main] ERROR (ApiClient:1304) - ApiException : 400 Bad Request
+05/27/22 18:56:52,641: [main] ERROR (ApiClient:1304) - ApiException : 400 Bad Request
+05/27/22 18:56:57,115: [main] ERROR (ApiClient:1304) - ApiException : 502 Bad Gateway
+05/27/22 18:57:05,456: [main] ERROR (ApiClient:1304) - ApiException : 500 Internal Server Error
+05/27/22 18:57:09,338: [main] ERROR (ApiClient:1304) - ApiException : 400 Bad Request
+05/27/22 18:57:13,312: [main] ERROR (ApiClient:1304) - ApiException : 500 Internal Server Error
+05/27/22 18:57:22,859: [main] ERROR (ApiClient:1304) - ApiException : 502 Bad Gateway
+05/27/22 18:57:27,145: [main] ERROR (ApiClient:1304) - ApiException : 502 Bad Gateway
+05/27/22 18:57:31,95: [main] ERROR (ApiClient:1304) - ApiException : 500 Internal Server Error
+05/27/22 18:57:34,992: [main] ERROR (ApiClient:1304) - ApiException : 400 Bad Request
+05/27/22 18:57:43,529: [main] ERROR (ApiClient:1304) - ApiException : 500 Internal Server Error
+05/27/22 18:57:47,709: [main] ERROR (ApiClient:1304) - ApiException : 500 Internal Server Error
+05/27/22 18:57:51,719: [main] ERROR (ApiClient:1304) - ApiException : 502 Bad Gateway
+05/27/22 18:57:56,65: [main] ERROR (ApiClient:1304) - ApiException : 500 Internal Server Error
+05/27/22 18:58:00,118: [main] ERROR (ApiClient:1304) - ApiException : 500 Internal Server Error
+05/27/22 18:58:04,116: [main] ERROR (ApiClient:1304) - ApiException : 400 Bad Request
+05/27/22 18:58:08,318: [main] ERROR (ApiClient:1304) - ApiException : 500 Internal Server Error
+05/27/22 18:58:12,541: [main] ERROR (ApiClient:1304) - ApiException : 500 Internal Server Error
+05/27/22 18:58:16,493: [main] ERROR (ApiClient:1304) - ApiException : 400 Bad Request
+05/27/22 18:58:21,11: [main] ERROR (ApiClient:1304) - ApiException : 400 Bad Request
+05/27/22 18:58:25,220: [main] ERROR (ApiClient:1304) - ApiException : 500 Internal Server Error
+05/27/22 18:58:29,337: [main] ERROR (ApiClient:1304) - ApiException : 502 Bad Gateway
+05/27/22 18:58:33,438: [main] ERROR (ApiClient:1304) - ApiException : 502 Bad Gateway
+05/27/22 18:58:37,323: [main] ERROR (ApiClient:1304) - ApiException : 400 Bad Request
+05/27/22 18:58:41,542: [main] ERROR (ApiClient:1304) - ApiException : 500 Internal Server Error
+05/27/22 18:58:45,450: [main] ERROR (ApiClient:1304) - ApiException : 400 Bad Request
+05/27/22 18:58:49,383: [main] ERROR (ApiClient:1304) - ApiException : 500 Internal Server Error
+05/27/22 18:58:53,367: [main] ERROR (ApiClient:1304) - ApiException : 400 Bad Request
+05/27/22 18:58:57,343: [main] ERROR (ApiClient:1304) - ApiException : 400 Bad Request
+05/27/22 18:59:01,454: [main] ERROR (ApiClient:1304) - ApiException : 500 Internal Server Error
+05/27/22 18:59:05,372: [main] ERROR (ApiClient:1304) - ApiException : 502 Bad Gateway
+05/27/22 18:59:09,352: [main] ERROR (ApiClient:1304) - ApiException : 500 Internal Server Error
+05/27/22 18:59:13,643: [main] ERROR (ApiClient:1304) - ApiException : 500 Internal Server Error
+05/27/22 18:59:17,634: [main] ERROR (ApiClient:1304) - ApiException : 400 Bad Request
+05/27/22 18:59:21,804: [main] ERROR (ApiClient:1304) - ApiException : 500 Internal Server Error
+05/27/22 18:59:26,68: [main] ERROR (ApiClient:1304) - ApiException : 500 Internal Server Error
+05/27/22 18:59:30,193: [main] ERROR (ApiClient:1304) - ApiException : 500 Internal Server Error
+05/27/22 18:59:34,178: [main] ERROR (ApiClient:1304) - ApiException : 502 Bad Gateway
+05/27/22 18:59:38,352: [main] ERROR (ApiClient:1304) - ApiException : 500 Internal Server Error
+05/27/22 18:59:42,314: [main] ERROR (ApiClient:1304) - ApiException : 500 Internal Server Error
+05/27/22 18:59:50,525: [main] ERROR (ApiClient:1304) - ApiException : 502 Bad Gateway
+05/27/22 18:59:59,452: [main] ERROR (ApiClient:1304) - ApiException : 502 Bad Gateway
+05/27/22 19:00:03,333: [main] ERROR (ApiClient:1304) - ApiException : 400 Bad Request
+05/27/22 19:00:07,589: [main] ERROR (ApiClient:1304) - ApiException : 404 
+05/27/22 19:00:11,353: [main] ERROR (ApiClient:1304) - ApiException : 404 
+05/27/22 19:00:18,854: [main] ERROR (ApiClient:1304) - ApiException : 404 
+05/27/22 19:00:27,67: [main] ERROR (ApiClient:1304) - ApiException : 404 
+05/27/22 19:00:31,348: [main] ERROR (ApiClient:1304) - ApiException : 403 
+05/27/22 19:00:36,533: [main] ERROR (ApiClient:1304) - ApiException : 500 Internal Server Error
+05/27/22 19:00:37,459: [main] ERROR (ApiClient:1304) - ApiException : 400 Bad Request
+05/27/22 19:00:41,568: [main] ERROR (ApiClient:1304) - ApiException : 500 Internal Server Error
+05/27/22 19:00:42,819: [main] ERROR (ApiClient:1304) - ApiException : 500 Internal Server Error
+05/27/22 19:00:44,41: [main] ERROR (ApiClient:1304) - ApiException : 403 
+05/27/22 19:00:48,853: [main] ERROR (ApiClient:1304) - ApiException : 403 
+05/27/22 19:00:53,102: [main] ERROR (ApiClient:1304) - ApiException : 400 
+05/27/22 19:01:05,914: [main] ERROR (ApiClient:1304) - ApiException : 404 
+05/27/22 19:01:06,640: [main] ERROR (ApiClient:1304) - ApiException : 404 
+05/27/22 19:01:10,409: [main] ERROR (ApiClient:1304) - ApiException : 404 
+05/27/22 19:01:14,161: [main] ERROR (ApiClient:1304) - ApiException : 404 
+05/27/22 19:01:17,912: [main] ERROR (ApiClient:1304) - ApiException : 404 
+05/27/22 19:01:22,132: [main] ERROR (ApiClient:1304) - ApiException : 403 
+05/27/22 19:01:26,591: [main] ERROR (ApiClient:1304) - ApiException : 403 
+05/27/22 19:01:30,346: [main] ERROR (ApiClient:1304) - ApiException : 403 
+05/27/22 19:01:34,556: [main] ERROR (ApiClient:1304) - ApiException : 403 
+05/27/22 19:01:39,22: [main] ERROR (ApiClient:1304) - ApiException : 400 Bad Request
+05/27/22 19:01:43,457: [main] ERROR (ApiClient:1304) - ApiException : 502 Bad Gateway
+05/27/22 19:01:47,366: [main] ERROR (ApiClient:1304) - ApiException : 400 Bad Request
+05/27/22 19:01:51,392: [main] ERROR (ApiClient:1304) - ApiException : 502 Bad Gateway
+05/27/22 19:01:55,849: [main] ERROR (ApiClient:1304) - ApiException : 502 Bad Gateway
+05/27/22 19:01:59,760: [main] ERROR (ApiClient:1304) - ApiException : 502 Bad Gateway
+05/27/22 19:02:03,650: [main] ERROR (ApiClient:1304) - ApiException : 400 Bad Request
+05/27/22 19:02:07,633: [main] ERROR (ApiClient:1304) - ApiException : 502 Bad Gateway
+05/27/22 19:02:58,37: [main] ERROR (ApiClient:1304) - ApiException : 404 
+05/27/22 19:03:01,772: [main] ERROR (ApiClient:1304) - ApiException : 404 
+05/27/22 19:03:05,525: [main] ERROR (ApiClient:1304) - ApiException : 404 
+05/27/22 19:03:09,278: [main] ERROR (ApiClient:1304) - ApiException : 404 
+05/27/22 19:03:13,19: [main] ERROR (ApiClient:1304) - ApiException : 404 
+05/27/22 19:03:13,752: [main] ERROR (ApiClient:1304) - ApiException : 404 
+05/27/22 19:03:17,495: [main] ERROR (ApiClient:1304) - ApiException : 404 
+05/27/22 19:03:22,107: [main] ERROR (ApiClient:1304) - ApiException : 500 Internal Server Error
+05/27/22 19:03:26,822: [main] ERROR (ApiClient:1304) - ApiException : 403 
+05/27/22 19:03:30,566: [main] ERROR (ApiClient:1304) - ApiException : 403 
+05/27/22 19:03:31,313: [main] ERROR (ApiClient:1304) - ApiException : 403 
+05/27/22 19:03:35,67: [main] ERROR (ApiClient:1304) - ApiException : 403 
+05/27/22 19:03:38,814: [main] ERROR (ApiClient:1304) - ApiException : 403 
+05/27/22 19:03:42,554: [main] ERROR (ApiClient:1304) - ApiException : 403 
+05/27/22 19:03:46,810: [main] ERROR (ApiClient:1304) - ApiException : 404 
+05/27/22 19:03:54,491: [main] ERROR (ApiClient:1304) - ApiException : 404 
+05/27/22 19:04:15,838: [main] ERROR (ApiClient:1304) - ApiException : 400 Bad Request
+05/27/22 19:04:16,783: [main] ERROR (ApiClient:1304) - ApiException : 400 Bad Request
+05/27/22 19:04:20,722: [main] ERROR (ApiClient:1304) - ApiException : 400 Bad Request
+05/27/22 19:04:24,600: [main] ERROR (ApiClient:1304) - ApiException : 502 Bad Gateway
+05/27/22 19:04:28,530: [main] ERROR (ApiClient:1304) - ApiException : 400 Bad Request
+05/27/22 19:04:32,732: [main] ERROR (ApiClient:1304) - ApiException : 403 
+05/27/22 19:04:36,493: [main] ERROR (ApiClient:1304) - ApiException : 403 
+05/27/22 19:04:40,687: [main] ERROR (ApiClient:1304) - ApiException : 403 
+05/27/22 19:04:45,355: [main] ERROR (ApiClient:1304) - ApiException : 500 Internal Server Error
+05/27/22 19:04:46,298: [main] ERROR (ApiClient:1304) - ApiException : 502 Bad Gateway
+05/27/22 19:04:47,477: [main] ERROR (ApiClient:1304) - ApiException : 500 Internal Server Error
+05/27/22 19:04:49,00: [main] ERROR (ApiClient:1304) - ApiException : 502 Bad Gateway
+05/27/22 19:04:50,132: [main] ERROR (ApiClient:1304) - ApiException : 500 Internal Server Error
+05/27/22 19:04:51,224: [main] ERROR (ApiClient:1304) - ApiException : 500 Internal Server Error
+05/27/22 19:04:52,287: [main] ERROR (ApiClient:1304) - ApiException : 502 Bad Gateway
+05/27/22 19:04:54,08: [main] ERROR (ApiClient:1304) - ApiException : 500 Internal Server Error
+05/27/22 19:04:55,132: [main] ERROR (ApiClient:1304) - ApiException : 500 Internal Server Error
+05/27/22 19:04:56,337: [main] ERROR (ApiClient:1304) - ApiException : 500 Internal Server Error
+05/27/22 19:04:57,306: [main] ERROR (ApiClient:1304) - ApiException : 400 Bad Request
+05/27/22 19:05:01,314: [main] ERROR (ApiClient:1304) - ApiException : 502 Bad Gateway
+05/27/22 19:05:02,458: [main] ERROR (ApiClient:1304) - ApiException : 500 Internal Server Error
+05/27/22 19:05:03,659: [main] ERROR (ApiClient:1304) - ApiException : 403 
+05/27/22 19:05:07,404: [main] ERROR (ApiClient:1304) - ApiException : 403 
+05/27/22 19:05:11,150: [main] ERROR (ApiClient:1304) - ApiException : 403 
+05/27/22 19:05:14,884: [main] ERROR (ApiClient:1304) - ApiException : 403 
+05/27/22 19:05:18,632: [main] ERROR (ApiClient:1304) - ApiException : 403 
+05/27/22 19:05:19,364: [main] ERROR (ApiClient:1304) - ApiException : 403 
+05/27/22 19:05:23,122: [main] ERROR (ApiClient:1304) - ApiException : 403 
+05/27/22 19:05:26,877: [main] ERROR (ApiClient:1304) - ApiException : 403 
+05/27/22 19:21:38,332: [main] ERROR (ApiClient:1304) - ApiException : 500 Internal Server Error
+05/27/22 20:31:33,439: [main] ERROR (ApiClient:1304) - ApiException : 502 Bad Gateway
+05/27/22 20:31:52,382: [main] ERROR (ApiClient:1304) - ApiException : 502 Bad Gateway
+05/27/22 20:32:14,349: [main] ERROR (ApiClient:1304) - ApiException : 500 Internal Server Error
+05/27/22 20:32:30,678: [main] ERROR (ApiClient:1304) - ApiException : 500 Internal Server Error
+05/27/22 20:32:53,868: [main] ERROR (ApiClient:1304) - ApiException : 500 Internal Server Error

@@ -33,12 +33,12 @@ public class CapturePayment {
 		CapturePaymentRequest requestObj = new CapturePaymentRequest();
 
 		Ptsv2paymentsClientReferenceInformation clientReferenceInformation = new Ptsv2paymentsClientReferenceInformation();
-		clientReferenceInformation.code("TC50171_3");
+		clientReferenceInformation.code("OUSSAMA_TEST");
 		requestObj.clientReferenceInformation(clientReferenceInformation);
 
 		Ptsv2paymentsidcapturesOrderInformation orderInformation = new Ptsv2paymentsidcapturesOrderInformation();
 		Ptsv2paymentsidcapturesOrderInformationAmountDetails orderInformationAmountDetails = new Ptsv2paymentsidcapturesOrderInformationAmountDetails();
-		orderInformationAmountDetails.totalAmount("102.21");
+		orderInformationAmountDetails.totalAmount("103.21");
 		orderInformationAmountDetails.currency("USD");
 		orderInformation.amountDetails(orderInformationAmountDetails);
 

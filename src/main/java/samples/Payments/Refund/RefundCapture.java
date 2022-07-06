@@ -38,7 +38,7 @@ public class RefundCapture {
 
 		Ptsv2paymentsidrefundsOrderInformation orderInformation = new Ptsv2paymentsidrefundsOrderInformation();
 		Ptsv2paymentsidcapturesOrderInformationAmountDetails orderInformationAmountDetails = new Ptsv2paymentsidcapturesOrderInformationAmountDetails();
-		orderInformationAmountDetails.totalAmount("102.21");
+		orderInformationAmountDetails.totalAmount("2.21");
 		orderInformationAmountDetails.currency("USD");
 		orderInformation.amountDetails(orderInformationAmountDetails);
 

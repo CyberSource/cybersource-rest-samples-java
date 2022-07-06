@@ -1,50 +1,36 @@
-package samples.authentication.AuthSampleCode;
+package Custom;
 
 import Api.PaymentsApi;
 import Invokers.ApiClient;
 import Model.*;
 import com.cybersource.authsdk.core.MerchantConfig;
+import samples.authentication.Data.Configuration;
 
 import java.util.Properties;
 
-public class StandAloneMetaKey {
+public class ProcessPayment {
     private static String responseCode = null;
     private static String status = null;
     private static Properties merchantProp;
+    public static boolean userCapture = false;
 
     public static void main(String args[]) throws Exception {
-        SimplePaymentsUsingMetaKey();
+        run();
     }
 
-    public static Properties getMerchantDetails() {
-        Properties props = new Properties();
-
-        // HTTP_Signature = http_signature and JWT = jwt
-        props.setProperty("authenticationType", "http_signature");
-        props.setProperty("merchantID", "");
-        props.setProperty("runEnvironment", "apitest.cybersource.com");
-
-        // MetaKey Parameters
-        props.setProperty("portfolioID", "");
-        props.setProperty("useMetaKey", "true");
-        // HTTP Parameters
-        props.setProperty("merchantKeyId", "");
-        props.setProperty("merchantsecretKey", "");
-
-        return props;
-
-    }
-
-    public static PtsV2PaymentsPost201Response SimplePaymentsUsingMetaKey() {
+    public static PtsV2PaymentsPost201Response run() {
 
         CreatePaymentRequest requestObj = new CreatePaymentRequest();
 
         Ptsv2paymentsClientReferenceInformation clientReferenceInformation = new Ptsv2paymentsClientReferenceInformation();
-        clientReferenceInformation.code("TC50171_3");
+        clientReferenceInformation.code("TC50171_4");
         requestObj.clientReferenceInformation(clientReferenceInformation);
 
         Ptsv2paymentsProcessingInformation processingInformation = new Ptsv2paymentsProcessingInformation();
         processingInformation.capture(false);
+        if (userCapture) {
+            processingInformation.capture(true);
+        }
 
         requestObj.processingInformation(processingInformation);
 
@@ -59,7 +45,7 @@ public class StandAloneMetaKey {
 
         Ptsv2paymentsOrderInformation orderInformation = new Ptsv2paymentsOrderInformation();
         Ptsv2paymentsOrderInformationAmountDetails orderInformationAmountDetails = new Ptsv2paymentsOrderInformationAmountDetails();
-        orderInformationAmountDetails.totalAmount("119.21");
+        orderInformationAmountDetails.totalAmount("2222.21");
         orderInformationAmountDetails.currency("USD");
         orderInformation.amountDetails(orderInformationAmountDetails);
 
@@ -79,7 +65,7 @@ public class StandAloneMetaKey {
 
         PtsV2PaymentsPost201Response result = null;
         try {
-            merchantProp = getMerchantDetails();
+            merchantProp = Configuration.getMerchantDetails();
             ApiClient apiClient = new ApiClient();
             MerchantConfig merchantConfig = new MerchantConfig(merchantProp);
             apiClient.merchantConfig = merchantConfig;

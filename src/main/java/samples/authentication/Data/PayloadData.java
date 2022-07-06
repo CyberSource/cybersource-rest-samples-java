@@ -50,7 +50,7 @@ public class PayloadData {
 		billTo.email("test@cybs.com");
 
 		AmountDetails amountDetails = new AmountDetails();
-		amountDetails.totalAmount("102.21");
+		amountDetails.totalAmount("121.21");
 		amountDetails.currency("USD");
 
 		OrderInformation orderInformation = new OrderInformation(billTo, amountDetails);

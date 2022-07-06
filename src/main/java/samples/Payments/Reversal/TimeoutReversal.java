@@ -38,7 +38,7 @@ public class TimeoutReversal {
 
 		Ptsv2paymentsidreversalsReversalInformation reversalInformation = new Ptsv2paymentsidreversalsReversalInformation();
 		Ptsv2paymentsidreversalsReversalInformationAmountDetails reversalInformationAmountDetails = new Ptsv2paymentsidreversalsReversalInformationAmountDetails();
-		reversalInformationAmountDetails.totalAmount("102.21");
+		reversalInformationAmountDetails.totalAmount("118.21");
 		reversalInformation.amountDetails(reversalInformationAmountDetails);
 
 		reversalInformation.reason("testing");

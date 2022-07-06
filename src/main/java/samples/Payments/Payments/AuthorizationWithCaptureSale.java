@@ -30,7 +30,7 @@ public class AuthorizationWithCaptureSale {
 		CreatePaymentRequest requestObj = new CreatePaymentRequest();
 
 		Ptsv2paymentsClientReferenceInformation clientReferenceInformation = new Ptsv2paymentsClientReferenceInformation();
-		clientReferenceInformation.code("TC50171_3");
+		clientReferenceInformation.code("TC50171_4");
 		requestObj.clientReferenceInformation(clientReferenceInformation);
 
 		Ptsv2paymentsProcessingInformation processingInformation = new Ptsv2paymentsProcessingInformation();
@@ -41,14 +41,14 @@ public class AuthorizationWithCaptureSale {
 		Ptsv2paymentsPaymentInformationCard paymentInformationCard = new Ptsv2paymentsPaymentInformationCard();
 		paymentInformationCard.number("4111111111111111");
 		paymentInformationCard.expirationMonth("12");
-		paymentInformationCard.expirationYear("2031");
+		paymentInformationCard.expirationYear("2032");
 		paymentInformation.card(paymentInformationCard);
 
 		requestObj.paymentInformation(paymentInformation);
 
 		Ptsv2paymentsOrderInformation orderInformation = new Ptsv2paymentsOrderInformation();
 		Ptsv2paymentsOrderInformationAmountDetails orderInformationAmountDetails = new Ptsv2paymentsOrderInformationAmountDetails();
-		orderInformationAmountDetails.totalAmount("102.21");
+		orderInformationAmountDetails.totalAmount("10002.21");
 		orderInformationAmountDetails.currency("USD");
 		orderInformation.amountDetails(orderInformationAmountDetails);
 

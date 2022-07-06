@@ -38,7 +38,7 @@ public class ProcessAuthorizationReversal {
 
 		Ptsv2paymentsidreversalsReversalInformation reversalInformation = new Ptsv2paymentsidreversalsReversalInformation();
 		Ptsv2paymentsidreversalsReversalInformationAmountDetails reversalInformationAmountDetails = new Ptsv2paymentsidreversalsReversalInformationAmountDetails();
-		reversalInformationAmountDetails.totalAmount("102.21");
+		reversalInformationAmountDetails.totalAmount("117.21");
 		reversalInformation.amountDetails(reversalInformationAmountDetails);
 
 		reversalInformation.reason("testing");

@@ -80,7 +80,7 @@ public class PostGenerateHeaders {
 			"      \"email\": \"test@cybs.com\"\r\n" + 
 			"    },\r\n" + 
 			"    \"amountDetails\": {\r\n" + 
-			"      \"totalAmount\": \"102.21\",\r\n" + 
+			"      \"totalAmount\": \"202.21\",\r\n" +
 			"      \"currency\": \"USD\"\r\n" + 
 			"    }\r\n" + 
 			"  },\r\n" + 
