@@ -1,8 +1,10 @@
 package Data;
 
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Properties;
 
-public class Configuration {
+public class ConfigurationWithIntermediateHost {
 	public static Properties getMerchantDetails() {
 		Properties props = new Properties();
 
@@ -10,6 +12,7 @@ public class Configuration {
 		props.setProperty("authenticationType", "http_signature");
 		props.setProperty("merchantID", "testrest");
 		props.setProperty("runEnvironment", "apitest.cybersource.com");
+		props.setProperty("intermediateHost", "apitest.axa.com");
 		props.setProperty("requestJsonPath", "src/main/resources/request.json");
 
 		// MetaKey Parameters
@@ -79,6 +82,13 @@ public class Configuration {
 
 		return props;
 
+	}
+	
+	public static Map<String, String> getDefaultHeaders() {
+		Map<String, String> defaultHeaders = new HashMap<String, String>();
+		defaultHeaders.put("Ocp-Apim-Subscription-Key", "223344");
+		defaultHeaders.put("Host", "axa.com");
+		return defaultHeaders;
 	}
 
 }

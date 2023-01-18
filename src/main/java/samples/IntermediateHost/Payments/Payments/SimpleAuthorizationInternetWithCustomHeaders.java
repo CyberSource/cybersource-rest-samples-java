@@ -1,4 +1,4 @@
-package samples.Payments.Payments;
+package samples.IntermediateHost.Payments.Payments;
 
 import java.*;
 import java.util.*;
@@ -11,7 +11,7 @@ import com.google.common.base.Strings;
 import com.cybersource.authsdk.core.MerchantConfig;
 
 import Api.*;
-import Data.Configuration;
+import Data.ConfigurationWithIntermediateHost;
 import Invokers.ApiClient;
 import Invokers.ApiException;
 import Model.*;
@@ -74,8 +74,8 @@ public class SimpleAuthorizationInternetWithCustomHeaders {
 
 		PtsV2PaymentsPost201Response result = null;
 		try {
-			merchantProp = Configuration.getMerchantDetails();
-			defaultHeaders = Configuration.getDefaultHeaders();
+			merchantProp = ConfigurationWithIntermediateHost.getMerchantDetails();
+			defaultHeaders = ConfigurationWithIntermediateHost.getDefaultHeaders();
 			ApiClient apiClient = new ApiClient();
 			MerchantConfig merchantConfig = new MerchantConfig(merchantProp, defaultHeaders);
 			apiClient.merchantConfig = merchantConfig;
