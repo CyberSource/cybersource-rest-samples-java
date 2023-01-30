@@ -33,7 +33,7 @@ public class RefundPayment {
 	
 		RefundPaymentRequest requestObj = new RefundPaymentRequest();
 
-		Ptsv2paymentsClientReferenceInformation clientReferenceInformation = new Ptsv2paymentsClientReferenceInformation();
+		Ptsv2paymentsidrefundsClientReferenceInformation clientReferenceInformation = new Ptsv2paymentsidrefundsClientReferenceInformation();
 		clientReferenceInformation.code("TC50171_3");
 		requestObj.clientReferenceInformation(clientReferenceInformation);
 
