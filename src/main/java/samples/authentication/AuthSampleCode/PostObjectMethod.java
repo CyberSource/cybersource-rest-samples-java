@@ -2,7 +2,7 @@ package samples.authentication.AuthSampleCode;
 
 import java.util.Properties;
 
-import org.apache.commons.lang.StringUtils;
+import org.apache.commons.lang3.StringUtils;
 
 import com.cybersource.apisdk.controller.ApiController;
 import com.cybersource.apisdk.model.Response;
