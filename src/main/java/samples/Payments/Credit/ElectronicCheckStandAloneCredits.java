@@ -44,7 +44,7 @@ public class ElectronicCheckStandAloneCredits {
 		paymentInformationBank.routingNumber("071923284");
 		paymentInformation.bank(paymentInformationBank);
 
-		Ptsv2paymentsPaymentInformationPaymentType paymentInformationPaymentType = new Ptsv2paymentsPaymentInformationPaymentType();
+		Ptsv2paymentsidrefundsPaymentInformationPaymentType paymentInformationPaymentType = new Ptsv2paymentsidrefundsPaymentInformationPaymentType();
 		paymentInformationPaymentType.name("CHECK");
 		paymentInformation.paymentType(paymentInformationPaymentType);
 

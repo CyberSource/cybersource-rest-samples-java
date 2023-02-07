@@ -1,6 +1,6 @@
 package samples.authentication.AuthSampleCode;
 
-import org.apache.commons.lang.StringUtils;
+import org.apache.commons.lang3.StringUtils;
 
 public class Test {
 static String test = "";
