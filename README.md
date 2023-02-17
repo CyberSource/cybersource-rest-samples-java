@@ -176,8 +176,6 @@ For the old run environments previously used, they should be replaced by the fol
 |`cybersource.environment.mutualauth.production`|`api-ma.cybersource.com`                        |
 |`cybersource.in.environment.sandbox`           |`apitest.cybersource.com`                       |
 |`cybersource.in.environment.production`        |`api.in.cybersource.com`                        |
-|`cybersource.environment.sit`                  |`pnrstage.ic3.com:8451`                         |
-|`cybersource.environment.mutualauth.sit`       |`pnrstage.ic3.com:8451`                         |
 
 For example, replace the following code in the Configuration file:
 
