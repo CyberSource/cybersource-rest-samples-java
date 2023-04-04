@@ -16,42 +16,48 @@ import Invokers.ApiClient;
 import Invokers.ApiException;
 import Model.*;
 
-public class GenerateKey {
+public class GenerateCaptureContextWithCheckoutAPI {
 	private static String responseCode = null;
 	private static String status = null;
 	private static Properties merchantProp;
-
+	
 	public static void main(String args[]) throws Exception {
 		run();
 	}
 
-	public static FlexV1KeysPost200Response run() {
+	public static void run() {
 	
-		GeneratePublicKeyRequest requestObj = new GeneratePublicKeyRequest();
+		GenerateCaptureContextRequest requestObj = new GenerateCaptureContextRequest();
 
-		requestObj.encryptionType("RsaOaep");
-		requestObj.targetOrigin("https://www.test.com");
-		String format = "JWT";
+		List <String> targetOrigins = new ArrayList <String>();
+		targetOrigins.add("https://www.test.com");
+		requestObj.targetOrigins(targetOrigins);
 
-		FlexV1KeysPost200Response result = null;
+		requestObj.clientVersion("v2.0");
+
+		List <String> allowedCardNetworks = new ArrayList <String>();
+		allowedCardNetworks.add("VISA");
+		allowedCardNetworks.add("MASTERCARD");
+		allowedCardNetworks.add("AMEX");
+		requestObj.allowedCardNetworks(allowedCardNetworks);
+		
 		try {
 			merchantProp = Configuration.getMerchantDetails();
 			ApiClient apiClient = new ApiClient();
 			MerchantConfig merchantConfig = new MerchantConfig(merchantProp);
 			apiClient.merchantConfig = merchantConfig;
 
-			KeyGenerationApi apiInstance = new KeyGenerationApi(apiClient);
-			result = apiInstance.generatePublicKey(format, requestObj);
+			MicroformIntegrationApi apiInstance = new MicroformIntegrationApi(apiClient);
+			String response = apiInstance.generateCaptureContext(requestObj);
 
 			responseCode = apiClient.responseCode;
 			status = apiClient.status;
 			System.out.println("ResponseCode :" + responseCode);
 			System.out.println("ResponseMessage :" + status);
-			System.out.println(result);
-			
+			System.out.println("Response Body :" + response);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-	return result;
+	
 	}
 }
