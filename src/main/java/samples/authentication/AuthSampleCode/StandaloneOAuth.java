@@ -1,5 +1,6 @@
 package samples.authentication.AuthSampleCode;
 
+import java.lang.invoke.MethodHandles;
 import Api.OAuthApi;
 import Api.PaymentsApi;
 import Data.Configuration;
@@ -20,6 +21,11 @@ public class StandaloneOAuth {
     private static Properties merchantProp;
     public static MerchantConfig merchantConfig;
     public static boolean createUsingAuthCode = true;
+
+	public static void WriteLogAudit(int status) {
+		String filename = MethodHandles.lookup().lookupClass().getSimpleName();
+		System.out.println("[Sample Code Testing] [" + filename + "] " + status);
+	}
 
     public static Properties getMerchantDetails() {
         Properties props = new Properties();
@@ -192,9 +198,11 @@ public class StandaloneOAuth {
             System.out.println("ResponseCode :" + responseCode);
             System.out.println("ResponseMessage :" + status);
             System.out.println(result);
+			WriteLogAudit(Integer.parseInt(responseCode));
 
         } catch (Exception e) {
             e.printStackTrace();
+            WriteLogAudit(400);
         }
         return result;
     }

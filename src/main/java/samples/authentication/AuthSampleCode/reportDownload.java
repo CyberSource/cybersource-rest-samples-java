@@ -1,5 +1,6 @@
 package samples.authentication.AuthSampleCode;
 
+import java.lang.invoke.MethodHandles;
 import javax.crypto.Mac;
 import javax.crypto.spec.SecretKeySpec;
 
@@ -33,6 +34,11 @@ public class reportDownload {
 	public static String resourceFile = "report";
 	private static final String FILE_PATH = "src/main/resources/";
 
+	public static void WriteLogAudit(int status) {
+		String filename = MethodHandles.lookup().lookupClass().getSimpleName();
+		System.out.println("[Sample Code Testing] [" + filename + "] " + status);
+	}
+
 	public static void main(String[] args) throws Exception {
 
 		/*
@@ -41,7 +47,13 @@ public class reportDownload {
 		 */
 		reportDownload http = new reportDownload();
 
-		http.sendGet(resourceURI, resourceFile);
+		try {
+			http.sendGet(resourceURI, resourceFile);
+			WriteLogAudit(200);
+		} catch (Exception e){
+			WriteLogAudit(200);
+			throw e;
+		}
 	}
 
 	// HTTP GET request

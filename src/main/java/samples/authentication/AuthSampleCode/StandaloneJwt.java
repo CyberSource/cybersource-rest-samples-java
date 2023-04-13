@@ -1,5 +1,6 @@
 package samples.authentication.AuthSampleCode;
 
+import java.lang.invoke.MethodHandles;
 import org.bouncycastle.jce.provider.BouncyCastleProvider;
 
 import com.nimbusds.jose.JOSEException;
@@ -38,6 +39,11 @@ import java.util.StringTokenizer;
 public class StandaloneJwt {
     private static String merchantId = "testrest";
     private static String requestHost = "apitest.cybersource.com";
+
+	public static void WriteLogAudit(int status) {
+		String filename = MethodHandles.lookup().lookupClass().getSimpleName();
+		System.out.println("[Sample Code Testing] [" + filename + "] " + status);
+	}
 
     /* <summary>
      * This is standalone code that show cases how to generate headers for CyberSource REST API - POST and GET calls.
@@ -105,6 +111,12 @@ public class StandaloneJwt {
             } else {
             	System.out.println("STATUS : SUCCESS (HTTP Status = " + postStatusCode + ")");
             }
+
+			if (getStatusCode == -1 && postStatusCode == 0) {
+				WriteLogAudit(200);
+			} else {
+				WriteLogAudit(400);
+			}
         }
         catch (Exception e)
         {

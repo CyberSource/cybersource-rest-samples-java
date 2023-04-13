@@ -1,5 +1,6 @@
 package samples.Payments.Payments;
 
+import java.lang.invoke.MethodHandles;
 import java.util.Properties;
 import java.util.concurrent.ThreadLocalRandom;
 
@@ -8,6 +9,7 @@ import com.cybersource.authsdk.core.MerchantConfig;
 import Api.PaymentsApi;
 import Data.Configuration;
 import Invokers.ApiClient;
+import Invokers.ApiException;
 import Model.CreatePaymentRequest;
 import Model.PtsV2PaymentsPost201Response;
 import Model.Ptsv2paymentsClientReferenceInformation;
@@ -23,6 +25,11 @@ public class AuthorizationCaptureForTimeoutVoidFlow {
 	private static String responseCode = null;
 	private static String status = null;
 	private static Properties merchantProp;
+
+	public static void WriteLogAudit(int status) {
+		String filename = MethodHandles.lookup().lookupClass().getSimpleName();
+		System.out.println("[Sample Code Testing] [" + filename + "] " + status);
+	}
 
 	public static void main(String args[]) throws Exception {
 		run();
@@ -90,7 +97,11 @@ public class AuthorizationCaptureForTimeoutVoidFlow {
 			System.out.println("ResponseCode :" + responseCode);
 			System.out.println("ResponseMessage :" + status);
 			System.out.println(result);
+			WriteLogAudit(Integer.parseInt(responseCode));
 			
+		} catch (ApiException e) {
+			e.printStackTrace();
+			WriteLogAudit(e.getCode());
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

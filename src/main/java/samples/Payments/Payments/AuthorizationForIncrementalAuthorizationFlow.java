@@ -1,6 +1,7 @@
 package samples.Payments.Payments;
 
 import java.*;
+import java.lang.invoke.MethodHandles;
 import java.util.*;
 import java.math.BigDecimal;
 import org.joda.time.DateTime;
@@ -21,6 +22,11 @@ public class AuthorizationForIncrementalAuthorizationFlow {
 	private static String status = null;
 	private static Properties merchantProp;
 
+	public static void WriteLogAudit(int status) {
+		String filename = MethodHandles.lookup().lookupClass().getSimpleName();
+		System.out.println("[Sample Code Testing] [" + filename + "] " + status);
+	}
+
 	public static void main(String args[]) throws Exception {
 		// Accept required parameters from args[] and pass to run.
 		run();
@@ -38,7 +44,7 @@ public class AuthorizationForIncrementalAuthorizationFlow {
 		Ptsv2paymentsPaymentInformationCard paymentInformationCard = new Ptsv2paymentsPaymentInformationCard();
 		paymentInformationCard.number("4111111111111111");
 		paymentInformationCard.expirationMonth("12");
-		paymentInformationCard.expirationYear("2021");
+		paymentInformationCard.expirationYear("2031");
 		paymentInformationCard.type("001");
 		paymentInformation.card(paymentInformationCard);
 
@@ -181,7 +187,11 @@ public class AuthorizationForIncrementalAuthorizationFlow {
 			System.out.println("ResponseCode :" + responseCode);
 			System.out.println("ResponseMessage :" + status);
 			System.out.println(result);
+			WriteLogAudit(Integer.parseInt(responseCode));
 			
+		} catch (ApiException e) {
+			e.printStackTrace();
+			WriteLogAudit(e.getCode());
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

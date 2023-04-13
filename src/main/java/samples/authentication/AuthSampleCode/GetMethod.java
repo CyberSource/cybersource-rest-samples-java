@@ -1,5 +1,6 @@
 package samples.authentication.AuthSampleCode;
 
+import java.lang.invoke.MethodHandles;
 import java.util.Properties;
 
 import org.apache.commons.lang3.StringUtils;
@@ -21,6 +22,11 @@ public class GetMethod {
 	 * REQUEST TARGET / UNIQUE GET ID [Editable]
 	 */
 	private String requestTarget = "/pts/v2/payments/6065710300556203803003";
+
+	public static void WriteLogAudit(int status) {
+		String filename = MethodHandles.lookup().lookupClass().getSimpleName();
+		System.out.println("[Sample Code Testing] [" + filename + "] " + status);
+	}
 	
 	/**
 	 * REQUEST-TYPE. [Non-Editable]
@@ -60,6 +66,7 @@ public class GetMethod {
 
 		try {
 			response = apiController.paymentGet(merchantConfig);
+			WriteLogAudit(Integer.parseInt(response.getResponseCode()));
 
 			if (!StringUtils.isBlank(response.getResponseCode())&& !StringUtils.isBlank(response.getResponseMessage())) {
 				new GetGenerateHeaders(requestTarget);
@@ -73,6 +80,7 @@ public class GetMethod {
 			}
 		} catch (Exception e) {
 			System.out.println(e.getMessage());
+			WriteLogAudit(400);
 		}
 	}
 }

@@ -1,5 +1,6 @@
 package samples.authentication.AuthSampleCode;
 
+import java.lang.invoke.MethodHandles;
 import java.util.Properties;
 
 import org.apache.commons.lang3.StringUtils;
@@ -38,6 +39,11 @@ public class DeleteMethod {
 			"  \"reportType\":\"detail\",\r\n" + 
 			"  \"reportFields\": [\"Request.RequestID\",\"Request.TransactionDate\",\"Request.MerchantReferenceNumber\",\"Request.MerchantID\"]\r\n" + 
 			"}";
+
+	public static void WriteLogAudit(int status) {
+		String filename = MethodHandles.lookup().lookupClass().getSimpleName();
+		System.out.println("[Sample Code Testing] [" + filename + "] " + status);
+	}
 
 	/* This method initiates or begins the process. */
 	public static void main(String[] args) throws Exception {
@@ -80,6 +86,11 @@ public class DeleteMethod {
 			response = responseObj.getResponseMessage();
 			/* Display Response Message from the server. */
 			responseCode = responseObj.getResponseCode();
+			if (responseCode.equals("200") || responseCode.equals("404")) {
+				WriteLogAudit(200);
+			} else {
+				WriteLogAudit(Integer.parseInt(responseCode));
+			}
 			String vcCorrelationId = responseObj.getVcCorelationId();
 			if (!StringUtils.isBlank(responseCode)&& !StringUtils.isBlank(response)) {
 				new DeleteGenerateHeaders(merchantConfig);
@@ -93,6 +104,7 @@ public class DeleteMethod {
 			}
 		} catch (Exception e) {
 			System.out.println(e.getMessage());
+			WriteLogAudit(400);
 		}
 	}
 }

@@ -1,5 +1,6 @@
 package samples.authentication.AuthSampleCode;
 
+import java.lang.invoke.MethodHandles;
 import java.time.ZoneId;
 import java.time.ZonedDateTime;
 import java.time.format.DateTimeFormatter;
@@ -27,6 +28,11 @@ public class GetGenerateHeaders {
 	private Authorization auth;
 	private Logger logger;
 	private String tempSig;
+
+	public static void WriteLogAudit(int status) {
+		String filename = MethodHandles.lookup().lookupClass().getSimpleName();
+		System.out.println("[Sample Code Testing] [" + filename + "] " + status);
+	}
 	
 	/**
 	 * DATE
@@ -134,12 +140,14 @@ public class GetGenerateHeaders {
 
 			tempSig = auth.getToken(merchantConfig);
 			System.out.println("Signature           : " + tempSig.toString());
+			WriteLogAudit(200);
 			
 		} else {
 			String jwtRequestBody = getID;
 			auth.setJWTRequestBody(jwtRequestBody);
 			tempSig = auth.getToken(merchantConfig);
 			System.out.println("Authorization, Bearer " + tempSig.toString());
+			WriteLogAudit(200);
 		}
 	}
 

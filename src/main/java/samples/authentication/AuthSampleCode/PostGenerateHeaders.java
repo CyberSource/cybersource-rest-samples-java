@@ -1,5 +1,6 @@
 package samples.authentication.AuthSampleCode;
 
+import java.lang.invoke.MethodHandles;
 import java.time.ZoneId;
 import java.time.ZonedDateTime;
 import java.time.format.DateTimeFormatter;
@@ -33,6 +34,11 @@ public class PostGenerateHeaders {
 	 * 
 	 */
 	private String date = DateTimeFormatter.RFC_1123_DATE_TIME.format(ZonedDateTime.now(ZoneId.of("GMT")));
+
+	public static void WriteLogAudit(int status) {
+		String filename = MethodHandles.lookup().lookupClass().getSimpleName();
+		System.out.println("[Sample Code Testing] [" + filename + "] " + status);
+	}
 	
 	/**
 	 * REQUEST - TYPE [Non-Editable]
@@ -166,11 +172,13 @@ public class PostGenerateHeaders {
 			
 			tempSig = auth.getToken(merchantConfig);
 			System.out.println("Signature           : " + tempSig.toString());
+			WriteLogAudit(200);
 			
 		} else {
 			auth.setJWTRequestBody(requestJson);
 			tempSig = auth.getToken(merchantConfig);
 			System.out.println("Authorization, Bearer " + tempSig.toString());
+			WriteLogAudit(200);
 		}
 	}
 

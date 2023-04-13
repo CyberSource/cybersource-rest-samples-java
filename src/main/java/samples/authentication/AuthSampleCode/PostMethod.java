@@ -1,5 +1,6 @@
 package samples.authentication.AuthSampleCode;
 
+import java.lang.invoke.MethodHandles;
 import java.util.Properties;
 
 import org.apache.commons.lang3.StringUtils;
@@ -21,6 +22,12 @@ public class PostMethod {
 	private Properties merchantProp;
 	private MerchantConfig merchantConfig;
 	private Response responseObj;
+
+	public static void WriteLogAudit(int status) {
+		String filename = MethodHandles.lookup().lookupClass().getSimpleName();
+		System.out.println("[Sample Code Testing] [" + filename + "] " + status);
+	}
+
 	/**
 	 * REQUEST TARGET [Editable]
 	 */
@@ -124,6 +131,7 @@ public class PostMethod {
 		System.out.println(authenticationType.toUpperCase() + " Request");
 		try {
 			responseObj = apiController.paymentPost(merchantConfig);
+			WriteLogAudit(Integer.parseInt(responseObj.getResponseCode()));
 			
 			if (!StringUtils.isBlank(responseObj.getResponseCode())
 					&& !StringUtils.isBlank(responseObj.getResponseMessage())) {
@@ -137,6 +145,7 @@ public class PostMethod {
 			}
 		} catch (Exception e) {
 			System.out.println(e.getMessage());
+			WriteLogAudit(400);
 		}
 	}
 }

@@ -1,5 +1,6 @@
 package samples.authentication.AuthSampleCode;
 
+import java.lang.invoke.MethodHandles;
 import javax.crypto.Mac;
 import javax.crypto.spec.SecretKeySpec;
 import java.io.*;
@@ -33,6 +34,11 @@ public class StandaloneHttpSignature {
     public static String resource = "resource_PLACEHOLDER";
 
     public static String  payload = null;
+
+	public static void WriteLogAudit(int status) {
+		String filename = MethodHandles.lookup().lookupClass().getSimpleName();
+		System.out.println("[Sample Code Testing] [" + filename + "] " + status);
+	}
 
     public static void main(String[] args) throws Exception {
         /* This Example illustrate two tests - HTTP GET and POST method with Cybersource Payments API.
@@ -81,17 +87,23 @@ public class StandaloneHttpSignature {
                 "}";
 
         System.out.println("\n\nSample 1: POST call - CyberSource Payments API - HTTP POST Payment request");
-        http.sendPost("https://" + requestHost + resource);
+        int responseCodePost = http.sendPost("https://" + requestHost + resource);
 
         // GET Example for Reports
         resource = "/reporting/v3/reports?startTime=2020-04-01T00:00:00.0Z&endTime=2020-04-05T23:59:59.0Z&timeQueryType=executedTime&reportMimeType=application/xml";
         
         System.out.println("\n\nSample 2: GET call - CyberSource Reporting API - HTTP GET Reporting request");
-        http.sendGet("https://" + requestHost + resource);
+        int responseCodeGet = http.sendGet("https://" + requestHost + resource);
+
+        if ((responseCodePost >= 200 && responseCodePost <= 299) && (responseCodeGet != 400)) {
+            WriteLogAudit(200);
+        } else {
+            WriteLogAudit(400);
+        }
     }
 
     // HTTP GET request
-    private void sendGet(String url) throws Exception {
+    private int sendGet(String url) throws Exception {
         /* HTTP connection */
         URL obj = new URL(url);
         HttpURLConnection con = (HttpURLConnection) obj.openConnection();
@@ -156,10 +168,11 @@ public class StandaloneHttpSignature {
 
         /* print Response */
         System.out.println("\tResponse Payload :\n" + response.toString());
+        return responseCode;
     }
 
     // HTTP POST request
-    private void sendPost(String url) throws Exception {
+    private int sendPost(String url) throws Exception {
         /* HTTP connection */
         URL obj = new URL(url);
         HttpURLConnection con = (HttpURLConnection) obj.openConnection();
@@ -264,6 +277,8 @@ public class StandaloneHttpSignature {
             System.out.println("Response Payload : " + response.toString());
             System.out.println(exception);
         }
+
+        return responseCode;
     }
 
     private String getdate() {

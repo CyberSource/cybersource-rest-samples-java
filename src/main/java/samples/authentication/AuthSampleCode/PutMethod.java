@@ -1,5 +1,6 @@
 package samples.authentication.AuthSampleCode;
 
+import java.lang.invoke.MethodHandles;
 import java.util.Properties;
 
 import org.apache.commons.lang3.StringUtils;
@@ -21,6 +22,11 @@ public class PutMethod {
 	private Response response;
 	private Properties merchantProp;
 	private MerchantConfig merchantConfig;
+
+	public static void WriteLogAudit(int status) {
+		String filename = MethodHandles.lookup().lookupClass().getSimpleName();
+		System.out.println("[Sample Code Testing] [" + filename + "] " + status);
+	}
 
 	/**
 	 * REQUEST-TARGET [Editable]
@@ -75,6 +81,7 @@ public class PutMethod {
 		try {
 			/* Call payment method of Api Controller class */
 			response = apiController.paymentPut(merchantConfig);
+			WriteLogAudit(Integer.parseInt(response.getResponseCode()));
 
 			if (!StringUtils.isBlank(response.getResponseCode()) && !StringUtils.isBlank(response.getResponseMessage())) {
 				new PutGenerateHeaders(merchantConfig);
@@ -85,6 +92,7 @@ public class PutMethod {
 			}
 		} catch (Exception e) {
 			System.out.println(e.getMessage());
+			WriteLogAudit(400);
 		}
 	}
 }
