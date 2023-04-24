@@ -1,5 +1,6 @@
 package samples.authentication.AuthSampleCode;
 
+import java.lang.invoke.MethodHandles;
 import java.util.Properties;
 
 import org.apache.commons.lang3.StringUtils;
@@ -24,6 +25,11 @@ public class GetObjectMethod {
 	private String requestType = "GET";
 	/* [Non Editable] */
 	private String url;
+
+	public static void WriteLogAudit(int status) {
+		String filename = MethodHandles.lookup().lookupClass().getSimpleName();
+		System.out.println("[Sample Code Testing] [" + filename + "] " + status);
+	}
 
 	/* This method initiates or begins the process. */
 	public static void main(String[] args) throws Exception {
@@ -60,6 +66,7 @@ public class GetObjectMethod {
 		try {
 			/* Calling APISDK, com.cybersouce.api.controller. */
 			response = apiController.paymentGet(merchantConfig);
+			WriteLogAudit(Integer.parseInt(response.getResponseCode()));
 			/* Display response message and Headers in console. */
 			if (!StringUtils.isBlank(response.getResponseCode()) && !StringUtils.isBlank(response.getResponseMessage())) {
 				new GetGenerateHeaders(merchantConfig);
@@ -70,7 +77,7 @@ public class GetObjectMethod {
 			}
 		} catch (Exception e) {
 			System.out.println(e.getMessage());
-			// return;
+			WriteLogAudit(400);
 		}
 	}
 }

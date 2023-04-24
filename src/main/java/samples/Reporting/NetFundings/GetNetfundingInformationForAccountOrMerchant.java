@@ -1,6 +1,7 @@
 package samples.Reporting.NetFundings;
 
 import java.*;
+import java.lang.invoke.MethodHandles;
 import java.util.*;
 import java.math.BigDecimal;
 import org.joda.time.DateTime;
@@ -21,14 +22,19 @@ public class GetNetfundingInformationForAccountOrMerchant {
 	private static String status = null;
 	private static Properties merchantProp;
 
+	public static void WriteLogAudit(int status) {
+		String filename = MethodHandles.lookup().lookupClass().getSimpleName();
+		System.out.println("[Sample Code Testing] [" + filename + "] " + status);
+	}
+
 	public static void main(String args[]) throws Exception {
 		run();
 	}
 
 	public static ReportingV3NetFundingsGet200Response run() {
 	
-		DateTime startTime = new DateTime("2021-02-01T00:00:00Z").withZone(DateTimeZone.forID("GMT"));
-		DateTime endTime = new DateTime("2021-02-02T23:59:59Z").withZone(DateTimeZone.forID("GMT"));
+		DateTime startTime = new DateTime("2022-02-01T00:00:00Z").withZone(DateTimeZone.forID("GMT"));
+		DateTime endTime = new DateTime("2022-02-02T23:59:59Z").withZone(DateTimeZone.forID("GMT"));
 		String organizationId = "testrest";
 		String groupName = null;
 
@@ -47,7 +53,11 @@ public class GetNetfundingInformationForAccountOrMerchant {
 			System.out.println("ResponseCode :" + responseCode);
 			System.out.println("ResponseMessage :" + status);
 			System.out.println(result);
+			WriteLogAudit(Integer.parseInt(responseCode));
 			
+		} catch (ApiException e) {
+			e.printStackTrace();
+			WriteLogAudit(e.getCode());
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

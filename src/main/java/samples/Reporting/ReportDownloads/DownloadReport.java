@@ -1,5 +1,6 @@
 package samples.Reporting.ReportDownloads;
 
+import java.lang.invoke.MethodHandles;
 import java.io.File;
 import java.io.InputStream;
 import java.util.Properties;
@@ -24,6 +25,11 @@ public class DownloadReport {
 	public static String resourceFile = "DownloadedReport";
 	private static final String FILE_PATH = "src/main/resources/";
 	private static String responseBody = null;
+
+	public static void WriteLogAudit(int status) {
+		String filename = MethodHandles.lookup().lookupClass().getSimpleName();
+		System.out.println("[Sample Code Testing] [" + filename + "] " + status);
+	}
 
 	public static void main(String args[]) throws Exception {
 		run();
@@ -69,6 +75,10 @@ public class DownloadReport {
 
 			System.out.println("File Downloaded at the following location : ");
 			System.out.println(new File(FILE_PATH + resourceFile + "." + fileExtension).getAbsolutePath());
+			WriteLogAudit(Integer.parseInt(responseCode));
+		} catch (ApiException e) {
+			e.printStackTrace();
+			WriteLogAudit(e.getCode());
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

@@ -1,5 +1,6 @@
 package samples.authentication.AuthSampleCode;
 
+import java.lang.invoke.MethodHandles;
 import Api.PaymentsApi;
 import Invokers.ApiClient;
 import Model.*;
@@ -11,6 +12,11 @@ public class StandAloneMetaKey {
     private static String responseCode = null;
     private static String status = null;
     private static Properties merchantProp;
+
+	public static void WriteLogAudit(int status) {
+		String filename = MethodHandles.lookup().lookupClass().getSimpleName();
+		System.out.println("[Sample Code Testing] [" + filename + "] " + status);
+	}
 
     public static void main(String args[]) throws Exception {
         SimplePaymentsUsingMetaKey();
@@ -92,9 +98,11 @@ public class StandAloneMetaKey {
             System.out.println("ResponseCode :" + responseCode);
             System.out.println("ResponseMessage :" + status);
             System.out.println(result);
+			WriteLogAudit(Integer.parseInt(responseCode));
 
         } catch (Exception e) {
             e.printStackTrace();
+            WriteLogAudit(400);
         }
         return result;
     }

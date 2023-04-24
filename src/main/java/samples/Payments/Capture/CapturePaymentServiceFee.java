@@ -1,6 +1,7 @@
 package samples.Payments.Capture;
 
 import java.*;
+import java.lang.invoke.MethodHandles;
 import java.util.*;
 import java.math.BigDecimal;
 import org.joda.time.DateTime;
@@ -21,6 +22,11 @@ public class CapturePaymentServiceFee {
 	private static String responseCode = null;
 	private static String status = null;
 	private static Properties merchantProp;
+
+	public static void WriteLogAudit(int status) {
+		String filename = MethodHandles.lookup().lookupClass().getSimpleName();
+		System.out.println("[Sample Code Testing] [" + filename + "] " + status);
+	}
 
 	public static void main(String args[]) throws Exception {
 		run();
@@ -69,7 +75,11 @@ public class CapturePaymentServiceFee {
 			System.out.println("ResponseCode :" + responseCode);
 			System.out.println("ResponseMessage :" + status);
 			System.out.println(result);
+			WriteLogAudit(Integer.parseInt(responseCode));
 			
+		} catch (ApiException e) {
+			e.printStackTrace();
+			WriteLogAudit(e.getCode());
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
