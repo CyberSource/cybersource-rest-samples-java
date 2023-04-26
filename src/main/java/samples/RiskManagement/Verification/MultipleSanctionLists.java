@@ -90,7 +90,7 @@ public class MultipleSanctionLists {
 
 		Riskv1exportcomplianceinquiriesExportComplianceInformation exportComplianceInformation = new Riskv1exportcomplianceinquiriesExportComplianceInformation();
 		exportComplianceInformation.addressOperator("and");
-		Riskv1exportcomplianceinquiriesExportComplianceInformationWeights exportComplianceInformationWeights = new Riskv1exportcomplianceinquiriesExportComplianceInformationWeights();
+		Ptsv2paymentsWatchlistScreeningInformationWeights exportComplianceInformationWeights = new Ptsv2paymentsWatchlistScreeningInformationWeights();
 		exportComplianceInformationWeights.address("low");
 		exportComplianceInformationWeights.company("exact");
 		exportComplianceInformationWeights.name("exact");
