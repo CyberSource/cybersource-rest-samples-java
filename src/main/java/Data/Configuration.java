@@ -66,8 +66,8 @@ public class Configuration {
 
 		props.setProperty("keysDirectory", "src/main/resources");
 		// HTTP Parameters
-		props.setProperty("merchantKeyId", "e547c3d3-16e4-444c-9313-2a08784b906a");
-		props.setProperty("merchantsecretKey", "JXm4dqKYIxWofM1TIbtYY9HuYo7Cg1HPHxn29f6waRo=");
+		props.setProperty("merchantKeyId", "964f2ecc-96f0-4432-a742-db0b44e6a73a");
+		props.setProperty("merchantsecretKey", "zXKpCqMQPmOR/JRldSlkQUtvvIzOewUVqsUP0sBHpxQ=");
 		// Logging to be enabled or not.
 		props.setProperty("enableLog", "true");
 		// Log directory Path
