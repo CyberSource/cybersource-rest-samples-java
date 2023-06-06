@@ -48,12 +48,18 @@ public class PinDebitPurchaseReversalVoid {
 		paymentInformationPaymentType.name("CARD");
 		paymentInformationPaymentType.subTypeName("DEBIT");
 		paymentInformation.paymentType(paymentInformationPaymentType);
-
 		requestObj.paymentInformation(paymentInformation);
+		
+		Ptsv2paymentsidvoidsOrderInformation orderInformation = new Ptsv2paymentsidvoidsOrderInformation();
+		Ptsv2paymentsidreversalsReversalInformationAmountDetails amountDetails = new Ptsv2paymentsidreversalsReversalInformationAmountDetails();
+		amountDetails.currency("USD");
+		amountDetails.totalAmount("202.00");
+		orderInformation.amountDetails(amountDetails);
+		requestObj.orderInformation(orderInformation);
 
 		PtsV2PaymentsVoidsPost201Response result = null;
 		try {
-			merchantProp = Configuration.getMerchantDetails();
+			merchantProp = Configuration.getAlternativeMerchantDetails();
 			ApiClient apiClient = new ApiClient();
 			MerchantConfig merchantConfig = new MerchantConfig(merchantProp);
 			apiClient.merchantConfig = merchantConfig;

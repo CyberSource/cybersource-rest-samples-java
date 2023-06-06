@@ -45,6 +45,11 @@ public class PinDebitPurchaseUsingSwipedTrackDataWithVisaPlatformConnect {
 		requestObj.processingInformation(processingInformation);
 
 		Ptsv2paymentsPaymentInformation paymentInformation = new Ptsv2paymentsPaymentInformation();
+		Ptsv2paymentsPaymentInformationPaymentType paymentInformationPaymentType = new Ptsv2paymentsPaymentInformationPaymentType();
+		paymentInformationPaymentType.name("CARD");
+		paymentInformationPaymentType.subTypeName("DEBIT");
+		paymentInformation.paymentType(paymentInformationPaymentType);
+
 		requestObj.paymentInformation(paymentInformation);
 
 		Ptsv2paymentsOrderInformation orderInformation = new Ptsv2paymentsOrderInformation();
