@@ -34,7 +34,7 @@ public class CreatePlan {
 	}
 
 	public static InlineResponse201 run() {
-		// Required to make the sample code ActivatePlan.cs work
+		// Required to make the sample code ActivatePlan.java work
 		String planStatus = "DRAFT";
 	
 		CreatePlanRequest requestObj = new CreatePlanRequest();

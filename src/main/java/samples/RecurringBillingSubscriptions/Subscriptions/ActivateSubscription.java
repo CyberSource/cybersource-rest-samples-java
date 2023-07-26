@@ -27,7 +27,7 @@ public class ActivateSubscription {
     public static InlineResponse2009 run() {
         InlineResponse2009 response = null;
         try {
-            String subscriptionId = "INSERT VALID SUBSCRIPTION ID HERE";
+            String subscriptionId = CancelSubscription.run().getId();
             merchantProp = Configuration.getMerchantDetails();
             ApiClient apiClient = new ApiClient();
             MerchantConfig merchantConfig = new MerchantConfig(merchantProp);

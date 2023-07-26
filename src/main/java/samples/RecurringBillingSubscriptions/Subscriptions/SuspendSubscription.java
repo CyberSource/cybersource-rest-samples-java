@@ -27,7 +27,7 @@ public class SuspendSubscription {
     public static InlineResponse2021 run() {
         InlineResponse2021 response = null;
         try {
-            String subscriptionId = "INSERT VALID SUBSCRIPTION ID HERE";
+            String subscriptionId = CreateSubscription.run().getId();
             merchantProp = Configuration.getMerchantDetails();
             ApiClient apiClient = new ApiClient();
             MerchantConfig merchantConfig = new MerchantConfig(merchantProp);
