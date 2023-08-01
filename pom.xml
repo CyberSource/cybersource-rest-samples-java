@@ -20,7 +20,7 @@
 		<dependency>
 			<groupId>com.cybersource</groupId>
 			<artifactId>cybersource-rest-client-java</artifactId>
-			<version>0.0.56-SNAPSHOT</version>
+			<version>0.0.55</version>
 		</dependency>
 		<!-- https://mvnrepository.com/artifact/com.google.guava/guava -->
 		<dependency>
@@ -61,7 +61,6 @@
 			<plugin>
 			    <groupId>org.apache.maven.plugins</groupId>
 			    <artifactId>maven-dependency-plugin</artifactId>
-				<version>3.3.0</version>
 			    <executions>
 			        <execution>
 			            <id>copy-dependencies</id>
