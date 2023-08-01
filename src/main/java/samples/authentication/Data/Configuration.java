@@ -16,10 +16,9 @@ public class Configuration {
 		props.setProperty("keyAlias", "testrest");
 		props.setProperty("keyPass", "testrest");
 		props.setProperty("keyFileName", "testrest");
-		/*
-			P12 key path. Enter the folder path where the .p12 file is located.
-			It is optional property, require adding only during JWE decryption.
-		*/
+
+		// P12 key path. Enter the folder path where the .p12 file is located.
+
 		props.setProperty("keysDirectory", "resources");
 		// HTTP Parameters
 		props.setProperty("merchantKeyId", "08c94330-f618-42a3-b09d-e1e43be5efda");
