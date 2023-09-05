@@ -29,6 +29,10 @@ public class EBTMerchandiseReturnCreditVoucherFromSNAP {
 		System.out.println("[Sample Code Testing] [" + filename + "] " + status);
 	}
 
+	public static void main(String args[]) throws Exception {
+		run();
+	}
+
 	public static PtsV2CreditsPost201Response run() {
 	
 		CreateCreditRequest requestObj = new CreateCreditRequest();
