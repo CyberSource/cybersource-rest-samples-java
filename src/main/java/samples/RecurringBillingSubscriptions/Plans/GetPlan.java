@@ -33,9 +33,10 @@ public class GetPlan {
 		run();
 	}
 
-	public static void run() {
-	
-		String id = CreatePlan.run().getId();
+	public static InlineResponse2001 run() {
+		String planId = CreatePlan.run().getId();
+		InlineResponse2001 result = null;
+
 		try {
 			merchantProp = Configuration.getMerchantDetails();
 			ApiClient apiClient = new ApiClient();
@@ -43,12 +44,13 @@ public class GetPlan {
 			apiClient.merchantConfig = merchantConfig;
 
 			PlansApi apiInstance = new PlansApi(apiClient);
-			apiInstance.getPlan(id);
+			result = apiInstance.getPlan(planId);
 
 			responseCode = apiClient.responseCode;
 			status = apiClient.status;
 			System.out.println("ResponseCode :" + responseCode);
 			System.out.println("ResponseMessage :" + status);
+			System.out.println(result);
 			WriteLogAudit(Integer.parseInt(responseCode));
 		} catch (ApiException e) {
 			e.printStackTrace();
@@ -56,6 +58,6 @@ public class GetPlan {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-	
+		return result;
 	}
 }

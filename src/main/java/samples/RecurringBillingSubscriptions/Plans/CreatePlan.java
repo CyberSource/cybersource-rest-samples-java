@@ -34,12 +34,15 @@ public class CreatePlan {
 	}
 
 	public static InlineResponse201 run() {
+		// Required to make the sample code ActivatePlan.java work
+		String planStatus = "DRAFT";
 	
 		CreatePlanRequest requestObj = new CreatePlanRequest();
 
 		Rbsv1plansPlanInformation planInformation = new Rbsv1plansPlanInformation();
 		planInformation.name("Gold Plan");
 		planInformation.description("New Gold Plan");
+		planInformation.setStatus(planStatus);
 		InlineResponse200PlanInformationBillingPeriod planInformationBillingPeriod = new InlineResponse200PlanInformationBillingPeriod();
 		planInformationBillingPeriod.length("1");
 		planInformationBillingPeriod.unit("M");
@@ -60,7 +63,7 @@ public class CreatePlan {
 
 		requestObj.orderInformation(orderInformation);
 
-		InlineResponse201 response = null; 
+		InlineResponse201 result = null;
 		try {
 			merchantProp = Configuration.getMerchantDetails();
 			ApiClient apiClient = new ApiClient();
@@ -68,12 +71,13 @@ public class CreatePlan {
 			apiClient.merchantConfig = merchantConfig;
 
 			PlansApi apiInstance = new PlansApi(apiClient);
-			response = apiInstance.createPlan(requestObj);
+			result = apiInstance.createPlan(requestObj);
 
 			responseCode = apiClient.responseCode;
 			status = apiClient.status;
 			System.out.println("ResponseCode :" + responseCode);
 			System.out.println("ResponseMessage :" + status);
+			System.out.println(result);
 			WriteLogAudit(Integer.parseInt(responseCode));
 		} catch (ApiException e) {
 			e.printStackTrace();
@@ -81,7 +85,7 @@ public class CreatePlan {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		return response;
+		return result;
 	
 	}
 }
