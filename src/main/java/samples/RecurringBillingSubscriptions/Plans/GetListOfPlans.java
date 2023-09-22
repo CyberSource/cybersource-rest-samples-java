@@ -4,7 +4,7 @@ import Api.PlansApi;
 import Data.Configuration;
 import Invokers.ApiClient;
 import Invokers.ApiException;
-import Model.InlineResponse200;
+import Model.GetAllPlansResponse;
 import com.cybersource.authsdk.core.MerchantConfig;
 
 import java.lang.invoke.MethodHandles;
@@ -24,14 +24,14 @@ public class GetListOfPlans {
         run();
     }
 
-    private static InlineResponse200 run() {
+    private static GetAllPlansResponse run() {
         int offset = 0;
         int limit = 100;
         String code = null;
         String status = null;
         String name = null;
 
-        InlineResponse200 result = null;
+        GetAllPlansResponse result = null;
 
         try {
             merchantProp = Configuration.getMerchantDetails();

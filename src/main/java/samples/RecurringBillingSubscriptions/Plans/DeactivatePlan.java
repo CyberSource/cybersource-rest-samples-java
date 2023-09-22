@@ -4,7 +4,7 @@ import Api.PlansApi;
 import Data.Configuration;
 import Invokers.ApiClient;
 import Invokers.ApiException;
-import Model.InlineResponse2004;
+import Model.ActivateDeactivatePlanResponse;
 import com.cybersource.authsdk.core.MerchantConfig;
 
 import java.lang.invoke.MethodHandles;
@@ -24,9 +24,9 @@ public class DeactivatePlan {
         run();
     }
 
-    public static InlineResponse2004 run() {
+    public static ActivateDeactivatePlanResponse run() {
         String planId = ActivatePlan.run().getId();
-        InlineResponse2004 result = null;
+        ActivateDeactivatePlanResponse result = null;
 
         try {
             merchantProp = Configuration.getMerchantDetails();

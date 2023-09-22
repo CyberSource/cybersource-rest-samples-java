@@ -4,7 +4,8 @@ import Api.SubscriptionsApi;
 import Data.Configuration;
 import Invokers.ApiClient;
 import Invokers.ApiException;
-import Model.InlineResponse2021;
+import Model.CancelSubscriptionResponse;
+import Model.SuspendSubscriptionResponse;
 import com.cybersource.authsdk.core.MerchantConfig;
 
 import java.lang.invoke.MethodHandles;
@@ -24,8 +25,8 @@ public class SuspendSubscription {
         run();
     }
 
-    public static InlineResponse2021 run() {
-        InlineResponse2021 response = null;
+    public static SuspendSubscriptionResponse run() {
+        SuspendSubscriptionResponse response = null;
         try {
             String subscriptionId = CreateSubscription.run().getId();
             merchantProp = Configuration.getMerchantDetails();
