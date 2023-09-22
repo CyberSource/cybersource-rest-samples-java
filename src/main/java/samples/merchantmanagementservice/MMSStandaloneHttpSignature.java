@@ -310,8 +310,8 @@ public class MMSStandaloneHttpSignature {
          * keyid -- Merchant ID obtained from EBC portal
          * algorithm -- Should have value as "HmacSHA256"
          * headers -- List of all header name passed in the Signature paramter below
-         *            String getHeaders = "host date (request-target)" + " " + "v-c-merchant-id";
-         *            String postHeaders = "host date (request-target) digest v-c-merchant-id";
+         *            String getHeaders = "host date request-target" + " " + "v-c-merchant-id";
+         *            String postHeaders = "host date request-target digest v-c-merchant-id";
          *            Note: Digest is not passed for GET calls
          * signature -- Signature header has paramter called signature
          *              Paramter 'Signature' must contain all the paramters mentioned in header above in given order
@@ -325,8 +325,8 @@ public class MMSStandaloneHttpSignature {
         signatureHeaderValue.append(", algorithm=\"HmacSHA256\"");
 
         /* Headers - list is choosen based on HTTP method. Digest is not required for GET Method */
-        String getHeaders = "host date (request-target)" + " " + "v-c-merchant-id";
-        String postHeaders = "host date (request-target) digest v-c-merchant-id";
+        String getHeaders = "host date request-target" + " " + "v-c-merchant-id";
+        String postHeaders = "host date request-target digest v-c-merchant-id";
 
         if(httpMethod.equalsIgnoreCase("GET"))
             signatureHeaderValue.append(", headers=\"" + getHeaders + "\"");
@@ -345,7 +345,7 @@ public class MMSStandaloneHttpSignature {
          * paramter 'Signature' is calucated based on below key values and then signed with SECRET KEY -
          * host: Sandbox (apitest.cybersource.com) or Production (api.cybersource.com) hostname
          * date: "HTTP-date" format as defined by RFC7231.
-         * (request-target): Should be in format of httpMethod: path
+         * request-target: Should be in format of httpMethod: path
          *                   Example: "post /merchant-mgmt/v2/merchant-batch-jobs"
          * Digest: Only needed for POST calls.
          *          digestString = BASE64( HMAC-SHA256 ( Payload ));
@@ -363,7 +363,7 @@ public class MMSStandaloneHttpSignature {
         signatureString.append(": ");
         signatureString.append(gmtDateTime);
         signatureString.append('\n');
-        signatureString.append("(request-target)");
+        signatureString.append("request-target");
         signatureString.append(": ");
 
         String getRequestTarget = "get " + resource;
