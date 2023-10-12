@@ -4,7 +4,7 @@ import Api.SubscriptionsApi;
 import Data.Configuration;
 import Invokers.ApiClient;
 import Invokers.ApiException;
-import Model.InlineResponse20010;
+import Model.GetSubscriptionCodeResponse;
 import com.cybersource.authsdk.core.MerchantConfig;
 
 import java.lang.invoke.MethodHandles;
@@ -24,8 +24,8 @@ public class GetSubscriptionCode {
         run();
     }
 
-    public static InlineResponse20010 run() {
-        InlineResponse20010 response = null;
+    public static GetSubscriptionCodeResponse run() {
+        GetSubscriptionCodeResponse response = null;
         try {
             merchantProp = Configuration.getMerchantDetails();
             ApiClient apiClient = new ApiClient();

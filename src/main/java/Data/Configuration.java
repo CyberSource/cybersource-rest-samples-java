@@ -44,6 +44,12 @@ public class Configuration {
 		props.setProperty("clientId", "");
 		props.setProperty("clientSecret", "");
 
+		/*
+		PEM Key file path for decoding JWE Response Enter the folder path where the .pem file is located.
+		It is optional property, require adding only during JWE decryption.
+		*/
+		props.setProperty("jwePEMFileDirectory", "src/main/resources/NetworkTokenCert.pem");
+
 		return props;
 
 	}

@@ -33,9 +33,9 @@ public class GetPlan {
 		run();
 	}
 
-	public static InlineResponse2001 run() {
+	public static GetPlanResponse run() {
 		String planId = CreatePlan.run().getId();
-		InlineResponse2001 result = null;
+		GetPlanResponse result = null;
 
 		try {
 			merchantProp = Configuration.getMerchantDetails();

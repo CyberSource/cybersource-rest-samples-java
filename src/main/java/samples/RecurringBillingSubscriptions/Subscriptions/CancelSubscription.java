@@ -4,7 +4,7 @@ import Api.SubscriptionsApi;
 import Data.Configuration;
 import Invokers.ApiClient;
 import Invokers.ApiException;
-import Model.InlineResponse202;
+import Model.CancelSubscriptionResponse;
 import com.cybersource.authsdk.core.MerchantConfig;
 
 import java.lang.invoke.MethodHandles;
@@ -24,8 +24,8 @@ public class CancelSubscription {
         run();
     }
 
-    public static InlineResponse202 run() {
-        InlineResponse202 response = null;
+    public static CancelSubscriptionResponse run() {
+        CancelSubscriptionResponse response = null;
         try {
             String subscriptionId = CreateSubscription.run().getId();
             merchantProp = Configuration.getMerchantDetails();

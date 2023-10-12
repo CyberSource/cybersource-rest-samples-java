@@ -1,16 +1,18 @@
-package samples.RecurringBillingSubscriptions.Plans;
+package samples.networkTokenization;
 
-import Api.PlansApi;
+import Api.InstrumentIdentifierApi;
 import Data.Configuration;
 import Invokers.ApiClient;
 import Invokers.ApiException;
-import Model.ActivateDeactivatePlanResponse;
+import Model.PostInstrumentIdentifierRequest;
+import Model.Tmsv2customersEmbeddedDefaultPaymentInstrumentEmbeddedInstrumentIdentifier;
+import Model.Tmsv2customersEmbeddedDefaultPaymentInstrumentEmbeddedInstrumentIdentifierCard;
 import com.cybersource.authsdk.core.MerchantConfig;
 
 import java.lang.invoke.MethodHandles;
 import java.util.Properties;
 
-public class DeactivatePlan {
+public class CreateInstrumentIdentifierCardEnrollForNetworkToken {
     private static String responseCode = null;
     private static String status = null;
     private static Properties merchantProp;
@@ -24,18 +26,26 @@ public class DeactivatePlan {
         run();
     }
 
-    public static ActivateDeactivatePlanResponse run() {
-        String planId = ActivatePlan.run().getId();
-        ActivateDeactivatePlanResponse result = null;
+    public static Tmsv2customersEmbeddedDefaultPaymentInstrumentEmbeddedInstrumentIdentifier run() {
+        String profileid = "93B32398-AD51-4CC2-A682-EA3E93614EB1";
+        PostInstrumentIdentifierRequest requestObj = new PostInstrumentIdentifierRequest();
 
+        requestObj.type("enrollable card");
+        Tmsv2customersEmbeddedDefaultPaymentInstrumentEmbeddedInstrumentIdentifierCard card = new Tmsv2customersEmbeddedDefaultPaymentInstrumentEmbeddedInstrumentIdentifierCard();
+        card.number("5204245750003216");
+        card.expirationMonth("12");
+        card.expirationYear("2025");
+        requestObj.card(card);
+
+        Tmsv2customersEmbeddedDefaultPaymentInstrumentEmbeddedInstrumentIdentifier result = null;
         try {
             merchantProp = Configuration.getMerchantDetails();
             ApiClient apiClient = new ApiClient();
             MerchantConfig merchantConfig = new MerchantConfig(merchantProp);
             apiClient.merchantConfig = merchantConfig;
 
-            PlansApi apiInstance = new PlansApi(apiClient);
-            result = apiInstance.deactivatePlan(planId);
+            InstrumentIdentifierApi apiInstance = new InstrumentIdentifierApi(apiClient);
+            result = apiInstance.postInstrumentIdentifier(requestObj, profileid);
 
             responseCode = apiClient.responseCode;
             status = apiClient.status;
@@ -43,6 +53,7 @@ public class DeactivatePlan {
             System.out.println("ResponseMessage :" + status);
             System.out.println(result);
             WriteLogAudit(Integer.parseInt(responseCode));
+
         } catch (ApiException e) {
             e.printStackTrace();
             WriteLogAudit(e.getCode());
@@ -52,4 +63,3 @@ public class DeactivatePlan {
         return result;
     }
 }
-

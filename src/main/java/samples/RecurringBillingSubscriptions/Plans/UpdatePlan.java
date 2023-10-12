@@ -1,23 +1,14 @@
 package samples.RecurringBillingSubscriptions.Plans;
 
-import java.*;
-import java.lang.invoke.MethodHandles;
-import java.util.*;
-import java.math.BigDecimal;
-import org.apache.commons.io.FileUtils;
-import org.joda.time.DateTime;
-import org.joda.time.DateTimeZone;
-import org.joda.time.LocalDate;
-
-import com.google.common.base.Strings;
-import com.cybersource.authsdk.core.MerchantConfig;
-
-import Api.*;
+import Api.PlansApi;
 import Data.Configuration;
 import Invokers.ApiClient;
 import Invokers.ApiException;
-import Invokers.ApiResponse;
 import Model.*;
+import com.cybersource.authsdk.core.MerchantConfig;
+
+import java.lang.invoke.MethodHandles;
+import java.util.Properties;
 
 public class UpdatePlan {
 	private static String responseCode = null;
@@ -42,7 +33,7 @@ public class UpdatePlan {
 		Rbsv1plansidPlanInformation planInformation = new Rbsv1plansidPlanInformation();
 		planInformation.name("Gold Plan NA");
 		planInformation.description("Updated Gold Plan");
-		InlineResponse200PlanInformationBillingPeriod planInformationBillingPeriod = new InlineResponse200PlanInformationBillingPeriod();
+		GetAllPlansResponsePlanInformationBillingPeriod planInformationBillingPeriod = new GetAllPlansResponsePlanInformationBillingPeriod();
 		planInformationBillingPeriod.length("2");
 		planInformationBillingPeriod.unit("W");
 		planInformation.billingPeriod(planInformationBillingPeriod);
@@ -60,8 +51,8 @@ public class UpdatePlan {
 
 		requestObj.processingInformation(processingInformation);
 
-		InlineResponse200OrderInformation orderInformation = new InlineResponse200OrderInformation();
-		InlineResponse200OrderInformationAmountDetails orderInformationAmountDetails = new InlineResponse200OrderInformationAmountDetails();
+		GetAllPlansResponseOrderInformation orderInformation = new GetAllPlansResponseOrderInformation();
+		GetAllPlansResponseOrderInformationAmountDetails orderInformationAmountDetails = new GetAllPlansResponseOrderInformationAmountDetails();
 		orderInformationAmountDetails.currency("USD");
 		orderInformationAmountDetails.billingAmount("11");
 		orderInformationAmountDetails.setupFee("2");

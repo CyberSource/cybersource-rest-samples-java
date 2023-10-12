@@ -33,7 +33,7 @@ public class CreateSubscription {
 		run();
 	}
 
-	public static InlineResponse2011 run() {
+	public static CreateSubscriptionResponse run() {
 	
 		CreateSubscriptionRequest requestObj = new CreateSubscriptionRequest();
 
@@ -72,7 +72,7 @@ public class CreateSubscription {
 
 		requestObj.paymentInformation(paymentInformation);
 
-		InlineResponse2011 response = null;
+		CreateSubscriptionResponse response = null;
 		try {
 			merchantProp = Configuration.getMerchantDetails();
 			ApiClient apiClient = new ApiClient();

@@ -33,7 +33,7 @@ public class CreatePlan {
 		run();
 	}
 
-	public static InlineResponse201 run() {
+	public static CreatePlanResponse run() {
 		// Required to make the sample code ActivatePlan.java work
 		String planStatus = "DRAFT";
 	
@@ -43,7 +43,7 @@ public class CreatePlan {
 		planInformation.name("Gold Plan");
 		planInformation.description("New Gold Plan");
 		planInformation.setStatus(planStatus);
-		InlineResponse200PlanInformationBillingPeriod planInformationBillingPeriod = new InlineResponse200PlanInformationBillingPeriod();
+		GetAllPlansResponsePlanInformationBillingPeriod planInformationBillingPeriod = new GetAllPlansResponsePlanInformationBillingPeriod();
 		planInformationBillingPeriod.length("1");
 		planInformationBillingPeriod.unit("M");
 		planInformation.billingPeriod(planInformationBillingPeriod);
@@ -63,7 +63,7 @@ public class CreatePlan {
 
 		requestObj.orderInformation(orderInformation);
 
-		InlineResponse201 result = null;
+		CreatePlanResponse result = null;
 		try {
 			merchantProp = Configuration.getMerchantDetails();
 			ApiClient apiClient = new ApiClient();
