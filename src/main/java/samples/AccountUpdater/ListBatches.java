@@ -20,10 +20,10 @@ public class ListBatches {
 	}
 
 	public static void main(String args[]) throws Exception {
-		run(null, null, null, null);
+		run();
 	}
 
-	public static void run(String offset, String limit, String fromDate, String toDate) {
+	public static void run() {
 	
 		
 		try {
@@ -31,10 +31,10 @@ public class ListBatches {
 			ApiClient apiClient = new ApiClient();
 			MerchantConfig merchantConfig = new MerchantConfig(merchantProp);
 			apiClient.merchantConfig = merchantConfig;
-
+			String fromDate = "20230101T123000Z";
+			String toDate = "20230410T123000Z";
 			BatchesApi apiInstance = new BatchesApi(apiClient);
-
-			apiInstance.getBatchesList(0L, 0L, fromDate, toDate);
+			apiInstance.getBatchesList(0L, 10L, fromDate, toDate);
 
 			responseCode = apiClient.responseCode;
 			status = apiClient.status;
