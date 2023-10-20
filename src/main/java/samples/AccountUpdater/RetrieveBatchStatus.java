@@ -4,6 +4,7 @@ import Api.BatchesApi;
 import Data.Configuration;
 import Invokers.ApiClient;
 import Invokers.ApiException;
+import Model.InlineResponse2003;
 import com.cybersource.authsdk.core.MerchantConfig;
 
 import java.lang.invoke.MethodHandles;
@@ -25,6 +26,7 @@ public class RetrieveBatchStatus {
 
 	public static void run() {
 		String batchId = "16188390061150001062041064";
+		InlineResponse2003 result = null;
 		try {
 			merchantProp = Configuration.getMerchantDetails();
 			ApiClient apiClient = new ApiClient();
@@ -32,12 +34,13 @@ public class RetrieveBatchStatus {
 			apiClient.merchantConfig = merchantConfig;
 
 			BatchesApi apiInstance = new BatchesApi(apiClient);
-			apiInstance.getBatchStatus(batchId);
+			result = apiInstance.getBatchStatus(batchId);
 
 			responseCode = apiClient.responseCode;
 			status = apiClient.status;
 			System.out.println("ResponseCode :" + responseCode);
 			System.out.println("ResponseMessage :" + status);
+			System.out.println(result);
 			WriteLogAudit(Integer.parseInt(responseCode));
 		} catch (ApiException e) {
 			e.printStackTrace();
