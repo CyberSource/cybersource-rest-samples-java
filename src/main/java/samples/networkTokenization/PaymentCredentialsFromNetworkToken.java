@@ -43,7 +43,6 @@ public class PaymentCredentialsFromNetworkToken {
 
             TokenApi apiInstance = new TokenApi(apiClient);
             PostPaymentCredentialsRequest postPaymentCredentialsRequest = new PostPaymentCredentialsRequest();
-            postPaymentCredentialsRequest.paymentCredentialType("NETWORK_TOKEN");
             result = apiInstance.postTokenPaymentCredentials(tokenID, postPaymentCredentialsRequest, profileid);
             responseCode = apiClient.responseCode;
             status = apiClient.status;
