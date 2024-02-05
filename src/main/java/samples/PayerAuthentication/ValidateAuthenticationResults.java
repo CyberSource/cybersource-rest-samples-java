@@ -50,16 +50,6 @@ public class ValidateAuthenticationResults {
 		orderInformationAmountDetails.totalAmount("200.00");
 		orderInformation.amountDetails(orderInformationAmountDetails);
 
-
-		List <Riskv1authenticationresultsOrderInformationLineItems> lineItems =  new ArrayList <Riskv1authenticationresultsOrderInformationLineItems>();
-		Riskv1authenticationresultsOrderInformationLineItems lineItems1 = new Riskv1authenticationresultsOrderInformationLineItems();
-		lineItems1.unitPrice("10");
-		lineItems1.quantity(2);
-		lineItems1.taxAmount("32.40");
-		lineItems.add(lineItems1);
-
-		orderInformation.lineItems(lineItems);
-
 		requestObj.orderInformation(orderInformation);
 
 		Riskv1authenticationresultsPaymentInformation paymentInformation = new Riskv1authenticationresultsPaymentInformation();
@@ -74,7 +64,6 @@ public class ValidateAuthenticationResults {
 
 		Riskv1authenticationresultsConsumerAuthenticationInformation consumerAuthenticationInformation = new Riskv1authenticationresultsConsumerAuthenticationInformation();
 		consumerAuthenticationInformation.authenticationTransactionId("PYffv9G3sa1e0CQr5fV0");
-		consumerAuthenticationInformation.signedPares("eNqdmFmT4jgSgN+J4D90zD4yMz45PEFVhHzgA2zwjXnzhQ984Nvw61dAV1");
 		requestObj.consumerAuthenticationInformation(consumerAuthenticationInformation);
 
 		RiskV1AuthenticationResultsPost201Response result = null;
@@ -93,7 +82,6 @@ public class ValidateAuthenticationResults {
 			System.out.println("ResponseMessage :" + status);
 			System.out.println(result);
 			WriteLogAudit(Integer.parseInt(responseCode));
-			
 		} catch (ApiException e) {
 			e.printStackTrace();
 			WriteLogAudit(e.getCode());
