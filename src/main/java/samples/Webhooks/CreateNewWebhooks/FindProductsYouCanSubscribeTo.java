@@ -29,6 +29,10 @@ public class FindProductsYouCanSubscribeTo {
 		System.out.println("[Sample Code Testing] [" + filename + "] " + status);
 	}
 
+	public static void main(String args[]) throws Exception {
+		run();
+	}
+
 	public static void run(String organizationId) {
 	
 		
