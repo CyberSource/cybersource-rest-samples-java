@@ -72,8 +72,8 @@ public class CreatePaymentInstrumentBankAccount {
 		billTo.phoneNumber("4158880000");
 		requestObj.billTo(billTo);
 
-		Tmsv2customersEmbeddedDefaultPaymentInstrumentProcessingInformation processingInformation = new Tmsv2customersEmbeddedDefaultPaymentInstrumentProcessingInformation();
-		Tmsv2customersEmbeddedDefaultPaymentInstrumentProcessingInformationBankTransferOptions processingInformationBankTransferOptions = new Tmsv2customersEmbeddedDefaultPaymentInstrumentProcessingInformationBankTransferOptions();
+		TmsPaymentInstrumentProcessingInfo processingInformation = new TmsPaymentInstrumentProcessingInfo();
+		TmsPaymentInstrumentProcessingInfoBankTransferOptions processingInformationBankTransferOptions = new TmsPaymentInstrumentProcessingInfoBankTransferOptions();
 		processingInformationBankTransferOptions.seCCode("WEB");
 		processingInformation.bankTransferOptions(processingInformationBankTransferOptions);
 

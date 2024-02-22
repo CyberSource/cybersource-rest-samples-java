@@ -38,13 +38,13 @@ public class EnrollInstrumentIdentifierForNetworkTokenization {
 		PostInstrumentIdentifierEnrollmentRequest requestObj = new PostInstrumentIdentifierEnrollmentRequest();
 
 		requestObj.type("enrollable card");
-		Tmsv2customersEmbeddedDefaultPaymentInstrumentEmbeddedInstrumentIdentifierCard card = new Tmsv2customersEmbeddedDefaultPaymentInstrumentEmbeddedInstrumentIdentifierCard();
+		TmsEmbeddedInstrumentIdentifierCard card = new TmsEmbeddedInstrumentIdentifierCard();
 		card.expirationMonth("12");
 		card.expirationYear("2031");
 		card.securityCode("123");
 		requestObj.card(card);
 
-		Tmsv2customersEmbeddedDefaultPaymentInstrumentEmbeddedInstrumentIdentifierBillTo billTo = new Tmsv2customersEmbeddedDefaultPaymentInstrumentEmbeddedInstrumentIdentifierBillTo();
+		TmsEmbeddedInstrumentIdentifierBillTo billTo = new TmsEmbeddedInstrumentIdentifierBillTo();
 		billTo.address1("1 Market St");
 		billTo.locality("San Francisco");
 		billTo.administrativeArea("CA");

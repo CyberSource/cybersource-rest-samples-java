@@ -30,7 +30,7 @@ public class CreateAsymmetricKey {
 	}
 
 	public static void main(String args[]) throws Exception {
-		run();
+		run(null, null, null);
 	}
 
 	public static InlineResponse2014 run(String vCcorrelationId, String vCsenderOrganizationId, String vCpermissions) {

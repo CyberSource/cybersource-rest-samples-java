@@ -30,7 +30,7 @@ public class StoreOAuthCredentials {
 	}
 
 	public static void main(String args[]) throws Exception {
-		run();
+		run(null, null, null);
 	}
 
 	public static void run(String vCcorrelationId, String vCsenderOrganizationId, String vCpermissions) {

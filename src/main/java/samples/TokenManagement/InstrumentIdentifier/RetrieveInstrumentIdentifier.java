@@ -31,11 +31,11 @@ public class RetrieveInstrumentIdentifier {
 		run();
 	}
 
-	public static Tmsv2customersEmbeddedDefaultPaymentInstrumentEmbeddedInstrumentIdentifier run() {
+	public static TmsEmbeddedInstrumentIdentifier run() {
 		String profileid = "93B32398-AD51-4CC2-A682-EA3E93614EB1";
 		String tokenId = "7010000000016241111";
 		
-		Tmsv2customersEmbeddedDefaultPaymentInstrumentEmbeddedInstrumentIdentifier result = null;
+		TmsEmbeddedInstrumentIdentifier result = null;
 		try {
 			merchantProp = Configuration.getMerchantDetails();
 			ApiClient apiClient = new ApiClient();

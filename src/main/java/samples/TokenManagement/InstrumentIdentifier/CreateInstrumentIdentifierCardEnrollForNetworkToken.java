@@ -31,19 +31,19 @@ public class CreateInstrumentIdentifierCardEnrollForNetworkToken {
 		run();
 	}
 
-	public static Tmsv2customersEmbeddedDefaultPaymentInstrumentEmbeddedInstrumentIdentifier run() {
+	public static TmsEmbeddedInstrumentIdentifier run() {
 		String profileid = "93B32398-AD51-4CC2-A682-EA3E93614EB1";
 		PostInstrumentIdentifierRequest requestObj = new PostInstrumentIdentifierRequest();
 
 		requestObj.type("enrollable card");
-		Tmsv2customersEmbeddedDefaultPaymentInstrumentEmbeddedInstrumentIdentifierCard card = new Tmsv2customersEmbeddedDefaultPaymentInstrumentEmbeddedInstrumentIdentifierCard();
+		TmsEmbeddedInstrumentIdentifierCard card = new TmsEmbeddedInstrumentIdentifierCard();
 		card.number("4111111111111111");
 		card.expirationMonth("12");
 		card.expirationYear("2031");
 		card.securityCode("123");
 		requestObj.card(card);
 
-		Tmsv2customersEmbeddedDefaultPaymentInstrumentEmbeddedInstrumentIdentifierBillTo billTo = new Tmsv2customersEmbeddedDefaultPaymentInstrumentEmbeddedInstrumentIdentifierBillTo();
+		TmsEmbeddedInstrumentIdentifierBillTo billTo = new TmsEmbeddedInstrumentIdentifierBillTo();
 		billTo.address1("1 Market St");
 		billTo.locality("San Francisco");
 		billTo.administrativeArea("CA");
@@ -51,7 +51,7 @@ public class CreateInstrumentIdentifierCardEnrollForNetworkToken {
 		billTo.country("US");
 		requestObj.billTo(billTo);
 
-		Tmsv2customersEmbeddedDefaultPaymentInstrumentEmbeddedInstrumentIdentifier result = null;
+		TmsEmbeddedInstrumentIdentifier result = null;
 		try {
 			merchantProp = Configuration.getMerchantDetails();
 			ApiClient apiClient = new ApiClient();
