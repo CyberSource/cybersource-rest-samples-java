@@ -1,7 +1,7 @@
 package samples.networkTokenization;
 
 import Data.Configuration;
-import Model.Tmsv2customersEmbeddedDefaultPaymentInstrumentEmbeddedInstrumentIdentifier;
+import Model.TmsEmbeddedInstrumentIdentifier;
 import com.cybersource.authsdk.core.MerchantConfig;
 
 import java.util.Properties;
@@ -20,7 +20,7 @@ public class NetworkToken {
             MerchantConfig merchantConfig = new MerchantConfig(merchantProp);
 
             //Step-I
-            Tmsv2customersEmbeddedDefaultPaymentInstrumentEmbeddedInstrumentIdentifier tmsv2customersEmbeddedDefaultPaymentInstrumentEmbeddedInstrumentIdentifier = CreateInstrumentIdentifierCardEnrollForNetworkToken.run();
+            TmsEmbeddedInstrumentIdentifier tmsv2customersEmbeddedDefaultPaymentInstrumentEmbeddedInstrumentIdentifier = CreateInstrumentIdentifierCardEnrollForNetworkToken.run();
 
             //Step-II
             String encodedJWEResponse = PaymentCredentialsFromNetworkToken.run(tmsv2customersEmbeddedDefaultPaymentInstrumentEmbeddedInstrumentIdentifier.getId());

@@ -30,7 +30,7 @@ public class ReplaySpecificListOfTransactions {
 	}
 
 	public static void main(String args[]) throws Exception {
-		run();
+		run(null);
 	}
 
 	public static void run(String webhookId) {

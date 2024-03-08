@@ -28,9 +28,8 @@ public class CreateWebhookSymmetricKey {
 		String filename = MethodHandles.lookup().lookupClass().getSimpleName();
 		System.out.println("[Sample Code Testing] [" + filename + "] " + status);
 	}
-
 	public static void main(String args[]) throws Exception {
-		run();
+		run(null, null, null);
 	}
 
 	public static void run(String vCcorrelationId, String vCsenderOrganizationId, String vCpermissions) {

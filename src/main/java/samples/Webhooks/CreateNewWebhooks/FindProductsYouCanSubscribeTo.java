@@ -30,7 +30,7 @@ public class FindProductsYouCanSubscribeTo {
 	}
 
 	public static void main(String args[]) throws Exception {
-		run();
+		run(null);
 	}
 
 	public static void run(String organizationId) {
