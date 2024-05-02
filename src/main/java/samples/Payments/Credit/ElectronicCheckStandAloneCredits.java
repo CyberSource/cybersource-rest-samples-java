@@ -41,7 +41,7 @@ public class ElectronicCheckStandAloneCredits {
 
 		Ptsv2paymentsidrefundsPaymentInformation paymentInformation = new Ptsv2paymentsidrefundsPaymentInformation();
 		Ptsv2paymentsidrefundsPaymentInformationBank paymentInformationBank = new Ptsv2paymentsidrefundsPaymentInformationBank();
-		Ptsv2paymentsPaymentInformationBankAccount paymentInformationBankAccount = new Ptsv2paymentsPaymentInformationBankAccount();
+		Ptsv2paymentsidrefundsPaymentInformationBankAccount paymentInformationBankAccount = new Ptsv2paymentsidrefundsPaymentInformationBankAccount();
 		paymentInformationBankAccount.type("C");
 		paymentInformationBankAccount.number("4100");
 		paymentInformationBankAccount.checkNumber("123456");

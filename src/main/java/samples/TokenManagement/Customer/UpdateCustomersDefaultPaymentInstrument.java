@@ -1,14 +1,12 @@
 package samples.TokenManagement.Customer;
 
-import java.*;
 import java.lang.invoke.MethodHandles;
 import java.util.*;
-import java.math.BigDecimal;
+
 import org.joda.time.DateTime;
 import org.joda.time.DateTimeZone;
 import org.joda.time.LocalDate;
 
-import com.google.common.base.Strings;
 import com.cybersource.authsdk.core.MerchantConfig;
 
 import Api.*;
@@ -31,7 +29,7 @@ public class UpdateCustomersDefaultPaymentInstrument {
 		// Accept required parameters from args[] and pass to run.
 		run();
 	}
-	public static TmsV2CustomersResponse run() {
+	public static PatchCustomerRequest run() {
 		String customerTokenId = "AB695DA801DD1BB6E05341588E0A3BDC";
 		
 		PatchCustomerRequest requestObj = new PatchCustomerRequest();
@@ -40,7 +38,7 @@ public class UpdateCustomersDefaultPaymentInstrument {
 		defaultPaymentInstrument.id("AB6A54B982A6FCB6E05341588E0A3935");
 		requestObj.defaultPaymentInstrument(defaultPaymentInstrument);
 
-		TmsV2CustomersResponse result = null;
+		PatchCustomerRequest result = null;
 		try {
 			merchantProp = Configuration.getMerchantDetails();
 			ApiClient apiClient = new ApiClient();

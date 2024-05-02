@@ -1,14 +1,8 @@
 package samples.TokenManagement.CustomerPaymentInstrument;
 
-import java.*;
 import java.lang.invoke.MethodHandles;
 import java.util.*;
-import java.math.BigDecimal;
-import org.joda.time.DateTime;
-import org.joda.time.DateTimeZone;
-import org.joda.time.LocalDate;
 
-import com.google.common.base.Strings;
 import com.cybersource.authsdk.core.MerchantConfig;
 
 import Api.*;
@@ -30,11 +24,11 @@ public class RetrieveCustomerPaymentInstrument {
 	public static void main(String args[]) throws Exception {
 		run();
 	}
-	public static Tmsv2customersEmbeddedDefaultPaymentInstrument run() {
+	public static PostCustomerPaymentInstrumentRequest run() {
 		String customerTokenId = "AB695DA801DD1BB6E05341588E0A3BDC";
 		String paymentInstrumentTokenId = "AB6A54B982A6FCB6E05341588E0A3935";
 		
-		Tmsv2customersEmbeddedDefaultPaymentInstrument result = null;
+		PostCustomerPaymentInstrumentRequest result = null;
 		try {
 			merchantProp = Configuration.getMerchantDetails();
 			ApiClient apiClient = new ApiClient();

@@ -5,7 +5,6 @@ import Data.Configuration;
 import Invokers.ApiClient;
 import Invokers.ApiException;
 import Model.PostInstrumentIdentifierRequest;
-import Model.TmsEmbeddedInstrumentIdentifier;
 import Model.TmsEmbeddedInstrumentIdentifierCard;
 import com.cybersource.authsdk.core.MerchantConfig;
 
@@ -26,7 +25,7 @@ public class CreateInstrumentIdentifierCardEnrollForNetworkToken {
         run();
     }
 
-    public static TmsEmbeddedInstrumentIdentifier run() {
+    public static PostInstrumentIdentifierRequest run() {
         String profileid = "93B32398-AD51-4CC2-A682-EA3E93614EB1";
         PostInstrumentIdentifierRequest requestObj = new PostInstrumentIdentifierRequest();
 
@@ -37,7 +36,7 @@ public class CreateInstrumentIdentifierCardEnrollForNetworkToken {
         card.expirationYear("2025");
         requestObj.card(card);
 
-        TmsEmbeddedInstrumentIdentifier result = null;
+        PostInstrumentIdentifierRequest result = null;
         try {
             merchantProp = Configuration.getMerchantDetails();
             ApiClient apiClient = new ApiClient();
