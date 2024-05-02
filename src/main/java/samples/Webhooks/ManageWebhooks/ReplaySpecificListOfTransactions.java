@@ -52,7 +52,7 @@ public class ReplaySpecificListOfTransactions {
 			MerchantConfig merchantConfig = new MerchantConfig(merchantProp);
 			apiClient.merchantConfig = merchantConfig;
 
-			ManageWebhooksApi apiInstance = new ManageWebhooksApi(apiClient);
+			ReplayWebhooksApi apiInstance = new ReplayWebhooksApi(apiClient);
 			apiInstance.replayPreviousWebhooks(webhookId, requestObj);
 
 			responseCode = apiClient.responseCode;

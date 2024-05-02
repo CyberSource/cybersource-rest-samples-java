@@ -1,14 +1,8 @@
 package samples.TokenManagement.InstrumentIdentifier;
 
-import java.*;
 import java.lang.invoke.MethodHandles;
 import java.util.*;
-import java.math.BigDecimal;
-import org.joda.time.DateTime;
-import org.joda.time.DateTimeZone;
-import org.joda.time.LocalDate;
 
-import com.google.common.base.Strings;
 import com.cybersource.authsdk.core.MerchantConfig;
 
 import Api.*;
@@ -31,7 +25,7 @@ public class CreateInstrumentIdentifierBankAccount {
 		run();
 	}
 
-	public static TmsEmbeddedInstrumentIdentifier run() {
+	public static PostInstrumentIdentifierRequest run() {
 		String profileid = "93B32398-AD51-4CC2-A682-EA3E93614EB1";
 		PostInstrumentIdentifierRequest requestObj = new PostInstrumentIdentifierRequest();
 
@@ -40,7 +34,7 @@ public class CreateInstrumentIdentifierBankAccount {
 		bankAccount.routingNumber("071923284");
 		requestObj.bankAccount(bankAccount);
 
-		TmsEmbeddedInstrumentIdentifier result = null;
+		PostInstrumentIdentifierRequest result = null;
 		try {
 			merchantProp = Configuration.getMerchantDetails();
 			ApiClient apiClient = new ApiClient();

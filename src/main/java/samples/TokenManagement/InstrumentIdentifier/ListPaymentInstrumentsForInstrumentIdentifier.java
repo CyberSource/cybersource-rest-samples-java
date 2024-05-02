@@ -1,14 +1,8 @@
 package samples.TokenManagement.InstrumentIdentifier;
 
-import java.*;
 import java.lang.invoke.MethodHandles;
 import java.util.*;
-import java.math.BigDecimal;
-import org.joda.time.DateTime;
-import org.joda.time.DateTimeZone;
-import org.joda.time.LocalDate;
 
-import com.google.common.base.Strings;
 import com.cybersource.authsdk.core.MerchantConfig;
 
 import Api.*;
@@ -30,11 +24,11 @@ public class ListPaymentInstrumentsForInstrumentIdentifier {
 	public static void main(String args[]) throws Exception {
 		run();
 	}
-	public static PaymentInstrumentList run() {
+	public static PaymentInstrumentList1 run() {
 		String profileid = "93B32398-AD51-4CC2-A682-EA3E93614EB1";
 		String instrumentIdentifierTokenId = "7010000000016241111";
 		
-		PaymentInstrumentList result = null;
+		PaymentInstrumentList1 result = null;
 		try {
 			merchantProp = Configuration.getMerchantDetails();
 			ApiClient apiClient = new ApiClient();
