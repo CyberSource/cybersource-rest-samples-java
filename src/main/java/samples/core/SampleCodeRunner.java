@@ -53,7 +53,7 @@ public class SampleCodeRunner {
             			
             			sample.invoke(null, methodArgs);
             			
-            			Thread.sleep(3000);
+            			//Thread.sleep(3000);
             			
             			System.out.println("\n\n**** ENDING - " + sampleClass.getName() + " ****");            			
 					} 
