@@ -22,7 +22,7 @@ public class SampleCodeRunner {
 		
 		Set<String> files = new HashSet<>();
 		
-		getListOfPackages("../src/main/java/", files);
+		getListOfPackages("src/main/java/", files);
         
 		for(String pkg : files) {
         	Class<?>[] classList = getClasses(pkg);
