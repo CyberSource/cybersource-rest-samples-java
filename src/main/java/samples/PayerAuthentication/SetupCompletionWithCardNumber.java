@@ -34,7 +34,7 @@ public class SetupCompletionWithCardNumber {
 	
 		PayerAuthSetupRequest requestObj = new PayerAuthSetupRequest();
 
-		Riskv1decisionsClientReferenceInformation clientReferenceInformation = new Riskv1decisionsClientReferenceInformation();
+		Riskv1authenticationsetupsClientReferenceInformation clientReferenceInformation = new Riskv1authenticationsetupsClientReferenceInformation();
 		clientReferenceInformation.code("cybs_test");
 		Riskv1decisionsClientReferenceInformationPartner clientReferenceInformationPartner = new Riskv1decisionsClientReferenceInformationPartner();
 		clientReferenceInformationPartner.developerId("7891234");

@@ -34,7 +34,7 @@ public class EnrollWithTravelInformation {
 	
 		CheckPayerAuthEnrollmentRequest requestObj = new CheckPayerAuthEnrollmentRequest();
 
-		Riskv1decisionsClientReferenceInformation clientReferenceInformation = new Riskv1decisionsClientReferenceInformation();
+		Riskv1authenticationsetupsClientReferenceInformation clientReferenceInformation = new Riskv1authenticationsetupsClientReferenceInformation();
 		clientReferenceInformation.code("cybs_test");
 		requestObj.clientReferenceInformation(clientReferenceInformation);
 
@@ -60,7 +60,7 @@ public class EnrollWithTravelInformation {
 		requestObj.orderInformation(orderInformation);
 
 		Riskv1authenticationsPaymentInformation paymentInformation = new Riskv1authenticationsPaymentInformation();
-		Riskv1authenticationsPaymentInformationCard paymentInformationCard = new Riskv1authenticationsPaymentInformationCard();
+		Riskv1authenticationsetupsPaymentInformationCard paymentInformationCard = new Riskv1authenticationsetupsPaymentInformationCard();
 		paymentInformationCard.type("002");
 		paymentInformationCard.expirationMonth("12");
 		paymentInformationCard.expirationYear("2025");

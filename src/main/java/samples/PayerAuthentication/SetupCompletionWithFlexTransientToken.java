@@ -35,7 +35,7 @@ public class SetupCompletionWithFlexTransientToken {
 	
 		PayerAuthSetupRequest requestObj = new PayerAuthSetupRequest();
 
-		Riskv1decisionsClientReferenceInformation clientReferenceInformation = new Riskv1decisionsClientReferenceInformation();
+		Riskv1authenticationsetupsClientReferenceInformation clientReferenceInformation = new Riskv1authenticationsetupsClientReferenceInformation();
 		clientReferenceInformation.code("cybs_test");
 		requestObj.clientReferenceInformation(clientReferenceInformation);
 

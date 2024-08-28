@@ -35,7 +35,7 @@ public class PendingAuthenticationWithUnknownPath {
 	
 		CheckPayerAuthEnrollmentRequest requestObj = new CheckPayerAuthEnrollmentRequest();
 
-		Riskv1decisionsClientReferenceInformation clientReferenceInformation = new Riskv1decisionsClientReferenceInformation();
+		Riskv1authenticationsetupsClientReferenceInformation clientReferenceInformation = new Riskv1authenticationsetupsClientReferenceInformation();
 		clientReferenceInformation.code("UNKNOWN");
 		requestObj.clientReferenceInformation(clientReferenceInformation);
 
@@ -61,7 +61,7 @@ public class PendingAuthenticationWithUnknownPath {
 		requestObj.orderInformation(orderInformation);
 
 		Riskv1authenticationsPaymentInformation paymentInformation = new Riskv1authenticationsPaymentInformation();
-		Riskv1authenticationsPaymentInformationCard paymentInformationCard = new Riskv1authenticationsPaymentInformationCard();
+		Riskv1authenticationsetupsPaymentInformationCard paymentInformationCard = new Riskv1authenticationsetupsPaymentInformationCard();
 		paymentInformationCard.type("001");
 		paymentInformationCard.expirationMonth("12");
 		paymentInformationCard.expirationYear("2025");
