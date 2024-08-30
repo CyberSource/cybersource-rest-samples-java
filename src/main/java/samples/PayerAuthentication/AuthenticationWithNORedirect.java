@@ -35,7 +35,7 @@ public class AuthenticationWithNORedirect {
 	
 		CheckPayerAuthEnrollmentRequest requestObj = new CheckPayerAuthEnrollmentRequest();
 
-		Riskv1decisionsClientReferenceInformation clientReferenceInformation = new Riskv1decisionsClientReferenceInformation();
+		Riskv1authenticationsetupsClientReferenceInformation clientReferenceInformation = new Riskv1authenticationsetupsClientReferenceInformation();
 		clientReferenceInformation.code("cybs_test");
 		Riskv1decisionsClientReferenceInformationPartner clientReferenceInformationPartner = new Riskv1decisionsClientReferenceInformationPartner();
 		clientReferenceInformationPartner.developerId("7891234");
@@ -66,7 +66,7 @@ public class AuthenticationWithNORedirect {
 		requestObj.orderInformation(orderInformation);
 
 		Riskv1authenticationsPaymentInformation paymentInformation = new Riskv1authenticationsPaymentInformation();
-		Riskv1authenticationsPaymentInformationCard paymentInformationCard = new Riskv1authenticationsPaymentInformationCard();
+		Riskv1authenticationsetupsPaymentInformationCard paymentInformationCard = new Riskv1authenticationsetupsPaymentInformationCard();
 		paymentInformationCard.type("001");
 		paymentInformationCard.expirationMonth("12");
 		paymentInformationCard.expirationYear("2025");
