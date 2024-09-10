@@ -45,10 +45,12 @@ public class FindProductsYouCanSubscribeTo {
 			CreateNewWebhooksApi apiInstance = new CreateNewWebhooksApi(apiClient);
 			apiInstance.findProductsToSubscribe(organizationId);
 
+			
 			responseCode = apiClient.responseCode;
 			status = apiClient.status;
 			System.out.println("ResponseCode :" + responseCode);
 			System.out.println("ResponseMessage :" + status);
+			System.out.println(("respBody is: "+ apiClient.respBody));
 			WriteLogAudit(Integer.parseInt(responseCode));
 		} catch (ApiException e) {
 			e.printStackTrace();
