@@ -7,8 +7,8 @@ public class Configuration {
 		Properties props = new Properties();
 
 		// HTTP_Signature = http_signature and JWT = jwt
-		props.setProperty("authenticationType", "http_signature");
-		props.setProperty("merchantID", "testrest");
+		props.setProperty("authenticationType", "jwt");
+		props.setProperty("merchantID", "123_sun_1726735564");
 		props.setProperty("runEnvironment", "apitest.cybersource.com");
 		props.setProperty("requestJsonPath", "src/main/resources/request.json");
 
@@ -17,15 +17,15 @@ public class Configuration {
 		props.setProperty("useMetaKey", "false");
 
 		// JWT Parameters
-		props.setProperty("keyAlias", "testrest");
-		props.setProperty("keyPass", "testrest");
-		props.setProperty("keyFileName", "testrest");
+		props.setProperty("keyAlias", "123_sun_1726735564");
+		props.setProperty("keyPass", "Aa@123456");
+		props.setProperty("keyFileName", "123_sun_1726735564");
 
 		// P12 key path. Enter the folder path where the .p12 file is located.
 
 		props.setProperty("keysDirectory", "src/main/resources");
 		// HTTP Parameters
-		props.setProperty("merchantKeyId", "08c94330-f618-42a3-b09d-e1e43be5efda");
+		props.setProperty("merchantKeyId", "6e36a191-9c60-4dd5-8022-ac98db4df307");
 		props.setProperty("merchantsecretKey", "yBJxy6LjM2TmcPGu+GaJrHtkke25fPpUX+UY6/L/1tE=");
 		// Logging to be enabled or not.
 		props.setProperty("enableLog", "true");

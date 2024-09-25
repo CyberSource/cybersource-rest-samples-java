@@ -47,10 +47,9 @@ public class BasicDMTransaction {
 
 		Riskv1decisionsPaymentInformation paymentInformation = new Riskv1decisionsPaymentInformation();
 		Riskv1decisionsPaymentInformationCard paymentInformationCard = new Riskv1decisionsPaymentInformationCard();
-		paymentInformationCard.number("4444444444444448");
+		paymentInformationCard.number("4111111111111111");
 		paymentInformationCard.expirationMonth("12");
-		paymentInformationCard.expirationYear("2020");
-		paymentInformation.card(paymentInformationCard);
+		paymentInformationCard.expirationYear("2030");
 
 		requestObj.paymentInformation(paymentInformation);
 
@@ -61,15 +60,15 @@ public class BasicDMTransaction {
 		orderInformation.amountDetails(orderInformationAmountDetails);
 
 		Riskv1decisionsOrderInformationBillTo orderInformationBillTo = new Riskv1decisionsOrderInformationBillTo();
-		orderInformationBillTo.address1("96, powers street");
-		orderInformationBillTo.administrativeArea("NH");
-		orderInformationBillTo.country("US");
-		orderInformationBillTo.locality("Clearwater milford");
-		orderInformationBillTo.firstName("James");
-		orderInformationBillTo.lastName("Smith");
-		orderInformationBillTo.phoneNumber("7606160717");
-		orderInformationBillTo.email("test@visa.com");
-		orderInformationBillTo.postalCode("03055");
+		orderInformationBillTo.address1("1-1-2 Oshiage");
+		orderInformationBillTo.administrativeArea("Tokyo");
+		orderInformationBillTo.country("JP");
+		orderInformationBillTo.locality("Sumida-ku");
+		orderInformationBillTo.firstName("Taro");
+		orderInformationBillTo.lastName("Yamada");
+		orderInformationBillTo.phoneNumber("0312345678");
+		orderInformationBillTo.email("taro.yamada@example.jp");
+		orderInformationBillTo.postalCode("131-0045");
 		orderInformation.billTo(orderInformationBillTo);
 
 		requestObj.orderInformation(orderInformation);
