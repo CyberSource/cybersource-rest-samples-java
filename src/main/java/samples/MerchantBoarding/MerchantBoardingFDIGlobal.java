@@ -33,7 +33,7 @@ public class MerchantBoardingFDIGlobal {
 
 
     public static InlineResponse2012 run() {
-        System.out.println("Inside Merchant boarding...........");
+
         PostRegistrationBody reqObj=new PostRegistrationBody();
 
         Boardingv1registrationsOrganizationInformation organizationInformation=new Boardingv1registrationsOrganizationInformation();
@@ -64,7 +64,6 @@ public class MerchantBoardingFDIGlobal {
 
         reqObj.organizationInformation(organizationInformation);
 
-
         Boardingv1registrationsProductInformation productInformation=new Boardingv1registrationsProductInformation();
         Boardingv1registrationsProductInformationSelectedProducts selectedProducts=new Boardingv1registrationsProductInformationSelectedProducts();
 
@@ -91,7 +90,6 @@ public class MerchantBoardingFDIGlobal {
         common.processLevel3Data("ignored");
         common.masterCardAssignedId("123456789");
         common.enablePartialAuth(true);
-
 
         Map<String, CardProcessingConfigCommonProcessors> processors=new HashMap<>();
         CardProcessingConfigCommonProcessors obj5=new CardProcessingConfigCommonProcessors();
@@ -179,13 +177,12 @@ public class MerchantBoardingFDIGlobal {
         productInformation.selectedProducts(selectedProducts);
         reqObj.productInformation(productInformation);
 
-        System.out.println("Req obj created...........");
-
 
         InlineResponse2012 result=null;
 
         try {
-            merchantProp = MerchantBoardingConfiguration.getMerchantBoardingDetails();
+            //Boarding API support only JWT Auth Type
+            merchantProp = MerchantBoardingConfiguration.getMerchantConfigForBoardingAPI();
             ApiClient apiClient = new ApiClient();
             MerchantConfig merchantConfig = new MerchantConfig(merchantProp);
             apiClient.merchantConfig = merchantConfig;

@@ -33,7 +33,7 @@ public class MerchantBoardingGPX {
 
 
     public static InlineResponse2012 run() {
-        System.out.println("Inside Merchant boarding...........");
+
         PostRegistrationBody reqObj=new PostRegistrationBody();
 
         Boardingv1registrationsOrganizationInformation organizationInformation=new Boardingv1registrationsOrganizationInformation();
@@ -113,7 +113,6 @@ public class MerchantBoardingGPX {
 
         Map<String, CardProcessingConfigCommonCurrencies1> currencies=new HashMap<>();
 
-
         CardProcessingConfigCommonCurrencies1 obj6=new CardProcessingConfigCommonCurrencies1();
         obj6.enabled(true);
         obj6.enabledCardPresent(false);
@@ -148,7 +147,6 @@ public class MerchantBoardingGPX {
         obj5.quasiCash(false);
         obj5.merchantId("112233");
         obj5.terminalId("112244");
-
 
         processors.put("gpx",obj5);
 
@@ -264,13 +262,12 @@ public class MerchantBoardingGPX {
         productInformation.selectedProducts(selectedProducts);
         reqObj.productInformation(productInformation);
 
-        System.out.println("Req obj created...........");
-
 
         InlineResponse2012 result=null;
 
         try {
-            merchantProp = MerchantBoardingConfiguration.getMerchantBoardingDetails();
+            //Boarding API support only JWT Auth Type
+            merchantProp = MerchantBoardingConfiguration.getMerchantConfigForBoardingAPI();
             ApiClient apiClient = new ApiClient();
             MerchantConfig merchantConfig = new MerchantConfig(merchantProp);
             apiClient.merchantConfig = merchantConfig;

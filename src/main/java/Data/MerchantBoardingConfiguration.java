@@ -4,7 +4,7 @@ import java.util.Properties;
 
 public class MerchantBoardingConfiguration {
 
-    public static Properties getMerchantBoardingDetails() {
+    public static Properties getMerchantConfigForBoardingAPI() {
         Properties props = new Properties();
 
         // HTTP_Signature = http_signature and JWT = jwt

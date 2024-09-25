@@ -34,7 +34,7 @@ public class MerchantBoardingSmartFDC {
 
 
     public static InlineResponse2012 run() {
-        System.out.println("Inside Merchant boarding...........");
+
         PostRegistrationBody reqObj=new PostRegistrationBody();
 
         Boardingv1registrationsOrganizationInformation organizationInformation=new Boardingv1registrationsOrganizationInformation();
@@ -83,7 +83,6 @@ public class MerchantBoardingSmartFDC {
         subscriptionInformation.features(features);
         cardProcessing.subscriptionInformation(subscriptionInformation);
 
-
         PaymentsProductsCardProcessingConfigurationInformation configurationInformation=new PaymentsProductsCardProcessingConfigurationInformation();
 
         CardProcessingConfig configurations=new CardProcessingConfig();
@@ -92,13 +91,11 @@ public class MerchantBoardingSmartFDC {
         common.defaultAuthTypeCode(CardProcessingConfigCommon.DefaultAuthTypeCodeEnum.FINAL);
         common.enablePartialAuth(true);
 
-
         Map<String, CardProcessingConfigCommonProcessors> processors=new HashMap<>();
         CardProcessingConfigCommonProcessors obj5=new CardProcessingConfigCommonProcessors();
         CardProcessingConfigCommonAcquirer acquirer=new CardProcessingConfigCommonAcquirer();
 
         obj5.acquirer(acquirer);
-
 
         Map<String, CardProcessingConfigCommonPaymentTypes> paymentTypes=new HashMap<>();
         CardProcessingConfigCommonPaymentTypes obj7=new CardProcessingConfigCommonPaymentTypes();
@@ -113,11 +110,9 @@ public class MerchantBoardingSmartFDC {
 
         obj5.paymentTypes(paymentTypes);
 
-
         obj5.batchGroup("smartfdc_00");
         obj5.merchantId("00001234567");
         obj5.terminalId("00007654321");
-
 
         processors.put("smartfdc",obj5);
 
@@ -197,13 +192,12 @@ public class MerchantBoardingSmartFDC {
         productInformation.selectedProducts(selectedProducts);
         reqObj.productInformation(productInformation);
 
-        System.out.println("Req obj created...........");
-
 
         InlineResponse2012 result=null;
 
         try {
-            merchantProp = MerchantBoardingConfiguration.getMerchantBoardingDetails();
+            //Boarding API support only JWT Auth Type
+            merchantProp = MerchantBoardingConfiguration.getMerchantConfigForBoardingAPI();
             ApiClient apiClient = new ApiClient();
             MerchantConfig merchantConfig = new MerchantConfig(merchantProp);
             apiClient.merchantConfig = merchantConfig;

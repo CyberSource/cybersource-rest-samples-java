@@ -32,7 +32,7 @@ public class MerchantBoardingVPC {
 
 
     public static InlineResponse2012 run() {
-        System.out.println("Inside Merchant boarding...........");
+
         PostRegistrationBody reqObj=new PostRegistrationBody();
 
         Boardingv1registrationsOrganizationInformation organizationInformation=new Boardingv1registrationsOrganizationInformation();
@@ -266,13 +266,12 @@ public class MerchantBoardingVPC {
         productInformation.selectedProducts(selectedProducts);
         reqObj.productInformation(productInformation);
 
-        System.out.println("Req obj created...........");
-
 
         InlineResponse2012 result=null;
 
         try {
-            merchantProp = MerchantBoardingConfiguration.getMerchantBoardingDetails();
+            //Boarding API support only JWT Auth Type
+            merchantProp = MerchantBoardingConfiguration.getMerchantConfigForBoardingAPI();
             ApiClient apiClient = new ApiClient();
             MerchantConfig merchantConfig = new MerchantConfig(merchantProp);
             apiClient.merchantConfig = merchantConfig;

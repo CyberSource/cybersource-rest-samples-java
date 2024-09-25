@@ -30,7 +30,7 @@ public class MerchantBoardingAmexDirect {
 
 
     public static InlineResponse2012 run() {
-        System.out.println("Inside Merchant boarding...........");
+
         PostRegistrationBody reqObj=new PostRegistrationBody();
 
         Boardingv1registrationsOrganizationInformation organizationInformation=new Boardingv1registrationsOrganizationInformation();
@@ -114,7 +114,6 @@ public class MerchantBoardingAmexDirect {
         currencies.put("AED",obj3);
         currencies.put("FJD",obj3);
         currencies.put("USD",obj3);
-
 
         obj2.currencies(currencies);
 
@@ -210,16 +209,14 @@ public class MerchantBoardingAmexDirect {
         valueAddedServices.reporting(reporting);
 
         selectedProducts.valueAddedServices(valueAddedServices);
-       productInformation.selectedProducts(selectedProducts);
+        productInformation.selectedProducts(selectedProducts);
         reqObj.productInformation(productInformation);
-
-        System.out.println("Req obj created...........");
-
 
         InlineResponse2012 result=null;
 
         try {
-            merchantProp = MerchantBoardingConfiguration.getMerchantBoardingDetails();
+            //Boarding API support only JWT Auth Type
+            merchantProp = MerchantBoardingConfiguration.getMerchantConfigForBoardingAPI();
             ApiClient apiClient = new ApiClient();
             MerchantConfig merchantConfig = new MerchantConfig(merchantProp);
             apiClient.merchantConfig = merchantConfig;

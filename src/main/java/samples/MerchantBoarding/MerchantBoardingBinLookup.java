@@ -33,7 +33,7 @@ public class MerchantBoardingBinLookup {
 
 
     public static InlineResponse2012 run() {
-        System.out.println("Inside Merchant boarding...........");
+
         PostRegistrationBody reqObj=new PostRegistrationBody();
 
         Boardingv1registrationsOrganizationInformation organizationInformation=new Boardingv1registrationsOrganizationInformation();
@@ -82,7 +82,6 @@ public class MerchantBoardingBinLookup {
         binLookup.subscriptionInformation(subscriptionInformation);
         CommerceSolutionsProductsBinLookupConfigurationInformation configurationInformation=new CommerceSolutionsProductsBinLookupConfigurationInformation();
 
-
         CommerceSolutionsProductsBinLookupConfigurationInformationConfigurations configurations=new CommerceSolutionsProductsBinLookupConfigurationInformationConfigurations();
 
         configurations.isPayoutOptionsEnabled(false);
@@ -100,13 +99,12 @@ public class MerchantBoardingBinLookup {
         productInformation.selectedProducts(selectedProducts);
         reqObj.productInformation(productInformation);
 
-        System.out.println("Req obj created...........");
-
 
         InlineResponse2012 result=null;
 
         try {
-            merchantProp = MerchantBoardingConfiguration.getMerchantBoardingDetails();
+            //Boarding API support only JWT Auth Type
+            merchantProp = MerchantBoardingConfiguration.getMerchantConfigForBoardingAPI();
             ApiClient apiClient = new ApiClient();
             MerchantConfig merchantConfig = new MerchantConfig(merchantProp);
             apiClient.merchantConfig = merchantConfig;
