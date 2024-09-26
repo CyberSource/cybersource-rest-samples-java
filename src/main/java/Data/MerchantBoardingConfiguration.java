@@ -26,8 +26,8 @@ public class MerchantBoardingConfiguration {
         props.setProperty("keysDirectory", "<insert p12 file location directory>");
 
         // HTTP Parameters
-        props.setProperty("merchantKeyId", "");//blank
-        props.setProperty("merchantsecretKey", "");//blank
+        props.setProperty("merchantKeyId", "");
+        props.setProperty("merchantsecretKey", "");
         // Logging to be enabled or not.
         props.setProperty("enableLog", "true");
         // Log directory Path
@@ -44,12 +44,7 @@ public class MerchantBoardingConfiguration {
         props.setProperty("clientCertPassword", "Ap!C38tp12@");
         props.setProperty("clientId", "apitester00");
         props.setProperty("clientSecret", "Ap!C38tp12@");
-
-		/*
-		PEM Key file path for decoding JWE Response Enter the folder path where the .pem file is located.
-		It is optional property, require adding only during JWE decryption.
-		*/
-       // props.setProperty("jwePEMFileDirectory", "src/main/resources/NetworkTokenCert.pem");
+        
 
         return props;
 
