@@ -9,7 +9,7 @@ public class MerchantBoardingConfiguration {
 
         // HTTP_Signature = http_signature and JWT = jwt
         props.setProperty("authenticationType", "jwt");
-        props.setProperty("merchantID", "apitester00");
+        props.setProperty("merchantID", "<insert merchantId here for testing the boarding samples>");
         props.setProperty("runEnvironment", "apitest.cybersource.com");
         props.setProperty("requestJsonPath", "src/main/resources/request.json");
 
@@ -18,13 +18,13 @@ public class MerchantBoardingConfiguration {
         props.setProperty("useMetaKey", "false");
 
         // JWT Parameters
-        props.setProperty("keyAlias", "apitester00");//merchid
-        props.setProperty("keyPass", "Ap!C38tp12@");//pwd
-        props.setProperty("keyFileName", "apitester00");//filename
+        props.setProperty("keyAlias", "<insert keyAlias (merchantId)  here for testing the boarding samples>");
+        props.setProperty("keyPass", "<insert p12 file password here for testing the boarding samples>");
+        props.setProperty("keyFileName", "<insert p12 file without .p12 extension here for testing the boarding samples>");
 
         // P12 key path. Enter the folder path where the .p12 file is located.
+        props.setProperty("keysDirectory", "<insert p12 file location directory>");
 
-        props.setProperty("keysDirectory", "src/main/resources");
         // HTTP Parameters
         props.setProperty("merchantKeyId", "");//blank
         props.setProperty("merchantsecretKey", "");//blank
