@@ -17,16 +17,16 @@ public class Configuration {
 		props.setProperty("useMetaKey", "false");
 
 		// JWT Parameters
-		props.setProperty("keyAlias", "testrest");//merchid
-		props.setProperty("keyPass", "testrest");//pwd
-		props.setProperty("keyFileName", "testrest");//filename
+		props.setProperty("keyAlias", "testrest");
+		props.setProperty("keyPass", "testrest");
+		props.setProperty("keyFileName", "testrest");
 
 		// P12 key path. Enter the folder path where the .p12 file is located.
 
 		props.setProperty("keysDirectory", "src/main/resources");
 		// HTTP Parameters
-		props.setProperty("merchantKeyId", "08c94330-f618-42a3-b09d-e1e43be5efda");//blank
-		props.setProperty("merchantsecretKey", "yBJxy6LjM2TmcPGu+GaJrHtkke25fPpUX+UY6/L/1tE=");//blank
+		props.setProperty("merchantKeyId", "08c94330-f618-42a3-b09d-e1e43be5efda");
+		props.setProperty("merchantsecretKey", "yBJxy6LjM2TmcPGu+GaJrHtkke25fPpUX+UY6/L/1tE=");
 		// Logging to be enabled or not.
 		props.setProperty("enableLog", "true");
 		// Log directory Path
