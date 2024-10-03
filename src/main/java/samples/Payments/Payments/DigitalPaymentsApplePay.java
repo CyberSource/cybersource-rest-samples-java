@@ -4,6 +4,7 @@ import java.*;
 import java.lang.invoke.MethodHandles;
 import java.util.*;
 import java.math.BigDecimal;
+import org.apache.commons.io.FileUtils;
 import org.joda.time.DateTime;
 import org.joda.time.DateTimeZone;
 import org.joda.time.LocalDate;
@@ -15,20 +16,20 @@ import Api.*;
 import Data.Configuration;
 import Invokers.ApiClient;
 import Invokers.ApiException;
+import Invokers.ApiResponse;
 import Model.*;
 
 public class DigitalPaymentsApplePay {
 	private static String responseCode = null;
 	private static String status = null;
 	private static Properties merchantProp;
-	public static boolean userCapture = false;
 
 	public static void WriteLogAudit(int status) {
 		String filename = MethodHandles.lookup().lookupClass().getSimpleName();
 		System.out.println("[Sample Code Testing] [" + filename + "] " + status);
 	}
 
-	public static void main(String args[]) throws Exception {
+	public static void main(String[] args) {
 		run();
 	}
 
@@ -42,10 +43,6 @@ public class DigitalPaymentsApplePay {
 
 		Ptsv2paymentsProcessingInformation processingInformation = new Ptsv2paymentsProcessingInformation();
 		processingInformation.capture(false);
-		if (userCapture) {
-			processingInformation.capture(true);
-		}
-
 		processingInformation.paymentSolution("001");
 		requestObj.processingInformation(processingInformation);
 
@@ -96,13 +93,12 @@ public class DigitalPaymentsApplePay {
 			System.out.println("ResponseMessage :" + status);
 			System.out.println(result);
 			WriteLogAudit(Integer.parseInt(responseCode));
-			
 		} catch (ApiException e) {
 			e.printStackTrace();
 			WriteLogAudit(e.getCode());
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-	return result;
+		return result;
 	}
 }

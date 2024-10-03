@@ -4,6 +4,7 @@ import java.*;
 import java.lang.invoke.MethodHandles;
 import java.util.*;
 import java.math.BigDecimal;
+import org.apache.commons.io.FileUtils;
 import org.joda.time.DateTime;
 import org.joda.time.DateTimeZone;
 import org.joda.time.LocalDate;
@@ -15,6 +16,7 @@ import Api.*;
 import Data.Configuration;
 import Invokers.ApiClient;
 import Invokers.ApiException;
+import Invokers.ApiResponse;
 import Model.*;
 
 public class ElectronicCheckDebitsWithLegacyToken {
@@ -27,10 +29,10 @@ public class ElectronicCheckDebitsWithLegacyToken {
 		System.out.println("[Sample Code Testing] [" + filename + "] " + status);
 	}
 
-	public static void main(String args[]) throws Exception {
-		// Accept required parameters from args[] and pass to run.
+	public static void main(String[] args) {
 		run();
 	}
+
 	public static PtsV2PaymentsPost201Response run() {
 	
 		CreatePaymentRequest requestObj = new CreatePaymentRequest();
@@ -41,7 +43,7 @@ public class ElectronicCheckDebitsWithLegacyToken {
 
 		Ptsv2paymentsPaymentInformation paymentInformation = new Ptsv2paymentsPaymentInformation();
 		Ptsv2paymentsPaymentInformationLegacyToken paymentInformationLegacyToken = new Ptsv2paymentsPaymentInformationLegacyToken();
-		paymentInformationLegacyToken.id("AB7C01E66529EA42E05341588E0A22AD");
+		paymentInformationLegacyToken.id("7500BB199B4270EFE05340588D0AFCAD");
 		paymentInformation.legacyToken(paymentInformationLegacyToken);
 
 		Ptsv2paymentsPaymentInformationPaymentType paymentInformationPaymentType = new Ptsv2paymentsPaymentInformationPaymentType();
@@ -85,13 +87,12 @@ public class ElectronicCheckDebitsWithLegacyToken {
 			System.out.println("ResponseMessage :" + status);
 			System.out.println(result);
 			WriteLogAudit(Integer.parseInt(responseCode));
-			
 		} catch (ApiException e) {
 			e.printStackTrace();
 			WriteLogAudit(e.getCode());
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-	return result;
+		return result;
 	}
 }

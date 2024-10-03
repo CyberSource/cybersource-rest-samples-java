@@ -4,6 +4,7 @@ import java.*;
 import java.lang.invoke.MethodHandles;
 import java.util.*;
 import java.math.BigDecimal;
+import org.apache.commons.io.FileUtils;
 import org.joda.time.DateTime;
 import org.joda.time.DateTimeZone;
 import org.joda.time.LocalDate;
@@ -15,6 +16,7 @@ import Api.*;
 import Data.Configuration;
 import Invokers.ApiClient;
 import Invokers.ApiException;
+import Invokers.ApiResponse;
 import Model.*;
 
 public class AuthorizationWithCustomerTokenId {
@@ -27,10 +29,10 @@ public class AuthorizationWithCustomerTokenId {
 		System.out.println("[Sample Code Testing] [" + filename + "] " + status);
 	}
 
-	public static void main(String args[]) throws Exception {
-		// Accept required parameters from args[] and pass to run.
+	public static void main(String[] args) {
 		run();
 	}
+
 	public static PtsV2PaymentsPost201Response run() {
 	
 		CreatePaymentRequest requestObj = new CreatePaymentRequest();
@@ -41,7 +43,7 @@ public class AuthorizationWithCustomerTokenId {
 
 		Ptsv2paymentsPaymentInformation paymentInformation = new Ptsv2paymentsPaymentInformation();
 		Ptsv2paymentsPaymentInformationCustomer paymentInformationCustomer = new Ptsv2paymentsPaymentInformationCustomer();
-		paymentInformationCustomer.id("AB695DA801DD1BB6E05341588E0A3BDC");
+		paymentInformationCustomer.id("B21E6717A6F03479E05341588E0A303F");
 		paymentInformation.customer(paymentInformationCustomer);
 
 		requestObj.paymentInformation(paymentInformation);
@@ -70,13 +72,12 @@ public class AuthorizationWithCustomerTokenId {
 			System.out.println("ResponseMessage :" + status);
 			System.out.println(result);
 			WriteLogAudit(Integer.parseInt(responseCode));
-			
 		} catch (ApiException e) {
 			e.printStackTrace();
 			WriteLogAudit(e.getCode());
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-	return result;
+		return result;
 	}
 }

@@ -29,16 +29,20 @@ public class EBTPurchaseFromSNAPAccountWithVisaPlatformConnect {
 		System.out.println("[Sample Code Testing] [" + filename + "] " + status);
 	}
 
-	public static void main(String args[]) throws Exception {
+	public static void main(String[] args) {
 		run();
 	}
-	
+
 	public static PtsV2PaymentsPost201Response run() {
 	
 		CreatePaymentRequest requestObj = new CreatePaymentRequest();
 
 		Ptsv2paymentsClientReferenceInformation clientReferenceInformation = new Ptsv2paymentsClientReferenceInformation();
 		clientReferenceInformation.code("EBT - Purchase From SNAP Account");
+		Ptsv2paymentsClientReferenceInformationPartner clientReferenceInformationPartner = new Ptsv2paymentsClientReferenceInformationPartner();
+		clientReferenceInformationPartner.thirdPartyCertificationNumber("PTP1234");
+		clientReferenceInformation.partner(clientReferenceInformationPartner);
+
 		requestObj.clientReferenceInformation(clientReferenceInformation);
 
 		Ptsv2paymentsProcessingInformation processingInformation = new Ptsv2paymentsProcessingInformation();
@@ -52,6 +56,7 @@ public class EBTPurchaseFromSNAPAccountWithVisaPlatformConnect {
 		processingInformationElectronicBenefitsTransfer.category("FOOD");
 		processingInformation.electronicBenefitsTransfer(processingInformationElectronicBenefitsTransfer);
 
+		processingInformation.networkRoutingOrder("K");
 		requestObj.processingInformation(processingInformation);
 
 		Ptsv2paymentsPaymentInformation paymentInformation = new Ptsv2paymentsPaymentInformation();
@@ -73,7 +78,7 @@ public class EBTPurchaseFromSNAPAccountWithVisaPlatformConnect {
 		Ptsv2paymentsPointOfSaleInformation pointOfSaleInformation = new Ptsv2paymentsPointOfSaleInformation();
 		pointOfSaleInformation.entryMode("swiped");
 		pointOfSaleInformation.terminalCapability(4);
-		pointOfSaleInformation.trackData("%B4111111111111111^JONES/JONES ^3112101976110000868000000?;4111111111111111=16121019761186800000?");
+		pointOfSaleInformation.trackData("%B4111111111111111^JONES/JONES ^3312101976110000868000000?;4111111111111111=33121019761186800000?");
 		pointOfSaleInformation.pinBlockEncodingFormat(1);
 		pointOfSaleInformation.encryptedPin("52F20658C04DB351");
 		pointOfSaleInformation.encryptedKeySerialNumber("FFFF1B1D140000000005");
@@ -81,7 +86,7 @@ public class EBTPurchaseFromSNAPAccountWithVisaPlatformConnect {
 
 		PtsV2PaymentsPost201Response result = null;
 		try {
-			merchantProp = Configuration.getAlternativeMerchantDetails();
+			merchantProp = Configuration.getMerchantDetails();
 			ApiClient apiClient = new ApiClient();
 			MerchantConfig merchantConfig = new MerchantConfig(merchantProp);
 			apiClient.merchantConfig = merchantConfig;

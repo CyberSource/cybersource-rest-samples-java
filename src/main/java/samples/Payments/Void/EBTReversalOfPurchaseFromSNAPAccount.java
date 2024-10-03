@@ -18,7 +18,6 @@ import Invokers.ApiClient;
 import Invokers.ApiException;
 import Invokers.ApiResponse;
 import Model.*;
-import samples.Payments.Credit.EBTMerchandiseReturnCreditVoucherFromSNAP;
 
 public class EBTReversalOfPurchaseFromSNAPAccount {
 	private static String responseCode = null;
@@ -29,16 +28,13 @@ public class EBTReversalOfPurchaseFromSNAPAccount {
 		String filename = MethodHandles.lookup().lookupClass().getSimpleName();
 		System.out.println("[Sample Code Testing] [" + filename + "] " + status);
 	}
-	
-	public static void main(String args[]) throws Exception {
+
+	public static void main(String[] args) {
 		run();
 	}
 
 	public static PtsV2PaymentsVoidsPost201Response run() {
-		
-		PtsV2CreditsPost201Response creditResponse = EBTMerchandiseReturnCreditVoucherFromSNAP.run();
-		String id = creditResponse.getId();
-	
+		String id = "";
 		VoidPaymentRequest requestObj = new VoidPaymentRequest();
 
 		Ptsv2paymentsidreversalsClientReferenceInformation clientReferenceInformation = new Ptsv2paymentsidreversalsClientReferenceInformation();
@@ -55,7 +51,7 @@ public class EBTReversalOfPurchaseFromSNAPAccount {
 
 		Ptsv2paymentsidvoidsOrderInformation orderInformation = new Ptsv2paymentsidvoidsOrderInformation();
 		Ptsv2paymentsidreversalsReversalInformationAmountDetails orderInformationAmountDetails = new Ptsv2paymentsidreversalsReversalInformationAmountDetails();
-		orderInformationAmountDetails.totalAmount("204.00");
+		orderInformationAmountDetails.totalAmount("101.00");
 		orderInformationAmountDetails.currency("USD");
 		orderInformation.amountDetails(orderInformationAmountDetails);
 
@@ -63,7 +59,7 @@ public class EBTReversalOfPurchaseFromSNAPAccount {
 
 		PtsV2PaymentsVoidsPost201Response result = null;
 		try {
-			merchantProp = Configuration.getAlternativeMerchantDetails();
+			merchantProp = Configuration.getMerchantDetails();
 			ApiClient apiClient = new ApiClient();
 			MerchantConfig merchantConfig = new MerchantConfig(merchantProp);
 			apiClient.merchantConfig = merchantConfig;

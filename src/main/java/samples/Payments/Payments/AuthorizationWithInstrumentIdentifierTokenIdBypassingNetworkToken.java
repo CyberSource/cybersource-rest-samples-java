@@ -1,9 +1,10 @@
-package samples.Payments.Credit;
+package samples.Payments.Payments;
 
 import java.*;
 import java.lang.invoke.MethodHandles;
 import java.util.*;
 import java.math.BigDecimal;
+import org.apache.commons.io.FileUtils;
 import org.joda.time.DateTime;
 import org.joda.time.DateTimeZone;
 import org.joda.time.LocalDate;
@@ -15,9 +16,10 @@ import Api.*;
 import Data.Configuration;
 import Invokers.ApiClient;
 import Invokers.ApiException;
+import Invokers.ApiResponse;
 import Model.*;
 
-public class CreditWithInstrumentIdentifierTokenId {
+public class AuthorizationWithInstrumentIdentifierTokenIdBypassingNetworkToken {
 	private static String responseCode = null;
 	private static String status = null;
 	private static Properties merchantProp;
@@ -27,60 +29,46 @@ public class CreditWithInstrumentIdentifierTokenId {
 		System.out.println("[Sample Code Testing] [" + filename + "] " + status);
 	}
 
-	public static void main(String args[]) throws Exception {
-		// Accept required parameters from args[] and pass to run.
+	public static void main(String[] args) {
 		run();
 	}
-	public static PtsV2CreditsPost201Response run() {
+
+	public static PtsV2PaymentsPost201Response run() {
 	
-		CreateCreditRequest requestObj = new CreateCreditRequest();
+		CreatePaymentRequest requestObj = new CreatePaymentRequest();
 
 		Ptsv2paymentsClientReferenceInformation clientReferenceInformation = new Ptsv2paymentsClientReferenceInformation();
-		clientReferenceInformation.code("12345678");
+		clientReferenceInformation.code("TC50171_3");
 		requestObj.clientReferenceInformation(clientReferenceInformation);
 
-		Ptsv2paymentsidrefundsPaymentInformation paymentInformation = new Ptsv2paymentsidrefundsPaymentInformation();
-		Ptsv2paymentsidrefundsPaymentInformationCard paymentInformationCard = new Ptsv2paymentsidrefundsPaymentInformationCard();
-		paymentInformationCard.expirationMonth("03");
-		paymentInformationCard.expirationYear("2031");
-		paymentInformationCard.type("001");
-		paymentInformation.card(paymentInformationCard);
-
+		Ptsv2paymentsPaymentInformation paymentInformation = new Ptsv2paymentsPaymentInformation();
 		Ptsv2paymentsPaymentInformationInstrumentIdentifier paymentInformationInstrumentIdentifier = new Ptsv2paymentsPaymentInformationInstrumentIdentifier();
 		paymentInformationInstrumentIdentifier.id("7010000000016241111");
 		paymentInformation.instrumentIdentifier(paymentInformationInstrumentIdentifier);
 
 		requestObj.paymentInformation(paymentInformation);
 
-		Ptsv2paymentsidrefundsOrderInformation orderInformation = new Ptsv2paymentsidrefundsOrderInformation();
-		Ptsv2paymentsidcapturesOrderInformationAmountDetails orderInformationAmountDetails = new Ptsv2paymentsidcapturesOrderInformationAmountDetails();
-		orderInformationAmountDetails.totalAmount("200");
-		orderInformationAmountDetails.currency("usd");
+		Ptsv2paymentsOrderInformation orderInformation = new Ptsv2paymentsOrderInformation();
+		Ptsv2paymentsOrderInformationAmountDetails orderInformationAmountDetails = new Ptsv2paymentsOrderInformationAmountDetails();
+		orderInformationAmountDetails.totalAmount("102.21");
+		orderInformationAmountDetails.currency("USD");
 		orderInformation.amountDetails(orderInformationAmountDetails);
-
-		Ptsv2paymentsidcapturesOrderInformationBillTo orderInformationBillTo = new Ptsv2paymentsidcapturesOrderInformationBillTo();
-		orderInformationBillTo.firstName("John");
-		orderInformationBillTo.lastName("Deo");
-		orderInformationBillTo.address1("900 Metro Center Blvd");
-		orderInformationBillTo.locality("Foster City");
-		orderInformationBillTo.administrativeArea("CA");
-		orderInformationBillTo.postalCode("48104-2201");
-		orderInformationBillTo.country("US");
-		orderInformationBillTo.email("test@cybs.com");
-		orderInformationBillTo.phoneNumber("9321499232");
-		orderInformation.billTo(orderInformationBillTo);
 
 		requestObj.orderInformation(orderInformation);
 
-		PtsV2CreditsPost201Response result = null;
+		Ptsv2paymentsTokenInformation tokenInformation = new Ptsv2paymentsTokenInformation();
+		tokenInformation.networkTokenOption("ignore");
+		requestObj.tokenInformation(tokenInformation);
+
+		PtsV2PaymentsPost201Response result = null;
 		try {
 			merchantProp = Configuration.getMerchantDetails();
 			ApiClient apiClient = new ApiClient();
 			MerchantConfig merchantConfig = new MerchantConfig(merchantProp);
 			apiClient.merchantConfig = merchantConfig;
 
-			CreditApi apiInstance = new CreditApi(apiClient);
-			result = apiInstance.createCredit(requestObj);
+			PaymentsApi apiInstance = new PaymentsApi(apiClient);
+			result = apiInstance.createPayment(requestObj);
 
 			responseCode = apiClient.responseCode;
 			status = apiClient.status;
@@ -88,13 +76,12 @@ public class CreditWithInstrumentIdentifierTokenId {
 			System.out.println("ResponseMessage :" + status);
 			System.out.println(result);
 			WriteLogAudit(Integer.parseInt(responseCode));
-			
 		} catch (ApiException e) {
 			e.printStackTrace();
 			WriteLogAudit(e.getCode());
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-	return result;
+		return result;
 	}
 }
