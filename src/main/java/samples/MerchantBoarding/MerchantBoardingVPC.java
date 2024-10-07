@@ -97,7 +97,7 @@ public class MerchantBoardingVPC {
         common.visaDelegatedAuthenticationId("123457");
 
         //TBC
-        common.domesticMerchantId("123458");
+        common.domesticMerchantId(false);
         //
         common.creditCardRefundLimitPercent("2");
         common.businessCenterCreditCardRefundLimitPercent("3");
