@@ -4,7 +4,6 @@ import java.*;
 import java.lang.invoke.MethodHandles;
 import java.util.*;
 import java.math.BigDecimal;
-import org.apache.commons.io.FileUtils;
 import org.joda.time.DateTime;
 import org.joda.time.DateTimeZone;
 import org.joda.time.LocalDate;
@@ -16,7 +15,6 @@ import Api.*;
 import Data.Configuration;
 import Invokers.ApiClient;
 import Invokers.ApiException;
-import Invokers.ApiResponse;
 import Model.*;
 
 public class AuthorizationWithLegacyToken {
@@ -29,10 +27,10 @@ public class AuthorizationWithLegacyToken {
 		System.out.println("[Sample Code Testing] [" + filename + "] " + status);
 	}
 
-	public static void main(String[] args) {
+	public static void main(String args[]) throws Exception {
+		// Accept required parameters from args[] and pass to run.
 		run();
 	}
-
 	public static PtsV2PaymentsPost201Response run() {
 	
 		CreatePaymentRequest requestObj = new CreatePaymentRequest();
@@ -43,7 +41,7 @@ public class AuthorizationWithLegacyToken {
 
 		Ptsv2paymentsPaymentInformation paymentInformation = new Ptsv2paymentsPaymentInformation();
 		Ptsv2paymentsPaymentInformationLegacyToken paymentInformationLegacyToken = new Ptsv2paymentsPaymentInformationLegacyToken();
-		paymentInformationLegacyToken.id("B21E6717A6F03479E05341588E0A303F");
+		paymentInformationLegacyToken.id("7010000000016241111");
 		paymentInformation.legacyToken(paymentInformationLegacyToken);
 
 		requestObj.paymentInformation(paymentInformation);
@@ -84,12 +82,13 @@ public class AuthorizationWithLegacyToken {
 			System.out.println("ResponseMessage :" + status);
 			System.out.println(result);
 			WriteLogAudit(Integer.parseInt(responseCode));
+			
 		} catch (ApiException e) {
 			e.printStackTrace();
 			WriteLogAudit(e.getCode());
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		return result;
+	return result;
 	}
 }

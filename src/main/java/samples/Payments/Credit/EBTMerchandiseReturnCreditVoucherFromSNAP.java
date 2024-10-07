@@ -1,4 +1,4 @@
-package samples.Payments.Payments;
+package samples.Payments.Credit;
 
 import java.*;
 import java.lang.invoke.MethodHandles;
@@ -19,7 +19,7 @@ import Invokers.ApiException;
 import Invokers.ApiResponse;
 import Model.*;
 
-public class EBTPurchaseFromSNAPAccountWithAvailableBalanceInResponseWithVisaPlatformConnect {
+public class EBTMerchandiseReturnCreditVoucherFromSNAP {
 	private static String responseCode = null;
 	private static String status = null;
 	private static Properties merchantProp;
@@ -29,70 +29,72 @@ public class EBTPurchaseFromSNAPAccountWithAvailableBalanceInResponseWithVisaPla
 		System.out.println("[Sample Code Testing] [" + filename + "] " + status);
 	}
 
-	public static void main(String[] args) {
+	public static void main(String args[]) throws Exception {
 		run();
 	}
 
-	public static PtsV2PaymentsPost201Response run() {
+	public static PtsV2CreditsPost201Response run() {
 	
-		CreatePaymentRequest requestObj = new CreatePaymentRequest();
+		CreateCreditRequest requestObj = new CreateCreditRequest();
 
 		Ptsv2paymentsClientReferenceInformation clientReferenceInformation = new Ptsv2paymentsClientReferenceInformation();
-		clientReferenceInformation.code("EBT - Purchase From SNAP Account (Available Balance)");
-		Ptsv2paymentsClientReferenceInformationPartner clientReferenceInformationPartner = new Ptsv2paymentsClientReferenceInformationPartner();
-		clientReferenceInformationPartner.thirdPartyCertificationNumber("PTP1234");
-		clientReferenceInformation.partner(clientReferenceInformationPartner);
-
+		clientReferenceInformation.code("Merchandise Return / Credit Voucher from SNAP");
 		requestObj.clientReferenceInformation(clientReferenceInformation);
 
-		Ptsv2paymentsProcessingInformation processingInformation = new Ptsv2paymentsProcessingInformation();
-		processingInformation.capture(false);
+		Ptsv2creditsProcessingInformation processingInformation = new Ptsv2creditsProcessingInformation();
 		processingInformation.commerceIndicator("retail");
-		Ptsv2paymentsProcessingInformationPurchaseOptions processingInformationPurchaseOptions = new Ptsv2paymentsProcessingInformationPurchaseOptions();
+		Ptsv2creditsProcessingInformationPurchaseOptions processingInformationPurchaseOptions = new Ptsv2creditsProcessingInformationPurchaseOptions();
 		processingInformationPurchaseOptions.isElectronicBenefitsTransfer(true);
 		processingInformation.purchaseOptions(processingInformationPurchaseOptions);
 
-		Ptsv2paymentsProcessingInformationElectronicBenefitsTransfer processingInformationElectronicBenefitsTransfer = new Ptsv2paymentsProcessingInformationElectronicBenefitsTransfer();
+		Ptsv2creditsProcessingInformationElectronicBenefitsTransfer processingInformationElectronicBenefitsTransfer = new Ptsv2creditsProcessingInformationElectronicBenefitsTransfer();
 		processingInformationElectronicBenefitsTransfer.category("FOOD");
 		processingInformation.electronicBenefitsTransfer(processingInformationElectronicBenefitsTransfer);
 
-		processingInformation.networkRoutingOrder("K");
 		requestObj.processingInformation(processingInformation);
 
-		Ptsv2paymentsPaymentInformation paymentInformation = new Ptsv2paymentsPaymentInformation();
-		Ptsv2paymentsPaymentInformationPaymentType paymentInformationPaymentType = new Ptsv2paymentsPaymentInformationPaymentType();
+		Ptsv2paymentsidrefundsPaymentInformation paymentInformation = new Ptsv2paymentsidrefundsPaymentInformation();
+		Ptsv2paymentsidrefundsPaymentInformationCard paymentInformationCard = new Ptsv2paymentsidrefundsPaymentInformationCard();
+		paymentInformationCard.type("001");
+		paymentInformation.card(paymentInformationCard);
+
+		Ptsv2paymentsidrefundsPaymentInformationPaymentType paymentInformationPaymentType = new Ptsv2paymentsidrefundsPaymentInformationPaymentType();
 		paymentInformationPaymentType.name("CARD");
 		paymentInformationPaymentType.subTypeName("DEBIT");
 		paymentInformation.paymentType(paymentInformationPaymentType);
 
 		requestObj.paymentInformation(paymentInformation);
 
-		Ptsv2paymentsOrderInformation orderInformation = new Ptsv2paymentsOrderInformation();
-		Ptsv2paymentsOrderInformationAmountDetails orderInformationAmountDetails = new Ptsv2paymentsOrderInformationAmountDetails();
-		orderInformationAmountDetails.totalAmount("6022.00");
+		Ptsv2paymentsidrefundsOrderInformation orderInformation = new Ptsv2paymentsidrefundsOrderInformation();
+		Ptsv2paymentsidcapturesOrderInformationAmountDetails orderInformationAmountDetails = new Ptsv2paymentsidcapturesOrderInformationAmountDetails();
+		orderInformationAmountDetails.totalAmount("204.00");
 		orderInformationAmountDetails.currency("USD");
 		orderInformation.amountDetails(orderInformationAmountDetails);
 
 		requestObj.orderInformation(orderInformation);
 
+		Ptsv2paymentsidrefundsMerchantInformation merchantInformation = new Ptsv2paymentsidrefundsMerchantInformation();
+		merchantInformation.categoryCode(5411);
+		requestObj.merchantInformation(merchantInformation);
+
 		Ptsv2paymentsPointOfSaleInformation pointOfSaleInformation = new Ptsv2paymentsPointOfSaleInformation();
 		pointOfSaleInformation.entryMode("swiped");
 		pointOfSaleInformation.terminalCapability(4);
-		pointOfSaleInformation.trackData("%B4111111111111111^JONES/JONES ^3312101976110000868000000?;4111111111111111=33121019761186800000?");
+		pointOfSaleInformation.trackData("%B4111111111111111^JONES/JONES ^3112101976110000868000000?;4111111111111111=16121019761186800000?");
 		pointOfSaleInformation.pinBlockEncodingFormat(1);
 		pointOfSaleInformation.encryptedPin("52F20658C04DB351");
 		pointOfSaleInformation.encryptedKeySerialNumber("FFFF1B1D140000000005");
 		requestObj.pointOfSaleInformation(pointOfSaleInformation);
 
-		PtsV2PaymentsPost201Response result = null;
+		PtsV2CreditsPost201Response result = null;
 		try {
-			merchantProp = Configuration.getMerchantDetails();
+			merchantProp = Configuration.getAlternativeMerchantDetails();
 			ApiClient apiClient = new ApiClient();
 			MerchantConfig merchantConfig = new MerchantConfig(merchantProp);
 			apiClient.merchantConfig = merchantConfig;
 
-			PaymentsApi apiInstance = new PaymentsApi(apiClient);
-			result = apiInstance.createPayment(requestObj);
+			CreditApi apiInstance = new CreditApi(apiClient);
+			result = apiInstance.createCredit(requestObj);
 
 			responseCode = apiClient.responseCode;
 			status = apiClient.status;

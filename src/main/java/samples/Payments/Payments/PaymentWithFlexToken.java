@@ -4,7 +4,6 @@ import java.*;
 import java.lang.invoke.MethodHandles;
 import java.util.*;
 import java.math.BigDecimal;
-import org.apache.commons.io.FileUtils;
 import org.joda.time.DateTime;
 import org.joda.time.DateTimeZone;
 import org.joda.time.LocalDate;
@@ -16,7 +15,6 @@ import Api.*;
 import Data.Configuration;
 import Invokers.ApiClient;
 import Invokers.ApiException;
-import Invokers.ApiResponse;
 import Model.*;
 
 public class PaymentWithFlexToken {
@@ -29,10 +27,10 @@ public class PaymentWithFlexToken {
 		System.out.println("[Sample Code Testing] [" + filename + "] " + status);
 	}
 
-	public static void main(String[] args) {
+	public static void main(String args[]) throws Exception {
+		// Accept required parameters from args[] and pass to run.
 		run();
 	}
-
 	public static PtsV2PaymentsPost201Response run() {
 	
 		CreatePaymentRequest requestObj = new CreatePaymentRequest();
@@ -64,7 +62,7 @@ public class PaymentWithFlexToken {
 		requestObj.orderInformation(orderInformation);
 
 		Ptsv2paymentsTokenInformation tokenInformation = new Ptsv2paymentsTokenInformation();
-		tokenInformation.transientTokenJwt("eyJraWQiOiIwN0JwSE9abkhJM3c3UVAycmhNZkhuWE9XQlhwa1ZHTiIsImFsZyI6IlJTMjU2In0.eyJkYXRhIjp7ImV4cGlyYXRpb25ZZWFyIjoiMjAyMCIsIm51bWJlciI6IjQxMTExMVhYWFhYWDExMTEiLCJleHBpcmF0aW9uTW9udGgiOiIxMCIsInR5cGUiOiIwMDEifSwiaXNzIjoiRmxleC8wNyIsImV4cCI6MTU5MTc0NjAyNCwidHlwZSI6Im1mLTAuMTEuMCIsImlhdCI6MTU5MTc0NTEyNCwianRpIjoiMUMzWjdUTkpaVjI4OVM5MTdQM0JHSFM1T0ZQNFNBRERCUUtKMFFKMzMzOEhRR0MwWTg0QjVFRTAxREU4NEZDQiJ9.cfwzUMJf115K2T9-wE_A_k2jZptXlovls8-fKY0muO8YzGatE5fu9r6aC4q7n0YOvEU6G7XdH4ASG32mWnYu-kKlqN4IY_cquRJeUvV89ZPZ5WTttyrgVH17LSTE2EvwMawKNYnjh0lJwqYJ51cLnJiVlyqTdEAv3DJ3vInXP1YeQjLX5_vF-OWEuZfJxahHfUdsjeGhGaaOGVMUZJSkzpTu9zDLTvpb1px3WGGPu8FcHoxrcCGGpcKk456AZgYMBSHNjr-pPkRr3Dnd7XgNF6shfzIPbcXeWDYPTpS4PNY8ZsWKx8nFQIeROMWCSxIZOmu3Wt71KN9iK6DfOPro7w");
+		tokenInformation.transientTokenJwt("eyJraWQiOiIwOGNtNFp2emU5UVpqb00zZ2NlVlpaRGVPb0xma242ZiIsImFsZyI6IlJTMjU2In0.eyJkYXRhIjp7Im51bWJlciI6IjQxMTExMVhYWFhYWDExMTEiLCJ0eXBlIjoiMDAxIn0sImlzcyI6IkZsZXgvMDgiLCJleHAiOjE1OTU5MjAwNTksInR5cGUiOiJtZi0wLjExLjAiLCJpYXQiOjE1OTU5MTkxNTksImp0aSI6IjFFM1pRVVpKWlRLVVZJNkNNSVdSOFRUT0pDU0pVNTFUSTlHSFhaSkE3MTQwWlZVTFVGWDY1RjFGQ0VCQkIwMUIifQ.ZY5ZRntWhr0HXBm6sBB0JsXK0Nwt92gos74V9HCDOgHcgBFgGNA-SVDG4o2pSXruMtlBkLKAN_xmRdx0wsFUyz_AKasLNbGBiNZiltgN1UJpRju54h2A91NzQhZdWTz69mpfLkD8bxiCxCUTvjgsrqDxVijm5ebmUlacVzbAOICZlLPR21IJv6pAUdKucW62-aH42hIqYaBwJJulDUjWAGCsBTxQF_j13s1aHtRWFYN9Ks5smAfiojIUqweT3zvjrylFJk_uoPw9v40ODp-8TiUjtY9Oz_XRGLdZgOEolA2zaB8itpVouK8-8ystCrQGakA8qbxHjcFIaoeiKapxDQ");
 		requestObj.tokenInformation(tokenInformation);
 
 		PtsV2PaymentsPost201Response result = null;
@@ -83,12 +81,13 @@ public class PaymentWithFlexToken {
 			System.out.println("ResponseMessage :" + status);
 			System.out.println(result);
 			WriteLogAudit(Integer.parseInt(responseCode));
+			
 		} catch (ApiException e) {
 			e.printStackTrace();
 			WriteLogAudit(e.getCode());
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		return result;
+	return result;
 	}
 }

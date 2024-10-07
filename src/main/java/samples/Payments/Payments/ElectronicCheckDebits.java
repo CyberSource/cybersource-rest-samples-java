@@ -4,7 +4,6 @@ import java.*;
 import java.lang.invoke.MethodHandles;
 import java.util.*;
 import java.math.BigDecimal;
-import org.apache.commons.io.FileUtils;
 import org.joda.time.DateTime;
 import org.joda.time.DateTimeZone;
 import org.joda.time.LocalDate;
@@ -16,7 +15,6 @@ import Api.*;
 import Data.Configuration;
 import Invokers.ApiClient;
 import Invokers.ApiException;
-import Invokers.ApiResponse;
 import Model.*;
 
 public class ElectronicCheckDebits {
@@ -29,7 +27,7 @@ public class ElectronicCheckDebits {
 		System.out.println("[Sample Code Testing] [" + filename + "] " + status);
 	}
 
-	public static void main(String[] args) {
+	public static void main(String args[]) throws Exception {
 		run();
 	}
 
@@ -92,12 +90,13 @@ public class ElectronicCheckDebits {
 			System.out.println("ResponseMessage :" + status);
 			System.out.println(result);
 			WriteLogAudit(Integer.parseInt(responseCode));
+			
 		} catch (ApiException e) {
 			e.printStackTrace();
 			WriteLogAudit(e.getCode());
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		return result;
+	return result;
 	}
 }

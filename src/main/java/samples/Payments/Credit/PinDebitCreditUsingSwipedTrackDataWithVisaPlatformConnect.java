@@ -1,4 +1,4 @@
-package samples.Payments.Payments;
+package samples.Payments.Credit;
 
 import java.*;
 import java.lang.invoke.MethodHandles;
@@ -17,11 +17,11 @@ import Invokers.ApiClient;
 import Invokers.ApiException;
 import Model.*;
 
-public class Swiped {
+public class PinDebitCreditUsingSwipedTrackDataWithVisaPlatformConnect {
 	private static String responseCode = null;
 	private static String status = null;
 	private static Properties merchantProp;
-
+	
 	public static void WriteLogAudit(int status) {
 		String filename = MethodHandles.lookup().lookupClass().getSimpleName();
 		System.out.println("[Sample Code Testing] [" + filename + "] " + status);
@@ -31,42 +31,51 @@ public class Swiped {
 		// Accept required parameters from args[] and pass to run.
 		run();
 	}
-	public static PtsV2PaymentsPost201Response run() {
+	public static PtsV2CreditsPost201Response run() {
 	
-		CreatePaymentRequest requestObj = new CreatePaymentRequest();
+		CreateCreditRequest requestObj = new CreateCreditRequest();
 
 		Ptsv2paymentsClientReferenceInformation clientReferenceInformation = new Ptsv2paymentsClientReferenceInformation();
-		clientReferenceInformation.code("123456");
+		clientReferenceInformation.code("2.2 Credit");
 		requestObj.clientReferenceInformation(clientReferenceInformation);
 
-		Ptsv2paymentsProcessingInformation processingInformation = new Ptsv2paymentsProcessingInformation();
-		processingInformation.capture(false);
+		Ptsv2creditsProcessingInformation processingInformation = new Ptsv2creditsProcessingInformation();
 		processingInformation.commerceIndicator("retail");
 		requestObj.processingInformation(processingInformation);
 
-		Ptsv2paymentsOrderInformation orderInformation = new Ptsv2paymentsOrderInformation();
-		Ptsv2paymentsOrderInformationAmountDetails orderInformationAmountDetails = new Ptsv2paymentsOrderInformationAmountDetails();
-		orderInformationAmountDetails.totalAmount("100.00");
+		Ptsv2paymentsidrefundsPaymentInformation paymentInformation = new Ptsv2paymentsidrefundsPaymentInformation();
+		Ptsv2paymentsidrefundsPaymentInformationPaymentType paymentInformationPaymentType = new Ptsv2paymentsidrefundsPaymentInformationPaymentType();
+		paymentInformationPaymentType.name("CARD");
+		paymentInformationPaymentType.subTypeName("DEBIT");
+		paymentInformation.paymentType(paymentInformationPaymentType);
+
+		requestObj.paymentInformation(paymentInformation);
+
+		Ptsv2paymentsidrefundsOrderInformation orderInformation = new Ptsv2paymentsidrefundsOrderInformation();
+		Ptsv2paymentsidcapturesOrderInformationAmountDetails orderInformationAmountDetails = new Ptsv2paymentsidcapturesOrderInformationAmountDetails();
+		orderInformationAmountDetails.totalAmount("202.00");
 		orderInformationAmountDetails.currency("USD");
 		orderInformation.amountDetails(orderInformationAmountDetails);
 
 		requestObj.orderInformation(orderInformation);
 
+		Ptsv2paymentsidrefundsMerchantInformation merchantInformation = new Ptsv2paymentsidrefundsMerchantInformation();
+		requestObj.merchantInformation(merchantInformation);
+
 		Ptsv2paymentsPointOfSaleInformation pointOfSaleInformation = new Ptsv2paymentsPointOfSaleInformation();
 		pointOfSaleInformation.entryMode("swiped");
-		pointOfSaleInformation.terminalCapability(2);
-		pointOfSaleInformation.trackData("%B38000000000006^TEST/CYBS         ^2012121019761100      00868000000?;38000000000006=20121210197611868000?");
+		pointOfSaleInformation.trackData("%B4111111111111111^JONES/JONES ^3112101976110000868000000?;4111111111111111=16121019761186800000?");
 		requestObj.pointOfSaleInformation(pointOfSaleInformation);
 
-		PtsV2PaymentsPost201Response result = null;
+		PtsV2CreditsPost201Response result = null;
 		try {
-			merchantProp = Configuration.getMerchantDetails();
+			merchantProp = Configuration.getAlternativeMerchantDetails();
 			ApiClient apiClient = new ApiClient();
 			MerchantConfig merchantConfig = new MerchantConfig(merchantProp);
 			apiClient.merchantConfig = merchantConfig;
 
-			PaymentsApi apiInstance = new PaymentsApi(apiClient);
-			result = apiInstance.createPayment(requestObj);
+			CreditApi apiInstance = new CreditApi(apiClient);
+			result = apiInstance.createCredit(requestObj);
 
 			responseCode = apiClient.responseCode;
 			status = apiClient.status;
@@ -75,9 +84,6 @@ public class Swiped {
 			System.out.println(result);
 			WriteLogAudit(Integer.parseInt(responseCode));
 			
-		} catch (ApiException e) {
-			e.printStackTrace();
-			WriteLogAudit(e.getCode());
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

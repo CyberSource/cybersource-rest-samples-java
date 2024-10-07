@@ -4,7 +4,6 @@ import java.*;
 import java.lang.invoke.MethodHandles;
 import java.util.*;
 import java.math.BigDecimal;
-import org.apache.commons.io.FileUtils;
 import org.joda.time.DateTime;
 import org.joda.time.DateTimeZone;
 import org.joda.time.LocalDate;
@@ -16,8 +15,8 @@ import Api.*;
 import Data.Configuration;
 import Invokers.ApiClient;
 import Invokers.ApiException;
-import Invokers.ApiResponse;
 import Model.*;
+import samples.Payments.Credit.Credit;
 
 public class VoidCredit {
 	private static String responseCode = null;
@@ -29,12 +28,14 @@ public class VoidCredit {
 		System.out.println("[Sample Code Testing] [" + filename + "] " + status);
 	}
 
-	public static void main(String[] args) {
+	public static void main(String args[]) throws Exception {
 		run();
 	}
 
 	public static PtsV2PaymentsVoidsPost201Response run() {
-		String id = "";
+		PtsV2CreditsPost201Response creditResponse = Credit.run();
+		String id = creditResponse.getId();
+	
 		VoidCreditRequest requestObj = new VoidCreditRequest();
 
 		Ptsv2paymentsidreversalsClientReferenceInformation clientReferenceInformation = new Ptsv2paymentsidreversalsClientReferenceInformation();
@@ -57,12 +58,13 @@ public class VoidCredit {
 			System.out.println("ResponseMessage :" + status);
 			System.out.println(result);
 			WriteLogAudit(Integer.parseInt(responseCode));
+			
 		} catch (ApiException e) {
 			e.printStackTrace();
 			WriteLogAudit(e.getCode());
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		return result;
+	return result;
 	}
 }

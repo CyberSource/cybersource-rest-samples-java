@@ -1,10 +1,9 @@
-package samples.Payments.Payments;
+package samples.Payments.Credit;
 
 import java.*;
 import java.lang.invoke.MethodHandles;
 import java.util.*;
 import java.math.BigDecimal;
-import org.apache.commons.io.FileUtils;
 import org.joda.time.DateTime;
 import org.joda.time.DateTimeZone;
 import org.joda.time.LocalDate;
@@ -16,10 +15,9 @@ import Api.*;
 import Data.Configuration;
 import Invokers.ApiClient;
 import Invokers.ApiException;
-import Invokers.ApiResponse;
 import Model.*;
 
-public class AuthorizationWithDecisionManagercustomSetup {
+public class ServiceFeesCredit {
 	private static String responseCode = null;
 	private static String status = null;
 	private static Properties merchantProp;
@@ -29,43 +27,35 @@ public class AuthorizationWithDecisionManagercustomSetup {
 		System.out.println("[Sample Code Testing] [" + filename + "] " + status);
 	}
 
-	public static void main(String[] args) {
+	public static void main(String args[]) throws Exception {
 		run();
 	}
 
-	public static PtsV2PaymentsPost201Response run() {
+	public static PtsV2CreditsPost201Response run() {
 	
-		CreatePaymentRequest requestObj = new CreatePaymentRequest();
+		CreateCreditRequest requestObj = new CreateCreditRequest();
 
 		Ptsv2paymentsClientReferenceInformation clientReferenceInformation = new Ptsv2paymentsClientReferenceInformation();
-		clientReferenceInformation.code("TC50171_16");
+		clientReferenceInformation.code("12345678");
 		requestObj.clientReferenceInformation(clientReferenceInformation);
 
-		Ptsv2paymentsProcessingInformation processingInformation = new Ptsv2paymentsProcessingInformation();
-
-		List <String> actionList = new ArrayList <String>();
-		actionList.add("DECISION");
-		processingInformation.actionList(actionList);
-
-		processingInformation.capture(false);
-		requestObj.processingInformation(processingInformation);
-
-		Ptsv2paymentsPaymentInformation paymentInformation = new Ptsv2paymentsPaymentInformation();
-		Ptsv2paymentsPaymentInformationCard paymentInformationCard = new Ptsv2paymentsPaymentInformationCard();
+		Ptsv2paymentsidrefundsPaymentInformation paymentInformation = new Ptsv2paymentsidrefundsPaymentInformation();
+		Ptsv2paymentsidrefundsPaymentInformationCard paymentInformationCard = new Ptsv2paymentsidrefundsPaymentInformationCard();
 		paymentInformationCard.number("4111111111111111");
-		paymentInformationCard.expirationMonth("11");
-		paymentInformationCard.expirationYear("2025");
+		paymentInformationCard.expirationMonth("03");
+		paymentInformationCard.expirationYear("2031");
 		paymentInformation.card(paymentInformationCard);
 
 		requestObj.paymentInformation(paymentInformation);
 
-		Ptsv2paymentsOrderInformation orderInformation = new Ptsv2paymentsOrderInformation();
-		Ptsv2paymentsOrderInformationAmountDetails orderInformationAmountDetails = new Ptsv2paymentsOrderInformationAmountDetails();
-		orderInformationAmountDetails.totalAmount("10");
-		orderInformationAmountDetails.currency("USD");
+		Ptsv2paymentsidrefundsOrderInformation orderInformation = new Ptsv2paymentsidrefundsOrderInformation();
+		Ptsv2paymentsidcapturesOrderInformationAmountDetails orderInformationAmountDetails = new Ptsv2paymentsidcapturesOrderInformationAmountDetails();
+		orderInformationAmountDetails.totalAmount("2325.00");
+		orderInformationAmountDetails.currency("usd");
+		orderInformationAmountDetails.serviceFeeAmount("30.0");
 		orderInformation.amountDetails(orderInformationAmountDetails);
 
-		Ptsv2paymentsOrderInformationBillTo orderInformationBillTo = new Ptsv2paymentsOrderInformationBillTo();
+		Ptsv2paymentsidcapturesOrderInformationBillTo orderInformationBillTo = new Ptsv2paymentsidcapturesOrderInformationBillTo();
 		orderInformationBillTo.firstName("John");
 		orderInformationBillTo.lastName("Doe");
 		orderInformationBillTo.address1("1 Market St");
@@ -79,15 +69,15 @@ public class AuthorizationWithDecisionManagercustomSetup {
 
 		requestObj.orderInformation(orderInformation);
 
-		PtsV2PaymentsPost201Response result = null;
+		PtsV2CreditsPost201Response result = null;
 		try {
 			merchantProp = Configuration.getMerchantDetails();
 			ApiClient apiClient = new ApiClient();
 			MerchantConfig merchantConfig = new MerchantConfig(merchantProp);
 			apiClient.merchantConfig = merchantConfig;
 
-			PaymentsApi apiInstance = new PaymentsApi(apiClient);
-			result = apiInstance.createPayment(requestObj);
+			CreditApi apiInstance = new CreditApi(apiClient);
+			result = apiInstance.createCredit(requestObj);
 
 			responseCode = apiClient.responseCode;
 			status = apiClient.status;
@@ -95,12 +85,13 @@ public class AuthorizationWithDecisionManagercustomSetup {
 			System.out.println("ResponseMessage :" + status);
 			System.out.println(result);
 			WriteLogAudit(Integer.parseInt(responseCode));
+			
 		} catch (ApiException e) {
 			e.printStackTrace();
 			WriteLogAudit(e.getCode());
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		return result;
+	return result;
 	}
 }

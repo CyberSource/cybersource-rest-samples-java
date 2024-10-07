@@ -28,8 +28,8 @@ public class EBTElectronicVoucherPurchaseFromSNAPAccountWithVisaPlatformConnect 
 		String filename = MethodHandles.lookup().lookupClass().getSimpleName();
 		System.out.println("[Sample Code Testing] [" + filename + "] " + status);
 	}
-
-	public static void main(String[] args) {
+	
+	public static void main(String args[]) throws Exception {
 		run();
 	}
 
@@ -39,10 +39,6 @@ public class EBTElectronicVoucherPurchaseFromSNAPAccountWithVisaPlatformConnect 
 
 		Ptsv2paymentsClientReferenceInformation clientReferenceInformation = new Ptsv2paymentsClientReferenceInformation();
 		clientReferenceInformation.code("EBT - Voucher Purchase From SNAP Account");
-		Ptsv2paymentsClientReferenceInformationPartner clientReferenceInformationPartner = new Ptsv2paymentsClientReferenceInformationPartner();
-		clientReferenceInformationPartner.thirdPartyCertificationNumber("PTP1234");
-		clientReferenceInformation.partner(clientReferenceInformationPartner);
-
 		requestObj.clientReferenceInformation(clientReferenceInformation);
 
 		Ptsv2paymentsProcessingInformation processingInformation = new Ptsv2paymentsProcessingInformation();
@@ -57,7 +53,6 @@ public class EBTElectronicVoucherPurchaseFromSNAPAccountWithVisaPlatformConnect 
 		processingInformationElectronicBenefitsTransfer.voucherSerialNumber("123451234512345");
 		processingInformation.electronicBenefitsTransfer(processingInformationElectronicBenefitsTransfer);
 
-		processingInformation.networkRoutingOrder("K");
 		requestObj.processingInformation(processingInformation);
 
 		Ptsv2paymentsPaymentInformation paymentInformation = new Ptsv2paymentsPaymentInformation();
@@ -85,12 +80,12 @@ public class EBTElectronicVoucherPurchaseFromSNAPAccountWithVisaPlatformConnect 
 		Ptsv2paymentsPointOfSaleInformation pointOfSaleInformation = new Ptsv2paymentsPointOfSaleInformation();
 		pointOfSaleInformation.entryMode("keyed");
 		pointOfSaleInformation.terminalCapability(4);
-		pointOfSaleInformation.trackData("%B4111111111111111^JONES/JONES ^3312101976110000868000000?;4111111111111111=33121019761186800000?");
+		pointOfSaleInformation.trackData("%B4111111111111111^JONES/JONES ^3112101976110000868000000?;4111111111111111=16121019761186800000?");
 		requestObj.pointOfSaleInformation(pointOfSaleInformation);
 
 		PtsV2PaymentsPost201Response result = null;
 		try {
-			merchantProp = Configuration.getMerchantDetails();
+			merchantProp = Configuration.getAlternativeMerchantDetails();
 			ApiClient apiClient = new ApiClient();
 			MerchantConfig merchantConfig = new MerchantConfig(merchantProp);
 			apiClient.merchantConfig = merchantConfig;

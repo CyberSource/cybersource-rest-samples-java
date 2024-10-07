@@ -1,4 +1,4 @@
-package samples.Payments.Payments;
+package samples.Payments.Credit;
 
 import java.*;
 import java.lang.invoke.MethodHandles;
@@ -17,7 +17,7 @@ import Invokers.ApiClient;
 import Invokers.ApiException;
 import Model.*;
 
-public class Swiped {
+public class CreditWithCustomerPaymentInstrumentAndShippingAddressTokenId {
 	private static String responseCode = null;
 	private static String status = null;
 	private static Properties merchantProp;
@@ -31,42 +31,46 @@ public class Swiped {
 		// Accept required parameters from args[] and pass to run.
 		run();
 	}
-	public static PtsV2PaymentsPost201Response run() {
+	public static PtsV2CreditsPost201Response run() {
 	
-		CreatePaymentRequest requestObj = new CreatePaymentRequest();
+		CreateCreditRequest requestObj = new CreateCreditRequest();
 
 		Ptsv2paymentsClientReferenceInformation clientReferenceInformation = new Ptsv2paymentsClientReferenceInformation();
-		clientReferenceInformation.code("123456");
+		clientReferenceInformation.code("12345678");
 		requestObj.clientReferenceInformation(clientReferenceInformation);
 
-		Ptsv2paymentsProcessingInformation processingInformation = new Ptsv2paymentsProcessingInformation();
-		processingInformation.capture(false);
-		processingInformation.commerceIndicator("retail");
-		requestObj.processingInformation(processingInformation);
+		Ptsv2paymentsidrefundsPaymentInformation paymentInformation = new Ptsv2paymentsidrefundsPaymentInformation();
+		Ptsv2paymentsPaymentInformationCustomer paymentInformationCustomer = new Ptsv2paymentsPaymentInformationCustomer();
+		paymentInformationCustomer.id("AB695DA801DD1BB6E05341588E0A3BDC");
+		paymentInformation.customer(paymentInformationCustomer);
 
-		Ptsv2paymentsOrderInformation orderInformation = new Ptsv2paymentsOrderInformation();
-		Ptsv2paymentsOrderInformationAmountDetails orderInformationAmountDetails = new Ptsv2paymentsOrderInformationAmountDetails();
-		orderInformationAmountDetails.totalAmount("100.00");
-		orderInformationAmountDetails.currency("USD");
+		Ptsv2paymentsPaymentInformationPaymentInstrument paymentInformationPaymentInstrument = new Ptsv2paymentsPaymentInformationPaymentInstrument();
+		paymentInformationPaymentInstrument.id("AB6A54B982A6FCB6E05341588E0A3935");
+		paymentInformation.paymentInstrument(paymentInformationPaymentInstrument);
+
+		Ptsv2paymentsPaymentInformationShippingAddress paymentInformationShippingAddress = new Ptsv2paymentsPaymentInformationShippingAddress();
+		paymentInformationShippingAddress.id("AB6A54B97C00FCB6E05341588E0A3935");
+		paymentInformation.shippingAddress(paymentInformationShippingAddress);
+
+		requestObj.paymentInformation(paymentInformation);
+
+		Ptsv2paymentsidrefundsOrderInformation orderInformation = new Ptsv2paymentsidrefundsOrderInformation();
+		Ptsv2paymentsidcapturesOrderInformationAmountDetails orderInformationAmountDetails = new Ptsv2paymentsidcapturesOrderInformationAmountDetails();
+		orderInformationAmountDetails.totalAmount("200");
+		orderInformationAmountDetails.currency("usd");
 		orderInformation.amountDetails(orderInformationAmountDetails);
 
 		requestObj.orderInformation(orderInformation);
 
-		Ptsv2paymentsPointOfSaleInformation pointOfSaleInformation = new Ptsv2paymentsPointOfSaleInformation();
-		pointOfSaleInformation.entryMode("swiped");
-		pointOfSaleInformation.terminalCapability(2);
-		pointOfSaleInformation.trackData("%B38000000000006^TEST/CYBS         ^2012121019761100      00868000000?;38000000000006=20121210197611868000?");
-		requestObj.pointOfSaleInformation(pointOfSaleInformation);
-
-		PtsV2PaymentsPost201Response result = null;
+		PtsV2CreditsPost201Response result = null;
 		try {
 			merchantProp = Configuration.getMerchantDetails();
 			ApiClient apiClient = new ApiClient();
 			MerchantConfig merchantConfig = new MerchantConfig(merchantProp);
 			apiClient.merchantConfig = merchantConfig;
 
-			PaymentsApi apiInstance = new PaymentsApi(apiClient);
-			result = apiInstance.createPayment(requestObj);
+			CreditApi apiInstance = new CreditApi(apiClient);
+			result = apiInstance.createCredit(requestObj);
 
 			responseCode = apiClient.responseCode;
 			status = apiClient.status;

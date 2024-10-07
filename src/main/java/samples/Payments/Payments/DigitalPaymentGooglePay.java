@@ -4,7 +4,6 @@ import java.*;
 import java.lang.invoke.MethodHandles;
 import java.util.*;
 import java.math.BigDecimal;
-import org.apache.commons.io.FileUtils;
 import org.joda.time.DateTime;
 import org.joda.time.DateTimeZone;
 import org.joda.time.LocalDate;
@@ -16,20 +15,20 @@ import Api.*;
 import Data.Configuration;
 import Invokers.ApiClient;
 import Invokers.ApiException;
-import Invokers.ApiResponse;
 import Model.*;
 
 public class DigitalPaymentGooglePay {
 	private static String responseCode = null;
 	private static String status = null;
 	private static Properties merchantProp;
+	public static boolean userCapture = false;
 
 	public static void WriteLogAudit(int status) {
 		String filename = MethodHandles.lookup().lookupClass().getSimpleName();
 		System.out.println("[Sample Code Testing] [" + filename + "] " + status);
 	}
 
-	public static void main(String[] args) {
+	public static void main(String args[]) throws Exception {
 		run();
 	}
 
@@ -43,6 +42,10 @@ public class DigitalPaymentGooglePay {
 
 		Ptsv2paymentsProcessingInformation processingInformation = new Ptsv2paymentsProcessingInformation();
 		processingInformation.capture(false);
+		if (userCapture) {
+			processingInformation.capture(true);
+		}
+		
 		processingInformation.paymentSolution("012");
 		requestObj.processingInformation(processingInformation);
 
@@ -50,7 +53,7 @@ public class DigitalPaymentGooglePay {
 		Ptsv2paymentsPaymentInformationTokenizedCard paymentInformationTokenizedCard = new Ptsv2paymentsPaymentInformationTokenizedCard();
 		paymentInformationTokenizedCard.number("4111111111111111");
 		paymentInformationTokenizedCard.expirationMonth("12");
-		paymentInformationTokenizedCard.expirationYear("2030");
+		paymentInformationTokenizedCard.expirationYear("2020");
 		paymentInformationTokenizedCard.cryptogram("EHuWW9PiBkWvqE5juRwDzAUFBAk=");
 		paymentInformationTokenizedCard.transactionType("1");
 		paymentInformation.tokenizedCard(paymentInformationTokenizedCard);
@@ -93,12 +96,13 @@ public class DigitalPaymentGooglePay {
 			System.out.println("ResponseMessage :" + status);
 			System.out.println(result);
 			WriteLogAudit(Integer.parseInt(responseCode));
+			
 		} catch (ApiException e) {
 			e.printStackTrace();
 			WriteLogAudit(e.getCode());
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		return result;
+	return result;
 	}
 }

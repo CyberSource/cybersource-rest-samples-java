@@ -4,7 +4,6 @@ import java.*;
 import java.lang.invoke.MethodHandles;
 import java.util.*;
 import java.math.BigDecimal;
-import org.apache.commons.io.FileUtils;
 import org.joda.time.DateTime;
 import org.joda.time.DateTimeZone;
 import org.joda.time.LocalDate;
@@ -16,47 +15,36 @@ import Api.*;
 import Data.Configuration;
 import Invokers.ApiClient;
 import Invokers.ApiException;
-import Invokers.ApiResponse;
 import Model.*;
 
 public class PinDebitPurchaseUsingSwipedTrackDataWithVisaPlatformConnect {
 	private static String responseCode = null;
 	private static String status = null;
 	private static Properties merchantProp;
-
+	
 	public static void WriteLogAudit(int status) {
 		String filename = MethodHandles.lookup().lookupClass().getSimpleName();
 		System.out.println("[Sample Code Testing] [" + filename + "] " + status);
 	}
 
-	public static void main(String[] args) {
+	public static void main(String args[]) throws Exception {
+		// Accept required parameters from args[] and pass to run.
 		run();
 	}
-
 	public static PtsV2PaymentsPost201Response run() {
 	
 		CreatePaymentRequest requestObj = new CreatePaymentRequest();
 
 		Ptsv2paymentsClientReferenceInformation clientReferenceInformation = new Ptsv2paymentsClientReferenceInformation();
-		clientReferenceInformation.code("Pin Debit Purchase Using Swiped Track Data");
-		Ptsv2paymentsClientReferenceInformationPartner clientReferenceInformationPartner = new Ptsv2paymentsClientReferenceInformationPartner();
-		clientReferenceInformationPartner.thirdPartyCertificationNumber("PTP1234");
-		clientReferenceInformation.partner(clientReferenceInformationPartner);
-
+		clientReferenceInformation.code("2.2 Purchase");
 		requestObj.clientReferenceInformation(clientReferenceInformation);
 
 		Ptsv2paymentsProcessingInformation processingInformation = new Ptsv2paymentsProcessingInformation();
 		processingInformation.capture(false);
 		processingInformation.commerceIndicator("retail");
-		processingInformation.networkRoutingOrder("VMHF");
 		requestObj.processingInformation(processingInformation);
 
 		Ptsv2paymentsPaymentInformation paymentInformation = new Ptsv2paymentsPaymentInformation();
-		Ptsv2paymentsPaymentInformationCard paymentInformationCard = new Ptsv2paymentsPaymentInformationCard();
-		paymentInformationCard.useAs("");
-		paymentInformationCard.sourceAccountType("UA");
-		paymentInformation.card(paymentInformationCard);
-
 		Ptsv2paymentsPaymentInformationPaymentType paymentInformationPaymentType = new Ptsv2paymentsPaymentInformationPaymentType();
 		paymentInformationPaymentType.name("CARD");
 		paymentInformationPaymentType.subTypeName("DEBIT");
@@ -74,16 +62,12 @@ public class PinDebitPurchaseUsingSwipedTrackDataWithVisaPlatformConnect {
 
 		Ptsv2paymentsPointOfSaleInformation pointOfSaleInformation = new Ptsv2paymentsPointOfSaleInformation();
 		pointOfSaleInformation.entryMode("swiped");
-		pointOfSaleInformation.terminalCapability(4);
-		pointOfSaleInformation.trackData("%B4111111111111111^JONES/JONES ^3312101976110000868000000?;4111111111111111=33121019761186800000?");
-		pointOfSaleInformation.pinBlockEncodingFormat(1);
-		pointOfSaleInformation.encryptedPin("52F20658C04DB351");
-		pointOfSaleInformation.encryptedKeySerialNumber("FFFF1B1D140000000005");
+		pointOfSaleInformation.trackData("%B4111111111111111^JONES/JONES ^3112101976110000868000000?;4111111111111111=16121019761186800000?");
 		requestObj.pointOfSaleInformation(pointOfSaleInformation);
 
 		PtsV2PaymentsPost201Response result = null;
 		try {
-			merchantProp = Configuration.getMerchantDetails();
+			merchantProp = Configuration.getAlternativeMerchantDetails();
 			ApiClient apiClient = new ApiClient();
 			MerchantConfig merchantConfig = new MerchantConfig(merchantProp);
 			apiClient.merchantConfig = merchantConfig;
@@ -97,12 +81,10 @@ public class PinDebitPurchaseUsingSwipedTrackDataWithVisaPlatformConnect {
 			System.out.println("ResponseMessage :" + status);
 			System.out.println(result);
 			WriteLogAudit(Integer.parseInt(responseCode));
-		} catch (ApiException e) {
-			e.printStackTrace();
-			WriteLogAudit(e.getCode());
+			
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		return result;
+	return result;
 	}
 }

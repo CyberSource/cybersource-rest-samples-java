@@ -1,4 +1,4 @@
-package samples.Payments.Payments;
+package samples.Payments.Credit;
 
 import java.*;
 import java.lang.invoke.MethodHandles;
@@ -17,11 +17,10 @@ import Invokers.ApiClient;
 import Invokers.ApiException;
 import Model.*;
 
-public class DigitalPaymentsApplePay {
+public class ElectronicCheckStandAloneCredits {
 	private static String responseCode = null;
 	private static String status = null;
 	private static Properties merchantProp;
-	public static boolean userCapture = false;
 
 	public static void WriteLogAudit(int status) {
 		String filename = MethodHandles.lookup().lookupClass().getSimpleName();
@@ -32,63 +31,60 @@ public class DigitalPaymentsApplePay {
 		run();
 	}
 
-	public static PtsV2PaymentsPost201Response run() {
+	public static PtsV2CreditsPost201Response run() {
 	
-		CreatePaymentRequest requestObj = new CreatePaymentRequest();
+		CreateCreditRequest requestObj = new CreateCreditRequest();
 
 		Ptsv2paymentsClientReferenceInformation clientReferenceInformation = new Ptsv2paymentsClientReferenceInformation();
-		clientReferenceInformation.code("TC_1231223");
+		clientReferenceInformation.code("TC46125-1");
 		requestObj.clientReferenceInformation(clientReferenceInformation);
 
-		Ptsv2paymentsProcessingInformation processingInformation = new Ptsv2paymentsProcessingInformation();
-		processingInformation.capture(false);
-		if (userCapture) {
-			processingInformation.capture(true);
-		}
+		Ptsv2paymentsidrefundsPaymentInformation paymentInformation = new Ptsv2paymentsidrefundsPaymentInformation();
+		Ptsv2paymentsidrefundsPaymentInformationBank paymentInformationBank = new Ptsv2paymentsidrefundsPaymentInformationBank();
+		Ptsv2paymentsidrefundsPaymentInformationBankAccount paymentInformationBankAccount = new Ptsv2paymentsidrefundsPaymentInformationBankAccount();
+		paymentInformationBankAccount.type("C");
+		paymentInformationBankAccount.number("4100");
+		paymentInformationBankAccount.checkNumber("123456");
+		paymentInformationBank.account(paymentInformationBankAccount);
 
-		processingInformation.paymentSolution("001");
-		requestObj.processingInformation(processingInformation);
+		paymentInformationBank.routingNumber("071923284");
+		paymentInformation.bank(paymentInformationBank);
 
-		Ptsv2paymentsPaymentInformation paymentInformation = new Ptsv2paymentsPaymentInformation();
-		Ptsv2paymentsPaymentInformationTokenizedCard paymentInformationTokenizedCard = new Ptsv2paymentsPaymentInformationTokenizedCard();
-		paymentInformationTokenizedCard.number("4111111111111111");
-		paymentInformationTokenizedCard.expirationMonth("12");
-		paymentInformationTokenizedCard.expirationYear("2031");
-		paymentInformationTokenizedCard.cryptogram("AceY+igABPs3jdwNaDg3MAACAAA=");
-		paymentInformationTokenizedCard.transactionType("1");
-		paymentInformation.tokenizedCard(paymentInformationTokenizedCard);
+		Ptsv2paymentsidrefundsPaymentInformationPaymentType paymentInformationPaymentType = new Ptsv2paymentsidrefundsPaymentInformationPaymentType();
+		paymentInformationPaymentType.name("CHECK");
+		paymentInformation.paymentType(paymentInformationPaymentType);
 
 		requestObj.paymentInformation(paymentInformation);
 
-		Ptsv2paymentsOrderInformation orderInformation = new Ptsv2paymentsOrderInformation();
-		Ptsv2paymentsOrderInformationAmountDetails orderInformationAmountDetails = new Ptsv2paymentsOrderInformationAmountDetails();
-		orderInformationAmountDetails.totalAmount("10");
+		Ptsv2paymentsidrefundsOrderInformation orderInformation = new Ptsv2paymentsidrefundsOrderInformation();
+		Ptsv2paymentsidcapturesOrderInformationAmountDetails orderInformationAmountDetails = new Ptsv2paymentsidcapturesOrderInformationAmountDetails();
+		orderInformationAmountDetails.totalAmount("100");
 		orderInformationAmountDetails.currency("USD");
 		orderInformation.amountDetails(orderInformationAmountDetails);
 
-		Ptsv2paymentsOrderInformationBillTo orderInformationBillTo = new Ptsv2paymentsOrderInformationBillTo();
+		Ptsv2paymentsidcapturesOrderInformationBillTo orderInformationBillTo = new Ptsv2paymentsidcapturesOrderInformationBillTo();
 		orderInformationBillTo.firstName("John");
-		orderInformationBillTo.lastName("Deo");
-		orderInformationBillTo.address1("901 Metro Center Blvd");
-		orderInformationBillTo.locality("Foster City");
+		orderInformationBillTo.lastName("Doe");
+		orderInformationBillTo.address1("1 Market St");
+		orderInformationBillTo.locality("san francisco");
 		orderInformationBillTo.administrativeArea("CA");
-		orderInformationBillTo.postalCode("94404");
+		orderInformationBillTo.postalCode("94105");
 		orderInformationBillTo.country("US");
 		orderInformationBillTo.email("test@cybs.com");
-		orderInformationBillTo.phoneNumber("6504327113");
+		orderInformationBillTo.phoneNumber("4158880000");
 		orderInformation.billTo(orderInformationBillTo);
 
 		requestObj.orderInformation(orderInformation);
 
-		PtsV2PaymentsPost201Response result = null;
+		PtsV2CreditsPost201Response result = null;
 		try {
 			merchantProp = Configuration.getMerchantDetails();
 			ApiClient apiClient = new ApiClient();
 			MerchantConfig merchantConfig = new MerchantConfig(merchantProp);
 			apiClient.merchantConfig = merchantConfig;
 
-			PaymentsApi apiInstance = new PaymentsApi(apiClient);
-			result = apiInstance.createPayment(requestObj);
+			CreditApi apiInstance = new CreditApi(apiClient);
+			result = apiInstance.createCredit(requestObj);
 
 			responseCode = apiClient.responseCode;
 			status = apiClient.status;

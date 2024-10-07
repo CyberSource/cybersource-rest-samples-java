@@ -4,7 +4,6 @@ import java.*;
 import java.lang.invoke.MethodHandles;
 import java.util.*;
 import java.math.BigDecimal;
-import org.apache.commons.io.FileUtils;
 import org.joda.time.DateTime;
 import org.joda.time.DateTimeZone;
 import org.joda.time.LocalDate;
@@ -16,7 +15,6 @@ import Api.*;
 import Data.Configuration;
 import Invokers.ApiClient;
 import Invokers.ApiException;
-import Invokers.ApiResponse;
 import Model.*;
 
 public class AuthorizationWithPayerAuthValidation {
@@ -29,10 +27,10 @@ public class AuthorizationWithPayerAuthValidation {
 		System.out.println("[Sample Code Testing] [" + filename + "] " + status);
 	}
 
-	public static void main(String[] args) {
+	public static void main(String args[]) throws Exception {
+		// Accept required parameters from args[] and pass to run.
 		run();
 	}
-
 	public static PtsV2PaymentsPost201Response run() {
 	
 		CreatePaymentRequest requestObj = new CreatePaymentRequest();
@@ -54,7 +52,7 @@ public class AuthorizationWithPayerAuthValidation {
 		Ptsv2paymentsPaymentInformationCard paymentInformationCard = new Ptsv2paymentsPaymentInformationCard();
 		paymentInformationCard.number("4000000000001091");
 		paymentInformationCard.expirationMonth("01");
-		paymentInformationCard.expirationYear("2030");
+		paymentInformationCard.expirationYear("2023");
 		paymentInformation.card(paymentInformationCard);
 
 		requestObj.paymentInformation(paymentInformation);
@@ -95,12 +93,13 @@ public class AuthorizationWithPayerAuthValidation {
 			System.out.println("ResponseMessage :" + status);
 			System.out.println(result);
 			WriteLogAudit(Integer.parseInt(responseCode));
+			
 		} catch (ApiException e) {
 			e.printStackTrace();
 			WriteLogAudit(e.getCode());
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		return result;
+	return result;
 	}
 }

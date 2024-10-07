@@ -4,7 +4,6 @@ import java.*;
 import java.lang.invoke.MethodHandles;
 import java.util.*;
 import java.math.BigDecimal;
-import org.apache.commons.io.FileUtils;
 import org.joda.time.DateTime;
 import org.joda.time.DateTimeZone;
 import org.joda.time.LocalDate;
@@ -16,10 +15,9 @@ import Api.*;
 import Data.Configuration;
 import Invokers.ApiClient;
 import Invokers.ApiException;
-import Invokers.ApiResponse;
 import Model.*;
 
-public class AuthorizationWithPAEnrollAuthenticationNeededCustomerTokenCreation {
+public class AuthorizationWithDecisionManagerCustomSetup {
 	private static String responseCode = null;
 	private static String status = null;
 	private static Properties merchantProp;
@@ -29,31 +27,23 @@ public class AuthorizationWithPAEnrollAuthenticationNeededCustomerTokenCreation 
 		System.out.println("[Sample Code Testing] [" + filename + "] " + status);
 	}
 
-	public static void main(String[] args) {
+	public static void main(String args[]) throws Exception {
+		// Accept required parameters from args[] and pass to run.
 		run();
 	}
-
 	public static PtsV2PaymentsPost201Response run() {
 	
 		CreatePaymentRequest requestObj = new CreatePaymentRequest();
 
 		Ptsv2paymentsClientReferenceInformation clientReferenceInformation = new Ptsv2paymentsClientReferenceInformation();
-		clientReferenceInformation.code("TC50171_3");
+		clientReferenceInformation.code("TC50171_16");
 		requestObj.clientReferenceInformation(clientReferenceInformation);
 
 		Ptsv2paymentsProcessingInformation processingInformation = new Ptsv2paymentsProcessingInformation();
 
 		List <String> actionList = new ArrayList <String>();
-		actionList.add("TOKEN_CREATE");
-		actionList.add("CONSUMER_AUTHENTICATION");
+		actionList.add("DECISION");
 		processingInformation.actionList(actionList);
-
-
-		List <String> actionTokenTypes = new ArrayList <String>();
-		actionTokenTypes.add("customer");
-		actionTokenTypes.add("paymentInstrument");
-		actionTokenTypes.add("shippingAddress");
-		processingInformation.actionTokenTypes(actionTokenTypes);
 
 		processingInformation.capture(false);
 		requestObj.processingInformation(processingInformation);
@@ -61,16 +51,15 @@ public class AuthorizationWithPAEnrollAuthenticationNeededCustomerTokenCreation 
 		Ptsv2paymentsPaymentInformation paymentInformation = new Ptsv2paymentsPaymentInformation();
 		Ptsv2paymentsPaymentInformationCard paymentInformationCard = new Ptsv2paymentsPaymentInformationCard();
 		paymentInformationCard.number("4111111111111111");
-		paymentInformationCard.expirationMonth("12");
-		paymentInformationCard.expirationYear("2031");
-		paymentInformationCard.securityCode("123");
+		paymentInformationCard.expirationMonth("11");
+		paymentInformationCard.expirationYear("2025");
 		paymentInformation.card(paymentInformationCard);
 
 		requestObj.paymentInformation(paymentInformation);
 
 		Ptsv2paymentsOrderInformation orderInformation = new Ptsv2paymentsOrderInformation();
 		Ptsv2paymentsOrderInformationAmountDetails orderInformationAmountDetails = new Ptsv2paymentsOrderInformationAmountDetails();
-		orderInformationAmountDetails.totalAmount("102.21");
+		orderInformationAmountDetails.totalAmount("10");
 		orderInformationAmountDetails.currency("USD");
 		orderInformation.amountDetails(orderInformationAmountDetails);
 
@@ -86,23 +75,7 @@ public class AuthorizationWithPAEnrollAuthenticationNeededCustomerTokenCreation 
 		orderInformationBillTo.phoneNumber("4158880000");
 		orderInformation.billTo(orderInformationBillTo);
 
-		Ptsv2paymentsOrderInformationShipTo orderInformationShipTo = new Ptsv2paymentsOrderInformationShipTo();
-		orderInformationShipTo.firstName("John");
-		orderInformationShipTo.lastName("Doe");
-		orderInformationShipTo.address1("1 Market St");
-		orderInformationShipTo.locality("san francisco");
-		orderInformationShipTo.administrativeArea("CA");
-		orderInformationShipTo.postalCode("94105");
-		orderInformationShipTo.country("US");
-		orderInformation.shipTo(orderInformationShipTo);
-
 		requestObj.orderInformation(orderInformation);
-
-		Ptsv2paymentsConsumerAuthenticationInformation consumerAuthenticationInformation = new Ptsv2paymentsConsumerAuthenticationInformation();
-		consumerAuthenticationInformation.challengeCode("4");
-		consumerAuthenticationInformation.requestorId("123123197675");
-		consumerAuthenticationInformation.referenceId("CybsCruiseTester-8ac0b02f");
-		requestObj.consumerAuthenticationInformation(consumerAuthenticationInformation);
 
 		PtsV2PaymentsPost201Response result = null;
 		try {
@@ -120,12 +93,13 @@ public class AuthorizationWithPAEnrollAuthenticationNeededCustomerTokenCreation 
 			System.out.println("ResponseMessage :" + status);
 			System.out.println(result);
 			WriteLogAudit(Integer.parseInt(responseCode));
+			
 		} catch (ApiException e) {
 			e.printStackTrace();
 			WriteLogAudit(e.getCode());
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		return result;
+	return result;
 	}
 }

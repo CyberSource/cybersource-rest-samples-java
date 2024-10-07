@@ -4,7 +4,6 @@ import java.*;
 import java.lang.invoke.MethodHandles;
 import java.util.*;
 import java.math.BigDecimal;
-import org.apache.commons.io.FileUtils;
 import org.joda.time.DateTime;
 import org.joda.time.DateTimeZone;
 import org.joda.time.LocalDate;
@@ -16,7 +15,6 @@ import Api.*;
 import Data.Configuration;
 import Invokers.ApiClient;
 import Invokers.ApiException;
-import Invokers.ApiResponse;
 import Model.*;
 
 public class AuthorizationWithDecisionManagerMerchantDefinedInformation {
@@ -29,10 +27,10 @@ public class AuthorizationWithDecisionManagerMerchantDefinedInformation {
 		System.out.println("[Sample Code Testing] [" + filename + "] " + status);
 	}
 
-	public static void main(String[] args) {
+	public static void main(String args[]) throws Exception {
+		// Accept required parameters from args[] and pass to run.
 		run();
 	}
-
 	public static PtsV2PaymentsPost201Response run() {
 	
 		CreatePaymentRequest requestObj = new CreatePaymentRequest();
@@ -45,7 +43,7 @@ public class AuthorizationWithDecisionManagerMerchantDefinedInformation {
 		Ptsv2paymentsPaymentInformationCard paymentInformationCard = new Ptsv2paymentsPaymentInformationCard();
 		paymentInformationCard.number("4444444444444448");
 		paymentInformationCard.expirationMonth("12");
-		paymentInformationCard.expirationYear("2030");
+		paymentInformationCard.expirationYear("2020");
 		paymentInformation.card(paymentInformationCard);
 
 		requestObj.paymentInformation(paymentInformation);
@@ -71,7 +69,7 @@ public class AuthorizationWithDecisionManagerMerchantDefinedInformation {
 		requestObj.orderInformation(orderInformation);
 
 
-		List <Ptsv2paymentsMerchantDefinedInformation> merchantDefinedInformation = new ArrayList <Ptsv2paymentsMerchantDefinedInformation>();
+		List <Ptsv2paymentsMerchantDefinedInformation> merchantDefinedInformation =  new ArrayList <Ptsv2paymentsMerchantDefinedInformation>();
 		Ptsv2paymentsMerchantDefinedInformation merchantDefinedInformation1 = new Ptsv2paymentsMerchantDefinedInformation();
 		merchantDefinedInformation1.key("1");
 		merchantDefinedInformation1.value("Test");
@@ -100,12 +98,13 @@ public class AuthorizationWithDecisionManagerMerchantDefinedInformation {
 			System.out.println("ResponseMessage :" + status);
 			System.out.println(result);
 			WriteLogAudit(Integer.parseInt(responseCode));
+			
 		} catch (ApiException e) {
 			e.printStackTrace();
 			WriteLogAudit(e.getCode());
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		return result;
+	return result;
 	}
 }
