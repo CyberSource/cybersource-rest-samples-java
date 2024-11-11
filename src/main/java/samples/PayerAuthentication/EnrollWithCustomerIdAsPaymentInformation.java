@@ -61,7 +61,7 @@ public class EnrollWithCustomerIdAsPaymentInformation {
 		requestObj.orderInformation(orderInformation);
 
 		Riskv1authenticationsPaymentInformation paymentInformation = new Riskv1authenticationsPaymentInformation();
-		Ptsv2paymentsPaymentInformationCustomer paymentInformationCustomer = new Ptsv2paymentsPaymentInformationCustomer();
+		Riskv1authenticationsPaymentInformationCustomer paymentInformationCustomer = new Riskv1authenticationsPaymentInformationCustomer();
 		paymentInformationCustomer.customerId("AB695DA801DD1BB6E05341588E0A3BDC");
 		paymentInformation.customer(paymentInformationCustomer);
 
