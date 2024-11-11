@@ -4,7 +4,7 @@
 
 This repository contains working code samples which demonstrate Java integration with the CyberSource REST APIs through the [CyberSource Java SDK](https://github.com/CyberSource/cybersource-rest-client-java).
 
-The samples are organized into categories and common usage examples.       
+The samples are organized into categories and common usage examples.                     
 
 ## Using the Sample Code
 
