@@ -39,7 +39,7 @@ public class MerchantBoardingSmartFDC {
 
         Boardingv1registrationsOrganizationInformation organizationInformation=new Boardingv1registrationsOrganizationInformation();
         organizationInformation.parentOrganizationId("apitester00");
-        organizationInformation.type(Boardingv1registrationsOrganizationInformation.TypeEnum.MERCHANT);
+        // organizationInformation.type(Boardingv1registrationsOrganizationInformation.TypeEnum.MERCHANT);
         organizationInformation.configurable(true);
 
         Boardingv1registrationsOrganizationInformationBusinessInformation businessInformation=new Boardingv1registrationsOrganizationInformationBusinessInformation();
@@ -88,7 +88,7 @@ public class MerchantBoardingSmartFDC {
         CardProcessingConfig configurations=new CardProcessingConfig();
         CardProcessingConfigCommon common=new CardProcessingConfigCommon();
         common.merchantCategoryCode("1799");
-        common.defaultAuthTypeCode(CardProcessingConfigCommon.DefaultAuthTypeCodeEnum.FINAL);
+        // organizationInformation.type(Boardingv1registrationsOrganizationInformation.TypeEnum.MERCHANT);
         common.enablePartialAuth(true);
 
         Map<String, CardProcessingConfigCommonProcessors> processors=new HashMap<>();

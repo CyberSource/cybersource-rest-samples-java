@@ -8,10 +8,7 @@ import Model.*;
 import com.cybersource.authsdk.core.MerchantConfig;
 
 import java.lang.invoke.MethodHandles;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Properties;
-import java.util.UUID;
+import java.util.*;
 
 public class MerchantBoardingVPC {
 
@@ -24,7 +21,7 @@ public class MerchantBoardingVPC {
         System.out.println("[Sample Code Testing] [" + filename + "] " + status);
     }
 
-    public static void main(String args[]) throws Exception {
+    public static void main(String[] args) throws Exception {
         // Accept required parameters from args[] and pass to run.
         run();
 
@@ -33,16 +30,16 @@ public class MerchantBoardingVPC {
 
     public static InlineResponse2012 run() {
 
-        PostRegistrationBody reqObj=new PostRegistrationBody();
+        PostRegistrationBody reqObj = new PostRegistrationBody();
 
-        Boardingv1registrationsOrganizationInformation organizationInformation=new Boardingv1registrationsOrganizationInformation();
+        Boardingv1registrationsOrganizationInformation organizationInformation = new Boardingv1registrationsOrganizationInformation();
         organizationInformation.parentOrganizationId("apitester00");
-        organizationInformation.type(Boardingv1registrationsOrganizationInformation.TypeEnum.MERCHANT);
+        // organizationInformation.type(Boardingv1registrationsOrganizationInformation.TypeEnum.MERCHANT);
         organizationInformation.configurable(true);
 
-        Boardingv1registrationsOrganizationInformationBusinessInformation businessInformation=new Boardingv1registrationsOrganizationInformationBusinessInformation();
+        Boardingv1registrationsOrganizationInformationBusinessInformation businessInformation = new Boardingv1registrationsOrganizationInformationBusinessInformation();
         businessInformation.name("StuartWickedFastEatz");
-        Boardingv1registrationsOrganizationInformationBusinessInformationAddress address=new Boardingv1registrationsOrganizationInformationBusinessInformationAddress();
+        Boardingv1registrationsOrganizationInformationBusinessInformationAddress address = new Boardingv1registrationsOrganizationInformationBusinessInformationAddress();
         address.country("US");
         address.address1("123456 SandMarket");
         address.locality("ORMOND BEACH");
@@ -52,7 +49,7 @@ public class MerchantBoardingVPC {
         businessInformation.websiteUrl("https://www.StuartWickedEats.com");
         businessInformation.phoneNumber("6574567813");
 
-        Boardingv1registrationsOrganizationInformationBusinessInformationBusinessContact businessContact=new Boardingv1registrationsOrganizationInformationBusinessInformationBusinessContact();
+        Boardingv1registrationsOrganizationInformationBusinessInformationBusinessContact businessContact = new Boardingv1registrationsOrganizationInformationBusinessInformationBusinessContact();
         businessContact.firstName("Stuart");
         businessContact.lastName("Stuart");
         businessContact.phoneNumber("6574567813");
@@ -64,30 +61,30 @@ public class MerchantBoardingVPC {
         reqObj.organizationInformation(organizationInformation);
 
 
-        Boardingv1registrationsProductInformation productInformation=new Boardingv1registrationsProductInformation();
-        Boardingv1registrationsProductInformationSelectedProducts selectedProducts=new Boardingv1registrationsProductInformationSelectedProducts();
+        Boardingv1registrationsProductInformation productInformation = new Boardingv1registrationsProductInformation();
+        Boardingv1registrationsProductInformationSelectedProducts selectedProducts = new Boardingv1registrationsProductInformationSelectedProducts();
 
-        PaymentsProducts payments=new PaymentsProducts();
-        PaymentsProductsCardProcessing cardProcessing=new PaymentsProductsCardProcessing();
-        PaymentsProductsCardProcessingSubscriptionInformation subscriptionInformation=new PaymentsProductsCardProcessingSubscriptionInformation();
+        PaymentsProducts payments = new PaymentsProducts();
+        PaymentsProductsCardProcessing cardProcessing = new PaymentsProductsCardProcessing();
+        PaymentsProductsCardProcessingSubscriptionInformation subscriptionInformation = new PaymentsProductsCardProcessingSubscriptionInformation();
 
         subscriptionInformation.enabled(true);
-        Map<String, PaymentsProductsCardProcessingSubscriptionInformationFeatures> features=new HashMap<>();
+        Map<String, PaymentsProductsCardProcessingSubscriptionInformationFeatures> features = new HashMap<>();
 
-        PaymentsProductsCardProcessingSubscriptionInformationFeatures obj1=new PaymentsProductsCardProcessingSubscriptionInformationFeatures();
+        PaymentsProductsCardProcessingSubscriptionInformationFeatures obj1 = new PaymentsProductsCardProcessingSubscriptionInformationFeatures();
         obj1.enabled(true);
-        features.put("cardNotPresent",obj1);
-        features.put("cardPresent",obj1);
+        features.put("cardNotPresent", obj1);
+        features.put("cardPresent", obj1);
         subscriptionInformation.features(features);
         cardProcessing.subscriptionInformation(subscriptionInformation);
 
 
-        PaymentsProductsCardProcessingConfigurationInformation configurationInformation=new PaymentsProductsCardProcessingConfigurationInformation();
+        PaymentsProductsCardProcessingConfigurationInformation configurationInformation = new PaymentsProductsCardProcessingConfigurationInformation();
 
-        CardProcessingConfig configurations=new CardProcessingConfig();
-        CardProcessingConfigCommon common=new CardProcessingConfigCommon();
+        CardProcessingConfig configurations = new CardProcessingConfig();
+        CardProcessingConfigCommon common = new CardProcessingConfigCommon();
         common.merchantCategoryCode("1799");
-        common.defaultAuthTypeCode(CardProcessingConfigCommon.DefaultAuthTypeCodeEnum.FINAL);
+        // organizationInformation.type(Boardingv1registrationsOrganizationInformation.TypeEnum.MERCHANT);
         common.masterCardAssignedId(null);
         common.sicCode(null);
         common.enablePartialAuth(false);
@@ -105,9 +102,9 @@ public class MerchantBoardingVPC {
         common.enableDuplicateMerchantReferenceNumberBlocking(false);
 
 
-        Map<String, CardProcessingConfigCommonProcessors> processors=new HashMap<>();
-        CardProcessingConfigCommonProcessors obj5=new CardProcessingConfigCommonProcessors();
-        CardProcessingConfigCommonAcquirer acquirer=new CardProcessingConfigCommonAcquirer();
+        Map<String, CardProcessingConfigCommonProcessors> processors = new HashMap<>();
+        CardProcessingConfigCommonProcessors obj5 = new CardProcessingConfigCommonProcessors();
+        CardProcessingConfigCommonAcquirer acquirer = new CardProcessingConfigCommonAcquirer();
 
         acquirer.countryCode("840_usa");
         acquirer.fileDestinationBin("444500");
@@ -119,12 +116,12 @@ public class MerchantBoardingVPC {
         obj5.acquirer(acquirer);
 
 
-        Map<String, CardProcessingConfigCommonPaymentTypes> paymentTypes=new HashMap<>();
-        CardProcessingConfigCommonPaymentTypes obj7=new CardProcessingConfigCommonPaymentTypes();
+        Map<String, CardProcessingConfigCommonPaymentTypes> paymentTypes = new HashMap<>();
+        CardProcessingConfigCommonPaymentTypes obj7 = new CardProcessingConfigCommonPaymentTypes();
         obj7.enabled(true);
 
-        Map<String, CardProcessingConfigCommonCurrencies> currencies=new HashMap<>();
-        CardProcessingConfigCommonCurrencies obj2=new CardProcessingConfigCommonCurrencies();
+        Map<String, CardProcessingConfigCommonCurrencies> currencies = new HashMap<>();
+        CardProcessingConfigCommonCurrencies obj2 = new CardProcessingConfigCommonCurrencies();
         obj2.enabled(true);
         obj2.enabledCardPresent(false);
         obj2.enabledCardNotPresent(true);
@@ -132,13 +129,13 @@ public class MerchantBoardingVPC {
         obj2.merchantId("113355");
         obj2.serviceEnablementNumber(null);
 
-        currencies.put("CAD",obj2);
-        currencies.put("USD",obj2);
+        currencies.put("CAD", obj2);
+        currencies.put("USD", obj2);
 
 
         obj7.currencies(currencies);
 
-        paymentTypes.put("VISA",obj7);
+        paymentTypes.put("VISA", obj7);
 
         obj5.paymentTypes(paymentTypes);
 
@@ -152,25 +149,25 @@ public class MerchantBoardingVPC {
         obj5.quasiCash(false);
         obj5.enableTransactionReferenceNumber(true);
 
-        processors.put("VPC",obj5);
+        processors.put("VPC", obj5);
 
         common.processors(processors);
 
         configurations.common(common);
 
-        CardProcessingConfigFeatures features2=new CardProcessingConfigFeatures();
+        CardProcessingConfigFeatures features2 = new CardProcessingConfigFeatures();
 
-        CardProcessingConfigFeaturesCardNotPresent cardNotPresent=new CardProcessingConfigFeaturesCardNotPresent();
+        CardProcessingConfigFeaturesCardNotPresent cardNotPresent = new CardProcessingConfigFeaturesCardNotPresent();
 
-        Map<String, CardProcessingConfigFeaturesCardNotPresentProcessors> processors3=new HashMap<>();
-        CardProcessingConfigFeaturesCardNotPresentProcessors obj9=new CardProcessingConfigFeaturesCardNotPresentProcessors();
+        Map<String, CardProcessingConfigFeaturesCardNotPresentProcessors> processors3 = new HashMap<>();
+        CardProcessingConfigFeaturesCardNotPresentProcessors obj9 = new CardProcessingConfigFeaturesCardNotPresentProcessors();
 
         obj9.enableEmsTransactionRiskScore(null);
         obj9.relaxAddressVerificationSystem(true);
         obj9.relaxAddressVerificationSystemAllowExpiredCard(true);
         obj9.relaxAddressVerificationSystemAllowZipWithoutCountry(true);
 
-        processors3.put("VPC",obj9);
+        processors3.put("VPC", obj9);
         cardNotPresent.processors(processors3);
 
         cardNotPresent.visaStraightThroughProcessingOnly(false);
@@ -178,16 +175,16 @@ public class MerchantBoardingVPC {
 
         features2.cardNotPresent(cardNotPresent);
 
-        CardProcessingConfigFeaturesCardPresent cardPresent=new CardProcessingConfigFeaturesCardPresent();
+        CardProcessingConfigFeaturesCardPresent cardPresent = new CardProcessingConfigFeaturesCardPresent();
 
-        Map<String, CardProcessingConfigFeaturesCardPresentProcessors> processors2=new HashMap<>();
-        CardProcessingConfigFeaturesCardPresentProcessors obj4=new CardProcessingConfigFeaturesCardPresentProcessors();
+        Map<String, CardProcessingConfigFeaturesCardPresentProcessors> processors2 = new HashMap<>();
+        CardProcessingConfigFeaturesCardPresentProcessors obj4 = new CardProcessingConfigFeaturesCardPresentProcessors();
 
 
         obj4.defaultPointOfSaleTerminalId("223355");
         obj4.defaultPointOfSaleTerminalId("223344");
 
-        processors2.put("VPC",obj4);
+        processors2.put("VPC", obj4);
 
         cardPresent.processors(processors2);
 
@@ -203,21 +200,21 @@ public class MerchantBoardingVPC {
         cardProcessing.configurationInformation(configurationInformation);
         payments.cardProcessing(cardProcessing);
 
-        PaymentsProductsVirtualTerminal virtualTerminal=new PaymentsProductsVirtualTerminal();
-        PaymentsProductsPayerAuthenticationSubscriptionInformation subscriptionInformation5=new PaymentsProductsPayerAuthenticationSubscriptionInformation();
+        PaymentsProductsVirtualTerminal virtualTerminal = new PaymentsProductsVirtualTerminal();
+        PaymentsProductsPayerAuthenticationSubscriptionInformation subscriptionInformation5 = new PaymentsProductsPayerAuthenticationSubscriptionInformation();
         subscriptionInformation5.enabled(true);
         virtualTerminal.subscriptionInformation(subscriptionInformation5);
 
-        PaymentsProductsVirtualTerminalConfigurationInformation configurationInformation5=new PaymentsProductsVirtualTerminalConfigurationInformation();
+        PaymentsProductsVirtualTerminalConfigurationInformation configurationInformation5 = new PaymentsProductsVirtualTerminalConfigurationInformation();
         UUID templateId2 = UUID.fromString("9FA1BB94-5119-48D3-B2E5-A81FD3C657B5");
         configurationInformation5.templateId(templateId2);
         virtualTerminal.configurationInformation(configurationInformation5);
 
         payments.virtualTerminal(virtualTerminal);
 
-        PaymentsProductsTax customerInvoicing=new PaymentsProductsTax();
+        PaymentsProductsTax customerInvoicing = new PaymentsProductsTax();
 
-        PaymentsProductsPayerAuthenticationSubscriptionInformation subscriptionInformation6=new PaymentsProductsPayerAuthenticationSubscriptionInformation();
+        PaymentsProductsPayerAuthenticationSubscriptionInformation subscriptionInformation6 = new PaymentsProductsPayerAuthenticationSubscriptionInformation();
 
         subscriptionInformation6.enabled(true);
         customerInvoicing.subscriptionInformation(subscriptionInformation6);
@@ -225,19 +222,19 @@ public class MerchantBoardingVPC {
 
         selectedProducts.payments(payments);
 
-        RiskProducts risk=new RiskProducts();
+        RiskProducts risk = new RiskProducts();
 
         selectedProducts.risk(risk);
 
-        CommerceSolutionsProducts commerceSolutions=new CommerceSolutionsProducts();
+        CommerceSolutionsProducts commerceSolutions = new CommerceSolutionsProducts();
 
-        CommerceSolutionsProductsTokenManagement tokenManagement=new CommerceSolutionsProductsTokenManagement();
+        CommerceSolutionsProductsTokenManagement tokenManagement = new CommerceSolutionsProductsTokenManagement();
 
-        PaymentsProductsPayerAuthenticationSubscriptionInformation subscriptionInformation7=new PaymentsProductsPayerAuthenticationSubscriptionInformation();
+        PaymentsProductsPayerAuthenticationSubscriptionInformation subscriptionInformation7 = new PaymentsProductsPayerAuthenticationSubscriptionInformation();
         subscriptionInformation7.enabled(true);
         tokenManagement.subscriptionInformation(subscriptionInformation7);
 
-        CommerceSolutionsProductsTokenManagementConfigurationInformation configurationInformation7=new CommerceSolutionsProductsTokenManagementConfigurationInformation();
+        CommerceSolutionsProductsTokenManagementConfigurationInformation configurationInformation7 = new CommerceSolutionsProductsTokenManagementConfigurationInformation();
 
         UUID templateId3 = UUID.fromString("D62BEE20-DCFD-4AA2-8723-BA3725958ABA");
         configurationInformation7.templateId(templateId3);
@@ -246,17 +243,17 @@ public class MerchantBoardingVPC {
         commerceSolutions.tokenManagement(tokenManagement);
         selectedProducts.commerceSolutions(commerceSolutions);
 
-        ValueAddedServicesProducts valueAddedServices=new ValueAddedServicesProducts();
+        ValueAddedServicesProducts valueAddedServices = new ValueAddedServicesProducts();
 
-        PaymentsProductsTax transactionSearch=new PaymentsProductsTax();
+        PaymentsProductsTax transactionSearch = new PaymentsProductsTax();
 
-        PaymentsProductsPayerAuthenticationSubscriptionInformation subscriptionInformation9=new PaymentsProductsPayerAuthenticationSubscriptionInformation();
+        PaymentsProductsPayerAuthenticationSubscriptionInformation subscriptionInformation9 = new PaymentsProductsPayerAuthenticationSubscriptionInformation();
         subscriptionInformation9.enabled(true);
         transactionSearch.subscriptionInformation(subscriptionInformation9);
         valueAddedServices.transactionSearch(transactionSearch);
 
-        PaymentsProductsTax reporting=new PaymentsProductsTax();
-        PaymentsProductsPayerAuthenticationSubscriptionInformation subscriptionInformation3=new PaymentsProductsPayerAuthenticationSubscriptionInformation();
+        PaymentsProductsTax reporting = new PaymentsProductsTax();
+        PaymentsProductsPayerAuthenticationSubscriptionInformation subscriptionInformation3 = new PaymentsProductsPayerAuthenticationSubscriptionInformation();
         subscriptionInformation3.enabled(true);
         reporting.subscriptionInformation(subscriptionInformation3);
         valueAddedServices.reporting(reporting);
@@ -267,7 +264,7 @@ public class MerchantBoardingVPC {
         reqObj.productInformation(productInformation);
 
 
-        InlineResponse2012 result=null;
+        InlineResponse2012 result = null;
 
         try {
             //Boarding API support only JWT Auth Type
@@ -288,11 +285,10 @@ public class MerchantBoardingVPC {
         } catch (ApiException e) {
             e.printStackTrace();
             WriteLogAudit(e.getCode());
-            System.out.println("Msg.."+e.getMessage()+"  Respbody.."+e.getResponseBody()+"  cause.."+e.getCause());
+            System.out.println("Msg.." + e.getMessage() + "  Respbody.." + e.getResponseBody() + "  cause.." + e.getCause());
         } catch (Exception e) {
             e.printStackTrace();
         }
-
 
 
         return result;

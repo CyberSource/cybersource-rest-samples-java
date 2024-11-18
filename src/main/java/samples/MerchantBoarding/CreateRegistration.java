@@ -35,7 +35,7 @@ public class CreateRegistration {
 
         Boardingv1registrationsOrganizationInformation organizationInformation=new Boardingv1registrationsOrganizationInformation();
         organizationInformation.parentOrganizationId("apitester00");
-        organizationInformation.type(Boardingv1registrationsOrganizationInformation.TypeEnum.MERCHANT);
+        // organizationInformation.type(Boardingv1registrationsOrganizationInformation.TypeEnum.MERCHANT);
         organizationInformation.configurable(true);
 
         Boardingv1registrationsOrganizationInformationBusinessInformation businessInformation=new Boardingv1registrationsOrganizationInformationBusinessInformation();
@@ -123,7 +123,7 @@ public class CreateRegistration {
         CardProcessingConfigCommonProcessors obj2=new CardProcessingConfigCommonProcessors();
         obj2.merchantId("123456789101");
         obj2.terminalId("1231");
-        obj2.industryCode(CardProcessingConfigCommonProcessors.IndustryCodeEnum.D);
+      //  obj2.industryCode(CardProcessingConfigCommonProcessors.IndustryCodeEnum.D);
         obj2.vitalNumber("71234567");
         obj2.merchantBinNumber("123456");
         obj2.merchantLocationNumber("00001");
