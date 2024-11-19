@@ -35,7 +35,7 @@ public class MerchantBoardingBarclays {
 
         Boardingv1registrationsOrganizationInformation organizationInformation=new Boardingv1registrationsOrganizationInformation();
         organizationInformation.parentOrganizationId("apitester00");
-        organizationInformation.type(Boardingv1registrationsOrganizationInformation.TypeEnum.MERCHANT);
+        // organizationInformation.type(Boardingv1registrationsOrganizationInformation.TypeEnum.MERCHANT);
         organizationInformation.configurable(true);
 
         Boardingv1registrationsOrganizationInformationBusinessInformation businessInformation=new Boardingv1registrationsOrganizationInformationBusinessInformation();
@@ -87,7 +87,7 @@ public class MerchantBoardingBarclays {
         CardProcessingConfigCommon common=new CardProcessingConfigCommon();
 
         common.merchantCategoryCode("5999");
-        common.defaultAuthTypeCode(CardProcessingConfigCommon.DefaultAuthTypeCodeEnum.FINAL);
+        // organizationInformation.type(Boardingv1registrationsOrganizationInformation.TypeEnum.MERCHANT);
 
         Map<String, CardProcessingConfigCommonProcessors> processors=new HashMap<>();
         CardProcessingConfigCommonProcessors obj2=new CardProcessingConfigCommonProcessors();

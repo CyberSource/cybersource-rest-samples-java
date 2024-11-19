@@ -38,7 +38,7 @@ public class MerchantBoardingTSYS {
 
         Boardingv1registrationsOrganizationInformation organizationInformation=new Boardingv1registrationsOrganizationInformation();
         organizationInformation.parentOrganizationId("apitester00");
-        organizationInformation.type(Boardingv1registrationsOrganizationInformation.TypeEnum.MERCHANT);
+        // organizationInformation.type(Boardingv1registrationsOrganizationInformation.TypeEnum.MERCHANT);
         organizationInformation.configurable(true);
 
         Boardingv1registrationsOrganizationInformationBusinessInformation businessInformation=new Boardingv1registrationsOrganizationInformationBusinessInformation();
@@ -89,7 +89,7 @@ public class MerchantBoardingTSYS {
         CardProcessingConfigCommon common=new CardProcessingConfigCommon();
         common.merchantCategoryCode("5999");
         common.processLevel3Data("ignored");
-        common.defaultAuthTypeCode(CardProcessingConfigCommon.DefaultAuthTypeCodeEnum.FINAL);
+        // organizationInformation.type(Boardingv1registrationsOrganizationInformation.TypeEnum.MERCHANT);
         common.enablePartialAuth(false);
         common.amexVendorCode("2233");
 
@@ -138,7 +138,7 @@ public class MerchantBoardingTSYS {
         obj5.chainNumber("223344");
         obj5.batchGroup("vital_1130");
         obj5.enhancedData("disabled");
-        obj5.industryCode(CardProcessingConfigCommonProcessors.IndustryCodeEnum.D);
+        //obj5.industryCode(CardProcessingConfigCommonProcessors.IndustryCodeEnum.D);
         obj5.merchantBinNumber("765576");
         obj5.merchantId("834215123456");
         obj5.merchantLocationNumber("00001");
