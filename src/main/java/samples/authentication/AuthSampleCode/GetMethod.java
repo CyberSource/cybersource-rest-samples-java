@@ -50,10 +50,10 @@ public class GetMethod {
 
 		merchantProp = MerchantProperties.getMerchantProperties();
 		merchantConfig = new MerchantConfig(merchantProp);
-		merchantConfig.setRequestType(requestType);
+//		merchantConfig.setRequestType(requestType);
 		authenticationType = merchantConfig.getAuthenticationType().trim();
-		merchantConfig.setRequestTarget(requestTarget);
-		url = "https://" + merchantConfig.getRequestHost() + merchantConfig.getRequestTarget();
+//		merchantConfig.setRequestTarget(requestTarget);
+		url = "https://" + merchantConfig.getRequestHost() + requestTarget;
 		/* Begin the Get process. */
 		process();
 	}

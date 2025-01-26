@@ -45,12 +45,12 @@ public class GetObjectMethod {
 		merchantProp = Configuration.getMerchantDetails();
 		merchantConfig = new MerchantConfig(merchantProp);
 		/* Set Request Type */
-		merchantConfig.setRequestType(requestType);
+//		merchantConfig.setRequestType(requestType);
 		/* Extract Authentication Type from cybs.properties */
 		authenticationType = merchantConfig.getAuthenticationType().trim();
-		merchantConfig.setRequestTarget(requestTarget);
+//		merchantConfig.setRequestTarget(requestTarget);
 		/* Construct the URL with respect to GETID. */
-		url = "https://" + merchantConfig.getRequestHost() + merchantConfig.getRequestTarget();
+		url = "https://" + merchantConfig.getRequestHost() + requestTarget;
 		/* Begin the Get process. */
 		process();
 	}

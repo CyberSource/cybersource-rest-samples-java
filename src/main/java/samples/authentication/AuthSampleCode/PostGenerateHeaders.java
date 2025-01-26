@@ -13,6 +13,8 @@ import com.cybersource.authsdk.core.Authorization;
 import com.cybersource.authsdk.core.MerchantConfig;
 import com.cybersource.authsdk.payloaddigest.PayloadDigest;
 import com.cybersource.authsdk.util.GlobalLabelParameters;
+import com.cybersource.authsdk.util.PropertiesUtil;
+
 import samples.authentication.harness.MerchantProperties;
 
 /**
@@ -113,14 +115,14 @@ public class PostGenerateHeaders {
 		System.out.println("Authentication Type : " +  merchantConfig.getAuthenticationType().trim());
 		this.logger.info(GlobalLabelParameters.BEGIN_TRANSACTION + "\n******************* Generate POST Headers *******************");
 
-		merchantConfig.setRequestType(requestType);
-		merchantConfig.setRequestData(requestJson);
+//		merchantConfig.setRequestType(requestType);
+//		merchantConfig.setRequestData(requestJson);
 		
-		digest = new PayloadDigest(this.merchantConfig);
-		boolean isMerchant = merchantConfig.validateMerchantDetails();
+		digest = new PayloadDigest(requestJson);
+		boolean isMerchant = merchantConfig.validateMerchantDetails(requestType);
 		
 		auth = new Authorization();
-		digest = new PayloadDigest(merchantConfig);
+		digest = new PayloadDigest(requestJson);
 		if (isMerchant) {
 			generatePostHeaders();
 		}
@@ -138,7 +140,7 @@ public class PostGenerateHeaders {
 		this.merchantConfig = merchantConfig;
 		auth = new Authorization();
 		logger = LogManager.getLogger(getClass());
-		digest = new PayloadDigest(this.merchantConfig);
+		digest = new PayloadDigest(requestJson);
 		generatePostHeaders();
 	}
 
@@ -170,13 +172,12 @@ public class PostGenerateHeaders {
 			
 			System.out.println("Digest              : " + digest.getDigest());
 			
-			tempSig = auth.getToken(merchantConfig);
+			tempSig = auth.getToken(merchantConfig,requestType,requestJson,null,date);
 			System.out.println("Signature           : " + tempSig.toString());
 			WriteLogAudit(200);
 			
 		} else {
-			auth.setJWTRequestBody(requestJson);
-			tempSig = auth.getToken(merchantConfig);
+			tempSig = auth.getToken(merchantConfig,requestType,requestJson,null,date);
 			System.out.println("Authorization, Bearer " + tempSig.toString());
 			WriteLogAudit(200);
 		}
