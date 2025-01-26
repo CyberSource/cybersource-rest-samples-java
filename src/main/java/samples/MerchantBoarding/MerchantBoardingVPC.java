@@ -34,7 +34,7 @@ public class MerchantBoardingVPC {
 
         Boardingv1registrationsOrganizationInformation organizationInformation = new Boardingv1registrationsOrganizationInformation();
         organizationInformation.parentOrganizationId("apitester00");
-        // organizationInformation.type(Boardingv1registrationsOrganizationInformation.TypeEnum.MERCHANT);
+        organizationInformation.type("MERCHANT");
         organizationInformation.configurable(true);
 
         Boardingv1registrationsOrganizationInformationBusinessInformation businessInformation = new Boardingv1registrationsOrganizationInformationBusinessInformation();
@@ -84,7 +84,7 @@ public class MerchantBoardingVPC {
         CardProcessingConfig configurations = new CardProcessingConfig();
         CardProcessingConfigCommon common = new CardProcessingConfigCommon();
         common.merchantCategoryCode("1799");
-        // organizationInformation.type(Boardingv1registrationsOrganizationInformation.TypeEnum.MERCHANT);
+        organizationInformation.type("MERCHANT");
         common.masterCardAssignedId(null);
         common.sicCode(null);
         common.enablePartialAuth(false);
@@ -94,7 +94,7 @@ public class MerchantBoardingVPC {
         common.visaDelegatedAuthenticationId("123457");
 
         //TBC
-        // common.domesticMerchantId("123458");
+        common.domesticMerchantId(true);
         //
         common.creditCardRefundLimitPercent("2");
         common.businessCenterCreditCardRefundLimitPercent("3");
