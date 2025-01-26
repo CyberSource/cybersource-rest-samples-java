@@ -15,6 +15,7 @@ import Api.*;
 import Data.Configuration;
 import Invokers.ApiClient;
 import Invokers.ApiException;
+import Invokers.ApiResponse;
 import Model.*;
 
 public class CreateReportSubscription {
@@ -59,13 +60,13 @@ public class CreateReportSubscription {
 			apiClient.merchantConfig = merchantConfig;
 
 			ReportSubscriptionsApi apiInstance = new ReportSubscriptionsApi(apiClient);
-			apiInstance.createSubscription(requestObj, organizationId);
+			ApiResponse<Void> result =apiInstance.createSubscriptionWithHttpInfo(requestObj, organizationId);
 
 			responseCode = apiClient.responseCode;
 			status = apiClient.status;
 			System.out.println("ResponseCode :" + responseCode);
 			System.out.println("ResponseMessage :" + status);
-			System.out.println(apiClient.responseBody.toString());
+			System.out.println(result.getData().toString());
 			WriteLogAudit(Integer.parseInt(responseCode));
 		} catch (ApiException e) {
 			e.printStackTrace();

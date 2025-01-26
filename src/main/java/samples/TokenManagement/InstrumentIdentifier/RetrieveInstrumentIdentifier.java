@@ -37,7 +37,7 @@ public class RetrieveInstrumentIdentifier {
 			apiClient.merchantConfig = merchantConfig;
 
 			InstrumentIdentifierApi apiInstance = new InstrumentIdentifierApi(apiClient);
-			result = apiInstance.getInstrumentIdentifier(tokenId, profileid);
+			result = apiInstance.getInstrumentIdentifier(tokenId, profileid, false);
 
 			responseCode = apiClient.responseCode;
 			status = apiClient.status;

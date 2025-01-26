@@ -37,7 +37,7 @@ public class RetrievePaymentInstrument {
 			apiClient.merchantConfig = merchantConfig;
 
 			PaymentInstrumentApi apiInstance = new PaymentInstrumentApi(apiClient);
-			result = apiInstance.getPaymentInstrument(tokenId, profileid);
+			result = apiInstance.getPaymentInstrument(tokenId, profileid, false);
 
 			responseCode = apiClient.responseCode;
 			status = apiClient.status;

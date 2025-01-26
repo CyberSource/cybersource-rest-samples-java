@@ -49,7 +49,7 @@ public class DeleteSubscriptionOfReportNameByOrganization {
 			status = apiClient.status;
 			System.out.println("ResponseCode :" + responseCode);
 			System.out.println("ResponseMessage :" + status);
-			System.out.println(apiClient.responseBody.toString());
+//			System.out.println(apiClient.responseBody.toString());
 			WriteLogAudit(Integer.parseInt(responseCode));
 		} catch (ApiException e) {
 			e.printStackTrace();
