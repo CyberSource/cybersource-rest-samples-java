@@ -1,19 +1,10 @@
 package samples.UnifiedCheckout;
 
-import java.*;
 import java.util.*;
-import java.math.BigDecimal;
-import org.joda.time.DateTime;
-import org.joda.time.DateTimeZone;
-import org.joda.time.LocalDate;
-
-import com.google.common.base.Strings;
 import com.cybersource.authsdk.core.MerchantConfig;
-
 import Api.*;
 import Data.Configuration;
 import Invokers.ApiClient;
-import Invokers.ApiException;
 import Model.*;
 
 public class GenerateUnifiedCheckoutCaptureContext {
