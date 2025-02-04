@@ -29,33 +29,55 @@ public class GenerateUnifiedCheckoutCaptureContext {
 	
 		GenerateUnifiedCheckoutCaptureContextRequest requestObj = new GenerateUnifiedCheckoutCaptureContextRequest();
 
-		List <String> targetOrigins = new ArrayList <String>();
-		targetOrigins.add("https://the-up-demo.appspot.com");
-		requestObj.targetOrigins(targetOrigins);
+		requestObj.clientVersion("0.23");
 
-		requestObj.clientVersion("0.11");
+		List <String> targetOrigins = new ArrayList <String>();
+		targetOrigins.add("https://yourCheckoutPage.com");
+		requestObj.targetOrigins(targetOrigins);
 
 		List <String> allowedCardNetworks = new ArrayList <String>();
 		allowedCardNetworks.add("VISA");
 		allowedCardNetworks.add("MASTERCARD");
 		allowedCardNetworks.add("AMEX");
+		allowedCardNetworks.add("CARNET");
+		allowedCardNetworks.add("CARTESBANCAIRES");
+		allowedCardNetworks.add("CUP");
+		allowedCardNetworks.add("DINERSCLUB");
+		allowedCardNetworks.add("DISCOVER");
+		allowedCardNetworks.add("EFTPOS");
+		allowedCardNetworks.add("ELO");
+		allowedCardNetworks.add("JCB");
+		allowedCardNetworks.add("JCREW");
+		allowedCardNetworks.add("MADA");
+		allowedCardNetworks.add("MAESTRO");
+		allowedCardNetworks.add("MEEZA");
 		requestObj.allowedCardNetworks(allowedCardNetworks);
 
 		List <String> allowedPaymentTypes = new ArrayList <String>();
+		allowedPaymentTypes.add("APPLEPAY");
+		allowedPaymentTypes.add("CHECK");
+		allowedPaymentTypes.add("CLICKTOPAY");
+		allowedPaymentTypes.add("GOOGLEPAY");
 		allowedPaymentTypes.add("PANENTRY");
-		allowedPaymentTypes.add("SRC");
+		allowedPaymentTypes.add("PAZE");
 		requestObj.allowedPaymentTypes(allowedPaymentTypes);
 
 		requestObj.country("US");
 		requestObj.locale("en_US");
-		Upv1capturecontextsCaptureMandate upv1capturecontextsCaptureMandate = new Upv1capturecontextsCaptureMandate();
-		upv1capturecontextsCaptureMandate.setBillingType("FULL");
-		upv1capturecontextsCaptureMandate.setRequestEmail(true);
-		upv1capturecontextsCaptureMandate.setRequestPhone(true);
-		upv1capturecontextsCaptureMandate.setRequestShipping(true);
-		upv1capturecontextsCaptureMandate.setShipToCountries(Arrays.asList("US", "GB"));
-		upv1capturecontextsCaptureMandate.setShowAcceptedNetworkIcons(true);
-		requestObj.captureMandate(upv1capturecontextsCaptureMandate);
+		Upv1capturecontextsCaptureMandate captureMandate = new Upv1capturecontextsCaptureMandate();
+		captureMandate.billingType("FULL");
+		captureMandate.requestEmail(true);
+		captureMandate.requestPhone(true);
+		captureMandate.requestShipping(true);
+
+		List <String> shipToCountries = new ArrayList <String>();
+		shipToCountries.add("US");
+		shipToCountries.add("GB");
+		captureMandate.shipToCountries(shipToCountries);
+
+		captureMandate.showAcceptedNetworkIcons(true);
+		requestObj.captureMandate(captureMandate);
+
 		Upv1capturecontextsOrderInformation orderInformation = new Upv1capturecontextsOrderInformation();
 		Upv1capturecontextsOrderInformationAmountDetails orderInformationAmountDetails = new Upv1capturecontextsOrderInformationAmountDetails();
 		orderInformationAmountDetails.totalAmount("21.00");
@@ -64,7 +86,6 @@ public class GenerateUnifiedCheckoutCaptureContext {
 
 		requestObj.orderInformation(orderInformation);
 
-		
 		try {
 			merchantProp = Configuration.getMerchantDetails();
 			ApiClient apiClient = new ApiClient();
