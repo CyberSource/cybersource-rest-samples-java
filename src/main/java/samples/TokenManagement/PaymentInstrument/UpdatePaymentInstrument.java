@@ -61,7 +61,7 @@ public class UpdatePaymentInstrument {
 			apiClient.merchantConfig = merchantConfig;
 
 			PaymentInstrumentApi apiInstance = new PaymentInstrumentApi(apiClient);
-			result = apiInstance.patchPaymentInstrument(tokenId, requestObj, profileid, null);
+			result = apiInstance.patchPaymentInstrument(tokenId, requestObj, profileid, false, null);
 
 			responseCode = apiClient.responseCode;
 			status = apiClient.status;

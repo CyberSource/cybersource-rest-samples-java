@@ -112,11 +112,11 @@ public class PostMethod {
 		merchantProp = MerchantProperties.getMerchantProperties();
 		merchantConfig = new MerchantConfig(merchantProp);
 		authenticationType = merchantConfig.getAuthenticationType().trim();
-		merchantConfig.setRequestType(requestType);
-		merchantConfig.setRequestData(requestJson);
-		merchantConfig.setRequestTarget(requestTarget);
+//		merchantConfig.setRequestType(requestType);
+//		merchantConfig.setRequestData(requestJson);
+//		merchantConfig.setRequestTarget(requestTarget);
 		
-		url = "https://" + merchantConfig.getRequestHost() + merchantConfig.getRequestTarget();
+		url = "https://" + merchantConfig.getRequestHost() + requestTarget;
 		
 		/* Begin Post process. */
 		process();

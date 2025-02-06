@@ -39,7 +39,7 @@ public class PutGenerateHeaders {
 	public PutGenerateHeaders(MerchantConfig merchantConfig) throws Exception {
 		auth = new Authorization();
 		logger = LogManager.getLogger(getClass());
-		digest = new PayloadDigest(merchantConfig);
+		digest = new PayloadDigest(jsonRequestData);
 		PutMethodHeaders(merchantConfig);
 	}
 
@@ -49,12 +49,12 @@ public class PutGenerateHeaders {
 		
 		this.jsonRequestData = FileReader.readJsonFromFile("src/main/resources/TRRReport.json");
 		
-		merchantConfig.setRequestData(jsonRequestData);
+//		merchantConfig.setRequestData(jsonRequestData);
 		
-		digest = new PayloadDigest(merchantConfig);
+		digest = new PayloadDigest(jsonRequestData);
 		this.logger.info(GlobalLabelParameters.BEGIN_TRANSACTION + "\n******************* Generate PUT Headers *******************");
 		
-		boolean isMerchant = merchantConfig.validateMerchantDetails();
+		boolean isMerchant = merchantConfig.validateMerchantDetails(requestType);
 		if(isMerchant){
 			PutMethodHeaders(merchantConfig);
 		}
@@ -83,15 +83,15 @@ public class PutGenerateHeaders {
 			this.logger.info(GlobalLabelParameters.USERAGENT + " : " + GlobalLabelParameters.USER_AGENT_VALUE);
 
 			System.out.println("Digest              : " + digest.getDigest());
-
-			TempSig = auth.getToken(merchantConfig);
+			
+			TempSig = auth.getToken(merchantConfig,requestType,jsonRequestData,null,date);
 			System.out.println("Signature           : " + TempSig.toString());
 			WriteLogAudit(200);
 			
 		} else {
 			String jwtRequestBody = this.jsonRequestData;
-			auth.setJWTRequestBody(jwtRequestBody);
-			TempSig = auth.getToken(merchantConfig);
+//			auth.setJWTRequestBody(jwtRequestBody);
+			TempSig = auth.getToken(merchantConfig,requestType,jwtRequestBody,null,date);
 			System.out.println("Authorization, Bearer " + TempSig.toString());
 			WriteLogAudit(200);
 		}
@@ -102,7 +102,7 @@ public class PutGenerateHeaders {
 		merchantProp = MerchantProperties.getMerchantProperties();
 		merchantConfig = new MerchantConfig(merchantProp);
 
-		merchantConfig.setRequestType("PUT");		
+//		merchantConfig.setRequestType("PUT");		
 
 		new PutGenerateHeaders();
 	}

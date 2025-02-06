@@ -12,6 +12,7 @@ import org.apache.logging.log4j.Logger;
 import com.cybersource.authsdk.core.Authorization;
 import com.cybersource.authsdk.core.MerchantConfig;
 import com.cybersource.authsdk.util.GlobalLabelParameters;
+import com.cybersource.authsdk.util.PropertiesUtil;
 import com.cybersource.authsdk.util.Utility;
 
 import samples.authentication.harness.MerchantProperties;
@@ -77,7 +78,7 @@ public class GetGenerateHeaders {
 		this.merchantConfig = merchantConfig;
 		
 		// merchantConfig.setGetID(getID);
-		merchantConfig.setRequestType(requestType);
+//		merchantConfig.setRequestType(requestType);
 		
 		this.logger = LogManager.getLogger(getClass());
 		
@@ -93,7 +94,7 @@ public class GetGenerateHeaders {
 		System.out.println("Authentication Type : " +  merchantConfig.getAuthenticationType().trim());
 		this.logger.info(GlobalLabelParameters.BEGIN_TRANSACTION + "\n******************* Generate GET Headers *******************");
 		
-		merchantConfig.validateMerchantDetails();
+		merchantConfig.validateMerchantDetails(requestType);
 		generateGetHeaders();
 
 		this.logger.info(GlobalLabelParameters.END_TRANSACTION + "\n");
@@ -103,7 +104,7 @@ public class GetGenerateHeaders {
 		merchantProp = MerchantProperties.getMerchantProperties();
 		merchantConfig = new MerchantConfig(merchantProp);
 		authenticationType = merchantConfig.getAuthenticationType().trim();
-		merchantConfig.setRequestType(requestType);
+		//merchantConfig.setRequestType(requestType);
 		this.logger = LogManager.getLogger(getClass());
 		auth = new Authorization();
 	}
@@ -137,15 +138,15 @@ public class GetGenerateHeaders {
 		if (authenticationType.equalsIgnoreCase(GlobalLabelParameters.HTTP)) {
 			System.out.println(GlobalLabelParameters.USERAGENT + "          : " + GlobalLabelParameters.USER_AGENT_VALUE);
 			this.logger.info(GlobalLabelParameters.USERAGENT + " : " + GlobalLabelParameters.USER_AGENT_VALUE);
-
-			tempSig = auth.getToken(merchantConfig);
+			String date = PropertiesUtil.getNewDate();
+			tempSig = auth.getToken(merchantConfig,requestType,null,null,date);
 			System.out.println("Signature           : " + tempSig.toString());
 			WriteLogAudit(200);
 			
 		} else {
 			String jwtRequestBody = getID;
-			auth.setJWTRequestBody(jwtRequestBody);
-			tempSig = auth.getToken(merchantConfig);
+			String date = PropertiesUtil.getNewDate();
+			tempSig = auth.getToken(merchantConfig,requestType,jwtRequestBody,null,date);
 			System.out.println("Authorization, Bearer " + tempSig.toString());
 			WriteLogAudit(200);
 		}

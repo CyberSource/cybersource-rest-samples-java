@@ -60,12 +60,12 @@ public class PostObjectMethod {
 		apiController = new ApiController();
 		merchantProp = Configuration.getMerchantDetails();
 		merchantConfig = new MerchantConfig(merchantProp);
-		merchantConfig.setRequestType(requestType);
+//		merchantConfig.setRequestType(requestType);
 		authenticationType = merchantConfig.getAuthenticationType().trim();
-		merchantConfig.setRequestData(requestData);
-		merchantConfig.setRequestTarget(requestTarget);
+//		merchantConfig.setRequestData(requestData);
+//		merchantConfig.setRequestTarget(requestTarget);
 
-		url = "https://" + merchantConfig.getRequestHost() + merchantConfig.getRequestTarget();
+		url = "https://" + merchantConfig.getRequestHost() + requestTarget;
 
 		/* Begin Post process. */
 		process();

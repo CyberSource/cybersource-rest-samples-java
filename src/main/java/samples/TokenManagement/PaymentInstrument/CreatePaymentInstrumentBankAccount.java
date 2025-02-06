@@ -87,7 +87,7 @@ public class CreatePaymentInstrumentBankAccount {
 			apiClient.merchantConfig = merchantConfig;
 
 			PaymentInstrumentApi apiInstance = new PaymentInstrumentApi(apiClient);
-			result = apiInstance.postPaymentInstrument(requestObj, profileid);
+			result = apiInstance.postPaymentInstrument(requestObj, profileid, false);
 
 			responseCode = apiClient.responseCode;
 			status = apiClient.status;

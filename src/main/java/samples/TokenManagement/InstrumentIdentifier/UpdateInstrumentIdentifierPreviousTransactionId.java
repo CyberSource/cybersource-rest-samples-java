@@ -52,7 +52,7 @@ public class UpdateInstrumentIdentifierPreviousTransactionId {
 			apiClient.merchantConfig = merchantConfig;
 
 			InstrumentIdentifierApi apiInstance = new InstrumentIdentifierApi(apiClient);
-			result = apiInstance.patchInstrumentIdentifier(instrumentIdentifierTokenId, requestObj, profileid, null);
+			result = apiInstance.patchInstrumentIdentifier(instrumentIdentifierTokenId, requestObj, profileid, false, null);
 
 			responseCode = apiClient.responseCode;
 			status = apiClient.status;

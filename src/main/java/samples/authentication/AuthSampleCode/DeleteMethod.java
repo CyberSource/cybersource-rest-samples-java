@@ -61,14 +61,11 @@ public class DeleteMethod {
 
 		merchantProp = MerchantProperties.getMerchantProperties();
 		merchantConfig = new MerchantConfig(merchantProp);
-		merchantConfig.setRequestType(requestType);
 
 		authenticationType = merchantConfig.getAuthenticationType().trim();
 
-		merchantConfig.setRequestData(requestJson);
-		merchantConfig.setRequestTarget(requestTarget);
 		/* Begin PUT process. */
-		url = "https://" + merchantConfig.getRequestHost() + merchantConfig.getRequestTarget();
+		url = "https://" + merchantConfig.getRequestHost() + requestTarget;
 		process();
 	}
 

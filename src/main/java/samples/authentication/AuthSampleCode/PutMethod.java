@@ -58,14 +58,14 @@ public class PutMethod {
 		apiController = new ApiController();
 		merchantProp = MerchantProperties.getMerchantProperties();
 		merchantConfig = new MerchantConfig(merchantProp);
-		merchantConfig.setRequestType(requestType);
+//		merchantConfig.setRequestType(requestType);
 
 		authenticationType = merchantConfig.getAuthenticationType().trim();
 
-		merchantConfig.setRequestTarget(requestTarget);
-		merchantConfig.setRequestData(requestData);
+//		merchantConfig.setRequestTarget(requestTarget);
+//		merchantConfig.setRequestData(requestData);
 
-		url = "https://" + merchantConfig.getRequestHost() + merchantConfig.getRequestTarget();
+		url = "https://" + merchantConfig.getRequestHost() + requestTarget;
 
 		/* Begin PUT process. */
 		process();

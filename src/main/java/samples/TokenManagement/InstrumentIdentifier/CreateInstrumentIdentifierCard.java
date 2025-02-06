@@ -41,7 +41,7 @@ public class CreateInstrumentIdentifierCard {
 			apiClient.merchantConfig = merchantConfig;
 
 			InstrumentIdentifierApi apiInstance = new InstrumentIdentifierApi(apiClient);
-			result = apiInstance.postInstrumentIdentifier(requestObj, profileid);
+			result = apiInstance.postInstrumentIdentifier(requestObj, profileid, false);
 
 			responseCode = apiClient.responseCode;
 			status = apiClient.status;

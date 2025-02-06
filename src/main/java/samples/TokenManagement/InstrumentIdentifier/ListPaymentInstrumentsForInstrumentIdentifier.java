@@ -36,7 +36,7 @@ public class ListPaymentInstrumentsForInstrumentIdentifier {
 			apiClient.merchantConfig = merchantConfig;
 
 			InstrumentIdentifierApi apiInstance = new InstrumentIdentifierApi(apiClient);
-			result = apiInstance.getInstrumentIdentifierPaymentInstrumentsList(instrumentIdentifierTokenId, profileid, null, null);
+			result = apiInstance.getInstrumentIdentifierPaymentInstrumentsList(instrumentIdentifierTokenId, profileid, false, null, null);
 
 			responseCode = apiClient.responseCode;
 			status = apiClient.status;
