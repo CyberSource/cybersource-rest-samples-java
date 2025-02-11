@@ -49,6 +49,9 @@ public class Configuration {
 		It is optional property, require adding only during JWE decryption.
 		*/
 		props.setProperty("jwePEMFileDirectory", "src/main/resources/NetworkTokenCert.pem");
+		
+		//Add the property if required to override the cybs default developerId in all request body
+		props.setProperty("defaultDeveloperId", "");
 
 		return props;
 
