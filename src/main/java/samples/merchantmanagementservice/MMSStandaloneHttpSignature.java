@@ -48,9 +48,9 @@ public class MMSStandaloneHttpSignature {
         MMSStandaloneHttpSignature http = new MMSStandaloneHttpSignature();
 
         // POST Example for MMS Boarding API
-        postRequestTarget = "post /merchant-mgmt/v2/merchant-batch-jobs";
+        postRequestTarget = "post /merchant-mgmt/v3/merchant-batch-jobs";
         APINAME = "mms";
-        resource = "/merchant-mgmt/v2/merchant-batch-jobs";
+        resource = "/merchant-mgmt/v3/merchant-batch-jobs";
 
         String boardingRequestId = UUID.randomUUID().toString();
         String mid = "testmmsv2auth_sdkmid_" + boardingRequestId.substring(0,7);
@@ -120,7 +120,7 @@ public class MMSStandaloneHttpSignature {
 
         // GET Example for MMS API get file result
         // pass requestId received from the post call to get that file's result
-        resource = "/merchant-mgmt/v2/merchant-batch-jobs/eacc383a-0498-4481-8f2f-b85896772cb0";
+        resource = "/merchant-mgmt/v3/merchant-batch-jobs/eacc383a-0498-4481-8f2f-b85896772cb0";
 
         System.out.println("\n\nSample 2: GET call - CyberSource MMS API - HTTP GET File result request");
         http.sendGet("https://" + requestHost + resource, boardingRequestId);
@@ -346,7 +346,7 @@ public class MMSStandaloneHttpSignature {
          * host: Sandbox (apitest.cybersource.com) or Production (api.cybersource.com) hostname
          * date: "HTTP-date" format as defined by RFC7231.
          * request-target: Should be in format of httpMethod: path
-         *                   Example: "post /merchant-mgmt/v2/merchant-batch-jobs"
+         *                   Example: "post /merchant-mgmt/v3/merchant-batch-jobs"
          * Digest: Only needed for POST calls.
          *          digestString = BASE64( HMAC-SHA256 ( Payload ));
          *          Digest: SHA-256=  digestString;
