@@ -34,15 +34,15 @@ public class ReplayFailedTransactionsInLast24Hours {
 	}
 
 	public static void run(String webhookId) {
-	
-		ReplayWebhooksRequest requestObj = new ReplayWebhooksRequest();
-
-		Nrtfv1webhookswebhookIdreplaysByDeliveryStatus byDeliveryStatus = new Nrtfv1webhookswebhookIdreplaysByDeliveryStatus();
-		byDeliveryStatus.status("FAILED");
-		byDeliveryStatus.hoursBack(24);
-		byDeliveryStatus.productId("tokenManagement");
-		byDeliveryStatus.eventType("tms.token.created");
-		requestObj.byDeliveryStatus(byDeliveryStatus);
+//	
+//		ReplayWebhooksRequest requestObj = new ReplayWebhooksRequest();
+//
+//		Nrtfv1webhookswebhookIdreplaysByDeliveryStatus byDeliveryStatus = new Nrtfv1webhookswebhookIdreplaysByDeliveryStatus();
+//		byDeliveryStatus.status("FAILED");
+//		byDeliveryStatus.hoursBack(24);
+//		byDeliveryStatus.productId("tokenManagement");
+//		byDeliveryStatus.eventType("tms.token.created");
+//		requestObj.byDeliveryStatus(byDeliveryStatus);
 
 		try {
 			merchantProp = Configuration.getMerchantDetails();
@@ -50,17 +50,17 @@ public class ReplayFailedTransactionsInLast24Hours {
 			MerchantConfig merchantConfig = new MerchantConfig(merchantProp);
 			apiClient.merchantConfig = merchantConfig;
 
-			ReplayWebhooksApi apiInstance = new ReplayWebhooksApi(apiClient);
-			apiInstance.replayPreviousWebhooks(webhookId, requestObj);
+//			ReplayWebhooksApi apiInstance = new ReplayWebhooksApi(apiClient);
+//			apiInstance.replayPreviousWebhooks(webhookId, requestObj);
 
 			responseCode = apiClient.responseCode;
 			status = apiClient.status;
 			System.out.println("ResponseCode :" + responseCode);
 			System.out.println("ResponseMessage :" + status);
 			WriteLogAudit(Integer.parseInt(responseCode));
-		} catch (ApiException e) {
-			e.printStackTrace();
-			WriteLogAudit(e.getCode());
+//		} catch (ApiException e) {
+//			e.printStackTrace();
+//			WriteLogAudit(e.getCode());
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

@@ -35,40 +35,40 @@ public class CreateWebhookUsingOAuthWithClientCredentials {
 
 	public static void run() {
 	
-		CreateWebhookRequest requestObj = new CreateWebhookRequest();
-
-		requestObj.name("My Custom Webhook");
-		requestObj.description("Sample Webhook from Developer Center");
-		requestObj.organizationId("<INSERT ORGANIZATION ID HERE>");
-		requestObj.productId("terminalManagement");
-
-		List <String> eventTypes = new ArrayList <String>();
-		eventTypes.add("terminalManagement.assignment.update");
-		requestObj.eventTypes(eventTypes);
-
-		requestObj.webhookUrl("https://MyWebhookServer.com:8443/simulateClient");
-		requestObj.healthCheckUrl("https://MyWebhookServer.com:8443/simulateClientHealthCheck");
-		requestObj.notificationScope("SELF");
-		Notificationsubscriptionsv1webhooksRetryPolicy retryPolicy = new Notificationsubscriptionsv1webhooksRetryPolicy();
-		retryPolicy.algorithm("ARITHMETIC");
-		retryPolicy.firstRetry(1);
-		retryPolicy.interval(1);
-		retryPolicy.numberOfRetries(3);
-		retryPolicy.deactivateFlag("false");
-		retryPolicy.repeatSequenceCount(0);
-		retryPolicy.repeatSequenceWaitTime(0);
-		requestObj.retryPolicy(retryPolicy);
-
-		Notificationsubscriptionsv1webhooksSecurityPolicy1 securityPolicy = new Notificationsubscriptionsv1webhooksSecurityPolicy1();
-		securityPolicy.securityType("oAuth");
-		securityPolicy.proxyType("external");
-		Notificationsubscriptionsv1webhooksSecurityPolicy1Config securityPolicyConfig = new Notificationsubscriptionsv1webhooksSecurityPolicy1Config();
-		securityPolicyConfig.oAuthTokenExpiry("365");
-		securityPolicyConfig.oAuthURL("https://MyWebhookServer.com:8443/oAuthToken");
-		securityPolicyConfig.oAuthTokenType("Bearer");
-		securityPolicy.config(securityPolicyConfig);
-
-		requestObj.securityPolicy(securityPolicy);
+//		CreateWebhookRequest requestObj = new CreateWebhookRequest();
+//
+//		requestObj.name("My Custom Webhook");
+//		requestObj.description("Sample Webhook from Developer Center");
+//		requestObj.organizationId("<INSERT ORGANIZATION ID HERE>");
+//		requestObj.productId("terminalManagement");
+//
+//		List <String> eventTypes = new ArrayList <String>();
+//		eventTypes.add("terminalManagement.assignment.update");
+//		requestObj.eventTypes(eventTypes);
+//
+//		requestObj.webhookUrl("https://MyWebhookServer.com:8443/simulateClient");
+//		requestObj.healthCheckUrl("https://MyWebhookServer.com:8443/simulateClientHealthCheck");
+//		requestObj.notificationScope("SELF");
+//		Notificationsubscriptionsv1webhooksRetryPolicy retryPolicy = new Notificationsubscriptionsv1webhooksRetryPolicy();
+//		retryPolicy.algorithm("ARITHMETIC");
+//		retryPolicy.firstRetry(1);
+//		retryPolicy.interval(1);
+//		retryPolicy.numberOfRetries(3);
+//		retryPolicy.deactivateFlag("false");
+//		retryPolicy.repeatSequenceCount(0);
+//		retryPolicy.repeatSequenceWaitTime(0);
+//		requestObj.retryPolicy(retryPolicy);
+//
+//		Notificationsubscriptionsv1webhooksSecurityPolicy1 securityPolicy = new Notificationsubscriptionsv1webhooksSecurityPolicy1();
+//		securityPolicy.securityType("oAuth");
+//		securityPolicy.proxyType("external");
+//		Notificationsubscriptionsv1webhooksSecurityPolicy1Config securityPolicyConfig = new Notificationsubscriptionsv1webhooksSecurityPolicy1Config();
+//		securityPolicyConfig.oAuthTokenExpiry("365");
+//		securityPolicyConfig.oAuthURL("https://MyWebhookServer.com:8443/oAuthToken");
+//		securityPolicyConfig.oAuthTokenType("Bearer");
+//		securityPolicy.config(securityPolicyConfig);
+//
+//		requestObj.securityPolicy(securityPolicy);
 
 		
 		try {
@@ -78,16 +78,16 @@ public class CreateWebhookUsingOAuthWithClientCredentials {
 			apiClient.merchantConfig = merchantConfig;
 
 			CreateNewWebhooksApi apiInstance = new CreateNewWebhooksApi(apiClient);
-			apiInstance.createWebhookSubscription(requestObj);
+//			apiInstance.createWebhookSubscription(requestObj);
 
 			responseCode = apiClient.responseCode;
 			status = apiClient.status;
 			System.out.println("ResponseCode :" + responseCode);
 			System.out.println("ResponseMessage :" + status);
 			WriteLogAudit(Integer.parseInt(responseCode));
-		} catch (ApiException e) {
-			e.printStackTrace();
-			WriteLogAudit(e.getCode());
+//		} catch (ApiException e) {
+//			e.printStackTrace();
+//			WriteLogAudit(e.getCode());
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
