@@ -15,6 +15,9 @@ import java.security.spec.InvalidKeySpecException;
 import java.security.spec.PKCS8EncodedKeySpec;
 import java.util.Properties;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonObject;
+import com.google.gson.GsonBuilder;
 import org.bouncycastle.asn1.ASN1Sequence;
 import org.bouncycastle.asn1.DERNull;
 import org.bouncycastle.asn1.pkcs.PKCSObjectIdentifiers;
@@ -53,6 +56,10 @@ public class NetworkToken {
                 String decodedResponse = JWEUtility.decryptJWEResponse(privateKey, encodedJWEResponse);
                 System.out.println("Decoded Response");
                 System.out.println(decodedResponse);
+
+                Gson gson = new GsonBuilder().setPrettyPrinting().create();
+                JsonObject responseJson = gson.fromJson(decodedResponse, JsonObject.class);
+                System.out.println(gson.toJson(responseJson));
             } else {
                 System.out.println("Private key not found");
             }

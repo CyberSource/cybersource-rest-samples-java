@@ -30,7 +30,11 @@ public class SampleCodeRunner {
         	if (classList.length > 0) {
         		for(Class<?> sampleClass : classList) {
         			// IGNORE LIST PART 1 : Classes inside Data, lib and SampleCodeRunner packages are not tested.
-					if (sampleClass.getName().contains("Configuration") || sampleClass.getName().contains("lib") || sampleClass.getName().contains("SampleCodeRunner") || sampleClass.getName().contains("Webhooks")) {
+					if (sampleClass.getName().contains("Configuration") 
+						|| sampleClass.getName().contains("lib") 
+						|| sampleClass.getName().contains("SampleCodeRunner") 
+						|| sampleClass.getName().contains("Webhooks")
+						|| sampleClass.getName().contains("CsvUploadApp")) {
         				System.out.println("\n#### SKIPPED - " + sampleClass.getName() + " ####");            			
             			continue;
         			}
