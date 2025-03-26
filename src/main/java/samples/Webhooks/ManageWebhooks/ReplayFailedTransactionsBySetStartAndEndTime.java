@@ -35,15 +35,15 @@ public class ReplayFailedTransactionsBySetStartAndEndTime {
 
 	public static void run(String webhookId) {
 	
-		ReplayWebhooksRequest requestObj = new ReplayWebhooksRequest();
+//		ReplayWebhooksRequest requestObj = new ReplayWebhooksRequest();
 
-		Nrtfv1webhookswebhookIdreplaysByDeliveryStatus byDeliveryStatus = new Nrtfv1webhookswebhookIdreplaysByDeliveryStatus();
-		byDeliveryStatus.status("FAILED");
-		byDeliveryStatus.startTime(new DateTime("2021-01-01T15:05:52.284+05:30"));
-		byDeliveryStatus.endTime(new DateTime("2021-01-02T03:05:52.284+05:30"));
-		byDeliveryStatus.productId("tokenManagement");
-		byDeliveryStatus.eventType("tms.token.created");
-		requestObj.byDeliveryStatus(byDeliveryStatus);
+//		Nrtfv1webhookswebhookIdreplaysByDeliveryStatus byDeliveryStatus = new Nrtfv1webhookswebhookIdreplaysByDeliveryStatus();
+//		byDeliveryStatus.status("FAILED");
+//		byDeliveryStatus.startTime(new DateTime("2021-01-01T15:05:52.284+05:30"));
+//		byDeliveryStatus.endTime(new DateTime("2021-01-02T03:05:52.284+05:30"));
+//		byDeliveryStatus.productId("tokenManagement");
+//		byDeliveryStatus.eventType("tms.token.created");
+//		requestObj.byDeliveryStatus(byDeliveryStatus);
 
 		try {
 			merchantProp = Configuration.getMerchantDetails();
@@ -51,17 +51,17 @@ public class ReplayFailedTransactionsBySetStartAndEndTime {
 			MerchantConfig merchantConfig = new MerchantConfig(merchantProp);
 			apiClient.merchantConfig = merchantConfig;
 
-			ReplayWebhooksApi apiInstance = new ReplayWebhooksApi(apiClient);
-			apiInstance.replayPreviousWebhooks(webhookId, requestObj);
+//			ReplayWebhooksApi apiInstance = new ReplayWebhooksApi(apiClient);
+//			apiInstance.replayPreviousWebhooks(webhookId, requestObj);
 
 			responseCode = apiClient.responseCode;
 			status = apiClient.status;
 			System.out.println("ResponseCode :" + responseCode);
 			System.out.println("ResponseMessage :" + status);
 			WriteLogAudit(Integer.parseInt(responseCode));
-		} catch (ApiException e) {
-			e.printStackTrace();
-			WriteLogAudit(e.getCode());
+//		} catch (ApiException e) {
+//			e.printStackTrace();
+//			WriteLogAudit(e.getCode());
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

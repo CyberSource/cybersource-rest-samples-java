@@ -35,39 +35,39 @@ public class CreateFraudManagementWebhook {
 
 	public static void run() {
 	
-		CreateWebhookRequest requestObj = new CreateWebhookRequest();
-
-		requestObj.name("My Custom Webhook");
-		requestObj.description("Sample Webhook from Developer Center");
-		requestObj.organizationId("<INSERT ORGANIZATION ID HERE>");
-		requestObj.productId("fraudManagementEssentials");
-
-		List <String> eventTypes = new ArrayList <String>();
-		eventTypes.add("risk.profile.decision.review");
-		eventTypes.add("risk.profile.decision.reject");
-		eventTypes.add("risk.profile.decision.monitor");
-		eventTypes.add("risk.casemanagement.addnote");
-		eventTypes.add("risk.casemanagement.decision.accept");
-		eventTypes.add("risk.casemanagement.decision.reject");
-		requestObj.eventTypes(eventTypes);
-
-		requestObj.webhookUrl("https://MyWebhookServer.com:8443/simulateClient");
-		requestObj.healthCheckUrl("https://MyWebhookServer.com:8443/simulateClientHealthCheck");
-		requestObj.notificationScope("SELF");
-		Notificationsubscriptionsv1webhooksRetryPolicy retryPolicy = new Notificationsubscriptionsv1webhooksRetryPolicy();
-		retryPolicy.algorithm("ARITHMETIC");
-		retryPolicy.firstRetry(1);
-		retryPolicy.interval(1);
-		retryPolicy.numberOfRetries(3);
-		retryPolicy.deactivateFlag("false");
-		retryPolicy.repeatSequenceCount(0);
-		retryPolicy.repeatSequenceWaitTime(0);
-		requestObj.retryPolicy(retryPolicy);
-
-		Notificationsubscriptionsv1webhooksSecurityPolicy1 securityPolicy = new Notificationsubscriptionsv1webhooksSecurityPolicy1();
-		securityPolicy.securityType("KEY");
-		securityPolicy.proxyType("external");
-		requestObj.securityPolicy(securityPolicy);
+//		CreateWebhookRequest requestObj = new CreateWebhookRequest();
+//
+//		requestObj.name("My Custom Webhook");
+//		requestObj.description("Sample Webhook from Developer Center");
+//		requestObj.organizationId("<INSERT ORGANIZATION ID HERE>");
+//		requestObj.productId("fraudManagementEssentials");
+//
+//		List <String> eventTypes = new ArrayList <String>();
+//		eventTypes.add("risk.profile.decision.review");
+//		eventTypes.add("risk.profile.decision.reject");
+//		eventTypes.add("risk.profile.decision.monitor");
+//		eventTypes.add("risk.casemanagement.addnote");
+//		eventTypes.add("risk.casemanagement.decision.accept");
+//		eventTypes.add("risk.casemanagement.decision.reject");
+//		requestObj.eventTypes(eventTypes);
+//
+//		requestObj.webhookUrl("https://MyWebhookServer.com:8443/simulateClient");
+//		requestObj.healthCheckUrl("https://MyWebhookServer.com:8443/simulateClientHealthCheck");
+//		requestObj.notificationScope("SELF");
+//		Notificationsubscriptionsv1webhooksRetryPolicy retryPolicy = new Notificationsubscriptionsv1webhooksRetryPolicy();
+//		retryPolicy.algorithm("ARITHMETIC");
+//		retryPolicy.firstRetry(1);
+//		retryPolicy.interval(1);
+//		retryPolicy.numberOfRetries(3);
+//		retryPolicy.deactivateFlag("false");
+//		retryPolicy.repeatSequenceCount(0);
+//		retryPolicy.repeatSequenceWaitTime(0);
+//		requestObj.retryPolicy(retryPolicy);
+//
+//		Notificationsubscriptionsv1webhooksSecurityPolicy1 securityPolicy = new Notificationsubscriptionsv1webhooksSecurityPolicy1();
+//		securityPolicy.securityType("KEY");
+//		securityPolicy.proxyType("external");
+//		requestObj.securityPolicy(securityPolicy);
 
 		
 		try {
@@ -77,16 +77,13 @@ public class CreateFraudManagementWebhook {
 			apiClient.merchantConfig = merchantConfig;
 
 			CreateNewWebhooksApi apiInstance = new CreateNewWebhooksApi(apiClient);
-			apiInstance.createWebhookSubscription(requestObj);
+			//apiInstance.createWebhookSubscription(requestObj);
 
 			responseCode = apiClient.responseCode;
 			status = apiClient.status;
 			System.out.println("ResponseCode :" + responseCode);
 			System.out.println("ResponseMessage :" + status);
 			WriteLogAudit(Integer.parseInt(responseCode));
-		} catch (ApiException e) {
-			e.printStackTrace();
-			WriteLogAudit(e.getCode());
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

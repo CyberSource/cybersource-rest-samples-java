@@ -47,7 +47,7 @@ public class GetDetailsOnAllCreatedWebhooks {
 			apiClient.merchantConfig = merchantConfig;
 
 			ManageWebhooksApi apiInstance = new ManageWebhooksApi(apiClient);
-			result = apiInstance.getWebhookSubscriptionsByOrg(organizationId, productId, eventType);
+//			result = apiInstance.getWebhookSubscriptionsByOrg(organizationId, productId, eventType);
 
 			responseCode = apiClient.responseCode;
 			status = apiClient.status;
@@ -55,9 +55,9 @@ public class GetDetailsOnAllCreatedWebhooks {
 			System.out.println("ResponseMessage :" + status);
 			System.out.println(result);
 			WriteLogAudit(Integer.parseInt(responseCode));
-		} catch (ApiException e) {
-			e.printStackTrace();
-			WriteLogAudit(e.getCode());
+//		} catch (ApiException e) {
+//			e.printStackTrace();
+//			WriteLogAudit(e.getCode());
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

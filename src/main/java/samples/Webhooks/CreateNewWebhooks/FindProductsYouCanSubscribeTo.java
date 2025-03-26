@@ -43,16 +43,16 @@ public class FindProductsYouCanSubscribeTo {
 			apiClient.merchantConfig = merchantConfig;
 
 			CreateNewWebhooksApi apiInstance = new CreateNewWebhooksApi(apiClient);
-			apiInstance.findProductsToSubscribe(organizationId);
+//			apiInstance.findProductsToSubscribe(organizationId);
 
 			responseCode = apiClient.responseCode;
 			status = apiClient.status;
 			System.out.println("ResponseCode :" + responseCode);
 			System.out.println("ResponseMessage :" + status);
 			WriteLogAudit(Integer.parseInt(responseCode));
-		} catch (ApiException e) {
-			e.printStackTrace();
-			WriteLogAudit(e.getCode());
+//		} catch (ApiException e) {
+//			e.printStackTrace();
+//			WriteLogAudit(e.getCode());
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

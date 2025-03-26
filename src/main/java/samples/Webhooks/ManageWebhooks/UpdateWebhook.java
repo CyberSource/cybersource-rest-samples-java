@@ -35,24 +35,24 @@ public class UpdateWebhook {
 
 	public static void run(String webhookId) {
 	
-		UpdateWebhookRequest requestObj = new UpdateWebhookRequest();
-
-		requestObj.name("My Sample Webhook");
-		requestObj.description("Update to my sample webhook");
-		requestObj.organizationId("<INSERT ORGANIZATION ID HERE>");
-		requestObj.productId("terminalManagement");
-
-		List <String> eventTypes = new ArrayList <String>();
-		eventTypes.add("terminalManagement.assignment.update");
-		eventTypes.add("terminalManagement.status.update");
-		requestObj.eventTypes(eventTypes);
-
-		requestObj.webhookUrl("https://MyWebhookServer.com:8443:/simulateClient");
-		requestObj.healthCheckUrl("https://MyWebhookServer.com:8443:/simulateClientHealthCheck");
-		requestObj.status("INACTIVE");
-		Notificationsubscriptionsv1webhooksNotificationScope notificationScope = new Notificationsubscriptionsv1webhooksNotificationScope();
-		notificationScope.scope("SELF");
-		requestObj.notificationScope(notificationScope);
+//		UpdateWebhookRequest requestObj = new UpdateWebhookRequest();
+//
+//		requestObj.name("My Sample Webhook");
+//		requestObj.description("Update to my sample webhook");
+//		requestObj.organizationId("<INSERT ORGANIZATION ID HERE>");
+//		requestObj.productId("terminalManagement");
+//
+//		List <String> eventTypes = new ArrayList <String>();
+//		eventTypes.add("terminalManagement.assignment.update");
+//		eventTypes.add("terminalManagement.status.update");
+//		requestObj.eventTypes(eventTypes);
+//
+//		requestObj.webhookUrl("https://MyWebhookServer.com:8443:/simulateClient");
+//		requestObj.healthCheckUrl("https://MyWebhookServer.com:8443:/simulateClientHealthCheck");
+//		requestObj.status("INACTIVE");
+//		Notificationsubscriptionsv1webhooksNotificationScope notificationScope = new Notificationsubscriptionsv1webhooksNotificationScope();
+//		notificationScope.scope("SELF");
+//		requestObj.notificationScope(notificationScope);
 
 		
 		try {
@@ -62,16 +62,16 @@ public class UpdateWebhook {
 			apiClient.merchantConfig = merchantConfig;
 
 			ManageWebhooksApi apiInstance = new ManageWebhooksApi(apiClient);
-			apiInstance.updateWebhookSubscription(webhookId, requestObj);
+//			apiInstance.updateWebhookSubscription(webhookId, requestObj);
 
 			responseCode = apiClient.responseCode;
 			status = apiClient.status;
 			System.out.println("ResponseCode :" + responseCode);
 			System.out.println("ResponseMessage :" + status);
 			WriteLogAudit(Integer.parseInt(responseCode));
-		} catch (ApiException e) {
-			e.printStackTrace();
-			WriteLogAudit(e.getCode());
+//		} catch (ApiException e) {
+//			e.printStackTrace();
+//			WriteLogAudit(e.getCode());
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

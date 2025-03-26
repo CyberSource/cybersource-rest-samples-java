@@ -35,38 +35,38 @@ public class CreateTokenManagementWebhook {
 
 	public static void run() {
 	
-		CreateWebhookRequest requestObj = new CreateWebhookRequest();
-
-		requestObj.name("My Custom Webhook");
-		requestObj.description("Sample Webhook from Developer Center");
-		requestObj.organizationId("<INSERT ORGANIZATION ID HERE>");
-		requestObj.productId("tokenManagement");
-
-		List <String> eventTypes = new ArrayList <String>();
-		eventTypes.add("tms.networktoken.provisioned");
-		eventTypes.add("tms.networktoken.updated");
-		eventTypes.add("tms.token.pan_updated");
-		eventTypes.add("tms.token.created");
-		eventTypes.add("tms.token.updated");
-		requestObj.eventTypes(eventTypes);
-
-		requestObj.webhookUrl("https://MyWebhookServer.com:8443/simulateClient");
-		requestObj.healthCheckUrl("https://MyWebhookServer.com:8443/simulateClientHealthCheck");
-		requestObj.notificationScope("SELF");
-		Notificationsubscriptionsv1webhooksRetryPolicy retryPolicy = new Notificationsubscriptionsv1webhooksRetryPolicy();
-		retryPolicy.algorithm("ARITHMETIC");
-		retryPolicy.firstRetry(1);
-		retryPolicy.interval(1);
-		retryPolicy.numberOfRetries(3);
-		retryPolicy.deactivateFlag("false");
-		retryPolicy.repeatSequenceCount(0);
-		retryPolicy.repeatSequenceWaitTime(0);
-		requestObj.retryPolicy(retryPolicy);
-
-		Notificationsubscriptionsv1webhooksSecurityPolicy1 securityPolicy = new Notificationsubscriptionsv1webhooksSecurityPolicy1();
-		securityPolicy.securityType("KEY");
-		securityPolicy.proxyType("external");
-		requestObj.securityPolicy(securityPolicy);
+//		CreateWebhookRequest requestObj = new CreateWebhookRequest();
+//
+//		requestObj.name("My Custom Webhook");
+//		requestObj.description("Sample Webhook from Developer Center");
+//		requestObj.organizationId("<INSERT ORGANIZATION ID HERE>");
+//		requestObj.productId("tokenManagement");
+//
+//		List <String> eventTypes = new ArrayList <String>();
+//		eventTypes.add("tms.networktoken.provisioned");
+//		eventTypes.add("tms.networktoken.updated");
+//		eventTypes.add("tms.token.pan_updated");
+//		eventTypes.add("tms.token.created");
+//		eventTypes.add("tms.token.updated");
+//		requestObj.eventTypes(eventTypes);
+//
+//		requestObj.webhookUrl("https://MyWebhookServer.com:8443/simulateClient");
+//		requestObj.healthCheckUrl("https://MyWebhookServer.com:8443/simulateClientHealthCheck");
+//		requestObj.notificationScope("SELF");
+//		Notificationsubscriptionsv1webhooksRetryPolicy retryPolicy = new Notificationsubscriptionsv1webhooksRetryPolicy();
+//		retryPolicy.algorithm("ARITHMETIC");
+//		retryPolicy.firstRetry(1);
+//		retryPolicy.interval(1);
+//		retryPolicy.numberOfRetries(3);
+//		retryPolicy.deactivateFlag("false");
+//		retryPolicy.repeatSequenceCount(0);
+//		retryPolicy.repeatSequenceWaitTime(0);
+//		requestObj.retryPolicy(retryPolicy);
+//
+//		Notificationsubscriptionsv1webhooksSecurityPolicy1 securityPolicy = new Notificationsubscriptionsv1webhooksSecurityPolicy1();
+//		securityPolicy.securityType("KEY");
+//		securityPolicy.proxyType("external");
+//		requestObj.securityPolicy(securityPolicy);
 
 		
 		try {
@@ -76,16 +76,16 @@ public class CreateTokenManagementWebhook {
 			apiClient.merchantConfig = merchantConfig;
 
 			CreateNewWebhooksApi apiInstance = new CreateNewWebhooksApi(apiClient);
-			apiInstance.createWebhookSubscription(requestObj);
+//			apiInstance.createWebhookSubscription(requestObj);
 
 			responseCode = apiClient.responseCode;
 			status = apiClient.status;
 			System.out.println("ResponseCode :" + responseCode);
 			System.out.println("ResponseMessage :" + status);
-			WriteLogAudit(Integer.parseInt(responseCode));
-		} catch (ApiException e) {
-			e.printStackTrace();
-			WriteLogAudit(e.getCode());
+//			WriteLogAudit(Integer.parseInt(responseCode));
+//		} catch (ApiException e) {
+//			e.printStackTrace();
+//			WriteLogAudit(e.getCode());
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
