@@ -9,12 +9,13 @@ import Api.TransactionBatchesApi;
 import Data.Configuration;
 import Invokers.ApiClient;
 import Invokers.ApiException;
+import Invokers.ApiResponse;
 import sun.net.www.MimeEntry;
 
 import java.io.File;
 
 public class UploadTransactionBatch {
-	private static String responseCode = null;
+	private static int responseCode ;
 	private static String status = null;
 	private static Properties merchantProp;
 
@@ -42,13 +43,13 @@ public class UploadTransactionBatch {
 			// Create a File object
 			File file = new File(filePath);
             
-			apiInstance.uploadTransactionBatch(file);
+			ApiResponse<Void> result = apiInstance.uploadTransactionBatchWithHttpInfo(file);
 
-			responseCode = apiClient.responseCode;
-			status = apiClient.status;
+			responseCode = result.getStatusCode();
+			status = result.getMessage();
 			System.out.println("ResponseCode :" + responseCode);
 			System.out.println("ResponseMessage :" + status);
-			WriteLogAudit(Integer.parseInt(responseCode));
+			WriteLogAudit(responseCode);
 			
 		} catch (ApiException e) {
 			e.printStackTrace();
