@@ -30,19 +30,19 @@ public class UploadTransactionBatch {
 
 	public static void run() {
 		try {
+						
+			// Get the file path from the resources folder
+			String fileName="batchapiTest.csv";
+			String filePath = UploadTransactionBatch.class.getClassLoader().getResource(fileName).getPath();
+			// Create a File object
+			File file = new File(filePath);
+			
+            //SDK need file object to send to cybs api endpoint
 			merchantProp = Configuration.getMerchantDetailsForBatchUploadSample();
 			ApiClient apiClient = new ApiClient();
 			MerchantConfig merchantConfig = new MerchantConfig(merchantProp);
 			apiClient.merchantConfig = merchantConfig;
-
 			TransactionBatchesApi apiInstance = new TransactionBatchesApi(apiClient);
-			
-			// Get the file path from the resources folder
-			String filePath = UploadTransactionBatch.class.getClassLoader().getResource("qaebc2.rgdltnd0.csv").getPath();
-			
-			// Create a File object
-			File file = new File(filePath);
-            
 			ApiResponse<Void> result = apiInstance.uploadTransactionBatchWithHttpInfo(file);
 
 			responseCode = result.getStatusCode();
