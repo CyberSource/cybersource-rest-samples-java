@@ -43,16 +43,16 @@ public class DeleteWebhookSubscription {
 			apiClient.merchantConfig = merchantConfig;
 
 			ManageWebhooksApi apiInstance = new ManageWebhooksApi(apiClient);
-			apiInstance.deleteWebhookSubscription(webhookId);
+//			apiInstance.deleteWebhookSubscription(webhookId);
 
 			responseCode = apiClient.responseCode;
 			status = apiClient.status;
 			System.out.println("ResponseCode :" + responseCode);
 			System.out.println("ResponseMessage :" + status);
 			WriteLogAudit(Integer.parseInt(responseCode));
-		} catch (ApiException e) {
-			e.printStackTrace();
-			WriteLogAudit(e.getCode());
+//		} catch (ApiException e) {
+//			e.printStackTrace();
+//			WriteLogAudit(e.getCode());
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

@@ -35,16 +35,16 @@ public class ReplaySpecificListOfTransactions {
 
 	public static void run(String webhookId) {
 	
-		ReplayWebhooksRequest requestObj = new ReplayWebhooksRequest();
-
-
-		List <String> byTransactionTraceIdentifiers = new ArrayList <String>();
-		byTransactionTraceIdentifiers.add("1f1d0bf4-9299-418d-99d8-faa3313829f1");
-		byTransactionTraceIdentifiers.add("d19fb205-20e5-43a2-867e-bd0f574b771e");
-		byTransactionTraceIdentifiers.add("2f2461a3-457c-40e9-867f-aced89662bbb");
-		byTransactionTraceIdentifiers.add("e23ddc19-93d5-4f1f-8482-d7cafbb3ed9b");
-		byTransactionTraceIdentifiers.add("eb9fc4a9-b31f-48d5-81a9-b1d773fd76d8");
-		requestObj.byTransactionTraceIdentifiers(byTransactionTraceIdentifiers);
+//		ReplayWebhooksRequest requestObj = new ReplayWebhooksRequest();
+//
+//
+//		List <String> byTransactionTraceIdentifiers = new ArrayList <String>();
+//		byTransactionTraceIdentifiers.add("1f1d0bf4-9299-418d-99d8-faa3313829f1");
+//		byTransactionTraceIdentifiers.add("d19fb205-20e5-43a2-867e-bd0f574b771e");
+//		byTransactionTraceIdentifiers.add("2f2461a3-457c-40e9-867f-aced89662bbb");
+//		byTransactionTraceIdentifiers.add("e23ddc19-93d5-4f1f-8482-d7cafbb3ed9b");
+//		byTransactionTraceIdentifiers.add("eb9fc4a9-b31f-48d5-81a9-b1d773fd76d8");
+//		requestObj.byTransactionTraceIdentifiers(byTransactionTraceIdentifiers);
 
 		try {
 			merchantProp = Configuration.getMerchantDetails();
@@ -52,17 +52,17 @@ public class ReplaySpecificListOfTransactions {
 			MerchantConfig merchantConfig = new MerchantConfig(merchantProp);
 			apiClient.merchantConfig = merchantConfig;
 
-			ReplayWebhooksApi apiInstance = new ReplayWebhooksApi(apiClient);
-			apiInstance.replayPreviousWebhooks(webhookId, requestObj);
+//			ReplayWebhooksApi apiInstance = new ReplayWebhooksApi(apiClient);
+//			apiInstance.replayPreviousWebhooks(webhookId, requestObj);
 
 			responseCode = apiClient.responseCode;
 			status = apiClient.status;
 			System.out.println("ResponseCode :" + responseCode);
 			System.out.println("ResponseMessage :" + status);
 			WriteLogAudit(Integer.parseInt(responseCode));
-		} catch (ApiException e) {
-			e.printStackTrace();
-			WriteLogAudit(e.getCode());
+//		} catch (ApiException e) {
+//			e.printStackTrace();
+//			WriteLogAudit(e.getCode());
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
