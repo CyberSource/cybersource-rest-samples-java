@@ -12,7 +12,7 @@ public class ConfigurationWithIntermediateHost {
 		props.setProperty("authenticationType", "http_signature");
 		props.setProperty("merchantID", "testrest");
 		props.setProperty("runEnvironment", "apitest.cybersource.com");
-		props.setProperty("intermediateHost", "apitest.axa.com");
+		props.setProperty("intermediateHost", "http://localhost:8442");
 		props.setProperty("requestJsonPath", "src/main/resources/request.json");
 
 		// MetaKey Parameters

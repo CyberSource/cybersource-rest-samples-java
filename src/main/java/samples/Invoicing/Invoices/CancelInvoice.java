@@ -4,7 +4,7 @@ import Api.InvoicesApi;
 import Data.Configuration;
 import Invokers.ApiClient;
 import Invokers.ApiException;
-import Model.InvoicingV2InvoicesPost201Response;
+import Model.InvoicingV2InvoicesCancel200Response;
 import com.cybersource.authsdk.core.ConfigException;
 import com.cybersource.authsdk.core.MerchantConfig;
 
@@ -25,10 +25,10 @@ public class CancelInvoice {
         run();
     }
 
-    public static InvoicingV2InvoicesPost201Response run() {
+    public static InvoicingV2InvoicesCancel200Response run() {
         String invoiceId = CreateDraftInvoice.run().getId();
 
-        InvoicingV2InvoicesPost201Response result = null;
+        InvoicingV2InvoicesCancel200Response result = null;
 
         try {
             merchantProp = Configuration.getMerchantDetails();

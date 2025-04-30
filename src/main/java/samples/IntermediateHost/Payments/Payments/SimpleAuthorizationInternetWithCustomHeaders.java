@@ -75,19 +75,22 @@ public class SimpleAuthorizationInternetWithCustomHeaders {
 		PtsV2PaymentsPost201Response result = null;
 		try {
 			merchantProp = ConfigurationWithIntermediateHost.getMerchantDetails();
-			defaultHeaders = ConfigurationWithIntermediateHost.getDefaultHeaders();
+			//defaultHeaders = ConfigurationWithIntermediateHost.getDefaultHeaders();
 			ApiClient apiClient = new ApiClient();
-			MerchantConfig merchantConfig = new MerchantConfig(merchantProp, defaultHeaders);
+			MerchantConfig merchantConfig = new MerchantConfig(merchantProp);
 			apiClient.merchantConfig = merchantConfig;
 
-			PaymentsApi apiInstance = new PaymentsApi(apiClient);
-			result = apiInstance.createPayment(requestObj);
+//			PaymentsApi apiInstance = new PaymentsApi(apiClient);
+//			result = apiInstance.createPayment(requestObj);
+
+			PaymentLinksApi api = new PaymentLinksApi();
+			Object res = api.createPaymentLink(new CreatePaymentLinkRequest());
 
 			responseCode = apiClient.responseCode;
 			status = apiClient.status;
 			System.out.println("ResponseCode :" + responseCode);
 			System.out.println("ResponseMessage :" + status);
-			System.out.println(result);
+			System.out.println(res);
 			
 		} catch (Exception e) {
 			e.printStackTrace();
