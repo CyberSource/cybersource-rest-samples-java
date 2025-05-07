@@ -54,9 +54,9 @@ public class CreateInvoiceWithoutSendingIt {
 		orderInformationAmountDetails.totalAmount("2623.64");
 		orderInformationAmountDetails.currency("USD");
 		orderInformationAmountDetails.discountAmount("126.08");
-		orderInformationAmountDetails.discountPercent(new BigDecimal(5.00).setScale(2, BigDecimal.ROUND_HALF_UP));
-		orderInformationAmountDetails.subAmount(new BigDecimal(2749.72).setScale(2, BigDecimal.ROUND_HALF_UP));
-		orderInformationAmountDetails.minimumPartialAmount(new BigDecimal(20.00).setScale(2, BigDecimal.ROUND_HALF_UP));
+		orderInformationAmountDetails.discountPercent(new BigDecimal(5.00).setScale(2, BigDecimal.ROUND_HALF_UP).toString());
+		orderInformationAmountDetails.subAmount(new BigDecimal(2749.72).setScale(2, BigDecimal.ROUND_HALF_UP).toString());
+		orderInformationAmountDetails.minimumPartialAmount(new BigDecimal(20.00).setScale(2, BigDecimal.ROUND_HALF_UP).toString());
 		Invoicingv2invoicesOrderInformationAmountDetailsTaxDetails orderInformationAmountDetailsTaxDetails = new Invoicingv2invoicesOrderInformationAmountDetailsTaxDetails();
 		orderInformationAmountDetailsTaxDetails.type("State Tax");
 		orderInformationAmountDetailsTaxDetails.amount("208.04");
