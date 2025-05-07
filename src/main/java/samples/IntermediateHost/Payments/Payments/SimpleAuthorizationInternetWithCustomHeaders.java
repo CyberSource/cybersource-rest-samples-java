@@ -87,6 +87,7 @@ public class SimpleAuthorizationInternetWithCustomHeaders {
 			status = apiClient.status;
 			System.out.println("ResponseCode :" + responseCode);
 			System.out.println("ResponseMessage :" + status);
+			System.out.println(result);
 			
 		} catch (Exception e) {
 			e.printStackTrace();
