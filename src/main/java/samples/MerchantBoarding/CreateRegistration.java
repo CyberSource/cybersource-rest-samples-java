@@ -68,9 +68,9 @@ public class CreateRegistration {
 
         PaymentsProducts payments=new PaymentsProducts();
         PaymentsProductsPayerAuthentication payerAuthentication=new PaymentsProductsPayerAuthentication();
-        PaymentsProductsPayerAuthenticationSubscriptionInformation subscriptionInformation=new PaymentsProductsPayerAuthenticationSubscriptionInformation();
-        subscriptionInformation.enabled(true);
-        payerAuthentication.subscriptionInformation(subscriptionInformation);
+//        PaymentsProductsPayerAuthenticationSubscriptionInformation subscriptionInformation=new PaymentsProductsPayerAuthenticationSubscriptionInformation();
+//        subscriptionInformation.enabled(true);
+//        payerAuthentication.subscriptionInformation(subscriptionInformation);
 
         PaymentsProductsPayerAuthenticationConfigurationInformation configurationInformation=new PaymentsProductsPayerAuthenticationConfigurationInformation();
         PayerAuthConfig configurations=new PayerAuthConfig();
@@ -144,23 +144,23 @@ public class CreateRegistration {
         payments.cardProcessing(cardProcessing);
 
         PaymentsProductsVirtualTerminal virtualTerminal=new PaymentsProductsVirtualTerminal();
-        PaymentsProductsPayerAuthenticationSubscriptionInformation subscriptionInformation3=new PaymentsProductsPayerAuthenticationSubscriptionInformation();
-
-        subscriptionInformation3.enabled(true);
-        virtualTerminal.subscriptionInformation(subscriptionInformation3);
+//        PaymentsProductsPayerAuthenticationSubscriptionInformation subscriptionInformation3=new PaymentsProductsPayerAuthenticationSubscriptionInformation();
+//
+//        subscriptionInformation3.enabled(true);
+//        virtualTerminal.subscriptionInformation(subscriptionInformation3);
         payments.virtualTerminal(virtualTerminal);
 
         PaymentsProductsTax customerInvoicing=new PaymentsProductsTax();
-        PaymentsProductsPayerAuthenticationSubscriptionInformation subscriptionInformation4=new PaymentsProductsPayerAuthenticationSubscriptionInformation();
-
-        subscriptionInformation4.enabled(true);
-        customerInvoicing.subscriptionInformation(subscriptionInformation4);
+//        PaymentsProductsPayerAuthenticationSubscriptionInformation subscriptionInformation4=new PaymentsProductsPayerAuthenticationSubscriptionInformation();
+//
+//        subscriptionInformation4.enabled(true);
+//        customerInvoicing.subscriptionInformation(subscriptionInformation4);
         payments.customerInvoicing(customerInvoicing);
 
         PaymentsProductsPayouts payouts=new PaymentsProductsPayouts();
-        PaymentsProductsPayerAuthenticationSubscriptionInformation subscriptionInformation5=new PaymentsProductsPayerAuthenticationSubscriptionInformation();
-       subscriptionInformation5.enabled(true);
-        payouts.subscriptionInformation(subscriptionInformation5);
+//        PaymentsProductsPayerAuthenticationSubscriptionInformation subscriptionInformation5=new PaymentsProductsPayerAuthenticationSubscriptionInformation();
+//       subscriptionInformation5.enabled(true);
+//        payouts.subscriptionInformation(subscriptionInformation5);
         payments.payouts(payouts);
 
         selectedProducts.payments(payments);
@@ -168,19 +168,19 @@ public class CreateRegistration {
         CommerceSolutionsProducts commerceSolutions=new CommerceSolutionsProducts();
         CommerceSolutionsProductsTokenManagement tokenManagement=new CommerceSolutionsProductsTokenManagement();
 
-        PaymentsProductsPayerAuthenticationSubscriptionInformation subscriptionInformation6=new PaymentsProductsPayerAuthenticationSubscriptionInformation();
-
-        subscriptionInformation6.enabled(true);
-        tokenManagement.subscriptionInformation(subscriptionInformation6);
+//        PaymentsProductsPayerAuthenticationSubscriptionInformation subscriptionInformation6=new PaymentsProductsPayerAuthenticationSubscriptionInformation();
+//
+//        subscriptionInformation6.enabled(true);
+//        tokenManagement.subscriptionInformation(subscriptionInformation6);
         commerceSolutions.tokenManagement(tokenManagement);
         selectedProducts.commerceSolutions(commerceSolutions);
 
         RiskProducts risk=new RiskProducts();
         RiskProductsFraudManagementEssentials fraudManagementEssentials=new RiskProductsFraudManagementEssentials();
 
-        PaymentsProductsPayerAuthenticationSubscriptionInformation subscriptionInformation7=new PaymentsProductsPayerAuthenticationSubscriptionInformation();
-        subscriptionInformation7.enabled(true);
-        fraudManagementEssentials.subscriptionInformation(subscriptionInformation7);
+//        PaymentsProductsPayerAuthenticationSubscriptionInformation subscriptionInformation7=new PaymentsProductsPayerAuthenticationSubscriptionInformation();
+//        subscriptionInformation7.enabled(true);
+//        fraudManagementEssentials.subscriptionInformation(subscriptionInformation7);
 
         RiskProductsFraudManagementEssentialsConfigurationInformation configurationInformation5=new RiskProductsFraudManagementEssentialsConfigurationInformation();
 

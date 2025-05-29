@@ -201,9 +201,9 @@ public class MerchantBoardingVPC {
         payments.cardProcessing(cardProcessing);
 
         PaymentsProductsVirtualTerminal virtualTerminal = new PaymentsProductsVirtualTerminal();
-        PaymentsProductsPayerAuthenticationSubscriptionInformation subscriptionInformation5 = new PaymentsProductsPayerAuthenticationSubscriptionInformation();
-        subscriptionInformation5.enabled(true);
-        virtualTerminal.subscriptionInformation(subscriptionInformation5);
+//        PaymentsProductsPayerAuthenticationSubscriptionInformation subscriptionInformation5 = new PaymentsProductsPayerAuthenticationSubscriptionInformation();
+//        subscriptionInformation5.enabled(true);
+//        virtualTerminal.subscriptionInformation(subscriptionInformation5);
 
         PaymentsProductsVirtualTerminalConfigurationInformation configurationInformation5 = new PaymentsProductsVirtualTerminalConfigurationInformation();
         UUID templateId2 = UUID.fromString("9FA1BB94-5119-48D3-B2E5-A81FD3C657B5");
@@ -214,10 +214,10 @@ public class MerchantBoardingVPC {
 
         PaymentsProductsTax customerInvoicing = new PaymentsProductsTax();
 
-        PaymentsProductsPayerAuthenticationSubscriptionInformation subscriptionInformation6 = new PaymentsProductsPayerAuthenticationSubscriptionInformation();
-
-        subscriptionInformation6.enabled(true);
-        customerInvoicing.subscriptionInformation(subscriptionInformation6);
+//        PaymentsProductsPayerAuthenticationSubscriptionInformation subscriptionInformation6 = new PaymentsProductsPayerAuthenticationSubscriptionInformation();
+//
+//        subscriptionInformation6.enabled(true);
+//        customerInvoicing.subscriptionInformation(subscriptionInformation6);
         payments.customerInvoicing(customerInvoicing);
 
         selectedProducts.payments(payments);
@@ -230,9 +230,9 @@ public class MerchantBoardingVPC {
 
         CommerceSolutionsProductsTokenManagement tokenManagement = new CommerceSolutionsProductsTokenManagement();
 
-        PaymentsProductsPayerAuthenticationSubscriptionInformation subscriptionInformation7 = new PaymentsProductsPayerAuthenticationSubscriptionInformation();
-        subscriptionInformation7.enabled(true);
-        tokenManagement.subscriptionInformation(subscriptionInformation7);
+//        PaymentsProductsPayerAuthenticationSubscriptionInformation subscriptionInformation7 = new PaymentsProductsPayerAuthenticationSubscriptionInformation();
+//        subscriptionInformation7.enabled(true);
+//        tokenManagement.subscriptionInformation(subscriptionInformation7);
 
         CommerceSolutionsProductsTokenManagementConfigurationInformation configurationInformation7 = new CommerceSolutionsProductsTokenManagementConfigurationInformation();
 
@@ -247,15 +247,15 @@ public class MerchantBoardingVPC {
 
         PaymentsProductsTax transactionSearch = new PaymentsProductsTax();
 
-        PaymentsProductsPayerAuthenticationSubscriptionInformation subscriptionInformation9 = new PaymentsProductsPayerAuthenticationSubscriptionInformation();
-        subscriptionInformation9.enabled(true);
-        transactionSearch.subscriptionInformation(subscriptionInformation9);
+//        PaymentsProductsPayerAuthenticationSubscriptionInformation subscriptionInformation9 = new PaymentsProductsPayerAuthenticationSubscriptionInformation();
+//        subscriptionInformation9.enabled(true);
+//        transactionSearch.subscriptionInformation(subscriptionInformation9);
         valueAddedServices.transactionSearch(transactionSearch);
 
         PaymentsProductsTax reporting = new PaymentsProductsTax();
-        PaymentsProductsPayerAuthenticationSubscriptionInformation subscriptionInformation3 = new PaymentsProductsPayerAuthenticationSubscriptionInformation();
-        subscriptionInformation3.enabled(true);
-        reporting.subscriptionInformation(subscriptionInformation3);
+//        PaymentsProductsPayerAuthenticationSubscriptionInformation subscriptionInformation3 = new PaymentsProductsPayerAuthenticationSubscriptionInformation();
+//        subscriptionInformation3.enabled(true);
+//        reporting.subscriptionInformation(subscriptionInformation3);
         valueAddedServices.reporting(reporting);
 
         selectedProducts.valueAddedServices(valueAddedServices);

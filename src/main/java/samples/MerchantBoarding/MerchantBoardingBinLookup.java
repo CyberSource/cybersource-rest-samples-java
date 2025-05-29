@@ -76,10 +76,10 @@ public class MerchantBoardingBinLookup {
 
         CommerceSolutionsProducts commerceSolutions=new CommerceSolutionsProducts();
         CommerceSolutionsProductsBinLookup binLookup=new CommerceSolutionsProductsBinLookup();
-        PaymentsProductsPayerAuthenticationSubscriptionInformation subscriptionInformation=new PaymentsProductsPayerAuthenticationSubscriptionInformation();
+//        PaymentsProductsPayerAuthenticationSubscriptionInformation subscriptionInformation=new PaymentsProductsPayerAuthenticationSubscriptionInformation();
 
-        subscriptionInformation.enabled(true);
-        binLookup.subscriptionInformation(subscriptionInformation);
+//        subscriptionInformation.enabled(true);
+//        binLookup.subscriptionInformation(subscriptionInformation);
         CommerceSolutionsProductsBinLookupConfigurationInformation configurationInformation=new CommerceSolutionsProductsBinLookupConfigurationInformation();
 
         CommerceSolutionsProductsBinLookupConfigurationInformationConfigurations configurations=new CommerceSolutionsProductsBinLookupConfigurationInformationConfigurations();

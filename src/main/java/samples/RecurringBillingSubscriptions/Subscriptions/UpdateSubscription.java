@@ -41,7 +41,7 @@ public class UpdateSubscription {
 
 		Rbsv1subscriptionsClientReferenceInformation clientReferenceInformation = new Rbsv1subscriptionsClientReferenceInformation();
 		clientReferenceInformation.code("APGHU");
-		Riskv1decisionsClientReferenceInformationPartner clientReferenceInformationPartner = new Riskv1decisionsClientReferenceInformationPartner();
+		Rbsv1subscriptionsClientReferenceInformationPartner clientReferenceInformationPartner = new Rbsv1subscriptionsClientReferenceInformationPartner();
 		clientReferenceInformationPartner.developerId("ABCD1234");
 		clientReferenceInformationPartner.solutionId("GEF1234");
 		clientReferenceInformation.partner(clientReferenceInformationPartner);

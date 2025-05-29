@@ -128,10 +128,10 @@ public class MerchantBoardingCUP {
         payments.cardProcessing(cardProcessing);
 
         PaymentsProductsVirtualTerminal virtualTerminal=new PaymentsProductsVirtualTerminal();
-        PaymentsProductsPayerAuthenticationSubscriptionInformation subscriptionInformation2=new PaymentsProductsPayerAuthenticationSubscriptionInformation();
-
-        subscriptionInformation2.enabled(true);
-        virtualTerminal.subscriptionInformation(subscriptionInformation2);
+//        PaymentsProductsPayerAuthenticationSubscriptionInformation subscriptionInformation2=new PaymentsProductsPayerAuthenticationSubscriptionInformation();
+//
+//        subscriptionInformation2.enabled(true);
+//        virtualTerminal.subscriptionInformation(subscriptionInformation2);
 
         PaymentsProductsVirtualTerminalConfigurationInformation configurationInformation2=new PaymentsProductsVirtualTerminalConfigurationInformation();
 
@@ -143,10 +143,10 @@ public class MerchantBoardingCUP {
 
         PaymentsProductsTax customerInvoicing=new PaymentsProductsTax();
 
-        PaymentsProductsPayerAuthenticationSubscriptionInformation subscriptionInformation3=new PaymentsProductsPayerAuthenticationSubscriptionInformation();
-
-        subscriptionInformation3.enabled(true);
-        customerInvoicing.subscriptionInformation(subscriptionInformation3);
+//        PaymentsProductsPayerAuthenticationSubscriptionInformation subscriptionInformation3=new PaymentsProductsPayerAuthenticationSubscriptionInformation();
+//
+//        subscriptionInformation3.enabled(true);
+//        customerInvoicing.subscriptionInformation(subscriptionInformation3);
         payments.customerInvoicing(customerInvoicing);
         selectedProducts.payments(payments);
 
@@ -156,9 +156,9 @@ public class MerchantBoardingCUP {
 
         CommerceSolutionsProductsTokenManagement tokenManagement=new CommerceSolutionsProductsTokenManagement();
 
-        PaymentsProductsPayerAuthenticationSubscriptionInformation subscriptionInformation4=new PaymentsProductsPayerAuthenticationSubscriptionInformation();
-        subscriptionInformation4.enabled(true);
-        tokenManagement.subscriptionInformation(subscriptionInformation4);
+//        PaymentsProductsPayerAuthenticationSubscriptionInformation subscriptionInformation4=new PaymentsProductsPayerAuthenticationSubscriptionInformation();
+//        subscriptionInformation4.enabled(true);
+//        tokenManagement.subscriptionInformation(subscriptionInformation4);
 
         CommerceSolutionsProductsTokenManagementConfigurationInformation configurationInformation3=new CommerceSolutionsProductsTokenManagementConfigurationInformation();
 
@@ -172,13 +172,13 @@ public class MerchantBoardingCUP {
         ValueAddedServicesProducts valueAddedServices=new ValueAddedServicesProducts();
 
         PaymentsProductsTax transactionSearch=new PaymentsProductsTax();
-        PaymentsProductsPayerAuthenticationSubscriptionInformation subscriptionInformation5=new PaymentsProductsPayerAuthenticationSubscriptionInformation();
-        subscriptionInformation5.enabled(true);
-        transactionSearch.subscriptionInformation(subscriptionInformation5);
+//        PaymentsProductsPayerAuthenticationSubscriptionInformation subscriptionInformation5=new PaymentsProductsPayerAuthenticationSubscriptionInformation();
+//        subscriptionInformation5.enabled(true);
+//        transactionSearch.subscriptionInformation(subscriptionInformation5);
         valueAddedServices.transactionSearch(transactionSearch);
 
         PaymentsProductsTax reporting=new PaymentsProductsTax();
-        reporting.subscriptionInformation(subscriptionInformation5);
+//        reporting.subscriptionInformation(subscriptionInformation5);
         valueAddedServices.reporting(reporting);
         selectedProducts.valueAddedServices(valueAddedServices);
         productInformation.selectedProducts(selectedProducts);
