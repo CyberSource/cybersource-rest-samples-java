@@ -39,7 +39,7 @@ public class CreateSubscription {
 
 		Rbsv1subscriptionsClientReferenceInformation clientReferenceInformation = new Rbsv1subscriptionsClientReferenceInformation();
 		clientReferenceInformation.code("TC501713");
-		Riskv1decisionsClientReferenceInformationPartner clientReferenceInformationPartner = new Riskv1decisionsClientReferenceInformationPartner();
+		Rbsv1subscriptionsClientReferenceInformationPartner clientReferenceInformationPartner = new Rbsv1subscriptionsClientReferenceInformationPartner();
 		clientReferenceInformationPartner.developerId("ABCD1234");
 		clientReferenceInformationPartner.solutionId("GEF1234");
 		clientReferenceInformation.partner(clientReferenceInformationPartner);

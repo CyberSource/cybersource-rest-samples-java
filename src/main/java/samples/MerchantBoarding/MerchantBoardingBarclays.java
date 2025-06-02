@@ -159,9 +159,9 @@ public class MerchantBoardingBarclays {
 
         PaymentsProductsVirtualTerminal virtualTerminal=new PaymentsProductsVirtualTerminal();
 
-        PaymentsProductsPayerAuthenticationSubscriptionInformation subscriptionInformation2=new PaymentsProductsPayerAuthenticationSubscriptionInformation();
-        subscriptionInformation2.enabled(true);
-        virtualTerminal.subscriptionInformation(subscriptionInformation2);
+//        PaymentsProductsPayerAuthenticationSubscriptionInformation subscriptionInformation2=new PaymentsProductsPayerAuthenticationSubscriptionInformation();
+//        subscriptionInformation2.enabled(true);
+//        virtualTerminal.subscriptionInformation(subscriptionInformation2);
 
         PaymentsProductsVirtualTerminalConfigurationInformation configurationInformation2=new PaymentsProductsVirtualTerminalConfigurationInformation();
 
@@ -172,10 +172,10 @@ public class MerchantBoardingBarclays {
 
         PaymentsProductsTax customerInvoicing=new PaymentsProductsTax();
 
-        PaymentsProductsPayerAuthenticationSubscriptionInformation subscriptionInformation3=new PaymentsProductsPayerAuthenticationSubscriptionInformation();
-
-        subscriptionInformation3.enabled(true);
-        customerInvoicing.subscriptionInformation(subscriptionInformation3);
+//        PaymentsProductsPayerAuthenticationSubscriptionInformation subscriptionInformation3=new PaymentsProductsPayerAuthenticationSubscriptionInformation();
+//
+//        subscriptionInformation3.enabled(true);
+//        customerInvoicing.subscriptionInformation(subscriptionInformation3);
 
         payments.customerInvoicing(customerInvoicing);
 
@@ -187,10 +187,10 @@ public class MerchantBoardingBarclays {
         CommerceSolutionsProducts commerceSolutions=new CommerceSolutionsProducts();
         CommerceSolutionsProductsTokenManagement tokenManagement=new CommerceSolutionsProductsTokenManagement();
 
-        PaymentsProductsPayerAuthenticationSubscriptionInformation subscriptionInformation5=new PaymentsProductsPayerAuthenticationSubscriptionInformation();
-
-        subscriptionInformation5.enabled(true);
-        tokenManagement.subscriptionInformation(subscriptionInformation5);
+//        PaymentsProductsPayerAuthenticationSubscriptionInformation subscriptionInformation5=new PaymentsProductsPayerAuthenticationSubscriptionInformation();
+//
+//        subscriptionInformation5.enabled(true);
+//        tokenManagement.subscriptionInformation(subscriptionInformation5);
 
         CommerceSolutionsProductsTokenManagementConfigurationInformation configurationInformation5=new CommerceSolutionsProductsTokenManagementConfigurationInformation();
 
@@ -204,17 +204,17 @@ public class MerchantBoardingBarclays {
 
         PaymentsProductsTax transactionSearch=new PaymentsProductsTax();
 
-        PaymentsProductsPayerAuthenticationSubscriptionInformation subscriptionInformation6=new PaymentsProductsPayerAuthenticationSubscriptionInformation();
-
-        subscriptionInformation6.enabled(true);
-        transactionSearch.subscriptionInformation(subscriptionInformation6);
-        valueAddedServices.transactionSearch(transactionSearch);
+//        PaymentsProductsPayerAuthenticationSubscriptionInformation subscriptionInformation6=new PaymentsProductsPayerAuthenticationSubscriptionInformation();
+//
+//        subscriptionInformation6.enabled(true);
+//        transactionSearch.subscriptionInformation(subscriptionInformation6);
+//        valueAddedServices.transactionSearch(transactionSearch);
 
         PaymentsProductsTax reporting=new PaymentsProductsTax();
 
-        PaymentsProductsPayerAuthenticationSubscriptionInformation subscriptionInformation7=new PaymentsProductsPayerAuthenticationSubscriptionInformation();
-        subscriptionInformation7.enabled(true);
-        reporting.subscriptionInformation(subscriptionInformation7);
+//        PaymentsProductsPayerAuthenticationSubscriptionInformation subscriptionInformation7=new PaymentsProductsPayerAuthenticationSubscriptionInformation();
+//        subscriptionInformation7.enabled(true);
+//        reporting.subscriptionInformation(subscriptionInformation7);
         valueAddedServices.reporting(reporting);
         selectedProducts.valueAddedServices(valueAddedServices);
         productInformation.selectedProducts(selectedProducts);

@@ -155,10 +155,10 @@ public class MerchantBoardingAmexDirect {
         payments.cardProcessing(cardProcessing);
 
         PaymentsProductsVirtualTerminal virtualTerminal=new PaymentsProductsVirtualTerminal();
-        PaymentsProductsPayerAuthenticationSubscriptionInformation subscriptionInformation2=new PaymentsProductsPayerAuthenticationSubscriptionInformation();
-
-        subscriptionInformation2.enabled(true);
-        virtualTerminal.subscriptionInformation(subscriptionInformation2);
+//        PaymentsProductsPayerAuthenticationSubscriptionInformation subscriptionInformation2=new PaymentsProductsPayerAuthenticationSubscriptionInformation();
+//
+//        subscriptionInformation2.enabled(true);
+//        virtualTerminal.subscriptionInformation(subscriptionInformation2);
 
         PaymentsProductsVirtualTerminalConfigurationInformation configurationInformation3=new PaymentsProductsVirtualTerminalConfigurationInformation();
 
@@ -168,10 +168,10 @@ public class MerchantBoardingAmexDirect {
         payments.virtualTerminal(virtualTerminal);
 
         PaymentsProductsTax customerInvoicing=new PaymentsProductsTax();
-        PaymentsProductsPayerAuthenticationSubscriptionInformation subscriptionInformation6=new PaymentsProductsPayerAuthenticationSubscriptionInformation();
-
-        subscriptionInformation6.enabled(true);
-        customerInvoicing.subscriptionInformation(subscriptionInformation6);
+//        PaymentsProductsPayerAuthenticationSubscriptionInformation subscriptionInformation6=new PaymentsProductsPayerAuthenticationSubscriptionInformation();
+//
+//        subscriptionInformation6.enabled(true);
+//        customerInvoicing.subscriptionInformation(subscriptionInformation6);
         payments.customerInvoicing(customerInvoicing);
         selectedProducts.payments(payments);
 
@@ -181,10 +181,10 @@ public class MerchantBoardingAmexDirect {
         CommerceSolutionsProducts commerceSolutions=new CommerceSolutionsProducts();
         CommerceSolutionsProductsTokenManagement tokenManagement=new CommerceSolutionsProductsTokenManagement();
 
-        PaymentsProductsPayerAuthenticationSubscriptionInformation subscriptionInformation7=new PaymentsProductsPayerAuthenticationSubscriptionInformation();
-
-        subscriptionInformation7.enabled(true);
-        tokenManagement.subscriptionInformation(subscriptionInformation7);
+//        PaymentsProductsPayerAuthenticationSubscriptionInformation subscriptionInformation7=new PaymentsProductsPayerAuthenticationSubscriptionInformation();
+//
+//        subscriptionInformation7.enabled(true);
+//        tokenManagement.subscriptionInformation(subscriptionInformation7);
         CommerceSolutionsProductsTokenManagementConfigurationInformation configurationInformation4=new CommerceSolutionsProductsTokenManagementConfigurationInformation();
 
         UUID templateId3 = UUID.fromString("D62BEE20-DCFD-4AA2-8723-BA3725958ABA");
@@ -195,17 +195,17 @@ public class MerchantBoardingAmexDirect {
 
         ValueAddedServicesProducts valueAddedServices=new ValueAddedServicesProducts();
         PaymentsProductsTax transactionSearch=new PaymentsProductsTax();
-        PaymentsProductsPayerAuthenticationSubscriptionInformation subscriptionInformation8=new PaymentsProductsPayerAuthenticationSubscriptionInformation();
-
-        subscriptionInformation8.enabled(true);
-        transactionSearch.subscriptionInformation(subscriptionInformation8);
+//        PaymentsProductsPayerAuthenticationSubscriptionInformation subscriptionInformation8=new PaymentsProductsPayerAuthenticationSubscriptionInformation();
+//
+//        subscriptionInformation8.enabled(true);
+//        transactionSearch.subscriptionInformation(subscriptionInformation8);
 
         valueAddedServices.transactionSearch(transactionSearch);
         PaymentsProductsTax reporting=new PaymentsProductsTax();
-        PaymentsProductsPayerAuthenticationSubscriptionInformation subscriptionInformation9=new PaymentsProductsPayerAuthenticationSubscriptionInformation();
-
-        subscriptionInformation9.enabled(true);
-        reporting.subscriptionInformation(subscriptionInformation9);
+//        PaymentsProductsPayerAuthenticationSubscriptionInformation subscriptionInformation9=new PaymentsProductsPayerAuthenticationSubscriptionInformation();
+//
+//        subscriptionInformation9.enabled(true);
+//        reporting.subscriptionInformation(subscriptionInformation9);
         valueAddedServices.reporting(reporting);
 
         selectedProducts.valueAddedServices(valueAddedServices);
