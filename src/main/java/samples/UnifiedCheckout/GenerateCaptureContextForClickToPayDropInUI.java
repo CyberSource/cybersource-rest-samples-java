@@ -74,6 +74,11 @@ public class GenerateCaptureContextForClickToPayDropInUI {
 
         requestObj.orderInformation(orderInformation);
 
+        Upv1capturecontextsCompleteMandate completeMandate = new Upv1capturecontextsCompleteMandate();
+        completeMandate.setType("CAPTURE");
+        completeMandate.setDecisionManager(false);
+        requestObj.setCompleteMandate(completeMandate);
+
         try {
             merchantProp = Configuration.getMerchantDetails();
             ApiClient apiClient = new ApiClient();

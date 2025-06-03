@@ -3,14 +3,8 @@ package samples.UnifiedCheckout;
 import Api.UnifiedCheckoutCaptureContextApi;
 import Data.Configuration;
 import Invokers.ApiClient;
-import Model.GenerateUnifiedCheckoutCaptureContextRequest;
-import Model.Upv1capturecontextsCaptureMandate;
-import Model.Upv1capturecontextsOrderInformation;
-import Model.Upv1capturecontextsOrderInformationAmountDetails;
+import Model.*;
 import com.cybersource.authsdk.core.MerchantConfig;
-import Model.Upv1capturecontextsOrderInformationBillTo;
-import Model.Upv1capturecontextsOrderInformationBillToCompany;
-import Model.Upv1capturecontextsOrderInformationShipTo;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -137,6 +131,11 @@ public class GenerateUnifiedCheckoutCaptureContextPassingBillingShipping {
         orderInformation.shipTo(orderInformationShipTo);
 
         requestObj.orderInformation(orderInformation);
+
+        Upv1capturecontextsCompleteMandate completeMandate = new Upv1capturecontextsCompleteMandate();
+        completeMandate.setType("CAPTURE");
+        completeMandate.setDecisionManager(false);
+        requestObj.setCompleteMandate(completeMandate);
 
         try {
             merchantProp = Configuration.getMerchantDetails();
