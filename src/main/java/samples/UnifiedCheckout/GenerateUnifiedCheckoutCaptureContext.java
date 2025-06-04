@@ -20,7 +20,7 @@ public class GenerateUnifiedCheckoutCaptureContext {
 	
 		GenerateUnifiedCheckoutCaptureContextRequest requestObj = new GenerateUnifiedCheckoutCaptureContextRequest();
 
-		requestObj.clientVersion("0.23");
+		requestObj.clientVersion("0.26");
 
 		List <String> targetOrigins = new ArrayList <String>();
 		targetOrigins.add("https://yourCheckoutPage.com");
@@ -74,8 +74,12 @@ public class GenerateUnifiedCheckoutCaptureContext {
 		orderInformationAmountDetails.totalAmount("21.00");
 		orderInformationAmountDetails.currency("USD");
 		orderInformation.amountDetails(orderInformationAmountDetails);
-
 		requestObj.orderInformation(orderInformation);
+
+		Upv1capturecontextsCompleteMandate completeMandate = new Upv1capturecontextsCompleteMandate();
+		completeMandate.setType("CAPTURE");
+		completeMandate.setDecisionManager(false);
+		requestObj.setCompleteMandate(completeMandate);
 
 		try {
 			merchantProp = Configuration.getMerchantDetails();

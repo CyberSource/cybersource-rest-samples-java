@@ -11,6 +11,7 @@ import com.cybersource.authsdk.core.MerchantConfig;
 import Model.Upv1capturecontextsOrderInformationBillTo;
 import Model.Upv1capturecontextsOrderInformationBillToCompany;
 import Model.Upv1capturecontextsOrderInformationShipTo;
+import Model.Upv1capturecontextsCompleteMandate;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -137,6 +138,11 @@ public class GenerateUnifiedCheckoutCaptureContextPassingBillingShipping {
         orderInformation.shipTo(orderInformationShipTo);
 
         requestObj.orderInformation(orderInformation);
+
+        Upv1capturecontextsCompleteMandate completeMandate = new Upv1capturecontextsCompleteMandate();
+        completeMandate.setType("CAPTURE");
+        completeMandate.setDecisionManager(false);
+        requestObj.setCompleteMandate(completeMandate);
 
         try {
             merchantProp = Configuration.getMerchantDetails();
