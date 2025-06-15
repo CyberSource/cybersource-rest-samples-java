@@ -23,20 +23,20 @@ public class BatchUploadMTLSwithJKS {
 						
 			// Get the file path from the resources folder
 			String fileName="batchapiTest.csv";
-			String filePath = BatchUploadMTLSwithJKS.class.getClassLoader().getResource("batchApiMTLS\\"+fileName).getPath();
+			String filePath = BatchUploadMTLSwithJKS.class.getClassLoader().getResource("batchApiMTLS/"+fileName).getPath();
 			
 			//Input1 - Create a File object
 			File inputFile = new File(filePath);
 			//Input2 - Env Host name
 			String envHostName = "secure-batch-test.cybersource.com"; //cas env
 			//Input3 - File path of public key for pgp encryption
-			String publicKeyFile = BatchUploadMTLSwithJKS.class.getClassLoader().getResource("batchApiMTLS\\bts-encryption-public.asc").getPath();
+			String publicKeyFile = BatchUploadMTLSwithJKS.class.getClassLoader().getResource("batchApiMTLS/bts-encryption-public.asc").getPath();
 			//Input4 - keystore path which contains client private key and client cert
-			String keystorePath = BatchUploadMTLSwithJKS.class.getClassLoader().getResource("batchApiMTLS\\pushtest.jks").getPath();
+			String keystorePath = BatchUploadMTLSwithJKS.class.getClassLoader().getResource("batchApiMTLS/pushtest.jks").getPath();
 			//Input5 - keystore password
 			char[] keyStorePassword = "changeit".toCharArray();
 			//Input6 - trustStore path which contains server cert
-			String truststorePath = BatchUploadMTLSwithJKS.class.getClassLoader().getResource("batchApiMTLS\\castrust.jks").getPath();
+			String truststorePath = BatchUploadMTLSwithJKS.class.getClassLoader().getResource("batchApiMTLS/castrust.jks").getPath();
 			//Input7 - trustStore Password
 	        char[] truststorePassword = "changeit".toCharArray();
 	        
