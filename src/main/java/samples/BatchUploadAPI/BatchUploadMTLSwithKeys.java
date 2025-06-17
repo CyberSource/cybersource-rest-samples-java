@@ -6,6 +6,7 @@ import java.lang.invoke.MethodHandles;
 import java.security.PrivateKey;
 import java.security.Security;
 import java.security.cert.X509Certificate;
+import java.util.Collection;
 
 import org.bouncycastle.asn1.pkcs.PrivateKeyInfo;
 import org.bouncycastle.jce.provider.BouncyCastleProvider;
@@ -60,16 +61,16 @@ public class BatchUploadMTLSwithKeys {
 			
 			//Input5 - Client Certificate Key Object
 			String clientcertPath= BatchUploadMTLSwithJKS.class.getClassLoader().getResource("batchApiMTLS/client_cert.crt").getPath();
-			X509Certificate clientCert = BatchUploadUtility.loadCertificateFromPemFile(clientcertPath);
+			Collection<X509Certificate> clientCerts = BatchUploadUtility.loadCertificatesFromPemFile(clientcertPath);
 			
 			//Input6 - Server Certificate Key Object
 			String servercertPath= BatchUploadMTLSwithJKS.class.getClassLoader().getResource("batchApiMTLS/serverCasCert.pem").getPath();
-			X509Certificate serverCert = BatchUploadUtility.loadCertificateFromPemFile(servercertPath);
+			Collection<X509Certificate> serverCerts = BatchUploadUtility.loadCertificatesFromPemFile(servercertPath);
 			
 	        
 	        //SDK need file object and jks to upload file to batch api endpoint
 			BatchUploadwithMTLSApi apiInstance= new BatchUploadwithMTLSApi();
-			ApiResponse<String> result= apiInstance.uploadBatchAPI(inputFile, envHostName, pgpPublicKey, clientPrivateKey, clientCert, serverCert);
+			ApiResponse<String> result= apiInstance.uploadBatchAPI(inputFile, envHostName, pgpPublicKey, clientPrivateKey, clientCerts.iterator().next(), serverCerts);
 			
 			
 			responseCode = result.getStatusCode();
