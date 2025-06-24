@@ -34,7 +34,7 @@ public class ActivateSubscription {
             apiClient.merchantConfig = merchantConfig;
 
             SubscriptionsApi apiInstance = new SubscriptionsApi(apiClient);
-            response = apiInstance.activateSubscription(subscriptionId);
+            response = apiInstance.activateSubscription(subscriptionId, null);
 
             responseCode = apiClient.responseCode;
             status = apiClient.status;
