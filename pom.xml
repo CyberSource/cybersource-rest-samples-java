@@ -13,7 +13,7 @@
 		<dependency>
 			<groupId>com.cybersource</groupId>
 			<artifactId>cybersource-rest-client-java</artifactId>
-			<version>0.0.77</version>
+			<version>0.0.78</version>
 		</dependency>
 		<!-- https://mvnrepository.com/artifact/com.google.guava/guava -->
 		<dependency>
