@@ -28,7 +28,7 @@ public class MerchantBoardingVPC {
     }
 
 
-    public static InlineResponse2012 run() {
+    public static InlineResponse2013 run() {
 
         PostRegistrationBody reqObj = new PostRegistrationBody();
 
@@ -264,7 +264,7 @@ public class MerchantBoardingVPC {
         reqObj.productInformation(productInformation);
 
 
-        InlineResponse2012 result = null;
+        InlineResponse2013 result = null;
 
         try {
             //Boarding API support only JWT Auth Type

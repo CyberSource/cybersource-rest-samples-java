@@ -32,7 +32,7 @@ public class MerchantBoardingBinLookup {
     }
 
 
-    public static InlineResponse2012 run() {
+    public static InlineResponse2013 run() {
 
         PostRegistrationBody reqObj=new PostRegistrationBody();
 
@@ -100,7 +100,7 @@ public class MerchantBoardingBinLookup {
         reqObj.productInformation(productInformation);
 
 
-        InlineResponse2012 result=null;
+        InlineResponse2013 result=null;
 
         try {
             //Boarding API support only JWT Auth Type

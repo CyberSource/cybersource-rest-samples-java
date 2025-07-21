@@ -33,7 +33,7 @@ public class BINLookupWithCard {
 		run();
 	}
 
-	public static InlineResponse2011 run() {
+	public static InlineResponse2012 run() {
 	
 		CreateBinLookupRequest requestObj = new CreateBinLookupRequest();
 
@@ -48,7 +48,7 @@ public class BINLookupWithCard {
 		requestObj.paymentInformation(paymentInformation);
 
 		
-		InlineResponse2011 result=null;
+		InlineResponse2012 result=null;
 		try {
 			merchantProp = Configuration.getMerchantDetails();
 			ApiClient apiClient = new ApiClient();
