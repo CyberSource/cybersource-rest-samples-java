@@ -25,7 +25,7 @@ public class CreateAsymmetricKey {
 		run(null, null, null);
 	}
 
-	public static InlineResponse2016 run(String vCcorrelationId, String vCsenderOrganizationId, String vCpermissions) {
+	public static InlineResponse2017 run(String vCcorrelationId, String vCsenderOrganizationId, String vCpermissions) {
 		SaveAsymEgressKey requestObj = new SaveAsymEgressKey();
 
 		requestObj.clientRequestAction("STORE");
@@ -38,7 +38,7 @@ public class CreateAsymmetricKey {
 		keyInformation.expiryDuration("365");
 		requestObj.keyInformation(keyInformation);
 
-		InlineResponse2016 result = null;
+		InlineResponse2017 result = null;
 		try {
 			merchantProp = Configuration.getMerchantDetails();
 			ApiClient apiClient = new ApiClient();
