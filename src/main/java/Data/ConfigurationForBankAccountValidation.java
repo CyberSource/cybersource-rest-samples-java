@@ -11,8 +11,6 @@ public class ConfigurationForBankAccountValidation {
         props.setProperty("authenticationType", "JWT");
         props.setProperty("merchantID", "testcasmerchpd01001");
         props.setProperty("runEnvironment", "apitest.cybersource.com");
-        props.setProperty("requestJsonPath", "src/main/resources/request.json");
-
 
         // JWT Parameters
         props.setProperty("keyAlias", "testcasmerchpd01001");
