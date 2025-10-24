@@ -149,8 +149,7 @@ public class MerchantBoardingAmexDirect {
         features2.cardNotPresent(cardNotPresent);
         configurations.features(features2);
         configurationInformation.configurations(configurations);
-        UUID templateId = UUID.fromString("2B80A3C7-5A39-4CC3-9882-AC4A828D3646");
-        configurationInformation.templateId(templateId.toString());
+        configurationInformation.templateId("2B80A3C7-5A39-4CC3-9882-AC4A828D3646");
         cardProcessing.configurationInformation(configurationInformation);
         payments.cardProcessing(cardProcessing);
 
@@ -162,8 +161,7 @@ public class MerchantBoardingAmexDirect {
 
         PaymentsProductsVirtualTerminalConfigurationInformation configurationInformation3=new PaymentsProductsVirtualTerminalConfigurationInformation();
 
-        UUID templateId2 = UUID.fromString("9FA1BB94-5119-48D3-B2E5-A81FD3C657B5");
-        configurationInformation3.templateId(templateId2.toString());
+        configurationInformation3.templateId("9FA1BB94-5119-48D3-B2E5-A81FD3C657B5");
         virtualTerminal.configurationInformation(configurationInformation3);
         payments.virtualTerminal(virtualTerminal);
 
@@ -187,8 +185,7 @@ public class MerchantBoardingAmexDirect {
 //        tokenManagement.subscriptionInformation(subscriptionInformation7);
         CommerceSolutionsProductsTokenManagementConfigurationInformation configurationInformation4=new CommerceSolutionsProductsTokenManagementConfigurationInformation();
 
-        UUID templateId3 = UUID.fromString("D62BEE20-DCFD-4AA2-8723-BA3725958ABA");
-        configurationInformation4.templateId(templateId3.toString());
+        configurationInformation4.templateId("D62BEE20-DCFD-4AA2-8723-BA3725958ABA");
         tokenManagement.configurationInformation(configurationInformation4);
         commerceSolutions.tokenManagement(tokenManagement);
         selectedProducts.commerceSolutions(commerceSolutions);

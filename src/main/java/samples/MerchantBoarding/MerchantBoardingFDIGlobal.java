@@ -11,7 +11,6 @@ import java.lang.invoke.MethodHandles;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Properties;
-import java.util.UUID;
 
 public class MerchantBoardingFDIGlobal {
 
@@ -167,8 +166,7 @@ public class MerchantBoardingFDIGlobal {
 
         configurations.features(features2);
         configurationInformation.configurations(configurations);
-        UUID templateId = UUID.fromString("685A1FC9-3CEC-454C-9D8A-19205529CE45");
-        configurationInformation.templateId(templateId.toString());
+        configurationInformation.templateId("685A1FC9-3CEC-454C-9D8A-19205529CE45");
 
         cardProcessing.configurationInformation(configurationInformation);
         payments.cardProcessing(cardProcessing);
