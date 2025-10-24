@@ -10,8 +10,9 @@ import com.cybersource.authsdk.core.MerchantConfig;
 import java.lang.invoke.MethodHandles;
 import java.util.Properties;
 
-// The endpoint for this sample has Request MLE (Message Level Encryption) as a mandatory requirement, which is automatically handled by the SDK.
-// For more details about MLE, check the MLE sample codes and read https://github.com/CyberSource/cybersource-rest-client-java/blob/master/MLE.md
+// The Bank Account Validation API requires encrypted requests as a mandatory requirement. The SDK by default sends encrypted requests for APIs where Request MLE (Message Level Encryption) is mandatory.
+// For additional configuration options related to MLE, refer to the documentation at https://github.com/CyberSource/cybersource-rest-client-java/blob/master/MLE.md
+// For MLE related sample codes look in the folder samples/MLEFeature
 public class BankAccountValidationSample {
     private static String responseCode = null;
     private static String status = null;
@@ -47,8 +48,6 @@ public class BankAccountValidationSample {
         Bavsv1accountvalidationsPaymentInformation paymentInformation = new Bavsv1accountvalidationsPaymentInformation();
         paymentInformation.bank(paymentInformationBank);
         accountValidationRequestObj.paymentInformation(paymentInformation);
-
-//        System.out.println(accountValidationRequestObj.toString());
 
         InlineResponse20013 result = null;
         try {
