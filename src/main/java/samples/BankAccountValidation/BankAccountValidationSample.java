@@ -10,7 +10,8 @@ import com.cybersource.authsdk.core.MerchantConfig;
 import java.lang.invoke.MethodHandles;
 import java.util.Properties;
 
-
+// The endpoint for this sample has Request MLE (Message Level Encryption) as a mandatory requirement, which is automatically handled by the SDK.
+// For more details about MLE, check the MLE sample codes and read https://github.com/CyberSource/cybersource-rest-client-java/blob/master/MLE.md
 public class BankAccountValidationSample {
     private static String responseCode = null;
     private static String status = null;
