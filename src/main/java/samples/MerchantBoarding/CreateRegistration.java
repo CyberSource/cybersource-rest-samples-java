@@ -184,8 +184,7 @@ public class CreateRegistration {
 
         RiskProductsFraudManagementEssentialsConfigurationInformation configurationInformation5=new RiskProductsFraudManagementEssentialsConfigurationInformation();
 
-        UUID templateId = UUID.fromString("E4EDB280-9DAC-4698-9EB9-9434D40FF60C");
-        configurationInformation5.templateId(templateId.toString());
+        configurationInformation5.templateId("E4EDB280-9DAC-4698-9EB9-9434D40FF60C");
         fraudManagementEssentials.configurationInformation(configurationInformation5);
         risk.fraudManagementEssentials(fraudManagementEssentials);
 

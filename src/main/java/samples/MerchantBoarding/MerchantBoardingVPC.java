@@ -194,8 +194,7 @@ public class MerchantBoardingVPC {
         configurations.features(features2);
         configurationInformation.configurations(configurations);
 
-        UUID templateId = UUID.fromString("D671CE88-2F09-469C-A1B4-52C47812F792");
-        configurationInformation.templateId(templateId.toString());
+        configurationInformation.templateId("D671CE88-2F09-469C-A1B4-52C47812F792");
 
         cardProcessing.configurationInformation(configurationInformation);
         payments.cardProcessing(cardProcessing);
@@ -206,8 +205,7 @@ public class MerchantBoardingVPC {
 //        virtualTerminal.subscriptionInformation(subscriptionInformation5);
 
         PaymentsProductsVirtualTerminalConfigurationInformation configurationInformation5 = new PaymentsProductsVirtualTerminalConfigurationInformation();
-        UUID templateId2 = UUID.fromString("9FA1BB94-5119-48D3-B2E5-A81FD3C657B5");
-        configurationInformation5.templateId(templateId2.toString());
+        configurationInformation5.templateId("9FA1BB94-5119-48D3-B2E5-A81FD3C657B5");
         virtualTerminal.configurationInformation(configurationInformation5);
 
         payments.virtualTerminal(virtualTerminal);
@@ -236,8 +234,7 @@ public class MerchantBoardingVPC {
 
         CommerceSolutionsProductsTokenManagementConfigurationInformation configurationInformation7 = new CommerceSolutionsProductsTokenManagementConfigurationInformation();
 
-        UUID templateId3 = UUID.fromString("D62BEE20-DCFD-4AA2-8723-BA3725958ABA");
-        configurationInformation7.templateId(templateId3.toString());
+        configurationInformation7.templateId("D62BEE20-DCFD-4AA2-8723-BA3725958ABA");
         tokenManagement.configurationInformation(configurationInformation7);
 
         commerceSolutions.tokenManagement(tokenManagement);
