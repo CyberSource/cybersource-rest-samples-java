@@ -123,7 +123,7 @@ public class MerchantBoardingCUP {
         configurationInformation.configurations(configurations);
 
         UUID templateId = UUID.fromString("1D8BC41A-F04E-4133-87C8-D89D1806106F");
-        configurationInformation.templateId(templateId);
+        configurationInformation.templateId(templateId.toString());
         cardProcessing.configurationInformation(configurationInformation);
         payments.cardProcessing(cardProcessing);
 
@@ -136,7 +136,7 @@ public class MerchantBoardingCUP {
         PaymentsProductsVirtualTerminalConfigurationInformation configurationInformation2=new PaymentsProductsVirtualTerminalConfigurationInformation();
 
         UUID templateId2 = UUID.fromString("9FA1BB94-5119-48D3-B2E5-A81FD3C657B5");
-        configurationInformation2.templateId(templateId2);
+        configurationInformation2.templateId(templateId2.toString());
 
         virtualTerminal.configurationInformation(configurationInformation2);
         payments.virtualTerminal(virtualTerminal);
@@ -163,7 +163,7 @@ public class MerchantBoardingCUP {
         CommerceSolutionsProductsTokenManagementConfigurationInformation configurationInformation3=new CommerceSolutionsProductsTokenManagementConfigurationInformation();
 
         UUID templateId3 = UUID.fromString("9FA1BB94-5119-48D3-B2E5-A81FD3C657B5");
-        configurationInformation3.templateId(templateId3);
+        configurationInformation3.templateId(templateId3.toString());
         tokenManagement.configurationInformation(configurationInformation3);
         commerceSolutions.tokenManagement(tokenManagement);
 

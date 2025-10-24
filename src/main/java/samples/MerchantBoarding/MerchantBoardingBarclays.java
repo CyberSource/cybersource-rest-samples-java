@@ -152,7 +152,7 @@ public class MerchantBoardingBarclays {
         configurationInformation.configurations(configurations);
 
         UUID templateId = UUID.fromString("0A413572-1995-483C-9F48-FCBE4D0B2E86");
-        configurationInformation.templateId(templateId);
+        configurationInformation.templateId(templateId.toString());
         cardProcessing.configurationInformation(configurationInformation);
 
         payments.cardProcessing(cardProcessing);
@@ -166,7 +166,7 @@ public class MerchantBoardingBarclays {
         PaymentsProductsVirtualTerminalConfigurationInformation configurationInformation2=new PaymentsProductsVirtualTerminalConfigurationInformation();
 
         UUID templateId3 = UUID.fromString("E4EDB280-9DAC-4698-9EB9-9434D40FF60C");
-        configurationInformation2.templateId(templateId3);
+        configurationInformation2.templateId(templateId3.toString());
         virtualTerminal.configurationInformation(configurationInformation2);
         payments.virtualTerminal(virtualTerminal);
 
@@ -195,7 +195,7 @@ public class MerchantBoardingBarclays {
         CommerceSolutionsProductsTokenManagementConfigurationInformation configurationInformation5=new CommerceSolutionsProductsTokenManagementConfigurationInformation();
 
         UUID templateId4 = UUID.fromString("D62BEE20-DCFD-4AA2-8723-BA3725958ABA");
-        configurationInformation5.templateId(templateId4);
+        configurationInformation5.templateId(templateId4.toString());
         tokenManagement.configurationInformation(configurationInformation5);
         commerceSolutions.tokenManagement(tokenManagement);
         selectedProducts.commerceSolutions(commerceSolutions);

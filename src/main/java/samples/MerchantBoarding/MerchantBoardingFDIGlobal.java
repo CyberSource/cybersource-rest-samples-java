@@ -168,7 +168,7 @@ public class MerchantBoardingFDIGlobal {
         configurations.features(features2);
         configurationInformation.configurations(configurations);
         UUID templateId = UUID.fromString("685A1FC9-3CEC-454C-9D8A-19205529CE45");
-        configurationInformation.templateId(templateId);
+        configurationInformation.templateId(templateId.toString());
 
         cardProcessing.configurationInformation(configurationInformation);
         payments.cardProcessing(cardProcessing);

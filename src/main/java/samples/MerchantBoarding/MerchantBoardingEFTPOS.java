@@ -129,7 +129,7 @@ public class MerchantBoardingEFTPOS {
         configurations.features(features2);
         configurationInformation.configurations(configurations);
         UUID templateId = UUID.fromString("1F9B7F6E-F0DB-44C8-BF8E-5013E34C0F87");
-        configurationInformation.templateId(templateId);
+        configurationInformation.templateId(templateId.toString());
 
         cardProcessing.configurationInformation(configurationInformation);
         payments.cardProcessing(cardProcessing);
