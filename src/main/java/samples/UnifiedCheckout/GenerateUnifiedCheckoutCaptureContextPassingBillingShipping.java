@@ -8,9 +8,9 @@ import Model.Upv1capturecontextsCaptureMandate;
 import Model.Upv1capturecontextsOrderInformation;
 import Model.Upv1capturecontextsOrderInformationAmountDetails;
 import com.cybersource.authsdk.core.MerchantConfig;
-import Model.Upv1capturecontextsOrderInformationBillTo;
-import Model.Upv1capturecontextsOrderInformationBillToCompany;
-import Model.Upv1capturecontextsOrderInformationShipTo;
+import Model.Upv1capturecontextsDataOrderInformationBillTo;
+import Model.Upv1capturecontextsDataOrderInformationBillToCompany;
+import Model.Upv1capturecontextsDataOrderInformationShipTo;
 import Model.Upv1capturecontextsCompleteMandate;
 
 import java.util.ArrayList;
@@ -87,7 +87,7 @@ public class GenerateUnifiedCheckoutCaptureContextPassingBillingShipping {
         orderInformationAmountDetails.currency("USD");
         orderInformation.amountDetails(orderInformationAmountDetails);
 
-        Upv1capturecontextsOrderInformationBillTo orderInformationBillTo = new Upv1capturecontextsOrderInformationBillTo();
+        Upv1capturecontextsDataOrderInformationBillTo orderInformationBillTo = new Upv1capturecontextsDataOrderInformationBillTo();
         orderInformationBillTo.address1("277 Park Avenue");
         orderInformationBillTo.address2("50th Floor");
         orderInformationBillTo.address3("Desk NY-50110");
@@ -98,7 +98,7 @@ public class GenerateUnifiedCheckoutCaptureContextPassingBillingShipping {
         orderInformationBillTo.district("district");
         orderInformationBillTo.locality("New York");
         orderInformationBillTo.postalCode("10172");
-        Upv1capturecontextsOrderInformationBillToCompany orderInformationBillToCompany = new Upv1capturecontextsOrderInformationBillToCompany();
+        Upv1capturecontextsDataOrderInformationBillToCompany orderInformationBillToCompany = new Upv1capturecontextsDataOrderInformationBillToCompany();
         orderInformationBillToCompany.name("Visa Inc");
         orderInformationBillToCompany.address1("900 Metro Center Blvd");
         orderInformationBillToCompany.address2("address2");
@@ -122,7 +122,7 @@ public class GenerateUnifiedCheckoutCaptureContextPassingBillingShipping {
         orderInformationBillTo.phoneType("phoneType");
         orderInformation.billTo(orderInformationBillTo);
 
-        Upv1capturecontextsOrderInformationShipTo orderInformationShipTo = new Upv1capturecontextsOrderInformationShipTo();
+        Upv1capturecontextsDataOrderInformationShipTo orderInformationShipTo = new Upv1capturecontextsDataOrderInformationShipTo();
         orderInformationShipTo.address1("CyberSource");
         orderInformationShipTo.address2("Victoria House");
         orderInformationShipTo.address3("15-17 Gloucester Street");
