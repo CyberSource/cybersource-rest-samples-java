@@ -35,7 +35,8 @@ public class BatchUploadMTLSwithJKS {
 			String keystorePath = BatchUploadMTLSwithJKS.class.getClassLoader().getResource("batchApiMTLS/pushtest.jks").getPath();
 			//Input5 - keystore password
 			char[] keyStorePassword = "changeit".toCharArray();
-			//Input6 - trustStore path which contains server cert
+			
+			//Input6 - trustStore path which contains server cert for ssl verification for endpoint url (optional) can pass as null
 			String truststorePath = BatchUploadMTLSwithJKS.class.getClassLoader().getResource("batchApiMTLS/castrust.jks").getPath();
 			//Input7 - trustStore Password
 	        char[] truststorePassword = "changeit".toCharArray();

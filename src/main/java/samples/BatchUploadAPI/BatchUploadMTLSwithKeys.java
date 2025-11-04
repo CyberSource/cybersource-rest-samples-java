@@ -63,7 +63,7 @@ public class BatchUploadMTLSwithKeys {
 			String clientcertPath= BatchUploadMTLSwithJKS.class.getClassLoader().getResource("batchApiMTLS/client_cert.crt").getPath();
 			Collection<X509Certificate> clientCerts = BatchUploadUtility.loadCertificatesFromPemFile(clientcertPath);
 			
-			//Input6 - Server Certificate Key Object
+			//Input6 - Server Certificate Key Object for ssl verification for endpoint url (optional) can pass as null
 			String servercertPath= BatchUploadMTLSwithJKS.class.getClassLoader().getResource("batchApiMTLS/serverCasCert.pem").getPath();
 			Collection<X509Certificate> serverCerts = BatchUploadUtility.loadCertificatesFromPemFile(servercertPath);
 			
