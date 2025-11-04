@@ -11,7 +11,6 @@ import java.lang.invoke.MethodHandles;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Properties;
-import java.util.UUID;
 
 public class MerchantBoardingSmartFDC {
 
@@ -123,8 +122,7 @@ public class MerchantBoardingSmartFDC {
 
         configurationInformation.configurations(configurations);
 
-        UUID templateId = UUID.fromString("3173DA78-A71E-405B-B79C-928C1A9C6AB2");
-        configurationInformation.templateId(templateId);
+        configurationInformation.templateId("3173DA78-A71E-405B-B79C-928C1A9C6AB2");
 
         cardProcessing.configurationInformation(configurationInformation);
         payments.cardProcessing(cardProcessing);
@@ -135,8 +133,7 @@ public class MerchantBoardingSmartFDC {
 //        virtualTerminal.subscriptionInformation(subscriptionInformation5);
 
         PaymentsProductsVirtualTerminalConfigurationInformation configurationInformation5=new PaymentsProductsVirtualTerminalConfigurationInformation();
-        UUID templateId2 = UUID.fromString("9FA1BB94-5119-48D3-B2E5-A81FD3C657B5");
-        configurationInformation5.templateId(templateId2);
+        configurationInformation5.templateId("9FA1BB94-5119-48D3-B2E5-A81FD3C657B5");
         virtualTerminal.configurationInformation(configurationInformation5);
 
         payments.virtualTerminal(virtualTerminal);
@@ -165,8 +162,7 @@ public class MerchantBoardingSmartFDC {
 
         CommerceSolutionsProductsTokenManagementConfigurationInformation configurationInformation7=new CommerceSolutionsProductsTokenManagementConfigurationInformation();
 
-        UUID templateId3 = UUID.fromString("D62BEE20-DCFD-4AA2-8723-BA3725958ABA");
-        configurationInformation7.templateId(templateId3);
+        configurationInformation7.templateId("D62BEE20-DCFD-4AA2-8723-BA3725958ABA");
         tokenManagement.configurationInformation(configurationInformation7);
 
         commerceSolutions.tokenManagement(tokenManagement);

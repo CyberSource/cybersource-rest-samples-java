@@ -5,6 +5,7 @@ import Data.Configuration;
 import Invokers.ApiClient;
 import Invokers.ApiException;
 import Model.InlineResponse20011;
+import Model.InlineResponse20012;
 import Model.InlineResponse2009;
 import com.cybersource.authsdk.core.MerchantConfig;
 
@@ -27,7 +28,7 @@ public class RetrieveBatchReport {
 
 	public static void run() {
 		String batchId = "16188390061150001062041064";
-		InlineResponse20011 result = null;
+		InlineResponse20012 result = null;
 		try {
 			merchantProp = Configuration.getMerchantDetails();
 			ApiClient apiClient = new ApiClient();
