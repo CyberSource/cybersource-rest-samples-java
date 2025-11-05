@@ -1,4 +1,4 @@
-package samples.BankAccountValidation;
+package samples.VisaBankAccountValidation;
 
 import Api.BankAccountValidationApi;
 import Data.ConfigurationForBankAccountValidation;
@@ -13,7 +13,7 @@ import java.util.Properties;
 // The Bank Account Validation API requires encrypted requests as a mandatory requirement. The SDK by default sends encrypted requests for APIs where Request MLE (Message Level Encryption) is mandatory.
 // For additional configuration options related to MLE, refer to the documentation at https://github.com/CyberSource/cybersource-rest-client-java/blob/master/MLE.md
 // For MLE related sample codes look in the folder samples/MLEFeature
-public class BankAccountValidationSample {
+public class BankAccountValidationValidated {
     private static String responseCode = null;
     private static String status = null;
     private static Properties merchantProp;
