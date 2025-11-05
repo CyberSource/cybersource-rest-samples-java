@@ -45,7 +45,7 @@ public class BINLookupWithTMSInstrumentIdentifier {
 		requestObj.paymentInformation(paymentInformation);
 
 		
-		InlineResponse2012 result=null;
+		InlineResponse2012 result = null;
 		try {
 			merchantProp = Configuration.getMerchantDetails();
 			ApiClient apiClient = new ApiClient();
@@ -53,7 +53,7 @@ public class BINLookupWithTMSInstrumentIdentifier {
 			apiClient.merchantConfig = merchantConfig;
 
 			BinLookupApi apiInstance = new BinLookupApi(apiClient);
-			result=apiInstance.getAccountInfo(requestObj);
+			result = apiInstance.getAccountInfo(requestObj);
 
 			responseCode = apiClient.responseCode;
 			status = apiClient.status;

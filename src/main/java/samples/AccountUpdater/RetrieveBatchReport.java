@@ -4,9 +4,7 @@ import Api.BatchesApi;
 import Data.Configuration;
 import Invokers.ApiClient;
 import Invokers.ApiException;
-import Model.InlineResponse20011;
-import Model.InlineResponse20012;
-import Model.InlineResponse2009;
+import Model.*;
 import com.cybersource.authsdk.core.MerchantConfig;
 
 import java.lang.invoke.MethodHandles;

@@ -33,16 +33,16 @@ public class MerchantBoardingBinLookup {
 
     public static InlineResponse2013 run() {
 
-        PostRegistrationBody reqObj=new PostRegistrationBody();
+        PostRegistrationBody reqObj = new PostRegistrationBody();
 
-        Boardingv1registrationsOrganizationInformation organizationInformation=new Boardingv1registrationsOrganizationInformation();
+        Boardingv1registrationsOrganizationInformation organizationInformation = new Boardingv1registrationsOrganizationInformation();
         organizationInformation.parentOrganizationId("apitester00");
         organizationInformation.type("MERCHANT");
         organizationInformation.configurable(true);
 
-        Boardingv1registrationsOrganizationInformationBusinessInformation businessInformation=new Boardingv1registrationsOrganizationInformationBusinessInformation();
+        Boardingv1registrationsOrganizationInformationBusinessInformation businessInformation = new Boardingv1registrationsOrganizationInformationBusinessInformation();
         businessInformation.name("StuartWickedFastEatz");
-        Boardingv1registrationsOrganizationInformationBusinessInformationAddress address=new Boardingv1registrationsOrganizationInformationBusinessInformationAddress();
+        Boardingv1registrationsOrganizationInformationBusinessInformationAddress address = new Boardingv1registrationsOrganizationInformationBusinessInformationAddress();
         address.country("US");
         address.address1("123456 SandMarket");
         address.locality("ORMOND BEACH");
@@ -52,7 +52,7 @@ public class MerchantBoardingBinLookup {
         businessInformation.websiteUrl("https://www.StuartWickedEats.com");
         businessInformation.phoneNumber("6574567813");
 
-        Boardingv1registrationsOrganizationInformationBusinessInformationBusinessContact businessContact=new Boardingv1registrationsOrganizationInformationBusinessInformationBusinessContact();
+        Boardingv1registrationsOrganizationInformationBusinessInformationBusinessContact businessContact = new Boardingv1registrationsOrganizationInformationBusinessInformationBusinessContact();
         businessContact.firstName("Stuart");
         businessContact.lastName("Stuart");
         businessContact.phoneNumber("6574567813");
@@ -64,24 +64,24 @@ public class MerchantBoardingBinLookup {
         reqObj.organizationInformation(organizationInformation);
 
 
-        Boardingv1registrationsProductInformation productInformation=new Boardingv1registrationsProductInformation();
-        Boardingv1registrationsProductInformationSelectedProducts selectedProducts=new Boardingv1registrationsProductInformationSelectedProducts();
+        Boardingv1registrationsProductInformation productInformation = new Boardingv1registrationsProductInformation();
+        Boardingv1registrationsProductInformationSelectedProducts selectedProducts = new Boardingv1registrationsProductInformationSelectedProducts();
 
-        PaymentsProducts payments=new PaymentsProducts();
+        PaymentsProducts payments = new PaymentsProducts();
         selectedProducts.payments(payments);
 
-        RiskProducts risk=new RiskProducts();
+        RiskProducts risk = new RiskProducts();
         selectedProducts.risk(risk);
 
-        CommerceSolutionsProducts commerceSolutions=new CommerceSolutionsProducts();
-        CommerceSolutionsProductsBinLookup binLookup=new CommerceSolutionsProductsBinLookup();
-//        PaymentsProductsPayerAuthenticationSubscriptionInformation subscriptionInformation=new PaymentsProductsPayerAuthenticationSubscriptionInformation();
+        CommerceSolutionsProducts commerceSolutions = new CommerceSolutionsProducts();
+        CommerceSolutionsProductsBinLookup binLookup = new CommerceSolutionsProductsBinLookup();
+//        PaymentsProductsPayerAuthenticationSubscriptionInformation subscriptionInformation = new PaymentsProductsPayerAuthenticationSubscriptionInformation();
 
 //        subscriptionInformation.enabled(true);
 //        binLookup.subscriptionInformation(subscriptionInformation);
-        CommerceSolutionsProductsBinLookupConfigurationInformation configurationInformation=new CommerceSolutionsProductsBinLookupConfigurationInformation();
+        CommerceSolutionsProductsBinLookupConfigurationInformation configurationInformation = new CommerceSolutionsProductsBinLookupConfigurationInformation();
 
-        CommerceSolutionsProductsBinLookupConfigurationInformationConfigurations configurations=new CommerceSolutionsProductsBinLookupConfigurationInformationConfigurations();
+        CommerceSolutionsProductsBinLookupConfigurationInformationConfigurations configurations = new CommerceSolutionsProductsBinLookupConfigurationInformationConfigurations();
 
         configurations.isPayoutOptionsEnabled(false);
         configurations.isAccountPrefixEnabled(true);
@@ -92,14 +92,14 @@ public class MerchantBoardingBinLookup {
         commerceSolutions.binLookup(binLookup);
         selectedProducts.commerceSolutions(commerceSolutions);
 
-        ValueAddedServicesProducts valueAddedServices=new ValueAddedServicesProducts();
+        ValueAddedServicesProducts valueAddedServices = new ValueAddedServicesProducts();
         selectedProducts.valueAddedServices(valueAddedServices);
 
         productInformation.selectedProducts(selectedProducts);
         reqObj.productInformation(productInformation);
 
 
-        InlineResponse2013 result=null;
+        InlineResponse2013 result = null;
 
         try {
             //Boarding API support only JWT Auth Type
