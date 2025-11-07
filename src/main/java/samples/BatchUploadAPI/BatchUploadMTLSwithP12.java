@@ -43,7 +43,7 @@ public class BatchUploadMTLSwithP12 {
 			
 	        
 	        
-	        //SDK need file object and jks to upload file to batch api endpoint
+	        //SDK need file object and p12 to upload file to batch api endpoint
 			BatchUploadwithMTLSApi apiInstance= new BatchUploadwithMTLSApi();
 			ApiResponse<String> result= apiInstance.uploadBatchAPI(inputFile, envHostName, publicKeyFile, p12Path, p12Password, serverCertPath);
 			
