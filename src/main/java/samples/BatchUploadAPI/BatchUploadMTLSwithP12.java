@@ -36,7 +36,8 @@ public class BatchUploadMTLSwithP12 {
 			String p12Path = BatchUploadMTLSwithJKS.class.getClassLoader().getResource("batchApiMTLS/pushtest.p12").getPath();
 			//Input5 - keystore password
 			char[] p12Password = "changeit".toCharArray();
-			//Input6 - trustStore path which contains server cert
+			
+			//Input6 - trustStore path which contains server cert for ssl verification for endpoint url (optional) can pass as null
 			String serverCertPath = BatchUploadMTLSwithJKS.class.getClassLoader().getResource("batchApiMTLS/serverCasCert.pem").getPath();
 			
 	        
