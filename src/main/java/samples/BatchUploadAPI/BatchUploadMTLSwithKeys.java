@@ -68,7 +68,7 @@ public class BatchUploadMTLSwithKeys {
 //			Collection<X509Certificate> serverCerts = BatchUploadUtility.loadCertificatesFromPemFile(servercertPath);
 			Collection<X509Certificate> serverCerts = null ;
 	        
-	        //SDK need file object and jks to upload file to batch api endpoint
+	        //SDK need file object and keys to upload file to batch api endpoint
 			BatchUploadwithMTLSApi apiInstance= new BatchUploadwithMTLSApi();
 			ApiResponse<String> result= apiInstance.uploadBatchAPI(inputFile, envHostName, pgpPublicKey, clientPrivateKey, clientCerts.iterator().next(), serverCerts);
 			
