@@ -41,7 +41,7 @@ public class BatchUploadMTLSwithKeys {
 						
 			// Get the file path from the resources folder
 			String fileName="batchapiTest.csv";
-			String filePath = BatchUploadMTLSwithJKS.class.getClassLoader().getResource("batchApiMTLS/"+fileName).getPath();
+			String filePath = BatchUploadMTLSwithKeys.class.getClassLoader().getResource("batchApiMTLS/"+fileName).getPath();
 			
 			//Input1 - Create a File object
 			File inputFile = new File(filePath);
@@ -52,23 +52,23 @@ public class BatchUploadMTLSwithKeys {
 			//Read public and private keys
 			
 			//Input3 - PGP Public Key Object 
-			String publicKeyFile = BatchUploadMTLSwithJKS.class.getClassLoader().getResource("batchApiMTLS/bts-encryption-public.asc").getPath();
+			String publicKeyFile = BatchUploadMTLSwithKeys.class.getClassLoader().getResource("batchApiMTLS/bts-encryption-public.asc").getPath();
 			PGPPublicKey pgpPublicKey = BatchUploadUtility.readPGPPublicKey(publicKeyFile);
 			
 			//Input4 - Client Private Key Object
-			String clientprivatekeypath= BatchUploadMTLSwithJKS.class.getClassLoader().getResource("batchApiMTLS/client_private_key.key").getPath();
+			String clientprivatekeypath= BatchUploadMTLSwithKeys.class.getClassLoader().getResource("batchApiMTLS/client_private_key.key").getPath();
 			PrivateKey clientPrivateKey = loadPrivateKeyFromPemFile(clientprivatekeypath,null);
 			
 			//Input5 - Client Certificate Key Object
-			String clientcertPath= BatchUploadMTLSwithJKS.class.getClassLoader().getResource("batchApiMTLS/client_cert.crt").getPath();
+			String clientcertPath= BatchUploadMTLSwithKeys.class.getClassLoader().getResource("batchApiMTLS/client_cert.crt").getPath();
 			Collection<X509Certificate> clientCerts = BatchUploadUtility.loadCertificatesFromPemFile(clientcertPath);
 			
-			//Input6 - Server Certificate Key Object
-			String servercertPath= BatchUploadMTLSwithJKS.class.getClassLoader().getResource("batchApiMTLS/serverCasCert.pem").getPath();
-			Collection<X509Certificate> serverCerts = BatchUploadUtility.loadCertificatesFromPemFile(servercertPath);
-			
+			//Input6 - Server Certificate Key Object for ssl verification for endpoint url (optional) can pass as null
+//			String servercertPath= BatchUploadMTLSwithKeys.class.getClassLoader().getResource("batchApiMTLS/serverCasCert.pem").getPath();
+//			Collection<X509Certificate> serverCerts = BatchUploadUtility.loadCertificatesFromPemFile(servercertPath);
+			Collection<X509Certificate> serverCerts = null ;
 	        
-	        //SDK need file object and jks to upload file to batch api endpoint
+	        //SDK need file object and keys to upload file to batch api endpoint
 			BatchUploadwithMTLSApi apiInstance= new BatchUploadwithMTLSApi();
 			ApiResponse<String> result= apiInstance.uploadBatchAPI(inputFile, envHostName, pgpPublicKey, clientPrivateKey, clientCerts.iterator().next(), serverCerts);
 			

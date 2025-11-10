@@ -35,11 +35,13 @@ public class BatchUploadMTLSwithJKS {
 			String keystorePath = BatchUploadMTLSwithJKS.class.getClassLoader().getResource("batchApiMTLS/pushtest.jks").getPath();
 			//Input5 - keystore password
 			char[] keyStorePassword = "changeit".toCharArray();
-			//Input6 - trustStore path which contains server cert
-			String truststorePath = BatchUploadMTLSwithJKS.class.getClassLoader().getResource("batchApiMTLS/castrust.jks").getPath();
+			
+			//Input6 - trustStore path which contains server cert for ssl verification for endpoint url (optional) can pass as null
+			//String truststorePath = BatchUploadMTLSwithJKS.class.getClassLoader().getResource("batchApiMTLS/castrust.jks").getPath();
+			String truststorePath = null;
 			//Input7 - trustStore Password
-	        char[] truststorePassword = "changeit".toCharArray();
-	        
+	        //char[] truststorePassword = "changeit".toCharArray();
+			char[] truststorePassword = null;
 	        
 	        //SDK need file object and jks to upload file to batch api endpoint
 			BatchUploadwithMTLSApi apiInstance= new BatchUploadwithMTLSApi();
