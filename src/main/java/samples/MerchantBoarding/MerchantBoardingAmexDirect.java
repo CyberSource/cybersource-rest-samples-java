@@ -31,16 +31,16 @@ public class MerchantBoardingAmexDirect {
 
     public static InlineResponse2013 run() {
 
-        PostRegistrationBody reqObj=new PostRegistrationBody();
+        PostRegistrationBody reqObj = new PostRegistrationBody();
 
-        Boardingv1registrationsOrganizationInformation organizationInformation=new Boardingv1registrationsOrganizationInformation();
+        Boardingv1registrationsOrganizationInformation organizationInformation = new Boardingv1registrationsOrganizationInformation();
         organizationInformation.parentOrganizationId("apitester00");
         organizationInformation.type("MERCHANT");
         organizationInformation.configurable(true);
 
-        Boardingv1registrationsOrganizationInformationBusinessInformation businessInformation=new Boardingv1registrationsOrganizationInformationBusinessInformation();
+        Boardingv1registrationsOrganizationInformationBusinessInformation businessInformation = new Boardingv1registrationsOrganizationInformationBusinessInformation();
         businessInformation.name("StuartWickedFastEatz");
-        Boardingv1registrationsOrganizationInformationBusinessInformationAddress address=new Boardingv1registrationsOrganizationInformationBusinessInformationAddress();
+        Boardingv1registrationsOrganizationInformationBusinessInformationAddress address = new Boardingv1registrationsOrganizationInformationBusinessInformationAddress();
         address.country("US");
         address.address1("123456 SandMarket");
         address.locality("ORMOND BEACH");
@@ -50,7 +50,7 @@ public class MerchantBoardingAmexDirect {
         businessInformation.websiteUrl("https://www.StuartWickedEats.com");
         businessInformation.phoneNumber("6574567813");
 
-        Boardingv1registrationsOrganizationInformationBusinessInformationBusinessContact businessContact=new Boardingv1registrationsOrganizationInformationBusinessInformationBusinessContact();
+        Boardingv1registrationsOrganizationInformationBusinessInformationBusinessContact businessContact = new Boardingv1registrationsOrganizationInformationBusinessInformationBusinessContact();
         businessContact.firstName("Stuart");
         businessContact.lastName("Stuart");
         businessContact.phoneNumber("6574567813");
@@ -62,29 +62,29 @@ public class MerchantBoardingAmexDirect {
         reqObj.organizationInformation(organizationInformation);
 
 
-        Boardingv1registrationsProductInformation productInformation=new Boardingv1registrationsProductInformation();
-        Boardingv1registrationsProductInformationSelectedProducts selectedProducts=new Boardingv1registrationsProductInformationSelectedProducts();
+        Boardingv1registrationsProductInformation productInformation = new Boardingv1registrationsProductInformation();
+        Boardingv1registrationsProductInformationSelectedProducts selectedProducts = new Boardingv1registrationsProductInformationSelectedProducts();
 
-        PaymentsProducts payments=new PaymentsProducts();
-        PaymentsProductsCardProcessing cardProcessing=new PaymentsProductsCardProcessing();
-        PaymentsProductsCardProcessingSubscriptionInformation subscriptionInformation=new PaymentsProductsCardProcessingSubscriptionInformation();
+        PaymentsProducts payments = new PaymentsProducts();
+        PaymentsProductsCardProcessing cardProcessing = new PaymentsProductsCardProcessing();
+        PaymentsProductsCardProcessingSubscriptionInformation subscriptionInformation = new PaymentsProductsCardProcessingSubscriptionInformation();
 
         subscriptionInformation.enabled(true);
-        Map<String, PaymentsProductsCardProcessingSubscriptionInformationFeatures> features=new HashMap<>();
+        Map<String, PaymentsProductsCardProcessingSubscriptionInformationFeatures> features = new HashMap<>();
 
-        PaymentsProductsCardProcessingSubscriptionInformationFeatures obj1=new PaymentsProductsCardProcessingSubscriptionInformationFeatures();
+        PaymentsProductsCardProcessingSubscriptionInformationFeatures obj1 = new PaymentsProductsCardProcessingSubscriptionInformationFeatures();
         obj1.enabled(true);
         features.put("cardNotPresent",obj1);
         features.put("cardPresent",obj1);
         subscriptionInformation.features(features);
         cardProcessing.subscriptionInformation(subscriptionInformation);
 
-        PaymentsProductsCardProcessingConfigurationInformation configurationInformation=new PaymentsProductsCardProcessingConfigurationInformation();
+        PaymentsProductsCardProcessingConfigurationInformation configurationInformation = new PaymentsProductsCardProcessingConfigurationInformation();
 
-        CardProcessingConfig configurations=new CardProcessingConfig();
-        CardProcessingConfigCommon common=new CardProcessingConfigCommon();
+        CardProcessingConfig configurations = new CardProcessingConfig();
+        CardProcessingConfigCommon common = new CardProcessingConfigCommon();
         common.merchantCategoryCode("1799");
-        CardProcessingConfigCommonMerchantDescriptorInformation merchantDescriptorInformation=new CardProcessingConfigCommonMerchantDescriptorInformation();
+        CardProcessingConfigCommonMerchantDescriptorInformation merchantDescriptorInformation = new CardProcessingConfigCommonMerchantDescriptorInformation();
         merchantDescriptorInformation.city("Cupertino");
         merchantDescriptorInformation.country("USA");
         merchantDescriptorInformation.name("Mer name");
@@ -99,13 +99,13 @@ public class MerchantBoardingAmexDirect {
         common.subMerchantId("123457");
         common.subMerchantBusinessName("bus name");
 
-        Map<String, CardProcessingConfigCommonProcessors> processors=new HashMap<>();
-        CardProcessingConfigCommonProcessors obj2=new CardProcessingConfigCommonProcessors();
-        CardProcessingConfigCommonAcquirer acquirer=new CardProcessingConfigCommonAcquirer();
+        Map<String, CardProcessingConfigCommonProcessors> processors = new HashMap<>();
+        CardProcessingConfigCommonProcessors obj2 = new CardProcessingConfigCommonProcessors();
+        CardProcessingConfigCommonAcquirer acquirer = new CardProcessingConfigCommonAcquirer();
 
         obj2.acquirer(acquirer);
-        Map<String, CardProcessingConfigCommonCurrencies1> currencies=new HashMap<>();
-        CardProcessingConfigCommonCurrencies1 obj3=new CardProcessingConfigCommonCurrencies1();
+        Map<String, CardProcessingConfigCommonCurrencies1> currencies = new HashMap<>();
+        CardProcessingConfigCommonCurrencies1 obj3 = new CardProcessingConfigCommonCurrencies1();
         obj3.enabled(true);
         obj3.enabledCardPresent(false);
         obj3.enabledCardPresent(true);
@@ -117,8 +117,8 @@ public class MerchantBoardingAmexDirect {
 
         obj2.currencies(currencies);
 
-        Map<String, CardProcessingConfigCommonPaymentTypes> paymentTypes=new HashMap<>();
-        CardProcessingConfigCommonPaymentTypes obj4=new CardProcessingConfigCommonPaymentTypes();
+        Map<String, CardProcessingConfigCommonPaymentTypes> paymentTypes = new HashMap<>();
+        CardProcessingConfigCommonPaymentTypes obj4 = new CardProcessingConfigCommonPaymentTypes();
         obj4.enabled(true);
         paymentTypes.put("AMERICAN_EXPRESS",obj4);
 
@@ -135,11 +135,11 @@ public class MerchantBoardingAmexDirect {
         common.processors(processors);
         configurations.common(common);
 
-        CardProcessingConfigFeatures features2=new CardProcessingConfigFeatures();
-        CardProcessingConfigFeaturesCardNotPresent cardNotPresent=new CardProcessingConfigFeaturesCardNotPresent();
+        CardProcessingConfigFeatures features2 = new CardProcessingConfigFeatures();
+        CardProcessingConfigFeaturesCardNotPresent cardNotPresent = new CardProcessingConfigFeaturesCardNotPresent();
 
-        Map<String, CardProcessingConfigFeaturesCardNotPresentProcessors> processors3=new HashMap<>();
-        CardProcessingConfigFeaturesCardNotPresentProcessors obj5=new CardProcessingConfigFeaturesCardNotPresentProcessors();
+        Map<String, CardProcessingConfigFeaturesCardNotPresentProcessors> processors3 = new HashMap<>();
+        CardProcessingConfigFeaturesCardNotPresentProcessors obj5 = new CardProcessingConfigFeaturesCardNotPresentProcessors();
         obj5.relaxAddressVerificationSystem(true);
         obj5.relaxAddressVerificationSystemAllowExpiredCard(true);
         obj5.relaxAddressVerificationSystemAllowZipWithoutCountry(false);
@@ -153,53 +153,53 @@ public class MerchantBoardingAmexDirect {
         cardProcessing.configurationInformation(configurationInformation);
         payments.cardProcessing(cardProcessing);
 
-        PaymentsProductsVirtualTerminal virtualTerminal=new PaymentsProductsVirtualTerminal();
-//        PaymentsProductsPayerAuthenticationSubscriptionInformation subscriptionInformation2=new PaymentsProductsPayerAuthenticationSubscriptionInformation();
+        PaymentsProductsVirtualTerminal virtualTerminal = new PaymentsProductsVirtualTerminal();
+//        PaymentsProductsPayerAuthenticationSubscriptionInformation subscriptionInformation2 = new PaymentsProductsPayerAuthenticationSubscriptionInformation();
 //
 //        subscriptionInformation2.enabled(true);
 //        virtualTerminal.subscriptionInformation(subscriptionInformation2);
 
-        PaymentsProductsVirtualTerminalConfigurationInformation configurationInformation3=new PaymentsProductsVirtualTerminalConfigurationInformation();
+        PaymentsProductsVirtualTerminalConfigurationInformation configurationInformation3 = new PaymentsProductsVirtualTerminalConfigurationInformation();
 
         configurationInformation3.templateId("9FA1BB94-5119-48D3-B2E5-A81FD3C657B5");
         virtualTerminal.configurationInformation(configurationInformation3);
         payments.virtualTerminal(virtualTerminal);
 
-        PaymentsProductsTax customerInvoicing=new PaymentsProductsTax();
-//        PaymentsProductsPayerAuthenticationSubscriptionInformation subscriptionInformation6=new PaymentsProductsPayerAuthenticationSubscriptionInformation();
+        PaymentsProductsTax customerInvoicing = new PaymentsProductsTax();
+//        PaymentsProductsPayerAuthenticationSubscriptionInformation subscriptionInformation6 = new PaymentsProductsPayerAuthenticationSubscriptionInformation();
 //
 //        subscriptionInformation6.enabled(true);
 //        customerInvoicing.subscriptionInformation(subscriptionInformation6);
         payments.customerInvoicing(customerInvoicing);
         selectedProducts.payments(payments);
 
-        RiskProducts risk=new RiskProducts();
+        RiskProducts risk = new RiskProducts();
         selectedProducts.risk(risk);
 
-        CommerceSolutionsProducts commerceSolutions=new CommerceSolutionsProducts();
-        CommerceSolutionsProductsTokenManagement tokenManagement=new CommerceSolutionsProductsTokenManagement();
+        CommerceSolutionsProducts commerceSolutions = new CommerceSolutionsProducts();
+        CommerceSolutionsProductsTokenManagement tokenManagement = new CommerceSolutionsProductsTokenManagement();
 
-//        PaymentsProductsPayerAuthenticationSubscriptionInformation subscriptionInformation7=new PaymentsProductsPayerAuthenticationSubscriptionInformation();
+//        PaymentsProductsPayerAuthenticationSubscriptionInformation subscriptionInformation7 = new PaymentsProductsPayerAuthenticationSubscriptionInformation();
 //
 //        subscriptionInformation7.enabled(true);
 //        tokenManagement.subscriptionInformation(subscriptionInformation7);
-        CommerceSolutionsProductsTokenManagementConfigurationInformation configurationInformation4=new CommerceSolutionsProductsTokenManagementConfigurationInformation();
+        CommerceSolutionsProductsTokenManagementConfigurationInformation configurationInformation4 = new CommerceSolutionsProductsTokenManagementConfigurationInformation();
 
         configurationInformation4.templateId("D62BEE20-DCFD-4AA2-8723-BA3725958ABA");
         tokenManagement.configurationInformation(configurationInformation4);
         commerceSolutions.tokenManagement(tokenManagement);
         selectedProducts.commerceSolutions(commerceSolutions);
 
-        ValueAddedServicesProducts valueAddedServices=new ValueAddedServicesProducts();
-        PaymentsProductsTax transactionSearch=new PaymentsProductsTax();
-//        PaymentsProductsPayerAuthenticationSubscriptionInformation subscriptionInformation8=new PaymentsProductsPayerAuthenticationSubscriptionInformation();
+        ValueAddedServicesProducts valueAddedServices = new ValueAddedServicesProducts();
+        PaymentsProductsTax transactionSearch = new PaymentsProductsTax();
+//        PaymentsProductsPayerAuthenticationSubscriptionInformation subscriptionInformation8 = new PaymentsProductsPayerAuthenticationSubscriptionInformation();
 //
 //        subscriptionInformation8.enabled(true);
 //        transactionSearch.subscriptionInformation(subscriptionInformation8);
 
         valueAddedServices.transactionSearch(transactionSearch);
-        PaymentsProductsTax reporting=new PaymentsProductsTax();
-//        PaymentsProductsPayerAuthenticationSubscriptionInformation subscriptionInformation9=new PaymentsProductsPayerAuthenticationSubscriptionInformation();
+        PaymentsProductsTax reporting = new PaymentsProductsTax();
+//        PaymentsProductsPayerAuthenticationSubscriptionInformation subscriptionInformation9 = new PaymentsProductsPayerAuthenticationSubscriptionInformation();
 //
 //        subscriptionInformation9.enabled(true);
 //        reporting.subscriptionInformation(subscriptionInformation9);
@@ -209,7 +209,7 @@ public class MerchantBoardingAmexDirect {
         productInformation.selectedProducts(selectedProducts);
         reqObj.productInformation(productInformation);
 
-        InlineResponse2013 result=null;
+        InlineResponse2013 result = null;
 
         try {
             //Boarding API support only JWT Auth Type

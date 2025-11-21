@@ -37,15 +37,15 @@ public class CreateSubscription {
 	
 		CreateSubscriptionRequest requestObj = new CreateSubscriptionRequest();
 
-		Rbsv1subscriptionsClientReferenceInformation clientReferenceInformation = new Rbsv1subscriptionsClientReferenceInformation();
+		GetAllSubscriptionsResponseClientReferenceInformation clientReferenceInformation = new GetAllSubscriptionsResponseClientReferenceInformation();
 		clientReferenceInformation.code("TC501713");
-		Rbsv1subscriptionsClientReferenceInformationPartner clientReferenceInformationPartner = new Rbsv1subscriptionsClientReferenceInformationPartner();
-		clientReferenceInformationPartner.developerId("ABCD1234");
-		clientReferenceInformationPartner.solutionId("GEF1234");
-		clientReferenceInformation.partner(clientReferenceInformationPartner);
-
-		clientReferenceInformation.applicationName("CYBS-SDK");
-		clientReferenceInformation.applicationVersion("v1");
+//		Rbsv1subscriptionsClientReferenceInformationPartner clientReferenceInformationPartner = new Rbsv1subscriptionsClientReferenceInformationPartner();
+//		clientReferenceInformationPartner.developerId("ABCD1234");
+//		clientReferenceInformationPartner.solutionId("GEF1234");
+//		clientReferenceInformation.partner(clientReferenceInformationPartner);
+//
+//		clientReferenceInformation.applicationName("CYBS-SDK");
+//		clientReferenceInformation.applicationVersion("v1");
 		requestObj.clientReferenceInformation(clientReferenceInformation);
 
 		Rbsv1subscriptionsProcessingInformation processingInformation = new Rbsv1subscriptionsProcessingInformation();

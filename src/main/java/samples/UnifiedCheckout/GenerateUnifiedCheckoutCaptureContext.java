@@ -6,6 +6,8 @@ import Api.*;
 import Data.Configuration;
 import Invokers.ApiClient;
 import Model.*;
+import com.google.gson.JsonObject;
+import utilities.capturecontext.utility.CaptureContextParsingUtility;
 
 public class GenerateUnifiedCheckoutCaptureContext {
 	private static String responseCode = null;
@@ -95,6 +97,13 @@ public class GenerateUnifiedCheckoutCaptureContext {
 			System.out.println("ResponseCode :" + responseCode);
 			System.out.println("ResponseMessage :" + status);
 			System.out.println("Response Body :" + response);
+
+            try {
+                JsonObject payload = CaptureContextParsingUtility.parseCaptureContextResponse(response, merchantConfig, true);
+                System.out.println(payload.toString());
+            } catch (Exception e) {
+                System.out.println(e.getMessage());
+            }
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

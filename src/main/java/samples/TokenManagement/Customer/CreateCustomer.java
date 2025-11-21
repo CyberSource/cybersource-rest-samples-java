@@ -29,18 +29,18 @@ public class CreateCustomer {
 	
 		PostCustomerRequest requestObj = new PostCustomerRequest();
 
-		Tmsv2customersBuyerInformation buyerInformation = new Tmsv2customersBuyerInformation();
+		Tmsv2tokenizeTokenInformationCustomerBuyerInformation buyerInformation = new Tmsv2tokenizeTokenInformationCustomerBuyerInformation();
 		buyerInformation.merchantCustomerID("Your customer identifier");
 		buyerInformation.email("test@cybs.com");
 		requestObj.buyerInformation(buyerInformation);
 
-		Tmsv2customersClientReferenceInformation clientReferenceInformation = new Tmsv2customersClientReferenceInformation();
+		Tmsv2tokenizeTokenInformationCustomerClientReferenceInformation clientReferenceInformation = new Tmsv2tokenizeTokenInformationCustomerClientReferenceInformation();
 		clientReferenceInformation.code("TC50171_3");
 		requestObj.clientReferenceInformation(clientReferenceInformation);
 
 
-		List <Tmsv2customersMerchantDefinedInformation> merchantDefinedInformation =  new ArrayList <Tmsv2customersMerchantDefinedInformation>();
-		Tmsv2customersMerchantDefinedInformation merchantDefinedInformation1 = new Tmsv2customersMerchantDefinedInformation();
+		List <Tmsv2tokenizeTokenInformationCustomerMerchantDefinedInformation> merchantDefinedInformation =  new ArrayList <Tmsv2tokenizeTokenInformationCustomerMerchantDefinedInformation>();
+		Tmsv2tokenizeTokenInformationCustomerMerchantDefinedInformation merchantDefinedInformation1 = new Tmsv2tokenizeTokenInformationCustomerMerchantDefinedInformation();
 		merchantDefinedInformation1.name("data1");
 		merchantDefinedInformation1.value("Your customer data");
 		merchantDefinedInformation.add(merchantDefinedInformation1);
