@@ -34,7 +34,7 @@ public class UpdateCustomersDefaultPaymentInstrument {
 		
 		PatchCustomerRequest requestObj = new PatchCustomerRequest();
 
-		Tmsv2customersDefaultPaymentInstrument defaultPaymentInstrument = new Tmsv2customersDefaultPaymentInstrument();
+		Tmsv2tokenizeTokenInformationCustomerDefaultPaymentInstrument defaultPaymentInstrument = new Tmsv2tokenizeTokenInformationCustomerDefaultPaymentInstrument();
 		defaultPaymentInstrument.id("AB6A54B982A6FCB6E05341588E0A3935");
 		requestObj.defaultPaymentInstrument(defaultPaymentInstrument);
 
