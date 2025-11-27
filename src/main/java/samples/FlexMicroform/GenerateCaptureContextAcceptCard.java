@@ -67,7 +67,7 @@ public class GenerateCaptureContextAcceptCard {
             System.out.println("\n\n");
 
             try {
-                JsonObject payload = CaptureContextParsingUtility.parseCaptureContextResponse(response, merchantConfig, true);
+                JsonObject payload = CaptureContextParsingUtility.parseCaptureContextResponse(response, merchantConfig);
                 System.out.println(payload.toString());
             } catch (Exception e) {
                 System.out.println(e.getMessage());

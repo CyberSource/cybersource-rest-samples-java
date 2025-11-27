@@ -99,7 +99,7 @@ public class GenerateUnifiedCheckoutCaptureContext {
 			System.out.println("Response Body :" + response);
 
             try {
-                JsonObject payload = CaptureContextParsingUtility.parseCaptureContextResponse(response, merchantConfig, true);
+                JsonObject payload = CaptureContextParsingUtility.parseCaptureContextResponse(response, merchantConfig);
                 System.out.println(payload.toString());
             } catch (Exception e) {
                 System.out.println(e.getMessage());
