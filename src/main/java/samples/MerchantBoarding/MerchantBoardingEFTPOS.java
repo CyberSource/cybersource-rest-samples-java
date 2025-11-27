@@ -33,16 +33,16 @@ public class MerchantBoardingEFTPOS {
 
     public static InlineResponse2013 run() {
 
-        PostRegistrationBody reqObj=new PostRegistrationBody();
+        PostRegistrationBody reqObj = new PostRegistrationBody();
 
-        Boardingv1registrationsOrganizationInformation organizationInformation=new Boardingv1registrationsOrganizationInformation();
+        Boardingv1registrationsOrganizationInformation organizationInformation = new Boardingv1registrationsOrganizationInformation();
         organizationInformation.parentOrganizationId("apitester00");
         organizationInformation.type("MERCHANT");
         organizationInformation.configurable(true);
 
-        Boardingv1registrationsOrganizationInformationBusinessInformation businessInformation=new Boardingv1registrationsOrganizationInformationBusinessInformation();
+        Boardingv1registrationsOrganizationInformationBusinessInformation businessInformation = new Boardingv1registrationsOrganizationInformationBusinessInformation();
         businessInformation.name("StuartWickedFastEatz");
-        Boardingv1registrationsOrganizationInformationBusinessInformationAddress address=new Boardingv1registrationsOrganizationInformationBusinessInformationAddress();
+        Boardingv1registrationsOrganizationInformationBusinessInformationAddress address = new Boardingv1registrationsOrganizationInformationBusinessInformationAddress();
         address.country("US");
         address.address1("123456 SandMarket");
         address.locality("ORMOND BEACH");
@@ -52,7 +52,7 @@ public class MerchantBoardingEFTPOS {
         businessInformation.websiteUrl("https://www.StuartWickedEats.com");
         businessInformation.phoneNumber("6574567813");
 
-        Boardingv1registrationsOrganizationInformationBusinessInformationBusinessContact businessContact=new Boardingv1registrationsOrganizationInformationBusinessInformationBusinessContact();
+        Boardingv1registrationsOrganizationInformationBusinessInformationBusinessContact businessContact = new Boardingv1registrationsOrganizationInformationBusinessInformationBusinessContact();
         businessContact.firstName("Stuart");
         businessContact.lastName("Stuart");
         businessContact.phoneNumber("6574567813");
@@ -63,17 +63,17 @@ public class MerchantBoardingEFTPOS {
 
         reqObj.organizationInformation(organizationInformation);
 
-        Boardingv1registrationsProductInformation productInformation=new Boardingv1registrationsProductInformation();
-        Boardingv1registrationsProductInformationSelectedProducts selectedProducts=new Boardingv1registrationsProductInformationSelectedProducts();
+        Boardingv1registrationsProductInformation productInformation = new Boardingv1registrationsProductInformation();
+        Boardingv1registrationsProductInformationSelectedProducts selectedProducts = new Boardingv1registrationsProductInformationSelectedProducts();
 
-        PaymentsProducts payments=new PaymentsProducts();
-        PaymentsProductsCardProcessing cardProcessing=new PaymentsProductsCardProcessing();
-        PaymentsProductsCardProcessingSubscriptionInformation subscriptionInformation=new PaymentsProductsCardProcessingSubscriptionInformation();
+        PaymentsProducts payments = new PaymentsProducts();
+        PaymentsProductsCardProcessing cardProcessing = new PaymentsProductsCardProcessing();
+        PaymentsProductsCardProcessingSubscriptionInformation subscriptionInformation = new PaymentsProductsCardProcessingSubscriptionInformation();
 
         subscriptionInformation.enabled(true);
-        Map<String, PaymentsProductsCardProcessingSubscriptionInformationFeatures> features=new HashMap<>();
+        Map<String, PaymentsProductsCardProcessingSubscriptionInformationFeatures> features = new HashMap<>();
 
-        PaymentsProductsCardProcessingSubscriptionInformationFeatures obj1=new PaymentsProductsCardProcessingSubscriptionInformationFeatures();
+        PaymentsProductsCardProcessingSubscriptionInformationFeatures obj1 = new PaymentsProductsCardProcessingSubscriptionInformationFeatures();
         obj1.enabled(true);
         features.put("cardNotPresent",obj1);
         obj1.enabled(false);
@@ -81,34 +81,34 @@ public class MerchantBoardingEFTPOS {
         subscriptionInformation.features(features);
         cardProcessing.subscriptionInformation(subscriptionInformation);
 
-        PaymentsProductsCardProcessingConfigurationInformation configurationInformation=new PaymentsProductsCardProcessingConfigurationInformation();
+        PaymentsProductsCardProcessingConfigurationInformation configurationInformation = new PaymentsProductsCardProcessingConfigurationInformation();
 
-        CardProcessingConfig configurations=new CardProcessingConfig();
-        CardProcessingConfigCommon common=new CardProcessingConfigCommon();
+        CardProcessingConfig configurations = new CardProcessingConfig();
+        CardProcessingConfigCommon common = new CardProcessingConfigCommon();
         common.merchantCategoryCode("5999");
         common.preferCobadgedSecondaryBrand(true);
 
 
-        Map<String, CardProcessingConfigCommonProcessors> processors=new HashMap<>();
-        CardProcessingConfigCommonProcessors obj5=new CardProcessingConfigCommonProcessors();
-        CardProcessingConfigCommonAcquirer acquirer=new CardProcessingConfigCommonAcquirer();
+        Map<String, CardProcessingConfigCommonProcessors> processors = new HashMap<>();
+        CardProcessingConfigCommonProcessors obj5 = new CardProcessingConfigCommonProcessors();
+        CardProcessingConfigCommonAcquirer acquirer = new CardProcessingConfigCommonAcquirer();
         acquirer.countryCode("344_hongkong");
         acquirer.institutionId("22344");
 
         obj5.acquirer(acquirer);
 
-        Map<String, CardProcessingConfigCommonCurrencies1> currencies=new HashMap<>();
+        Map<String, CardProcessingConfigCommonCurrencies1> currencies = new HashMap<>();
 
 
-        CardProcessingConfigCommonCurrencies1 obj6=new CardProcessingConfigCommonCurrencies1();
+        CardProcessingConfigCommonCurrencies1 obj6 = new CardProcessingConfigCommonCurrencies1();
         obj6.enabled(true);
         obj6.merchantId("12345612344");
         obj6.terminalId("12121212");
         currencies.put("AUD",obj6);
         obj5.currencies(currencies);
 
-        Map<String, CardProcessingConfigCommonPaymentTypes> paymentTypes=new HashMap<>();
-        CardProcessingConfigCommonPaymentTypes obj7=new CardProcessingConfigCommonPaymentTypes();
+        Map<String, CardProcessingConfigCommonPaymentTypes> paymentTypes = new HashMap<>();
+        CardProcessingConfigCommonPaymentTypes obj7 = new CardProcessingConfigCommonPaymentTypes();
         obj7.enabled(true);
         paymentTypes.put("EFTPOS",obj7);
 
@@ -123,7 +123,7 @@ public class MerchantBoardingEFTPOS {
         common.processors(processors);
         configurations.common(common);
 
-        CardProcessingConfigFeatures features2=new CardProcessingConfigFeatures();
+        CardProcessingConfigFeatures features2 = new CardProcessingConfigFeatures();
 
         configurations.features(features2);
         configurationInformation.configurations(configurations);
@@ -137,7 +137,7 @@ public class MerchantBoardingEFTPOS {
         reqObj.productInformation(productInformation);
 
 
-        InlineResponse2013 result=null;
+        InlineResponse2013 result = null;
 
         try {
             //Boarding API support only JWT Auth Type

@@ -30,16 +30,16 @@ public class MerchantBoardingCUP {
 
     public static InlineResponse2013 run() {
 
-        PostRegistrationBody reqObj=new PostRegistrationBody();
+        PostRegistrationBody reqObj = new PostRegistrationBody();
 
-        Boardingv1registrationsOrganizationInformation organizationInformation=new Boardingv1registrationsOrganizationInformation();
+        Boardingv1registrationsOrganizationInformation organizationInformation = new Boardingv1registrationsOrganizationInformation();
         organizationInformation.parentOrganizationId("apitester00");
         organizationInformation.type("MERCHANT");
         organizationInformation.configurable(true);
 
-        Boardingv1registrationsOrganizationInformationBusinessInformation businessInformation=new Boardingv1registrationsOrganizationInformationBusinessInformation();
+        Boardingv1registrationsOrganizationInformationBusinessInformation businessInformation = new Boardingv1registrationsOrganizationInformationBusinessInformation();
         businessInformation.name("StuartWickedFastEatz");
-        Boardingv1registrationsOrganizationInformationBusinessInformationAddress address=new Boardingv1registrationsOrganizationInformationBusinessInformationAddress();
+        Boardingv1registrationsOrganizationInformationBusinessInformationAddress address = new Boardingv1registrationsOrganizationInformationBusinessInformationAddress();
         address.country("US");
         address.address1("123456 SandMarket");
         address.locality("ORMOND BEACH");
@@ -49,7 +49,7 @@ public class MerchantBoardingCUP {
         businessInformation.websiteUrl("https://www.StuartWickedEats.com");
         businessInformation.phoneNumber("6574567813");
 
-        Boardingv1registrationsOrganizationInformationBusinessInformationBusinessContact businessContact=new Boardingv1registrationsOrganizationInformationBusinessInformationBusinessContact();
+        Boardingv1registrationsOrganizationInformationBusinessInformationBusinessContact businessContact = new Boardingv1registrationsOrganizationInformationBusinessInformationBusinessContact();
         businessContact.firstName("Stuart");
         businessContact.lastName("Stuart");
         businessContact.phoneNumber("6574567813");
@@ -61,18 +61,18 @@ public class MerchantBoardingCUP {
         reqObj.organizationInformation(organizationInformation);
 
 
-        Boardingv1registrationsProductInformation productInformation=new Boardingv1registrationsProductInformation();
+        Boardingv1registrationsProductInformation productInformation = new Boardingv1registrationsProductInformation();
 
-        Boardingv1registrationsProductInformationSelectedProducts selectedProducts=new Boardingv1registrationsProductInformationSelectedProducts();
+        Boardingv1registrationsProductInformationSelectedProducts selectedProducts = new Boardingv1registrationsProductInformationSelectedProducts();
 
-        PaymentsProducts payments=new PaymentsProducts();
-        PaymentsProductsCardProcessing cardProcessing=new PaymentsProductsCardProcessing();
-        PaymentsProductsCardProcessingSubscriptionInformation subscriptionInformation=new PaymentsProductsCardProcessingSubscriptionInformation();
+        PaymentsProducts payments = new PaymentsProducts();
+        PaymentsProductsCardProcessing cardProcessing = new PaymentsProductsCardProcessing();
+        PaymentsProductsCardProcessingSubscriptionInformation subscriptionInformation = new PaymentsProductsCardProcessingSubscriptionInformation();
 
         subscriptionInformation.enabled(true);
-        Map<String, PaymentsProductsCardProcessingSubscriptionInformationFeatures> features=new HashMap<>();
+        Map<String, PaymentsProductsCardProcessingSubscriptionInformationFeatures> features = new HashMap<>();
 
-        PaymentsProductsCardProcessingSubscriptionInformationFeatures obj1=new PaymentsProductsCardProcessingSubscriptionInformationFeatures();
+        PaymentsProductsCardProcessingSubscriptionInformationFeatures obj1 = new PaymentsProductsCardProcessingSubscriptionInformationFeatures();
         obj1.enabled(true);
         features.put("cardNotPresent",obj1);
         features.put("cardPresent",obj1);
@@ -81,23 +81,23 @@ public class MerchantBoardingCUP {
         cardProcessing.subscriptionInformation(subscriptionInformation);
 
 
-        PaymentsProductsCardProcessingConfigurationInformation configurationInformation=new PaymentsProductsCardProcessingConfigurationInformation();
+        PaymentsProductsCardProcessingConfigurationInformation configurationInformation = new PaymentsProductsCardProcessingConfigurationInformation();
 
-        CardProcessingConfig configurations=new CardProcessingConfig();
-        CardProcessingConfigCommon common=new CardProcessingConfigCommon();
+        CardProcessingConfig configurations = new CardProcessingConfig();
+        CardProcessingConfigCommon common = new CardProcessingConfigCommon();
         common.merchantCategoryCode("1799");
-        Map<String, CardProcessingConfigCommonProcessors> processors=new HashMap<>();
+        Map<String, CardProcessingConfigCommonProcessors> processors = new HashMap<>();
 
-        CardProcessingConfigCommonProcessors obj2=new CardProcessingConfigCommonProcessors();
-        CardProcessingConfigCommonAcquirer acquirer=new CardProcessingConfigCommonAcquirer();
+        CardProcessingConfigCommonProcessors obj2 = new CardProcessingConfigCommonProcessors();
+        CardProcessingConfigCommonAcquirer acquirer = new CardProcessingConfigCommonAcquirer();
 
         acquirer.countryCode("344_hongkong");
         acquirer.institutionId("22344");
         obj2.acquirer(acquirer);
 
-        Map<String, CardProcessingConfigCommonCurrencies1> currencies=new HashMap<>();
+        Map<String, CardProcessingConfigCommonCurrencies1> currencies = new HashMap<>();
 
-        CardProcessingConfigCommonCurrencies1 obj3=new CardProcessingConfigCommonCurrencies1();
+        CardProcessingConfigCommonCurrencies1 obj3 = new CardProcessingConfigCommonCurrencies1();
         obj3.enabled(true);
         obj3.enabledCardPresent(false);
         obj3.enabledCardNotPresent(true);
@@ -110,9 +110,9 @@ public class MerchantBoardingCUP {
 
         obj2.currencies(currencies);
 
-        Map<String, CardProcessingConfigCommonPaymentTypes> paymentTypes=new HashMap<>();
+        Map<String, CardProcessingConfigCommonPaymentTypes> paymentTypes = new HashMap<>();
 
-        CardProcessingConfigCommonPaymentTypes obj4=new CardProcessingConfigCommonPaymentTypes();
+        CardProcessingConfigCommonPaymentTypes obj4 = new CardProcessingConfigCommonPaymentTypes();
         obj4.enabled(true);
         paymentTypes.put("CUP",obj4);
         obj2.paymentTypes(paymentTypes);
@@ -126,39 +126,39 @@ public class MerchantBoardingCUP {
         cardProcessing.configurationInformation(configurationInformation);
         payments.cardProcessing(cardProcessing);
 
-        PaymentsProductsVirtualTerminal virtualTerminal=new PaymentsProductsVirtualTerminal();
-//        PaymentsProductsPayerAuthenticationSubscriptionInformation subscriptionInformation2=new PaymentsProductsPayerAuthenticationSubscriptionInformation();
+        PaymentsProductsVirtualTerminal virtualTerminal = new PaymentsProductsVirtualTerminal();
+//        PaymentsProductsPayerAuthenticationSubscriptionInformation subscriptionInformation2 = new PaymentsProductsPayerAuthenticationSubscriptionInformation();
 //
 //        subscriptionInformation2.enabled(true);
 //        virtualTerminal.subscriptionInformation(subscriptionInformation2);
 
-        PaymentsProductsVirtualTerminalConfigurationInformation configurationInformation2=new PaymentsProductsVirtualTerminalConfigurationInformation();
+        PaymentsProductsVirtualTerminalConfigurationInformation configurationInformation2 = new PaymentsProductsVirtualTerminalConfigurationInformation();
 
         configurationInformation2.templateId("9FA1BB94-5119-48D3-B2E5-A81FD3C657B5");
 
         virtualTerminal.configurationInformation(configurationInformation2);
         payments.virtualTerminal(virtualTerminal);
 
-        PaymentsProductsTax customerInvoicing=new PaymentsProductsTax();
+        PaymentsProductsTax customerInvoicing = new PaymentsProductsTax();
 
-//        PaymentsProductsPayerAuthenticationSubscriptionInformation subscriptionInformation3=new PaymentsProductsPayerAuthenticationSubscriptionInformation();
+//        PaymentsProductsPayerAuthenticationSubscriptionInformation subscriptionInformation3 = new PaymentsProductsPayerAuthenticationSubscriptionInformation();
 //
 //        subscriptionInformation3.enabled(true);
 //        customerInvoicing.subscriptionInformation(subscriptionInformation3);
         payments.customerInvoicing(customerInvoicing);
         selectedProducts.payments(payments);
 
-        RiskProducts risk=new RiskProducts();
+        RiskProducts risk = new RiskProducts();
         selectedProducts.risk(risk);
-        CommerceSolutionsProducts commerceSolutions=new CommerceSolutionsProducts();
+        CommerceSolutionsProducts commerceSolutions = new CommerceSolutionsProducts();
 
-        CommerceSolutionsProductsTokenManagement tokenManagement=new CommerceSolutionsProductsTokenManagement();
+        CommerceSolutionsProductsTokenManagement tokenManagement = new CommerceSolutionsProductsTokenManagement();
 
-//        PaymentsProductsPayerAuthenticationSubscriptionInformation subscriptionInformation4=new PaymentsProductsPayerAuthenticationSubscriptionInformation();
+//        PaymentsProductsPayerAuthenticationSubscriptionInformation subscriptionInformation4 = new PaymentsProductsPayerAuthenticationSubscriptionInformation();
 //        subscriptionInformation4.enabled(true);
 //        tokenManagement.subscriptionInformation(subscriptionInformation4);
 
-        CommerceSolutionsProductsTokenManagementConfigurationInformation configurationInformation3=new CommerceSolutionsProductsTokenManagementConfigurationInformation();
+        CommerceSolutionsProductsTokenManagementConfigurationInformation configurationInformation3 = new CommerceSolutionsProductsTokenManagementConfigurationInformation();
 
         configurationInformation3.templateId("9FA1BB94-5119-48D3-B2E5-A81FD3C657B5");
         tokenManagement.configurationInformation(configurationInformation3);
@@ -166,15 +166,15 @@ public class MerchantBoardingCUP {
 
         selectedProducts.commerceSolutions(commerceSolutions);
 
-        ValueAddedServicesProducts valueAddedServices=new ValueAddedServicesProducts();
+        ValueAddedServicesProducts valueAddedServices = new ValueAddedServicesProducts();
 
-        PaymentsProductsTax transactionSearch=new PaymentsProductsTax();
-//        PaymentsProductsPayerAuthenticationSubscriptionInformation subscriptionInformation5=new PaymentsProductsPayerAuthenticationSubscriptionInformation();
+        PaymentsProductsTax transactionSearch = new PaymentsProductsTax();
+//        PaymentsProductsPayerAuthenticationSubscriptionInformation subscriptionInformation5 = new PaymentsProductsPayerAuthenticationSubscriptionInformation();
 //        subscriptionInformation5.enabled(true);
 //        transactionSearch.subscriptionInformation(subscriptionInformation5);
         valueAddedServices.transactionSearch(transactionSearch);
 
-        PaymentsProductsTax reporting=new PaymentsProductsTax();
+        PaymentsProductsTax reporting = new PaymentsProductsTax();
 //        reporting.subscriptionInformation(subscriptionInformation5);
         valueAddedServices.reporting(reporting);
         selectedProducts.valueAddedServices(valueAddedServices);
@@ -182,7 +182,7 @@ public class MerchantBoardingCUP {
         reqObj.productInformation(productInformation);
 
 
-        InlineResponse2013 result=null;
+        InlineResponse2013 result = null;
 
         try {
             //Boarding API support only JWT Auth Type

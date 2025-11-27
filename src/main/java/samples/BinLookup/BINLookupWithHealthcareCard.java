@@ -45,7 +45,7 @@ public class BINLookupWithHealthcareCard {
 		requestObj.paymentInformation(paymentInformation);
 
 		
-		InlineResponse2012 result=null;
+		InlineResponse2012 result = null;
 		try {
 			merchantProp = Configuration.getMerchantDetails();
 			ApiClient apiClient = new ApiClient();
