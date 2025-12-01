@@ -1,6 +1,7 @@
 package samples.RiskManagement.Verification;
 
 import java.*;
+import java.lang.invoke.MethodHandles;
 import java.util.*;
 import java.math.BigDecimal;
 import org.joda.time.DateTime;
@@ -20,6 +21,11 @@ public class ExportComplianceInformationProvided {
 	private static String responseCode = null;
 	private static String status = null;
 	private static Properties merchantProp;
+
+	public static void WriteLogAudit(int status) {
+		String filename = MethodHandles.lookup().lookupClass().getSimpleName();
+		System.out.println("[Sample Code Testing] [" + filename + "] " + status);
+	}
 
 	public static void main(String args[]) throws Exception {
 		run();
@@ -72,7 +78,7 @@ public class ExportComplianceInformationProvided {
 
 		Riskv1exportcomplianceinquiriesExportComplianceInformation exportComplianceInformation = new Riskv1exportcomplianceinquiriesExportComplianceInformation();
 		exportComplianceInformation.addressOperator("and");
-		Riskv1exportcomplianceinquiriesExportComplianceInformationWeights exportComplianceInformationWeights = new Riskv1exportcomplianceinquiriesExportComplianceInformationWeights();
+		Ptsv2paymentsWatchlistScreeningInformationWeights exportComplianceInformationWeights = new Ptsv2paymentsWatchlistScreeningInformationWeights();
 		exportComplianceInformationWeights.address("low");
 		exportComplianceInformationWeights.company("exact");
 		exportComplianceInformationWeights.name("exact");
@@ -100,7 +106,11 @@ public class ExportComplianceInformationProvided {
 			System.out.println("ResponseCode :" + responseCode);
 			System.out.println("ResponseMessage :" + status);
 			System.out.println(result);
+			WriteLogAudit(Integer.parseInt(responseCode));
 			
+		} catch (ApiException e) {
+			e.printStackTrace();
+			WriteLogAudit(e.getCode());
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

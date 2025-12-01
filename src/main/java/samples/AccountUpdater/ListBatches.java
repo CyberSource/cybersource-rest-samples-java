@@ -1,0 +1,52 @@
+package samples.AccountUpdater;
+
+import Api.BatchesApi;
+import Data.Configuration;
+import Invokers.ApiClient;
+import Invokers.ApiException;
+import com.cybersource.authsdk.core.MerchantConfig;
+
+import java.lang.invoke.MethodHandles;
+import java.util.Properties;
+
+public class ListBatches {
+	private static String responseCode = null;
+	private static String status = null;
+	private static Properties merchantProp;
+
+	public static void WriteLogAudit(int status) {
+		String filename = MethodHandles.lookup().lookupClass().getSimpleName();
+		System.out.println("[Sample Code Testing] [" + filename + "] " + status);
+	}
+
+	public static void main(String args[]) throws Exception {
+		run();
+	}
+
+	public static void run() {
+	
+		
+		try {
+			merchantProp = Configuration.getMerchantDetails();
+			ApiClient apiClient = new ApiClient();
+			MerchantConfig merchantConfig = new MerchantConfig(merchantProp);
+			apiClient.merchantConfig = merchantConfig;
+			String fromDate = "20230101T123000Z";
+			String toDate = "20230410T123000Z";
+			BatchesApi apiInstance = new BatchesApi(apiClient);
+			apiInstance.getBatchesList(0L, 10L, fromDate, toDate);
+
+			responseCode = apiClient.responseCode;
+			status = apiClient.status;
+			System.out.println("ResponseCode :" + responseCode);
+			System.out.println("ResponseMessage :" + status);
+			WriteLogAudit(Integer.parseInt(responseCode));
+		} catch (ApiException e) {
+			e.printStackTrace();
+			WriteLogAudit(e.getCode());
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	
+	}
+}

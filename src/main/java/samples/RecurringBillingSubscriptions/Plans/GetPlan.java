@@ -1,8 +1,10 @@
-package samples.FlexMicroform;
+package samples.RecurringBillingSubscriptions.Plans;
 
 import java.*;
+import java.lang.invoke.MethodHandles;
 import java.util.*;
 import java.math.BigDecimal;
+import org.apache.commons.io.FileUtils;
 import org.joda.time.DateTime;
 import org.joda.time.DateTimeZone;
 import org.joda.time.LocalDate;
@@ -14,44 +16,48 @@ import Api.*;
 import Data.Configuration;
 import Invokers.ApiClient;
 import Invokers.ApiException;
+import Invokers.ApiResponse;
 import Model.*;
 
-public class GenerateKey {
+public class GetPlan {
 	private static String responseCode = null;
 	private static String status = null;
 	private static Properties merchantProp;
 
+	public static void WriteLogAudit(int status) {
+		String filename = MethodHandles.lookup().lookupClass().getSimpleName();
+		System.out.println("[Sample Code Testing] [" + filename + "] " + status);
+	}
+	
 	public static void main(String args[]) throws Exception {
 		run();
 	}
 
-	public static FlexV1KeysPost200Response run() {
-	
-		GeneratePublicKeyRequest requestObj = new GeneratePublicKeyRequest();
+	public static GetPlanResponse run() {
+		String planId = CreatePlan.run().getId();
+		GetPlanResponse result = null;
 
-		requestObj.encryptionType("RsaOaep");
-		requestObj.targetOrigin("https://www.test.com");
-		String format = "JWT";
-
-		FlexV1KeysPost200Response result = null;
 		try {
 			merchantProp = Configuration.getMerchantDetails();
 			ApiClient apiClient = new ApiClient();
 			MerchantConfig merchantConfig = new MerchantConfig(merchantProp);
 			apiClient.merchantConfig = merchantConfig;
 
-			KeyGenerationApi apiInstance = new KeyGenerationApi(apiClient);
-			result = apiInstance.generatePublicKey(format, requestObj);
+			PlansApi apiInstance = new PlansApi(apiClient);
+			result = apiInstance.getPlan(planId);
 
 			responseCode = apiClient.responseCode;
 			status = apiClient.status;
 			System.out.println("ResponseCode :" + responseCode);
 			System.out.println("ResponseMessage :" + status);
 			System.out.println(result);
-			
+			WriteLogAudit(Integer.parseInt(responseCode));
+		} catch (ApiException e) {
+			e.printStackTrace();
+			WriteLogAudit(e.getCode());
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-	return result;
+		return result;
 	}
 }

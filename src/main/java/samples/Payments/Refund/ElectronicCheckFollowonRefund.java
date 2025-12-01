@@ -1,6 +1,7 @@
 package samples.Payments.Refund;
 
 import java.*;
+import java.lang.invoke.MethodHandles;
 import java.util.*;
 import java.math.BigDecimal;
 import org.joda.time.DateTime;
@@ -22,6 +23,11 @@ public class ElectronicCheckFollowonRefund {
 	private static String status = null;
 	private static Properties merchantProp;
 
+	public static void WriteLogAudit(int status) {
+		String filename = MethodHandles.lookup().lookupClass().getSimpleName();
+		System.out.println("[Sample Code Testing] [" + filename + "] " + status);
+	}
+
 	public static void main(String args[]) throws Exception {
 		// Accept required parameters from args[] and pass to run.
 		run();
@@ -31,7 +37,7 @@ public class ElectronicCheckFollowonRefund {
 	
 		RefundPaymentRequest requestObj = new RefundPaymentRequest();
 
-		Ptsv2paymentsClientReferenceInformation clientReferenceInformation = new Ptsv2paymentsClientReferenceInformation();
+		Ptsv2paymentsidrefundsClientReferenceInformation clientReferenceInformation = new Ptsv2paymentsidrefundsClientReferenceInformation();
 		clientReferenceInformation.code("TC50171_3");
 		requestObj.clientReferenceInformation(clientReferenceInformation);
 
@@ -39,7 +45,7 @@ public class ElectronicCheckFollowonRefund {
 		requestObj.processingInformation(processingInformation);
 
 		Ptsv2paymentsidrefundsPaymentInformation paymentInformation = new Ptsv2paymentsidrefundsPaymentInformation();
-		Ptsv2paymentsPaymentInformationPaymentType paymentInformationPaymentType = new Ptsv2paymentsPaymentInformationPaymentType();
+		Ptsv2paymentsidrefundsPaymentInformationPaymentType paymentInformationPaymentType = new Ptsv2paymentsidrefundsPaymentInformationPaymentType();
 		paymentInformationPaymentType.name("CHECK");
 		paymentInformation.paymentType(paymentInformationPaymentType);
 
@@ -68,7 +74,11 @@ public class ElectronicCheckFollowonRefund {
 			System.out.println("ResponseCode :" + responseCode);
 			System.out.println("ResponseMessage :" + status);
 			System.out.println(result);
+			WriteLogAudit(Integer.parseInt(responseCode));
 			
+		} catch (ApiException e) {
+			e.printStackTrace();
+			WriteLogAudit(e.getCode());
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

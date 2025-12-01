@@ -1,6 +1,7 @@
 package samples.Payments.Credit;
 
 import java.*;
+import java.lang.invoke.MethodHandles;
 import java.util.*;
 import java.math.BigDecimal;
 import org.joda.time.DateTime;
@@ -21,6 +22,11 @@ public class ElectronicCheckStandAloneCredits {
 	private static String status = null;
 	private static Properties merchantProp;
 
+	public static void WriteLogAudit(int status) {
+		String filename = MethodHandles.lookup().lookupClass().getSimpleName();
+		System.out.println("[Sample Code Testing] [" + filename + "] " + status);
+	}
+
 	public static void main(String args[]) throws Exception {
 		run();
 	}
@@ -35,7 +41,7 @@ public class ElectronicCheckStandAloneCredits {
 
 		Ptsv2paymentsidrefundsPaymentInformation paymentInformation = new Ptsv2paymentsidrefundsPaymentInformation();
 		Ptsv2paymentsidrefundsPaymentInformationBank paymentInformationBank = new Ptsv2paymentsidrefundsPaymentInformationBank();
-		Ptsv2paymentsPaymentInformationBankAccount paymentInformationBankAccount = new Ptsv2paymentsPaymentInformationBankAccount();
+		Ptsv2paymentsidrefundsPaymentInformationBankAccount paymentInformationBankAccount = new Ptsv2paymentsidrefundsPaymentInformationBankAccount();
 		paymentInformationBankAccount.type("C");
 		paymentInformationBankAccount.number("4100");
 		paymentInformationBankAccount.checkNumber("123456");
@@ -44,7 +50,7 @@ public class ElectronicCheckStandAloneCredits {
 		paymentInformationBank.routingNumber("071923284");
 		paymentInformation.bank(paymentInformationBank);
 
-		Ptsv2paymentsPaymentInformationPaymentType paymentInformationPaymentType = new Ptsv2paymentsPaymentInformationPaymentType();
+		Ptsv2paymentsidrefundsPaymentInformationPaymentType paymentInformationPaymentType = new Ptsv2paymentsidrefundsPaymentInformationPaymentType();
 		paymentInformationPaymentType.name("CHECK");
 		paymentInformation.paymentType(paymentInformationPaymentType);
 
@@ -85,7 +91,11 @@ public class ElectronicCheckStandAloneCredits {
 			System.out.println("ResponseCode :" + responseCode);
 			System.out.println("ResponseMessage :" + status);
 			System.out.println(result);
+			WriteLogAudit(Integer.parseInt(responseCode));
 			
+		} catch (ApiException e) {
+			e.printStackTrace();
+			WriteLogAudit(e.getCode());
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

@@ -1,6 +1,7 @@
 package samples.TransactionBatches;
 
 import java.*;
+import java.lang.invoke.MethodHandles;
 import java.util.*;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
@@ -37,6 +38,11 @@ public class GetTransactionDetailsForGivenBatchId {
 	public static String resourceFile = "BatchDetailsReport";
 	private static final String FILE_PATH = "src/main/resources/";
 	private static String responseBody = null;
+
+	public static void WriteLogAudit(int status) {
+		String filename = MethodHandles.lookup().lookupClass().getSimpleName();
+		System.out.println("[Sample Code Testing] [" + filename + "] " + status);
+	}
 
 	public static void main(String args[]) throws Exception {
 		run();
@@ -83,6 +89,10 @@ public class GetTransactionDetailsForGivenBatchId {
 
 			System.out.println("File Downloaded at the following location : ");
 			System.out.println(new File(FILE_PATH + resourceFile + "." + fileExtension).getAbsolutePath());
+			WriteLogAudit(Integer.parseInt(responseCode));
+		} catch (ApiException e) {
+			e.printStackTrace();
+			WriteLogAudit(e.getCode());
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

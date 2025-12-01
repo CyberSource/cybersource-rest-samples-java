@@ -1,6 +1,7 @@
 package samples.Invoicing.Invoices;
 
 import java.*;
+import java.lang.invoke.MethodHandles;
 import java.util.*;
 import java.math.BigDecimal;
 import org.joda.time.DateTime;
@@ -20,6 +21,11 @@ public class CreateDraftInvoice {
 	private static String responseCode = null;
 	private static String status = null;
 	private static Properties merchantProp;
+
+	public static void WriteLogAudit(int status) {
+		String filename = MethodHandles.lookup().lookupClass().getSimpleName();
+		System.out.println("[Sample Code Testing] [" + filename + "] " + status);
+	}
 
 	public static void main(String args[]) throws Exception {
 		// Accept required parameters from args[] and pass to run.
@@ -47,9 +53,9 @@ public class CreateDraftInvoice {
 		orderInformationAmountDetails.totalAmount("2623.64");
 		orderInformationAmountDetails.currency("USD");
 		orderInformationAmountDetails.discountAmount("126.08");
-		orderInformationAmountDetails.discountPercent(new BigDecimal(5.0).setScale(2, BigDecimal.ROUND_HALF_UP));
-		orderInformationAmountDetails.subAmount(new BigDecimal(2749.72).setScale(2, BigDecimal.ROUND_HALF_UP));
-		orderInformationAmountDetails.minimumPartialAmount(new BigDecimal(20.00).setScale(2, BigDecimal.ROUND_HALF_UP));
+		orderInformationAmountDetails.discountPercent(new BigDecimal(5.0).setScale(2, BigDecimal.ROUND_HALF_UP).toString());
+		orderInformationAmountDetails.subAmount(new BigDecimal(2749.72).setScale(2, BigDecimal.ROUND_HALF_UP).toString());
+		orderInformationAmountDetails.minimumPartialAmount(new BigDecimal(20.00).setScale(2, BigDecimal.ROUND_HALF_UP).toString());
 		Invoicingv2invoicesOrderInformationAmountDetailsTaxDetails orderInformationAmountDetailsTaxDetails = new Invoicingv2invoicesOrderInformationAmountDetailsTaxDetails();
 		orderInformationAmountDetailsTaxDetails.type("State Tax");
 		orderInformationAmountDetailsTaxDetails.amount("208.00");
@@ -91,7 +97,11 @@ public class CreateDraftInvoice {
 			System.out.println("ResponseCode :" + responseCode);
 			System.out.println("ResponseMessage :" + status);
 			System.out.println(result);
+			WriteLogAudit(Integer.parseInt(responseCode));
 			
+		} catch (ApiException e) {
+			e.printStackTrace();
+			WriteLogAudit(e.getCode());
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

@@ -1,6 +1,7 @@
 package samples.TokenManagement.InstrumentIdentifier;
 
 import java.*;
+import java.lang.invoke.MethodHandles;
 import java.util.*;
 import java.math.BigDecimal;
 import org.joda.time.DateTime;
@@ -21,6 +22,11 @@ public class EnrollInstrumentIdentifierForNetworkTokenization {
 	private static String status = null;
 	private static Properties merchantProp;
 
+	public static void WriteLogAudit(int status) {
+		String filename = MethodHandles.lookup().lookupClass().getSimpleName();
+		System.out.println("[Sample Code Testing] [" + filename + "] " + status);
+	}
+
 	public static void main(String args[]) throws Exception {
 		// Accept required parameters from args[] and pass to run.
 		run();
@@ -32,13 +38,13 @@ public class EnrollInstrumentIdentifierForNetworkTokenization {
 		PostInstrumentIdentifierEnrollmentRequest requestObj = new PostInstrumentIdentifierEnrollmentRequest();
 
 		requestObj.type("enrollable card");
-		Tmsv2customersEmbeddedDefaultPaymentInstrumentEmbeddedInstrumentIdentifierCard card = new Tmsv2customersEmbeddedDefaultPaymentInstrumentEmbeddedInstrumentIdentifierCard();
+		TmsEmbeddedInstrumentIdentifierCard card = new TmsEmbeddedInstrumentIdentifierCard();
 		card.expirationMonth("12");
 		card.expirationYear("2031");
 		card.securityCode("123");
 		requestObj.card(card);
 
-		Tmsv2customersEmbeddedDefaultPaymentInstrumentEmbeddedInstrumentIdentifierBillTo billTo = new Tmsv2customersEmbeddedDefaultPaymentInstrumentEmbeddedInstrumentIdentifierBillTo();
+		TmsEmbeddedInstrumentIdentifierBillTo billTo = new TmsEmbeddedInstrumentIdentifierBillTo();
 		billTo.address1("1 Market St");
 		billTo.locality("San Francisco");
 		billTo.administrativeArea("CA");
@@ -59,7 +65,11 @@ public class EnrollInstrumentIdentifierForNetworkTokenization {
 			status = apiClient.status;
 			System.out.println("ResponseCode :" + responseCode);
 			System.out.println("ResponseMessage :" + status);
-			
+
+			WriteLogAudit(Integer.parseInt(responseCode));
+		} catch (ApiException e) {
+			e.printStackTrace();
+			WriteLogAudit(e.getCode());
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

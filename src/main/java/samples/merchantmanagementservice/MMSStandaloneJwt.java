@@ -135,7 +135,7 @@ public class MMSStandaloneJwt {
     private static int getCall(String request, String responseId) {
         int responseStatus = 0;
 
-        String resource = "/merchant-mgmt/v2/merchant-batch-jobs/" + responseId;
+        String resource = "/merchant-mgmt/v3/merchant-batch-jobs/" + responseId;
 
 		/* HTTP connection */
         URL url;
@@ -195,7 +195,7 @@ public class MMSStandaloneJwt {
     private static int postCall(String request) {
         int responseStatus = 0;
 
-        String resource = "/merchant-mgmt/v2/merchant-batch-jobs";
+        String resource = "/merchant-mgmt/v3/merchant-batch-jobs";
 
 		/* HTTP connection */
         URL url;

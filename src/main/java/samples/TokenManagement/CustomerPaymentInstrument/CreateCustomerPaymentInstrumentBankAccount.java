@@ -1,13 +1,10 @@
 package samples.TokenManagement.CustomerPaymentInstrument;
 
-import java.*;
+import java.lang.invoke.MethodHandles;
 import java.util.*;
-import java.math.BigDecimal;
-import org.joda.time.DateTime;
-import org.joda.time.DateTimeZone;
+
 import org.joda.time.LocalDate;
 
-import com.google.common.base.Strings;
 import com.cybersource.authsdk.core.MerchantConfig;
 
 import Api.*;
@@ -21,10 +18,15 @@ public class CreateCustomerPaymentInstrumentBankAccount {
 	private static String status = null;
 	private static Properties merchantProp;
 
+	public static void WriteLogAudit(int status) {
+		String filename = MethodHandles.lookup().lookupClass().getSimpleName();
+		System.out.println("[Sample Code Testing] [" + filename + "] " + status);
+	}
+
 	public static void main(String args[]) throws Exception {
 		run();
 	}
-	public static Tmsv2customersEmbeddedDefaultPaymentInstrument run() {
+	public static PostCustomerPaymentInstrumentRequest run() {
 		String customerTokenId = "AB695DA801DD1BB6E05341588E0A3BDC";
 		
 		PostCustomerPaymentInstrumentRequest requestObj = new PostCustomerPaymentInstrumentRequest();
@@ -65,8 +67,8 @@ public class CreateCustomerPaymentInstrumentBankAccount {
 		billTo.phoneNumber("4158880000");
 		requestObj.billTo(billTo);
 
-		Tmsv2customersEmbeddedDefaultPaymentInstrumentProcessingInformation processingInformation = new Tmsv2customersEmbeddedDefaultPaymentInstrumentProcessingInformation();
-		Tmsv2customersEmbeddedDefaultPaymentInstrumentProcessingInformationBankTransferOptions processingInformationBankTransferOptions = new Tmsv2customersEmbeddedDefaultPaymentInstrumentProcessingInformationBankTransferOptions();
+		TmsPaymentInstrumentProcessingInfo processingInformation = new TmsPaymentInstrumentProcessingInfo();
+		TmsPaymentInstrumentProcessingInfoBankTransferOptions processingInformationBankTransferOptions = new TmsPaymentInstrumentProcessingInfoBankTransferOptions();
 		processingInformationBankTransferOptions.seCCode("WEB");
 		processingInformation.bankTransferOptions(processingInformationBankTransferOptions);
 
@@ -76,7 +78,7 @@ public class CreateCustomerPaymentInstrumentBankAccount {
 		instrumentIdentifier.id("A7A91A2CA872B272E05340588D0A0699");
 		requestObj.instrumentIdentifier(instrumentIdentifier);
 
-		Tmsv2customersEmbeddedDefaultPaymentInstrument result = null;
+		PostCustomerPaymentInstrumentRequest result = null;
 		try {
 			merchantProp = Configuration.getMerchantDetails();
 			ApiClient apiClient = new ApiClient();
@@ -91,6 +93,10 @@ public class CreateCustomerPaymentInstrumentBankAccount {
 			System.out.println("ResponseCode :" + responseCode);
 			System.out.println("ResponseMessage :" + status);
 			System.out.println(result);
+			WriteLogAudit(Integer.parseInt(responseCode));
+		} catch (ApiException e) {
+			e.printStackTrace();
+			WriteLogAudit(e.getCode());
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

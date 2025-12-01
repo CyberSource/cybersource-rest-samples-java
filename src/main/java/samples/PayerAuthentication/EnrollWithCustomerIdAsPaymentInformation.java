@@ -1,6 +1,7 @@
 package samples.PayerAuthentication;
 
 import java.*;
+import java.lang.invoke.MethodHandles;
 import java.util.*;
 import java.math.BigDecimal;
 import org.joda.time.DateTime;
@@ -21,6 +22,11 @@ public class EnrollWithCustomerIdAsPaymentInformation {
 	private static String status = null;
 	private static Properties merchantProp;
 
+	public static void WriteLogAudit(int status) {
+		String filename = MethodHandles.lookup().lookupClass().getSimpleName();
+		System.out.println("[Sample Code Testing] [" + filename + "] " + status);
+	}
+
 	public static void main(String args[]) throws Exception {
 		// Accept required parameters from args[] and pass to run.
 		run();
@@ -29,7 +35,7 @@ public class EnrollWithCustomerIdAsPaymentInformation {
 	
 		CheckPayerAuthEnrollmentRequest requestObj = new CheckPayerAuthEnrollmentRequest();
 
-		Riskv1decisionsClientReferenceInformation clientReferenceInformation = new Riskv1decisionsClientReferenceInformation();
+		Riskv1authenticationsetupsClientReferenceInformation clientReferenceInformation = new Riskv1authenticationsetupsClientReferenceInformation();
 		clientReferenceInformation.code("UNKNOWN");
 		requestObj.clientReferenceInformation(clientReferenceInformation);
 
@@ -55,7 +61,7 @@ public class EnrollWithCustomerIdAsPaymentInformation {
 		requestObj.orderInformation(orderInformation);
 
 		Riskv1authenticationsPaymentInformation paymentInformation = new Riskv1authenticationsPaymentInformation();
-		Ptsv2paymentsPaymentInformationCustomer paymentInformationCustomer = new Ptsv2paymentsPaymentInformationCustomer();
+		Riskv1authenticationsPaymentInformationCustomer paymentInformationCustomer = new Riskv1authenticationsPaymentInformationCustomer();
 		paymentInformationCustomer.customerId("AB695DA801DD1BB6E05341588E0A3BDC");
 		paymentInformation.customer(paymentInformationCustomer);
 
@@ -76,7 +82,11 @@ public class EnrollWithCustomerIdAsPaymentInformation {
 			System.out.println("ResponseCode :" + responseCode);
 			System.out.println("ResponseMessage :" + status);
 			System.out.println(result);
+			WriteLogAudit(Integer.parseInt(responseCode));
 			
+		} catch (ApiException e) {
+			e.printStackTrace();
+			WriteLogAudit(e.getCode());
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

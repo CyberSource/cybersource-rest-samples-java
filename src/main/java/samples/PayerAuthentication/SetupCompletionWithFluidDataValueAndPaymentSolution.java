@@ -1,6 +1,7 @@
 package samples.PayerAuthentication;
 
 import java.*;
+import java.lang.invoke.MethodHandles;
 import java.util.*;
 import java.math.BigDecimal;
 import org.joda.time.DateTime;
@@ -21,6 +22,11 @@ public class SetupCompletionWithFluidDataValueAndPaymentSolution {
 	private static String status = null;
 	private static Properties merchantProp;
 
+	public static void WriteLogAudit(int status) {
+		String filename = MethodHandles.lookup().lookupClass().getSimpleName();
+		System.out.println("[Sample Code Testing] [" + filename + "] " + status);
+	}
+
 	public static void main(String args[]) throws Exception {
 		// Accept required parameters from args[] and pass to run.
 		run();
@@ -29,7 +35,7 @@ public class SetupCompletionWithFluidDataValueAndPaymentSolution {
 	
 		PayerAuthSetupRequest requestObj = new PayerAuthSetupRequest();
 
-		Riskv1decisionsClientReferenceInformation clientReferenceInformation = new Riskv1decisionsClientReferenceInformation();
+		Riskv1authenticationsetupsClientReferenceInformation clientReferenceInformation = new Riskv1authenticationsetupsClientReferenceInformation();
 		clientReferenceInformation.code("cybs_test");
 		requestObj.clientReferenceInformation(clientReferenceInformation);
 
@@ -59,7 +65,11 @@ public class SetupCompletionWithFluidDataValueAndPaymentSolution {
 			System.out.println("ResponseCode :" + responseCode);
 			System.out.println("ResponseMessage :" + status);
 			System.out.println(result);
+			WriteLogAudit(Integer.parseInt(responseCode));
 			
+		} catch (ApiException e) {
+			e.printStackTrace();
+			WriteLogAudit(e.getCode());
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
