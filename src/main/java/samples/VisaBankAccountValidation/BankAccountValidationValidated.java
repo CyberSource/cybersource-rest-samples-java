@@ -29,7 +29,7 @@ public class BankAccountValidationValidated {
         run();
     }
 
-    public static InlineResponse20013 run() {
+    public static InlineResponse20014 run() {
 
         AccountValidationsRequest accountValidationRequestObj = new AccountValidationsRequest();
 
@@ -50,7 +50,7 @@ public class BankAccountValidationValidated {
         paymentInformation.bank(paymentInformationBank);
         accountValidationRequestObj.paymentInformation(paymentInformation);
 
-        InlineResponse20013 result = null;
+        InlineResponse20014 result = null;
         try {
             merchantProp = ConfigurationForBankAccountValidation.getMerchantDetailsForBankAccountValidation();
             ApiClient apiClient = new ApiClient();

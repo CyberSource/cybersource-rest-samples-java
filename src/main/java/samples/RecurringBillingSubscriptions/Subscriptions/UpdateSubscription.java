@@ -39,12 +39,12 @@ public class UpdateSubscription {
 		
 		Model.UpdateSubscription requestObj = new Model.UpdateSubscription();
 
-		Rbsv1subscriptionsClientReferenceInformation clientReferenceInformation = new Rbsv1subscriptionsClientReferenceInformation();
+        GetAllSubscriptionsResponseClientReferenceInformation clientReferenceInformation = new GetAllSubscriptionsResponseClientReferenceInformation();
 		clientReferenceInformation.code("APGHU");
-		Rbsv1subscriptionsClientReferenceInformationPartner clientReferenceInformationPartner = new Rbsv1subscriptionsClientReferenceInformationPartner();
-		clientReferenceInformationPartner.developerId("ABCD1234");
-		clientReferenceInformationPartner.solutionId("GEF1234");
-		clientReferenceInformation.partner(clientReferenceInformationPartner);
+        GetAllSubscriptionsResponseClientReferenceInformation clientReferenceInformationPartner = new GetAllSubscriptionsResponseClientReferenceInformation();
+//		clientReferenceInformationPartner.developerId("ABCD1234");
+//		clientReferenceInformationPartner.solutionId("GEF1234");
+//		clientReferenceInformation.partner(clientReferenceInformationPartner);
 
 		requestObj.clientReferenceInformation(clientReferenceInformation);
 

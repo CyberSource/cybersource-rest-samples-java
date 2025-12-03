@@ -53,7 +53,7 @@ public class BINLookupWithTMSCustomerID {
 			apiClient.merchantConfig = merchantConfig;
 
 			BinLookupApi apiInstance = new BinLookupApi(apiClient);
-			result= apiInstance.getAccountInfo(requestObj);
+			result = apiInstance.getAccountInfo(requestObj);
 
 			responseCode = apiClient.responseCode;
 			status = apiClient.status;

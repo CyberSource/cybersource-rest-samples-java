@@ -32,20 +32,20 @@ public class CreatePaymentInstrumentBankAccount {
 	
 		PostPaymentInstrumentRequest requestObj = new PostPaymentInstrumentRequest();
 
-		Tmsv2customersEmbeddedDefaultPaymentInstrumentBankAccount bankAccount = new Tmsv2customersEmbeddedDefaultPaymentInstrumentBankAccount();
+		Tmsv2tokenizeTokenInformationCustomerEmbeddedDefaultPaymentInstrumentBankAccount bankAccount = new Tmsv2tokenizeTokenInformationCustomerEmbeddedDefaultPaymentInstrumentBankAccount();
 		bankAccount.type("savings");
 		requestObj.bankAccount(bankAccount);
 
-		Tmsv2customersEmbeddedDefaultPaymentInstrumentBuyerInformation buyerInformation = new Tmsv2customersEmbeddedDefaultPaymentInstrumentBuyerInformation();
+		Tmsv2tokenizeTokenInformationCustomerEmbeddedDefaultPaymentInstrumentBuyerInformation buyerInformation = new Tmsv2tokenizeTokenInformationCustomerEmbeddedDefaultPaymentInstrumentBuyerInformation();
 		buyerInformation.companyTaxID("12345");
 		buyerInformation.currency("USD");
 		buyerInformation.dateOfBirth(new LocalDate("2000-12-13"));
 
-		List <Tmsv2customersEmbeddedDefaultPaymentInstrumentBuyerInformationPersonalIdentification> personalIdentification =  new ArrayList <Tmsv2customersEmbeddedDefaultPaymentInstrumentBuyerInformationPersonalIdentification>();
-		Tmsv2customersEmbeddedDefaultPaymentInstrumentBuyerInformationPersonalIdentification personalIdentification1 = new Tmsv2customersEmbeddedDefaultPaymentInstrumentBuyerInformationPersonalIdentification();
+		List <Tmsv2tokenizeTokenInformationCustomerEmbeddedDefaultPaymentInstrumentBuyerInformationPersonalIdentification> personalIdentification =  new ArrayList <Tmsv2tokenizeTokenInformationCustomerEmbeddedDefaultPaymentInstrumentBuyerInformationPersonalIdentification>();
+		Tmsv2tokenizeTokenInformationCustomerEmbeddedDefaultPaymentInstrumentBuyerInformationPersonalIdentification personalIdentification1 = new Tmsv2tokenizeTokenInformationCustomerEmbeddedDefaultPaymentInstrumentBuyerInformationPersonalIdentification();
 		personalIdentification1.id("57684432111321");
 		personalIdentification1.type("driver license");
-		Tmsv2customersEmbeddedDefaultPaymentInstrumentBuyerInformationIssuedBy issuedBy1 = new Tmsv2customersEmbeddedDefaultPaymentInstrumentBuyerInformationIssuedBy();
+		Tmsv2tokenizeTokenInformationCustomerEmbeddedDefaultPaymentInstrumentBuyerInformationIssuedBy issuedBy1 = new Tmsv2tokenizeTokenInformationCustomerEmbeddedDefaultPaymentInstrumentBuyerInformationIssuedBy();
 		issuedBy1.administrativeArea("CA");
 		personalIdentification1.issuedBy(issuedBy1);
 
@@ -55,7 +55,7 @@ public class CreatePaymentInstrumentBankAccount {
 
 		requestObj.buyerInformation(buyerInformation);
 
-		Tmsv2customersEmbeddedDefaultPaymentInstrumentBillTo billTo = new Tmsv2customersEmbeddedDefaultPaymentInstrumentBillTo();
+		Tmsv2tokenizeTokenInformationCustomerEmbeddedDefaultPaymentInstrumentBillTo billTo = new Tmsv2tokenizeTokenInformationCustomerEmbeddedDefaultPaymentInstrumentBillTo();
 		billTo.firstName("John");
 		billTo.lastName("Doe");
 		billTo.company("CyberSource");
@@ -75,7 +75,7 @@ public class CreatePaymentInstrumentBankAccount {
 
 		requestObj.processingInformation(processingInformation);
 
-		Tmsv2customersEmbeddedDefaultPaymentInstrumentInstrumentIdentifier instrumentIdentifier = new Tmsv2customersEmbeddedDefaultPaymentInstrumentInstrumentIdentifier();
+		Tmsv2tokenizeTokenInformationCustomerEmbeddedDefaultPaymentInstrumentInstrumentIdentifier instrumentIdentifier = new Tmsv2tokenizeTokenInformationCustomerEmbeddedDefaultPaymentInstrumentInstrumentIdentifier();
 		instrumentIdentifier.id("A7A91A2CA872B272E05340588D0A0699");
 		requestObj.instrumentIdentifier(instrumentIdentifier);
 

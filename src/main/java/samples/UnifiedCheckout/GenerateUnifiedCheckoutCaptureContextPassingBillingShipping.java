@@ -12,6 +12,8 @@ import Model.Upv1capturecontextsDataOrderInformationBillTo;
 import Model.Upv1capturecontextsDataOrderInformationBillToCompany;
 import Model.Upv1capturecontextsDataOrderInformationShipTo;
 import Model.Upv1capturecontextsCompleteMandate;
+import com.google.gson.JsonObject;
+import utilities.capturecontext.utility.CaptureContextParsingUtility;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -158,6 +160,13 @@ public class GenerateUnifiedCheckoutCaptureContextPassingBillingShipping {
             System.out.println("ResponseCode :" + responseCode);
             System.out.println("ResponseMessage :" + status);
             System.out.println("Response Body :" + response);
+
+            try {
+                JsonObject payload = CaptureContextParsingUtility.parseCaptureContextResponse(response, merchantConfig);
+                System.out.println(payload.toString());
+            } catch (Exception e) {
+                System.out.println(e.getMessage());
+            }
         } catch (Exception e) {
             e.printStackTrace();
         }

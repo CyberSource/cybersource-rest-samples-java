@@ -31,16 +31,16 @@ public class MerchantBoardingBarclays {
 
     public static InlineResponse2013 run() {
 
-        PostRegistrationBody reqObj=new PostRegistrationBody();
+        PostRegistrationBody reqObj = new PostRegistrationBody();
 
-        Boardingv1registrationsOrganizationInformation organizationInformation=new Boardingv1registrationsOrganizationInformation();
+        Boardingv1registrationsOrganizationInformation organizationInformation = new Boardingv1registrationsOrganizationInformation();
         organizationInformation.parentOrganizationId("apitester00");
         organizationInformation.type("MERCHANT");
         organizationInformation.configurable(true);
 
-        Boardingv1registrationsOrganizationInformationBusinessInformation businessInformation=new Boardingv1registrationsOrganizationInformationBusinessInformation();
+        Boardingv1registrationsOrganizationInformationBusinessInformation businessInformation = new Boardingv1registrationsOrganizationInformationBusinessInformation();
         businessInformation.name("StuartWickedFastEatz");
-        Boardingv1registrationsOrganizationInformationBusinessInformationAddress address=new Boardingv1registrationsOrganizationInformationBusinessInformationAddress();
+        Boardingv1registrationsOrganizationInformationBusinessInformationAddress address = new Boardingv1registrationsOrganizationInformationBusinessInformationAddress();
         address.country("US");
         address.address1("123456 SandMarket");
         address.locality("ORMOND BEACH");
@@ -50,7 +50,7 @@ public class MerchantBoardingBarclays {
         businessInformation.websiteUrl("https://www.StuartWickedEats.com");
         businessInformation.phoneNumber("6574567813");
 
-        Boardingv1registrationsOrganizationInformationBusinessInformationBusinessContact businessContact=new Boardingv1registrationsOrganizationInformationBusinessInformationBusinessContact();
+        Boardingv1registrationsOrganizationInformationBusinessInformationBusinessContact businessContact = new Boardingv1registrationsOrganizationInformationBusinessInformationBusinessContact();
         businessContact.firstName("Stuart");
         businessContact.lastName("Stuart");
         businessContact.phoneNumber("6574567813");
@@ -62,17 +62,17 @@ public class MerchantBoardingBarclays {
         reqObj.organizationInformation(organizationInformation);
 
 
-        Boardingv1registrationsProductInformation productInformation=new Boardingv1registrationsProductInformation();
-        Boardingv1registrationsProductInformationSelectedProducts selectedProducts=new Boardingv1registrationsProductInformationSelectedProducts();
+        Boardingv1registrationsProductInformation productInformation = new Boardingv1registrationsProductInformation();
+        Boardingv1registrationsProductInformationSelectedProducts selectedProducts = new Boardingv1registrationsProductInformationSelectedProducts();
 
-        PaymentsProducts payments=new PaymentsProducts();
-        PaymentsProductsCardProcessing cardProcessing=new PaymentsProductsCardProcessing();
-        PaymentsProductsCardProcessingSubscriptionInformation subscriptionInformation=new PaymentsProductsCardProcessingSubscriptionInformation();
+        PaymentsProducts payments = new PaymentsProducts();
+        PaymentsProductsCardProcessing cardProcessing = new PaymentsProductsCardProcessing();
+        PaymentsProductsCardProcessingSubscriptionInformation subscriptionInformation = new PaymentsProductsCardProcessingSubscriptionInformation();
         subscriptionInformation.enabled(true);
 
-        Map<String, PaymentsProductsCardProcessingSubscriptionInformationFeatures> features=new HashMap<>();
+        Map<String, PaymentsProductsCardProcessingSubscriptionInformationFeatures> features = new HashMap<>();
 
-        PaymentsProductsCardProcessingSubscriptionInformationFeatures obj1=new PaymentsProductsCardProcessingSubscriptionInformationFeatures();
+        PaymentsProductsCardProcessingSubscriptionInformationFeatures obj1 = new PaymentsProductsCardProcessingSubscriptionInformationFeatures();
         obj1.enabled(true);
         features.put("cardNotPresent",obj1);
         features.put("cardPresent",obj1);
@@ -80,28 +80,28 @@ public class MerchantBoardingBarclays {
         cardProcessing.subscriptionInformation(subscriptionInformation);
 
 
-        PaymentsProductsCardProcessingConfigurationInformation configurationInformation=new PaymentsProductsCardProcessingConfigurationInformation();
+        PaymentsProductsCardProcessingConfigurationInformation configurationInformation = new PaymentsProductsCardProcessingConfigurationInformation();
 
-        CardProcessingConfig configurations=new CardProcessingConfig();
+        CardProcessingConfig configurations = new CardProcessingConfig();
 
-        CardProcessingConfigCommon common=new CardProcessingConfigCommon();
+        CardProcessingConfigCommon common = new CardProcessingConfigCommon();
 
         common.merchantCategoryCode("5999");
         organizationInformation.type("MERCHANT");
 
-        Map<String, CardProcessingConfigCommonProcessors> processors=new HashMap<>();
-        CardProcessingConfigCommonProcessors obj2=new CardProcessingConfigCommonProcessors();
-        CardProcessingConfigCommonAcquirer acquirer=new CardProcessingConfigCommonAcquirer();
+        Map<String, CardProcessingConfigCommonProcessors> processors = new HashMap<>();
+        CardProcessingConfigCommonProcessors obj2 = new CardProcessingConfigCommonProcessors();
+        CardProcessingConfigCommonAcquirer acquirer = new CardProcessingConfigCommonAcquirer();
 
         obj2.acquirer(acquirer);
-        Map<String, CardProcessingConfigCommonCurrencies1> currencies=new HashMap<>();
-        CardProcessingConfigCommonCurrencies1 obj3=new CardProcessingConfigCommonCurrencies1();
+        Map<String, CardProcessingConfigCommonCurrencies1> currencies = new HashMap<>();
+        CardProcessingConfigCommonCurrencies1 obj3 = new CardProcessingConfigCommonCurrencies1();
         obj3.enabled(true);
         obj3.enabledCardPresent(false);
         obj3.enabledCardNotPresent(true);
         obj3.merchantId("1234");
         obj3.serviceEnablementNumber("");
-        List<String> terminalIds=new ArrayList<>();
+        List<String> terminalIds = new ArrayList<>();
 
         terminalIds.add("12351245");
         obj3.terminalIds(terminalIds);
@@ -112,9 +112,9 @@ public class MerchantBoardingBarclays {
 
         obj2.currencies(currencies);
 
-        Map<String, CardProcessingConfigCommonPaymentTypes> paymentTypes=new HashMap<>();
+        Map<String, CardProcessingConfigCommonPaymentTypes> paymentTypes = new HashMap<>();
 
-        CardProcessingConfigCommonPaymentTypes obj4=new CardProcessingConfigCommonPaymentTypes();
+        CardProcessingConfigCommonPaymentTypes obj4 = new CardProcessingConfigCommonPaymentTypes();
         obj4.enabled(true);
         paymentTypes.put("MASTERCARD",obj4);
         paymentTypes.put("VISA",obj4);
@@ -131,14 +131,14 @@ public class MerchantBoardingBarclays {
 
         common.processors(processors);
         configurations.common(common);
-        CardProcessingConfigFeatures features3=new CardProcessingConfigFeatures();
+        CardProcessingConfigFeatures features3 = new CardProcessingConfigFeatures();
 
-        CardProcessingConfigFeaturesCardNotPresent cardNotPresent=new CardProcessingConfigFeaturesCardNotPresent();
+        CardProcessingConfigFeaturesCardNotPresent cardNotPresent = new CardProcessingConfigFeaturesCardNotPresent();
 
-        Map<String, CardProcessingConfigFeaturesCardNotPresentProcessors> processors4=new HashMap<>();
-        CardProcessingConfigFeaturesCardNotPresentProcessors obj6=new CardProcessingConfigFeaturesCardNotPresentProcessors();
+        Map<String, CardProcessingConfigFeaturesCardNotPresentProcessors> processors4 = new HashMap<>();
+        CardProcessingConfigFeaturesCardNotPresentProcessors obj6 = new CardProcessingConfigFeaturesCardNotPresentProcessors();
 
-        CardProcessingConfigFeaturesCardNotPresentPayouts payouts=new CardProcessingConfigFeaturesCardNotPresentPayouts();
+        CardProcessingConfigFeaturesCardNotPresentPayouts payouts = new CardProcessingConfigFeaturesCardNotPresentPayouts();
 
         payouts.merchantId("1233");
         payouts.terminalId("1244");
@@ -156,21 +156,21 @@ public class MerchantBoardingBarclays {
 
         payments.cardProcessing(cardProcessing);
 
-        PaymentsProductsVirtualTerminal virtualTerminal=new PaymentsProductsVirtualTerminal();
+        PaymentsProductsVirtualTerminal virtualTerminal = new PaymentsProductsVirtualTerminal();
 
-//        PaymentsProductsPayerAuthenticationSubscriptionInformation subscriptionInformation2=new PaymentsProductsPayerAuthenticationSubscriptionInformation();
+//        PaymentsProductsPayerAuthenticationSubscriptionInformation subscriptionInformation2 = new PaymentsProductsPayerAuthenticationSubscriptionInformation();
 //        subscriptionInformation2.enabled(true);
 //        virtualTerminal.subscriptionInformation(subscriptionInformation2);
 
-        PaymentsProductsVirtualTerminalConfigurationInformation configurationInformation2=new PaymentsProductsVirtualTerminalConfigurationInformation();
+        PaymentsProductsVirtualTerminalConfigurationInformation configurationInformation2 = new PaymentsProductsVirtualTerminalConfigurationInformation();
 
         configurationInformation2.templateId("E4EDB280-9DAC-4698-9EB9-9434D40FF60C");
         virtualTerminal.configurationInformation(configurationInformation2);
         payments.virtualTerminal(virtualTerminal);
 
-        PaymentsProductsTax customerInvoicing=new PaymentsProductsTax();
+        PaymentsProductsTax customerInvoicing = new PaymentsProductsTax();
 
-//        PaymentsProductsPayerAuthenticationSubscriptionInformation subscriptionInformation3=new PaymentsProductsPayerAuthenticationSubscriptionInformation();
+//        PaymentsProductsPayerAuthenticationSubscriptionInformation subscriptionInformation3 = new PaymentsProductsPayerAuthenticationSubscriptionInformation();
 //
 //        subscriptionInformation3.enabled(true);
 //        customerInvoicing.subscriptionInformation(subscriptionInformation3);
@@ -179,37 +179,37 @@ public class MerchantBoardingBarclays {
 
         selectedProducts.payments(payments);
 
-        RiskProducts risk2=new RiskProducts();
+        RiskProducts risk2 = new RiskProducts();
         selectedProducts.risk(risk2);
 
-        CommerceSolutionsProducts commerceSolutions=new CommerceSolutionsProducts();
-        CommerceSolutionsProductsTokenManagement tokenManagement=new CommerceSolutionsProductsTokenManagement();
+        CommerceSolutionsProducts commerceSolutions = new CommerceSolutionsProducts();
+        CommerceSolutionsProductsTokenManagement tokenManagement = new CommerceSolutionsProductsTokenManagement();
 
-//        PaymentsProductsPayerAuthenticationSubscriptionInformation subscriptionInformation5=new PaymentsProductsPayerAuthenticationSubscriptionInformation();
+//        PaymentsProductsPayerAuthenticationSubscriptionInformation subscriptionInformation5 = new PaymentsProductsPayerAuthenticationSubscriptionInformation();
 //
 //        subscriptionInformation5.enabled(true);
 //        tokenManagement.subscriptionInformation(subscriptionInformation5);
 
-        CommerceSolutionsProductsTokenManagementConfigurationInformation configurationInformation5=new CommerceSolutionsProductsTokenManagementConfigurationInformation();
+        CommerceSolutionsProductsTokenManagementConfigurationInformation configurationInformation5 = new CommerceSolutionsProductsTokenManagementConfigurationInformation();
 
         configurationInformation5.templateId("D62BEE20-DCFD-4AA2-8723-BA3725958ABA");
         tokenManagement.configurationInformation(configurationInformation5);
         commerceSolutions.tokenManagement(tokenManagement);
         selectedProducts.commerceSolutions(commerceSolutions);
 
-        ValueAddedServicesProducts valueAddedServices=new ValueAddedServicesProducts();
+        ValueAddedServicesProducts valueAddedServices = new ValueAddedServicesProducts();
 
-        PaymentsProductsTax transactionSearch=new PaymentsProductsTax();
+        PaymentsProductsTax transactionSearch = new PaymentsProductsTax();
 
-//        PaymentsProductsPayerAuthenticationSubscriptionInformation subscriptionInformation6=new PaymentsProductsPayerAuthenticationSubscriptionInformation();
+//        PaymentsProductsPayerAuthenticationSubscriptionInformation subscriptionInformation6 = new PaymentsProductsPayerAuthenticationSubscriptionInformation();
 //
 //        subscriptionInformation6.enabled(true);
 //        transactionSearch.subscriptionInformation(subscriptionInformation6);
 //        valueAddedServices.transactionSearch(transactionSearch);
 
-        PaymentsProductsTax reporting=new PaymentsProductsTax();
+        PaymentsProductsTax reporting = new PaymentsProductsTax();
 
-//        PaymentsProductsPayerAuthenticationSubscriptionInformation subscriptionInformation7=new PaymentsProductsPayerAuthenticationSubscriptionInformation();
+//        PaymentsProductsPayerAuthenticationSubscriptionInformation subscriptionInformation7 = new PaymentsProductsPayerAuthenticationSubscriptionInformation();
 //        subscriptionInformation7.enabled(true);
 //        reporting.subscriptionInformation(subscriptionInformation7);
         valueAddedServices.reporting(reporting);
@@ -218,7 +218,7 @@ public class MerchantBoardingBarclays {
         reqObj.productInformation(productInformation);
 
 
-        InlineResponse2013 result=null;
+        InlineResponse2013 result = null;
 
         try {
             //Boarding API support only JWT Auth Type
