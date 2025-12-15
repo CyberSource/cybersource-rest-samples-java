@@ -18,6 +18,12 @@
       "release_date": "2025-09-20",
       "tag_name": "cybersource-rest-client-java-0.0.81",
       "download_url": "https://github.com/CyberSource/cybersource-rest-client-java/archive/refs/tags/cybersource-rest-client-java-0.0.81.zip"
+    },
+    {
+      "version": "0.0.79",
+      "release_date": "2025-07-31",
+      "tag_name": "cybersource-rest-client-java-0.0.79",
+      "download_url": "https://github.com/CyberSource/cybersource-rest-client-java/archive/refs/tags/cybersource-rest-client-java-0.0.79.zip"
     }
   ],
   "repository": {
