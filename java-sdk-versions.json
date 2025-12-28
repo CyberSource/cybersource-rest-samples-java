@@ -1,6 +1,12 @@
 {
-  "latest_version": "0.0.83",
+  "latest_version": "0.0.84",
   "versions": [
+	{
+      "version": "0.0.84",
+      "release_date": "2025-11-07",
+      "tag_name": "cybersource-rest-client-java-0.0.84",
+      "download_url": "https://github.com/CyberSource/cybersource-rest-client-java/archive/refs/tags/cybersource-rest-client-java-0.0.84.zip"
+    },
     {
       "version": "0.0.83",
       "release_date": "2025-11-07",
