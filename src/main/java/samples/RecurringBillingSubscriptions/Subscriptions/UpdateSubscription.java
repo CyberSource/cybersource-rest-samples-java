@@ -41,7 +41,7 @@ public class UpdateSubscription {
 
         GetAllSubscriptionsResponseClientReferenceInformation clientReferenceInformation = new GetAllSubscriptionsResponseClientReferenceInformation();
 		clientReferenceInformation.code("APGHU");
-        GetAllSubscriptionsResponseClientReferenceInformation clientReferenceInformationPartner = new GetAllSubscriptionsResponseClientReferenceInformation();
+//		Rbsv1subscriptionsClientReferenceInformationPartner clientReferenceInformationPartner = new Rbsv1subscriptionsClientReferenceInformationPartner();
 //		clientReferenceInformationPartner.developerId("ABCD1234");
 //		clientReferenceInformationPartner.solutionId("GEF1234");
 //		clientReferenceInformation.partner(clientReferenceInformationPartner);
@@ -61,7 +61,7 @@ public class UpdateSubscription {
 		Rbsv1subscriptionsidSubscriptionInformation subscriptionInformation = new Rbsv1subscriptionsidSubscriptionInformation();
 		subscriptionInformation.planId("6868912495476705603955");
 		subscriptionInformation.name("Subscription with PlanId");
-		subscriptionInformation.startDate("2024-06-11");
+		subscriptionInformation.startDate("2025-12-23");
 		requestObj.subscriptionInformation(subscriptionInformation);
 
 		Rbsv1subscriptionsidOrderInformation orderInformation = new Rbsv1subscriptionsidOrderInformation();

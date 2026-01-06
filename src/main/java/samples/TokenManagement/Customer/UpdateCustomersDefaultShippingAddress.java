@@ -30,7 +30,7 @@ public class UpdateCustomersDefaultShippingAddress {
 		
 		PatchCustomerRequest requestObj = new PatchCustomerRequest();
 
-        Tmsv2tokenizeTokenInformationCustomerDefaultShippingAddress defaultShippingAddress = new Tmsv2tokenizeTokenInformationCustomerDefaultShippingAddress();
+		Tmsv2tokenizeTokenInformationCustomerDefaultShippingAddress defaultShippingAddress = new Tmsv2tokenizeTokenInformationCustomerDefaultShippingAddress();
 		defaultShippingAddress.id("AB6A54B97C00FCB6E05341588E0A3935");
 		requestObj.defaultShippingAddress(defaultShippingAddress);
 

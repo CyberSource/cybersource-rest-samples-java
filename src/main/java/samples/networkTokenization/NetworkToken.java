@@ -40,10 +40,10 @@ public class NetworkToken {
             MerchantConfig merchantConfig = new MerchantConfig(merchantProp);
 
             //Step-I
-            PostInstrumentIdentifierRequest tmsv2customersEmbeddedDefaultPaymentInstrumentEmbeddedInstrumentIdentifier = CreateInstrumentIdentifierCardEnrollForNetworkToken.run();
+            PostInstrumentIdentifierRequest Tmsv2tokenizeTokenInformationCustomerEmbeddedDefaultPaymentInstrumentEmbeddedInstrumentIdentifier = CreateInstrumentIdentifierCardEnrollForNetworkToken.run();
 
             //Step-II
-            String encodedJWEResponse = PaymentCredentialsFromNetworkToken.run(tmsv2customersEmbeddedDefaultPaymentInstrumentEmbeddedInstrumentIdentifier.getId());
+            String encodedJWEResponse = PaymentCredentialsFromNetworkToken.run(Tmsv2tokenizeTokenInformationCustomerEmbeddedDefaultPaymentInstrumentEmbeddedInstrumentIdentifier.getId());
 
             //Step-III
             // The following method JWEUtility.decryptJWEResponse(String, MerchantConfig) has been deprecated.
