@@ -30,7 +30,7 @@ public class CreateCustomerNonDefaultShippingAddress {
 		PostCustomerShippingAddressRequest requestObj = new PostCustomerShippingAddressRequest();
 
 		requestObj._default(false);
-        Tmsv2tokenizeTokenInformationCustomerEmbeddedDefaultShippingAddressShipTo shipTo = new Tmsv2tokenizeTokenInformationCustomerEmbeddedDefaultShippingAddressShipTo();
+		Tmsv2tokenizeTokenInformationCustomerEmbeddedDefaultShippingAddressShipTo shipTo = new Tmsv2tokenizeTokenInformationCustomerEmbeddedDefaultShippingAddressShipTo();
 		shipTo.firstName("John");
 		shipTo.lastName("Doe");
 		shipTo.company("CyberSource");
