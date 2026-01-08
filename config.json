@@ -3,6 +3,6 @@
     "json_file": "java-sdk-versions.json",
     "add_to_list": false,
     "pr_repo_owner": "CyberSource",
-    "pr_repo_name": "CAPIC-cybersource-rest-samples-java",
+    "pr_repo_name": "cybersource-rest-samples-java",
     "pr_base_branch": "master"
 }
