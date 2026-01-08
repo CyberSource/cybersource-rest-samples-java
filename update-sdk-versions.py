@@ -120,7 +120,7 @@ class SDKVersionUpdater:
     
     def create_git_branch(self, version: str) -> str:
         """Create a new git branch for the update"""
-        branch_name = f"update2-java-sdk-v{version}"
+        branch_name = f"update3-java-sdk-v{version}"
         
         try:
             # Checkout master branch
@@ -187,8 +187,8 @@ class SDKVersionUpdater:
             return
         
         owner = self.config.get("pr_repo_owner", "CyberSource")
-        repo = self.config.get("pr_repo_name", "CAPIC-cybersource-rest-samples-java")
-        base_branch = self.config.get("pr_base_branch", "main")
+        repo = self.config.get("pr_repo_name", "cybersource-rest-samples-java")
+        base_branch = self.config.get("pr_base_branch", "master")
         
         url = f"https://api.github.com/repos/{owner}/{repo}/pulls"
         
