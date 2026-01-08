@@ -120,7 +120,7 @@ class SDKVersionUpdater:
     
     def create_git_branch(self, version: str) -> str:
         """Create a new git branch for the update"""
-        branch_name = f"update-java-sdk-v{version}"
+        branch_name = f"update2-java-sdk-v{version}"
         
         try:
             # Checkout master branch
