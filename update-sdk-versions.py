@@ -103,7 +103,7 @@ class SDKVersionUpdater:
         
         # Always update latest_version and last_updated
         current_data["latest_version"] = new_version
-        current_data["last_updated"] = datetime.utcnow().strftime("%Y-%m-%dT%H:%M:%SZ")
+        current_data["last_updated"] = datetime.now(datetime.UTC).strftime("%Y-%m-%dT%H:%M:%SZ")
         
         # If add_to_list is enabled, add to versions array
         if self.add_to_list:
@@ -252,18 +252,24 @@ class SDKVersionUpdater:
             print("\nNo updates needed.")
             sys.exit(0)
         
-        # Save updated JSON
-        self.save_json_file(updated_data)
-        print()
-        
-        # Git operations (if enabled)
+        # Git operations (if enabled) - must be done BEFORE saving the file
+        branch_name = None
         if create_pr:
             print("Creating git branch and PR...")
             branch_name = self.create_git_branch(new_release["version"])
             
-            if branch_name:
-                self.commit_and_push(new_release["version"], branch_name)
-                self.create_pull_request(new_release["version"], branch_name)
+            if not branch_name:
+                print("\n⚠ Warning: Could not create git branch. Saving changes locally only.")
+                print()
+        
+        # Save updated JSON (after branch creation but before commit)
+        self.save_json_file(updated_data)
+        print()
+        
+        # Commit and push if branch was created successfully
+        if create_pr and branch_name:
+            self.commit_and_push(new_release["version"], branch_name)
+            self.create_pull_request(new_release["version"], branch_name)
         
         print()
         print("=" * 60)
