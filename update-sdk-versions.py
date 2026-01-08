@@ -8,7 +8,7 @@ import json
 import os
 import sys
 import argparse
-from datetime import datetime
+from datetime import datetime, timezone
 from typing import Dict, Optional
 import requests
 import subprocess
@@ -103,7 +103,7 @@ class SDKVersionUpdater:
         
         # Always update latest_version and last_updated
         current_data["latest_version"] = new_version
-        current_data["last_updated"] = datetime.now(datetime.UTC).strftime("%Y-%m-%dT%H:%M:%SZ")
+        current_data["last_updated"] = datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
         
         # If add_to_list is enabled, add to versions array
         if self.add_to_list:
