@@ -1,8 +1,71 @@
 {
     "github_token": "",
-    "json_file": "java-sdk-versions.json",
     "add_to_list": false,
-    "pr_repo_owner": "CyberSource",
-    "pr_repo_name": "cybersource-rest-samples-java",
-    "pr_base_branch": "master"
+    "languages": {
+        "java": {
+            "enabled": true,
+            "sdk_repo": "cybersource-rest-client-java",
+            "samples_repo": "cybersource-rest-samples-java",
+            "json_file": "java-sdk-versions.json",
+            "tag_pattern": "full_prefix",
+            "tag_prefix": "cybersource-rest-client-java-",
+            "pr_base_branch": "mcp-files",
+            "pr_target_branch": "master"
+        },
+        "python": {
+            "enabled": true,
+            "sdk_repo": "cybersource-rest-client-python",
+            "samples_repo": "cybersource-rest-samples-python",
+            "json_file": "python-sdk-versions.json",
+            "tag_pattern": "bare_version",
+            "pr_base_branch": "mcp-files",
+            "pr_target_branch": "master"
+        },
+        "php": {
+            "enabled": true,
+            "sdk_repo": "cybersource-rest-client-php",
+            "samples_repo": "cybersource-rest-samples-php",
+            "json_file": "php-sdk-versions.json",
+            "tag_pattern": "bare_version",
+            "pr_base_branch": "mcp-files",
+            "pr_target_branch": "master"
+        },
+        "node": {
+            "enabled": true,
+            "sdk_repo": "cybersource-rest-client-node",
+            "samples_repo": "cybersource-rest-samples-node",
+            "json_file": "node-sdk-versions.json",
+            "tag_pattern": "bare_version",
+            "pr_base_branch": "mcp-files",
+            "pr_target_branch": "master"
+        },
+        "ruby": {
+            "enabled": true,
+            "sdk_repo": "cybersource-rest-client-ruby",
+            "samples_repo": "cybersource-rest-samples-ruby",
+            "json_file": "ruby-sdk-versions.json",
+            "tag_pattern": "v_prefix",
+            "tag_prefix": "v",
+            "pr_base_branch": "mcp-files",
+            "pr_target_branch": "master"
+        },
+        "dotnet": {
+            "enabled": true,
+            "sdk_repo": "cybersource-rest-client-dotnet",
+            "samples_repo": "cybersource-rest-samples-csharp",
+            "json_file": "dotnet-sdk-versions.json",
+            "tag_pattern": "bare_version",
+            "pr_base_branch": "mcp-files",
+            "pr_target_branch": "master"
+        },
+        "dotnetstandard": {
+            "enabled": true,
+            "sdk_repo": "cybersource-rest-client-dotnetstandard",
+            "samples_repo": "cybersource-rest-samples-csharp",
+            "json_file": "dotnetstandard-sdk-versions.json",
+            "tag_pattern": "bare_version",
+            "pr_base_branch": "mcp-files",
+            "pr_target_branch": "master"
+        }
+    }
 }
