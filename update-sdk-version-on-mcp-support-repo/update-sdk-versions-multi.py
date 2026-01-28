@@ -369,15 +369,28 @@ class SDKVersionUpdater:
             return None
     
     def cleanup_workspace(self, workspace: str):
-        """Clean up temporary workspace"""
+        """Clean up temporary workspace with force delete for Windows"""
         if not os.path.exists(workspace):
             return
         
+        def handle_remove_readonly(func, path, exc):
+            """Error handler for Windows readonly files"""
+            import stat
+            if not os.access(path, os.W_OK):
+                # Change file permissions to writable
+                os.chmod(path, stat.S_IWUSR | stat.S_IRUSR)
+                # Retry the function
+                func(path)
+            else:
+                raise
+        
         try:
-            shutil.rmtree(workspace)
+            # Use onerror handler to force delete readonly files (common on Windows with Git)
+            shutil.rmtree(workspace, onerror=handle_remove_readonly)
             print(f"Cleaned up workspace: {workspace}")
         except Exception as e:
             print(f"Warning: Could not delete workspace: {e}")
+            print(f"   You may need to manually delete: {workspace}")
     
     def display_summary(self, updated_languages: List[Tuple[str, str]], branch_name: Optional[str], pr_url: Optional[str]):
         """Display operation summary"""
@@ -576,7 +589,7 @@ class SDKVersionUpdater:
                 print("=" * 70)
                 
                 try:
-                    self.commit_and_push(repo_dir, branch_name, updated_files)
+                    self.commit_and_push(repo_dir if repo_dir else "", branch_name, updated_files)
                     print()
                     
                     print("Creating pull request...")

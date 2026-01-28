@@ -7,8 +7,8 @@
     "github_token": "",
     "add_to_versions_list": false,
     "sdk_support_repo": "cybersource-mcp-sdk-support-files",
-    "pr_base_branch": "test-all-sdk",
-    "pr_target_branch": "test-all-sdk",
+    "pr_base_branch": "master",
+    "pr_target_branch": "master",
     "languages": {
         "java": {
             "enabled": true,
