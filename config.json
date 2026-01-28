@@ -1,0 +1,56 @@
+{
+    "_comment_1": "Set 'enabled' to false for any language you want to skip during updates",
+    "_comment_2": "Keep pr_base_branch and pr_target_branch the same - usually 'master'",
+    "_comment_3": "Usage: python update-sdk-versions-multi.py --enable-pr --token ghp_xxx",
+    "_comment_4": "With version history: python update-sdk-versions-multi.py --add-to-versions-list --enable-pr --token ghp_xxx",
+    
+    "github_token": "",
+    "add_to_versions_list": false,
+    "sdk_support_repo": "cybersource-mcp-sdk-support-files",
+    "pr_base_branch": "test-all-sdk",
+    "pr_target_branch": "test-all-sdk",
+    "languages": {
+        "java": {
+            "enabled": true,
+            "sdk_repo": "cybersource-rest-client-java",
+            "json_file": "java-sdk-versions.json",
+            "tag_format": "cybersource-rest-client-java-{version}"
+        },
+        "python": {
+            "enabled": true,
+            "sdk_repo": "cybersource-rest-client-python",
+            "json_file": "python-sdk-versions.json",
+            "tag_format": "{version}"
+        },
+        "php": {
+            "enabled": true,
+            "sdk_repo": "cybersource-rest-client-php",
+            "json_file": "php-sdk-versions.json",
+            "tag_format": "{version}"
+        },
+        "node": {
+            "enabled": true,
+            "sdk_repo": "cybersource-rest-client-node",
+            "json_file": "node-sdk-versions.json",
+            "tag_format": "{version}"
+        },
+        "ruby": {
+            "enabled": true,
+            "sdk_repo": "cybersource-rest-client-ruby",
+            "json_file": "ruby-sdk-versions.json",
+            "tag_format": "v{version}"
+        },
+        "dotnet": {
+            "enabled": true,
+            "sdk_repo": "cybersource-rest-client-dotnet",
+            "json_file": "dotnet-sdk-versions.json",
+            "tag_format": "{version}"
+        },
+        "dotnetstandard": {
+            "enabled": true,
+            "sdk_repo": "cybersource-rest-client-dotnetstandard",
+            "json_file": "dotnetstandard-sdk-versions.json",
+            "tag_format": "{version}"
+        }
+    }
+}
