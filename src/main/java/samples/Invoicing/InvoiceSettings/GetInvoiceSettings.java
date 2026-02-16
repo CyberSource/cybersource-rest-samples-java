@@ -40,7 +40,8 @@ public class GetInvoiceSettings {
 			apiClient.merchantConfig = merchantConfig;
 
 			InvoiceSettingsApi apiInstance = new InvoiceSettingsApi(apiClient);
-			result = apiInstance.getInvoiceSettings();
+            String productType = null;
+			result = apiInstance.getInvoiceSettings(productType);
 
 			responseCode = apiClient.responseCode;
 			status = apiClient.status;

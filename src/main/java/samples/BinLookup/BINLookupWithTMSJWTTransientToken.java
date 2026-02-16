@@ -33,7 +33,7 @@ public class BINLookupWithTMSJWTTransientToken {
 		run();
 	}
 
-	public static InlineResponse2012 run() {
+	public static InlineResponse2013 run() {
 	
 		CreateBinLookupRequest requestObj = new CreateBinLookupRequest();
 
@@ -42,7 +42,7 @@ public class BINLookupWithTMSJWTTransientToken {
 		requestObj.tokenInformation(tokenInformation);
 
 		
-		InlineResponse2012 result=null;
+		InlineResponse2013 result=null;
 		try {
 			merchantProp = Configuration.getMerchantDetails();
 			ApiClient apiClient = new ApiClient();

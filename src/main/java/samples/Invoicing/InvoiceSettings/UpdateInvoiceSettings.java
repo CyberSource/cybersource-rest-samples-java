@@ -58,7 +58,8 @@ public class UpdateInvoiceSettings {
 			apiClient.merchantConfig = merchantConfig;
 
 			InvoiceSettingsApi apiInstance = new InvoiceSettingsApi(apiClient);
-			result = apiInstance.updateInvoiceSettings(requestObj);
+            String productType = null;
+			result = apiInstance.updateInvoiceSettings(requestObj,productType);
 
 			responseCode = apiClient.responseCode;
 			status = apiClient.status;
