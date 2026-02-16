@@ -29,6 +29,7 @@ public class GetListOfSubscriptions {
         int limit = 100;
         String code = null;
         String status = null;
+        String customerId = null;
 
         GetAllSubscriptionsResponse response = null;
         try {
@@ -38,7 +39,7 @@ public class GetListOfSubscriptions {
             apiClient.merchantConfig = merchantConfig;
 
             SubscriptionsApi apiInstance = new SubscriptionsApi(apiClient);
-            response = apiInstance.getAllSubscriptions(offset, limit, code, status);
+            response = apiInstance.getAllSubscriptions(offset, limit, code, status,customerId);
 
             responseCode = apiClient.responseCode;
             responseStatus = apiClient.status;

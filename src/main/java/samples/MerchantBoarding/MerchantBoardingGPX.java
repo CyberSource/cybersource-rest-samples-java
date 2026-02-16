@@ -31,7 +31,7 @@ public class MerchantBoardingGPX {
     }
 
 
-    public static InlineResponse2013 run() {
+    public static InlineResponse2014 run() {
 
         PostRegistrationBody reqObj = new PostRegistrationBody();
 
@@ -259,7 +259,7 @@ public class MerchantBoardingGPX {
         reqObj.productInformation(productInformation);
 
 
-        InlineResponse2013 result = null;
+        InlineResponse2014 result = null;
 
         try {
             //Boarding API support only JWT Auth Type
