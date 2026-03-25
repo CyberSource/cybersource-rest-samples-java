@@ -24,12 +24,13 @@ public class SampleCodeRunner {
 		
 		getListOfPackages("src/main/java/", files);
 
-		System.out.println("Number of files found: " + files.size());
+		System.out.println("Number of packages found: " + files.size());
         
 		for(String pkg : files) {
         	Class<?>[] classList = getClasses(pkg);
         	
         	if (classList.length > 0) {
+				System.out.println("Entering classes non-zero");
         		for(Class<?> sampleClass : classList) {
         			// IGNORE LIST PART 1 : Classes inside Data, lib and SampleCodeRunner packages are not tested.
 					if (sampleClass.getName().contains("Configuration") 
@@ -40,7 +41,9 @@ public class SampleCodeRunner {
         				System.out.println("\n#### SKIPPED - " + sampleClass.getName() + " ####");            			
             			continue;
         			}
-        			
+
+					System.out.println("Sample Name:\t" + sampleClass.getName());
+					
         			Method sample;
 					try {
 						sample = sampleClass.getDeclaredMethod("main", String[].class);
@@ -86,15 +89,14 @@ public class SampleCodeRunner {
         // get all the files from a directory
         File[] fList = directory.listFiles();
         for (File file : fList) {
-			System.out.println("File : \t" + file.getPath());
             if (file.isFile()) {
                 String path = file.getPath();
                 boolean pathSeparator = path.contains("\\");
                 if (pathSeparator) {
-	                String packName = path.substring(path.indexOf("src") + 4, path.lastIndexOf('\\')).replace("main\\java\\", "");
+	                String packName = path.substring(path.indexOf("src\\main\\java") + 4, path.lastIndexOf('\\')).replace("main\\java\\", "");
 	                pack.add(packName.replace('\\', '.'));
                 } else {
-                	String packName = path.substring(path.indexOf("src") + 4, path.lastIndexOf('/')).replace("main/java/", "");
+                	String packName = path.substring(path.indexOf("src/main/java") + 4, path.lastIndexOf('/')).replace("main/java/", "");
 	                pack.add(packName.replace('/', '.'));
                 }
             } else if (file.isDirectory()) {
@@ -118,6 +120,7 @@ public class SampleCodeRunner {
         ArrayList<Class<?>> classes = new ArrayList<Class<?>>();
         ClassPath cp = ClassPath.from(Thread.currentThread().getContextClassLoader());
         for(ClassPath.ClassInfo info : cp.getTopLevelClassesRecursive(packageName)) {
+			System.out.println("Class found : \t" + info.getName());
             classes.add(info.load());
         }
         
