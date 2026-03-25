@@ -23,12 +23,13 @@ public class SampleCodeRunner {
 		Set<String> files = new HashSet<>();
 		
 		getListOfPackages("src/main/java/", files);
-        
+        System.out.println("Total Packages : " + files.size());
 		for(String pkg : files) {
         	Class<?>[] classList = getClasses(pkg);
         	
         	if (classList.length > 0) {
         		for(Class<?> sampleClass : classList) {
+					System.out.println("\n\n**** CHECKING - " + sampleClass.getName() + " ****");
         			// IGNORE LIST PART 1 : Classes inside Data, lib and SampleCodeRunner packages are not tested.
 					if (sampleClass.getName().contains("Configuration") 
 						|| sampleClass.getName().contains("lib") 
