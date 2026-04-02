@@ -50,19 +50,19 @@ public class NetworkToken {
             // String decodedResponse = JWEUtility.decryptJWEResponse(encodedJWEResponse, merchantConfig);
 
             // Using the new method JWEUtility.decryptJWEResponse(PrivateKey, String) instead
-            PrivateKey privateKey = fetchPrivateKeyFromFile(merchantConfig.getPemFileDirectory());
-
-            if (privateKey != null) {
-                String decodedResponse = JWEUtility.decryptJWEResponse(privateKey, encodedJWEResponse);
-                System.out.println("Decoded Response");
-                System.out.println(decodedResponse);
-
-                Gson gson = new GsonBuilder().setPrettyPrinting().create();
-                JsonObject responseJson = gson.fromJson(decodedResponse, JsonObject.class);
-                System.out.println(gson.toJson(responseJson));
-            } else {
-                System.out.println("Private key not found");
-            }
+//            PrivateKey privateKey = fetchPrivateKeyFromFile(merchantConfig.getPemFileDirectory());
+//
+//            if (privateKey != null) {
+//                String decodedResponse = JWEUtility.decryptJWEResponse(privateKey, encodedJWEResponse);
+//                System.out.println("Decoded Response");
+//                System.out.println(decodedResponse);
+//
+//                Gson gson = new GsonBuilder().setPrettyPrinting().create();
+//                JsonObject responseJson = gson.fromJson(decodedResponse, JsonObject.class);
+//                System.out.println(gson.toJson(responseJson));
+//            } else {
+//                System.out.println("Private key not found");
+//            }
         } catch (Exception e) {
             e.printStackTrace();
         }

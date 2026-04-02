@@ -35,7 +35,7 @@ public class CanadianBillingDetails {
 	
 		VerifyCustomerAddressRequest requestObj = new VerifyCustomerAddressRequest();
 
-		Riskv1liststypeentriesClientReferenceInformation clientReferenceInformation = new Riskv1liststypeentriesClientReferenceInformation();
+		RiskV1DecisionsPost201ResponseClientReferenceInformation clientReferenceInformation = new RiskV1DecisionsPost201ResponseClientReferenceInformation();
 		clientReferenceInformation.code("addressEg");
 		clientReferenceInformation.comments("dav-All fields");
 		requestObj.clientReferenceInformation(clientReferenceInformation);

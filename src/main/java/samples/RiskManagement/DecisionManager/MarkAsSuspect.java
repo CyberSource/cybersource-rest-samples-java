@@ -50,7 +50,7 @@ public class MarkAsSuspect {
 
 		requestObj.riskInformation(riskInformation);
 
-		Riskv1liststypeentriesClientReferenceInformation clientReferenceInformation = new Riskv1liststypeentriesClientReferenceInformation();
+		RiskV1DecisionsPost201ResponseClientReferenceInformation clientReferenceInformation = new RiskV1DecisionsPost201ResponseClientReferenceInformation();
 		clientReferenceInformation.code("12345");
 		Riskv1decisionsClientReferenceInformationPartner clientReferenceInformationPartner = new Riskv1decisionsClientReferenceInformationPartner();
 		clientReferenceInformationPartner.developerId("1234");
