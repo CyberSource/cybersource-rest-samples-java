@@ -88,10 +88,10 @@ public class SampleCodeRunner {
                 String path = file.getPath();
                 boolean pathSeparator = path.contains("\\");
                 if (pathSeparator) {
-	                String packName = path.substring(path.indexOf("src") + 4, path.lastIndexOf('\\')).replace("main\\java\\", "");
+	                String packName = path.substring(path.indexOf("src\\main\\java") + 4, path.lastIndexOf('\\')).replace("main\\java\\", "");
 	                pack.add(packName.replace('\\', '.'));
                 } else {
-                	String packName = path.substring(path.indexOf("src") + 4, path.lastIndexOf('/')).replace("main/java/", "");
+                	String packName = path.substring(path.indexOf("src/main/java") + 4, path.lastIndexOf('/')).replace("main/java/", "");
 	                pack.add(packName.replace('/', '.'));
                 }
             } else if (file.isDirectory()) {

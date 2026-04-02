@@ -5,13 +5,15 @@ import Data.Configuration;
 import Invokers.ApiClient;
 import Model.GenerateUnifiedCheckoutCaptureContextRequest;
 import Model.Upv1capturecontextsCaptureMandate;
-import Model.Upv1capturecontextsOrderInformation;
-import Model.Upv1capturecontextsOrderInformationAmountDetails;
+import Model.Upv1capturecontextsDataOrderInformation;
+import Model.Upv1capturecontextsDataOrderInformationAmountDetails;
 import com.cybersource.authsdk.core.MerchantConfig;
 import Model.Upv1capturecontextsDataOrderInformationBillTo;
 import Model.Upv1capturecontextsDataOrderInformationBillToCompany;
 import Model.Upv1capturecontextsDataOrderInformationShipTo;
 import Model.Upv1capturecontextsCompleteMandate;
+import Model.Upv1capturecontextsData;
+
 import com.google.gson.JsonObject;
 import utilities.capturecontext.utility.CaptureContextParsingUtility;
 
@@ -83,8 +85,8 @@ public class GenerateUnifiedCheckoutCaptureContextPassingBillingShipping {
         captureMandate.showAcceptedNetworkIcons(true);
         requestObj.captureMandate(captureMandate);
 
-        Upv1capturecontextsOrderInformation orderInformation = new Upv1capturecontextsOrderInformation();
-        Upv1capturecontextsOrderInformationAmountDetails orderInformationAmountDetails = new Upv1capturecontextsOrderInformationAmountDetails();
+        Upv1capturecontextsDataOrderInformation orderInformation = new Upv1capturecontextsDataOrderInformation();
+        Upv1capturecontextsDataOrderInformationAmountDetails orderInformationAmountDetails = new Upv1capturecontextsDataOrderInformationAmountDetails();
         orderInformationAmountDetails.totalAmount("21.00");
         orderInformationAmountDetails.currency("USD");
         orderInformation.amountDetails(orderInformationAmountDetails);
@@ -106,10 +108,10 @@ public class GenerateUnifiedCheckoutCaptureContextPassingBillingShipping {
         orderInformationBillToCompany.address2("address2");
         orderInformationBillToCompany.address3("address3");
         orderInformationBillToCompany.address4("address4");
-        orderInformationBillToCompany.administrativeArea("CA");
         orderInformationBillToCompany.buildingNumber("1");
-        orderInformationBillToCompany.country("US");
         orderInformationBillToCompany.district("district");
+        orderInformationBillToCompany.administrativeArea("CA");
+        orderInformationBillToCompany.country("US");
         orderInformationBillToCompany.locality("Foster City");
         orderInformationBillToCompany.postalCode("94404");
         orderInformationBillTo.company(orderInformationBillToCompany);
@@ -122,6 +124,7 @@ public class GenerateUnifiedCheckoutCaptureContextPassingBillingShipping {
         orderInformationBillTo.title("Mr");
         orderInformationBillTo.phoneNumber("1234567890");
         orderInformationBillTo.phoneType("phoneType");
+
         orderInformation.billTo(orderInformationBillTo);
 
         Upv1capturecontextsDataOrderInformationShipTo orderInformationShipTo = new Upv1capturecontextsDataOrderInformationShipTo();
@@ -139,7 +142,10 @@ public class GenerateUnifiedCheckoutCaptureContextPassingBillingShipping {
         orderInformationShipTo.lastName("Soap");
         orderInformation.shipTo(orderInformationShipTo);
 
-        requestObj.orderInformation(orderInformation);
+        Upv1capturecontextsData data = new Upv1capturecontextsData();
+        data.orderInformation(orderInformation);
+
+        requestObj.data(data);
 
         Upv1capturecontextsCompleteMandate completeMandate = new Upv1capturecontextsCompleteMandate();
         completeMandate.setType("CAPTURE");
