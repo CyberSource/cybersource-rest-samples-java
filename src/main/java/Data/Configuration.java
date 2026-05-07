@@ -2,6 +2,21 @@ package Data;
 
 import java.util.Properties;
 
+/**
+ * Default merchant configuration using JWT with P12 certificate.
+ *
+ * <p><b>Note:</b> If you are currently using HTTP Signature authentication and want to migrate
+ * to JWT (required for MLE support), you can now use JWT with the <b>same shared secret
+ * credentials</b> (merchantKeyId + merchantsecretKey) you already have — no P12 certificate
+ * needed. HTTP Signature is being deprecated; JWT with Shared Secret is the recommended
+ * migration path.</p>
+ *
+ * <p>See {@link JwtSharedSecretConfiguration} for JWT with Shared Secret configuration,
+ * which supports both Request MLE and Response MLE.</p>
+ *
+ * @see JwtSharedSecretConfiguration#getMerchantDetails()
+ * @see JwtSharedSecretConfiguration#getMerchantDetailsWithMLE()
+ */
 public class Configuration {
 	public static Properties getMerchantDetails() {
 		Properties props = new Properties();

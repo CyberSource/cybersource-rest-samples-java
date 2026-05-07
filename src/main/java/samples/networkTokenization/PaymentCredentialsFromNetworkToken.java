@@ -1,6 +1,6 @@
 package samples.networkTokenization;
 
-import Api.TokenApi;
+import Api.NetworkTokensApi;
 import Data.Configuration;
 import Invokers.ApiClient;
 import Invokers.ApiException;
@@ -41,7 +41,7 @@ public class PaymentCredentialsFromNetworkToken {
             MerchantConfig merchantConfig = new MerchantConfig(merchantProp);
             apiClient.merchantConfig = merchantConfig;
 
-            TokenApi apiInstance = new TokenApi(apiClient);
+            NetworkTokensApi apiInstance = new NetworkTokensApi(apiClient);
             PostPaymentCredentialsRequest1 postPaymentCredentialsRequest = new PostPaymentCredentialsRequest1();
             result = apiInstance.postTokenPaymentCredentials(tokenID, postPaymentCredentialsRequest, profileid);
             responseCode = apiClient.responseCode;

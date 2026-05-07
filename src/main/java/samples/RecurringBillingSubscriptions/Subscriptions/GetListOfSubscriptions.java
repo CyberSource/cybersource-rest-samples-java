@@ -39,7 +39,7 @@ public class GetListOfSubscriptions {
             apiClient.merchantConfig = merchantConfig;
 
             SubscriptionsApi apiInstance = new SubscriptionsApi(apiClient);
-            response = apiInstance.getAllSubscriptions(offset, limit, code, status,customerId);
+            response = apiInstance.getAllSubscriptions(offset, limit, code, status,customerId,null);
 
             responseCode = apiClient.responseCode;
             responseStatus = apiClient.status;
