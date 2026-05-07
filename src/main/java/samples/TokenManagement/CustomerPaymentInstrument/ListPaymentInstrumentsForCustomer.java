@@ -30,10 +30,10 @@ public class ListPaymentInstrumentsForCustomer {
 	public static void main(String args[]) throws Exception {
 		run();
 	}
-	public static PaymentInstrumentList run() {
+	public static PaymentInstrumentList1 run() {
 		String customerTokenId = "AB695DA801DD1BB6E05341588E0A3BDC";
 		
-		PaymentInstrumentList result = null;
+		PaymentInstrumentList1 result = null;
 		try {
 			merchantProp = Configuration.getMerchantDetails();
 			ApiClient apiClient = new ApiClient();

@@ -16,6 +16,17 @@ import Invokers.ApiException;
 import Model.AgenticCardEnrollmentRequest;
 import Model.AgenticCardEnrollmentResponse200;
 
+/**
+ * ACP API example with both Request MLE and Response MLE enabled.
+ *
+ * <p><b>Note:</b> MLE also works with JWT using Shared Secret credentials
+ * ({@code jwtKeyType=SHARED_SECRET}), allowing merchants to migrate from HTTP Signature
+ * and gain MLE support (both Request and Response MLE) using the same {@code merchantKeyId}
+ * and {@code merchantsecretKey} — no P12 file needed.</p>
+ *
+ * <p>See {@code samples.JwtSharedSecretAuth.MLEPaymentWithJwtSharedSecret} and
+ * {@link Data.JwtSharedSecretConfiguration#getMerchantDetailsWithMLE()} for an example.</p>
+ */
 public class AcpApiExampleWithRequestAndResponseMLE {
 	private static String responseCode = null;
 	private static String status = null;

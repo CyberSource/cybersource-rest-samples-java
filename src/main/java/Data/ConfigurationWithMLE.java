@@ -4,6 +4,24 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Properties;
 
+/**
+ * MLE (Message Level Encryption) configuration examples using JWT with P12 certificate.
+ *
+ * <p>MLE is only supported with JWT authentication. These examples use JWT with P12
+ * (the default key type). However, <b>MLE also works with JWT using Shared Secret
+ * credentials</b> ({@code jwtKeyType=SHARED_SECRET}). This means merchants currently
+ * using HTTP Signature can migrate to JWT with the same {@code merchantKeyId} and
+ * {@code merchantsecretKey} and gain MLE support (both Request MLE and Response MLE)
+ * without managing a P12 certificate file.</p>
+ *
+ * <p>For MLE with Shared Secret configuration and sample code, see:</p>
+ * <ul>
+ *   <li>{@link JwtSharedSecretConfiguration#getMerchantDetailsWithMLE()} — configuration</li>
+ *   <li>{@code samples.JwtSharedSecretAuth.MLEPaymentWithJwtSharedSecret} — sample code</li>
+ * </ul>
+ *
+ * @see JwtSharedSecretConfiguration
+ */
 public class ConfigurationWithMLE {
 	public static Properties getMerchantDetailsWithMLE1() {
 			
