@@ -8,12 +8,17 @@
 	<version>1.0</version>
 	<name>SampleCode</name>
 	<url>http://maven.apache.org</url>
+
+	<properties>
+		<client.sdk.version>0.0.91</client.sdk.version>
+	</properties>
+
 	<dependencies>
 		<!-- rest client dependency -->
 		<dependency>
 			<groupId>com.cybersource</groupId>
 			<artifactId>cybersource-rest-client-java</artifactId>
-			<version>0.0.88</version>
+			<version>${client.sdk.version}</version>
 		</dependency>
 		<!-- https://mvnrepository.com/artifact/com.google.guava/guava -->
 		<dependency>

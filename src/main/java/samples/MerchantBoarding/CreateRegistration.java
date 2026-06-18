@@ -38,9 +38,9 @@ public class CreateRegistration {
         organizationInformation.type("MERCHANT");
         organizationInformation.configurable(true);
 
-        Boardingv1registrationsOrganizationInformationBusinessInformation businessInformation = new Boardingv1registrationsOrganizationInformationBusinessInformation();
+        BoardingBusinessInformation businessInformation = new BoardingBusinessInformation();
         businessInformation.name("StuartWickedFastEatz");
-        Boardingv1registrationsOrganizationInformationBusinessInformationAddress address = new Boardingv1registrationsOrganizationInformationBusinessInformationAddress();
+        BoardingBusinessInformationAddress address = new BoardingBusinessInformationAddress();
         address.country("US");
         address.address1("123456 SandMarket");
         address.locality("ORMOND BEACH");
@@ -50,7 +50,7 @@ public class CreateRegistration {
         businessInformation.websiteUrl("https://www.StuartWickedEats.com");
         businessInformation.phoneNumber("6574567813");
 
-        Boardingv1registrationsOrganizationInformationBusinessInformationBusinessContact businessContact = new Boardingv1registrationsOrganizationInformationBusinessInformationBusinessContact();
+        BoardingBusinessInformationBusinessContact businessContact = new BoardingBusinessInformationBusinessContact();
         businessContact.firstName("Stuart");
         businessContact.lastName("Stuart");
         businessContact.phoneNumber("6574567813");

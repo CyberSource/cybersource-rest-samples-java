@@ -30,7 +30,7 @@ public class CreatePaymentInstrumentPinlessDebit {
 	
 		PostPaymentInstrumentRequest requestObj = new PostPaymentInstrumentRequest();
 
-		Tmsv2tokenizeTokenInformationCustomerEmbeddedDefaultPaymentInstrumentCard card = new Tmsv2tokenizeTokenInformationCustomerEmbeddedDefaultPaymentInstrumentCard();
+		DefaultPaymentInstrumentCard card = new DefaultPaymentInstrumentCard();
 		card.expirationMonth("12");
 		card.expirationYear("2031");
 		card.type("visa");
@@ -40,7 +40,7 @@ public class CreatePaymentInstrumentPinlessDebit {
 		card.useAs("pinless debit");
 		requestObj.card(card);
 
-		Tmsv2tokenizeTokenInformationCustomerEmbeddedDefaultPaymentInstrumentBillTo billTo = new Tmsv2tokenizeTokenInformationCustomerEmbeddedDefaultPaymentInstrumentBillTo();
+		DefaultPaymentInstrumentBillTo billTo = new DefaultPaymentInstrumentBillTo();
 		billTo.firstName("John");
 		billTo.lastName("Doe");
 		billTo.company("CyberSource");
@@ -53,7 +53,7 @@ public class CreatePaymentInstrumentPinlessDebit {
 		billTo.phoneNumber("4158880000");
 		requestObj.billTo(billTo);
 
-		Tmsv2tokenizeTokenInformationCustomerEmbeddedDefaultPaymentInstrumentInstrumentIdentifier instrumentIdentifier = new Tmsv2tokenizeTokenInformationCustomerEmbeddedDefaultPaymentInstrumentInstrumentIdentifier();
+		DefaultPaymentInstrumentInstrumentIdentifier instrumentIdentifier = new DefaultPaymentInstrumentInstrumentIdentifier();
 		instrumentIdentifier.id("7010000000016241111");
 		requestObj.instrumentIdentifier(instrumentIdentifier);
 
