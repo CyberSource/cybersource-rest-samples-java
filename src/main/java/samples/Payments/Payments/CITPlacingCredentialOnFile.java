@@ -44,10 +44,10 @@ public class CITPlacingCredentialOnFile {
 		Ptsv2paymentsProcessingInformation processingInformation = new Ptsv2paymentsProcessingInformation();
 		processingInformation.capture(false);
 		processingInformation.commerceIndicator("vbv");
-		Ptsv2paymentsProcessingInformationAuthorizationOptions processingInformationAuthorizationOptions = new Ptsv2paymentsProcessingInformationAuthorizationOptions();
+		ProcessingInfoAuthorizationOptions processingInformationAuthorizationOptions = new ProcessingInfoAuthorizationOptions();
 		processingInformationAuthorizationOptions.ignoreAvsResult(false);
 		processingInformationAuthorizationOptions.ignoreCvResult(false);
-		Ptsv2paymentsProcessingInformationAuthorizationOptionsInitiator processingInformationAuthorizationOptionsInitiator = new Ptsv2paymentsProcessingInformationAuthorizationOptionsInitiator();
+		ProcessingInfoAuthorizationOptionsInitiator processingInformationAuthorizationOptionsInitiator = new ProcessingInfoAuthorizationOptionsInitiator();
 		processingInformationAuthorizationOptionsInitiator.credentialStoredOnFile(true);
 		processingInformationAuthorizationOptions.initiator(processingInformationAuthorizationOptionsInitiator);
 

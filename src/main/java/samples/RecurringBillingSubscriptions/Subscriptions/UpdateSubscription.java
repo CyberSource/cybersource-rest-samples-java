@@ -49,8 +49,8 @@ public class UpdateSubscription {
 		requestObj.clientReferenceInformation(clientReferenceInformation);
 
 		Rbsv1subscriptionsProcessingInformation processingInformation = new Rbsv1subscriptionsProcessingInformation();
-		Rbsv1subscriptionsProcessingInformationAuthorizationOptions processingInformationAuthorizationOptions = new Rbsv1subscriptionsProcessingInformationAuthorizationOptions();
-		Rbsv1subscriptionsProcessingInformationAuthorizationOptionsInitiator processingInformationAuthorizationOptionsInitiator = new Rbsv1subscriptionsProcessingInformationAuthorizationOptionsInitiator();
+		RbsAuthorizationOptions processingInformationAuthorizationOptions = new RbsAuthorizationOptions();
+		RbsAuthorizationOptionsInitiator processingInformationAuthorizationOptionsInitiator = new RbsAuthorizationOptionsInitiator();
 		processingInformationAuthorizationOptionsInitiator.type("merchant");
 		processingInformationAuthorizationOptions.initiator(processingInformationAuthorizationOptionsInitiator);
 

@@ -9,7 +9,8 @@ import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
-import Api.EnrollmentApi;
+
+import Api.AgentCapabilitiesApi;
 import Data.ConfigurationWithMLE;
 import Invokers.ApiClient;
 import Invokers.ApiException;
@@ -59,7 +60,8 @@ public class AcpApiExampleWithRequestAndResponseMLE {
 			MerchantConfig merchantConfig = new MerchantConfig(merchantProp);
 			apiClient.merchantConfig = merchantConfig;
 
-			EnrollmentApi apiInstance = new EnrollmentApi(apiClient);
+
+			AgentCapabilitiesApi apiInstance = new AgentCapabilitiesApi(apiClient);
 			result = apiInstance.enrollCard(requestObj);
 
 			responseCode = apiClient.responseCode;
@@ -87,7 +89,8 @@ public class AcpApiExampleWithRequestAndResponseMLE {
 			MerchantConfig merchantConfig = new MerchantConfig(merchantProp);
 			apiClient.merchantConfig = merchantConfig;
 
-			EnrollmentApi apiInstance = new EnrollmentApi(apiClient);
+
+			AgentCapabilitiesApi apiInstance = new AgentCapabilitiesApi(apiClient);
 			result = apiInstance.enrollCard(requestObj);
 
 			responseCode = apiClient.responseCode;

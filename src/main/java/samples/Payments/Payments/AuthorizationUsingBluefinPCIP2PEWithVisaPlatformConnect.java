@@ -42,7 +42,7 @@ public class AuthorizationUsingBluefinPCIP2PEWithVisaPlatformConnect {
 		Ptsv2paymentsProcessingInformation processingInformation = new Ptsv2paymentsProcessingInformation();
 		processingInformation.capture(false);
 		processingInformation.commerceIndicator("retail");
-		Ptsv2paymentsProcessingInformationAuthorizationOptions processingInformationAuthorizationOptions = new Ptsv2paymentsProcessingInformationAuthorizationOptions();
+		ProcessingInfoAuthorizationOptions processingInformationAuthorizationOptions = new ProcessingInfoAuthorizationOptions();
 		processingInformationAuthorizationOptions.partialAuthIndicator(true);
 		processingInformationAuthorizationOptions.ignoreAvsResult(true);
 		processingInformationAuthorizationOptions.ignoreCvResult(true);
