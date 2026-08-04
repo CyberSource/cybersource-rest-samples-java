@@ -29,7 +29,7 @@ public class CreateRegistration {
     }
 
 
-    public static InlineResponse2014 run() {
+    public static InlineResponse2017 run() {
 
         PostRegistrationBody reqObj = new PostRegistrationBody();
 
@@ -195,7 +195,7 @@ public class CreateRegistration {
         reqObj.productInformation(productInformation);
 
 
-        InlineResponse2014 result = null;
+        InlineResponse2017 result = null;
 
         try {
             //Boarding API support only JWT Auth Type
