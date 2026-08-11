@@ -64,7 +64,11 @@ public class DownloadReport {
 
 			File targetFile = new File(FILE_PATH + resourceFile + "." + fileExtension);
 
-			FileUtils.copyInputStreamToFile(responseStream.getData(), targetFile);
+			// Use try-with-resources to ensure the stream (and underlying HTTP response)
+			// is always closed — even if copyInputStreamToFile throws mid-copy.
+			try (InputStream stream = responseStream.getData()) {
+				FileUtils.copyInputStreamToFile(stream, targetFile);
+			}
 
 			// END : FILE DOWNLOAD FUNCTIONALITY
 
