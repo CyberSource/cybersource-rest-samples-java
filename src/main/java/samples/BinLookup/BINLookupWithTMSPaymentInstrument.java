@@ -33,7 +33,7 @@ public class BINLookupWithTMSPaymentInstrument {
 		run();
 	}
 
-	public static InlineResponse2016 run() {
+	public static InlineResponse2015 run() {
 	
 		CreateBinLookupRequest requestObj = new CreateBinLookupRequest();
 
@@ -45,7 +45,7 @@ public class BINLookupWithTMSPaymentInstrument {
 		requestObj.paymentInformation(paymentInformation);
 
 		
-		InlineResponse2016 result=null;
+		InlineResponse2015 result=null;
 		try {
 			merchantProp = Configuration.getMerchantDetails();
 			ApiClient apiClient = new ApiClient();

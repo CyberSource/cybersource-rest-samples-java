@@ -10,7 +10,7 @@
 	<url>http://maven.apache.org</url>
 
 	<properties>
-		<client.sdk.version>0.0.93</client.sdk.version>
+		<client.sdk.version>0.0.94</client.sdk.version>
 	</properties>
 
 	<dependencies>
