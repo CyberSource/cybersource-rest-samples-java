@@ -28,7 +28,7 @@ public class MerchantBoardingCUP {
     }
 
 
-    public static InlineResponse2017 run() {
+    public static InlineResponse2016 run() {
 
         PostRegistrationBody reqObj = new PostRegistrationBody();
 
@@ -182,7 +182,7 @@ public class MerchantBoardingCUP {
         reqObj.productInformation(productInformation);
 
 
-        InlineResponse2017 result = null;
+        InlineResponse2016 result = null;
 
         try {
             //Boarding API support only JWT Auth Type
