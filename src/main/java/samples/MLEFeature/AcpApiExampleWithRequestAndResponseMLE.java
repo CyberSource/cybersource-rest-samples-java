@@ -10,7 +10,7 @@ import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 
-import Api.AgentCapabilitiesApi;
+import Api.EnrollmentApi;
 import Data.ConfigurationWithMLE;
 import Invokers.ApiClient;
 import Invokers.ApiException;
@@ -61,7 +61,7 @@ public class AcpApiExampleWithRequestAndResponseMLE {
 			apiClient.merchantConfig = merchantConfig;
 
 
-			AgentCapabilitiesApi apiInstance = new AgentCapabilitiesApi(apiClient);
+			EnrollmentApi apiInstance = new EnrollmentApi(apiClient);
 			result = apiInstance.enrollCard(requestObj);
 
 			responseCode = apiClient.responseCode;
@@ -90,7 +90,7 @@ public class AcpApiExampleWithRequestAndResponseMLE {
 			apiClient.merchantConfig = merchantConfig;
 
 
-			AgentCapabilitiesApi apiInstance = new AgentCapabilitiesApi(apiClient);
+			EnrollmentApi apiInstance = new EnrollmentApi(apiClient);
 			result = apiInstance.enrollCard(requestObj);
 
 			responseCode = apiClient.responseCode;
