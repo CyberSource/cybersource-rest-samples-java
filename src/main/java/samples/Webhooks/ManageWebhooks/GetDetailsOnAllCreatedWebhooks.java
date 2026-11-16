@@ -33,13 +33,13 @@ public class GetDetailsOnAllCreatedWebhooks {
 		run();
 	}
 
-	public static List<InlineResponse2003> run() {
+	public static List<WebhookSubscription> run() {
 		// QUERY PARAMETERS
 		String organizationId = "testrest";
 		String productId = "testProductId";
 		String eventType = "testEventType";
 
-		List<InlineResponse2003> result = null;
+		List<WebhookSubscription> result = null;
 		try {
 			merchantProp = Configuration.getMerchantDetails();
 			ApiClient apiClient = new ApiClient();

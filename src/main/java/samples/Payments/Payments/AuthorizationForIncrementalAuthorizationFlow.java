@@ -107,7 +107,7 @@ public class AuthorizationForIncrementalAuthorizationFlow {
 		installmentInformation.totalCount(12);
 		requestObj.installmentInformation(installmentInformation);
 
-		Ptsv2paymentsTravelInformation travelInformation = new Ptsv2paymentsTravelInformation();
+		Ptsv2paymentsTravelInformationExtended travelInformation = new Ptsv2paymentsTravelInformationExtended();
 		travelInformation.duration("3");
 		Ptsv2paymentsTravelInformationLodging travelInformationLodging = new Ptsv2paymentsTravelInformationLodging();
 		travelInformationLodging.checkInDate("11062019");

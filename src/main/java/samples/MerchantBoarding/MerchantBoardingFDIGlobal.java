@@ -31,7 +31,7 @@ public class MerchantBoardingFDIGlobal {
     }
 
 
-    public static InlineResponse2016 run() {
+    public static BoardingRegistrationCreateResponse run() {
 
         PostRegistrationBody reqObj = new PostRegistrationBody();
 
@@ -71,9 +71,9 @@ public class MerchantBoardingFDIGlobal {
         PaymentsProductsCardProcessingSubscriptionInformation subscriptionInformation = new PaymentsProductsCardProcessingSubscriptionInformation();
 
         subscriptionInformation.enabled(true);
-        Map<String, PaymentsProductsCardProcessingSubscriptionInformationFeatures> features = new HashMap<>();
+        Map<String, CardProessingFeatureSubscriptionItem> features = new HashMap<>();
 
-        PaymentsProductsCardProcessingSubscriptionInformationFeatures obj1 = new PaymentsProductsCardProcessingSubscriptionInformationFeatures();
+        CardProessingFeatureSubscriptionItem obj1 = new CardProessingFeatureSubscriptionItem();
         obj1.enabled(true);
         features.put("cardNotPresent",obj1);
         features.put("cardPresent",obj1);
@@ -96,10 +96,10 @@ public class MerchantBoardingFDIGlobal {
 
         obj5.acquirer(acquirer);
 
-        Map<String, CardProcessingConfigCommonCurrencies1> currencies = new HashMap<>();
+        Map<String, CurrencyUpdatedConfiguration> currencies = new HashMap<>();
 
 
-        CardProcessingConfigCommonCurrencies1 obj6 = new CardProcessingConfigCommonCurrencies1();
+        CurrencyUpdatedConfiguration obj6 = new CurrencyUpdatedConfiguration();
         obj6.enabled(true);
         obj6.enabledCardPresent(false);
         obj6.enabledCardNotPresent(true);
@@ -123,8 +123,8 @@ public class MerchantBoardingFDIGlobal {
         paymentTypes.put("AMERICAN_EXPRESS",obj7);
         paymentTypes.put("DINERS_CLUB",obj7);
         paymentTypes.put("CUP",obj7);
-        Map<String, CardProcessingConfigCommonCurrencies> currencies2 = new HashMap<>();
-        CardProcessingConfigCommonCurrencies ob1 = new CardProcessingConfigCommonCurrencies();
+        Map<String, CurrencyConfiguration> currencies2 = new HashMap<>();
+        CurrencyConfiguration ob1 = new CurrencyConfiguration();
         ob1.enabled(true);
         ob1.terminalId("pint123");
         ob1.merchantId("pinm123");
@@ -176,7 +176,7 @@ public class MerchantBoardingFDIGlobal {
         reqObj.productInformation(productInformation);
 
 
-        InlineResponse2016 result = null;
+        BoardingRegistrationCreateResponse result = null;
 
         try {
             //Boarding API support only JWT Auth Type

@@ -31,7 +31,7 @@ public class MerchantBoardingEFTPOS {
     }
 
 
-    public static InlineResponse2016 run() {
+    public static BoardingRegistrationCreateResponse run() {
 
         PostRegistrationBody reqObj = new PostRegistrationBody();
 
@@ -71,9 +71,9 @@ public class MerchantBoardingEFTPOS {
         PaymentsProductsCardProcessingSubscriptionInformation subscriptionInformation = new PaymentsProductsCardProcessingSubscriptionInformation();
 
         subscriptionInformation.enabled(true);
-        Map<String, PaymentsProductsCardProcessingSubscriptionInformationFeatures> features = new HashMap<>();
+        Map<String, CardProessingFeatureSubscriptionItem> features = new HashMap<>();
 
-        PaymentsProductsCardProcessingSubscriptionInformationFeatures obj1 = new PaymentsProductsCardProcessingSubscriptionInformationFeatures();
+        CardProessingFeatureSubscriptionItem obj1 = new CardProessingFeatureSubscriptionItem();
         obj1.enabled(true);
         features.put("cardNotPresent",obj1);
         obj1.enabled(false);
@@ -97,10 +97,10 @@ public class MerchantBoardingEFTPOS {
 
         obj5.acquirer(acquirer);
 
-        Map<String, CardProcessingConfigCommonCurrencies1> currencies = new HashMap<>();
+        Map<String, CurrencyUpdatedConfiguration> currencies = new HashMap<>();
 
 
-        CardProcessingConfigCommonCurrencies1 obj6 = new CardProcessingConfigCommonCurrencies1();
+        CurrencyUpdatedConfiguration obj6 = new CurrencyUpdatedConfiguration();
         obj6.enabled(true);
         obj6.merchantId("12345612344");
         obj6.terminalId("12121212");
@@ -137,7 +137,7 @@ public class MerchantBoardingEFTPOS {
         reqObj.productInformation(productInformation);
 
 
-        InlineResponse2016 result = null;
+        BoardingRegistrationCreateResponse result = null;
 
         try {
             //Boarding API support only JWT Auth Type

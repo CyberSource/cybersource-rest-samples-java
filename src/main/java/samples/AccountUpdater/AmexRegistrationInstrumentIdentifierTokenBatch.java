@@ -6,8 +6,8 @@ import Invokers.ApiClient;
 import Invokers.ApiException;
 import Model.Accountupdaterv1batchesIncluded;
 import Model.Accountupdaterv1batchesIncludedTokens;
-import Model.Body;
-import Model.InlineResponse202;
+import Model.PostBatchRequest;
+import Model.BatchCreateResponse;
 import com.cybersource.authsdk.core.MerchantConfig;
 
 import java.lang.invoke.MethodHandles;
@@ -29,9 +29,9 @@ public class AmexRegistrationInstrumentIdentifierTokenBatch {
 		run();
 	}
 
-	public static InlineResponse202 run() {
+	public static BatchCreateResponse run() {
 	
-		Body requestObj = new Body();
+		PostBatchRequest requestObj = new PostBatchRequest();
 
 		requestObj.type("amexRegistration");
 		Accountupdaterv1batchesIncluded included = new Accountupdaterv1batchesIncluded();
@@ -55,7 +55,7 @@ public class AmexRegistrationInstrumentIdentifierTokenBatch {
 
 		requestObj.merchantReference("TC50171_3");
 		requestObj.notificationEmail("test@cybs.com");
-		InlineResponse202 result = null;
+		BatchCreateResponse result = null;
 		try {
 			merchantProp = Configuration.getMerchantDetails();
 			ApiClient apiClient = new ApiClient();

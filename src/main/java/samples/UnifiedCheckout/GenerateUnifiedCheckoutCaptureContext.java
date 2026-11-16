@@ -22,8 +22,6 @@ public class GenerateUnifiedCheckoutCaptureContext {
 	
 		GenerateUnifiedCheckoutCaptureContextRequest requestObj = new GenerateUnifiedCheckoutCaptureContextRequest();
 
-		requestObj.clientVersion("0.26");
-
 		List <String> targetOrigins = new ArrayList <String>();
 		targetOrigins.add("https://yourCheckoutPage.com");
 		requestObj.targetOrigins(targetOrigins);

@@ -29,7 +29,7 @@ public class CreateRegistration {
     }
 
 
-    public static InlineResponse2016 run() {
+    public static BoardingRegistrationCreateResponse run() {
 
         PostRegistrationBody reqObj = new PostRegistrationBody();
 
@@ -95,8 +95,8 @@ public class CreateRegistration {
         PaymentsProductsCardProcessing cardProcessing = new PaymentsProductsCardProcessing();
         PaymentsProductsCardProcessingSubscriptionInformation subscriptionInformation2 = new PaymentsProductsCardProcessingSubscriptionInformation();
         subscriptionInformation2.enabled(true);
-        Map<String, PaymentsProductsCardProcessingSubscriptionInformationFeatures> features = new HashMap<>();
-        PaymentsProductsCardProcessingSubscriptionInformationFeatures obj = new PaymentsProductsCardProcessingSubscriptionInformationFeatures();
+        Map<String, CardProessingFeatureSubscriptionItem> features = new HashMap<>();
+        CardProessingFeatureSubscriptionItem obj = new CardProessingFeatureSubscriptionItem();
         obj.enabled(true);
         features.put("cardNotPresent",obj);
         subscriptionInformation2.features(features);
@@ -195,7 +195,7 @@ public class CreateRegistration {
         reqObj.productInformation(productInformation);
 
 
-        InlineResponse2016 result = null;
+        BoardingRegistrationCreateResponse result = null;
 
         try {
             //Boarding API support only JWT Auth Type

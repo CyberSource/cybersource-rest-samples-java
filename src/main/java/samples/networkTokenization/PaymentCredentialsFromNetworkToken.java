@@ -4,7 +4,7 @@ import Api.NetworkTokensApi;
 import Data.Configuration;
 import Invokers.ApiClient;
 import Invokers.ApiException;
-import Model.PostPaymentCredentialsRequest1;
+import Model.PostPaymentCredentialsRequest;
 import com.cybersource.authsdk.core.MerchantConfig;
 
 import java.lang.invoke.MethodHandles;
@@ -42,7 +42,7 @@ public class PaymentCredentialsFromNetworkToken {
             apiClient.merchantConfig = merchantConfig;
 
             NetworkTokensApi apiInstance = new NetworkTokensApi(apiClient);
-            PostPaymentCredentialsRequest1 postPaymentCredentialsRequest = new PostPaymentCredentialsRequest1();
+            PostPaymentCredentialsRequest postPaymentCredentialsRequest = new PostPaymentCredentialsRequest();
             result = apiInstance.postTokenPaymentCredentials(tokenID, postPaymentCredentialsRequest, profileid);
             responseCode = apiClient.responseCode;
             status = apiClient.status;
