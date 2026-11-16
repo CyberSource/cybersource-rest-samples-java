@@ -28,7 +28,7 @@ public class MerchantBoardingCUP {
     }
 
 
-    public static InlineResponse2016 run() {
+    public static BoardingRegistrationCreateResponse run() {
 
         PostRegistrationBody reqObj = new PostRegistrationBody();
 
@@ -70,9 +70,9 @@ public class MerchantBoardingCUP {
         PaymentsProductsCardProcessingSubscriptionInformation subscriptionInformation = new PaymentsProductsCardProcessingSubscriptionInformation();
 
         subscriptionInformation.enabled(true);
-        Map<String, PaymentsProductsCardProcessingSubscriptionInformationFeatures> features = new HashMap<>();
+        Map<String, CardProessingFeatureSubscriptionItem> features = new HashMap<>();
 
-        PaymentsProductsCardProcessingSubscriptionInformationFeatures obj1 = new PaymentsProductsCardProcessingSubscriptionInformationFeatures();
+        CardProessingFeatureSubscriptionItem obj1 = new CardProessingFeatureSubscriptionItem();
         obj1.enabled(true);
         features.put("cardNotPresent",obj1);
         features.put("cardPresent",obj1);
@@ -95,9 +95,9 @@ public class MerchantBoardingCUP {
         acquirer.institutionId("22344");
         obj2.acquirer(acquirer);
 
-        Map<String, CardProcessingConfigCommonCurrencies1> currencies = new HashMap<>();
+        Map<String, CurrencyUpdatedConfiguration> currencies = new HashMap<>();
 
-        CardProcessingConfigCommonCurrencies1 obj3 = new CardProcessingConfigCommonCurrencies1();
+        CurrencyUpdatedConfiguration obj3 = new CurrencyUpdatedConfiguration();
         obj3.enabled(true);
         obj3.enabledCardPresent(false);
         obj3.enabledCardNotPresent(true);
@@ -182,7 +182,7 @@ public class MerchantBoardingCUP {
         reqObj.productInformation(productInformation);
 
 
-        InlineResponse2016 result = null;
+        BoardingRegistrationCreateResponse result = null;
 
         try {
             //Boarding API support only JWT Auth Type

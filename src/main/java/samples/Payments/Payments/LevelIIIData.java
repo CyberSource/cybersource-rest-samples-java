@@ -79,8 +79,8 @@ public class LevelIIIData {
 		orderInformation.billTo(orderInformationBillTo);
 
 
-		List <Ptsv2paymentsOrderInformationLineItems> lineItems =  new ArrayList <Ptsv2paymentsOrderInformationLineItems>();
-		Ptsv2paymentsOrderInformationLineItems lineItems1 = new Ptsv2paymentsOrderInformationLineItems();
+		List <Ptsv2paymentsOrderInformationLineItemsExtended> lineItems =  new ArrayList <Ptsv2paymentsOrderInformationLineItemsExtended>();
+		Ptsv2paymentsOrderInformationLineItemsExtended lineItems1 = new Ptsv2paymentsOrderInformationLineItemsExtended();
 		lineItems1.productCode("default");
 		lineItems1.quantity(10);
 		lineItems1.unitPrice("10.00");

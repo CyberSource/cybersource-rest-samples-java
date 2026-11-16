@@ -28,7 +28,7 @@ public class MerchantBoardingVPC {
     }
 
 
-    public static InlineResponse2016 run() {
+    public static BoardingRegistrationCreateResponse run() {
 
         PostRegistrationBody reqObj = new PostRegistrationBody();
 
@@ -69,9 +69,9 @@ public class MerchantBoardingVPC {
         PaymentsProductsCardProcessingSubscriptionInformation subscriptionInformation = new PaymentsProductsCardProcessingSubscriptionInformation();
 
         subscriptionInformation.enabled(true);
-        Map<String, PaymentsProductsCardProcessingSubscriptionInformationFeatures> features = new HashMap<>();
+        Map<String, CardProessingFeatureSubscriptionItem> features = new HashMap<>();
 
-        PaymentsProductsCardProcessingSubscriptionInformationFeatures obj1 = new PaymentsProductsCardProcessingSubscriptionInformationFeatures();
+        CardProessingFeatureSubscriptionItem obj1 = new CardProessingFeatureSubscriptionItem();
         obj1.enabled(true);
         features.put("cardNotPresent", obj1);
         features.put("cardPresent", obj1);
@@ -120,8 +120,8 @@ public class MerchantBoardingVPC {
         CardProcessingConfigCommonPaymentTypes obj7 = new CardProcessingConfigCommonPaymentTypes();
         obj7.enabled(true);
 
-        Map<String, CardProcessingConfigCommonCurrencies> currencies = new HashMap<>();
-        CardProcessingConfigCommonCurrencies obj2 = new CardProcessingConfigCommonCurrencies();
+        Map<String, CurrencyConfiguration> currencies = new HashMap<>();
+        CurrencyConfiguration obj2 = new CurrencyConfiguration();
         obj2.enabled(true);
         obj2.enabledCardPresent(false);
         obj2.enabledCardNotPresent(true);
@@ -261,7 +261,7 @@ public class MerchantBoardingVPC {
         reqObj.productInformation(productInformation);
 
 
-        InlineResponse2016 result = null;
+        BoardingRegistrationCreateResponse result = null;
 
         try {
             //Boarding API support only JWT Auth Type

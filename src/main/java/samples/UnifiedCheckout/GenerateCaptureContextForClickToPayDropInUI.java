@@ -22,8 +22,6 @@ public class GenerateCaptureContextForClickToPayDropInUI {
 
         GenerateUnifiedCheckoutCaptureContextRequest requestObj = new GenerateUnifiedCheckoutCaptureContextRequest();
 
-        requestObj.clientVersion("0.23");
-
         List <String> targetOrigins = new ArrayList <String>();
         targetOrigins.add("https://yourCheckoutPage.com");
         requestObj.targetOrigins(targetOrigins);

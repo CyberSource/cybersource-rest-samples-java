@@ -75,8 +75,8 @@ public class AuthenticationWithNewAccount {
 		requestObj.consumerAuthenticationInformation(consumerAuthenticationInformation);
 
 		Riskv1authenticationsRiskInformation riskInformation = new Riskv1authenticationsRiskInformation();
-		Ptsv2paymentsRiskInformationBuyerHistory riskInformationBuyerHistory = new Ptsv2paymentsRiskInformationBuyerHistory();
-		Ptsv2paymentsRiskInformationBuyerHistoryCustomerAccount riskInformationBuyerHistoryCustomerAccount = new Ptsv2paymentsRiskInformationBuyerHistoryCustomerAccount();
+		Riskv1decisionsRiskInformationBuyerHistory riskInformationBuyerHistory = new Riskv1decisionsRiskInformationBuyerHistory();
+		RiskInformationBuyerHistoryCustomerAccount riskInformationBuyerHistoryCustomerAccount = new RiskInformationBuyerHistoryCustomerAccount();
 		riskInformationBuyerHistoryCustomerAccount.creationHistory("NEW_ACCOUNT");
 		riskInformationBuyerHistory.customerAccount(riskInformationBuyerHistoryCustomerAccount);
 

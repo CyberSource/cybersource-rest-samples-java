@@ -73,13 +73,13 @@ public class DMWithTravelInformation {
 		travelInformation.departureTime("2011-03-20 11:30pm GMT");
 		travelInformation.journeyType("One way");
 
-		List <Riskv1decisionsTravelInformationLegs> legs =  new ArrayList <Riskv1decisionsTravelInformationLegs>();
-		Riskv1decisionsTravelInformationLegs legs1 = new Riskv1decisionsTravelInformationLegs();
+		List <Riskv1decisionsBundledTravelInformationLegs> legs =  new ArrayList <Riskv1decisionsBundledTravelInformationLegs>();
+		Riskv1decisionsBundledTravelInformationLegs legs1 = new Riskv1decisionsBundledTravelInformationLegs();
 		legs1.origination("SFO");
 		legs1.destination("JFK");
 		legs.add(legs1);
 
-		Riskv1decisionsTravelInformationLegs legs2 = new Riskv1decisionsTravelInformationLegs();
+		Riskv1decisionsBundledTravelInformationLegs legs2 = new Riskv1decisionsBundledTravelInformationLegs();
 		legs2.origination("JFK");
 		legs2.destination("BLR");
 		legs.add(legs2);

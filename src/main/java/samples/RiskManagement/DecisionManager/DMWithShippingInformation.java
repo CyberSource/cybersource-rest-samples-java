@@ -54,7 +54,7 @@ public class DMWithShippingInformation {
 		orderInformationAmountDetails.totalAmount("144.14");
 		orderInformation.amountDetails(orderInformationAmountDetails);
 
-		Riskv1decisionsOrderInformationShipTo orderInformationShipTo = new Riskv1decisionsOrderInformationShipTo();
+		Riskv1decisionsBundledOrderInformationShipTo orderInformationShipTo = new Riskv1decisionsBundledOrderInformationShipTo();
 		orderInformationShipTo.address1("96, powers street");
 		orderInformationShipTo.address2("");
 		orderInformationShipTo.administrativeArea("KA");

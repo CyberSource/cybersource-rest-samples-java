@@ -68,7 +68,7 @@ public class AuthorizationWithDecisionManagerTravelInformation {
 
 		requestObj.orderInformation(orderInformation);
 
-		Ptsv2paymentsTravelInformation travelInformation = new Ptsv2paymentsTravelInformation();
+		Ptsv2paymentsTravelInformationExtended travelInformation = new Ptsv2paymentsTravelInformationExtended();
 		requestObj.travelInformation(travelInformation);
 
 		PtsV2PaymentsPost201Response result = null;

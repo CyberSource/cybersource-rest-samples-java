@@ -33,7 +33,7 @@ public class BINLookupWithHealthcareCard {
 		run();
 	}
 
-	public static InlineResponse2015 run() {
+	public static GetAccountInfoResponse run() {
 	
 		CreateBinLookupRequest requestObj = new CreateBinLookupRequest();
 
@@ -45,7 +45,7 @@ public class BINLookupWithHealthcareCard {
 		requestObj.paymentInformation(paymentInformation);
 
 		
-		InlineResponse2015 result = null;
+		GetAccountInfoResponse result = null;
 		try {
 			merchantProp = Configuration.getMerchantDetails();
 			ApiClient apiClient = new ApiClient();
